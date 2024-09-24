@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Example() {
+export default function Navigation() {
     return (
-        <div>
+        <nav>
             <Link to="/">Home</Link> <br />
             <Link to="/about-us">About Us</Link> <br />
-            <h1>Hello!</h1>
-        </div>
+            <Link to="/contact-us">Contact Us</Link> <br />
+        </nav>
     );
 }

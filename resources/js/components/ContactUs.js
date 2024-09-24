@@ -1,11 +1,11 @@
 import React from "react";
 import Navigation from "./Navs";
 
-export default function AboutUs() {
+export default function ContactUs() {
     return (
-        <div className="about-us">
+        <div className="contact-us">
             <Navigation />
-            <h1>About Us</h1>
+            <h1>Contact Us</h1>
         </div>
     );
 }
