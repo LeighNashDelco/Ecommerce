@@ -1,0 +1,11 @@
+// _urls.scss
+
+$user-icon: 'https://img.icons8.com/ios-filled/30/cc8e00/user.png'; // User icon URL
+$lock-icon: 'https://img.icons8.com/ios-filled/30/cc8e00/lock.png'; // Lock icon URL
+$background-image: 'https://cdn.discordapp.com/attachments/1288677317593530409/1290145045865041931/Untitled_design_2_1.png?ex=66fb64b4&is=66fa1334&hm=824c9f46807c9144602379515128bf44d75728c48da69744970488c4b8bf1302&';
+
+// You can create a map for easy export
+$icons: (
+  user: $user-icon,
+  lock: $lock-icon
+);

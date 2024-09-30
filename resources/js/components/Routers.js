@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
-import Login from "./Login"; // Import the Login component
+import Login from "./LoginPage/Login"; // Corrected import path for Login component
 
 export default function Routers() {
   return (

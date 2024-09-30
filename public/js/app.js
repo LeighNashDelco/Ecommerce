@@ -8310,10 +8310,10 @@ function Home() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Login.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Login.js ***!
-  \******************************************/
+/***/ "./resources/js/components/LoginPage/Login.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/LoginPage/Login.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8322,9 +8322,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _css_login_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/login.css */ "./resources/css/login.css");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginForm */ "./resources/js/components/LoginPage/LoginForm.js");
+/* harmony import */ var _LoginModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginModal */ "./resources/js/components/LoginPage/LoginModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+var Login = function Login() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isModalOpen = _useState2[0],
+    setIsModalOpen = _useState2[1]; // State for modal
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  var handleRegisterClick = function handleRegisterClick() {
+    setIsModalOpen(true); // Open the modal when Register is clicked
+  };
+  var handleCloseModal = function handleCloseModal() {
+    setIsModalOpen(false); // Close the modal
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "login-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_LoginForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      navigate: navigate,
+      handleRegisterClick: handleRegisterClick
+    }), isModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_LoginModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      handleCloseModal: handleCloseModal
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
+
+/***/ }),
+
+/***/ "./resources/js/components/LoginPage/LoginForm.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/LoginPage/LoginForm.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _sass_components_login_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../sass/components/_login.scss */ "./resources/sass/components/_login.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8334,14 +8386,13 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
- // Import the CSS file
- // Import eye icons from react-icons
+ // Import the SCSS file
 
-var Login = function Login() {
+var LoginForm = function LoginForm() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     username = _useState2[0],
-    setUsername = _useState2[1]; // Changed email to username
+    setUsername = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState4 = _slicedToArray(_useState3, 2),
     password = _useState4[0],
@@ -8352,42 +8403,27 @@ var Login = function Login() {
     setError = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    isModalOpen = _useState8[0],
-    setIsModalOpen = _useState8[1]; // State for modal
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState10 = _slicedToArray(_useState9, 2),
-    showPassword = _useState10[0],
-    setShowPassword = _useState10[1]; // State for showing password
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+    showPassword = _useState8[0],
+    setShowPassword = _useState8[1];
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     if (username === '' || password === '') {
-      // Updated to check username
       setError('Both fields are required');
     } else {
       setError('');
       console.log('Admin logged in:', {
         username: username,
         password: password
-      }); // Updated to log username
-      navigate('/'); // Redirect to the home page
+      });
+      // Implement navigation logic here if needed
     }
   };
-  var handleRegisterClick = function handleRegisterClick() {
-    setIsModalOpen(true); // Open the modal when Register is clicked
-  };
-  var handleCloseModal = function handleCloseModal() {
-    setIsModalOpen(false); // Close the modal
-  };
   var toggleShowPassword = function toggleShowPassword() {
-    setShowPassword(!showPassword); // Toggle password visibility
+    setShowPassword(!showPassword);
   };
-  var handleForgotPasswordClick = function handleForgotPasswordClick() {
-    alert('Forgot password functionality not implemented yet.'); // Placeholder for forgot password functionality
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "login-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "login-form",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
         children: "Admin Login"
@@ -8399,29 +8435,24 @@ var Login = function Login() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "form-group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "input-icon",
+            className: "input-icon username-icon",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text" // Changed input type to text for username
-              ,
+              type: "text",
               className: "form-control",
-              placeholder: "Username" // Updated placeholder to Username
-              ,
-              value: username // Updated value to username
-              ,
+              placeholder: "Username",
+              value: username,
               onChange: function onChange(e) {
                 return setUsername(e.target.value);
-              } // Updated onChange to setUsername
-              ,
+              },
               required: true
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "form-group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "input-icon",
+            className: "input-icon password-icon",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: showPassword ? 'text' : 'password' // Show password based on state
-              ,
+              type: showPassword ? 'text' : 'password',
               className: "form-control",
               placeholder: "Password",
               value: password,
@@ -8429,10 +8460,10 @@ var Login = function Login() {
                 return setPassword(e.target.value);
               },
               required: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "eye-icon",
               onClick: toggleShowPassword,
-              children: [showPassword ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEyeSlash, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEye, {}), " "]
+              children: showPassword ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEyeSlash, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEye, {})
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -8441,35 +8472,50 @@ var Login = function Login() {
           children: "Login"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "forgot-password",
-          onClick: handleForgotPasswordClick,
           children: "Forgot Password?"
-        }), " "]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
-        className: "register-text",
-        children: ["Don't have an account?", ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: "register-link",
-          onClick: handleRegisterClick,
-          children: "Register"
         })]
-      }), " "]
-    }), isModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "modal",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: "close",
-          onClick: handleCloseModal,
-          children: "\xD7"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Register"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          children: "This is where you can add registration form fields."
-        })]
-      })
-    })]
+      })]
+    })
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/LoginPage/LoginModal.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/LoginPage/LoginModal.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var LoginModal = function LoginModal(_ref) {
+  var handleCloseModal = _ref.handleCloseModal;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "modal",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "modal-content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "close",
+        onClick: handleCloseModal,
+        children: "\xD7"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        children: "Register"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "This is where you can add registration form fields."
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginModal);
 
 /***/ }),
 
@@ -8537,7 +8583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 /* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AboutUs */ "./resources/js/components/AboutUs.js");
 /* harmony import */ var _ContactUs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ContactUs */ "./resources/js/components/ContactUs.js");
-/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.js");
+/* harmony import */ var _LoginPage_Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoginPage/Login */ "./resources/js/components/LoginPage/Login.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -8545,14 +8591,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // Import the Login component
+ // Corrected import path for Login component
 
 function Routers() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_LoginPage_Login__WEBPACK_IMPORTED_MODULE_5__["default"], {})
       }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
         path: "home",
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Home__WEBPACK_IMPORTED_MODULE_2__["default"], {})
@@ -15008,10 +15054,10 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/login.css":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/login.css ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_login.scss":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_login.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15019,13 +15065,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Nunito);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  background-color: #f0f4f8; /* Light background */\r\n  font-family: 'Arial', sans-serif;\r\n  color: #333;\r\n  margin: 0;\r\n  padding: 0;\r\n  height: 100vh;\r\n}\r\n\r\n.login-container {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh; /* Full height */\r\n  position: relative;\r\n}\r\n\r\n.login-form {\r\n  background: #ffffff; /* White background for the form */\r\n  padding: 40px;\r\n  border-radius: 20px; /* Rounded corners */\r\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\r\n  width: 350px; /* Fixed width */\r\n  text-align: center;\r\n  position: relative;\r\n  z-index: 1; /* Place above the background */\r\n}\r\n\r\nh2 {\r\n  margin-bottom: 20px;\r\n  font-size: 24px;\r\n  color: #1a1a1a; /* Dark color for text */\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n  position: relative; /* Positioning for icon */\r\n}\r\n\r\n.input-icon {\r\n  display: flex;\r\n  align-items: center; /* Align icon vertically */\r\n  position: relative; /* Added position relative for positioning the eye icon */\r\n}\r\n\r\n.input-icon input {\r\n  width: 100%;\r\n  padding: 10px 15px; /* Adjust padding for better spacing */\r\n  padding-left: 40px; /* Space for the icon */\r\n  padding-right: 40px; /* Space for the eye icon */\r\n  border: 2px solid #ffb300; /* Yellow border */\r\n  border-radius: 30px; /* Rounded inputs */\r\n  font-size: 16px;\r\n  line-height: 1.5; /* Adjust line height */\r\n}\r\n\r\n.input-icon input::-moz-placeholder {\r\n  color: #aaa; /* Placeholder color */\r\n}\r\n\r\n.input-icon input::placeholder {\r\n  color: #aaa; /* Placeholder color */\r\n}\r\n\r\n.input-icon::before {\r\n  content: url('https://img.icons8.com/ios-filled/30/cc8e00/user.png'); /* Darker yellow user icon */\r\n  position: absolute;\r\n  left: 10px; /* Positioning of the icon */\r\n  width: 20px; /* Icon width */\r\n  height: 20px; /* Icon height */\r\n  top: 40%; /* Adjust this value to position icon slightly above center */\r\n  transform: translateY(-50%); /* Center the icon vertically */\r\n}\r\n\r\n.form-control:focus {\r\n  outline: none;\r\n  border-color: #ff9f00; /* Darker border on focus */\r\n}\r\n\r\n.btn {\r\n  background-color: #ffb300; /* Button color */\r\n  border: none;\r\n  color: white;\r\n  padding: 15px 20px;\r\n  border-radius: 30px; /* Rounded button */\r\n  cursor: pointer;\r\n  transition: background-color 0.3s;\r\n  font-size: 16px;\r\n  width: 100%; /* Full width for the button */\r\n}\r\n\r\n.btn:hover {\r\n  background-color: #ff9f00; /* Button hover color */\r\n}\r\n\r\n.error {\r\n  color: red;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n/* Background shapes or waves */\r\n.login-container:before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url('https://cdn.discordapp.com/attachments/1288677317593530409/1290145045865041931/Untitled_design_2_1.png?ex=66fb64b4&is=66fa1334&hm=824c9f46807c9144602379515128bf44d75728c48da69744970488c4b8bf1302&') no-repeat center center; /* Updated background link */\r\n  background-size: cover; /* Adjust to cover */\r\n  background-position: center; /* Center background */\r\n  z-index: 0; /* Behind the form */\r\n  background-attachment: fixed; /* Fix background to prevent blur during scroll */\r\n}\r\n\r\n/* Add a password icon */\r\n.form-group:nth-child(2) .input-icon::before {\r\n  content: url('https://img.icons8.com/ios-filled/30/cc8e00/lock.png'); /* Darker yellow password icon */\r\n}\r\n\r\n/* Eye icon styling */\r\n.eye-icon {\r\n  position: absolute; /* Position the icon */\r\n  right: 10px; /* Position it inside the input field */\r\n  top: 50%; /* Center vertically */\r\n  transform: translateY(-50%); /* Adjust for perfect centering */\r\n  cursor: pointer; /* Change cursor to pointer */\r\n  color: #cc8e00; /* Icon color */\r\n  font-size: 20px; /* Icon size */\r\n  z-index: 2; /* Ensure the icon appears above the input field */\r\n}\r\n\r\n/* Modal styles */\r\n.modal {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: rgba(0, 0, 0, 0.5);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  z-index: 10; /* Ensure modal is above everything else */\r\n}\r\n\r\n.modal-content {\r\n  background: #fff;\r\n  padding: 20px;\r\n  border-radius: 10px;\r\n  width: 400px;\r\n  text-align: center;\r\n}\r\n\r\n.close {\r\n  float: right;\r\n  font-size: 24px;\r\n  cursor: pointer;\r\n}\r\n\r\n/* Styling for links */\r\n.forgot-password, .register-link {\r\n  color: #ffb300; /* Color for links */\r\n  cursor: pointer; /* Change cursor to pointer */\r\n  text-decoration: none; /* Remove underline */\r\n}\r\n\r\n.forgot-password:hover, .register-link:hover {\r\n  text-decoration: underline; /* Underline on hover */\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-color: #f0f4f8;\n  font-family: \"Arial\", sans-serif;\n  color: #333;\n  margin: 0;\n  padding: 0;\n  height: 100vh;\n}\n\n.login-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  position: relative;\n  background: url(\"https://cdn.discordapp.com/attachments/1288677317593530409/1290145045865041931/Untitled_design_2_1.png?ex=66fb64b4&is=66fa1334&hm=824c9f46807c9144602379515128bf44d75728c48da69744970488c4b8bf1302&\") no-repeat center center;\n  background-size: cover;\n}\n\n.login-form {\n  background: #ffffff;\n  padding: 40px;\n  border-radius: 20px;\n  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);\n  width: 350px;\n  text-align: center;\n  position: relative;\n  z-index: 1;\n}\n\nh2 {\n  margin-bottom: 20px;\n  font-size: 24px;\n  color: #1a1a1a;\n}\n\n.form-group {\n  margin-bottom: 20px;\n}\n\n.input-icon {\n  display: flex;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n\n.input-icon input {\n  width: 100%;\n  padding: 10px 15px;\n  padding-left: 40px;\n  padding-right: 60px;\n  border: 2px solid #ffb300;\n  border-radius: 30px;\n  font-size: 16px;\n  line-height: 1.5;\n}\n\n.input-icon input::-moz-placeholder {\n  color: #aaa;\n}\n\n.input-icon input::placeholder {\n  color: #aaa;\n}\n\n.input-icon.username-icon::before {\n  content: url(\"https://img.icons8.com/ios-filled/30/cc8e00/user.png\");\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 20px;\n  height: 30px;\n}\n\n.input-icon.password-icon::before {\n  content: url(\"https://img.icons8.com/ios-filled/30/cc8e00/lock.png\");\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 20px;\n  height: 30px;\n}\n\n.eye-icon {\n  position: absolute;\n  right: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  cursor: pointer;\n  color: #cc8e00;\n  font-size: 20px;\n  z-index: 2;\n}\n\n.form-control:focus {\n  outline: none;\n  border-color: #ff9f00;\n}\n\n.btn {\n  background-color: #ffb300;\n  border: none;\n  color: white;\n  padding: 15px 20px;\n  border-radius: 30px;\n  cursor: pointer;\n  transition: background-color 0.3s;\n  font-size: 16px;\n  width: 100%;\n}\n\n.btn:hover {\n  background-color: #ff9f00;\n}\n\n.error {\n  color: red;\n  margin-bottom: 15px;\n}\n\n/* Modal styles */\n.modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 10;\n}\n\n.modal-content {\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n  width: 400px;\n  text-align: center;\n}\n\n.close {\n  float: right;\n  font-size: 24px;\n  cursor: pointer;\n}\n\n/* Styling for links */\n.forgot-password,\n.register-link {\n  color: #ffb300;\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.forgot-password:hover,\n.register-link:hover {\n  text-decoration: underline;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -66790,10 +66837,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./resources/css/login.css":
-/*!*********************************!*\
-  !*** ./resources/css/login.css ***!
-  \*********************************/
+/***/ "./resources/sass/components/_login.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/components/_login.scss ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -66801,9 +66848,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_login_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./login.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/login.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_login_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_login.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_login.scss");
 
             
 
@@ -66812,11 +66859,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_login_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_login_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_login_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_login_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
