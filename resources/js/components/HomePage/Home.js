@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaHome, FaUserGraduate, FaEnvelope, FaSignOutAlt, FaBars } from "react-icons/fa"; // Importing icons
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { FaHome, FaUserGraduate, FaEnvelope, FaSignOutAlt, FaBars, FaInfoCircle } from "react-icons/fa"; // Updated icon for About Us
 import "../../../sass/components/_home.scss"; // Import the SCSS file for Home styles
 
 // Logo URL imported from _urls.scss
@@ -19,8 +19,17 @@ const LoadingScreen = () => (
 
 export default function Home() {
   const navigate = useNavigate();
+  const location = useLocation(); // Hook to get the current location
   const [loading, setLoading] = useState(false); // State to manage loading screen visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State for toggling sidebar
+
+  // State to keep track of the current active page
+  const [activePage, setActivePage] = useState(location.pathname);
+
+  useEffect(() => {
+    console.log("Current active page: ", location.pathname); // Log current path
+    setActivePage(location.pathname); // Update active page when location changes
+  }, [location.pathname]);
 
   // Function to handle navigation to other pages
   const goToPage = (path) => {
@@ -54,20 +63,38 @@ export default function Home() {
           <nav className="navbar nav-wrapper">
             <ul className="sidebar-menu navbar-nav">
               <li className="nav-item">
-                <a onClick={() => goToPage("/enrollment")} className="nav-link">
+                <a
+                  onClick={() => goToPage("/home")}
+                  className={`nav-link ${activePage === "/home" ? "active" : ""}`}
+                >
+                  <FaHome />
+                  <span className="nav-text">HOME</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  onClick={() => goToPage("/enrollment")}
+                  className={`nav-link ${activePage === "/enrollment" ? "active" : ""}`}
+                >
                   <FaUserGraduate />
                   <span className="nav-text">ENROLLMENT</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a onClick={() => goToPage("/contact-us")} className="nav-link">
+                <a
+                  onClick={() => goToPage("/contact-us")}
+                  className={`nav-link ${activePage === "/contact-us" ? "active" : ""}`}
+                >
                   <FaEnvelope />
                   <span className="nav-text">CONTACT US</span>
                 </a>
               </li>
               <li className="nav-item">
-                <a onClick={() => goToPage("/about-us")} className="nav-link">
-                  <FaHome />
+                <a
+                  onClick={() => goToPage("/about-us")}
+                  className={`nav-link ${activePage === "/about-us" ? "active" : ""}`}
+                >
+                  <FaInfoCircle />
                   <span className="nav-text">ABOUT US</span>
                 </a>
               </li>

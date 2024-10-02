@@ -8268,7 +8268,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
- // Importing icons
+ // Updated icon for About Us
  // Import the SCSS file for Home styles
 
 // Logo URL imported from _urls.scss
@@ -8295,6 +8295,7 @@ var LoadingScreen = function LoadingScreen() {
 };
 function Home() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)(); // Hook to get the current location
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     loading = _useState2[0],
@@ -8303,6 +8304,16 @@ function Home() {
     _useState4 = _slicedToArray(_useState3, 2),
     isSidebarOpen = _useState4[0],
     setIsSidebarOpen = _useState4[1]; // State for toggling sidebar
+
+  // State to keep track of the current active page
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.pathname),
+    _useState6 = _slicedToArray(_useState5, 2),
+    activePage = _useState6[0],
+    setActivePage = _useState6[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("Current active page: ", location.pathname); // Log current path
+    setActivePage(location.pathname); // Update active page when location changes
+  }, [location.pathname]);
 
   // Function to handle navigation to other pages
   var goToPage = function goToPage(path) {
@@ -8342,9 +8353,21 @@ function Home() {
             className: "nav-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
               onClick: function onClick() {
+                return goToPage("/home");
+              },
+              className: "nav-link ".concat(activePage === "/home" ? "active" : ""),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaHome, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "nav-text",
+                children: "HOME"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+            className: "nav-item",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
+              onClick: function onClick() {
                 return goToPage("/enrollment");
               },
-              className: "nav-link",
+              className: "nav-link ".concat(activePage === "/enrollment" ? "active" : ""),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUserGraduate, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 className: "nav-text",
                 children: "ENROLLMENT"
@@ -8356,7 +8379,7 @@ function Home() {
               onClick: function onClick() {
                 return goToPage("/contact-us");
               },
-              className: "nav-link",
+              className: "nav-link ".concat(activePage === "/contact-us" ? "active" : ""),
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEnvelope, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 className: "nav-text",
                 children: "CONTACT US"
@@ -8368,8 +8391,8 @@ function Home() {
               onClick: function onClick() {
                 return goToPage("/about-us");
               },
-              className: "nav-link",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaHome, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "nav-link ".concat(activePage === "/about-us" ? "active" : ""),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaInfoCircle, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 className: "nav-text",
                 children: "ABOUT US"
               })]
@@ -15186,7 +15209,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".home-container {\n  display: flex;\n  height: 100vh;\n}\n\n.sidebar {\n  width: 200px;\n  background-color: white;\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.sidebar .logo {\n  margin-bottom: 20px;\n}\n.sidebar .logo img {\n  width: 80px;\n  height: auto;\n}\n.sidebar .navbar .sidebar-menu {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n}\n.sidebar .navbar .sidebar-menu .nav-item {\n  width: 100%;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link {\n  display: flex;\n  align-items: center;\n  padding: 15px;\n  color: #ff9f00;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s;\n  cursor: pointer;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link:hover {\n  background-color: rgb(255, 216.6, 153);\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link i {\n  margin-right: 10px;\n  font-size: 18px;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link .nav-text {\n  flex-grow: 1;\n}\n\n.main-content {\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.top-navbar {\n  display: flex;\n  align-items: center;\n  background-color: #ff9f00;\n  padding: 10px 20px;\n  color: white;\n}\n.top-navbar .toggle-button {\n  background: none;\n  border: none;\n  color: white;\n  font-size: 24px;\n  cursor: pointer;\n  margin-right: 20px;\n  transition: color 0.3s;\n}\n.top-navbar .toggle-button:hover {\n  color: rgb(255, 187.8, 76.5);\n}\n\n.home-content {\n  flex-grow: 1;\n  padding: 20px;\n}\n.home-content h2 {\n  font-size: 24px;\n  color: #ff9f00;\n}\n\n.loading-screen {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgb(255, 255, 255);\n  z-index: 999;\n}\n.loading-screen .loading-logo {\n  width: 150px;\n  margin-bottom: 20px;\n}\n.loading-screen .loader {\n  display: flex;\n  justify-content: center;\n}\n.loading-screen .loader .dot {\n  width: 10px;\n  height: 10px;\n  margin: 0 5px;\n  border-radius: 50%;\n  background-color: #ff9f00;\n  animation: loading 0.6s infinite alternate;\n}\n.loading-screen .loader .dot:nth-child(2) {\n  animation-delay: 0.2s;\n}\n.loading-screen .loader .dot:nth-child(3) {\n  animation-delay: 0.4s;\n}\n\n@keyframes loading {\n  from {\n    transform: scale(1);\n  }\n  to {\n    transform: scale(1.5);\n  }\n}\n@media (max-width: 768px) {\n  .home-container {\n    flex-direction: column;\n  }\n  .sidebar {\n    width: 100%;\n    position: relative;\n  }\n  .main-content {\n    flex-grow: 1;\n  }\n  .top-navbar {\n    padding: 10px;\n    font-size: 16px;\n  }\n  .nav-link {\n    font-size: 12px;\n    padding: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".home-container {\n  display: flex;\n  height: 100vh;\n}\n\n.sidebar {\n  width: 200px;\n  background-color: white;\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.sidebar .logo {\n  margin-bottom: 20px;\n}\n.sidebar .logo img {\n  width: 80px;\n  height: auto;\n}\n.sidebar .navbar .sidebar-menu {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n}\n.sidebar .navbar .sidebar-menu .nav-item {\n  width: 100%;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link {\n  display: flex;\n  align-items: center;\n  padding: 15px;\n  color: #ff9f00;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s, color 0.3s;\n  cursor: pointer;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link:hover {\n  background-color: rgb(255, 216.6, 153);\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link.active {\n  background-color: rgb(178.5, 111.3, 0);\n  color: white;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link i {\n  margin-right: 10px;\n  font-size: 18px;\n}\n.sidebar .navbar .sidebar-menu .nav-item .nav-link .nav-text {\n  flex-grow: 1;\n}\n\n.main-content {\n  flex-grow: 1;\n  display: flex;\n  flex-direction: column;\n}\n\n.top-navbar {\n  display: flex;\n  align-items: center;\n  background-color: #ff9f00;\n  padding: 10px 20px;\n  color: white;\n}\n.top-navbar .toggle-button {\n  background: none;\n  border: none;\n  color: white;\n  font-size: 24px;\n  cursor: pointer;\n  margin-right: 20px;\n  transition: color 0.3s;\n}\n.top-navbar .toggle-button:hover {\n  color: rgb(255, 187.8, 76.5);\n}\n\n.home-content {\n  flex-grow: 1;\n  padding: 20px;\n}\n.home-content h2 {\n  font-size: 24px;\n  color: #ff9f00;\n}\n\n.loading-screen {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgb(255, 255, 255);\n  z-index: 999;\n}\n.loading-screen .loading-logo {\n  width: 150px;\n  margin-bottom: 20px;\n}\n.loading-screen .loader {\n  display: flex;\n  justify-content: center;\n}\n.loading-screen .loader .dot {\n  width: 10px;\n  height: 10px;\n  margin: 0 5px;\n  border-radius: 50%;\n  background-color: #ff9f00;\n  animation: loading 0.6s infinite alternate;\n}\n.loading-screen .loader .dot:nth-child(2) {\n  animation-delay: 0.2s;\n}\n.loading-screen .loader .dot:nth-child(3) {\n  animation-delay: 0.4s;\n}\n\n@keyframes loading {\n  from {\n    transform: scale(1);\n  }\n  to {\n    transform: scale(1.5);\n  }\n}\n@media (max-width: 768px) {\n  .home-container {\n    flex-direction: column;\n  }\n  .sidebar {\n    width: 100%;\n    position: relative;\n  }\n  .main-content {\n    flex-grow: 1;\n  }\n  .top-navbar {\n    padding: 10px;\n    font-size: 16px;\n  }\n  .nav-link {\n    font-size: 12px;\n    padding: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

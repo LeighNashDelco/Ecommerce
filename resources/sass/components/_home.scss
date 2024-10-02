@@ -1,8 +1,7 @@
-// _home.scss
-
 $primary-color: #ff9f00; // Primary color for the top bar
 $sidebar-background-color: white; // Background color for the sidebar
 $hover-color: lighten($primary-color, 30%); // Hover color for buttons
+$active-color: darken($primary-color, 15%); // Color for the active link
 $sidebar-width: 200px; // Adjusted width of the sidebar
 
 .home-container {
@@ -45,11 +44,17 @@ $sidebar-width: 200px; // Adjusted width of the sidebar
           color: $primary-color; // Set text color for links
           text-decoration: none;
           font-size: 14px; // Adjusted font size for smaller sidebar
-          transition: background-color 0.3s;
+          transition: background-color 0.3s, color 0.3s; // Smooth transition
           cursor: pointer; // Change cursor to pointer on hover
 
           &:hover {
             background-color: $hover-color; // Set hover color
+          }
+
+          // Active class styling
+          &.active {
+            background-color: $active-color; // Highlight background for active link
+            color: white; // Change text color to white for active link
           }
 
           i {
