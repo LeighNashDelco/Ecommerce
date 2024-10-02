@@ -5,13 +5,24 @@
 @import '../utilities/variables'; // Adjust the path if necessary
 @import '../utilities/urls'; // Import the URL variables
 
-body {
-  background-color: #f0f4f8; // Light background
+body.login-page { 
+  background: url($background-image) no-repeat center center; // Use the background variable
+  background-size: cover; // Ensure the background covers the body
   font-family: 'Arial', sans-serif;
   color: #333;
-  margin: 0;
+  margin: 0; // Remove margin
   padding: 0;
-  height: 100vh;
+  height: 100vh; // Full height
+  overflow: hidden; // Prevent scrolling
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0; // Remove margin
+  padding: 0;
+  height: 100vh; // Full height
+  overflow: hidden; // Prevent scrolling
 }
 
 .login-container {
@@ -20,8 +31,7 @@ body {
   align-items: center;
   height: 100vh; // Full height
   position: relative;
-  background: url($background-image) no-repeat center center; // Use the background variable
-  background-size: cover; // Ensure the background covers the container
+  // No background property here for transparency with body background
 }
 
 .login-form {
@@ -49,8 +59,6 @@ h2 {
   display: flex;
   align-items: center;
   position: relative; // Ensure this is set
-
-  // Added margin for spacing if needed
   margin-bottom: 20px; // Space between form groups
 }
 
@@ -127,6 +135,15 @@ h2 {
 .error {
   color: red;
   margin-bottom: 15px;
+}
+
+/* Logo styling */
+.logo {
+  width: 100px; // Adjust as needed
+  margin-bottom: 20px; // Space below the logo
+  display: block; // Ensure it's centered in the form
+  margin-left: auto; 
+  margin-right: auto;
 }
 
 /* Modal styles */

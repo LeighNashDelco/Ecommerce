@@ -1,0 +1,66 @@
+// _home.scss
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Full height of the viewport
+    background-color: #ffffff; // Set background color to white
+  }
+  
+  .home-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9); // White background with slight transparency
+    padding: 40px;
+    border-radius: 20px; // Rounded corners
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    width: 400px; // Fixed width for the content box
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333; // Dark color for the heading
+  }
+  
+  .navigation-buttons {
+    margin-bottom: 20px; // Space below the navigation buttons
+  }
+  
+  .nav-btn {
+    background-color: #ffb300; // Button color
+    border: none; // Remove border
+    color: white; // Text color
+    padding: 10px 20px; // Padding inside the button
+    border-radius: 10px; // Rounded corners for buttons
+    cursor: pointer; // Pointer cursor on hover
+    margin: 10px 0; // Margin between buttons
+    width: 100%; // Full width for buttons
+    font-size: 16px; // Font size
+    transition: background-color 0.3s; // Smooth transition for hover effect
+  }
+  
+  .nav-btn:hover {
+    background-color: #ff9f00; // Button hover color
+  }
+  
+  .logout-button {
+    margin-top: 20px; // Space above the logout button
+  }
+  
+  .logout-btn {
+    background-color: #d9534f; // Logout button color
+    border: none; // Remove border
+    color: white; // Text color
+    padding: 10px 20px; // Padding inside the button
+    border-radius: 10px; // Rounded corners for the logout button
+    cursor: pointer; // Pointer cursor on hover
+    width: 100%; // Full width for the logout button
+    font-size: 16px; // Font size
+    transition: background-color 0.3s; // Smooth transition for hover effect
+  }
+  
+  .logout-btn:hover {
+    background-color: #c9302c; // Logout button hover color
+  }
+  

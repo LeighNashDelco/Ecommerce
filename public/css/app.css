@@ -11967,13 +11967,24 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
-  background-color: #f0f4f8;
+body.login-page {
+  background: url("https://cdn.discordapp.com/attachments/725332328494399539/1290657332732362782/Copy_of_Blue_Modern_How_to_Draw_Anime_Youtube_Thumbnail_3.png?ex=66fd41cf&is=66fbf04f&hm=600151ceecfd854a31dfc8bbc4c2cfa736722df6bc4d4058b89a98df7d7432ce&") no-repeat center center;
+  background-size: cover;
   font-family: "Arial", sans-serif;
   color: #333;
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .login-container {
@@ -11982,8 +11993,6 @@ body {
   align-items: center;
   height: 100vh;
   position: relative;
-  background: url("https://cdn.discordapp.com/attachments/1288677317593530409/1290145045865041931/Untitled_design_2_1.png?ex=66fb64b4&is=66fa1334&hm=824c9f46807c9144602379515128bf44d75728c48da69744970488c4b8bf1302&") no-repeat center center;
-  background-size: cover;
 }
 
 .login-form {
@@ -12088,6 +12097,15 @@ h2, .h2 {
 .error {
   color: red;
   margin-bottom: 15px;
+}
+
+/* Logo styling */
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Modal styles */
