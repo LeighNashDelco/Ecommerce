@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./Home";
+import Home from "./HomePage/Home"; // Corrected import path for Home component
 import AboutUs from "./AboutUs";
 import ContactUs from "./ContactUs";
 import Login from "./LoginPage/Login"; // Corrected import path for Login component

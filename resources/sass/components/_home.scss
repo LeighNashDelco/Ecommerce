@@ -1,66 +1,181 @@
 // _home.scss
 
+$primary-color: #ff9f00; // Primary color for the top bar
+$sidebar-background-color: white; // Background color for the sidebar
+$hover-color: lighten($primary-color, 30%); // Hover color for buttons
+$sidebar-width: 200px; // Adjusted width of the sidebar
+
 .home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: $sidebar-width;
+  background-color: $sidebar-background-color; // Set sidebar background to white
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    margin-bottom: 20px;
+    img {
+      width: 80px; // Adjust the logo size as needed
+      height: auto;
+    }
+  }
+
+  .navbar {
+    .sidebar-menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .nav-item {
+        width: 100%;
+
+        .nav-link {
+          display: flex;
+          align-items: center;
+          padding: 15px;
+          color: $primary-color; // Set text color for links
+          text-decoration: none;
+          font-size: 14px; // Adjusted font size for smaller sidebar
+          transition: background-color 0.3s;
+          cursor: pointer; // Change cursor to pointer on hover
+
+          &:hover {
+            background-color: $hover-color; // Set hover color
+          }
+
+          i {
+            margin-right: 10px; // Space between icon and text
+            font-size: 18px; // Adjust icon size if needed
+          }
+
+          .nav-text {
+            flex-grow: 1; // Allow text to take remaining space
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-navbar {
+  display: flex;
+  align-items: center;
+  background-color: $primary-color; // Top bar color
+  padding: 10px 20px;
+  color: white;
+
+  .toggle-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: lighten($primary-color, 15%);
+    }
+  }
+}
+
+.home-content {
+  flex-grow: 1;
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    color: $primary-color; // Title color
+  }
+}
+
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255); // Semi-transparent background
+  z-index: 999;
+
+  .loading-logo {
+    width: 150px; // Adjust logo size in loading screen
+    margin-bottom: 20px;
+  }
+
+  .loader {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh; // Full height of the viewport
-    background-color: #ffffff; // Set background color to white
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      animation: loading 0.6s infinite alternate;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+    }
   }
-  
-  .home-content {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9); // White background with slight transparency
-    padding: 40px;
-    border-radius: 20px; // Rounded corners
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
-    width: 400px; // Fixed width for the content box
+}
+
+@keyframes loading {
+  from {
+    transform: scale(1);
   }
-  
-  h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333; // Dark color for the heading
+  to {
+    transform: scale(1.5);
   }
-  
-  .navigation-buttons {
-    margin-bottom: 20px; // Space below the navigation buttons
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column; // Stack sidebar and content vertically
   }
-  
-  .nav-btn {
-    background-color: #ffb300; // Button color
-    border: none; // Remove border
-    color: white; // Text color
-    padding: 10px 20px; // Padding inside the button
-    border-radius: 10px; // Rounded corners for buttons
-    cursor: pointer; // Pointer cursor on hover
-    margin: 10px 0; // Margin between buttons
-    width: 100%; // Full width for buttons
-    font-size: 16px; // Font size
-    transition: background-color 0.3s; // Smooth transition for hover effect
+
+  .sidebar {
+    width: 100%; // Full width for the sidebar on smaller screens
+    position: relative; // Ensure it remains below the top bar
   }
-  
-  .nav-btn:hover {
-    background-color: #ff9f00; // Button hover color
+
+  .main-content {
+    flex-grow: 1; // Allow main content to take available space
   }
-  
-  .logout-button {
-    margin-top: 20px; // Space above the logout button
+
+  .top-navbar {
+    padding: 10px; // Adjust padding for top navbar
+    font-size: 16px; // Adjust font size for smaller screens
   }
-  
-  .logout-btn {
-    background-color: #d9534f; // Logout button color
-    border: none; // Remove border
-    color: white; // Text color
-    padding: 10px 20px; // Padding inside the button
-    border-radius: 10px; // Rounded corners for the logout button
-    cursor: pointer; // Pointer cursor on hover
-    width: 100%; // Full width for the logout button
-    font-size: 16px; // Font size
-    transition: background-color 0.3s; // Smooth transition for hover effect
+
+  .nav-link {
+    font-size: 12px; // Smaller font size for links
+    padding: 10px; // Adjust padding for links
   }
-  
-  .logout-btn:hover {
-    background-color: #c9302c; // Logout button hover color
-  }
-  
+}
