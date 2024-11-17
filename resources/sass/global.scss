@@ -1,0 +1,27 @@
+/* MainContent.scss or App.scss */
+.app-container {
+  display: flex;
+}
+
+.main-content {
+  flex-grow: 1;
+  margin-top: 60px; /* This ensures the content is not hidden behind the top navbar */
+  margin-left: 200px; /* Adjust for sidebar width */
+  transition: margin-left 0.3s ease;
+
+  &.collapsed {
+    margin-left: 0; /* Sidebar is hidden */
+  }
+
+  &.sidebar-open {
+    margin-left: 200px; /* Push the content to the right when the sidebar is open */
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* For mobile, default margin-left is 0 */
+
+    &.sidebar-open {
+      margin-left: 150px; /* For mobile, push the content when sidebar is open */
+    }
+  }
+}

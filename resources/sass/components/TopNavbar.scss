@@ -1,0 +1,87 @@
+/* TopNavbar Styles */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 200px; /* Offset for sidebar */
+  right: 0;
+  background-color: #fff;
+  height: 60px;
+  z-index: 20; /* Ensure it's above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: left 0.3s ease;
+  
+  /* Adding the blue line at the bottom */
+  border-bottom: 3px solid #2664E1; /* Blue line at the bottom */
+
+  /* Sidebar toggle button adjustments */
+  .sidebar-toggle {
+    display: none; /* Hidden by default */
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    margin-right: 10px;
+    z-index: 100; /* Ensure button is above other elements */
+    
+    &:hover {
+      color: #007bff; /* Highlight color on hover */
+    }
+  }
+
+  /* Search Bar Container */
+  .search-bar {
+    flex-grow: 1;
+    margin-left: 20px;
+    background-color: transparent; /* Make the search container transparent */
+    transition: max-width 0.3s ease; /* Smooth transition for resizing */
+
+    input {
+      width: 100%;
+      max-width: 400px; /* Default max-width for desktop */
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: transparent; /* Make input transparent */
+      color: #333; /* Ensure text is visible */
+      
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .top-navbar {
+    left: 0; /* Reset offset for sidebar */
+  }
+
+  /* Sidebar toggle button */
+  .sidebar-toggle {
+    display: block; /* Show toggle button in mobile view */
+    z-index: 100; /* Ensure it is above other content */
+    color: #333; /* Make the button visible */
+    font-size: 1.8rem; /* Adjust the size of the button */
+  }
+
+  /* Adjust search bar container on mobile */
+  .search-bar {
+    margin-left: 10px;
+    max-width: 200px; /* Make search bar smaller on mobile */
+    background-color: transparent; /* Ensure the container is also transparent */
+    
+    input {
+      max-width: 100%; /* Ensure input width fits within the container */
+      padding: 6px 8px; /* Reduce padding for a smaller appearance */
+      background-color: transparent; /* Make input field transparent */
+    }
+  }
+}

@@ -1,0 +1,114 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -200px; /* Initially hidden off-screen */
+  color: white;
+  transition: transform 0.3s ease; /* Smooth transition for transform */
+  z-index: 10;
+  background: linear-gradient(135deg, #002f6c, #003c8f); /* Base gradient */
+  overflow: hidden; /* Ensure no overflow for the patterns */
+
+  /* Enhanced polygonal pattern */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 60, 143, 0.8),
+        rgba(0, 47, 108, 0.9)
+      ),
+      repeating-linear-gradient(
+        135deg,
+        rgba(0, 50, 120, 0.3),
+        rgba(0, 50, 120, 0.3) 20px,
+        transparent 20px,
+        transparent 40px
+      );
+    clip-path: polygon(
+      0% 0%, 100% 0%, 100% 20%, 80% 40%, 100% 60%, 
+      80% 80%, 100% 100%, 0% 100%, 0% 80%, 20% 60%, 
+      0% 40%, 20% 20%, 0% 0%
+    );
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); /* Depth effect */
+    z-index: -1; /* Push pattern behind content */
+  }
+
+  .logo {
+    padding: 20px;
+    background: linear-gradient(135deg, #002f6c, #003c8f); /* Same as sidebar */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add depth to the logo */
+    position: relative;
+
+    /* Add a separator line */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.5); /* Faint separator */
+    }
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0; /* Remove margin between items */
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    background: rgba(0, 60, 120, 0.2);
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add slight text shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  /* Highlight the active link */
+  .nav-link.active {
+    background-color: #001a44; /* Highlighted background */
+    font-weight: bold;
+    color: #fff;
+    border-radius: 0; /* Remove rounded corners to span the full width */
+  }
+
+  .nav-link:hover {
+    background-color: #001a44; /* Dark blue hover color */
+    transform: translateX(5px); /* Subtle movement for interaction */
+  }
+}
+
+/* Sidebar visibility toggle */
+.sidebar.open {
+  transform: translateX(200px); /* Move to the right when open */
+}
+
+/* Mobile (hidden by default) */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -200px; /* Hidden by default */
+  }
+
+  /* Show the sidebar when it has the "open" class */
+  .sidebar.open {
+    transform: translateX(200px); /* Move to the right when open on mobile */
+  }
+}
+
+/* Desktop (always visible) */
+@media (min-width: 769px) {
+  .sidebar {
+    left: 0; /* Always visible on desktop */
+  }
+}

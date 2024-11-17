@@ -1,0 +1,20 @@
+
+.page4-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .page4-content {
+    margin-left: 250px; /* Sidebar width */
+    margin-top: 60px; /* Height of TopNavbar */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .page4-content {
+      margin-left: 0; /* No left margin on mobile */
+      margin-top: 110px; /* Increase margin to make space for TopNavbar */
+    }
+  }
+  
