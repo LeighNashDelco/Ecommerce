@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import TopNavbar from "./components/TopNavbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Page1 from "./components/Page1";
+import Dashboard from "./components/Dashboard"; // Updated import
 
 require("./bootstrap");
 require("./Routers");
@@ -26,7 +26,7 @@ const App = () => {
 
           {/* Define your Routes */}
           <Routes>
-            <Route path="/page1" element={<Page1 />} />
+            <Route path="/dashboard" element={<Dashboard />} /> {/* Updated route */}
             {/* Other routes */}
           </Routes>
         </div>

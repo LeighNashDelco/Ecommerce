@@ -12012,44 +12012,76 @@ h1, .h1 {
   top: 0;
   left: -200px; /* Initially hidden off-screen */
   color: white;
-  transition: transform 0.3s ease; /* Smooth transition for transform */
+  transition: transform 0.3s ease; /* Smooth transition for sliding */
   z-index: 10;
-  background: linear-gradient(135deg, #002f6c, #003c8f); /* Base gradient */
-  overflow: hidden; /* Ensure no overflow for the patterns */
-  /* Enhanced polygonal pattern */
-  /* Highlight the active link */
+  /* Background image for the entire sidebar */
+  background: url(/images/Sidebar_Texture.svg?d66ee4844830e4d1855df54825e1c03a) no-repeat center center;
+  background-size: cover;
+  overflow-y: auto; /* Allows vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* Hide scrollbar for all browsers */
+  /* Line separator below the logo */
+  /* Line separator for System Settings (farther from the buttons above) */
+  /* Navigation Styles */
+  /* Prevent text from turning blue when active or focused */
+  /* Hover and active state for current page (active) */
+  /* Vertical line resembling scrollbar (using ::after pseudo-element) */
 }
-.sidebar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0, 60, 143, 0.8), rgba(0, 47, 108, 0.9)), repeating-linear-gradient(135deg, rgba(0, 50, 120, 0.3), rgba(0, 50, 120, 0.3) 20px, transparent 20px, transparent 40px);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 0% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%);
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); /* Depth effect */
-  z-index: -1; /* Push pattern behind content */
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 .sidebar .logo {
-  padding: 20px;
-  background: linear-gradient(135deg, #002f6c, #003c8f); /* Same as sidebar */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add depth to the logo */
-  position: relative;
-  /* Add a separator line */
+  height: 80px; /* Reduced height for the logo container */
+  padding: 10px;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  background: none; /* Remove any other background to allow logo visibility */
+  position: relative; /* Ensure positioning context for z-index */
+  /* Background texture for the logo area only */
+  background: url(/images/Sidebar_Texture.svg?d66ee4844830e4d1855df54825e1c03a) no-repeat center center;
+  background-size: cover; /* Make sure the background texture covers the logo section */
 }
-.sidebar .logo::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.5); /* Faint separator */
+.sidebar .logo .logo-img {
+  width: 100%; /* Take full width of the parent container */
+  height: auto; /* Maintain the aspect ratio of the logo */
+  display: flex;
+  justify-content: center; /* Center the image */
+  position: relative; /* Allow z-index positioning for the logo */
+  z-index: 2; /* Make sure the logo stays above the background */
+}
+.sidebar .logo .logo-svg {
+  max-width: 100%; /* Make sure the logo doesn't overflow */
+  height: 60%; /* Adjusted height to scale the logo down */
+  z-index: 3; /* Ensure logo stays above the background texture */
+}
+.sidebar .line-separator {
+  width: 80%; /* Adjusted width */
+  height: 2px; /* Line thickness */
+  background-color: rgba(255, 255, 255, 0.868); /* Brighter white line */
+  margin-top: 2px; /* Increased space between logo and the line */
+  margin-left: auto; /* Centers the line horizontally */
+  margin-right: auto; /* Centers the line horizontally */
+  margin-bottom: 40px; /* Margin below the line */
+}
+.sidebar .system-settings-separator {
+  width: 80%; /* Same width as other lines */
+  height: 2px; /* Line thickness */
+  background-color: rgba(255, 255, 255, 0.868); /* Brighter white line */
+  margin-top: 40px; /* Increased margin to push the separator farther from the previous button */
+  margin-bottom: 2px;
+  margin-left: auto; /* Centers the line horizontally */
+  margin-right: auto; /* Centers the line horizontally */
 }
 .sidebar .nav-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 .sidebar .nav-item {
-  margin: 0; /* Remove margin between items */
+  margin: 0;
+  margin-bottom: 5px; /* Add gap between each navigation item */
 }
 .sidebar .nav-link {
   color: white;
@@ -12058,39 +12090,48 @@ h1, .h1 {
   display: block;
   background: rgba(0, 60, 120, 0.2);
   border-radius: 5px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add slight text shadow */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+  position: relative; /* Ensure the pseudo-element is positioned correctly */
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  color: white !important; /* Force the color to remain white */
+  text-decoration: none !important; /* Ensure no underline or other default link behavior */
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white on hover */
 }
 .sidebar .nav-link.active {
-  background-color: #001a44; /* Highlighted background */
-  font-weight: bold;
-  color: #fff;
-  border-radius: 0; /* Remove rounded corners to span the full width */
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white background on active (current page) */
+  color: #001a44; /* Dark color for the text when active */
 }
-.sidebar .nav-link:hover {
-  background-color: #001a44; /* Dark blue hover color */
-  transform: translateX(5px); /* Subtle movement for interaction */
+.sidebar .nav-link:hover::after,
+.sidebar .nav-link.active::after {
+  content: "";
+  position: absolute;
+  top: 5px; /* Start the line a little below the top */
+  bottom: 5px; /* End the line a little above the bottom */
+  right: 10px; /* Add a gap between the right side of the button and the line */
+  width: 2px; /* Set the width of the line */
+  background-color: white; /* Line color */
 }
 
-/* Sidebar visibility toggle */
 .sidebar.open {
-  transform: translateX(200px); /* Move to the right when open */
+  transform: translateX(200px); /* This is how the sidebar slides into view */
 }
 
-/* Mobile (hidden by default) */
+/* Mobile styles */
 @media (max-width: 768px) {
   .sidebar {
-    left: -200px; /* Hidden by default */
+    left: -200px; /* Keep the sidebar hidden initially */
   }
-  /* Show the sidebar when it has the "open" class */
   .sidebar.open {
-    transform: translateX(200px); /* Move to the right when open on mobile */
+    transform: translateX(200px); /* Slide the sidebar into view */
   }
 }
-/* Desktop (always visible) */
 @media (min-width: 769px) {
   .sidebar {
-    left: 0; /* Always visible on desktop */
+    left: 0; /* Sidebar is visible by default on larger screens */
   }
 }
 /* TopNavbar Styles */
@@ -12107,11 +12148,11 @@ h1, .h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: left 0.3s ease;
-  /* Adding the blue line at the bottom */
-  border-bottom: 3px solid #2664E1; /* Blue line at the bottom */
-  /* Sidebar toggle button adjustments */
+  transition: left 0.3s ease; /* Transition for navbar movement */
+  /* Sidebar Toggle Button */
   /* Search Bar Container */
+  /* Profile Section */
+  /* Sidebar Visible */
 }
 .top-navbar .sidebar-toggle {
   display: none; /* Hidden by default */
@@ -12120,31 +12161,151 @@ h1, .h1 {
   border: none;
   color: #333;
   cursor: pointer;
-  margin-right: 10px;
   z-index: 100; /* Ensure button is above other elements */
+  /* Show the button in mobile view */
 }
-.top-navbar .sidebar-toggle:hover {
-  color: #007bff; /* Highlight color on hover */
+@media (max-width: 768px) {
+  .top-navbar .sidebar-toggle {
+    display: block;
+  }
+}
+.top-navbar .sidebar-toggle svg {
+  color: #333;
+  transition: color 0.3s ease;
+}
+.top-navbar .sidebar-toggle svg:hover {
+  color: #007bff; /* Highlight on hover */
 }
 .top-navbar .search-bar {
   flex-grow: 1;
   margin-left: 20px;
-  background-color: transparent; /* Make the search container transparent */
-  transition: max-width 0.3s ease; /* Smooth transition for resizing */
+  display: flex;
+  align-items: center; /* Center the icon and input */
+  background-color: #f7f7f7;
+  border-radius: 30px; /* Smooth edges */
+  padding: 5px 10px; /* Adjust padding for better layout */
+  max-width: 500px; /* Limit the maximum width of the search bar */
+}
+.top-navbar .search-bar .search-icon {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-right: 10px; /* Space between icon and input */
 }
 .top-navbar .search-bar input {
   width: 100%;
-  max-width: 400px; /* Default max-width for desktop */
+  border: none;
+  background: transparent;
   padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   font-size: 14px;
-  background-color: transparent; /* Make input transparent */
-  color: #333; /* Ensure text is visible */
+  border-radius: 25px; /* Rounded corners for the input field */
 }
 .top-navbar .search-bar input:focus {
-  border-color: #007bff;
   outline: none;
+}
+.top-navbar .profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Light/Dark Mode Toggle */
+  /* Message and Notification Icons */
+  /* Notification Icon */
+  /* Separator */
+  /* Profile Icon and Dropdown */
+  /* Dropdown Menu */
+}
+.top-navbar .profile .light-dark-toggle {
+  font-size: 1.4rem; /* Match size with other icons */
+  margin-right: 15px; /* Space between toggle and plane icon */
+  cursor: pointer;
+}
+.top-navbar .profile .light-dark-toggle .switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+.top-navbar .profile .light-dark-toggle .switch.on {
+  background-color: #2664E1; /* Blue for 'on' state */
+}
+.top-navbar .profile .light-dark-toggle .switch .toggle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: left 0.3s ease;
+}
+.top-navbar .profile .light-dark-toggle .switch .toggle.on {
+  left: 16px; /* Move to the right for 'on' state */
+}
+.top-navbar .profile .message-icon,
+.top-navbar .profile .notification-icon {
+  font-size: 1.4rem; /* Smaller size for icons */
+  margin-right: 15px; /* Space between icons */
+  color: #2664E1; /* Blue color for icons */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.top-navbar .profile .message-icon:hover,
+.top-navbar .profile .notification-icon:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+.top-navbar .profile .notification-icon {
+  margin-right: 10px; /* Adjust spacing as needed */
+}
+.top-navbar .profile .icon-separator {
+  width: 1px;
+  height: 30px;
+  background-color: #2664E1; /* Blue color for separator */
+  margin: 0 15px; /* Space around the separator */
+}
+.top-navbar .profile .profile-icon {
+  font-size: 2rem; /* Size of the profile icon */
+  cursor: pointer;
+  color: #333;
+}
+.top-navbar .profile .profile-icon:hover {
+  color: #007bff; /* Change color on hover */
+}
+.top-navbar .profile .dropdown-icon {
+  font-size: 1.2rem; /* Slightly smaller size for the dropdown icon */
+  margin-left: 5px; /* Space between profile icon and dropdown */
+  color: #2664E1; /* Blue color for the dropdown icon */
+}
+.top-navbar .profile .dropdown-icon:hover {
+  color: #0056b3; /* Change color on hover */
+}
+.top-navbar .profile .dropdown-menu {
+  position: absolute;
+  top: 35px; /* Position below the profile icon */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 150px;
+  border-radius: 4px;
+  z-index: 10;
+}
+.top-navbar .profile .dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+.top-navbar .profile .dropdown-menu ul li {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.top-navbar .profile .dropdown-menu ul li:hover {
+  background-color: #f1f1f1;
+}
+.top-navbar.sidebar-visible {
+  left: 200px; /* Move the top-navbar to the left to reveal the sidebar */
+  transition: left 0.3s ease;
 }
 
 /* Mobile-specific adjustments */
@@ -12152,22 +12313,13 @@ h1, .h1 {
   .top-navbar {
     left: 0; /* Reset offset for sidebar */
   }
-  /* Sidebar toggle button */
-  .sidebar-toggle {
-    display: block; /* Show toggle button in mobile view */
-    z-index: 100; /* Ensure it is above other content */
-    color: #333; /* Make the button visible */
-    font-size: 1.8rem; /* Adjust the size of the button */
-  }
   /* Adjust search bar container on mobile */
   .search-bar {
     margin-left: 10px;
     max-width: 200px; /* Make search bar smaller on mobile */
-    background-color: transparent; /* Ensure the container is also transparent */
   }
   .search-bar input {
     max-width: 100%; /* Ensure input width fits within the container */
     padding: 6px 8px; /* Reduce padding for a smaller appearance */
-    background-color: transparent; /* Make input field transparent */
   }
 }

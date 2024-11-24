@@ -1,0 +1,18 @@
+.academicprograms-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.academicprograms-content {
+  margin-left: 250px; /* Sidebar width */
+  margin-top: 60px; /* Height of TopNavbar */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .academicprograms-content {
+    margin-left: 0; /* No left margin on mobile */
+    margin-top: 110px; /* Increased margin for TopNavbar */
+  }
+}

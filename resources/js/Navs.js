@@ -6,28 +6,34 @@ export default function Navs() {
     <nav>
       <ul style={{ listStyleType: "none", padding: 0 }}>
         <li>
-          <Link to="/page1">1</Link> {/* Navigate to Page 1 */}
+          <Link to="/dashboard">Dashboard</Link> {/* Navigate to Dashboard */}
         </li>
         <li>
-          <Link to="/page2">2</Link> {/* Navigate to Page 2 */}
+          <Link to="/users">Users</Link> {/* Navigate to Users */}
         </li>
         <li>
-          <Link to="/page3">3</Link> {/* Navigate to Page 3 */}
+          <Link to="/student-is">Student IS</Link> {/* Navigate to Student IS */}
         </li>
         <li>
-          <Link to="/page4">4</Link> {/* Navigate to Page 4 */}
+          <Link to="/faculty-is">Faculty IS</Link> {/* Navigate to Faculty IS */}
         </li>
         <li>
-          <Link to="/page5">5</Link> {/* Navigate to Page 5 */}
+          <Link to="/class-scheduling">Class Scheduling</Link> {/* Navigate to Class Scheduling */}
         </li>
         <li>
-          <Link to="/page6">6</Link> {/* Navigate to Page 6 */}
+          <Link to="/academic-programs">Academic Programs</Link> {/* Navigate to Academic Programs */}
         </li>
         <li>
-          <Link to="/page7">7</Link> {/* Navigate to Page 7 */}
+          <Link to="/subject-enlistment">Subject Enlistment</Link> {/* Navigate to Subject Enlistment */}
         </li>
         <li>
-          <Link to="/page8">8</Link> {/* Navigate to Page 8 */}
+          <Link to="/enlistment-manager">Enlistment Manager</Link> {/* Navigate to Enlistment Manager */}
+        </li>
+        <li>
+          <Link to="/classroom-manager">Classroom Manager</Link> {/* Navigate to Classroom Manager */}
+        </li>
+        <li>
+          <Link to="/system-settings">System Settings</Link> {/* Navigate to System Settings */}
         </li>
       </ul>
     </nav>
