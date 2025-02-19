@@ -6,34 +6,46 @@ export default function Navs() {
     <nav>
       <ul style={{ listStyleType: "none", padding: 0 }}>
         <li>
-          <Link to="/dashboard">Dashboard</Link> {/* Navigate to Dashboard */}
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/users">Users</Link> {/* Navigate to Users */}
+          <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/student-is">Student IS</Link> {/* Navigate to Student IS */}
+          <Link to="/adminlist">Admin List</Link>
         </li>
         <li>
-          <Link to="/faculty-is">Faculty IS</Link> {/* Navigate to Faculty IS */}
+          <Link to="/customerlist">Customer List</Link>
         </li>
         <li>
-          <Link to="/class-scheduling">Class Scheduling</Link> {/* Navigate to Class Scheduling */}
+          <Link to="/helpandsupport">Help & Support</Link>
         </li>
         <li>
-          <Link to="/academic-programs">Academic Programs</Link> {/* Navigate to Academic Programs */}
+          <Link to="/inventory">Inventory</Link>
         </li>
         <li>
-          <Link to="/subject-enlistment">Subject Enlistment</Link> {/* Navigate to Subject Enlistment */}
+          <Link to="/orders">Orders</Link>
         </li>
         <li>
-          <Link to="/enlistment-manager">Enlistment Manager</Link> {/* Navigate to Enlistment Manager */}
+          <Link to="/paymentmanagement">Payment Management</Link>
         </li>
         <li>
-          <Link to="/classroom-manager">Classroom Manager</Link> {/* Navigate to Classroom Manager */}
+          <Link to="/products">Products</Link>
         </li>
         <li>
-          <Link to="/system-settings">System Settings</Link> {/* Navigate to System Settings */}
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/reviewsandnotifications">Reviews & Notifications</Link>
+        </li>
+        <li>
+          <Link to="/sellerlist">Seller List</Link>
+        </li>
+        <li>
+          <Link to="/statusandcategory">Status & Category</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
         </li>
       </ul>
     </nav>

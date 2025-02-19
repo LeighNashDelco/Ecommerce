@@ -1,0 +1,37 @@
+// Center elements using flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  // Box shadow for UI elements
+  @mixin box-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  // Responsive styles
+  @mixin respond($breakpoint) {
+    @if $breakpoint == tablet {
+      @media (max-width: 768px) { @content; }
+    } @else if $breakpoint == mobile {
+      @media (max-width: 480px) { @content; }
+    }
+  }
+  
+  // Button styling
+  @mixin button($bg-color) {
+    background: $bg-color;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: $border-radius;
+    transition: background 0.3s ease;
+  
+    &:hover {
+      background: darken($bg-color, 10%);
+    }
+  }
+  

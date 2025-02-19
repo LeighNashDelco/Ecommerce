@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Sidebar from "./components/Sidebar";
-import TopNavbar from "./components/TopNavbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard"; // Updated import
+import Dashboard from "./components/Login"; // Updated import
 
 require("./bootstrap");
 require("./Routers");

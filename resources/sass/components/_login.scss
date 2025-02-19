@@ -1,0 +1,139 @@
+// Import variables and mixins if you have them
+@import "../utilities/variables";
+@import "../utilities/mixins";
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eaf1f8; // Adjust the background color
+}
+
+.login-box {
+  display: flex;
+  width: 800px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form {
+  flex: 1;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.input-group,
+.password-group {
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #666;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+.password-group {
+  display: flex;
+  align-items: center;
+
+  span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #bbb;
+  }
+}
+
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px 0;
+
+  a {
+    color: #bbb;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgb(255, 0, 0);
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+
+  &:hover {
+    background: rgb(139, 0, 0);
+  }
+}
+
+.login-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Signup link styles
+.signup-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+
+  a {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    flex-direction: column;
+  }
+
+  .login-image {
+    height: 200px;
+  }
+}
