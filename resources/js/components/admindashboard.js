@@ -1,0 +1,174 @@
+import React, { useState } from "react";
+import {
+  FaTachometerAlt,
+  FaBoxOpen,
+  FaShoppingCart,
+  FaUsers,
+  FaClipboardList,
+  FaStar,
+  FaBell,
+  FaCog,
+  FaMoneyBill,
+  FaChartBar,
+  FaUser,
+  FaChevronDown,
+} from "react-icons/fa";
+
+const Dashboard = () => {
+  const [adminDropdown, setAdminDropdown] = useState(false);
+  const [activeItem, setActiveItem] = useState("Payment Management"); // Track active sub-item
+
+  return (
+    <div className="app">
+      {/* Sidebar */}
+      <div className="sidebar">
+        <h2>ADMIN</h2>
+        <ul>
+          <li className="active">
+            <FaTachometerAlt />
+            <span>Dashboard</span>
+          </li>
+          <li>
+            <FaBoxOpen />
+            <span>Products</span>
+          </li>
+          <li>
+            <FaShoppingCart />
+            <span>Orders</span>
+          </li>
+          <li>
+            <FaClipboardList />
+            <span>Inventory</span>
+          </li>
+          <li>
+            <FaUsers />
+            <span>Users</span>
+          </li>
+          <li>
+            <FaUser />
+            <span>Customer List</span>
+          </li>
+          <li>
+            <FaUser />
+            <span>Seller List</span>
+          </li>
+          <li>
+            <FaUser />
+            <span>Admin List</span>
+          </li>
+          <li>
+            <FaStar />
+            <span>Reviews & Notifications</span>
+          </li>
+
+          {/* Line Separator */}
+          <hr className="separator" />
+
+          {/* Admin Settings Header */}
+          <div
+            className="admin-settings-header"
+            onClick={() => setAdminDropdown(!adminDropdown)}
+          >
+            <FaCog />
+            <span>Admin Settings</span>
+            <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
+          </div>
+
+          {/* Admin Settings Dropdown */}
+          {adminDropdown && (
+            <ul className="dropdown">
+              <li
+                className={`${
+                  activeItem === "Payment Management" ? "active payment-management" : ""
+                }`}
+                onClick={() => setActiveItem("Payment Management")}
+              >
+                <FaMoneyBill />
+                <span>Payment Management</span>
+              </li>
+              <li
+                className={activeItem === "Status & Category" ? "active" : ""}
+                onClick={() => setActiveItem("Status & Category")}
+              >
+                <FaChartBar />
+                <span>Status & Category</span>
+              </li>
+              <li
+                className={activeItem === "Help & Support" ? "active" : ""}
+                onClick={() => setActiveItem("Help & Support")}
+              >
+                <FaBell />
+                <span>Help & Support</span>
+              </li>
+            </ul>
+          )}
+        </ul>
+      </div>
+
+      {/* Dashboard */}
+      <div className="dashboard">
+        <div className="stats">
+          <div className="stat-box">
+            <FaUser className="icon" />
+            <p>Total Customers</p>
+            <h2>0</h2>
+          </div>
+          <div className="stat-box">
+            <FaUser className="icon" />
+            <p>Total Sellers</p>
+            <h2>0</h2>
+          </div>
+          <div className="stat-box">
+            <FaUser className="icon" />
+            <p>Total Admin</p>
+            <h2>0</h2>
+          </div>
+        </div>
+
+        <div className="stats">
+          <div className="stat-box">
+            <FaBoxOpen className="icon" />
+            <p>Total Products</p>
+          </div>
+          <div className="stat-box">
+            <FaShoppingCart className="icon" />
+            <p>Total Orders</p>
+          </div>
+          <div className="stat-box">
+            <FaMoneyBill className="icon" />
+            <p>Total Earnings</p>
+          </div>
+          <div className="stat-box">
+            <FaChartBar className="icon" />
+            <p>Total Product Sale</p>
+          </div>
+        </div>
+
+        <div className="orders">
+          <h3>Today's New Orders</h3>
+          <div className="order-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Actions</th>
+                  <th>Customer</th>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Quantity</th>
+                  <th>Amount</th>
+                  <th>Order Status</th>
+                  <th>Payment Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Add your dynamic order rows here */}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

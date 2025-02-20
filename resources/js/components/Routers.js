@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Example from "./Example";
 import Login from "./login";
 import Register from "./register";
-
+import Admindashboard from "./admindashboard";
 
 export default function Routers() {
     return (
@@ -14,6 +14,8 @@ export default function Routers() {
                 <Route path="/" element={<Example />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/admindashboard" element={<Admindashboard />} />
+                
             </Routes>
         </Router>
     );
