@@ -1,169 +1,148 @@
-@import "../utilities/variables";
-@import "../utilities/mixins";
-
-.register-container {
+.register-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #eaf1f8;
+  width: 100vw;
+  background-color: #eaf1f8; /* Updated to match login.scss */
 }
 
-.register-box {
+.register-card {
   display: flex;
-  width: 800px;
-  background: #111;
-  border-radius: 12px;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
-.register-form {
-  flex: 1;
-  padding: 40px;
-  color: white;
+.register-content {
+  background: #111; /* Updated to match login.scss */
+  padding: 60px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
 }
 
-h2 {
-  font-size: 28px;
-  font-weight: bold;
+.register-title {
+  color: white;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
-.input-group,
-.password-group {
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-row {
+  display: flex;
+  gap: 15px;
+}
+
+input, select {
   width: 100%;
+  padding: 14px;
   margin-bottom: 15px;
+  border: 1px solid #666; /* Updated border color */
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+}
+
+select {
+  background-color: #222; /* Updated dropdown background */
+  color: white;
+}
+
+option {
+  background-color: #222; /* Ensures dropdown options are visible */
+  color: white;
+}
+
+.register-password-group {
   position: relative;
+  display: flex;
+  align-items: center;
 
   input {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
+    padding-right: 45px; // Ensure space for the icon
     border: 1px solid #666;
     background: transparent;
     color: white;
+    border-radius: 6px;
     font-size: 16px;
-    border-radius: 4px;
-    outline: none;
   }
-}
 
-// Align first name and middle name side by side
-.input-group-row {
-  display: flex;
-  gap: 10px;
-
-  .input-group {
-    flex: 1;
-  }
-}
-
-// Password field with show/hide icon
-.password-group {
-  display: flex;
-  align-items: center;
-  position: relative;
-
-  span {
+  .password-toggle {
     position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 15px; // Far right alignment
+    top: 40%; // Move up slightly
+    transform: translateY(-50%); // Ensure middle alignment
     cursor: pointer;
-    color: #bbb;
     font-size: 18px;
-  }
-}
-
-.dropdown-group {
-    display: flex;
-    gap: 10px;
-  
-    .dropdown-wrapper {
-      flex: 1;
-      position: relative;
-  
-      select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #666;
-        background: transparent; // Match input field background
-        color: white;
-        font-size: 16px;
-        border-radius: 4px;
-        outline: none;
-        cursor: pointer;
-        appearance: none;
-      }
-  
-      &::after {
-        content: "▼";
-        font-size: 14px;
-        color: #bbb;
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-    }
-  
-    select::-ms-expand {
-      display: none;
-    }
-  
-    option {
-      background: #111; // Match the container background
-      color: white;
-    }
-  }
-  
-
-.register-btn {
-  width: 100%;
-  padding: 12px;
-  background: rgb(255, 0, 0);
-  color: white;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-
-  &:hover {
-    background: rgb(139, 0, 0);
-  }
-}
-
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-  }
-  
-
-.login-link {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
-
-  a {
-    color: rgb(255, 0, 0);
-    text-decoration: none;
-    font-weight: bold;
+    color: #666;
+    transition: color 0.3s ease;
 
     &:hover {
-      text-decoration: underline;
+      color: #fff;
     }
   }
+}
+
+.register-dropdowns {
+  display: flex;
+  gap: 15px;
+}
+
+.register-submit-btn {
+  background: red;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.register-submit-btn:hover {
+  background: darkred;
+}
+
+.register-image-section {
+  width: 50%;
+  height: 100vh; /* Matched size to login.scss */
+  background: url("./../img/vero.svg") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.register-brand {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
-  .register-box {
+  .register-card {
     flex-direction: column;
+  }
+
+  .register-content {
+    width: 100%;
+    padding: 40px;
+  }
+
+  .register-image-section {
+    width: 100%;
+    height: 40vh;
   }
 }
