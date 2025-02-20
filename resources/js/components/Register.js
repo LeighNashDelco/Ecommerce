@@ -95,70 +95,47 @@ const Register = () => {
       }
     }
   };
-  
+
   return (
-    <div className="register-container">
-      <div className="register-box">
-        <div className="register-form">
-          <h2>Create New Account</h2>
-
-          <form onSubmit={handleRegister}>
-            <div className="input-group-row">
-              <div className="input-group">
-                <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
-              </div>
-              <div className="input-group">
-                <input type="text" name="middleName" placeholder="Middle Name (Optional)" value={formData.middleName} onChange={handleChange} />
-              </div>
+    <div className="register-wrapper">
+      <div className="register-card">
+        <div className="register-content">
+          <h2 className="register-title">Create New Account</h2>
+          <form onSubmit={handleRegister} className="register-form-container">
+            <div className="register-row">
+              <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+              <input type="text" name="middleName" placeholder="Middle Name" value={formData.middleName} onChange={handleChange} />
             </div>
-
-            <div className="input-group">
-              <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
-            </div>
-
-            <div className="input-group">
-              <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-            </div>
-
-            <div className="password-group">
+            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
+            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+            <div className="register-password-group">
               <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-              <span onClick={() => setShowPassword(!showPassword)}>{showPassword ? <FaEyeSlash /> : <FaEye />}</span>
+              <span className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
             {passwordError && <p className="error-message">{passwordError}</p>}
-
-            <div className="dropdown-group">
-              <div className="dropdown-wrapper">
-                <select name="role" value={formData.role} onChange={handleChange} required>
-                  <option value="" disabled>Select Role</option>
-                  {roles.map(role => <option key={role.id} value={role.id}>{role.role_name}</option>)}
-                </select>
-              </div>
-
-              <div className="dropdown-wrapper">
-                <select name="gender" value={formData.gender} onChange={handleChange} required>
-                  <option value="" disabled>Select Gender</option>
-                  {genders.map(gender => <option key={gender.id} value={gender.id}>{gender.gender_name}</option>)}
-                </select>
-              </div>
-
-              <div className="dropdown-wrapper">
-                <select name="suffix" value={formData.suffix} onChange={handleChange}>
-                  <option value="">Suffix</option>
-                  <option value="Jr.">Jr.</option>
-                  <option value="Sr.">Sr.</option>
-                  <option value="II">II</option>
-                  <option value="III">III</option>
-                </select>
-              </div>
+            <div className="register-dropdowns">
+              <select name="role" value={formData.role} onChange={handleChange} required>
+                <option value="" disabled>Select Role</option>
+                {roles.map(role => <option key={role.id} value={role.id}>{role.role_name}</option>)}
+              </select>
+              <select name="gender" value={formData.gender} onChange={handleChange} required>
+                <option value="" disabled>Select Gender</option>
+                {genders.map(gender => <option key={gender.id} value={gender.id}>{gender.gender_name}</option>)}
+              </select>
+              <select name="suffix" value={formData.suffix} onChange={handleChange}>
+                <option value="">Suffix</option>
+                <option value="Jr.">Jr.</option>
+                <option value="Sr.">Sr.</option>
+                <option value="II">II</option>
+                <option value="III">III</option>
+              </select>
             </div>
-
-            <button type="submit" className="register-btn">Register</button>
+            <button type="submit" className="register-submit-btn">Register</button>
           </form>
-
-          <div className="login-link">
-            <p>Already have an account? <Link to="/login">Login</Link></p>
-          </div>
         </div>
+        <div className="register-image-section"></div>
       </div>
     </div>
   );
