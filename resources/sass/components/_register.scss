@@ -1,0 +1,169 @@
+@import "../utilities/variables";
+@import "../utilities/mixins";
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eaf1f8;
+}
+
+.register-box {
+  display: flex;
+  width: 800px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-form {
+  flex: 1;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-group,
+.password-group {
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #666;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+// Align first name and middle name side by side
+.input-group-row {
+  display: flex;
+  gap: 10px;
+
+  .input-group {
+    flex: 1;
+  }
+}
+
+// Password field with show/hide icon
+.password-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #bbb;
+    font-size: 18px;
+  }
+}
+
+.dropdown-group {
+    display: flex;
+    gap: 10px;
+  
+    .dropdown-wrapper {
+      flex: 1;
+      position: relative;
+  
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #666;
+        background: transparent; // Match input field background
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+      }
+  
+      &::after {
+        content: "▼";
+        font-size: 14px;
+        color: #bbb;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+    }
+  
+    select::-ms-expand {
+      display: none;
+    }
+  
+    option {
+      background: #111; // Match the container background
+      color: white;
+    }
+  }
+  
+
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgb(255, 0, 0);
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+
+  &:hover {
+    background: rgb(139, 0, 0);
+  }
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+
+  a {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .register-box {
+    flex-direction: column;
+  }
+}
