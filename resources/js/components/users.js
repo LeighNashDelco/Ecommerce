@@ -12,23 +12,23 @@ import {
   FaChartBar,
   FaUser,
   FaChevronDown,
-  FaSquare, // For checkbox icon
+  FaSquare, // For unchecked checkboxes
+  FaTrash, // Changed from FaTimes to FaTrash
   FaUserShield,
 } from "react-icons/fa";
-import { IconTrash, IconEdit } from "@tabler/icons-react"; // Import Tabler Icons for trash and edit
 
-const Product = () => {
+const Users = () => {
   const [adminDropdown, setAdminDropdown] = useState(false);
-  const [activeItem, setActiveItem] = useState("Products");
+  const [activeItem, setActiveItem] = useState("Users");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
 
   const filterOptions = [
     { value: "all", label: "All" },
-    { value: "gaming", label: "Gaming" },
-    { value: "wireless", label: "Wireless" },
-    { value: "office", label: "Office" },
+    { value: "admin", label: "Admin" },
+    { value: "customer", label: "Customer" },
+    { value: "seller", label: "Seller" },
   ];
 
   return (
@@ -40,7 +40,7 @@ const Product = () => {
             <FaTachometerAlt />
             <span>Dashboard</span>
           </li>
-          <li className="active">
+          <li>
             <FaBoxOpen />
             <span>Products</span>
           </li>
@@ -52,7 +52,7 @@ const Product = () => {
             <FaClipboardList />
             <span>Inventory</span>
           </li>
-          <li>
+          <li className="active">
             <FaUsers />
             <span>Users</span>
           </li>
@@ -119,46 +119,48 @@ const Product = () => {
       </div>
 
       <div className="dashboard">
-        <div className="products">
-          <h2>Products</h2>
-          <div className="products-header">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search Products"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="actions">
-              <button className="action-button">Add New</button>
-              <button className="action-button">View Archived</button>
-              <div className="filter-container">
-                <button
-                  className="filter-button"
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  <span>Filter</span>
-                  <FaChevronDown />
-                </button>
-                {filterOpen && (
-                  <ul className="filter-dropdown">
-                    {filterOptions.map((option) => (
-                      <li
-                        key={option.value}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
-                      >
-                        {option.label}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+        <div className="users">
+          <h2>Users</h2>
+          <div className="users-header">
+            <div className="header-actions">
+              <input
+                type="text"
+                className="search-users-input"
+                placeholder="Search Users"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <div className="right-actions">
+                <button className="action-button">View Archived</button>
+                <button className="action-button">Add users</button>
+                <div className="filter-container">
+                  <button
+                    className="filter-button"
+                    onClick={() => setFilterOpen(!filterOpen)}
+                  >
+                    <span>Filter</span>
+                    <FaChevronDown />
+                  </button>
+                  {filterOpen && (
+                    <ul className="filter-dropdown">
+                      {filterOptions.map((option) => (
+                        <li
+                          key={option.value}
+                          onClick={() => {
+                            setFilterValue(option.value);
+                            setFilterOpen(false);
+                          }}
+                        >
+                          {option.label}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div className="product-table">
+          <div className="user-table">
             <table>
               <thead>
                 <tr>
@@ -168,12 +170,9 @@ const Product = () => {
                       Actions
                     </div>
                   </th>
-                  <th>Product Image</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Stock</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Roles</th>
                   <th>Created at</th>
                   <th>Updated at</th>
                 </tr>
@@ -184,13 +183,9 @@ const Product = () => {
                     <td>
                       <div className="action-icons">
                         <FaSquare className="checkbox-icon" />
-                        <IconTrash size={16} className="delete-icon" />
-                        <IconEdit size={16} className="edit-icon" />
+                        <FaTrash className="delete-icon" /> {/* Changed from FaTimes to FaTrash */}
                       </div>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -202,12 +197,12 @@ const Product = () => {
             </table>
           </div>
           <div className="pagination">
-            <span>Page 1 of 3</span>
-            <button>&lt;</button> {/* Corrected to use &lt; for < */}
+            <span>Page 1 of 1</span>
+            <button>&lt;</button> {/* Using HTML entity for < */}
             <button className="active">1</button>
             <button>2</button>
             <button>3</button>
-            <button>&gt;</button> {/* Corrected to use &gt; for > */}
+            <button>&gt;</button> {/* Using HTML entity for > */}
           </div>
         </div>
       </div>
@@ -215,4 +210,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Users;

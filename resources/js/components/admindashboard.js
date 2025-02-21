@@ -12,12 +12,13 @@ import {
   FaChartBar,
   FaUser,
   FaChevronDown,
+  FaUserShield, // Added for Roles
 } from "react-icons/fa";
 
 const Dashboard = () => {
   const [adminDropdown, setAdminDropdown] = useState(false);
-  const [activeItem, setActiveItem] = useState("Payment Management"); // Track active sub-item
-  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [activeItem, setActiveItem] = useState("Payment Management");
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="app">
@@ -61,11 +62,7 @@ const Dashboard = () => {
             <FaStar />
             <span>Reviews & Notifications</span>
           </li>
-
-          {/* Line Separator */}
           <hr className="separator" />
-
-          {/* Admin Settings Header */}
           <div
             className="admin-settings-header"
             onClick={() => setAdminDropdown(!adminDropdown)}
@@ -74,8 +71,6 @@ const Dashboard = () => {
             <span>Admin Settings</span>
             <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
           </div>
-
-          {/* Admin Settings Dropdown */}
           {adminDropdown && (
             <ul className="dropdown">
               <li
@@ -100,6 +95,13 @@ const Dashboard = () => {
               >
                 <FaBell />
                 <span>Help & Support</span>
+              </li>
+              <li
+                className={activeItem === "Roles" ? "active" : ""}
+                onClick={() => setActiveItem("Roles")}
+              >
+                <FaUserShield />
+                <span>Roles</span>
               </li>
             </ul>
           )}
@@ -174,9 +176,7 @@ const Dashboard = () => {
                   <th>Payment Status</th>
                 </tr>
               </thead>
-              <tbody>
-                {/* Removed sample data, leaving tbody empty */}
-              </tbody>
+              <tbody>{/* Empty tbody as in original */}</tbody>
             </table>
           </div>
         </div>

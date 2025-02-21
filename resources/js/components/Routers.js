@@ -5,6 +5,8 @@ import Login from "./login";
 import Register from "./register";
 import Admindashboard from "./admindashboard";
 import Product from "./product";
+import Users from "./users";
+import Archived from "./archived";
 
 
 export default function Routers() {
@@ -16,6 +18,8 @@ export default function Routers() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/admindashboard" element={<Admindashboard />} />
                 <Route path="/product" element={<Product />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/archived" element={<Archived />} />
 
             </Routes>
         </Router>

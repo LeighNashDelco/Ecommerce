@@ -15,7 +15,7 @@ const Login = () => {
       <div className="login-wrapper">
         <div className="login-card">
           <div className="login-content">
-            <h2 className="login-title">Welcome Back</h2>
+            <h2 className="login-title">Welcome Back!</h2>
             <p className="login-subtitle">Please enter your credentials to log in.</p>
   
             <form onSubmit={handleLogin} className="login-form-container">
