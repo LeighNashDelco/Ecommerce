@@ -17,6 +17,7 @@ import {
 const Dashboard = () => {
   const [adminDropdown, setAdminDropdown] = useState(false);
   const [activeItem, setActiveItem] = useState("Payment Management"); // Track active sub-item
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
 
   return (
     <div className="app">
@@ -129,23 +130,36 @@ const Dashboard = () => {
           <div className="stat-box">
             <FaBoxOpen className="icon" />
             <p>Total Products</p>
+            <h2>0</h2>
           </div>
           <div className="stat-box">
             <FaShoppingCart className="icon" />
             <p>Total Orders</p>
+            <h2>0</h2>
           </div>
           <div className="stat-box">
             <FaMoneyBill className="icon" />
             <p>Total Earnings</p>
+            <h2>0</h2>
           </div>
           <div className="stat-box">
             <FaChartBar className="icon" />
             <p>Total Product Sale</p>
+            <h2>0</h2>
           </div>
         </div>
 
         <div className="orders">
           <h3>Today's New Orders</h3>
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search Products"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
           <div className="order-table">
             <table>
               <thead>
@@ -161,7 +175,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Add your dynamic order rows here */}
+                {/* Removed sample data, leaving tbody empty */}
               </tbody>
             </table>
           </div>
