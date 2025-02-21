@@ -5,16 +5,24 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\GenderController;
-use App\Http\Controllers\LoginController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\AdminDashboardController;
+
 
 # AUTHENTICATION ROUTES
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api'); // Use 'auth:api' for Passport
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 # PROFILE ROUTE
-Route::post('/profiles', [ProfileController::class, 'store']);
+Route::middleware('auth:sanctum')->post('/profiles', [ProfileController::class, 'store']);
 
 # FETCH FOR REGISTRATION ROLES AND GENDERS
 Route::get('/roles', [RolesController::class, 'index']);
 Route::get('/genders', [GenderController::class, 'getGenders']);
+
+# STATISTICS
+Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
+Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);

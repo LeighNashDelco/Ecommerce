@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Login"; // Updated import
+import Dashboard from "./components/login/Login"; // Updated import
 
 require("./bootstrap");
 require("./Routers");

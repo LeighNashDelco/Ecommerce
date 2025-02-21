@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios"; 
-import "./../../sass/components/_register.scss";
+import axios from "axios";
+import "./../../../sass/components/_register.scss";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,8 +19,22 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
   const [roles, setRoles] = useState([]);
   const [genders, setGenders] = useState([]);
+  const [alert, setAlert] = useState({ message: "", type: "" });
 
-  // Fetch roles from API
+  // Show alert function
+  const showAlert = (message, type) => {
+    setAlert({ message, type });
+
+    // Auto-hide after 5 seconds
+    setTimeout(() => setAlert({ message: "", type: "" }), 5000);
+  };
+
+  // Close alert manually
+  const closeAlert = () => {
+    setAlert({ message: "", type: "" });
+  };
+
+  // Fetch roles
   useEffect(() => {
     const fetchRoles = async () => {
       try {
@@ -34,7 +47,7 @@ const Register = () => {
     fetchRoles();
   }, []);
 
-  // Fetch genders from API
+  // Fetch genders
   useEffect(() => {
     const fetchGenders = async () => {
       try {
@@ -63,41 +76,70 @@ const Register = () => {
     setPasswordError(!hasUppercase || !hasNumber ? "Password must contain at least 1 uppercase letter and 1 number." : "");
   };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const userData = {
-        first_name: formData.firstName || "",  
-        middlename: formData.middleName.trim() ? formData.middleName : null, 
-        last_name: formData.lastName || "",
-        gender: formData.gender ? parseInt(formData.gender, 10) : null, 
-        suffix: formData.suffix.trim() ? formData.suffix : null,
-        email: formData.email || "",
-        password: formData.password || "",
-        role_id: formData.role ? parseInt(formData.role, 10) : null,  
-      };
-    
-      console.log("🚀 Sending user data:", userData);
-      const response = await axios.post("http://localhost:8000/api/register", userData);
-  
-      console.log("✅ Registration successful:", response.data);
-      alert("Registration successful! 🎉");
-  
-    } catch (error) {
-      console.error("❌ Error during registration:", error);
-  
-      if (error.response) {
-        console.error("🚨 Server Response Data:", error.response.data);
-        alert("❌ Registration failed: " + JSON.stringify(error.response.data.errors));
+  // Handle registration
+  // Handle registration
+const handleRegister = async (e) => {
+  e.preventDefault();
+
+  try {
+    const userData = {
+      first_name: formData.firstName || "",
+      middlename: formData.middleName.trim() ? formData.middleName : null,
+      last_name: formData.lastName || "",
+      gender: formData.gender ? parseInt(formData.gender, 10) : null,
+      suffix: formData.suffix.trim() ? formData.suffix : null,
+      email: formData.email || "",
+      password: formData.password || "",
+      role_id: formData.role ? parseInt(formData.role, 10) : null,
+    };
+
+    console.log("🚀 Sending user data:", userData);
+    const response = await axios.post("http://localhost:8000/api/register", userData);
+
+    console.log("Registration successful:", response.data);
+    showAlert("✅ Registration successful!", "success");
+
+    // **Clear all fields after success**
+    setFormData({
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      role: "",
+      gender: "",
+      suffix: "",
+    });
+
+  } catch (error) {
+    console.error("Error during registration:", error);
+
+    if (error.response) {
+      console.error("Server Response Data:", error.response.data);
+
+      if (error.response.data.errors?.email) {
+        showAlert("🚫 Email is already registered. Try another one!", "error");
       } else {
-        alert("❌ Network error. Please try again.");
+        showAlert("🚫 Email is already registered. Try another one!", "error");
       }
+    } else {
+      showAlert("❌ Network error. Please try again.", "error");
     }
-  };
+  }
+};
+
 
   return (
     <div className="register-wrapper">
+{/* Alert Message */}
+{alert.message && (
+  <div className={`custom-alert ${alert.type}`}>
+    {alert.message}
+    <button className="alert-close-btn" onClick={closeAlert}>×</button>
+  </div>
+)}
+
+
       <div className="register-card">
         <div className="register-content">
           <h2 className="register-title">Create New Account</h2>
@@ -108,6 +150,7 @@ const Register = () => {
             </div>
             <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+
             <div className="register-password-group">
               <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
               <span className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
@@ -115,6 +158,8 @@ const Register = () => {
               </span>
             </div>
             {passwordError && <p className="error-message">{passwordError}</p>}
+
+            {/* 🔹 DROPDOWNS RESTORED HERE */}
             <div className="register-dropdowns">
               <select name="role" value={formData.role} onChange={handleChange} required>
                 <option value="" disabled>Select Role</option>
@@ -132,6 +177,8 @@ const Register = () => {
                 <option value="III">III</option>
               </select>
             </div>
+            {/* 🔹 DROPDOWNS END HERE */}
+
             <button type="submit" className="register-submit-btn">Register</button>
           </form>
         </div>
