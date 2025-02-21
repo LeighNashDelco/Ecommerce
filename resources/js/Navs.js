@@ -6,7 +6,7 @@ export default function Navs() {
     <nav>
       <ul style={{ listStyleType: "none", padding: 0 }}>
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/admindashboard">Dashboard</Link>
         </li>
         <li>
           <Link to="/profile">Profile</Link>

@@ -146,3 +146,48 @@ option {
     height: 40vh;
   }
 }
+.custom-alert {
+  position: fixed;
+  top: 50px; // Moved slightly lower
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8); // Sleek dark background
+  color: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 300px;
+  max-width: 500px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+
+  &.success {
+    background: #28a745;
+  }
+
+  &.error {
+    background: #dc3545;
+  }
+
+  .alert-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      color: #ddd;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
