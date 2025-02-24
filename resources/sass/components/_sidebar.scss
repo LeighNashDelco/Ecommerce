@@ -1,120 +1,175 @@
 .sidebar {
     width: 250px;
-    height: 100vh;
+    min-height: 100vh;
     background: #1d1d1d;
     color: white;
     padding: 20px;
-    z-index: 1001; // Higher than TopNavbar
+    z-index: 1001;
     box-sizing: border-box;
-
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
     h2 {
-        text-align: center;
-        margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
-
+  
     ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-
+  
     li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 15px;
-        cursor: pointer;
-        color: #ccc;
-        transition: 0.3s;
-        border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      cursor: pointer;
+      color: #ccc;
+      transition: 0.3s;
+      border-radius: 10px;
+      margin-bottom: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+  
+      &:hover, &.active {
+        background: #ff0000;
+        color: white;
+      }
+    }
+  
+    .dropdown {
+      width: 100%;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+  
+      li {
+        font-size: 14px;
+        padding: 10px 15px;
+        background: #2a2a2a;
+        color: white;
+        border-radius: 8px;
         margin-bottom: 5px;
         width: 100%;
         box-sizing: border-box;
-
-        &:hover, &.active {  // Make sure .active works
-            background: #ff0000;
-            color: white;
-        }
-    }
-
-    .dropdown {
-        width: 100%;
-        padding-left: 0;
-
-        li {
-            font-size: 14px;
-            padding: 10px 15px;
-            background: #2a2a2a;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-
-            &:hover {
-                background: #ff3b3b;
-            }
-        }
-    }
-
-    .admin-settings {
-        border-top: 1px solid #444;
-        margin-top: 10px;
-        padding-top: 0;
-
-        li {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 10px 15px;
-            width: 100%;
-            box-sizing: border-box;
-            cursor: pointer;
-            color: white;
-            transition: 0.3s;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            background: #2a2a2a;
-            font-size: 14px;
-            gap: 10px;
-
-            &:hover {
-                background: #ff3b3b;
-            }
-
-            &.active, &.payment-management {
-                background: #ff0000;
-            }
-
-            &.active:hover, &.payment-management:hover {
-                background: #ff3b3b;
-            }
-        }
-    }
-
-    .admin-settings-header {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        padding: 10px 15px;
-        width: 100%;
-        box-sizing: border-box;
-        cursor: pointer;
-        color: white;
-        transition: 0.3s;
+        gap: 10px;
+  
+        &:hover {
+          background: #ff3b3b;
+        }
+      }
+    }
+  
+    .admin-settings-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px 15px;
+      width: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      background: #1d1d1d;
+      font-size: 14px;
+      border: 1px solid #444;
+      gap: 10px;
+  
+      &:hover {
+        background: #ff0000;
+      }
+  
+      .rotate-icon {
+        transition: transform 0.3s ease;
+        transform: rotate(180deg);
+      }
+    }
+  
+    .separator {
+      border: 0;
+      border-top: 1px solid #444;
+      margin: 10px 0;
+    }
+  
+    @media (max-height: 600px) {
+      .dropdown {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+    }
+  
+    @media (max-width: 430px) {
+      width: 100%;
+      min-height: auto;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: left 0.3s ease;
+  
+      &.open {
+        left: 0;
+      }
+  
+      h2 {
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+  
+      li {
+        padding: 10px 12px;
+        font-size: 14px;
         border-radius: 8px;
         margin-bottom: 5px;
-        background: #1d1d1d;
+      }
+  
+      .dropdown li {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+  
+      .admin-settings-header {
+        padding: 8px 12px;
         font-size: 14px;
-        border: 1px solid #444;
-        gap: 10px;
-
-        &:hover {
-            background: #ff0000;
-        }
+        border-radius: 8px;
+        margin-bottom: 5px;
+      }
+  
+      .separator {
+        margin: 8px 0;
+      }
     }
-}
+  }
+  
+  .toggle-icon {
+    display: none; // Hidden by default
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1002;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+  
+    @media (max-width: 430px) {
+      display: block; // Show on mobile
+    }
+  }

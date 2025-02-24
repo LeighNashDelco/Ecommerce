@@ -9,10 +9,13 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('roles')->insert([
-            ['id' => 1, 'role_name' => 'Buyer'],
-            ['id' => 2, 'role_name' => 'Seller'],
-            ['id' => 3, 'role_name' => 'Admin'],
-        ]);
+        $roles = ['Buyer', 'Seller', 'Admin'];
+
+        foreach ($roles as $role) {
+            DB::table('roles')->updateOrInsert(
+                ['role_name' => $role], // Check if role exists
+                ['created_at' => now(), 'updated_at' => now()] // Insert if not exists
+            );
+        }
     }
 }

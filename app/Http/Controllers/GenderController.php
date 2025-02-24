@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Gender;
+use Illuminate\Http\JsonResponse;
 
 class GenderController extends Controller
 {
-    public function getGenders()
+    public function getGenders(): JsonResponse
     {
-        return response()->json(DB::table('genders')->get());
+        return response()->json(Gender::all());
     }
 }
+
