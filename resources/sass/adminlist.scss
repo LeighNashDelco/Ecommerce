@@ -6,26 +6,36 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
-.app {
+.adminlist-app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
-/* Product Dashboard styles */
-.product-dashboard {
+.adminlist-dashboard {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background: #f4f4f4;
+  overflow-y: auto; /* Ensure dashboard can scroll if content overflows */
 
-  .product-products {
+  .adminlist-content {
     width: 100%;
-    background: #f4f4f4;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Allow content to grow but not push to bottom */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Ensure content can scroll if needed */
 
     h2 {
       margin: 0 0 20px 0;
@@ -33,14 +43,14 @@ body {
       color: #333;
     }
 
-    .product-products-header {
+    .adminlist-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: center; /* Ensure all elements are vertically centered */
       margin-bottom: 20px;
-      background: #f4f4f4;
+      background: #fff;
 
-      .search-input {
+      .adminlist-search-input {
         width: 200px;
         padding: 8px 12px;
         border: 1px solid #ccc;
@@ -49,22 +59,22 @@ body {
         color: #333;
         font-size: 14px;
         outline: none;
+        height: 40px; /* Match the height of the action buttons for alignment */
 
         &:focus {
           border-color: #ff0000;
         }
       }
 
-      .actions {
+      .adminlist-actions {
         display: flex;
         gap: 10px;
 
-        .action-button {
-          padding: 12px 20px;
-          width: 120px;
-          height: 48px;
+        .adminlist-action-button {
+          padding: 10px 20px; /* Keep the size as is */
+          height: 40px; /* Keep the fixed height */
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 10px; /* Changed from 20px to 10px for less rounded corners */
           background: #fff;
           color: #333;
           font-size: 14px;
@@ -82,70 +92,38 @@ body {
             border-color: #ff0000;
           }
         }
+      }
 
-        .filter-container {
-          position: relative;
+      .adminlist-filter {
+        position: relative;
 
-          .filter-button {
-            padding: 12px 20px;
-            width: 120px;
-            height: 48px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #fff;
-            color: #333;
-            font-size: 14px;
+        .adminlist-filter-dropdown {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          z-index: 10;
+
+          .adminlist-filter-option {
+            padding: 8px 15px;
             cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 5px;
-            line-height: 1;
+            color: #333;
 
             &:hover {
-              background: #ff0000;
-              color: white;
-              border-color: #ff0000;
-            }
-
-            span {
-              flex: 1;
-              text-align: left;
-            }
-          }
-
-          .filter-dropdown {
-            position: absolute;
-            top: 53px;
-            right: 0;
-            width: 120px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            list-style: none;
-            padding: 5px 0;
-            margin: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-
-            li {
-              padding: 8px 15px;
-              color: #333;
-              font-size: 14px;
-              cursor: pointer;
-
-              &:hover {
-                background: #ff0000;
-                color: white;
-              }
+              background: #f4f4f4;
             }
           }
         }
       }
     }
 
-    .product-product-table {
+    .adminlist-table {
+      flex: 1; /* Allow table to grow but not push pagination off-screen */
+      overflow-y: auto; /* Ensure table can scroll if content overflows */
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -153,27 +131,11 @@ body {
         th {
           padding: 12px 20px;
           text-align: left;
-          border: 1px solid #555;
+          border: 1px solid #ff0000;
           color: #fff;
           font-size: 14px;
           background: #ff0000;
           font-weight: 600;
-
-          .header-actions-icon {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            .checkbox-icon {
-              color: #fff;
-              cursor: pointer;
-              font-size: 16px;
-
-              &:hover {
-                color: #ff0000;
-              }
-            }
-          }
         }
 
         td {
@@ -192,35 +154,47 @@ body {
             border-bottom: none;
           }
         }
-      }
 
-      .action-icons {
-        display: flex;
-        gap: 10px;
-        align-items: center;
+        .adminlist-header-actions-icon {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
 
-        .checkbox-icon,
-        .delete-icon,
-        .edit-icon {
-          color: #fff;
-          cursor: pointer !important; /* Ensure cursor is pointer */
-          font-size: 16px;
-          transition: color 0.3s; /* Smooth transition for hover effect */
+        .adminlist-action-icons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
 
           &:hover {
-            color: #ff0000 !important; /* Ensure hover color applies */
+            opacity: 0.8;
+          }
+        }
+
+        .adminlist-checkbox-icon,
+        .adminlist-delete-icon,
+        .adminlist-edit-icon {
+          display: inline-flex;
+          align-items: center;
+          transition: opacity 0.3s;
+          color: #fff;
+
+          &:hover {
+            opacity: 0.6;
+            color: #ff0000;
           }
         }
       }
     }
 
-    .product-pagination {
+    .adminlist-pagination {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
       margin-top: 20px;
-      background: #f4f4f4;
+      background: #fff;
 
       span {
         color: #333;
@@ -251,4 +225,4 @@ body {
       }
     }
   }
-} 
+}

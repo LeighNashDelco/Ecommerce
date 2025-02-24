@@ -1,53 +1,43 @@
 import React, { useState } from "react";
-import Sidebar from "./sidebar"; 
+import Sidebar from "./sidebar"; // Import the Sidebar component
 import {
-  FaSquare,
-  FaTrash, 
-  FaChevronDown,
+  FaSquare, // For unchecked checkboxes
+  FaTrash, // Changed from FaTimes to FaTrash
+  FaChevronDown, // Added to fix the ReferenceError
 } from "react-icons/fa";
-import { IconTrash, IconEdit } from "@tabler/icons-react"; 
-import ProductModal from "./product_modal"; 
+import { IconTrash, IconEdit } from "@tabler/icons-react"; // Import Tabler Icons for trash and edit
 
-const Product = () => {
-  const [searchTerm, setSearchTerm] = useState(""); 
+const Inventory = () => {
+  const [searchTerm, setSearchTerm] = useState(""); // Removed adminDropdown and activeItem state since Sidebar handles it
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const filterOptions = [
     { value: "all", label: "All" },
-    { value: "gaming", label: "Gaming" },
-    { value: "wireless", label: "Wireless" },
-    { value: "office", label: "Office" },
+    { value: "low", label: "Low Stock" },
+    { value: "high", label: "High Stock" },
+    { value: "sold", label: "Sold Out" },
   ];
-
-  const handleAddNewClick = () => {
-    setIsModalOpen(true); // Open the modal when "Add New" is clicked
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
-  };
 
   return (
     <div className="app">
-      <Sidebar activeItem="Products" /> 
-      <div className="product-dashboard">
-        <div className="product-products">
-          <h2>Products</h2>
-          <div className="product-products-header">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search Products"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="actions">
-              <button className="action-button" onClick={handleAddNewClick}>
-                Add New
-              </button>
-              <button className="action-button">View Archived</button>
+      <Sidebar activeItem="Inventory" /> {/* Use the Sidebar component with "Inventory" as active */}
+      <div className="inventory-dashboard">
+        <div className="inventory-orders">
+          <h2>Inventory Management</h2>
+          <div className="inventory-orders-header">
+            <div className="left-actions">
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search Orders"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="right-actions">
+              <button className="header-button">Inventory</button>
+              <button className="header-button">View Archived</button>
               <div className="filter-container">
                 <button
                   className="filter-button"
@@ -74,7 +64,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className="product-product-table">
+          <div className="inventory-order-table">
             <table>
               <thead>
                 <tr>
@@ -84,14 +74,10 @@ const Product = () => {
                       Actions
                     </div>
                   </th>
-                  <th>Product Image</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Stock</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
+                  <th>Product ID</th>
+                  <th>Product Name</th>
+                  <th>Current Stock</th>
+                  <th>Sold</th>
                 </tr>
               </thead>
               <tbody>
@@ -108,28 +94,23 @@ const Product = () => {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="product-pagination">
-            <span>Page 1 of 1</span>
-            <button>&lt;</button> 
+          <div className="inventory-pagination">
+          <span>Page 1 of 1</span>
+            <button>&lt;</button> {/* Using HTML entity for < */}
             <button className="active">1</button>
             <button>2</button>
             <button>3</button>
-            <button>&gt;</button> 
+            <button>&gt;</button> {/* Using HTML entity for > */}
           </div>
         </div>
       </div>
-      {isModalOpen && <ProductModal onClose={handleModalClose} />} {/* Render modal as overlay when open */}
     </div>
   );
 };
 
-export default Product;
+export default Inventory;

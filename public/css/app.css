@@ -12440,6 +12440,12 @@ body {
   padding: 30px;
   text-align: center;
   border-radius: 10px;
+  transition: background 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+.stat-box:hover {
+  background: #2a2a2a; /* Slightly lighter dark gray for hover */
+  transform: scale(1.02); /* Slight scale effect for interactivity */
+  cursor: pointer; /* Indicate clickable/iteractive */
 }
 
 .stat-box .icon {
@@ -12546,111 +12552,8 @@ body {
   height: 100vh;
 }
 
-/* Sidebar styles */
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background: #1d1d1d;
-  color: white;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Allow vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-}
-.sidebar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers (Chrome, Safari) */
-}
-.sidebar h2, .sidebar .h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.sidebar ul li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  cursor: pointer;
-  color: #ccc;
-  transition: 0.3s;
-  border-radius: 10px;
-  margin-bottom: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.sidebar ul li:hover, .sidebar ul li.active {
-  background: #ff0000;
-  color: white;
-}
-.sidebar .dropdown {
-  width: 100%;
-  padding-left: 0;
-  margin: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  max-height: calc(100vh - 200px); /* Limit dropdown height */
-  box-sizing: border-box;
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-}
-.sidebar .dropdown::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers */
-}
-.sidebar .dropdown li {
-  font-size: 14px;
-  padding: 10px 15px;
-  background: #2a2a2a;
-  color: #fff;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-.sidebar .dropdown li:hover {
-  background: #ff3b3b;
-  color: white;
-}
-.sidebar .dropdown li.active {
-  background: #ff0000; /* Match active state from users.scss */
-}
-.sidebar .admin-settings-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 15px;
-  width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  background: #1d1d1d;
-  font-size: 14px;
-  border: 1px solid #444;
-  gap: 10px;
-}
-.sidebar .admin-settings-header:hover {
-  background: #ff0000;
-  color: white;
-}
-.sidebar hr.separator {
-  border: 0;
-  border-top: 1px solid #444;
-  margin: 10px 0;
-}
-
-.dashboard {
+/* Product Dashboard styles */
+.product-dashboard {
   flex: 1;
   padding: 40px;
   display: flex;
@@ -12658,23 +12561,23 @@ body {
   align-items: stretch;
   background: #f4f4f4;
 }
-.dashboard .products {
+.product-dashboard .product-products {
   width: 100%;
   background: #f4f4f4;
 }
-.dashboard .products h2, .dashboard .products .h2 {
+.product-dashboard .product-products h2, .product-dashboard .product-products .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.dashboard .products .products-header {
+.product-dashboard .product-products .product-products-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   background: #f4f4f4;
 }
-.dashboard .products .products-header .search-input {
+.product-dashboard .product-products .product-products-header .search-input {
   width: 200px;
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -12684,14 +12587,14 @@ body {
   font-size: 14px;
   outline: none;
 }
-.dashboard .products .products-header .search-input:focus {
+.product-dashboard .product-products .product-products-header .search-input:focus {
   border-color: #ff0000;
 }
-.dashboard .products .products-header .actions {
+.product-dashboard .product-products .product-products-header .actions {
   display: flex;
   gap: 10px;
 }
-.dashboard .products .products-header .actions .action-button {
+.product-dashboard .product-products .product-products-header .actions .action-button {
   padding: 12px 20px;
   width: 120px;
   height: 48px;
@@ -12708,15 +12611,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-.dashboard .products .products-header .actions .action-button:hover {
+.product-dashboard .product-products .product-products-header .actions .action-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .products .products-header .actions .filter-container {
+.product-dashboard .product-products .product-products-header .actions .filter-container {
   position: relative;
 }
-.dashboard .products .products-header .actions .filter-container .filter-button {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button {
   padding: 12px 20px;
   width: 120px;
   height: 48px;
@@ -12733,16 +12636,16 @@ body {
   gap: 5px;
   line-height: 1;
 }
-.dashboard .products .products-header .actions .filter-container .filter-button:hover {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .products .products-header .actions .filter-container .filter-button span {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button span {
   flex: 1;
   text-align: left;
 }
-.dashboard .products .products-header .actions .filter-container .filter-dropdown {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown {
   position: absolute;
   top: 53px;
   right: 0;
@@ -12756,21 +12659,21 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
-.dashboard .products .products-header .actions .filter-container .filter-dropdown li {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li {
   padding: 8px 15px;
   color: #333;
   font-size: 14px;
   cursor: pointer;
 }
-.dashboard .products .products-header .actions .filter-container .filter-dropdown li:hover {
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li:hover {
   background: #ff0000;
   color: white;
 }
-.dashboard .products .product-table table {
+.product-dashboard .product-products .product-product-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.dashboard .products .product-table table th {
+.product-dashboard .product-products .product-product-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -12779,7 +12682,20 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.dashboard .products .product-table table td {
+.product-dashboard .product-products .product-product-table table th .header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon:hover {
+  color: #ff0000;
+}
+.product-dashboard .product-products .product-product-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -12787,13 +12703,31 @@ body {
   font-size: 14px;
   background: #333;
 }
-.dashboard .products .product-table table tr {
+.product-dashboard .product-products .product-product-table table tr {
   border-bottom: 1px solid #555;
 }
-.dashboard .products .product-table table tr:last-child {
+.product-dashboard .product-products .product-product-table table tr:last-child {
   border-bottom: none;
 }
-.dashboard .products .pagination {
+.product-dashboard .product-products .product-product-table .action-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon,
+.product-dashboard .product-products .product-product-table .action-icons .delete-icon,
+.product-dashboard .product-products .product-product-table .action-icons .edit-icon {
+  color: #fff;
+  cursor: pointer !important; /* Ensure cursor is pointer */
+  font-size: 16px;
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon:hover,
+.product-dashboard .product-products .product-product-table .action-icons .delete-icon:hover,
+.product-dashboard .product-products .product-product-table .action-icons .edit-icon:hover {
+  color: #ff0000 !important; /* Ensure hover color applies */
+}
+.product-dashboard .product-products .product-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -12801,11 +12735,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.dashboard .products .pagination span {
+.product-dashboard .product-products .product-pagination span {
   color: #333;
   font-size: 14px;
 }
-.dashboard .products .pagination button {
+.product-dashboard .product-products .product-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -12815,12 +12749,12 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.dashboard .products .pagination button:hover {
+.product-dashboard .product-products .product-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .products .pagination button.active {
+.product-dashboard .product-products .product-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
@@ -12842,111 +12776,11 @@ body {
   width: 100%;
   height: 100vh;
   overflow-x: hidden; /* Prevent horizontal overflow on app */
+  background: yellow; /* Add this to test SCSS connection */
 }
 
-/* Sidebar styles */
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background: #1d1d1d;
-  color: white;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Allow vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-}
-.sidebar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers (Chrome, Safari) */
-}
-.sidebar h2, .sidebar .h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.sidebar ul li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  cursor: pointer;
-  color: #ccc;
-  transition: 0.3s;
-  border-radius: 10px;
-  margin-bottom: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.sidebar ul li:hover, .sidebar ul li.active {
-  background: #ff0000;
-  color: white;
-}
-.sidebar .dropdown {
-  width: 100%;
-  padding-left: 0;
-  margin: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  max-height: calc(100vh - 200px); /* Limit dropdown height */
-  box-sizing: border-box;
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-}
-.sidebar .dropdown::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers */
-}
-.sidebar .dropdown li {
-  font-size: 14px;
-  padding: 10px 15px;
-  background: #2a2a2a;
-  color: #fff;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-.sidebar .dropdown li:hover {
-  background: #ff3b3b;
-  color: white;
-}
-.sidebar .admin-settings-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 15px;
-  width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  background: #1d1d1d;
-  font-size: 14px;
-  border: 1px solid #444;
-  gap: 10px;
-}
-.sidebar .admin-settings-header:hover {
-  background: #ff0000;
-  color: white;
-}
-.sidebar hr.separator {
-  border: 0;
-  border-top: 1px solid #444;
-  margin: 10px 0;
-}
-
-/* Rest of your SCSS remains unchanged */
-.dashboard {
+/* User Dashboard styles */
+.user-dashboard {
   flex: 1;
   padding: 40px;
   display: flex;
@@ -12955,26 +12789,26 @@ body {
   background: #f4f4f4;
   overflow-x: hidden;
 }
-.dashboard .users {
+.user-dashboard .user-users {
   width: 100%;
   background: #f4f4f4;
 }
-.dashboard .users h2, .dashboard .users .h2 {
+.user-dashboard .user-users h2, .user-dashboard .user-users .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.dashboard .users .users-header {
+.user-dashboard .user-users .user-users-header {
   background: #f4f4f4;
   margin-bottom: 20px;
 }
-.dashboard .users .users-header .header-actions {
+.user-dashboard .user-users .user-users-header .header-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.dashboard .users .users-header .header-actions .search-users-input {
+.user-dashboard .user-users .user-users-header .header-actions .search-users-input {
   padding: 12px 20px;
   width: 200px;
   height: 48px;
@@ -12987,21 +12821,20 @@ body {
   text-align: left;
   box-sizing: border-box;
 }
-.dashboard .users .users-header .header-actions .search-users-input:focus {
+.user-dashboard .user-users .user-users-header .header-actions .search-users-input:focus {
   border-color: #ff0000;
 }
-.dashboard .users .users-header .header-actions .right-actions {
+.user-dashboard .user-users .user-users-header .header-actions .right-actions {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.dashboard .users .users-header .header-actions .right-actions .action-button {
-  padding: 12px 20px;
-  width: 120px;
-  height: 48px;
+.user-dashboard .user-users .user-users-header .header-actions .right-actions .action-button {
+  padding: 10px 20px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f4f4f4;
+  border-radius: 10px;
+  background: #fff;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13012,21 +12845,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-.dashboard .users .users-header .header-actions .right-actions .action-button:hover {
+.user-dashboard .user-users .user-users-header .header-actions .right-actions .action-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .users .users-header .header-actions .filter-container {
+.user-dashboard .user-users .user-users-header .header-actions .filter-container {
   position: relative;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-button {
-  padding: 12px 20px;
-  width: 120px;
-  height: 48px;
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button {
+  padding: 10px 20px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f4f4f4;
+  border-radius: 10px;
+  background: #fff;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13037,16 +12869,16 @@ body {
   gap: 5px;
   line-height: 1;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-button:hover {
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-button span {
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button span {
   flex: 1;
   text-align: left;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-dropdown {
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown {
   position: absolute;
   top: 53px;
   right: 0;
@@ -13060,21 +12892,22 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-dropdown li {
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown li {
   padding: 8px 15px;
   color: #333;
   font-size: 14px;
   cursor: pointer;
+  transition: background 0.3s;
 }
-.dashboard .users .users-header .header-actions .filter-container .filter-dropdown li:hover {
-  background: #ff0000;
-  color: white;
+.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown li:hover {
+  background: #eeadad;
+  color: #333;
 }
-.dashboard .users .user-table table {
+.user-dashboard .user-users .user-user-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.dashboard .users .user-table table th {
+.user-dashboard .user-users .user-user-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13083,20 +12916,20 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.dashboard .users .user-table table th .header-actions-icon {
+.user-dashboard .user-users .user-user-table table th .header-actions-icon {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.dashboard .users .user-table table th .header-actions-icon .checkbox-icon {
+.user-dashboard .user-users .user-user-table table th .header-actions-icon .checkbox-icon {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
-.dashboard .users .user-table table th .header-actions-icon .checkbox-icon:hover {
+.user-dashboard .user-users .user-user-table table th .header-actions-icon .checkbox-icon:hover {
   color: #ff0000;
 }
-.dashboard .users .user-table table td {
+.user-dashboard .user-users .user-user-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13104,28 +12937,28 @@ body {
   font-size: 14px;
   background: #333;
 }
-.dashboard .users .user-table table tr {
+.user-dashboard .user-users .user-user-table table tr {
   border-bottom: 1px solid #555;
 }
-.dashboard .users .user-table table tr:last-child {
+.user-dashboard .user-users .user-user-table table tr:last-child {
   border-bottom: none;
 }
-.dashboard .users .user-table .action-icons {
+.user-dashboard .user-users .user-user-table .action-icons {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.dashboard .users .user-table .action-icons .checkbox-icon,
-.dashboard .users .user-table .action-icons .delete-icon {
+.user-dashboard .user-users .user-user-table .action-icons .checkbox-icon,
+.user-dashboard .user-users .user-user-table .action-icons .delete-icon {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
-.dashboard .users .user-table .action-icons .checkbox-icon:hover,
-.dashboard .users .user-table .action-icons .delete-icon:hover {
+.user-dashboard .user-users .user-user-table .action-icons .checkbox-icon:hover,
+.user-dashboard .user-users .user-user-table .action-icons .delete-icon:hover {
   color: #ff0000;
 }
-.dashboard .users .pagination {
+.user-dashboard .user-users .user-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -13133,11 +12966,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.dashboard .users .pagination span {
+.user-dashboard .user-users .user-pagination span {
   color: #333;
   font-size: 14px;
 }
-.dashboard .users .pagination button {
+.user-dashboard .user-users .user-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -13147,13 +12980,2229 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.dashboard .users .pagination button:hover {
+.user-dashboard .user-users .user-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.dashboard .users .pagination button.active {
+.user-dashboard .user-users .user-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Order Dashboard styles */
+.order-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+}
+.order-dashboard .order-orders {
+  width: 100%;
+  background: #f4f4f4;
+  display: flex; /* Add flex to the container to align h2 and header */
+  flex-direction: column; /* Stack children vertically */
+}
+.order-dashboard .order-orders h2, .order-dashboard .order-orders .h2 {
+  margin: 0 0 20px 0; /* Keep margin but ensure it doesn’t affect alignment */
+  font-size: 24px;
+  color: #333;
+  line-height: 1; /* Ensure text height doesn’t disrupt alignment */
+  align-self: flex-start; /* Align h2 to the start of the flex container */
+}
+.order-dashboard .order-orders .order-orders-header {
+  display: flex;
+  justify-content: space-between; /* Split content to left and right */
+  align-items: center; /* Ensure all flex items are vertically centered */
+  margin-bottom: 20px;
+  background: #f4f4f4;
+}
+.order-dashboard .order-orders .order-orders-header .left-actions {
+  display: flex;
+  align-items: center; /* Ensure vertical centering of all flex items */
+  gap: 10px; /* Spacing between left-side elements */
+}
+.order-dashboard .order-orders .order-orders-header .right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements */
+}
+.order-dashboard .order-orders .order-orders-header .header-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center; /* Vertically center text within the button */
+  justify-content: center;
+  vertical-align: middle; /* Ensure vertical alignment with input */
+}
+.order-dashboard .order-orders .order-orders-header .header-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.order-dashboard .order-orders .order-orders-header .search-input {
+  width: 200px;
+  padding: 8px 12px; /* Adjusted padding to fit 40px height and center text */
+  height: 40px; /* Matches header-button height */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff; /* White background as in your image */
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 1; /* Fine-tune vertical alignment of text inside input */
+  vertical-align: middle; /* Ensure vertical alignment with buttons */
+}
+.order-dashboard .order-orders .order-orders-header .search-input:focus {
+  border-color: #ff0000;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container {
+  position: relative;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  line-height: 1;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-button span {
+  flex: 1;
+  text-align: left;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown {
+  position: absolute;
+  top: 53px;
+  right: 0;
+  width: 120px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li {
+  padding: 8px 15px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li:hover {
+  background: #eeadad;
+  color: #333;
+}
+.order-dashboard .order-orders .order-order-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.order-dashboard .order-orders .order-order-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.order-dashboard .order-orders .order-order-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.order-dashboard .order-orders .order-order-table table tr {
+  border-bottom: 1px solid #555;
+}
+.order-dashboard .order-orders .order-order-table table tr:last-child {
+  border-bottom: none;
+}
+.order-dashboard .order-orders .order-order-table table .action-icons {
+  display: flex; /* Use flex to align icons horizontally */
+  align-items: center; /* Vertically center the icons within the div */
+  gap: 10px; /* Add spacing between icons for better visual separation */
+  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+}
+.order-dashboard .order-orders .order-order-table table .action-icons:hover {
+  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+}
+.order-dashboard .order-orders .order-order-table table .checkbox-icon,
+.order-dashboard .order-orders .order-order-table table .delete-icon,
+.order-dashboard .order-orders .order-order-table table .edit-icon {
+  display: inline-flex; /* Ensure icons are treated as inline flex items */
+  align-items: center; /* Center the icon vertically within its container */
+  transition: opacity 0.3s; /* Smooth transition for hover effect */
+  color: #fff; /* Ensure icons are white on dark background */
+}
+.order-dashboard .order-orders .order-order-table table .checkbox-icon:hover,
+.order-dashboard .order-orders .order-order-table table .delete-icon:hover,
+.order-dashboard .order-orders .order-order-table table .edit-icon:hover {
+  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
+  color: #ff0000; /* Change color on hover for visual feedback */
+}
+.order-dashboard .order-orders .order-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.order-dashboard .order-orders .order-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.order-dashboard .order-orders .order-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.order-dashboard .order-orders .order-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.order-dashboard .order-orders .order-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Inventory Dashboard styles */
+.inventory-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+}
+.inventory-dashboard .inventory-orders {
+  width: 100%;
+  background: #f4f4f4;
+}
+.inventory-dashboard .inventory-orders h2, .inventory-dashboard .inventory-orders .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header {
+  display: flex;
+  justify-content: space-between; /* Split content to left and right */
+  align-items: center;
+  margin-bottom: 20px;
+  background: #f4f4f4;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .left-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between left-side elements */
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements */
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .header-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .header-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .search-input {
+  width: 200px;
+  padding: 14px 20px; /* Adjusted padding to center text vertically and match button height */
+  height: 48px; /* Match height with buttons */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff; /* White background as in your image */
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .search-input:focus {
+  border-color: #ff0000;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container {
+  position: relative;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  line-height: 1;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button span {
+  flex: 1;
+  text-align: left;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown {
+  position: absolute;
+  top: 53px;
+  right: 0;
+  width: 120px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown li {
+  padding: 8px 15px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown li:hover {
+  background: #eeadad;
+  color: #333;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table tr {
+  border-bottom: 1px solid #555;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table tr:last-child {
+  border-bottom: none;
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table .action-icons {
+  display: flex; /* Use flex to align icons horizontally */
+  align-items: center; /* Vertically center the icons within the div */
+  gap: 10px; /* Add spacing between icons for better visual separation */
+  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table .action-icons:hover {
+  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table .checkbox-icon,
+.inventory-dashboard .inventory-orders .inventory-order-table table .delete-icon,
+.inventory-dashboard .inventory-orders .inventory-order-table table .edit-icon {
+  display: inline-flex; /* Ensure icons are treated as inline flex items */
+  align-items: center; /* Center the icon vertically within its container */
+  transition: opacity 0.3s; /* Smooth transition for hover effect */
+  color: #fff; /* Ensure icons are white on dark background */
+}
+.inventory-dashboard .inventory-orders .inventory-order-table table .checkbox-icon:hover,
+.inventory-dashboard .inventory-orders .inventory-order-table table .delete-icon:hover,
+.inventory-dashboard .inventory-orders .inventory-order-table table .edit-icon:hover {
+  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
+  color: #ff0000; /* Change color on hover for visual feedback */
+}
+.inventory-dashboard .inventory-orders .inventory-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.inventory-dashboard .inventory-orders .inventory-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.inventory-dashboard .inventory-orders .inventory-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.inventory-dashboard .inventory-orders .inventory-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.inventory-dashboard .inventory-orders .inventory-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.customer-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.customer-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+}
+.customer-dashboard .customer-content {
+  width: 100%;
+  background: #f4f4f4;
+}
+.customer-dashboard .customer-content h2, .customer-dashboard .customer-content .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.customer-dashboard .customer-content .customer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #f4f4f4;
+}
+.customer-dashboard .customer-content .customer-header .customer-search-input {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+}
+.customer-dashboard .customer-content .customer-header .customer-search-input:focus {
+  border-color: #ff0000;
+}
+.customer-dashboard .customer-content .customer-header .customer-actions {
+  display: flex;
+  gap: 10px;
+}
+.customer-dashboard .customer-content .customer-header .customer-actions .customer-action-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customer-dashboard .customer-content .customer-header .customer-actions .customer-action-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.customer-dashboard .customer-content .customer-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.customer-dashboard .customer-content .customer-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.customer-dashboard .customer-content .customer-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.customer-dashboard .customer-content .customer-table table tr {
+  border-bottom: 1px solid #555;
+}
+.customer-dashboard .customer-content .customer-table table tr:last-child {
+  border-bottom: none;
+}
+.customer-dashboard .customer-content .customer-table table .customer-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.customer-dashboard .customer-content .customer-table table .customer-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.customer-dashboard .customer-content .customer-table table .customer-action-icons:hover {
+  opacity: 0.8;
+}
+.customer-dashboard .customer-content .customer-table table .customer-checkbox-icon,
+.customer-dashboard .customer-content .customer-table table .customer-delete-icon,
+.customer-dashboard .customer-content .customer-table table .customer-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  color: #fff;
+}
+.customer-dashboard .customer-content .customer-table table .customer-checkbox-icon:hover,
+.customer-dashboard .customer-content .customer-table table .customer-delete-icon:hover,
+.customer-dashboard .customer-content .customer-table table .customer-edit-icon:hover {
+  opacity: 0.6;
+  color: #ff0000;
+}
+.customer-dashboard .customer-content .customer-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.customer-dashboard .customer-content .customer-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.customer-dashboard .customer-content .customer-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.customer-dashboard .customer-content .customer-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.customer-dashboard .customer-content .customer-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.seller-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.seller-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+}
+.seller-dashboard .seller-content {
+  width: 100%;
+  background: #f4f4f4;
+}
+.seller-dashboard .seller-content h2, .seller-dashboard .seller-content .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.seller-dashboard .seller-content .seller-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #f4f4f4;
+}
+.seller-dashboard .seller-content .seller-header .seller-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.seller-dashboard .seller-content .seller-header .seller-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.seller-dashboard .seller-content .seller-header .seller-header-button {
+  padding: 10px 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seller-dashboard .seller-content .seller-header .seller-header-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.seller-dashboard .seller-content .seller-header .seller-search-input {
+  width: 200px;
+  padding: 14px 20px;
+  height: 48px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 15px;
+}
+.seller-dashboard .seller-content .seller-header .seller-search-input:focus {
+  border-color: #ff0000;
+}
+.seller-dashboard .seller-content .seller-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.seller-dashboard .seller-content .seller-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.seller-dashboard .seller-content .seller-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.seller-dashboard .seller-content .seller-table table tr {
+  border-bottom: 1px solid #555;
+}
+.seller-dashboard .seller-content .seller-table table tr:last-child {
+  border-bottom: none;
+}
+.seller-dashboard .seller-content .seller-table table .seller-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.seller-dashboard .seller-content .seller-table table .seller-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.seller-dashboard .seller-content .seller-table table .seller-action-icons:hover {
+  opacity: 0.8;
+}
+.seller-dashboard .seller-content .seller-table table .seller-checkbox-icon,
+.seller-dashboard .seller-content .seller-table table .seller-delete-icon,
+.seller-dashboard .seller-content .seller-table table .seller-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  color: #fff;
+}
+.seller-dashboard .seller-content .seller-table table .seller-checkbox-icon:hover,
+.seller-dashboard .seller-content .seller-table table .seller-delete-icon:hover,
+.seller-dashboard .seller-content .seller-table table .seller-edit-icon:hover {
+  opacity: 0.6;
+  color: #ff0000;
+}
+.seller-dashboard .seller-content .seller-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.seller-dashboard .seller-content .seller-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.seller-dashboard .seller-content .seller-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.seller-dashboard .seller-content .seller-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.seller-dashboard .seller-content .seller-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.reviewmanagement-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Sidebar styles (unchanged - assumed to be handled by Sidebar component) */
+/* Dashboard styles */
+.reviewmanagement-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+}
+.reviewmanagement-dashboard .reviewmanagement-content {
+  width: 100%;
+  background: #f4f4f4;
+}
+.reviewmanagement-dashboard .reviewmanagement-content h2, .reviewmanagement-dashboard .reviewmanagement-content .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header {
+  display: flex;
+  justify-content: space-between; /* Split content to left and right */
+  align-items: center;
+  margin-bottom: 20px;
+  background: #f4f4f4;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between left-side elements */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button {
+  padding: 10px 20px; /* Match AdminList button padding */
+  height: 40px; /* Match AdminList button height */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Match AdminList button corner radius */
+  background: #fff; /* White background as in AdminList */
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button:hover {
+  background: #ff0000; /* Red background on hover, matching AdminList */
+  color: white;
+  border-color: #ff0000;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input {
+  width: 200px;
+  padding: 8px 12px; /* Adjusted padding to match AdminList search input */
+  height: 40px; /* Match height with buttons for alignment, as in AdminList */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff; /* White background as in AdminList */
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input:focus {
+  border-color: #ff0000;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table tr {
+  border-bottom: 1px solid #555;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table tr:last-child {
+  border-bottom: none;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons {
+  display: flex; /* Use flex to align icons horizontally */
+  align-items: center; /* Vertically center the icons within the div */
+  gap: 10px; /* Add spacing between icons for better visual separation */
+  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons:hover {
+  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon,
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon,
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon {
+  display: inline-flex; /* Ensure icons are treated as inline flex items */
+  align-items: center; /* Center the icon vertically within its container */
+  transition: opacity 0.3s; /* Smooth transition for hover effect */
+  color: #fff; /* Ensure icons are white on dark background */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon:hover,
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon:hover,
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon:hover {
+  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
+  color: #ff0000; /* Change color on hover for visual feedback */
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.user-table table th .header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-table table th .header-actions-icon .checkbox-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.user-table table th .header-actions-icon .checkbox-icon:hover {
+  color: #ff0000;
+}
+.user-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.user-table table tr {
+  border-bottom: 1px solid #555;
+}
+.user-table table tr:last-child {
+  border-bottom: none;
+}
+.user-table .action-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.user-table .action-icons .checkbox-icon,
+.user-table .action-icons .delete-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.user-table .action-icons .checkbox-icon:hover,
+.user-table .action-icons .delete-icon:hover {
+  color: #ff0000;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.user-table table th .header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-table table th .header-actions-icon .checkbox-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.user-table table th .header-actions-icon .checkbox-icon:hover {
+  color: #ff0000;
+}
+.user-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.user-table table tr {
+  border-bottom: 1px solid #555;
+}
+.user-table table tr:last-child {
+  border-bottom: none;
+}
+.user-table .action-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.user-table .action-icons .checkbox-icon,
+.user-table .action-icons .delete-icon,
+.user-table .action-icons .edit-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.user-table .action-icons .checkbox-icon:hover,
+.user-table .action-icons .delete-icon:hover,
+.user-table .action-icons .edit-icon:hover {
+  color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Ensure body can scroll if needed */
+}
+
+.adminlist-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
+}
+
+.adminlist-dashboard {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+  overflow-y: auto; /* Ensure dashboard can scroll if content overflows */
+}
+.adminlist-dashboard .adminlist-content {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow content to grow but not push to bottom */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Ensure content can scroll if needed */
+}
+.adminlist-dashboard .adminlist-content h2, .adminlist-dashboard .adminlist-content .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensure all elements are vertically centered */
+  margin-bottom: 20px;
+  background: #fff;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-search-input {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  height: 40px; /* Match the height of the action buttons for alignment */
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-search-input:focus {
+  border-color: #ff0000;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions {
+  display: flex;
+  gap: 10px;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button {
+  padding: 10px 20px; /* Keep the size as is */
+  height: 40px; /* Keep the fixed height */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Changed from 20px to 10px for less rounded corners */
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter {
+  position: relative;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option {
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #333;
+}
+.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option:hover {
+  background: #f4f4f4;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table {
+  flex: 1; /* Allow table to grow but not push pagination off-screen */
+  overflow-y: auto; /* Ensure table can scroll if content overflows */
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #ff0000;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table tr {
+  border-bottom: 1px solid #555;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table tr:last-child {
+  border-bottom: none;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-action-icons:hover {
+  opacity: 0.8;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-checkbox-icon,
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-delete-icon,
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  color: #fff;
+}
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-checkbox-icon:hover,
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-delete-icon:hover,
+.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-edit-icon:hover {
+  opacity: 0.6;
+  color: #ff0000;
+}
+.adminlist-dashboard .adminlist-content .adminlist-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #fff;
+}
+.adminlist-dashboard .adminlist-content .adminlist-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.adminlist-dashboard .adminlist-content .adminlist-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.adminlist-dashboard .adminlist-content .adminlist-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.adminlist-dashboard .adminlist-content .adminlist-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Ensure body can scroll if needed */
+}
+
+.notifications-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
+}
+
+/* Sidebar styles (unchanged - assumed to be handled by Sidebar component) */
+/* Dashboard styles */
+.notifications-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+  overflow-y: auto; /* Ensure dashboard can scroll if content overflows */
+}
+.notifications-dashboard .notifications-content {
+  width: 100%;
+  background: #f4f4f4;
+}
+.notifications-dashboard .notifications-content h2, .notifications-dashboard .notifications-content .h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+.notifications-dashboard .notifications-content .notifications-header {
+  display: flex;
+  justify-content: space-between; /* Split content to left and right */
+  align-items: center;
+  margin-bottom: 20px;
+  background: #fff;
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-left-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between left-side elements */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements */
+  position: relative; /* For positioning the filter dropdown */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-header-button, .notifications-dashboard .notifications-content .notifications-header .notifications-filter-button {
+  padding: 10px 20px; /* Match AdminList button padding */
+  height: 40px; /* Match AdminList button height */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Match AdminList button corner radius */
+  background: #fff; /* White background as in AdminList */
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-header-button:hover, .notifications-dashboard .notifications-content .notifications-header .notifications-filter-button:hover {
+  background: #ff0000; /* Red background on hover, matching AdminList */
+  color: white;
+  border-color: #ff0000;
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-search-input {
+  width: 200px;
+  padding: 8px 12px; /* Adjusted padding to match AdminList search input */
+  height: 40px; /* Match height with buttons for alignment, as in AdminList */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Match AdminList search input corner radius */
+  background: #fff; /* White background as in AdminList */
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-search-input:focus {
+  border-color: #ff0000;
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-filter-button {
+  /* Inherit styles from regular header buttons */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Higher z-index to ensure it stays above other elements */
+  min-width: 120px; /* Ensure the dropdown is wide enough for content */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option {
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.3s; /* Smooth transition for hover effect */
+  background: #f0f0f0; /* Light gray background for all items by default */
+  border-bottom: 1px solid #ccc; /* Optional: Add a separator between items */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:hover {
+  background: #eeadad; /* Light pink/red background on hover for visual feedback */
+  color: #333; /* Ensure text remains readable */
+}
+.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+.notifications-dashboard .notifications-content .notifications-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.notifications-dashboard .notifications-content .notifications-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.notifications-dashboard .notifications-content .notifications-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.notifications-dashboard .notifications-content .notifications-table table tr {
+  border-bottom: 1px solid #555;
+}
+.notifications-dashboard .notifications-content .notifications-table table tr:last-child {
+  border-bottom: none;
+}
+.notifications-dashboard .notifications-content .notifications-table table .notifications-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.notifications-dashboard .notifications-content .notifications-table table .notifications-action-icons {
+  display: flex; /* Use flex to align icons horizontally */
+  align-items: center; /* Vertically center the icons within the div */
+  gap: 10px; /* Add spacing between icons for better visual separation */
+  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+}
+.notifications-dashboard .notifications-content .notifications-table table .notifications-action-icons:hover {
+  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+}
+.notifications-dashboard .notifications-content .notifications-table table .notifications-checkbox-icon,
+.notifications-dashboard .notifications-content .notifications-table table .notifications-delete-icon,
+.notifications-dashboard .notifications-content .notifications-table table .notifications-edit-icon {
+  display: inline-flex; /* Ensure icons are treated as inline flex items */
+  align-items: center; /* Center the icon vertically within its container */
+  transition: opacity 0.3s; /* Smooth transition for hover effect */
+  color: #fff; /* Ensure icons are white on dark background */
+}
+.notifications-dashboard .notifications-content .notifications-table table .notifications-checkbox-icon:hover,
+.notifications-dashboard .notifications-content .notifications-table table .notifications-delete-icon:hover,
+.notifications-dashboard .notifications-content .notifications-table table .notifications-edit-icon:hover {
+  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
+  color: #ff0000; /* Change color on hover for visual feedback */
+}
+.notifications-dashboard .notifications-content .notifications-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.notifications-dashboard .notifications-content .notifications-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.notifications-dashboard .notifications-content .notifications-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.notifications-dashboard .notifications-content .notifications-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.notifications-dashboard .notifications-content .notifications-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.product-modal {
+  background: #F0F8FF;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1001;
+}
+.product-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.product-modal .modal-header h2, .product-modal .modal-header .h2 {
+  font-size: 28px;
+  color: #1E1E1E;
+  font-weight: 700;
+  margin: 0;
+}
+.product-modal .modal-header .close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1E1E1E;
+  padding: 0;
+  line-height: 1;
+  z-index: 1002;
+}
+.product-modal .modal-header .close-button:hover {
+  color: #e74c3c;
+}
+.product-modal .modal-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+}
+.product-modal .modal-content .image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product-modal .modal-content .image-section .image-preview {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  background: #F0F8FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 2px dashed #1E1E1E;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: auto;
+  z-index: 1001;
+}
+.product-modal .modal-content .image-section .image-preview:hover {
+  border-color: #1E1E1E;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+.product-modal .modal-content .image-section .image-preview img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.product-modal .modal-content .image-section .image-preview .placeholder {
+  color: #1E1E1E;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px;
+  line-height: 1.5;
+}
+.product-modal .modal-content .image-section .upload-button {
+  background: #1E1E1E;
+  color: white;
+  width: 250px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  pointer-events: auto;
+  z-index: 1001;
+}
+.product-modal .modal-content .image-section .upload-button:hover {
+  background: #FF0000;
+  transform: translateY(-2px);
+}
+.product-modal .modal-content .form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1001;
+}
+.product-modal .modal-content .form-section .input-field {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #1E1E1E;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #F0F8FF;
+  color: #1E1E1E;
+  transition: border-color 0.3s ease;
+  pointer-events: auto;
+  z-index: 1002;
+}
+.product-modal .modal-content .form-section .input-field:focus {
+  outline: none;
+  border-color: #1E1E1E;
+}
+.product-modal .modal-content .form-section .input-field::-moz-placeholder {
+  color: #808080;
+  opacity: 1;
+}
+.product-modal .modal-content .form-section .input-field::placeholder {
+  color: #808080;
+  opacity: 1;
+}
+.product-modal .modal-content .form-section .input-field.description {
+  height: 120px;
+  resize: vertical;
+}
+.product-modal .modal-content .form-section .action-fields {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 1001;
+}
+.product-modal .modal-content .form-section .action-fields .input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field,
+.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #1E1E1E;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #F0F8FF;
+  color: #1E1E1E;
+  appearance: textfield;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  transition: border-color 0.3s ease;
+  pointer-events: auto;
+  z-index: 1002;
+}
+.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field:focus,
+.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field:focus {
+  outline: none;
+  border-color: #1E1E1E;
+}
+.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field::-webkit-inner-spin-button, .product-modal .modal-content .form-section .action-fields .input-wrapper .price-field::-webkit-outer-spin-button,
+.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field::-webkit-inner-spin-button,
+.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-modal .modal-content .form-section .action-fields .select-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.product-modal .modal-content .form-section .action-fields .select-wrapper .select-field {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 2px solid #1E1E1E;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #F0F8FF;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  color: #1E1E1E;
+  transition: border-color 0.3s ease;
+  pointer-events: auto;
+  z-index: 1002;
+}
+.product-modal .modal-content .form-section .action-fields .select-wrapper .select-field:focus {
+  outline: none;
+  border-color: #1E1E1E;
+}
+.product-modal .modal-content .form-section .action-fields .select-wrapper .dropdown-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1E1E1E;
+  font-size: 16px;
+  pointer-events: none;
+}
+.product-modal .modal-content .form-section .submit-button {
+  background: #1E1E1E;
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  margin-top: 20px;
+  pointer-events: auto;
+  z-index: 1002;
+}
+.product-modal .modal-content .form-section .submit-button:hover {
+  background: #FF0000;
+  transform: translateY(-2px);
+}
+
+/* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+@media (max-width: 430px) {
+  .product-modal {
+    padding: 16px;
+    max-width: 95%;
+    max-height: 90vh;
+  }
+  .product-modal .modal-header {
+    margin-bottom: 20px;
+  }
+  .product-modal .modal-header h2, .product-modal .modal-header .h2 {
+    font-size: 20px;
+  }
+  .product-modal .modal-header .close-button {
+    font-size: 20px;
+  }
+  .product-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .product-modal .modal-content .image-section {
+    order: -1; /* Moves to the top */
+    width: 100%;
+    align-items: center;
+  }
+  .product-modal .modal-content .image-section .image-preview {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 16px;
+  }
+  .product-modal .modal-content .image-section .upload-button {
+    width: 200px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  .product-modal .modal-content .form-section {
+    gap: 16px;
+  }
+  .product-modal .modal-content .form-section .input-field {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .product-modal .modal-content .form-section .input-field.description {
+    height: 100px;
+  }
+  .product-modal .modal-content .form-section .action-fields {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .product-modal .modal-content .form-section .action-fields .input-wrapper {
+    min-width: 100%; /* Full width on mobile */
+  }
+  .product-modal .modal-content .form-section .action-fields .input-wrapper .price-field,
+  .product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field {
+    padding: 10px 12px;
+    font-size: 14px;
+    height: 40px; /* Match input height */
+    line-height: 1; /* Ensure consistent line height */
+  }
+  .product-modal .modal-content .form-section .action-fields .select-wrapper {
+    min-width: 100%; /* Full width on mobile */
+  }
+  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field {
+    padding: 10px 12px; /* Match input-field padding, no extra space for icon */
+    font-size: 14px; /* Match other inputs */
+    height: 40px; /* Fixed height to match input fields */
+    line-height: 1; /* Ensure consistent line height */
+    border: 2px solid #1E1E1E; /* Match input border */
+    border-radius: 8px; /* Match input border radius */
+    background: #F0F8FF; /* Match input background */
+    color: #1E1E1E; /* Match input text color */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none; /* Remove default arrow */
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    pointer-events: auto;
+    z-index: 1002;
+  }
+  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field:focus {
+    outline: none;
+    border-color: #1E1E1E;
+  }
+  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field::-ms-expand { /* Hide default dropdown arrow in IE/Edge */
+    display: none;
+  }
+  .product-modal .modal-content .form-section .action-fields .select-wrapper .dropdown-icon {
+    right: 10px;
+    font-size: 12px; /* Smaller icon to fit */
+  }
+  .product-modal .modal-content .form-section .submit-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+  /* Style the dropdown list (options) for WebKit browsers (e.g., Safari, Chrome on iPhone) */
+  /* Style the dropdown list for Firefox */
+}
+@media (max-width: 430px) and (max-width: 430px) {
+  .select-field::-webkit-calendar-picker-indicator { /* Hide default dropdown arrow */
+    display: none;
+  }
+  .select-field::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar in dropdown */
+  }
+  .select-field option {
+    padding: 8px 12px; /* Match mobile input padding */
+    font-size: 14px; /* Match mobile font size */
+    background: #ffffff; /* White background for options */
+    color: #1E1E1E; /* Dark text for options */
+    border: none; /* Remove any default borders */
+    border-radius: 0; /* Reset border radius */
+    line-height: 1.2; /* Ensure compact line height */
+    max-width: 100%; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .select-field optgroup {
+    background: #ffffff; /* White background for optgroups */
+    color: #1E1E1E; /* Dark text for optgroups */
+    font-weight: bold; /* Bold for optgroup labels */
+    padding: 8px 12px; /* Match option padding */
+    line-height: 1.2; /* Ensure compact line height */
+  }
+  .select-field:-webkit-autofill, .select-field:-webkit-autofill:hover, .select-field:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #F0F8FF inset !important; /* Match background */
+    -webkit-text-fill-color: #1E1E1E !important; /* Match text color */
+  }
+}
+@media (max-width: 430px) and (max-width: 430px) {
+  .select-field::-moz-focus-inner {
+    border: 0; /* Remove focus outline in Firefox */
+  }
+  .select-field:-moz-focusring {
+    color: transparent; /* Hide focus ring in Firefox */
+    text-shadow: 0 0 0 #1E1E1E; /* Ensure text is visible */
+  }
+  .select-field option {
+    padding: 8px 12px; /* Match mobile input padding */
+    font-size: 14px; /* Match mobile font size */
+    background: #ffffff; /* White background for options */
+    color: #1E1E1E; /* Dark text for options */
+    border: none; /* Remove any default borders */
+    border-radius: 0; /* Reset border radius */
+    line-height: 1.2; /* Ensure compact line height */
+    max-width: 100%; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .select-field optgroup {
+    background: #ffffff; /* White background for optgroups */
+    color: #1E1E1E; /* Dark text for optgroups */
+    font-weight: bold; /* Bold for optgroup labels */
+    padding: 8px 12px; /* Match option padding */
+    line-height: 1.2; /* Ensure compact line height */
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.add-user-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1001;
+}
+.add-user-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.add-user-modal .modal-header h2, .add-user-modal .modal-header .h2 {
+  font-size: 1.5rem;
+  color: #1e1e1e;
+  font-weight: 700;
+  margin: 0;
+}
+.add-user-modal .modal-header .close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #1e1e1e;
+  padding: 0;
+  line-height: 1;
+}
+.add-user-modal .modal-header .close-button:hover {
+  color: #ff0000;
+}
+.add-user-modal .modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.add-user-modal .modal-content .layout-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.add-user-modal .modal-content .image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.add-user-modal .modal-content .image-section .image-preview {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 8px;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+}
+.add-user-modal .modal-content .image-section .image-preview img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.add-user-modal .modal-content .image-section .image-preview .placeholder {
+  color: #666666;
+  font-size: 0.875rem;
+  text-align: center;
+}
+.add-user-modal .modal-content .image-section .upload-button {
+  background: #1e1e1e;
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+.add-user-modal .modal-content .image-section .upload-button:hover {
+  background: #ff0000;
+}
+.add-user-modal .modal-content .image-section .upload-button svg {
+  font-size: 1rem;
+}
+.add-user-modal .modal-content .form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.add-user-modal .modal-content .form-section .name-fields,
+.add-user-modal .modal-content .form-section .location-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.add-user-modal .modal-content .form-section .field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.add-user-modal .modal-content .form-section .field-group.full-width {
+  grid-column: span 2;
+}
+.add-user-modal .modal-content .form-section .field-group label {
+  font-size: 0.875rem;
+  color: #1e1e1e;
+  font-weight: 500;
+}
+.add-user-modal .modal-content .form-section .field-group .input-field {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: #ffffff;
+  color: #1e1e1e;
+  transition: border-color 0.3s ease;
+}
+.add-user-modal .modal-content .form-section .field-group .input-field:focus {
+  outline: none;
+  border-color: #1e1e1e;
+}
+.add-user-modal .modal-content .form-section .button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.add-user-modal .modal-content .form-section .button-group .cancel-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #1e1e1e;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e1e1e;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.add-user-modal .modal-content .form-section .button-group .cancel-button:hover {
+  background: #ff0000;
+  color: #ffffff;
+  border-color: #ff0000;
+}
+.add-user-modal .modal-content .form-section .button-group .save-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #1e1e1e;
+  color: #ffffff;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.add-user-modal .modal-content .form-section .button-group .save-button:hover {
+  background: #ff0000;
+}
+
+/* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+@media (max-width: 430px) {
+  .add-user-modal {
+    padding: 1rem;
+    max-width: 95%;
+    max-height: 90vh;
+  }
+  .add-user-modal .modal-header {
+    margin-bottom: 1rem;
+  }
+  .add-user-modal .modal-header h2, .add-user-modal .modal-header .h2 {
+    font-size: 1.25rem;
+  }
+  .add-user-modal .modal-header .close-button {
+    font-size: 1.25rem;
+  }
+  .add-user-modal .modal-content .layout-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .add-user-modal .modal-content .image-section {
+    order: -1; /* Moves to the top */
+    width: 100%;
+  }
+  .add-user-modal .modal-content .image-section .image-preview {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+  .add-user-modal .modal-content .image-section .upload-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .image-section .upload-button svg {
+    font-size: 0.875rem;
+  }
+  .add-user-modal .modal-content .form-section {
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .name-fields,
+  .add-user-modal .modal-content .form-section .location-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .field-group.full-width {
+    grid-column: unset; /* Reset grid span for mobile */
+  }
+  .add-user-modal .modal-content .form-section .field-group label {
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .field-group .input-field {
+    padding: 0.625rem;
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .button-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .button-group .cancel-button,
+  .add-user-modal .modal-content .form-section .button-group .save-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+}
+/* Desktop Layout (above 430px) */
+@media (min-width: 431px) {
+  .add-user-modal .modal-content .layout-container {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .add-user-modal .modal-content .image-section {
+    order: 0; /* Default order for desktop */
+  }
+  .add-user-modal .modal-content .form-section .name-fields,
+  .add-user-modal .modal-content .form-section .location-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .add-user-modal .modal-content .form-section .field-group.full-width {
+    grid-column: span 2;
+  }
+}
+/* Landscape Mode (iPhone 14 Pro Max 932px × 430px) */
+@media (max-height: 430px) and (orientation: landscape) {
+  .add-user-modal {
+    padding: 1rem;
+    max-width: 95%;
+    max-height: 85vh;
+  }
+  .add-user-modal .modal-header h2, .add-user-modal .modal-header .h2 {
+    font-size: 1.25rem;
+  }
+  .add-user-modal .modal-header .close-button {
+    font-size: 1.25rem;
+  }
+  .add-user-modal .modal-content .layout-container {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .add-user-modal .modal-content .image-section {
+    flex-shrink: 0;
+  }
+  .add-user-modal .modal-content .image-section .image-preview {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+  .add-user-modal .modal-content .image-section .upload-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .image-section .upload-button svg {
+    font-size: 0.875rem;
+  }
+  .add-user-modal .modal-content .form-section {
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .name-fields,
+  .add-user-modal .modal-content .form-section .location-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .field-group label {
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .field-group .input-field {
+    padding: 0.625rem;
+    font-size: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .button-group {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  .add-user-modal .modal-content .form-section .button-group .cancel-button,
+  .add-user-modal .modal-content .form-section .button-group .save-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+  }
 }

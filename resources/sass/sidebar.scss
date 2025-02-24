@@ -1,0 +1,67 @@
+.user-table {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      th {
+        padding: 12px 20px;
+        text-align: left;
+        border: 1px solid #555;
+        color: #fff;
+        font-size: 14px;
+        background: #ff0000;
+        font-weight: 600;
+  
+        .header-actions-icon {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+  
+          .checkbox-icon {
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+  
+            &:hover {
+              color: #ff0000;
+            }
+          }
+        }
+      }
+  
+      td {
+        padding: 12px 20px;
+        text-align: left;
+        border: 1px solid #555;
+        color: #fff;
+        font-size: 14px;
+        background: #333;
+      }
+  
+      tr {
+        border-bottom: 1px solid #555;
+  
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  
+    .action-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+  
+      .checkbox-icon,
+      .delete-icon {
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+  
+        &:hover {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+  

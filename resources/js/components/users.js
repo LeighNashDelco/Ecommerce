@@ -1,25 +1,16 @@
 import React, { useState } from "react";
+
+import Sidebar from "./sidebar";
 import {
-  FaTachometerAlt,
-  FaBoxOpen,
-  FaShoppingCart,
-  FaUsers,
-  FaClipboardList,
-  FaStar,
-  FaBell,
-  FaCog,
-  FaMoneyBill,
-  FaChartBar,
-  FaUser,
-  FaChevronDown,
   FaSquare, // For unchecked checkboxes
   FaTrash, // Changed from FaTimes to FaTrash
-  FaUserShield,
+  FaChevronDown, // Added to fix the ReferenceError
 } from "react-icons/fa";
+import { IconTrash, IconEdit } from "@tabler/icons-react";
+
+console.log("Rendering Users component");
 
 const Users = () => {
-  const [adminDropdown, setAdminDropdown] = useState(false);
-  const [activeItem, setActiveItem] = useState("Users");
   const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
@@ -33,95 +24,11 @@ const Users = () => {
 
   return (
     <div className="app">
-      <div className="sidebar">
-        <h2>ADMIN</h2>
-        <ul>
-          <li>
-            <FaTachometerAlt />
-            <span>Dashboard</span>
-          </li>
-          <li>
-            <FaBoxOpen />
-            <span>Products</span>
-          </li>
-          <li>
-            <FaShoppingCart />
-            <span>Orders</span>
-          </li>
-          <li>
-            <FaClipboardList />
-            <span>Inventory</span>
-          </li>
-          <li className="active">
-            <FaUsers />
-            <span>Users</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Customer List</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Seller List</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Admin List</span>
-          </li>
-          <li>
-            <FaStar />
-            <span>Reviews & Notifications</span>
-          </li>
-          <hr className="separator" />
-          <div
-            className="admin-settings-header"
-            onClick={() => setAdminDropdown(!adminDropdown)}
-          >
-            <FaCog />
-            <span>Admin Settings</span>
-            <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
-          </div>
-          {adminDropdown && (
-            <ul className="dropdown">
-              <li
-                onClick={() => setActiveItem("Payment Management")}
-                className={
-                  activeItem === "Payment Management" ? "active payment-management" : ""
-                }
-              >
-                <FaMoneyBill />
-                <span>Payment Management</span>
-              </li>
-              <li
-                onClick={() => setActiveItem("Status & Category")}
-                className={activeItem === "Status & Category" ? "active" : ""}
-              >
-                <FaChartBar />
-                <span>Status & Category</span>
-              </li>
-              <li
-                onClick={() => setActiveItem("Help & Support")}
-                className={activeItem === "Help & Support" ? "active" : ""}
-              >
-                <FaBell />
-                <span>Help & Support</span>
-              </li>
-              <li
-                onClick={() => setActiveItem("Roles")}
-                className={activeItem === "Roles" ? "active" : ""}
-              >
-                <FaUserShield />
-                <span>Roles</span>
-              </li>
-            </ul>
-          )}
-        </ul>
-      </div>
-
-      <div className="dashboard">
-        <div className="users">
+      <Sidebar activeItem="Users" />
+      <div className="user-dashboard">
+        <div className="user-users">
           <h2>Users</h2>
-          <div className="users-header">
+          <div className="user-users-header">
             <div className="header-actions">
               <input
                 type="text"
@@ -160,7 +67,7 @@ const Users = () => {
               </div>
             </div>
           </div>
-          <div className="user-table">
+          <div className="user-user-table">
             <table>
               <thead>
                 <tr>
@@ -183,7 +90,7 @@ const Users = () => {
                     <td>
                       <div className="action-icons">
                         <FaSquare className="checkbox-icon" />
-                        <FaTrash className="delete-icon" /> {/* Changed from FaTimes to FaTrash */}
+                        <FaTrash className="delete-icon" />
                       </div>
                     </td>
                     <td></td>
@@ -196,8 +103,8 @@ const Users = () => {
               </tbody>
             </table>
           </div>
-          <div className="pagination">
-            <span>Page 1 of 1</span>
+          <div className="user-pagination">
+          <span>Page 1 of 1</span>
             <button>&lt;</button> {/* Using HTML entity for < */}
             <button className="active">1</button>
             <button>2</button>

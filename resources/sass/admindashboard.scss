@@ -214,6 +214,13 @@ body {
   padding: 30px;
   text-align: center;
   border-radius: 10px;
+  transition: background 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+
+  &:hover {
+    background: #2a2a2a; /* Slightly lighter dark gray for hover */
+    transform: scale(1.02); /* Slight scale effect for interactivity */
+    cursor: pointer; /* Indicate clickable/iteractive */
+  }
 }
 
 .stat-box .icon {

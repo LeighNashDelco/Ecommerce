@@ -1,0 +1,259 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Order Dashboard styles */
+.order-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+
+  .order-orders {
+    width: 100%;
+    background: #f4f4f4;
+    display: flex; /* Add flex to the container to align h2 and header */
+    flex-direction: column; /* Stack children vertically */
+
+    h2 {
+      margin: 0 0 20px 0; /* Keep margin but ensure it doesn’t affect alignment */
+      font-size: 24px;
+      color: #333;
+      line-height: 1; /* Ensure text height doesn’t disrupt alignment */
+      align-self: flex-start; /* Align h2 to the start of the flex container */
+    }
+
+    .order-orders-header {
+      display: flex;
+      justify-content: space-between; /* Split content to left and right */
+      align-items: center; /* Ensure all flex items are vertically centered */
+      margin-bottom: 20px;
+      background: #f4f4f4;
+
+      .left-actions {
+        display: flex;
+        align-items: center; /* Ensure vertical centering of all flex items */
+        gap: 10px; /* Spacing between left-side elements */
+      }
+
+      .right-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Spacing between right-side elements */
+      }
+
+      .header-button {
+        padding: 10px 20px; // Unchanged
+        height: 40px; // Unchanged
+        border: 1px solid #ccc;
+        border-radius: 10px; // Unchanged
+        background: #fff; // Unchanged
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-align: center;
+        line-height: 1;
+        display: flex;
+        align-items: center; /* Vertically center text within the button */
+        justify-content: center;
+        vertical-align: middle; /* Ensure vertical alignment with input */
+
+        &:hover {
+          background: #ff0000; // Unchanged
+          color: white; // Unchanged
+          border-color: #ff0000; // Unchanged
+        }
+      }
+
+      .search-input {
+        width: 200px;
+        padding: 8px 12px; /* Adjusted padding to fit 40px height and center text */
+        height: 40px; /* Matches header-button height */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff; /* White background as in your image */
+        color: #333;
+        font-size: 14px;
+        outline: none;
+        box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+        line-height: 1; /* Fine-tune vertical alignment of text inside input */
+        vertical-align: middle; /* Ensure vertical alignment with buttons */
+
+        &:focus {
+          border-color: #ff0000;
+        }
+      }
+
+      .filter-container {
+        position: relative;
+
+        .filter-button {
+          padding: 10px 20px; // Unchanged
+          height: 40px; // Unchanged
+          border: 1px solid #ccc;
+          border-radius: 10px; // Unchanged
+          background: #fff; // Unchanged
+          color: #333;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 0.3s;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 5px;
+          line-height: 1;
+
+          &:hover {
+            background: #ff0000; // Unchanged
+            color: white; // Unchanged
+            border-color: #ff0000; // Unchanged
+          }
+
+          span {
+            flex: 1;
+            text-align: left;
+          }
+        }
+
+        .filter-dropdown {
+          position: absolute;
+          top: 53px;
+          right: 0;
+          width: 120px;
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          list-style: none;
+          padding: 5px 0;
+          margin: 0;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          z-index: 10;
+
+          li {
+            padding: 8px 15px;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s; // Unchanged
+
+            &:hover {
+              background: #eeadad; // Unchanged
+              color: #333; // Unchanged
+            }
+          }
+        }
+      }
+    }
+
+    .order-order-table {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #ff0000;
+          font-weight: 600;
+        }
+
+        td {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #333;
+        }
+
+        tr {
+          border-bottom: 1px solid #555;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+
+        .action-icons {
+          display: flex; /* Use flex to align icons horizontally */
+          align-items: center; /* Vertically center the icons within the div */
+          gap: 10px; /* Add spacing between icons for better visual separation */
+          cursor: pointer; /* Indicate that the icons are clickable/interactive */
+
+          &:hover {
+            opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+          }
+        }
+
+        .checkbox-icon,
+        .delete-icon,
+        .edit-icon {
+          display: inline-flex; /* Ensure icons are treated as inline flex items */
+          align-items: center; /* Center the icon vertically within its container */
+          transition: opacity 0.3s; /* Smooth transition for hover effect */
+          color: #fff; /* Ensure icons are white on dark background */
+
+          &:hover {
+            opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
+            color: #ff0000; /* Change color on hover for visual feedback */
+          }
+        }
+      }
+    }
+
+    .order-pagination {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: #f4f4f4;
+
+      span {
+        color: #333;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+
+        &.active {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+      }
+    }
+  }
+}

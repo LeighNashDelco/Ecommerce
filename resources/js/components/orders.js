@@ -1,53 +1,45 @@
 import React, { useState } from "react";
-import Sidebar from "./sidebar"; 
-import {
-  FaSquare,
-  FaTrash, 
-  FaChevronDown,
-} from "react-icons/fa";
-import { IconTrash, IconEdit } from "@tabler/icons-react"; 
-import ProductModal from "./product_modal"; 
 
-const Product = () => {
-  const [searchTerm, setSearchTerm] = useState(""); 
+import Sidebar from "./sidebar"; // Import the Sidebar component
+import {
+  FaSquare, // For unchecked checkboxes
+  FaTrash, // Changed from FaTimes to FaTrash
+  FaChevronDown, // Added to fix the ReferenceError
+} from "react-icons/fa";
+import { IconTrash, IconEdit } from "@tabler/icons-react"; // Import Tabler Icons for trash and edit
+
+const Orders = () => {
+  const [searchTerm, setSearchTerm] = useState(""); // Removed adminDropdown and activeItem state since Sidebar handles it
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const filterOptions = [
     { value: "all", label: "All" },
-    { value: "gaming", label: "Gaming" },
-    { value: "wireless", label: "Wireless" },
-    { value: "office", label: "Office" },
+    { value: "pending", label: "Pending" },
+    { value: "shipped", label: "Shipped" },
+    { value: "delivered", label: "Delivered" },
   ];
-
-  const handleAddNewClick = () => {
-    setIsModalOpen(true); // Open the modal when "Add New" is clicked
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
-  };
 
   return (
     <div className="app">
-      <Sidebar activeItem="Products" /> 
-      <div className="product-dashboard">
-        <div className="product-products">
-          <h2>Products</h2>
-          <div className="product-products-header">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search Products"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="actions">
-              <button className="action-button" onClick={handleAddNewClick}>
-                Add New
-              </button>
-              <button className="action-button">View Archived</button>
+      <Sidebar activeItem="Orders" /> {/* Use the Sidebar component with "Orders" as active */}
+      <div className="order-dashboard">
+        <div className="order-orders">
+          <h2>Orders</h2>
+          <div className="order-orders-header">
+            <div className="left-actions">
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search Orders"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button className="header-button">Orders</button>
+              <button className="header-button">Returns</button>
+            </div>
+            <div className="right-actions">
+              <button className="header-button">View Archived</button>
               <div className="filter-container">
                 <button
                   className="filter-button"
@@ -74,7 +66,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className="product-product-table">
+          <div className="order-order-table">
             <table>
               <thead>
                 <tr>
@@ -84,12 +76,10 @@ const Product = () => {
                       Actions
                     </div>
                   </th>
-                  <th>Product Image</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Stock</th>
+                  <th>Order ID</th>
+                  <th>User</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
                   <th>Created at</th>
                   <th>Updated at</th>
                 </tr>
@@ -99,13 +89,11 @@ const Product = () => {
                   <tr key={index}>
                     <td>
                       <div className="action-icons">
-                        <FaSquare className="checkbox-icon" size={16} />
+                        <FaSquare className="checkbox-icon" />
                         <IconTrash size={16} className="delete-icon" />
                         <IconEdit size={16} className="edit-icon" />
                       </div>
                     </td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -117,19 +105,18 @@ const Product = () => {
               </tbody>
             </table>
           </div>
-          <div className="product-pagination">
-            <span>Page 1 of 1</span>
-            <button>&lt;</button> 
+          <div className="order-pagination">
+          <span>Page 1 of 1</span>
+            <button>&lt;</button> {/* Using HTML entity for < */}
             <button className="active">1</button>
             <button>2</button>
             <button>3</button>
-            <button>&gt;</button> 
+            <button>&gt;</button> {/* Using HTML entity for > */}
           </div>
         </div>
       </div>
-      {isModalOpen && <ProductModal onClose={handleModalClose} />} {/* Render modal as overlay when open */}
     </div>
   );
 };
 
-export default Product;
+export default Orders;

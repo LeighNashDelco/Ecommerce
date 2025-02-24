@@ -1,114 +1,22 @@
 import React, { useState } from "react";
+import Sidebar from "./sidebar"; // Import your Sidebar component
 import {
-  FaTachometerAlt,
   FaBoxOpen,
   FaShoppingCart,
-  FaUsers,
-  FaClipboardList,
-  FaStar,
-  FaBell,
-  FaCog,
   FaMoneyBill,
   FaChartBar,
   FaUser,
-  FaChevronDown,
-  FaUserShield, // Added for Roles
 } from "react-icons/fa";
 
 const Dashboard = () => {
-  const [adminDropdown, setAdminDropdown] = useState(false);
-  const [activeItem, setActiveItem] = useState("Payment Management");
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="app">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2>ADMIN</h2>
-        <ul>
-          <li className="active">
-            <FaTachometerAlt />
-            <span>Dashboard</span>
-          </li>
-          <li>
-            <FaBoxOpen />
-            <span>Products</span>
-          </li>
-          <li>
-            <FaShoppingCart />
-            <span>Orders</span>
-          </li>
-          <li>
-            <FaClipboardList />
-            <span>Inventory</span>
-          </li>
-          <li>
-            <FaUsers />
-            <span>Users</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Customer List</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Seller List</span>
-          </li>
-          <li>
-            <FaUser />
-            <span>Admin List</span>
-          </li>
-          <li>
-            <FaStar />
-            <span>Reviews & Notifications</span>
-          </li>
-          <hr className="separator" />
-          <div
-            className="admin-settings-header"
-            onClick={() => setAdminDropdown(!adminDropdown)}
-          >
-            <FaCog />
-            <span>Admin Settings</span>
-            <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
-          </div>
-          {adminDropdown && (
-            <ul className="dropdown">
-              <li
-                className={`${
-                  activeItem === "Payment Management" ? "active payment-management" : ""
-                }`}
-                onClick={() => setActiveItem("Payment Management")}
-              >
-                <FaMoneyBill />
-                <span>Payment Management</span>
-              </li>
-              <li
-                className={activeItem === "Status & Category" ? "active" : ""}
-                onClick={() => setActiveItem("Status & Category")}
-              >
-                <FaChartBar />
-                <span>Status & Category</span>
-              </li>
-              <li
-                className={activeItem === "Help & Support" ? "active" : ""}
-                onClick={() => setActiveItem("Help & Support")}
-              >
-                <FaBell />
-                <span>Help & Support</span>
-              </li>
-              <li
-                className={activeItem === "Roles" ? "active" : ""}
-                onClick={() => setActiveItem("Roles")}
-              >
-                <FaUserShield />
-                <span>Roles</span>
-              </li>
-            </ul>
-          )}
-        </ul>
-      </div>
+      {/* Replace inline sidebar with Sidebar component */}
+      <Sidebar activeItem="Dashboard" />
 
-      {/* Dashboard */}
+      {/* Dashboard content */}
       <div className="dashboard">
         <div className="stats">
           <div className="stat-box">
