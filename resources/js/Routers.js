@@ -3,21 +3,21 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 // Import components directly
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import Profile from "./components/Profile";
-import AdminList from "./components/AdminList";
-import CustomerList from "./components/CustomerList";
-import HelpAndSupport from "./components/HelpAndSupport";
-import Inventory from "./components/Inventory";
-import Orders from "./components/Orders";
-import PaymentManagement from "./components/PaymentManagement";
-import Products from "./components/Products";
-import Register from "./components/Register";
-import ReviewsAndNotifications from "./components/ReviewsAndNotifications";
-import SellerList from "./components/SellerList";
-import StatusAndCategory from "./components/StatusAndCategory";
-import Users from "./components/Users";
+import Login from "./components/login/Login";
+import Dashboard from "./components//admindashboard/admindashboard";
+import Profile from "./components/profile/Profile";
+import AdminList from "./components/adminlist/AdminList";
+import CustomerList from "./components/customerlist/CustomerList";
+import HelpAndSupport from "./components/helpandsupport/HelpAndSupport";
+import Inventory from "./components/inventory/Inventory";
+import Orders from "./components/orders/Orders";
+import PaymentManagement from "./components/paymentmanagement/PaymentManagement";
+import Products from "./components/products/Products";
+import Register from "./components/register/Register";
+import ReviewsAndNotifications from "./components/reviewsandnotification/ReviewsAndNotifications";
+import SellerList from "./components/sellerlist/SellerList";
+import StatusAndCategory from "./components/statusandcategory/StatusAndCategory";
+import Users from "./components/users/Users";
 
 export default function Routers() {
   return (
@@ -25,7 +25,7 @@ export default function Routers() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} /> {/* Default route */}
         <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="admindashboard" element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="adminlist" element={<AdminList />} />
         <Route path="customerlist" element={<CustomerList />} />

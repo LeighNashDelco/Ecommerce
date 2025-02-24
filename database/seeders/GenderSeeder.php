@@ -2,16 +2,19 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 
 class GenderSeeder extends Seeder
 {
     public function run()
     {
+        // Clears the table and resets the auto-increment ID
+        DB::table('genders')->truncate();
+
         DB::table('genders')->insert([
-            ['id' => 1, 'gender_name' => 'Male'],
-            ['id' => 2, 'gender_name' => 'Female'],
+            ['name' => 'Male'],
+            ['name' => 'Female'],
         ]);
     }
 }

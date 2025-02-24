@@ -9,5 +9,5 @@ class Gender extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['gender_name'];
+    protected $fillable = ['name'];
 }

@@ -14,7 +14,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'passport',
+            'driver' => 'passport', // ✅ Passport authentication
             'provider' => 'users',
         ],
     ],
@@ -36,5 +36,4 @@ return [
     ],
 
     'password_timeout' => 10800,
-
 ];
