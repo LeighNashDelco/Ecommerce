@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Gender; // Ensure Gender model is imported
 
 class GenderController extends Controller
 {
-    public function getGenders()
+    public function index()
     {
-        return response()->json(DB::table('genders')->get());
+        // Fetch all genders from the database
+        $genders = Gender::all();
+        
+        // Return JSON response
+        return response()->json($genders, 200);
     }
 }
