@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./../../../sass/components/_login.scss";
@@ -10,14 +10,22 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        // Redirect if already logged in
+        const token = localStorage.getItem("LaravelPassportToken");
+        if (token) {
+            navigate("/homepage");
+        }
+    }, [navigate]);
+
     const handleLogin = async (e) => {
         e.preventDefault();
         setError(null);
         setLoading(true);
-    
+
         try {
             console.log("Attempting login...", { email, password });
-    
+
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/login",
                 { email, password },
@@ -29,24 +37,26 @@ const Login = () => {
                     },
                 }
             );
-    
+
             console.log("Login successful:", response.data);
             const { token, user } = response.data;
-    
-            localStorage.setItem("token", token);
+
+            // Store token & user details in localStorage
+            localStorage.setItem("LaravelPassportToken", token);
             localStorage.setItem("user", JSON.stringify(user));
-    
+
+            // Set Axios default header for future requests
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    
+
             // Redirect based on role
-            if (user?.role_id === 3) {
+            if (user?.role_id === 2) {
                 navigate("/admindashboard");
             } else {
-                navigate("/home");
+                navigate("/homepage");
             }
         } catch (err) {
             console.error("Login failed:", err);
-    
+
             if (err.response) {
                 console.error("Error response:", err.response.data);
                 if (err.response.status === 401) {
@@ -63,8 +73,7 @@ const Login = () => {
             setLoading(false);
         }
     };
-    
-    
+
 
     return (
         <div className="login-wrapper">

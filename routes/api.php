@@ -10,8 +10,8 @@ use App\Http\Controllers\GenderController;
 
 # AUTHENTICATION ROUTES (Passport)
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api'); // Fixed redundancy
 
 # AUTHENTICATED USER INFO
 Route::middleware('auth:api')->get('/user', function (Request $request) {

@@ -15,7 +15,8 @@ import PaymentManagement from "./components/paymentmanagement/PaymentManagement"
 import Products from "./components/products/Products";
 import Register from "./components/register/Register";
 import ReviewsAndNotifications from "./components/reviewsandnotification/ReviewsAndNotifications";
-import SellerList from "./components/sellerlist/SellerList";
+import Roles from "./components/roles/Roles";
+import Shipment from "./components/shipment/Shipment";
 import StatusAndCategory from "./components/statusandcategory/StatusAndCategory";
 import Users from "./components/users/Users";
 
@@ -36,7 +37,8 @@ export default function Routers() {
         <Route path="products" element={<Products />} />
         <Route path="register" element={<Register />} />
         <Route path="reviewsandnotifications" element={<ReviewsAndNotifications />} />
-        <Route path="sellerlist" element={<SellerList />} />
+        <Route path="roles" element={<Roles />} />
+        <Route path="shipment" element={<Shipment />} />
         <Route path="statusandcategory" element={<StatusAndCategory />} />
         <Route path="users" element={<Users />} />
       </Routes>

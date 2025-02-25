@@ -4,12 +4,14 @@
     background: #1d1d1d;
     color: white;
     padding: 20px;
-    z-index: 1001; // Higher than TopNavbar
+    z-index: 1001;
     box-sizing: border-box;
+    font-size: 14px; // Ensures all text inside sidebar is the same size
 
     h2 {
         text-align: center;
         margin-bottom: 20px;
+        font-size: 16px; // Slightly larger for the header
     }
 
     ul {
@@ -30,8 +32,9 @@
         margin-bottom: 5px;
         width: 100%;
         box-sizing: border-box;
+        font-size: 14px; // Consistent text size
 
-        &:hover, &.active {  // Make sure .active works
+        &:hover, &.active {
             background: #ff0000;
             color: white;
         }
@@ -42,7 +45,6 @@
         padding-left: 0;
 
         li {
-            font-size: 14px;
             padding: 10px 15px;
             background: #2a2a2a;
             color: white;
@@ -54,6 +56,7 @@
             align-items: center;
             justify-content: flex-start;
             gap: 10px;
+            font-size: 14px; // Ensures dropdown items match the main sidebar items
 
             &:hover {
                 background: #ff3b3b;
@@ -79,18 +82,18 @@
             border-radius: 8px;
             margin-bottom: 5px;
             background: #2a2a2a;
-            font-size: 14px;
+            font-size: 14px; // Same size as other list items
             gap: 10px;
 
             &:hover {
                 background: #ff3b3b;
             }
 
-            &.active, &.payment-management {
+            &.active, &.roles {
                 background: #ff0000;
             }
 
-            &.active:hover, &.payment-management:hover {
+            &.active:hover, &.roles:hover {
                 background: #ff3b3b;
             }
         }
@@ -109,7 +112,7 @@
         border-radius: 8px;
         margin-bottom: 5px;
         background: #1d1d1d;
-        font-size: 14px;
+        font-size: 14px; // Matches sidebar text size
         border: 1px solid #444;
         gap: 10px;
 

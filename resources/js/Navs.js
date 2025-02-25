@@ -39,7 +39,10 @@ export default function Navs() {
           <Link to="/reviewsandnotifications">Reviews & Notifications</Link>
         </li>
         <li>
-          <Link to="/sellerlist">Seller List</Link>
+          <Link to="/roles">roles</Link>
+        </li>
+        <li>
+          <Link to="/shipment">Shipment</Link>
         </li>
         <li>
           <Link to="/statusandcategory">Status & Category</Link>

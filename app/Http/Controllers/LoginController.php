@@ -11,24 +11,46 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            $token = $user->createToken('LaravelPassportToken')->accessToken;
+
+            return response()->json([
+                'message' => 'Login successful',
+                'user' => $user,
+                'token' => $token
+            ], 200);
+        } else {
+            return response()->json([
+                'error' => 'Invalid email or password.'
+            ], 401);
         }
-
-        $user = Auth::user();
-        $token = $user->createToken('MyAppToken')->accessToken;
-
-        return response()->json(['token' => $token, 'user' => $user]);
     }
 
     public function logout(Request $request)
-    {
-        $request->user()->token()->revoke();
-        return response()->json(['message' => 'Logged out']);
+{
+    $user = Auth::guard('api')->user(); // ✅ Use auth:api guard
+
+    if ($user) { 
+        $user->tokens->each(function ($token) {
+            $token->revoke();
+        });
+
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ], 200);
     }
+
+    return response()->json([
+        'error' => 'Unauthorized'
+    ], 401);
+}
+
+
+
 }
