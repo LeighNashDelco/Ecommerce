@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\GenderController;
+use App\Http\Controllers\AdminDashboardController;
 
 # AUTHENTICATION ROUTES (Passport)
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -24,3 +25,8 @@ Route::post('/profiles', [ProfileController::class, 'store'])->middleware('auth:
 # FETCH FOR REGISTRATION ROLES AND GENDERS
 Route::get('/roles', [RolesController::class, 'index']);
 Route::get('/genders', [GenderController::class, 'index']);
+
+
+# STATISTICS
+Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
+Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);

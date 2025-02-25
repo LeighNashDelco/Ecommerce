@@ -61,8 +61,9 @@ const AdminDashboard = () => {
     <div className="app">
       <Sidebar activeItem={activeItem} setActiveItem={setActiveItem} />
       <div className="dashboard">
-      <TopNavbar /> {/* Add this line to show the top navbar */}
-              
+        <TopNavbar />
+
+        {/* Stats Section */}
         <div className="stats">
           <div className="stat-box">
             <FaUser className="icon" />
@@ -95,7 +96,7 @@ const AdminDashboard = () => {
           <div className="stat-box">
             <FaMoneyBill className="icon" />
             <p>Total Earnings</p>
-            <h2>${stats.total_earnings}</h2>
+            <h2>₱{stats.total_earnings}</h2> {/* Changed to ₱ */}
           </div>
           <div className="stat-box">
             <FaChartBar className="icon" />
@@ -104,17 +105,19 @@ const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Orders Section */}
         <div className="orders">
           <h3>Today's New Orders</h3>
           <div className="search-container">
             <input
               type="text"
               className="search-input"
-              placeholder="Search Products"
+              placeholder="Search Orders"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+
           <div className="order-table">
             <table>
               <thead>
@@ -129,14 +132,14 @@ const AdminDashboard = () => {
                   </th>
                   <th>Actions</th>
                   <th>Customer</th>
-                  <th>Order ID</th>
-                  <th>Date</th>
+                  <th>Product</th>
+                  <th>Order Date</th>
                   <th>Quantity</th>
                   <th>Amount</th>
                   <th>Order Status</th>
-                  <th>Payment Status</th>
                 </tr>
               </thead>
+
               <tbody>
                 {orders.map((order) => (
                   <tr key={order.id}>
@@ -153,15 +156,15 @@ const AdminDashboard = () => {
                       <FaTrash className="icon action-icon" />
                     </td>
                     <td>{order.customer}</td>
-                    <td>{order.id}</td>
-                    <td>{order.date}</td>
-                    <td>{order.quantity}</td>
-                    <td>${order.amount}</td>
-                    <td>{order.status}</td>
-                    <td>{order.payment_status}</td>
+                        <td>{order.product}</td>
+                        <td>{new Date(order.order_date).toLocaleDateString()}</td>
+                        <td>{order.quantity}</td>
+                        <td>₱{order.total_amount}</td>
+                        <td>{order.status}</td>
                   </tr>
                 ))}
               </tbody>
+
             </table>
           </div>
         </div>
