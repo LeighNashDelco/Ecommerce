@@ -12106,7 +12106,7 @@ textarea.form-control-lg {
     padding: 30px;
   }
   .login-image-section {
-    height: 40vh;
+    display: none; /* Hides the image section */
   }
 }
 .register-wrapper {
@@ -12245,10 +12245,11 @@ body {
   background-color: #f4f4f4;
 }
 
-.app {
+.app-container {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -12258,26 +12259,23 @@ body {
   color: white;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Allow vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .sidebar::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers (Chrome, Safari) */
+  display: none;
 }
-
 .sidebar h2, .sidebar .h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .sidebar ul li {
   display: flex;
   align-items: center;
@@ -12291,26 +12289,24 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
-
 .sidebar ul li:hover,
 .sidebar ul li.active {
   background: #ff0000;
   color: white;
 }
-
 .sidebar .dropdown {
   width: 100%;
   padding-left: 0;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  max-height: calc(100vh - 200px); /* Limit dropdown height */
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
   box-sizing: border-box;
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .sidebar .dropdown::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers */
+  display: none;
 }
 .sidebar .dropdown li {
   font-size: 14px;
@@ -12331,15 +12327,13 @@ body {
   color: white;
 }
 .sidebar .dropdown li.active {
-  background: #ff0000; /* Match active state from users.scss */
+  background: #ff0000;
 }
-
 .sidebar .admin-settings {
   border-top: 1px solid #444;
   margin-top: 10px;
   padding-top: 0;
 }
-
 .sidebar .admin-settings li {
   display: flex;
   align-items: center;
@@ -12356,23 +12350,19 @@ body {
   font-size: 14px;
   gap: 10px;
 }
-
 .sidebar .admin-settings li:hover {
   background: #ff3b3b;
   color: white;
 }
-
 .sidebar .admin-settings li.active,
 .sidebar .admin-settings li.payment-management {
   background: #ff0000;
   color: #fff;
 }
-
 .sidebar .admin-settings li.active:hover,
 .sidebar .admin-settings li.payment-management:hover {
   background: #ff3b3b;
 }
-
 .sidebar .admin-settings li img,
 .sidebar .admin-settings li i,
 .sidebar .dropdown li img,
@@ -12385,7 +12375,6 @@ body {
      object-fit: contain;
   filter: brightness(0) invert(1);
 }
-
 .sidebar .admin-settings-header {
   display: flex;
   align-items: center;
@@ -12403,12 +12392,10 @@ body {
   border: 1px solid #444;
   gap: 10px;
 }
-
 .sidebar .admin-settings-header:hover {
   background: #ff0000;
   color: white;
 }
-
 .sidebar .admin-settings-header img,
 .sidebar .admin-settings-header i {
   width: 20px;
@@ -12418,69 +12405,135 @@ body {
   filter: brightness(0) invert(1);
 }
 
-.dashboard {
+.dashboard-content {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: #fff;
+  overflow-y: auto;
+  padding: 20px;
+  background: #f4f4f4;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
+@media (max-width: 768px) {
+  .dashboard-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .stats {
+  margin-bottom: 30px;
+}
+.stats.desktop-stats {
   display: flex;
   gap: 20px;
-  margin-bottom: 20px;
+}
+.stats.desktop-stats:nth-child(2) {
+  margin-top: 20px;
+}
+.stats.standalone {
+  display: none;
+}
+@media (max-width: 768px) {
+  .stats.standalone {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .stats.standalone .stat-box {
+    width: 100%;
+  }
+}
+.stats.two-per-row {
+  display: none;
+}
+@media (max-width: 768px) {
+  .stats.two-per-row {
+    display: block;
+  }
+  .stats.two-per-row .stat-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .stats.two-per-row .stat-row .stat-box {
+    flex: 1;
+    width: 50%;
+    padding: 15px;
+  }
 }
 
 .stat-box {
   flex: 1;
   background: #222;
   color: white;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   border-radius: 10px;
-  transition: background 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  transition: background 0.3s, transform 0.3s;
 }
 .stat-box:hover {
-  background: #2a2a2a; /* Slightly lighter dark gray for hover */
-  transform: scale(1.02); /* Slight scale effect for interactivity */
-  cursor: pointer; /* Indicate clickable/iteractive */
+  background: #2a2a2a;
+  transform: scale(1.02);
+  cursor: pointer;
 }
-
 .stat-box .icon {
   font-size: 24px;
-  color: red;
+  color: #ff0000;
 }
-
+.stat-box p {
+  margin: 10px 0 5px;
+  font-size: 14px;
+  color: #ccc;
+}
 .stat-box h2, .stat-box .h2 {
-  margin-top: 5px;
-}
-
-.orders {
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  background: #333;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.orders h3, .orders .h3 {
   margin: 0;
-  font-size: 18px;
-  color: #fff;
+  font-size: 24px;
   font-weight: 600;
 }
 
-.orders .search-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+@media (min-width: 769px) {
+  .stats.desktop-stats {
+    display: flex;
+    gap: 20px;
+  }
+  .stats.desktop-stats:nth-child(2) {
+    margin-top: 20px;
+  }
+  .stats.desktop-stats .stat-box {
+    flex: 1;
+  }
+  .stats.standalone,
+  .stats.two-per-row {
+    display: none;
+  }
+}
+.orders {
+  background: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-.orders .search-input {
+.orders h3, .orders .h3 {
+  margin: 0 0 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.search-container {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-input {
   width: 200px;
   padding: 8px 12px;
   border: 1px solid #555;
@@ -12489,17 +12542,15 @@ body {
   color: #333;
   font-size: 14px;
   outline: none;
-  cursor: text;
+  transition: border-color 0.3s ease;
 }
-
-.orders .search-input:focus {
+.search-input:focus {
   border-color: #ff0000;
 }
 
 .order-table {
-  padding: 0;
-  border-radius: 10px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .order-table table {
@@ -12511,31 +12562,206 @@ body {
 .order-table th,
 .order-table td {
   padding: 12px 20px;
-  text-align: left;
-  border: 1px solid #555;
-  color: #fff;
   font-size: 14px;
+  transition: background 0.3s ease;
 }
 
 .order-table th {
   background: #ff0000;
   color: white;
-  border-radius: 0;
   font-weight: 600;
+  text-align: center;
 }
 
 .order-table td {
-  background: #333;
+  color: #fff;
 }
 
-.order-table tr {
-  border-bottom: 1px solid #555;
+.date-data,
+.quantity-data,
+.payment-status-data {
+  text-align: center;
 }
 
-.order-table tr:last-child {
-  border-bottom: none;
+.order-table td:not(.date-data):not(.quantity-data):not(.payment-status-data) {
+  text-align: left;
 }
 
+.order-table td:hover {
+  background: #2a2a2a;
+}
+
+.order-row:hover {
+  background: #2a2a2a;
+  cursor: pointer;
+}
+
+.action-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-icon {
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.action-icon:hover {
+  color: #ff3b3b;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  .dashboard-content {
+    padding: 10px;
+    margin-top: 0;
+  }
+  .dashboard {
+    max-width: 100%;
+    padding: 0;
+  }
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .stats.desktop-stats {
+    display: none;
+  }
+  .stats.standalone {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .stats.standalone .stat-box {
+    width: 100%;
+  }
+  .stats.two-per-row {
+    display: block;
+  }
+  .stats.two-per-row .stat-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .stats.two-per-row .stat-row .stat-box {
+    padding: 15px;
+    width: 50%;
+  }
+  .stat-box {
+    padding: 15px;
+  }
+  .orders {
+    padding: 15px;
+  }
+  .search-container {
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+  .order-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .order-card {
+    background: #333;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  .order-card:hover {
+    transform: scale(1.02);
+  }
+  .order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+  }
+  .order-id {
+    font-weight: 600;
+    color: #ff0000;
+  }
+  .order-status {
+    font-size: 12px;
+    background: #444;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: #fff;
+  }
+  .order-card-body p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+  }
+  .order-card-body p strong {
+    color: #ccc;
+  }
+  .order-card-actions {
+    margin-top: 10px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .separate-icon {
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  .separate-icon:hover {
+    background: #ff3b3b;
+  }
+  .separate-icon .action-icon {
+    font-size: 16px;
+    color: #fff;
+  }
+}
 html,
 body {
   height: 100%;
@@ -12544,63 +12770,79 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the provided snippet */
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
 /* Product Dashboard styles */
 .product-dashboard {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard */
   background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+}
+@media (max-width: 768px) {
+  .product-dashboard {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard */
+  }
 }
 .product-dashboard .product-products {
-  width: 100%;
+  max-width: 1200px; /* Match the max-width of the Dashboard */
+  width: 100%; /* Ensure it takes full width of the container */
+  margin: 0 auto; /* Center the content horizontally */
   background: #f4f4f4;
 }
 .product-dashboard .product-products h2, .product-dashboard .product-products .h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0; /* Increased margin-bottom to create more space below "Products" */
   font-size: 24px;
   color: #333;
+  text-align: left; /* Keep "Products" on the left side */
 }
 .product-dashboard .product-products .product-products-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Split content to left (search) and right (buttons) */
   align-items: center;
   margin-bottom: 20px;
-  background: #f4f4f4;
+  background: #fff; /* Match background from provided snippet */
 }
 .product-dashboard .product-products .product-products-header .search-input {
   width: 200px;
-  padding: 8px 12px;
+  padding: 8px 12px; /* Adjusted padding to match provided snippet */
+  height: 40px; /* Match height with buttons for alignment, as in provided snippet */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
+  border-radius: 4px; /* Match provided snippet’s search input corner radius */
+  background: #fff; /* White background as in provided snippet */
   color: #333;
   font-size: 14px;
   outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
 }
 .product-dashboard .product-products .product-products-header .search-input:focus {
   border-color: #ff0000;
 }
 .product-dashboard .product-products .product-products-header .actions {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements, matching provided snippet */
+  justify-content: flex-end; /* Align buttons to the right */
 }
-.product-dashboard .product-products .product-products-header .actions .action-button {
-  padding: 12px 20px;
-  width: 120px;
-  height: 48px;
+.product-dashboard .product-products .product-products-header .actions .action-button, .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button {
+  padding: 10px 20px; /* Match padding from provided snippet */
+  height: 40px; /* Match height from provided snippet */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
+  border-radius: 10px; /* Match corner radius from provided snippet */
+  background: #fff; /* White background as in provided snippet */
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -12611,8 +12853,8 @@ body {
   align-items: center;
   justify-content: center;
 }
-.product-dashboard .product-products .product-products-header .actions .action-button:hover {
-  background: #ff0000;
+.product-dashboard .product-products .product-products-header .actions .action-button:hover, .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button:hover {
+  background: #ff0000; /* Red background on hover, matching provided snippet */
   color: white;
   border-color: #ff0000;
 }
@@ -12620,26 +12862,13 @@ body {
   position: relative;
 }
 .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button {
-  padding: 12px 20px;
-  width: 120px;
-  height: 48px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
-  color: #333;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
+  /* Inherit styles from action-button for consistency */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  line-height: 1;
-}
-.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button:hover {
-  background: #ff0000;
-  color: white;
-  border-color: #ff0000;
+  padding: 10px 20px; /* Match padding from provided snippet */
+  height: 40px; /* Match height from provided snippet */
 }
 .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button span {
   flex: 1;
@@ -12647,27 +12876,38 @@ body {
 }
 .product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown {
   position: absolute;
-  top: 53px;
+  top: 100%; /* Position below the button, matching provided snippet */
   right: 0;
-  width: 120px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  list-style: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Higher z-index to ensure it stays above other elements */
+  min-width: 120px; /* Ensure the dropdown is wide enough for content */
+  list-style: none; /* Remove bullet points from the dropdown list */
   padding: 5px 0;
   margin: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 10;
 }
 .product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li {
   padding: 8px 15px;
-  color: #333;
-  font-size: 14px;
   cursor: pointer;
+  color: #333;
+  transition: background 0.3s; /* Smooth transition for hover effect */
+  background: #f0f0f0; /* Light gray background for all items by default, matching provided snippet */
+  border-bottom: 1px solid #ccc; /* Optional: Add a separator between items */
 }
 .product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li:hover {
-  background: #ff0000;
-  color: white;
+  background: #eeadad; /* Light pink/red background on hover for visual feedback, matching provided snippet */
+  color: #333; /* Ensure text remains readable */
+}
+.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+.product-dashboard .product-products .product-product-table {
+  width: 100%; /* Ensure the table takes full width of its container */
+  max-width: 1200px; /* Match the max-width of the parent container */
+  margin: 0 auto; /* Center the table horizontally */
+  overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens */
 }
 .product-dashboard .product-products .product-product-table table {
   width: 100%;
@@ -12729,7 +12969,7 @@ body {
 }
 .product-dashboard .product-products .product-pagination {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Align pagination to the right */
   align-items: center;
   gap: 10px;
   margin-top: 20px;
@@ -12768,47 +13008,48 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
-  overflow-x: hidden; /* Prevent horizontal overflow on body */
+  overflow-x: hidden;
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal overflow on app */
-  background: yellow; /* Add this to test SCSS connection */
+  overflow-x: hidden;
+  background: #f4f4f4;
 }
 
-/* User Dashboard styles */
 .user-dashboard {
   flex: 1;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
   overflow-x: hidden;
+  width: calc(100% - 250px);
+  margin-left: 250px;
 }
-.user-dashboard .user-users {
+
+.user-users {
   width: 100%;
   background: #f4f4f4;
 }
-.user-dashboard .user-users h2, .user-dashboard .user-users .h2 {
+.user-users h2, .user-users .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.user-dashboard .user-users .user-users-header {
+.user-users .user-users-header {
   background: #f4f4f4;
   margin-bottom: 20px;
 }
-.user-dashboard .user-users .user-users-header .header-actions {
+.user-users .user-users-header .header-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.user-dashboard .user-users .user-users-header .header-actions .search-users-input {
+.user-users .user-users-header .header-actions .search-users-input {
   padding: 12px 20px;
   width: 200px;
   height: 48px;
@@ -12821,15 +13062,15 @@ body {
   text-align: left;
   box-sizing: border-box;
 }
-.user-dashboard .user-users .user-users-header .header-actions .search-users-input:focus {
+.user-users .user-users-header .header-actions .search-users-input:focus {
   border-color: #ff0000;
 }
-.user-dashboard .user-users .user-users-header .header-actions .right-actions {
+.user-users .user-users-header .header-actions .right-actions {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.user-dashboard .user-users .user-users-header .header-actions .right-actions .action-button {
+.user-users .user-users-header .header-actions .right-actions .action-button, .user-users .user-users-header .header-actions .right-actions .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button, .product-dashboard .product-products .product-products-header .actions .filter-container .user-users .user-users-header .header-actions .right-actions .filter-button {
   padding: 10px 20px;
   height: 40px;
   border: 1px solid #ccc;
@@ -12845,15 +13086,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-.user-dashboard .user-users .user-users-header .header-actions .right-actions .action-button:hover {
+.user-users .user-users-header .header-actions .right-actions .action-button:hover, .user-users .user-users-header .header-actions .right-actions .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button:hover, .product-dashboard .product-products .product-products-header .actions .filter-container .user-users .user-users-header .header-actions .right-actions .filter-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container {
+.user-users .user-users-header .header-actions .filter-container {
   position: relative;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button {
+.user-users .user-users-header .header-actions .filter-container .filter-button {
   padding: 10px 20px;
   height: 40px;
   border: 1px solid #ccc;
@@ -12869,16 +13110,16 @@ body {
   gap: 5px;
   line-height: 1;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button:hover {
+.user-users .user-users-header .header-actions .filter-container .filter-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-button span {
+.user-users .user-users-header .header-actions .filter-container .filter-button span {
   flex: 1;
   text-align: left;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown {
+.user-users .user-users-header .header-actions .filter-container .filter-dropdown {
   position: absolute;
   top: 53px;
   right: 0;
@@ -12892,22 +13133,22 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown li {
+.user-users .user-users-header .header-actions .filter-container .filter-dropdown li {
   padding: 8px 15px;
   color: #333;
   font-size: 14px;
   cursor: pointer;
   transition: background 0.3s;
 }
-.user-dashboard .user-users .user-users-header .header-actions .filter-container .filter-dropdown li:hover {
+.user-users .user-users-header .header-actions .filter-container .filter-dropdown li:hover {
   background: #eeadad;
   color: #333;
 }
-.user-dashboard .user-users .user-user-table table {
+.user-users .user-user-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.user-dashboard .user-users .user-user-table table th {
+.user-users .user-user-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -12916,20 +13157,20 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.user-dashboard .user-users .user-user-table table th .header-actions-icon {
+.user-users .user-user-table table th .header-actions-icon {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.user-dashboard .user-users .user-user-table table th .header-actions-icon .checkbox-icon {
+.user-users .user-user-table table th .header-actions-icon .checkbox-icon {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
-.user-dashboard .user-users .user-user-table table th .header-actions-icon .checkbox-icon:hover {
+.user-users .user-user-table table th .header-actions-icon .checkbox-icon:hover {
   color: #ff0000;
 }
-.user-dashboard .user-users .user-user-table table td {
+.user-users .user-user-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -12937,28 +13178,28 @@ body {
   font-size: 14px;
   background: #333;
 }
-.user-dashboard .user-users .user-user-table table tr {
+.user-users .user-user-table table tr {
   border-bottom: 1px solid #555;
 }
-.user-dashboard .user-users .user-user-table table tr:last-child {
+.user-users .user-user-table table tr:last-child {
   border-bottom: none;
 }
-.user-dashboard .user-users .user-user-table .action-icons {
+.user-users .user-user-table .action-icons {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.user-dashboard .user-users .user-user-table .action-icons .checkbox-icon,
-.user-dashboard .user-users .user-user-table .action-icons .delete-icon {
+.user-users .user-user-table .action-icons .checkbox-icon,
+.user-users .user-user-table .action-icons .delete-icon {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
-.user-dashboard .user-users .user-user-table .action-icons .checkbox-icon:hover,
-.user-dashboard .user-users .user-user-table .action-icons .delete-icon:hover {
+.user-users .user-user-table .action-icons .checkbox-icon:hover,
+.user-users .user-user-table .action-icons .delete-icon:hover {
   color: #ff0000;
 }
-.user-dashboard .user-users .user-pagination {
+.user-users .user-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -12966,11 +13207,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.user-dashboard .user-users .user-pagination span {
+.user-users .user-pagination span {
   color: #333;
   font-size: 14px;
 }
-.user-dashboard .user-users .user-pagination button {
+.user-users .user-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -12980,15 +13221,26 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.user-dashboard .user-users .user-pagination button:hover {
+.user-users .user-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.user-dashboard .user-users .user-pagination button.active {
+.user-users .user-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+/* Assuming Sidebar has a fixed width */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: #fff;
 }
 
 html,
@@ -12999,42 +13251,53 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the Product page */
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
 /* Order Dashboard styles */
 .order-dashboard {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard and Product */
   background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard and Product */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+}
+@media (max-width: 768px) {
+  .order-dashboard {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard and Product */
+  }
 }
 .order-dashboard .order-orders {
-  width: 100%;
+  max-width: 1200px; /* Match the max-width of the Dashboard and Product */
+  width: 100%; /* Ensure it takes full width of the container */
+  margin: 0 auto; /* Center the content horizontally */
   background: #f4f4f4;
   display: flex; /* Add flex to the container to align h2 and header */
   flex-direction: column; /* Stack children vertically */
 }
 .order-dashboard .order-orders h2, .order-dashboard .order-orders .h2 {
-  margin: 0 0 20px 0; /* Keep margin but ensure it doesn’t affect alignment */
+  margin: 0 0 30px 0; /* Increased margin-bottom to match Product page for spacing below "Orders" */
   font-size: 24px;
   color: #333;
+  text-align: left; /* Keep "Orders" on the left side, matching Product */
   line-height: 1; /* Ensure text height doesn’t disrupt alignment */
-  align-self: flex-start; /* Align h2 to the start of the flex container */
 }
 .order-dashboard .order-orders .order-orders-header {
   display: flex;
-  justify-content: space-between; /* Split content to left and right */
+  justify-content: space-between; /* Split content to left (search/buttons) and right (filter) */
   align-items: center; /* Ensure all flex items are vertically centered */
   margin-bottom: 20px;
-  background: #f4f4f4;
+  background: #fff; /* Match background from Product page */
 }
 .order-dashboard .order-orders .order-orders-header .left-actions {
   display: flex;
@@ -13044,14 +13307,15 @@ body {
 .order-dashboard .order-orders .order-orders-header .right-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between right-side elements */
+  gap: 10px; /* Spacing between right-side elements, matching Product */
+  justify-content: flex-end; /* Align filter to the right, matching Product */
 }
 .order-dashboard .order-orders .order-orders-header .header-button {
-  padding: 10px 20px;
-  height: 40px;
+  padding: 10px 20px; /* Match padding from Product page */
+  height: 40px; /* Match height from Product page */
   border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 10px; /* Match corner radius from Product page */
+  background: #fff; /* White background as in Product */
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13061,26 +13325,25 @@ body {
   display: flex;
   align-items: center; /* Vertically center text within the button */
   justify-content: center;
-  vertical-align: middle; /* Ensure vertical alignment with input */
 }
 .order-dashboard .order-orders .order-orders-header .header-button:hover {
-  background: #ff0000;
+  background: #ff0000; /* Red background on hover, matching Product */
   color: white;
   border-color: #ff0000;
 }
 .order-dashboard .order-orders .order-orders-header .search-input {
   width: 200px;
-  padding: 8px 12px; /* Adjusted padding to fit 40px height and center text */
-  height: 40px; /* Matches header-button height */
+  padding: 8px 12px; /* Adjusted padding to match Product page */
+  height: 40px; /* Matches header-button height, as in Product */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff; /* White background as in your image */
+  border-radius: 4px; /* Match Product page’s search input corner radius */
+  background: #fff; /* White background as in Product */
   color: #333;
   font-size: 14px;
   outline: none;
   box-sizing: border-box; /* Ensure padding doesn’t affect total height */
   line-height: 1; /* Fine-tune vertical alignment of text inside input */
-  vertical-align: middle; /* Ensure vertical alignment with buttons */
+  vertical-align: middle; /* Ensure vertical alignment with buttons, matching Product */
 }
 .order-dashboard .order-orders .order-orders-header .search-input:focus {
   border-color: #ff0000;
@@ -13089,11 +13352,11 @@ body {
   position: relative;
 }
 .order-dashboard .order-orders .order-orders-header .filter-container .filter-button {
-  padding: 10px 20px;
-  height: 40px;
+  padding: 10px 20px; /* Match padding from Product page */
+  height: 40px; /* Match height from Product page */
   border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 10px; /* Match corner radius from Product page */
+  background: #fff; /* White background as in Product */
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13105,7 +13368,7 @@ body {
   line-height: 1;
 }
 .order-dashboard .order-orders .order-orders-header .filter-container .filter-button:hover {
-  background: #ff0000;
+  background: #ff0000; /* Red background on hover, matching Product */
   color: white;
   border-color: #ff0000;
 }
@@ -13121,7 +13384,7 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  list-style: none;
+  list-style: none; /* Remove bullet points, matching Product */
   padding: 5px 0;
   margin: 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -13132,11 +13395,17 @@ body {
   color: #333;
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s; /* Smooth transition for hover effect, matching Product */
 }
 .order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li:hover {
-  background: #eeadad;
-  color: #333;
+  background: #eeadad; /* Light pink/red background on hover, matching Product */
+  color: #333; /* Ensure text remains readable */
+}
+.order-dashboard .order-orders .order-order-table {
+  width: 100%; /* Ensure the table takes full width of its container */
+  max-width: 1200px; /* Match the max-width of the parent container, matching Product */
+  margin: 0 auto; /* Center the table horizontally, matching Product */
+  overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens, matching Product */
 }
 .order-dashboard .order-orders .order-order-table table {
   width: 100%;
@@ -13190,7 +13459,7 @@ body {
 }
 .order-dashboard .order-orders .order-pagination {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Align pagination to the right, matching Product */
   align-items: center;
   gap: 10px;
   margin-top: 20px;
@@ -13229,55 +13498,71 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the Product and Orders pages */
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
 /* Inventory Dashboard styles */
 .inventory-dashboard {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard, Product, and Orders */
   background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard, Product, and Orders */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+}
+@media (max-width: 768px) {
+  .inventory-dashboard {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard, Product, and Orders */
+  }
 }
 .inventory-dashboard .inventory-orders {
-  width: 100%;
+  max-width: 1200px; /* Match the max-width of the Dashboard, Product, and Orders */
+  width: 100%; /* Ensure it takes full width of the container */
+  margin: 0 auto; /* Center the content horizontally */
   background: #f4f4f4;
+  display: flex; /* Add flex to the container to align h2 and header */
+  flex-direction: column; /* Stack children vertically */
 }
 .inventory-dashboard .inventory-orders h2, .inventory-dashboard .inventory-orders .h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0; /* Increased margin-bottom to match Product and Orders for spacing below "Inventory Management" */
   font-size: 24px;
   color: #333;
+  text-align: left; /* Keep "Inventory Management" on the left side, matching Product and Orders */
+  line-height: 1; /* Ensure text height doesn’t disrupt alignment */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header {
   display: flex;
-  justify-content: space-between; /* Split content to left and right */
-  align-items: center;
+  justify-content: space-between; /* Split content to left (search/buttons) and right (filter) */
+  align-items: center; /* Ensure all flex items are vertically centered */
   margin-bottom: 20px;
-  background: #f4f4f4;
+  background: #fff; /* Match background from Product and Orders pages */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .left-actions {
   display: flex;
-  align-items: center;
-  gap: 10px; /* Spacing between left-side elements */
+  align-items: center; /* Ensure vertical centering of all flex items */
+  gap: 10px; /* Spacing between left-side elements, matching Product and Orders */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .right-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between right-side elements */
+  gap: 10px; /* Spacing between right-side elements, matching Product and Orders */
+  justify-content: flex-end; /* Align filter and buttons to the right, matching Product and Orders */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .header-button {
-  padding: 10px 20px;
-  height: 40px;
+  padding: 10px 20px; /* Match padding from Product and Orders pages */
+  height: 40px; /* Match height from Product and Orders pages */
   border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 10px; /* Match corner radius from Product and Orders pages */
+  background: #fff; /* White background as in Product and Orders */
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13285,26 +13570,27 @@ body {
   text-align: center;
   line-height: 1;
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically center text within the button */
   justify-content: center;
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .header-button:hover {
-  background: #ff0000;
+  background: #ff0000; /* Red background on hover, matching Product and Orders */
   color: white;
   border-color: #ff0000;
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .search-input {
   width: 200px;
-  padding: 14px 20px; /* Adjusted padding to center text vertically and match button height */
-  height: 48px; /* Match height with buttons */
+  padding: 8px 12px; /* Adjusted padding to match Product and Orders pages */
+  height: 40px; /* Matches header-button height, as in Product and Orders */
   border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff; /* White background as in your image */
+  border-radius: 4px; /* Match Product and Orders pages’ search input corner radius */
+  background: #fff; /* White background as in Product and Orders */
   color: #333;
   font-size: 14px;
   outline: none;
   box-sizing: border-box; /* Ensure padding doesn’t affect total height */
-  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+  line-height: 1; /* Fine-tune vertical alignment of text inside input */
+  vertical-align: middle; /* Ensure vertical alignment with buttons, matching Product and Orders */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .search-input:focus {
   border-color: #ff0000;
@@ -13313,11 +13599,11 @@ body {
   position: relative;
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button {
-  padding: 10px 20px;
-  height: 40px;
+  padding: 10px 20px; /* Match padding from Product and Orders pages */
+  height: 40px; /* Match height from Product and Orders pages */
   border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 10px; /* Match corner radius from Product and Orders pages */
+  background: #fff; /* White background as in Product and Orders */
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13329,7 +13615,7 @@ body {
   line-height: 1;
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button:hover {
-  background: #ff0000;
+  background: #ff0000; /* Red background on hover, matching Product and Orders */
   color: white;
   border-color: #ff0000;
 }
@@ -13345,7 +13631,7 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  list-style: none;
+  list-style: none; /* Remove bullet points, matching Product and Orders */
   padding: 5px 0;
   margin: 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -13356,11 +13642,17 @@ body {
   color: #333;
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s; /* Smooth transition for hover effect, matching Product and Orders */
 }
 .inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown li:hover {
-  background: #eeadad;
-  color: #333;
+  background: #eeadad; /* Light pink/red background on hover, matching Product and Orders */
+  color: #333; /* Ensure text remains readable */
+}
+.inventory-dashboard .inventory-orders .inventory-order-table {
+  width: 100%; /* Ensure the table takes full width of its container */
+  max-width: 1200px; /* Match the max-width of the parent container, matching Product and Orders */
+  margin: 0 auto; /* Center the table horizontally, matching Product and Orders */
+  overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens, matching Product and Orders */
 }
 .inventory-dashboard .inventory-orders .inventory-order-table table {
   width: 100%;
@@ -13414,7 +13706,7 @@ body {
 }
 .inventory-dashboard .inventory-orders .inventory-pagination {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Align pagination to the right, matching Product and Orders */
   align-items: center;
   gap: 10px;
   margin-top: 20px;
@@ -13453,12 +13745,15 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
 .customer-app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
+  background: #f4f4f4;
 }
 
 .customer-dashboard {
@@ -13466,26 +13761,29 @@ body {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
+  overflow-x: hidden;
+  width: calc(100% - 250px);
+  margin-left: 250px;
 }
-.customer-dashboard .customer-content {
+
+.customer-content {
   width: 100%;
   background: #f4f4f4;
 }
-.customer-dashboard .customer-content h2, .customer-dashboard .customer-content .h2 {
+.customer-content h2, .customer-content .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.customer-dashboard .customer-content .customer-header {
+.customer-content .customer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   background: #f4f4f4;
 }
-.customer-dashboard .customer-content .customer-header .customer-search-input {
+.customer-content .customer-header .customer-search-input {
   width: 200px;
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -13495,14 +13793,14 @@ body {
   font-size: 14px;
   outline: none;
 }
-.customer-dashboard .customer-content .customer-header .customer-search-input:focus {
+.customer-content .customer-header .customer-search-input:focus {
   border-color: #ff0000;
 }
-.customer-dashboard .customer-content .customer-header .customer-actions {
+.customer-content .customer-header .customer-actions {
   display: flex;
   gap: 10px;
 }
-.customer-dashboard .customer-content .customer-header .customer-actions .customer-action-button {
+.customer-content .customer-header .customer-actions .customer-action-button {
   padding: 10px 20px;
   height: 40px;
   border: 1px solid #ccc;
@@ -13518,16 +13816,16 @@ body {
   align-items: center;
   justify-content: center;
 }
-.customer-dashboard .customer-content .customer-header .customer-actions .customer-action-button:hover {
+.customer-content .customer-header .customer-actions .customer-action-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.customer-dashboard .customer-content .customer-table table {
+.customer-content .customer-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.customer-dashboard .customer-content .customer-table table th {
+.customer-content .customer-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13536,7 +13834,7 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.customer-dashboard .customer-content .customer-table table td {
+.customer-content .customer-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13544,41 +13842,41 @@ body {
   font-size: 14px;
   background: #333;
 }
-.customer-dashboard .customer-content .customer-table table tr {
+.customer-content .customer-table table tr {
   border-bottom: 1px solid #555;
 }
-.customer-dashboard .customer-content .customer-table table tr:last-child {
+.customer-content .customer-table table tr:last-child {
   border-bottom: none;
 }
-.customer-dashboard .customer-content .customer-table table .customer-header-actions-icon {
+.customer-content .customer-table table .customer-header-actions-icon {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.customer-dashboard .customer-content .customer-table table .customer-action-icons {
+.customer-content .customer-table table .customer-action-icons {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.customer-dashboard .customer-content .customer-table table .customer-action-icons:hover {
+.customer-content .customer-table table .customer-action-icons:hover {
   opacity: 0.8;
 }
-.customer-dashboard .customer-content .customer-table table .customer-checkbox-icon,
-.customer-dashboard .customer-content .customer-table table .customer-delete-icon,
-.customer-dashboard .customer-content .customer-table table .customer-edit-icon {
+.customer-content .customer-table table .customer-checkbox-icon,
+.customer-content .customer-table table .customer-delete-icon,
+.customer-content .customer-table table .customer-edit-icon {
   display: inline-flex;
   align-items: center;
   transition: opacity 0.3s;
   color: #fff;
 }
-.customer-dashboard .customer-content .customer-table table .customer-checkbox-icon:hover,
-.customer-dashboard .customer-content .customer-table table .customer-delete-icon:hover,
-.customer-dashboard .customer-content .customer-table table .customer-edit-icon:hover {
+.customer-content .customer-table table .customer-checkbox-icon:hover,
+.customer-content .customer-table table .customer-delete-icon:hover,
+.customer-content .customer-table table .customer-edit-icon:hover {
   opacity: 0.6;
   color: #ff0000;
 }
-.customer-dashboard .customer-content .customer-pagination {
+.customer-content .customer-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -13586,11 +13884,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.customer-dashboard .customer-content .customer-pagination span {
+.customer-content .customer-pagination span {
   color: #333;
   font-size: 14px;
 }
-.customer-dashboard .customer-content .customer-pagination button {
+.customer-content .customer-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -13600,15 +13898,26 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.customer-dashboard .customer-content .customer-pagination button:hover {
+.customer-content .customer-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.customer-dashboard .customer-content .customer-pagination button.active {
+.customer-content .customer-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+/* Assuming Sidebar has a fixed width */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: #fff;
 }
 
 html,
@@ -13619,12 +13928,15 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
 .seller-app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden;
+  background: #f4f4f4;
 }
 
 .seller-dashboard {
@@ -13632,36 +13944,39 @@ body {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
+  overflow-x: hidden;
+  width: calc(100% - 250px);
+  margin-left: 250px;
 }
-.seller-dashboard .seller-content {
+
+.seller-content {
   width: 100%;
   background: #f4f4f4;
 }
-.seller-dashboard .seller-content h2, .seller-dashboard .seller-content .h2 {
+.seller-content h2, .seller-content .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.seller-dashboard .seller-content .seller-header {
+.seller-content .seller-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   background: #f4f4f4;
 }
-.seller-dashboard .seller-content .seller-header .seller-left-actions {
+.seller-content .seller-header .seller-left-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.seller-dashboard .seller-content .seller-header .seller-right-actions {
+.seller-content .seller-header .seller-right-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.seller-dashboard .seller-content .seller-header .seller-header-button {
+.seller-content .seller-header .seller-header-button {
   padding: 10px 20px;
   height: 40px;
   border: 1px solid #ccc;
@@ -13677,12 +13992,12 @@ body {
   align-items: center;
   justify-content: center;
 }
-.seller-dashboard .seller-content .seller-header .seller-header-button:hover {
+.seller-content .seller-header .seller-header-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.seller-dashboard .seller-content .seller-header .seller-search-input {
+.seller-content .seller-header .seller-search-input {
   width: 200px;
   padding: 14px 20px;
   height: 48px;
@@ -13695,14 +14010,14 @@ body {
   box-sizing: border-box;
   line-height: 15px;
 }
-.seller-dashboard .seller-content .seller-header .seller-search-input:focus {
+.seller-content .seller-header .seller-search-input:focus {
   border-color: #ff0000;
 }
-.seller-dashboard .seller-content .seller-table table {
+.seller-content .seller-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.seller-dashboard .seller-content .seller-table table th {
+.seller-content .seller-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13711,7 +14026,7 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.seller-dashboard .seller-content .seller-table table td {
+.seller-content .seller-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13719,41 +14034,41 @@ body {
   font-size: 14px;
   background: #333;
 }
-.seller-dashboard .seller-content .seller-table table tr {
+.seller-content .seller-table table tr {
   border-bottom: 1px solid #555;
 }
-.seller-dashboard .seller-content .seller-table table tr:last-child {
+.seller-content .seller-table table tr:last-child {
   border-bottom: none;
 }
-.seller-dashboard .seller-content .seller-table table .seller-header-actions-icon {
+.seller-content .seller-table table .seller-header-actions-icon {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.seller-dashboard .seller-content .seller-table table .seller-action-icons {
+.seller-content .seller-table table .seller-action-icons {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.seller-dashboard .seller-content .seller-table table .seller-action-icons:hover {
+.seller-content .seller-table table .seller-action-icons:hover {
   opacity: 0.8;
 }
-.seller-dashboard .seller-content .seller-table table .seller-checkbox-icon,
-.seller-dashboard .seller-content .seller-table table .seller-delete-icon,
-.seller-dashboard .seller-content .seller-table table .seller-edit-icon {
+.seller-content .seller-table table .seller-checkbox-icon,
+.seller-content .seller-table table .seller-delete-icon,
+.seller-content .seller-table table .seller-edit-icon {
   display: inline-flex;
   align-items: center;
   transition: opacity 0.3s;
   color: #fff;
 }
-.seller-dashboard .seller-content .seller-table table .seller-checkbox-icon:hover,
-.seller-dashboard .seller-content .seller-table table .seller-delete-icon:hover,
-.seller-dashboard .seller-content .seller-table table .seller-edit-icon:hover {
+.seller-content .seller-table table .seller-checkbox-icon:hover,
+.seller-content .seller-table table .seller-delete-icon:hover,
+.seller-content .seller-table table .seller-edit-icon:hover {
   opacity: 0.6;
   color: #ff0000;
 }
-.seller-dashboard .seller-content .seller-pagination {
+.seller-content .seller-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -13761,11 +14076,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.seller-dashboard .seller-content .seller-pagination span {
+.seller-content .seller-pagination span {
   color: #333;
   font-size: 14px;
 }
-.seller-dashboard .seller-content .seller-pagination button {
+.seller-content .seller-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -13775,15 +14090,26 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.seller-dashboard .seller-content .seller-pagination button:hover {
+.seller-content .seller-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.seller-dashboard .seller-content .seller-pagination button.active {
+.seller-content .seller-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+/* Assuming Sidebar has a fixed width */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: #fff;
 }
 
 html,
@@ -13794,56 +14120,63 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .reviewmanagement-app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  background: #f4f4f4;
 }
 
-/* Sidebar styles (unchanged - assumed to be handled by Sidebar component) */
-/* Dashboard styles */
 .reviewmanagement-dashboard {
-  flex: 1;
+  flex: 1; /* Takes up remaining space */
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  width: calc(100% - 250px); /* Adjust based on Sidebar width */
+  margin-left: 250px; /* Matches Sidebar width to push content right */
 }
-.reviewmanagement-dashboard .reviewmanagement-content {
+
+.reviewmanagement-content {
   width: 100%;
   background: #f4f4f4;
+  flex: 1; /* Allow content to grow */
+  display: flex;
+  flex-direction: column;
 }
-.reviewmanagement-dashboard .reviewmanagement-content h2, .reviewmanagement-dashboard .reviewmanagement-content .h2 {
+.reviewmanagement-content h2, .reviewmanagement-content .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header {
+.reviewmanagement-content .reviewmanagement-header {
   display: flex;
-  justify-content: space-between; /* Split content to left and right */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   background: #f4f4f4;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-left-actions {
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-left-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between left-side elements */
+  gap: 10px;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-right-actions {
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-right-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between right-side elements */
+  gap: 10px;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button {
-  padding: 10px 20px; /* Match AdminList button padding */
-  height: 40px; /* Match AdminList button height */
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button {
+  padding: 10px 20px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 10px; /* Match AdminList button corner radius */
-  background: #fff; /* White background as in AdminList */
+  border-radius: 10px;
+  background: #fff;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -13854,32 +14187,36 @@ body {
   align-items: center;
   justify-content: center;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button:hover {
-  background: #ff0000; /* Red background on hover, matching AdminList */
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-header-button:hover {
+  background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input {
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input {
   width: 200px;
-  padding: 8px 12px; /* Adjusted padding to match AdminList search input */
-  height: 40px; /* Match height with buttons for alignment, as in AdminList */
+  padding: 8px 12px;
+  height: 40px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background: #fff; /* White background as in AdminList */
+  background: #fff;
   color: #333;
   font-size: 14px;
   outline: none;
-  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
-  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+  box-sizing: border-box;
+  line-height: 15px;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input:focus {
+.reviewmanagement-content .reviewmanagement-header .reviewmanagement-search-input:focus {
   border-color: #ff0000;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table {
+.reviewmanagement-content .reviewmanagement-table {
+  flex: 1; /* Allow table to grow */
+  overflow-y: auto; /* Ensure table can scroll if content overflows */
+}
+.reviewmanagement-content .reviewmanagement-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table th {
+.reviewmanagement-content .reviewmanagement-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13888,7 +14225,7 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table td {
+.reviewmanagement-content .reviewmanagement-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -13896,41 +14233,41 @@ body {
   font-size: 14px;
   background: #333;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table tr {
+.reviewmanagement-content .reviewmanagement-table table tr {
   border-bottom: 1px solid #555;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table tr:last-child {
+.reviewmanagement-content .reviewmanagement-table table tr:last-child {
   border-bottom: none;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-header-actions-icon {
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-header-actions-icon {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons {
-  display: flex; /* Use flex to align icons horizontally */
-  align-items: center; /* Vertically center the icons within the div */
-  gap: 10px; /* Add spacing between icons for better visual separation */
-  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons:hover {
-  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-action-icons:hover {
+  opacity: 0.8;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon,
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon,
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon {
-  display: inline-flex; /* Ensure icons are treated as inline flex items */
-  align-items: center; /* Center the icon vertically within its container */
-  transition: opacity 0.3s; /* Smooth transition for hover effect */
-  color: #fff; /* Ensure icons are white on dark background */
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon,
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon,
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  color: #fff;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon:hover,
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon:hover,
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon:hover {
-  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
-  color: #ff0000; /* Change color on hover for visual feedback */
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-checkbox-icon:hover,
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-delete-icon:hover,
+.reviewmanagement-content .reviewmanagement-table table .reviewmanagement-edit-icon:hover {
+  opacity: 0.6;
+  color: #ff0000;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination {
+.reviewmanagement-content .reviewmanagement-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -13938,11 +14275,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination span {
+.reviewmanagement-content .reviewmanagement-pagination span {
   color: #333;
   font-size: 14px;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button {
+.reviewmanagement-content .reviewmanagement-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -13952,15 +14289,206 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button:hover {
+.reviewmanagement-content .reviewmanagement-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.reviewmanagement-dashboard .reviewmanagement-content .reviewmanagement-pagination button.active {
+.reviewmanagement-content .reviewmanagement-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidebar {
+  background: #222;
+  color: #fff;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: none;
+}
+.sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.sidebar .mobile-toggle {
+  display: none;
+}
+.sidebar .toggle-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+.sidebar .toggle-icon:hover {
+  color: #ff0000;
+}
+.sidebar .admin-photo {
+  width: 70%;
+  max-width: 175px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.sidebar .sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+.sidebar .sidebar-menu li {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar .sidebar-menu li:hover {
+  background: #333;
+}
+.sidebar .sidebar-menu li.active {
+  background: #ff0000;
+  font-weight: 600;
+}
+.sidebar .sidebar-menu li.active span {
+  color: #fff;
+}
+.sidebar .sidebar-menu .separator {
+  border: none;
+  height: 1px;
+  background: #555;
+  margin: 15px 0;
+}
+.sidebar .sidebar-menu .admin-settings-header {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar .sidebar-menu .admin-settings-header:hover {
+  background: #333;
+}
+.sidebar .sidebar-menu .admin-settings-header .rotate-icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+.sidebar .sidebar-menu .dropdown {
+  list-style: none;
+  padding: 0;
+}
+.sidebar .sidebar-menu .dropdown li {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar .sidebar-menu .dropdown li:hover {
+  background: #333;
+}
+@media (max-width: 768px) {
+  .sidebar.collapsed {
+    width: 60px;
+    padding: 10px;
+    height: auto;
+    background: #222;
+    z-index: 1000;
+  }
+  .sidebar.collapsed .sidebar-header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar.collapsed .mobile-toggle {
+    display: block;
+  }
+  .sidebar.collapsed .admin-photo {
+    display: none;
+  }
+  .sidebar.collapsed .sidebar-menu {
+    display: none;
+  }
+  .sidebar.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    background: rgba(34, 34, 34, 0.95);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease-in-out;
+  }
+  .sidebar.expanded .sidebar-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    flex-direction: row;
+  }
+  .sidebar.expanded .mobile-toggle {
+    display: block;
+  }
+  .sidebar.expanded .admin-photo {
+    display: none;
+  }
+  .sidebar.expanded .sidebar-menu {
+    width: 80%;
+    max-width: 300px;
+    margin-top: 60px;
+    margin-left: 20px;
+    text-align: left;
+  }
+  .sidebar.expanded .sidebar-menu li, .sidebar.expanded .sidebar-menu .admin-settings-header {
+    justify-content: flex-start;
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .sidebar.expanded .sidebar-menu .dropdown {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .sidebar.expanded .sidebar-menu .dropdown li {
+    margin-bottom: 15px;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .user-table table {
@@ -14017,6 +14545,22 @@ body {
 .user-table .action-icons .checkbox-icon:hover,
 .user-table .action-icons .delete-icon:hover {
   color: #ff0000;
+}
+
+.app-container {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+}
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .user-table table {
@@ -14086,49 +14630,52 @@ body {
   flex-direction: column;
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
-  overflow-y: auto; /* Ensure body can scroll if needed */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .adminlist-app {
   display: flex;
   width: 100%;
   height: 100vh;
-  overflow-y: auto; /* Ensure the app container can scroll */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  background: #f4f4f4;
 }
 
 .adminlist-dashboard {
-  flex: 1;
+  flex: 1; /* Takes up remaining space */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
-  overflow-y: auto; /* Ensure dashboard can scroll if content overflows */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  width: calc(100% - 250px); /* Adjust based on Sidebar width */
+  margin-left: 250px; /* Matches Sidebar width to push content right */
 }
-.adminlist-dashboard .adminlist-content {
+
+.adminlist-content {
   width: 100%;
   background: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 1; /* Allow content to grow but not push to bottom */
+  flex: 1; /* Allow content to grow */
   display: flex;
   flex-direction: column;
   overflow-y: auto; /* Ensure content can scroll if needed */
 }
-.adminlist-dashboard .adminlist-content h2, .adminlist-dashboard .adminlist-content .h2 {
+.adminlist-content h2, .adminlist-content .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header {
+.adminlist-content .adminlist-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensure all elements are vertically centered */
+  align-items: center;
   margin-bottom: 20px;
   background: #fff;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-search-input {
+.adminlist-content .adminlist-header .adminlist-search-input {
   width: 200px;
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -14137,20 +14684,20 @@ body {
   color: #333;
   font-size: 14px;
   outline: none;
-  height: 40px; /* Match the height of the action buttons for alignment */
+  height: 40px; /* Match button height */
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-search-input:focus {
+.adminlist-content .adminlist-header .adminlist-search-input:focus {
   border-color: #ff0000;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions {
+.adminlist-content .adminlist-header .adminlist-actions {
   display: flex;
   gap: 10px;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button {
-  padding: 10px 20px; /* Keep the size as is */
-  height: 40px; /* Keep the fixed height */
+.adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button {
+  padding: 10px 20px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 10px; /* Changed from 20px to 10px for less rounded corners */
+  border-radius: 10px;
   background: #fff;
   color: #333;
   font-size: 14px;
@@ -14162,15 +14709,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button:hover {
+.adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter {
+.adminlist-content .adminlist-header .adminlist-filter {
   position: relative;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown {
+.adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
@@ -14180,23 +14727,23 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option {
+.adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option {
   padding: 8px 15px;
   cursor: pointer;
   color: #333;
 }
-.adminlist-dashboard .adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option:hover {
+.adminlist-content .adminlist-header .adminlist-filter .adminlist-filter-dropdown .adminlist-filter-option:hover {
   background: #f4f4f4;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table {
-  flex: 1; /* Allow table to grow but not push pagination off-screen */
+.adminlist-content .adminlist-table {
+  flex: 1; /* Allow table to grow */
   overflow-y: auto; /* Ensure table can scroll if content overflows */
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table {
+.adminlist-content .adminlist-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table th {
+.adminlist-content .adminlist-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #ff0000;
@@ -14205,7 +14752,7 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table td {
+.adminlist-content .adminlist-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -14213,41 +14760,41 @@ body {
   font-size: 14px;
   background: #333;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table tr {
+.adminlist-content .adminlist-table table tr {
   border-bottom: 1px solid #555;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table tr:last-child {
+.adminlist-content .adminlist-table table tr:last-child {
   border-bottom: none;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-header-actions-icon {
+.adminlist-content .adminlist-table table .adminlist-header-actions-icon {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-action-icons {
+.adminlist-content .adminlist-table table .adminlist-action-icons {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-action-icons:hover {
+.adminlist-content .adminlist-table table .adminlist-action-icons:hover {
   opacity: 0.8;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-checkbox-icon,
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-delete-icon,
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-edit-icon {
+.adminlist-content .adminlist-table table .adminlist-checkbox-icon,
+.adminlist-content .adminlist-table table .adminlist-delete-icon,
+.adminlist-content .adminlist-table table .adminlist-edit-icon {
   display: inline-flex;
   align-items: center;
   transition: opacity 0.3s;
   color: #fff;
 }
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-checkbox-icon:hover,
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-delete-icon:hover,
-.adminlist-dashboard .adminlist-content .adminlist-table table .adminlist-edit-icon:hover {
+.adminlist-content .adminlist-table table .adminlist-checkbox-icon:hover,
+.adminlist-content .adminlist-table table .adminlist-delete-icon:hover,
+.adminlist-content .adminlist-table table .adminlist-edit-icon:hover {
   opacity: 0.6;
   color: #ff0000;
 }
-.adminlist-dashboard .adminlist-content .adminlist-pagination {
+.adminlist-content .adminlist-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -14255,11 +14802,11 @@ body {
   margin-top: 20px;
   background: #fff;
 }
-.adminlist-dashboard .adminlist-content .adminlist-pagination span {
+.adminlist-content .adminlist-pagination span {
   color: #333;
   font-size: 14px;
 }
-.adminlist-dashboard .adminlist-content .adminlist-pagination button {
+.adminlist-content .adminlist-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -14269,15 +14816,25 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.adminlist-dashboard .adminlist-content .adminlist-pagination button:hover {
+.adminlist-content .adminlist-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.adminlist-dashboard .adminlist-content .adminlist-pagination button.active {
+.adminlist-content .adminlist-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+/* Sidebar styling without color changes */
+.sidebar {
+  width: 250px; /* Adjust this to match your actual Sidebar width */
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* No background or color specified to preserve your existing styles */
 }
 
 html,
@@ -14289,60 +14846,64 @@ body {
   flex-direction: column;
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
-  overflow-y: auto; /* Ensure body can scroll if needed */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .notifications-app {
   display: flex;
   width: 100%;
   height: 100vh;
-  overflow-y: auto; /* Ensure the app container can scroll */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  background: #f4f4f4;
 }
 
-/* Sidebar styles (unchanged - assumed to be handled by Sidebar component) */
-/* Dashboard styles */
 .notifications-dashboard {
-  flex: 1;
+  flex: 1; /* Takes up remaining space */
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
-  overflow-y: auto; /* Ensure dashboard can scroll if content overflows */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  width: calc(100% - 250px); /* Adjust based on Sidebar width */
+  margin-left: 250px; /* Matches Sidebar width to push content right */
 }
-.notifications-dashboard .notifications-content {
+
+.notifications-content {
   width: 100%;
   background: #f4f4f4;
+  flex: 1; /* Allow content to grow */
+  display: flex;
+  flex-direction: column;
 }
-.notifications-dashboard .notifications-content h2, .notifications-dashboard .notifications-content .h2 {
+.notifications-content h2, .notifications-content .h2 {
   margin: 0 0 20px 0;
   font-size: 24px;
   color: #333;
 }
-.notifications-dashboard .notifications-content .notifications-header {
+.notifications-content .notifications-header {
   display: flex;
-  justify-content: space-between; /* Split content to left and right */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   background: #fff;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-left-actions {
+.notifications-content .notifications-header .notifications-left-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between left-side elements */
+  gap: 10px;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-right-actions {
+.notifications-content .notifications-header .notifications-right-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Spacing between right-side elements */
+  gap: 10px;
   position: relative; /* For positioning the filter dropdown */
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-header-button, .notifications-dashboard .notifications-content .notifications-header .notifications-filter-button {
-  padding: 10px 20px; /* Match AdminList button padding */
-  height: 40px; /* Match AdminList button height */
+.notifications-content .notifications-header .notifications-header-button {
+  padding: 10px 20px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 10px; /* Match AdminList button corner radius */
-  background: #fff; /* White background as in AdminList */
+  border-radius: 10px;
+  background: #fff;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -14353,31 +14914,28 @@ body {
   align-items: center;
   justify-content: center;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-header-button:hover, .notifications-dashboard .notifications-content .notifications-header .notifications-filter-button:hover {
-  background: #ff0000; /* Red background on hover, matching AdminList */
+.notifications-content .notifications-header .notifications-header-button:hover {
+  background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-search-input {
+.notifications-content .notifications-header .notifications-search-input {
   width: 200px;
-  padding: 8px 12px; /* Adjusted padding to match AdminList search input */
-  height: 40px; /* Match height with buttons for alignment, as in AdminList */
+  padding: 8px 12px;
+  height: 40px;
   border: 1px solid #ccc;
-  border-radius: 4px; /* Match AdminList search input corner radius */
-  background: #fff; /* White background as in AdminList */
+  border-radius: 4px;
+  background: #fff;
   color: #333;
   font-size: 14px;
   outline: none;
-  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
-  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+  box-sizing: border-box;
+  line-height: 15px;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-search-input:focus {
+.notifications-content .notifications-header .notifications-search-input:focus {
   border-color: #ff0000;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-filter-button {
-  /* Inherit styles from regular header buttons */
-}
-.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown {
+.notifications-content .notifications-header .notifications-filter-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
@@ -14385,29 +14943,33 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Higher z-index to ensure it stays above other elements */
-  min-width: 120px; /* Ensure the dropdown is wide enough for content */
+  z-index: 1000;
+  min-width: 120px;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option {
+.notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option {
   padding: 8px 15px;
   cursor: pointer;
   color: #333;
-  transition: background 0.3s; /* Smooth transition for hover effect */
-  background: #f0f0f0; /* Light gray background for all items by default */
-  border-bottom: 1px solid #ccc; /* Optional: Add a separator between items */
+  transition: background 0.3s;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:hover {
-  background: #eeadad; /* Light pink/red background on hover for visual feedback */
-  color: #333; /* Ensure text remains readable */
+.notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:hover {
+  background: #eeadad;
+  color: #333;
 }
-.notifications-dashboard .notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:last-child {
-  border-bottom: none; /* Remove border from the last item */
+.notifications-content .notifications-header .notifications-filter-dropdown .notifications-filter-option:last-child {
+  border-bottom: none;
 }
-.notifications-dashboard .notifications-content .notifications-table table {
+.notifications-content .notifications-table {
+  flex: 1; /* Allow table to grow */
+  overflow-y: auto; /* Ensure table can scroll if content overflows */
+}
+.notifications-content .notifications-table table {
   width: 100%;
   border-collapse: collapse;
 }
-.notifications-dashboard .notifications-content .notifications-table table th {
+.notifications-content .notifications-table table th {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -14416,7 +14978,7 @@ body {
   background: #ff0000;
   font-weight: 600;
 }
-.notifications-dashboard .notifications-content .notifications-table table td {
+.notifications-content .notifications-table table td {
   padding: 12px 20px;
   text-align: left;
   border: 1px solid #555;
@@ -14424,41 +14986,41 @@ body {
   font-size: 14px;
   background: #333;
 }
-.notifications-dashboard .notifications-content .notifications-table table tr {
+.notifications-content .notifications-table table tr {
   border-bottom: 1px solid #555;
 }
-.notifications-dashboard .notifications-content .notifications-table table tr:last-child {
+.notifications-content .notifications-table table tr:last-child {
   border-bottom: none;
 }
-.notifications-dashboard .notifications-content .notifications-table table .notifications-header-actions-icon {
+.notifications-content .notifications-table table .notifications-header-actions-icon {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.notifications-dashboard .notifications-content .notifications-table table .notifications-action-icons {
-  display: flex; /* Use flex to align icons horizontally */
-  align-items: center; /* Vertically center the icons within the div */
-  gap: 10px; /* Add spacing between icons for better visual separation */
-  cursor: pointer; /* Indicate that the icons are clickable/interactive */
+.notifications-content .notifications-table table .notifications-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
-.notifications-dashboard .notifications-content .notifications-table table .notifications-action-icons:hover {
-  opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+.notifications-content .notifications-table table .notifications-action-icons:hover {
+  opacity: 0.8;
 }
-.notifications-dashboard .notifications-content .notifications-table table .notifications-checkbox-icon,
-.notifications-dashboard .notifications-content .notifications-table table .notifications-delete-icon,
-.notifications-dashboard .notifications-content .notifications-table table .notifications-edit-icon {
-  display: inline-flex; /* Ensure icons are treated as inline flex items */
-  align-items: center; /* Center the icon vertically within its container */
-  transition: opacity 0.3s; /* Smooth transition for hover effect */
-  color: #fff; /* Ensure icons are white on dark background */
+.notifications-content .notifications-table table .notifications-checkbox-icon,
+.notifications-content .notifications-table table .notifications-delete-icon,
+.notifications-content .notifications-table table .notifications-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  color: #fff;
 }
-.notifications-dashboard .notifications-content .notifications-table table .notifications-checkbox-icon:hover,
-.notifications-dashboard .notifications-content .notifications-table table .notifications-delete-icon:hover,
-.notifications-dashboard .notifications-content .notifications-table table .notifications-edit-icon:hover {
-  opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
-  color: #ff0000; /* Change color on hover for visual feedback */
+.notifications-content .notifications-table table .notifications-checkbox-icon:hover,
+.notifications-content .notifications-table table .notifications-delete-icon:hover,
+.notifications-content .notifications-table table .notifications-edit-icon:hover {
+  opacity: 0.6;
+  color: #ff0000;
 }
-.notifications-dashboard .notifications-content .notifications-pagination {
+.notifications-content .notifications-pagination {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -14466,11 +15028,11 @@ body {
   margin-top: 20px;
   background: #f4f4f4;
 }
-.notifications-dashboard .notifications-content .notifications-pagination span {
+.notifications-content .notifications-pagination span {
   color: #333;
   font-size: 14px;
 }
-.notifications-dashboard .notifications-content .notifications-pagination button {
+.notifications-content .notifications-pagination button {
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -14480,15 +15042,23 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.notifications-dashboard .notifications-content .notifications-pagination button:hover {
+.notifications-content .notifications-pagination button:hover {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
 }
-.notifications-dashboard .notifications-content .notifications-pagination button.active {
+.notifications-content .notifications-pagination button.active {
   background: #ff0000;
   color: white;
   border-color: #ff0000;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .modal-overlay {
@@ -15205,4 +15775,908 @@ body {
     padding: 0.625rem 1.25rem;
     font-size: 0.75rem;
   }
+}
+.edit-product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.edit-product-overlay {
+  background: transparent; /* No background here, handled by content */
+}
+
+.edit-product-content {
+  background: #F0F8FF;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  width: 1000px; /* Wider for landscape layout */
+  max-width: 95vw; /* Responsive max width */
+  max-height: 80vh; /* Slightly shorter height for landscape */
+  overflow-y: auto;
+  position: relative;
+  z-index: 1001;
+  /* Custom scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+}
+.edit-product-content::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+.edit-product-content::-webkit-scrollbar-track {
+  background: #F0F8FF; /* Match modal background for seamless look */
+  border-radius: 10px; /* Rounded edges for the track */
+}
+.edit-product-content::-webkit-scrollbar-thumb {
+  background: rgba(30, 30, 30, 0.3); /* Lighter, semi-transparent gray (less black) */
+  border-radius: 10px; /* Rounded edges for the thumb */
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease; /* Smooth transition for hover */
+}
+.edit-product-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 30, 30, 0.5); /* Slightly darker on hover but still subtle */
+}
+.edit-product-content .edit-product-header {
+  margin-bottom: 30px;
+}
+.edit-product-content .edit-product-header h2, .edit-product-content .edit-product-header .h2 {
+  font-size: 28px;
+  color: #1E1E1E;
+  font-weight: 700;
+  margin: 0;
+  text-align: left; /* Keep title on the left */
+}
+.edit-product-content .edit-product-form {
+  display: flex;
+  flex-direction: row; /* Horizontal layout for landscape */
+  gap: 40px;
+  align-items: flex-start;
+}
+.edit-product-content .edit-product-form .edit-product-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-width: 350px; /* Ensure image section has enough space */
+}
+.edit-product-content .edit-product-form .edit-product-left .edit-product-image-section {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background: #F0F8FF;
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 2px dashed #1E1E1E; /* Dashed border as in your image */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: auto;
+  z-index: 1001;
+}
+.edit-product-content .edit-product-form .edit-product-left .edit-product-image-section:hover {
+  border-color: #1E1E1E;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+.edit-product-content .edit-product-form .edit-product-left .edit-product-image-section .edit-product-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
+  border-radius: 8px;
+}
+.edit-product-content .edit-product-form .edit-product-left .edit-product-upload-button {
+  width: 300px; /* Match the image square width */
+  padding: 12px 0; /* Match padding from your reference */
+  background: #1E1E1E; /* Black background as in your image */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Match border radius from your reference */
+  cursor: pointer;
+  font-size: 16px; /* Match font size from your reference */
+  text-align: center;
+  transition: none; /* No hover effect for simplicity, matching your image */
+  display: inline-block; /* Ensure it behaves like a button */
+  pointer-events: auto;
+  z-index: 1001;
+}
+.edit-product-content .edit-product-form .edit-product-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1001;
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field label {
+  font-size: 14px;
+  color: #1E1E1E; /* Darker text for contrast, matching your reference */
+  font-weight: 500;
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input,
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea {
+  width: 100%; /* Ensure full width for inputs */
+  padding: 14px; /* Match padding from your reference */
+  border: 2px solid #1E1E1E; /* Dark border as in your reference */
+  border-radius: 8px; /* Match border radius from your reference */
+  font-size: 16px; /* Match font size from your reference */
+  outline: none;
+  background: #F0F8FF; /* Match modal background */
+  color: #1E1E1E; /* Dark text for visibility, matching your reference */
+  transition: border-color 0.3s ease; /* Smooth transition as in your reference */
+  pointer-events: auto; /* Ensure inputs are clickable */
+  z-index: 1002; /* Ensure inputs are above other elements */
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input::-moz-placeholder, .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea::-moz-placeholder {
+  color: #808080; /* Gray placeholder text for visibility */
+  opacity: 1; /* Ensure placeholder is fully visible */
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input::placeholder,
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea::placeholder {
+  color: #808080; /* Gray placeholder text for visibility */
+  opacity: 1; /* Ensure placeholder is fully visible */
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input:focus,
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea:focus {
+  outline: none;
+  border-color: #1E1E1E; /* Darker border on focus, matching your reference */
+}
+.edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea {
+  height: 120px; /* Match height from your reference */
+  resize: vertical; /* Allow vertical resizing */
+}
+.edit-product-content .edit-product-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+.edit-product-content .edit-product-actions .edit-product-cancel-button {
+  padding: 10px 20px;
+  background: #fff;
+  color: #dc3545; /* Red for cancel */
+  border: 1px solid #dc3545;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s;
+}
+.edit-product-content .edit-product-actions .edit-product-cancel-button:hover {
+  background: #dc3545;
+  color: white;
+}
+.edit-product-content .edit-product-actions .edit-product-save-button {
+  background: #1E1E1E; /* Dark background as in your reference */
+  color: white;
+  padding: 14px 24px; /* Match padding from your reference */
+  border: none;
+  border-radius: 8px; /* Match border radius from your reference */
+  cursor: pointer;
+  font-size: 18px; /* Match font size from your reference */
+  transition: background 0.3s ease, transform 0.2s ease; /* Smooth transitions as in your reference */
+  pointer-events: auto;
+  z-index: 1002;
+}
+.edit-product-content .edit-product-actions .edit-product-save-button:hover {
+  background: #FF0000; /* Red background on hover, as in your reference */
+  transform: translateY(-2px); /* Slight lift on hover, as in your reference */
+}
+
+/* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+@media (max-width: 430px) {
+  .edit-product-content {
+    padding: 16px;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto; /* Ensure content can scroll if needed */
+    /* Custom scrollbar for mobile WebKit browsers */
+  }
+  .edit-product-content::-webkit-scrollbar {
+    width: 6px; /* Even thinner on mobile */
+  }
+  .edit-product-content::-webkit-scrollbar-track {
+    background: #F0F8FF;
+    border-radius: 8px;
+  }
+  .edit-product-content::-webkit-scrollbar-thumb {
+    background: rgba(30, 30, 30, 0.3); /* Lighter, semi-transparent gray (less black) */
+    border-radius: 8px;
+  }
+  .edit-product-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(30, 30, 30, 0.5); /* Slightly darker on hover but still subtle */
+  }
+  .edit-product-content .edit-product-header {
+    margin-bottom: 20px;
+  }
+  .edit-product-content .edit-product-header h2, .edit-product-content .edit-product-header .h2 {
+    font-size: 20px;
+    color: #1E1E1E; /* Ensure title is visible */
+  }
+  .edit-product-content .edit-product-form {
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 20px;
+  }
+  .edit-product-content .edit-product-form .edit-product-left {
+    order: -1; /* Moves to the top */
+    width: 100%;
+    align-items: center;
+    z-index: 1001; /* Ensure image section is visible */
+  }
+  .edit-product-content .edit-product-form .edit-product-left .edit-product-image-section {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    background: #F0F8FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 2px dashed #1E1E1E; /* Dashed border as in your image */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    pointer-events: auto;
+    z-index: 1001;
+  }
+  .edit-product-content .edit-product-form .edit-product-left .edit-product-image-section:hover {
+    border-color: #1E1E1E;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+  }
+  .edit-product-content .edit-product-form .edit-product-left .edit-product-image-section .edit-product-image {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 8px;
+  }
+  .edit-product-content .edit-product-form .edit-product-left .edit-product-upload-button {
+    width: 200px; /* Match image width on mobile */
+    padding: 10px 0; /* Reduced padding for mobile */
+    background: #1E1E1E; /* Black background as in your image */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size for mobile */
+    text-align: center;
+    transition: none; /* No hover effect for simplicity, matching your image */
+    display: inline-block;
+    pointer-events: auto;
+    z-index: 1001; /* Ensure button is visible */
+  }
+  .edit-product-content .edit-product-form .edit-product-right {
+    gap: 16px;
+    z-index: 1002; /* Ensure form is above other elements */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field label {
+    font-size: 14px;
+    color: #1E1E1E; /* Darker text for visibility */
+    font-weight: 500;
+    z-index: 1003; /* Ensure labels are visible */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input,
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea {
+    width: 100%; /* Full width on mobile */
+    padding: 12px; /* Reduced padding for mobile */
+    border: 2px solid #1E1E1E; /* Dark border as in desktop */
+    border-radius: 8px; /* Match border radius from desktop */
+    font-size: 14px; /* Reduced font size for mobile */
+    outline: none;
+    background: #F0F8FF; /* Match modal background */
+    color: #1E1E1E; /* Dark text for visibility */
+    transition: border-color 0.3s ease;
+    pointer-events: auto; /* Ensure inputs are clickable */
+    z-index: 1003; /* Ensure inputs are fully visible above other elements */
+    position: relative; /* Ensure layering works correctly */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input::-moz-placeholder, .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea::-moz-placeholder {
+    color: #808080; /* Gray placeholder text for visibility */
+    opacity: 1; /* Ensure placeholder is fully visible */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input::placeholder,
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea::placeholder {
+    color: #808080; /* Gray placeholder text for visibility */
+    opacity: 1; /* Ensure placeholder is fully visible */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-input:focus,
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea:focus {
+    outline: none;
+    border-color: #1E1E1E; /* Darker border on focus */
+  }
+  .edit-product-content .edit-product-form .edit-product-right .edit-product-field .edit-product-textarea {
+    height: 100px; /* Reduced height for mobile */
+    resize: vertical; /* Allow vertical resizing */
+  }
+  .edit-product-content .edit-product-actions {
+    justify-content: center; /* Center buttons on mobile */
+    z-index: 1002; /* Ensure buttons are visible */
+  }
+  .edit-product-content .edit-product-actions .edit-product-cancel-button {
+    display: none; /* Hide cancel button on mobile to simplify */
+  }
+  .edit-product-content .edit-product-actions .edit-product-save-button {
+    width: 100%; /* Full width on mobile */
+    padding: 12px 20px;
+    font-size: 16px;
+    margin-top: 16px;
+    background: #1E1E1E; /* Black background as in desktop */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    pointer-events: auto;
+    z-index: 1003;
+  }
+  .edit-product-content .edit-product-actions .edit-product-save-button:hover {
+    background: #FF0000; /* Red background on hover, as in desktop */
+    transform: translateY(-2px);
+  }
+  /* Style the dropdown list (options) for WebKit browsers (e.g., Safari, Chrome on iPhone) */
+  /* Style the dropdown list for Firefox */
+}
+@media (max-width: 430px) and (max-width: 430px) {
+  .edit-product-input::-webkit-calendar-picker-indicator { /* Hide default dropdown arrow */
+    display: none;
+  }
+  .edit-product-input::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar in dropdown */
+  }
+  .edit-product-input option {
+    padding: 8px 12px; /* Match mobile input padding */
+    font-size: 14px; /* Match mobile font size */
+    background: #ffffff; /* White background for options */
+    color: #1E1E1E; /* Dark text for options */
+    border: none; /* Remove any default borders */
+    border-radius: 0; /* Reset border radius */
+    line-height: 1.2; /* Ensure compact line height */
+    max-width: 100%; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .edit-product-input optgroup {
+    background: #ffffff; /* White background for optgroups */
+    color: #1E1E1E; /* Dark text for optgroups */
+    font-weight: bold; /* Bold for optgroup labels */
+    padding: 8px 12px; /* Match option padding */
+    line-height: 1.2; /* Ensure compact line height */
+  }
+  .edit-product-input:-webkit-autofill, .edit-product-input:-webkit-autofill:hover, .edit-product-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #F0F8FF inset !important; /* Match background */
+    -webkit-text-fill-color: #1E1E1E !important; /* Match text color */
+  }
+}
+@media (max-width: 430px) and (max-width: 430px) {
+  .edit-product-input::-moz-focus-inner {
+    border: 0; /* Remove focus outline in Firefox */
+  }
+  .edit-product-input:-moz-focusring {
+    color: transparent; /* Hide focus ring in Firefox */
+    text-shadow: 0 0 0 #1E1E1E; /* Ensure text is visible */
+  }
+  .edit-product-input option {
+    padding: 8px 12px; /* Match mobile input padding */
+    font-size: 14px; /* Match mobile font size */
+    background: #ffffff; /* White background for options */
+    color: #1E1E1E; /* Dark text for options */
+    border: none; /* Remove any default borders */
+    border-radius: 0; /* Reset border radius */
+    line-height: 1.2; /* Ensure compact line height */
+    max-width: 100%; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .edit-product-input optgroup {
+    background: #ffffff; /* White background for optgroups */
+    color: #1E1E1E; /* Dark text for optgroups */
+    font-weight: bold; /* Bold for optgroup labels */
+    padding: 8px 12px; /* Match option padding */
+    line-height: 1.2; /* Ensure compact line height */
+  }
+}
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  /* Floating animation keyframes */
+}
+.chatbot-container .chatbot-icon {
+  width: 50px; /* Standard size, slightly smaller */
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid #fff; /* White border for contrast */
+  animation: float 3s ease-in-out infinite; /* Floating animation */
+}
+.chatbot-container .chatbot-icon .chatbot-profile {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.chatbot-container .chatbot-icon:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+  animation-play-state: paused; /* Pause animation on hover */
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at original position */
+  }
+  50% {
+    transform: translateY(-10px); /* Move up 10px in the middle */
+  }
+}
+.chatbot-container .chatbox {
+  position: absolute;
+  bottom: 0; /* Start at the bottom, hidden by opacity */
+  right: 0;
+  width: 300px;
+  height: 400px;
+  background: #1E1E1E; /* Black background as in your image */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+  opacity: 0; /* Initially invisible for dissolve effect */
+  transform: translateY(20px); /* Slight upward shift for dissolve */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth dissolve animation for both open and close */
+}
+.chatbot-container .chatbox.chatbox-open {
+  opacity: 1; /* Fully visible when open */
+  transform: translateY(0); /* No shift when open */
+  bottom: 80px; /* Position above the icon */
+}
+.chatbot-container .chatbox.chatbox-closing {
+  opacity: 0; /* Invisible when closing */
+  transform: translateY(20px); /* Shift down when closing */
+  pointer-events: none; /* Disable interactions during closing animation */
+}
+.chatbot-container .chatbox .chatbox-header {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-profile .chatbox-profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-profile .chatbox-name-email {
+  display: flex;
+  flex-direction: column; /* Stack name and email vertically */
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-profile .chatbox-name-email span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-profile .chatbox-name-email span.chatbox-email {
+  font-size: 12px;
+  color: #aaa;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.chatbot-container .chatbox .chatbox-header .chatbox-close:hover {
+  color: #e74c3c; /* Red on hover, matching your close button style */
+}
+.chatbot-container .chatbox .chatbox-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto; /* Allow scrolling if messages overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chatbot-container .chatbox .chatbox-messages .chat-message {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.chatbot-container .chatbox .chatbox-messages .chat-message.bot-message {
+  background: #fff; /* White background for bot messages */
+  color: #1E1E1E;
+  align-self: flex-start; /* Align to the left */
+}
+.chatbot-container .chatbox .chatbox-messages .chat-message.user-message {
+  background: #fff; /* White background for user messages */
+  color: #1E1E1E;
+  align-self: flex-end; /* Align to the right */
+}
+.chatbot-container .chatbox .chatbox-input {
+  padding: 10px;
+  border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chatbot-container .chatbox .chatbox-input .chat-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #1E1E1E;
+  outline: none;
+  cursor: text; /* Indicate input is editable */
+}
+.chatbot-container .chatbox .chatbox-input .chat-input::-moz-placeholder {
+  color: #808080;
+  opacity: 1;
+}
+.chatbot-container .chatbox .chatbox-input .chat-input::placeholder {
+  color: #808080;
+  opacity: 1;
+}
+.chatbot-container .chatbox .chatbox-input .chat-input:focus {
+  border-color: #1E1E1E;
+  box-shadow: 0 0 5px rgba(30, 30, 30, 0.3);
+}
+.chatbot-container .chatbox .chatbox-input .chat-send {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.chatbot-container .chatbox .chatbox-input .chat-send .send-icon {
+  width: 20px; /* Increased size for better visibility */
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: grayscale(100%) brightness(200%) contrast(50%); /* Grey color for default state (#808080) */
+  transition: filter 0.3s ease; /* Smooth transition for color change */
+}
+.chatbot-container .chatbox .chatbox-input .chat-send .send-icon.send-icon-active {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(97%) saturate(7492%) hue-rotate(2deg) brightness(103%) contrast(102%); /* Red color (#FF0000) */
+}
+.chatbot-container .chatbox .chatbox-input .chat-send:hover .send-icon {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(97%) saturate(7492%) hue-rotate(2deg) brightness(103%) contrast(102%); /* Red on hover (#FF0000) */
+}
+
+/* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+@media (max-width: 430px) {
+  .chatbot-container {
+    bottom: 10px;
+    right: 10px;
+  }
+  .chatbot-container .chatbot-icon {
+    width: 40px; /* Reduced to a standard mobile size */
+    height: 40px;
+    animation: float 3s ease-in-out infinite; /* Floating animation on mobile too */
+  }
+  .chatbox {
+    width: 90%;
+    max-width: 300px;
+    height: 350px; /* Slightly shorter for mobile */
+    bottom: 0; /* Start at the bottom, hidden by opacity */
+    right: 0;
+  }
+  .chatbox.chatbox-open {
+    opacity: 1; /* Fully visible when open */
+    transform: translateY(0); /* No shift when open */
+    bottom: 60px; /* Position above the icon on mobile */
+  }
+  .chatbox.chatbox-closing {
+    opacity: 0; /* Invisible when closing */
+    transform: translateY(20px); /* Shift down when closing */
+    pointer-events: none; /* Disable interactions during closing animation */
+  }
+  .chatbox .chatbox-header {
+    padding: 8px;
+  }
+  .chatbox .chatbox-header .chatbox-profile-img {
+    width: 25px;
+    height: 25px;
+  }
+  .chatbox .chatbox-header .chatbox-name-email span {
+    font-size: 12px;
+  }
+  .chatbox .chatbox-header .chatbox-name-email span.chatbox-email {
+    font-size: 10px;
+  }
+  .chatbox .chatbox-header .chatbox-close {
+    font-size: 16px;
+  }
+  .chatbox .chatbox-messages {
+    padding: 8px;
+    gap: 8px;
+  }
+  .chatbox .chatbox-messages .chat-message {
+    padding: 6px 10px;
+    font-size: 12px;
+    max-width: 85%;
+  }
+  .chatbox .chatbox-input {
+    padding: 8px;
+    gap: 8px;
+  }
+  .chatbox .chatbox-input .chat-input {
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: text; /* Indicate input is editable */
+  }
+  .chatbox .chatbox-input .chat-send .send-icon {
+    width: 18px; /* Slightly smaller but increased from 14px for better visibility on mobile */
+    height: 18px;
+  }
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the provided snippet */
+  overflow-y: auto; /* Ensure body can scroll if needed */
+}
+
+.archivedproduct-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
+}
+
+/* Archived Product Dashboard styles */
+.archivedproduct-dashboard {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard */
+  background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+}
+@media (max-width: 768px) {
+  .archivedproduct-dashboard {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard */
+  }
+}
+.archivedproduct-dashboard .archivedproduct-products {
+  max-width: 1200px; /* Match the max-width of the Dashboard */
+  width: 100%; /* Ensure it takes full width of the container */
+  margin: 0 auto; /* Center the content horizontally */
+  background: #f4f4f4;
+}
+.archivedproduct-dashboard .archivedproduct-products h2, .archivedproduct-dashboard .archivedproduct-products .h2 {
+  margin: 0 0 30px 0; /* Increased margin-bottom to create more space below "Archived Products" */
+  font-size: 24px;
+  color: #333;
+  text-align: left; /* Keep "Archived Products" on the left side */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header {
+  display: flex;
+  justify-content: space-between; /* Split content to left (search) and right (buttons) */
+  align-items: center;
+  margin-bottom: 20px;
+  background: #fff; /* Match background from provided snippet */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-search-input {
+  width: 200px;
+  padding: 8px 12px; /* Adjusted padding to match provided snippet */
+  height: 40px; /* Match height with buttons for alignment, as in provided snippet */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Match provided snippet’s search input corner radius */
+  background: #fff; /* White background as in provided snippet */
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensure padding doesn’t affect total height */
+  line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-search-input:focus {
+  border-color: #ff0000;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between right-side elements, matching provided snippet */
+  justify-content: flex-end; /* Align buttons to the right */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-action-button, .archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-button {
+  padding: 10px 20px; /* Match padding from provided snippet */
+  height: 40px; /* Match height from provided snippet */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Match corner radius from provided snippet */
+  background: #fff; /* White background as in provided snippet */
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-action-button:hover, .archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-button:hover {
+  background: #ff0000; /* Red background on hover, matching provided snippet */
+  color: white;
+  border-color: #ff0000;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container {
+  position: relative;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-button {
+  /* Inherit styles from action-button for consistency */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 10px 20px; /* Match padding from provided snippet */
+  height: 40px; /* Match height from provided snippet */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-button span {
+  flex: 1;
+  text-align: left;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-dropdown {
+  position: absolute;
+  top: 100%; /* Position below the button, matching provided snippet */
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Higher z-index to ensure it stays above other elements */
+  min-width: 120px; /* Ensure the dropdown is wide enough for content */
+  list-style: none; /* Remove bullet points from the dropdown list */
+  padding: 5px 0;
+  margin: 0;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-dropdown li {
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.3s; /* Smooth transition for hover effect */
+  background: #f0f0f0; /* Light gray background for all items by default, matching provided snippet */
+  border-bottom: 1px solid #ccc; /* Optional: Add a separator between items */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-dropdown li:hover {
+  background: #eeadad; /* Light pink/red background on hover for visual feedback, matching provided snippet */
+  color: #333; /* Ensure text remains readable */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-products-header .archivedproduct-actions .archivedproduct-filter-container .archivedproduct-filter-dropdown li:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table {
+  width: 100%; /* Ensure the table takes full width of its container */
+  max-width: 1200px; /* Match the max-width of the parent container */
+  margin: 0 auto; /* Center the table horizontally */
+  overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table th {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #ff0000;
+  font-weight: 600;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table th .archivedproduct-header-actions-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table th .archivedproduct-header-actions-icon .archivedproduct-checkbox-icon {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table th .archivedproduct-header-actions-icon .archivedproduct-checkbox-icon:hover {
+  color: #ff0000;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table td {
+  padding: 12px 20px;
+  text-align: left;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  background: #333;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table tr {
+  border-bottom: 1px solid #555;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table table tr:last-child {
+  border-bottom: none;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-checkbox-icon,
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-delete-icon,
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-edit-icon {
+  color: #fff;
+  cursor: pointer !important; /* Ensure cursor is pointer */
+  font-size: 16px;
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-checkbox-icon:hover,
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-delete-icon:hover,
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-product-table .archivedproduct-action-icons .archivedproduct-edit-icon:hover {
+  color: #ff0000 !important; /* Ensure hover color applies */
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-pagination {
+  display: flex;
+  justify-content: flex-end; /* Align pagination to the right */
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-pagination span {
+  color: #333;
+  font-size: 14px;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-pagination button:hover {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
+}
+.archivedproduct-dashboard .archivedproduct-products .archivedproduct-pagination button.active {
+  background: #ff0000;
+  color: white;
+  border-color: #ff0000;
 }

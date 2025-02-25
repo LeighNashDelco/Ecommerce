@@ -10,15 +10,15 @@ body {
   overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
-.app {
+.archivedproduct-app {
   display: flex;
   width: 100%;
   height: 100vh;
   overflow-y: auto; /* Ensure the app container can scroll */
 }
 
-/* Product Dashboard styles */
-.product-dashboard {
+/* Archived Product Dashboard styles */
+.archivedproduct-dashboard {
   flex: 1;
   overflow-y: auto;
   padding: 20px; /* Reduced padding to match Dashboard */
@@ -31,27 +31,27 @@ body {
     padding: 10px; /* Reduced padding for mobile, matching Dashboard */
   }
 
-  .product-products {
+  .archivedproduct-products {
     max-width: 1200px; /* Match the max-width of the Dashboard */
     width: 100%; /* Ensure it takes full width of the container */
     margin: 0 auto; /* Center the content horizontally */
     background: #f4f4f4;
 
     h2 {
-      margin: 0 0 30px 0; /* Increased margin-bottom to create more space below "Products" */
+      margin: 0 0 30px 0; /* Increased margin-bottom to create more space below "Archived Products" */
       font-size: 24px;
       color: #333;
-      text-align: left; /* Keep "Products" on the left side */
+      text-align: left; /* Keep "Archived Products" on the left side */
     }
 
-    .product-products-header {
+    .archivedproduct-products-header {
       display: flex;
       justify-content: space-between; /* Split content to left (search) and right (buttons) */
       align-items: center;
       margin-bottom: 20px;
       background: #fff; /* Match background from provided snippet */
 
-      .search-input {
+      .archivedproduct-search-input {
         width: 200px;
         padding: 8px 12px; /* Adjusted padding to match provided snippet */
         height: 40px; /* Match height with buttons for alignment, as in provided snippet */
@@ -69,13 +69,13 @@ body {
         }
       }
 
-      .actions {
+      .archivedproduct-actions {
         display: flex;
         align-items: center;
         gap: 10px; /* Spacing between right-side elements, matching provided snippet */
         justify-content: flex-end; /* Align buttons to the right */
 
-        .action-button {
+        .archivedproduct-action-button {
           padding: 10px 20px; /* Match padding from provided snippet */
           height: 40px; /* Match height from provided snippet */
           border: 1px solid #ccc;
@@ -98,11 +98,11 @@ body {
           }
         }
 
-        .filter-container {
+        .archivedproduct-filter-container {
           position: relative;
 
-          .filter-button {
-            @extend .action-button; /* Inherit styles from action-button for consistency */
+          .archivedproduct-filter-button {
+            @extend .archivedproduct-action-button; /* Inherit styles from action-button for consistency */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -116,7 +116,7 @@ body {
             }
           }
 
-          .filter-dropdown {
+          .archivedproduct-filter-dropdown {
             position: absolute;
             top: 100%; /* Position below the button, matching provided snippet */
             right: 0;
@@ -152,7 +152,7 @@ body {
       }
     }
 
-    .product-product-table {
+    .archivedproduct-product-table {
       width: 100%; /* Ensure the table takes full width of its container */
       max-width: 1200px; /* Match the max-width of the parent container */
       margin: 0 auto; /* Center the table horizontally */
@@ -171,12 +171,12 @@ body {
           background: #ff0000;
           font-weight: 600;
 
-          .header-actions-icon {
+          .archivedproduct-header-actions-icon {
             display: flex;
             align-items: center;
             gap: 10px;
 
-            .checkbox-icon {
+            .archivedproduct-checkbox-icon {
               color: #fff;
               cursor: pointer;
               font-size: 16px;
@@ -206,14 +206,14 @@ body {
         }
       }
 
-      .action-icons {
+      .archivedproduct-action-icons {
         display: flex;
         gap: 10px;
         align-items: center;
 
-        .checkbox-icon,
-        .delete-icon,
-        .edit-icon {
+        .archivedproduct-checkbox-icon,
+        .archivedproduct-delete-icon,
+        .archivedproduct-edit-icon {
           color: #fff;
           cursor: pointer !important; /* Ensure cursor is pointer */
           font-size: 16px;
@@ -226,7 +226,7 @@ body {
       }
     }
 
-    .product-pagination {
+    .archivedproduct-pagination {
       display: flex;
       justify-content: flex-end; /* Align pagination to the right */
       align-items: center;

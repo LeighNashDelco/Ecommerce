@@ -1,0 +1,460 @@
+.edit-product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: auto;
+  }
+  
+  .edit-product-overlay {
+    background: transparent; /* No background here, handled by content */
+  }
+  
+  .edit-product-content {
+    background: #F0F8FF;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    width: 1000px; /* Wider for landscape layout */
+    max-width: 95vw; /* Responsive max width */
+    max-height: 80vh; /* Slightly shorter height for landscape */
+    overflow-y: auto;
+    position: relative;
+    z-index: 1001;
+  
+    /* Custom scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+      width: 8px; /* Thin scrollbar */
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #F0F8FF; /* Match modal background for seamless look */
+      border-radius: 10px; /* Rounded edges for the track */
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: rgba(30, 30, 30, 0.3); /* Lighter, semi-transparent gray (less black) */
+      border-radius: 10px; /* Rounded edges for the thumb */
+      transition: background 0.3s ease; /* Smooth transition for hover */
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(30, 30, 30, 0.5); /* Slightly darker on hover but still subtle */
+    }
+  
+    .edit-product-header {
+      margin-bottom: 30px;
+  
+      h2 {
+        font-size: 28px;
+        color: #1E1E1E;
+        font-weight: 700;
+        margin: 0;
+        text-align: left; /* Keep title on the left */
+      }
+    }
+  
+    .edit-product-form {
+      display: flex;
+      flex-direction: row; /* Horizontal layout for landscape */
+      gap: 40px;
+      align-items: flex-start;
+  
+      .edit-product-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        min-width: 350px; /* Ensure image section has enough space */
+  
+        .edit-product-image-section {
+          width: 300px;
+          height: 300px;
+          border-radius: 10px;
+          background: #F0F8FF;
+          display: flex;
+          justify-content: center; /* Center the image horizontally */
+          align-items: center; /* Center the image vertically */
+          overflow: hidden;
+          margin-bottom: 20px;
+          border: 2px dashed #1E1E1E; /* Dashed border as in your image */
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          pointer-events: auto;
+          z-index: 1001;
+  
+          &:hover {
+            border-color: #1E1E1E;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+          }
+  
+          .edit-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
+            border-radius: 8px;
+          }
+        }
+  
+        .edit-product-upload-button {
+          width: 300px; /* Match the image square width */
+          padding: 12px 0; /* Match padding from your reference */
+          background: #1E1E1E; /* Black background as in your image */
+          color: white;
+          border: none;
+          border-radius: 8px; /* Match border radius from your reference */
+          cursor: pointer;
+          font-size: 16px; /* Match font size from your reference */
+          text-align: center;
+          transition: none; /* No hover effect for simplicity, matching your image */
+          display: inline-block; /* Ensure it behaves like a button */
+          pointer-events: auto;
+          z-index: 1001;
+        }
+      }
+  
+      .edit-product-right {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: relative;
+        z-index: 1001;
+  
+        .edit-product-field {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+  
+          label {
+            font-size: 14px;
+            color: #1E1E1E; /* Darker text for contrast, matching your reference */
+            font-weight: 500;
+          }
+  
+          .edit-product-input,
+          .edit-product-textarea {
+            width: 100%; /* Ensure full width for inputs */
+            padding: 14px; /* Match padding from your reference */
+            border: 2px solid #1E1E1E; /* Dark border as in your reference */
+            border-radius: 8px; /* Match border radius from your reference */
+            font-size: 16px; /* Match font size from your reference */
+            outline: none;
+            background: #F0F8FF; /* Match modal background */
+            color: #1E1E1E; /* Dark text for visibility, matching your reference */
+            transition: border-color 0.3s ease; /* Smooth transition as in your reference */
+            pointer-events: auto; /* Ensure inputs are clickable */
+            z-index: 1002; /* Ensure inputs are above other elements */
+  
+            &::placeholder {
+              color: #808080; /* Gray placeholder text for visibility */
+              opacity: 1; /* Ensure placeholder is fully visible */
+            }
+  
+            &:focus {
+              outline: none;
+              border-color: #1E1E1E; /* Darker border on focus, matching your reference */
+            }
+          }
+  
+          .edit-product-textarea {
+            height: 120px; /* Match height from your reference */
+            resize: vertical; /* Allow vertical resizing */
+          }
+        }
+      }
+    }
+  
+    .edit-product-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 20px;
+  
+      .edit-product-cancel-button {
+        padding: 10px 20px;
+        background: #fff;
+        color: #dc3545; /* Red for cancel */
+        border: 1px solid #dc3545;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s, color 0.3s;
+  
+        &:hover {
+          background: #dc3545;
+          color: white;
+        }
+      }
+  
+      .edit-product-save-button {
+        background: #1E1E1E; /* Dark background as in your reference */
+        color: white;
+        padding: 14px 24px; /* Match padding from your reference */
+        border: none;
+        border-radius: 8px; /* Match border radius from your reference */
+        cursor: pointer;
+        font-size: 18px; /* Match font size from your reference */
+        transition: background 0.3s ease, transform 0.2s ease; /* Smooth transitions as in your reference */
+        pointer-events: auto;
+        z-index: 1002;
+  
+        &:hover {
+          background: #FF0000; /* Red background on hover, as in your reference */
+          transform: translateY(-2px); /* Slight lift on hover, as in your reference */
+        }
+      }
+    }
+  }
+  
+  /* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+  @media (max-width: 430px) {
+    .edit-product-content {
+      padding: 16px;
+      max-width: 95%;
+      max-height: 90vh;
+      overflow-y: auto; /* Ensure content can scroll if needed */
+  
+      /* Custom scrollbar for mobile WebKit browsers */
+      &::-webkit-scrollbar {
+        width: 6px; /* Even thinner on mobile */
+      }
+  
+      &::-webkit-scrollbar-track {
+        background: #F0F8FF;
+        border-radius: 8px;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background: rgba(30, 30, 30, 0.3); /* Lighter, semi-transparent gray (less black) */
+        border-radius: 8px;
+      }
+  
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba(30, 30, 30, 0.5); /* Slightly darker on hover but still subtle */
+      }
+  
+      .edit-product-header {
+        margin-bottom: 20px;
+  
+        h2 {
+          font-size: 20px;
+          color: #1E1E1E; /* Ensure title is visible */
+        }
+      }
+  
+      .edit-product-form {
+        flex-direction: column; /* Stack vertically on mobile */
+        gap: 20px;
+  
+        .edit-product-left {
+          order: -1; /* Moves to the top */
+          width: 100%;
+          align-items: center;
+          z-index: 1001; /* Ensure image section is visible */
+  
+          .edit-product-image-section {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            background: #F0F8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 2px dashed #1E1E1E; /* Dashed border as in your image */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            pointer-events: auto;
+            z-index: 1001;
+  
+            &:hover {
+              border-color: #1E1E1E;
+              box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            }
+  
+            .edit-product-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+          }
+  
+          .edit-product-upload-button {
+            width: 200px; /* Match image width on mobile */
+            padding: 10px 0; /* Reduced padding for mobile */
+            background: #1E1E1E; /* Black background as in your image */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px; /* Reduced font size for mobile */
+            text-align: center;
+            transition: none; /* No hover effect for simplicity, matching your image */
+            display: inline-block;
+            pointer-events: auto;
+            z-index: 1001; /* Ensure button is visible */
+          }
+        }
+  
+        .edit-product-right {
+          gap: 16px;
+          z-index: 1002; /* Ensure form is above other elements */
+  
+          .edit-product-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+  
+            label {
+              font-size: 14px;
+              color: #1E1E1E; /* Darker text for visibility */
+              font-weight: 500;
+              z-index: 1003; /* Ensure labels are visible */
+            }
+  
+            .edit-product-input,
+            .edit-product-textarea {
+              width: 100%; /* Full width on mobile */
+              padding: 12px; /* Reduced padding for mobile */
+              border: 2px solid #1E1E1E; /* Dark border as in desktop */
+              border-radius: 8px; /* Match border radius from desktop */
+              font-size: 14px; /* Reduced font size for mobile */
+              outline: none;
+              background: #F0F8FF; /* Match modal background */
+              color: #1E1E1E; /* Dark text for visibility */
+              transition: border-color 0.3s ease;
+              pointer-events: auto; /* Ensure inputs are clickable */
+              z-index: 1003; /* Ensure inputs are fully visible above other elements */
+              position: relative; /* Ensure layering works correctly */
+  
+              &::placeholder {
+                color: #808080; /* Gray placeholder text for visibility */
+                opacity: 1; /* Ensure placeholder is fully visible */
+              }
+  
+              &:focus {
+                outline: none;
+                border-color: #1E1E1E; /* Darker border on focus */
+              }
+            }
+  
+            .edit-product-textarea {
+              height: 100px; /* Reduced height for mobile */
+              resize: vertical; /* Allow vertical resizing */
+            }
+          }
+        }
+      }
+  
+      .edit-product-actions {
+        justify-content: center; /* Center buttons on mobile */
+        z-index: 1002; /* Ensure buttons are visible */
+  
+        .edit-product-cancel-button {
+          display: none; /* Hide cancel button on mobile to simplify */
+        }
+  
+        .edit-product-save-button {
+          width: 100%; /* Full width on mobile */
+          padding: 12px 20px;
+          font-size: 16px;
+          margin-top: 16px;
+          background: #1E1E1E; /* Black background as in desktop */
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background 0.3s ease, transform 0.2s ease;
+          pointer-events: auto;
+          z-index: 1003;
+  
+          &:hover {
+            background: #FF0000; /* Red background on hover, as in desktop */
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  
+    /* Style the dropdown list (options) for WebKit browsers (e.g., Safari, Chrome on iPhone) */
+    .edit-product-input {
+      @media (max-width: 430px) {
+        &::-webkit-calendar-picker-indicator { /* Hide default dropdown arrow */
+          display: none;
+        }
+  
+        &::-webkit-scrollbar {
+          width: 0; /* Hide scrollbar in dropdown */
+        }
+  
+        & option {
+          padding: 8px 12px; /* Match mobile input padding */
+          font-size: 14px; /* Match mobile font size */
+          background: #ffffff; /* White background for options */
+          color: #1E1E1E; /* Dark text for options */
+          border: none; /* Remove any default borders */
+          border-radius: 0; /* Reset border radius */
+          line-height: 1.2; /* Ensure compact line height */
+          max-width: 100%; /* Prevent overflow */
+          white-space: nowrap; /* Prevent text wrapping */
+        }
+  
+        & optgroup {
+          background: #ffffff; /* White background for optgroups */
+          color: #1E1E1E; /* Dark text for optgroups */
+          font-weight: bold; /* Bold for optgroup labels */
+          padding: 8px 12px; /* Match option padding */
+          line-height: 1.2; /* Ensure compact line height */
+        }
+  
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+          -webkit-box-shadow: 0 0 0 30px #F0F8FF inset !important; /* Match background */
+          -webkit-text-fill-color: #1E1E1E !important; /* Match text color */
+        }
+      }
+    }
+  
+    /* Style the dropdown list for Firefox */
+    .edit-product-input {
+      @media (max-width: 430px) {
+        &::-moz-focus-inner {
+          border: 0; /* Remove focus outline in Firefox */
+        }
+  
+        &:-moz-focusring {
+          color: transparent; /* Hide focus ring in Firefox */
+          text-shadow: 0 0 0 #1E1E1E; /* Ensure text is visible */
+        }
+  
+        & option {
+          padding: 8px 12px; /* Match mobile input padding */
+          font-size: 14px; /* Match mobile font size */
+          background: #ffffff; /* White background for options */
+          color: #1E1E1E; /* Dark text for options */
+          border: none; /* Remove any default borders */
+          border-radius: 0; /* Reset border radius */
+          line-height: 1.2; /* Ensure compact line height */
+          max-width: 100%; /* Prevent overflow */
+          white-space: nowrap; /* Prevent text wrapping */
+        }
+  
+        & optgroup {
+          background: #ffffff; /* White background for optgroups */
+          color: #1E1E1E; /* Dark text for optgroups */
+          font-weight: bold; /* Bold for optgroup labels */
+          padding: 8px 12px; /* Match option padding */
+          line-height: 1.2; /* Ensure compact line height */
+        }
+      }
+    }
+  }

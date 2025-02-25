@@ -6,43 +6,53 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the Product page */
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
 /* Order Dashboard styles */
 .order-dashboard {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard and Product */
   background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard and Product */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard and Product */
+  }
 
   .order-orders {
-    width: 100%;
+    max-width: 1200px; /* Match the max-width of the Dashboard and Product */
+    width: 100%; /* Ensure it takes full width of the container */
+    margin: 0 auto; /* Center the content horizontally */
     background: #f4f4f4;
     display: flex; /* Add flex to the container to align h2 and header */
     flex-direction: column; /* Stack children vertically */
 
     h2 {
-      margin: 0 0 20px 0; /* Keep margin but ensure it doesn’t affect alignment */
+      margin: 0 0 30px 0; /* Increased margin-bottom to match Product page for spacing below "Orders" */
       font-size: 24px;
       color: #333;
+      text-align: left; /* Keep "Orders" on the left side, matching Product */
       line-height: 1; /* Ensure text height doesn’t disrupt alignment */
-      align-self: flex-start; /* Align h2 to the start of the flex container */
     }
 
     .order-orders-header {
       display: flex;
-      justify-content: space-between; /* Split content to left and right */
+      justify-content: space-between; /* Split content to left (search/buttons) and right (filter) */
       align-items: center; /* Ensure all flex items are vertically centered */
       margin-bottom: 20px;
-      background: #f4f4f4;
+      background: #fff; /* Match background from Product page */
 
       .left-actions {
         display: flex;
@@ -53,15 +63,16 @@ body {
       .right-actions {
         display: flex;
         align-items: center;
-        gap: 10px; /* Spacing between right-side elements */
+        gap: 10px; /* Spacing between right-side elements, matching Product */
+        justify-content: flex-end; /* Align filter to the right, matching Product */
       }
 
       .header-button {
-        padding: 10px 20px; // Unchanged
-        height: 40px; // Unchanged
+        padding: 10px 20px; /* Match padding from Product page */
+        height: 40px; /* Match height from Product page */
         border: 1px solid #ccc;
-        border-radius: 10px; // Unchanged
-        background: #fff; // Unchanged
+        border-radius: 10px; /* Match corner radius from Product page */
+        background: #fff; /* White background as in Product */
         color: #333;
         font-size: 14px;
         cursor: pointer;
@@ -71,28 +82,27 @@ body {
         display: flex;
         align-items: center; /* Vertically center text within the button */
         justify-content: center;
-        vertical-align: middle; /* Ensure vertical alignment with input */
 
         &:hover {
-          background: #ff0000; // Unchanged
-          color: white; // Unchanged
-          border-color: #ff0000; // Unchanged
+          background: #ff0000; /* Red background on hover, matching Product */
+          color: white;
+          border-color: #ff0000;
         }
       }
 
       .search-input {
         width: 200px;
-        padding: 8px 12px; /* Adjusted padding to fit 40px height and center text */
-        height: 40px; /* Matches header-button height */
+        padding: 8px 12px; /* Adjusted padding to match Product page */
+        height: 40px; /* Matches header-button height, as in Product */
         border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff; /* White background as in your image */
+        border-radius: 4px; /* Match Product page’s search input corner radius */
+        background: #fff; /* White background as in Product */
         color: #333;
         font-size: 14px;
         outline: none;
         box-sizing: border-box; /* Ensure padding doesn’t affect total height */
         line-height: 1; /* Fine-tune vertical alignment of text inside input */
-        vertical-align: middle; /* Ensure vertical alignment with buttons */
+        vertical-align: middle; /* Ensure vertical alignment with buttons, matching Product */
 
         &:focus {
           border-color: #ff0000;
@@ -103,11 +113,11 @@ body {
         position: relative;
 
         .filter-button {
-          padding: 10px 20px; // Unchanged
-          height: 40px; // Unchanged
+          padding: 10px 20px; /* Match padding from Product page */
+          height: 40px; /* Match height from Product page */
           border: 1px solid #ccc;
-          border-radius: 10px; // Unchanged
-          background: #fff; // Unchanged
+          border-radius: 10px; /* Match corner radius from Product page */
+          background: #fff; /* White background as in Product */
           color: #333;
           font-size: 14px;
           cursor: pointer;
@@ -119,9 +129,9 @@ body {
           line-height: 1;
 
           &:hover {
-            background: #ff0000; // Unchanged
-            color: white; // Unchanged
-            border-color: #ff0000; // Unchanged
+            background: #ff0000; /* Red background on hover, matching Product */
+            color: white;
+            border-color: #ff0000;
           }
 
           span {
@@ -138,7 +148,7 @@ body {
           background: #fff;
           border: 1px solid #ccc;
           border-radius: 4px;
-          list-style: none;
+          list-style: none; /* Remove bullet points, matching Product */
           padding: 5px 0;
           margin: 0;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -149,11 +159,11 @@ body {
             color: #333;
             font-size: 14px;
             cursor: pointer;
-            transition: background 0.3s; // Unchanged
+            transition: background 0.3s; /* Smooth transition for hover effect, matching Product */
 
             &:hover {
-              background: #eeadad; // Unchanged
-              color: #333; // Unchanged
+              background: #eeadad; /* Light pink/red background on hover, matching Product */
+              color: #333; /* Ensure text remains readable */
             }
           }
         }
@@ -161,6 +171,11 @@ body {
     }
 
     .order-order-table {
+      width: 100%; /* Ensure the table takes full width of its container */
+      max-width: 1200px; /* Match the max-width of the parent container, matching Product */
+      margin: 0 auto; /* Center the table horizontally, matching Product */
+      overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens, matching Product */
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -221,7 +236,7 @@ body {
 
     .order-pagination {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-end; /* Align pagination to the right, matching Product */
       align-items: center;
       gap: 10px;
       margin-top: 20px;

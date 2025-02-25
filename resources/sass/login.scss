@@ -23,11 +23,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left; // Align text to the left
+  text-align: left;
 }
 
 .login-title {
-  font-size: 36px; // Slightly larger for better visibility
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -40,16 +40,16 @@
 .login-input-group,
 .login-password-group {
   width: 100%;
-  max-width: 500px; // Increase max width for better UI
+  max-width: 500px;
   margin-bottom: 20px;
 
   input {
     width: 100%;
-    padding: 16px; // Increase padding for larger textboxes
+    padding: 16px;
     border: 1px solid #666;
     background: transparent;
     color: white;
-    font-size: 18px; // Increase font size for readability
+    font-size: 18px;
     border-radius: 6px;
   }
 }
@@ -76,7 +76,7 @@
   }
 
   span {
-    line-height: 1; // Resets line height to ensure alignment
+    line-height: 1;
     display: flex;
     align-items: center;
   }
@@ -92,13 +92,12 @@
 .login-remember-label span {
   display: inline-block;
   vertical-align: middle;
-  
 }
 
 .login-submit-btn {
   width: 100%;
   max-width: 500px;
-  padding: 16px; // Increase padding for a bigger button
+  padding: 16px;
   background: red;
   color: white;
   font-size: 18px;
@@ -146,6 +145,6 @@
   }
 
   .login-image-section {
-    height: 40vh;
+    display: none; /* Hides the image section */
   }
 }

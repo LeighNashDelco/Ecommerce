@@ -1,0 +1,294 @@
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  
+    .chatbot-icon {
+      width: 50px; /* Standard size, slightly smaller */
+      height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      overflow: hidden;
+      border: 2px solid #fff; /* White border for contrast */
+      animation: float 3s ease-in-out infinite; /* Floating animation */
+  
+      .chatbot-profile {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+  
+      &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+        animation-play-state: paused; /* Pause animation on hover */
+      }
+    }
+  
+    /* Floating animation keyframes */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0); /* Start and end at original position */
+      }
+      50% {
+        transform: translateY(-10px); /* Move up 10px in the middle */
+      }
+    }
+  
+    .chatbox {
+      position: absolute;
+      bottom: 0; /* Start at the bottom, hidden by opacity */
+      right: 0;
+      width: 300px;
+      height: 400px;
+      background: #1E1E1E; /* Black background as in your image */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      opacity: 0; /* Initially invisible for dissolve effect */
+      transform: translateY(20px); /* Slight upward shift for dissolve */
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth dissolve animation for both open and close */
+  
+      &.chatbox-open {
+        opacity: 1; /* Fully visible when open */
+        transform: translateY(0); /* No shift when open */
+        bottom: 80px; /* Position above the icon */
+      }
+  
+      &.chatbox-closing {
+        opacity: 0; /* Invisible when closing */
+        transform: translateY(20px); /* Shift down when closing */
+        pointer-events: none; /* Disable interactions during closing animation */
+      }
+  
+      .chatbox-header {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .chatbox-profile {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+  
+          .chatbox-profile-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+  
+          .chatbox-name-email {
+            display: flex;
+            flex-direction: column; /* Stack name and email vertically */
+  
+            span {
+              color: #fff;
+              font-size: 14px;
+              font-weight: 500;
+  
+              &.chatbox-email {
+                font-size: 12px;
+                color: #aaa;
+              }
+            }
+          }
+        }
+  
+        .chatbox-close {
+          background: none;
+          border: none;
+          color: #fff;
+          font-size: 18px;
+          cursor: pointer;
+          padding: 0;
+          line-height: 1;
+  
+          &:hover {
+            color: #e74c3c; /* Red on hover, matching your close button style */
+          }
+        }
+      }
+  
+      .chatbox-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto; /* Allow scrolling if messages overflow */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+  
+        .chat-message {
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 14px;
+          max-width: 80%;
+          word-wrap: break-word;
+  
+          &.bot-message {
+            background: #fff; /* White background for bot messages */
+            color: #1E1E1E;
+            align-self: flex-start; /* Align to the left */
+          }
+  
+          &.user-message {
+            background: #fff; /* White background for user messages */
+            color: #1E1E1E;
+            align-self: flex-end; /* Align to the right */
+          }
+        }
+      }
+  
+      .chatbox-input {
+        padding: 10px;
+        border-top: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+  
+        .chat-input {
+          flex: 1;
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 14px;
+          background: #fff;
+          color: #1E1E1E;
+          outline: none;
+          cursor: text; /* Indicate input is editable */
+  
+          &::placeholder {
+            color: #808080;
+            opacity: 1;
+          }
+  
+          &:focus {
+            border-color: #1E1E1E;
+            box-shadow: 0 0 5px rgba(30, 30, 30, 0.3);
+          }
+        }
+  
+        .chat-send {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          line-height: 1;
+  
+          .send-icon {
+            width: 20px; /* Increased size for better visibility */
+            height: 20px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(200%) contrast(50%); /* Grey color for default state (#808080) */
+            transition: filter 0.3s ease; /* Smooth transition for color change */
+  
+            &.send-icon-active {
+              filter: brightness(0) saturate(100%) invert(27%) sepia(97%) saturate(7492%) hue-rotate(2deg) brightness(103%) contrast(102%); /* Red color (#FF0000) */
+            }
+          }
+  
+          &:hover {
+            .send-icon {
+              filter: brightness(0) saturate(100%) invert(27%) sepia(97%) saturate(7492%) hue-rotate(2deg) brightness(103%) contrast(102%); /* Red on hover (#FF0000) */
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */
+  @media (max-width: 430px) {
+    .chatbot-container {
+      bottom: 10px;
+      right: 10px;
+  
+      .chatbot-icon {
+        width: 40px; /* Reduced to a standard mobile size */
+        height: 40px;
+        animation: float 3s ease-in-out infinite; /* Floating animation on mobile too */
+      }
+    }
+  
+    .chatbox {
+      width: 90%;
+      max-width: 300px;
+      height: 350px; /* Slightly shorter for mobile */
+      bottom: 0; /* Start at the bottom, hidden by opacity */
+      right: 0;
+  
+      &.chatbox-open {
+        opacity: 1; /* Fully visible when open */
+        transform: translateY(0); /* No shift when open */
+        bottom: 60px; /* Position above the icon on mobile */
+      }
+  
+      &.chatbox-closing {
+        opacity: 0; /* Invisible when closing */
+        transform: translateY(20px); /* Shift down when closing */
+        pointer-events: none; /* Disable interactions during closing animation */
+      }
+  
+      .chatbox-header {
+        padding: 8px;
+  
+        .chatbox-profile-img {
+          width: 25px;
+          height: 25px;
+        }
+  
+        .chatbox-name-email {
+          span {
+            font-size: 12px;
+  
+            &.chatbox-email {
+              font-size: 10px;
+            }
+          }
+        }
+  
+        .chatbox-close {
+          font-size: 16px;
+        }
+      }
+  
+      .chatbox-messages {
+        padding: 8px;
+        gap: 8px;
+  
+        .chat-message {
+          padding: 6px 10px;
+          font-size: 12px;
+          max-width: 85%;
+        }
+      }
+  
+      .chatbox-input {
+        padding: 8px;
+        gap: 8px;
+  
+        .chat-input {
+          padding: 6px 10px;
+          font-size: 12px;
+          cursor: text; /* Indicate input is editable */
+        }
+  
+        .chat-send {
+          .send-icon {
+            width: 18px; /* Slightly smaller but increased from 14px for better visibility on mobile */
+            height: 18px;
+          }
+        }
+      }
+    }
+  }

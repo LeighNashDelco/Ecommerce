@@ -7,13 +7,11 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 import { IconTrash, IconEdit } from "@tabler/icons-react"; 
-import ProductModal from "./product_modal"; 
 
-const Product = () => {
+const ArchivedProducts = () => {
   const [searchTerm, setSearchTerm] = useState(""); 
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const navigate = useNavigate(); // Initialize useNavigate
 
   const filterOptions = [
@@ -23,49 +21,38 @@ const Product = () => {
     { value: "office", label: "Office" },
   ];
 
-  const handleAddNewClick = () => {
-    setIsModalOpen(true); // Open the modal when "Add New" is clicked
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false); // Close the modal
-  };
-
-  const handleViewArchived = () => {
-    navigate("/archived_products"); // Navigate to the ArchivedProducts page
+  const handleViewActive = () => {
+    navigate("/product"); // Navigate back to the Product page
   };
 
   return (
-    <div className="app">
-      <Sidebar activeItem="Products" /> 
-      <div className="product-dashboard">
-        <div className="product-products">
-          <h2>Products</h2>
-          <div className="product-products-header">
+    <div className="archivedproduct-app">
+      <Sidebar activeItem="Products" /> {/* Highlight "Products" in Sidebar */}
+      <div className="archivedproduct-dashboard">
+        <div className="archivedproduct-products">
+          <h2>Archived Products</h2>
+          <div className="archivedproduct-products-header">
             <input
               type="text"
-              className="search-input"
+              className="archivedproduct-search-input"
               placeholder="Search Products"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <div className="actions">
-              <button className="action-button" onClick={handleAddNewClick}>
-                Add New
+            <div className="archivedproduct-actions">
+              <button className="archivedproduct-action-button" onClick={handleViewActive}>
+                View Active
               </button>
-              <button className="action-button" onClick={handleViewArchived}>
-                View Archived
-              </button>
-              <div className="filter-container">
+              <div className="archivedproduct-filter-container">
                 <button
-                  className="filter-button"
+                  className="archivedproduct-filter-button"
                   onClick={() => setFilterOpen(!filterOpen)}
                 >
                   <span>Filter</span>
                   <FaChevronDown />
                 </button>
                 {filterOpen && (
-                  <ul className="filter-dropdown">
+                  <ul className="archivedproduct-filter-dropdown">
                     {filterOptions.map((option) => (
                       <li
                         key={option.value}
@@ -82,13 +69,13 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className="product-product-table">
+          <div className="archivedproduct-product-table">
             <table>
               <thead>
                 <tr>
                   <th>
-                    <div className="header-actions-icon">
-                      <FaSquare className="checkbox-icon" />
+                    <div className="archivedproduct-header-actions-icon">
+                      <FaSquare className="archivedproduct-checkbox-icon" />
                       Actions
                     </div>
                   </th>
@@ -106,10 +93,10 @@ const Product = () => {
                 {[...Array(5)].map((_, index) => (
                   <tr key={index}>
                     <td>
-                      <div className="action-icons">
-                        <FaSquare className="checkbox-icon" size={16} />
-                        <IconTrash size={16} className="delete-icon" />
-                        <IconEdit size={16} className="edit-icon" />
+                      <div className="archivedproduct-action-icons">
+                        <FaSquare className="archivedproduct-checkbox-icon" size={16} />
+                        <IconTrash size={16} className="archivedproduct-delete-icon" />
+                        <IconEdit size={16} className="archivedproduct-edit-icon" />
                       </div>
                     </td>
                     <td></td>
@@ -125,7 +112,7 @@ const Product = () => {
               </tbody>
             </table>
           </div>
-          <div className="product-pagination">
+          <div className="archivedproduct-pagination">
             <span>Page 1 of 1</span>
             <button>&lt;</button> 
             <button className="active">1</button>
@@ -135,9 +122,8 @@ const Product = () => {
           </div>
         </div>
       </div>
-      {isModalOpen && <ProductModal onClose={handleModalClose} />} {/* Render modal as overlay when open */}
     </div>
   );
 };
 
-export default Product;
+export default ArchivedProducts;

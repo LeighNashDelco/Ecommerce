@@ -14,12 +14,15 @@ import {
   FaUser,
   FaChevronDown,
   FaUserShield,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
+import adminPhoto from "../../imgs/aadmin.svg";
 
 const Sidebar = ({ activeItem: propActiveItem }) => {
   const [adminDropdown, setAdminDropdown] = useState(false);
-  const [activeItem, setActiveItem] = useState(propActiveItem || "Dashboard"); // Default to "Dashboard" if no prop provided
-
+  const [activeItem, setActiveItem] = useState(propActiveItem || "Dashboard");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true); // Start collapsed on mobile
   const navigate = useNavigate();
 
   const menuItems = [
@@ -42,16 +45,38 @@ const Sidebar = ({ activeItem: propActiveItem }) => {
   ];
 
   return (
-    <div className="sidebar">
-      <h2>ADMIN</h2>
-      <ul>
+    <div className={`sidebar ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+      <div className="sidebar-header">
+        <div className="mobile-toggle">
+          {isSidebarCollapsed ? (
+            <FaBars 
+              className="toggle-icon"
+              onClick={() => setIsSidebarCollapsed(false)}
+            />
+          ) : (
+            <FaTimes 
+              className="toggle-icon"
+              onClick={() => setIsSidebarCollapsed(true)}
+            />
+          )}
+        </div>
+        <img 
+          src={adminPhoto}
+          alt="Admin Logo"
+          className="admin-photo"
+        />
+      </div>
+      <ul className="sidebar-menu">  
         {menuItems.map((item) => (
           <li
             key={item.label}
             className={activeItem === item.label ? "active" : ""}
-            onClick={() => navigate(item.path)}
+            onClick={() => {
+              navigate(item.path);
+              setIsSidebarCollapsed(true); // Close after click on mobile
+            }}
           >
-            {item.icon}
+            {item.icon} {/* Icons always visible on desktop, conditional on mobile */}
             <span>{item.label}</span>
           </li>
         ))}
@@ -60,7 +85,7 @@ const Sidebar = ({ activeItem: propActiveItem }) => {
           className="admin-settings-header"
           onClick={() => setAdminDropdown(!adminDropdown)}
         >
-          <FaCog />
+          <FaCog /> {/* Icon always visible on desktop */}
           <span>Admin Settings</span>
           <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
         </div>
@@ -69,10 +94,13 @@ const Sidebar = ({ activeItem: propActiveItem }) => {
             {adminSettingsItems.map((item) => (
               <li
                 key={item.label}
-                onClick={() => setActiveItem(item.label)}
+                onClick={() => {
+                  setActiveItem(item.label);
+                  setIsSidebarCollapsed(true); // Close after click on mobile
+                }}
                 className={activeItem === item.label ? "active" : ""}
               >
-                {item.icon}
+                {item.icon} {/* Icons always visible on desktop */}
                 <span>{item.label}</span>
               </li>
             ))}

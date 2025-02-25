@@ -18,6 +18,9 @@ import Table from "./table";
 import Adminlist from "./adminlist";
 import Product_modal from "./product_modal";
 import Add_usermodal from "./add_usermodal";
+import Edit_product from "./edit_product";
+import Chatbot from "./chatbot";
+import Archvied_products from "./archived_products";
 
 
 
@@ -43,6 +46,9 @@ export default function Routers() {
                 <Route path="/adminlist" element={<Adminlist />} />
                 <Route path="/product_modal" element={<Product_modal />} />
                 <Route path="/add_usermodal" element={<Add_usermodal />} />
+                <Route path="/edit_product" element={<Edit_product />} />
+                <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/archived_products" element={<Archvied_products />} />
 
 
                 

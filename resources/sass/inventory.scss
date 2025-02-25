@@ -6,58 +6,73 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  font-family: Arial, sans-serif; /* Match the font from the Product and Orders pages */
+  overflow-y: auto; /* Ensure body can scroll if needed */
 }
 
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-y: auto; /* Ensure the app container can scroll */
 }
 
 /* Inventory Dashboard styles */
 .inventory-dashboard {
   flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  overflow-y: auto;
+  padding: 20px; /* Reduced padding to match Dashboard, Product, and Orders */
   background: #f4f4f4;
+  margin-left: 250px; /* Match sidebar width from Dashboard, Product, and Orders */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar collapse/expand */
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* Remove margin on mobile to stack content below sidebar */
+    padding: 10px; /* Reduced padding for mobile, matching Dashboard, Product, and Orders */
+  }
 
   .inventory-orders {
-    width: 100%;
+    max-width: 1200px; /* Match the max-width of the Dashboard, Product, and Orders */
+    width: 100%; /* Ensure it takes full width of the container */
+    margin: 0 auto; /* Center the content horizontally */
     background: #f4f4f4;
+    display: flex; /* Add flex to the container to align h2 and header */
+    flex-direction: column; /* Stack children vertically */
 
     h2 {
-      margin: 0 0 20px 0;
+      margin: 0 0 30px 0; /* Increased margin-bottom to match Product and Orders for spacing below "Inventory Management" */
       font-size: 24px;
       color: #333;
+      text-align: left; /* Keep "Inventory Management" on the left side, matching Product and Orders */
+      line-height: 1; /* Ensure text height doesn’t disrupt alignment */
     }
 
     .inventory-orders-header {
       display: flex;
-      justify-content: space-between; /* Split content to left and right */
-      align-items: center;
+      justify-content: space-between; /* Split content to left (search/buttons) and right (filter) */
+      align-items: center; /* Ensure all flex items are vertically centered */
       margin-bottom: 20px;
-      background: #f4f4f4;
+      background: #fff; /* Match background from Product and Orders pages */
 
       .left-actions {
         display: flex;
-        align-items: center;
-        gap: 10px; /* Spacing between left-side elements */
+        align-items: center; /* Ensure vertical centering of all flex items */
+        gap: 10px; /* Spacing between left-side elements, matching Product and Orders */
       }
 
       .right-actions {
         display: flex;
         align-items: center;
-        gap: 10px; /* Spacing between right-side elements */
+        gap: 10px; /* Spacing between right-side elements, matching Product and Orders */
+        justify-content: flex-end; /* Align filter and buttons to the right, matching Product and Orders */
       }
 
       .header-button {
-        padding: 10px 20px; // Changed from 12px 20px
-        height: 40px; // Changed from 48px
+        padding: 10px 20px; /* Match padding from Product and Orders pages */
+        height: 40px; /* Match height from Product and Orders pages */
         border: 1px solid #ccc;
-        border-radius: 10px; // Changed from 4px
-        background: #fff; // Changed from #e0e0e0
+        border-radius: 10px; /* Match corner radius from Product and Orders pages */
+        background: #fff; /* White background as in Product and Orders */
         color: #333;
         font-size: 14px;
         cursor: pointer;
@@ -65,28 +80,29 @@ body {
         text-align: center;
         line-height: 1;
         display: flex;
-        align-items: center;
+        align-items: center; /* Vertically center text within the button */
         justify-content: center;
 
         &:hover {
-          background: #ff0000; // Changed from #d0d0d0
-          color: white; // Added
-          border-color: #ff0000; // Changed from #b0b0b0
+          background: #ff0000; /* Red background on hover, matching Product and Orders */
+          color: white;
+          border-color: #ff0000;
         }
       }
 
       .search-input {
         width: 200px;
-        padding: 14px 20px; /* Adjusted padding to center text vertically and match button height */
-        height: 48px; /* Match height with buttons */
+        padding: 8px 12px; /* Adjusted padding to match Product and Orders pages */
+        height: 40px; /* Matches header-button height, as in Product and Orders */
         border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff; /* White background as in your image */
+        border-radius: 4px; /* Match Product and Orders pages’ search input corner radius */
+        background: #fff; /* White background as in Product and Orders */
         color: #333;
         font-size: 14px;
         outline: none;
         box-sizing: border-box; /* Ensure padding doesn’t affect total height */
-        line-height: 15px; /* Fine-tune vertical alignment of text inside input */
+        line-height: 1; /* Fine-tune vertical alignment of text inside input */
+        vertical-align: middle; /* Ensure vertical alignment with buttons, matching Product and Orders */
 
         &:focus {
           border-color: #ff0000;
@@ -97,11 +113,11 @@ body {
         position: relative;
 
         .filter-button {
-          padding: 10px 20px; // Changed from 12px 20px
-          height: 40px; // Changed from 48px
+          padding: 10px 20px; /* Match padding from Product and Orders pages */
+          height: 40px; /* Match height from Product and Orders pages */
           border: 1px solid #ccc;
-          border-radius: 10px; // Changed from 4px
-          background: #fff; // Changed from #e0e0e0
+          border-radius: 10px; /* Match corner radius from Product and Orders pages */
+          background: #fff; /* White background as in Product and Orders */
           color: #333;
           font-size: 14px;
           cursor: pointer;
@@ -113,9 +129,9 @@ body {
           line-height: 1;
 
           &:hover {
-            background: #ff0000; // Changed from #d0d0d0
-            color: white; // Added
-            border-color: #ff0000; // Changed from #b0b0b0
+            background: #ff0000; /* Red background on hover, matching Product and Orders */
+            color: white;
+            border-color: #ff0000;
           }
 
           span {
@@ -132,7 +148,7 @@ body {
           background: #fff;
           border: 1px solid #ccc;
           border-radius: 4px;
-          list-style: none;
+          list-style: none; /* Remove bullet points, matching Product and Orders */
           padding: 5px 0;
           margin: 0;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -143,11 +159,11 @@ body {
             color: #333;
             font-size: 14px;
             cursor: pointer;
-            transition: background 0.3s; // Added for smooth transition
+            transition: background 0.3s; /* Smooth transition for hover effect, matching Product and Orders */
 
             &:hover {
-              background: #eeadad; // Changed from #ff0000 to match notifications
-              color: #333; // Changed from white to match notifications
+              background: #eeadad; /* Light pink/red background on hover, matching Product and Orders */
+              color: #333; /* Ensure text remains readable */
             }
           }
         }
@@ -155,6 +171,11 @@ body {
     }
 
     .inventory-order-table {
+      width: 100%; /* Ensure the table takes full width of its container */
+      max-width: 1200px; /* Match the max-width of the parent container, matching Product and Orders */
+      margin: 0 auto; /* Center the table horizontally, matching Product and Orders */
+      overflow-x: auto; /* Add horizontal scrolling for responsiveness on smaller screens, matching Product and Orders */
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -215,7 +236,7 @@ body {
 
     .inventory-pagination {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-end; /* Align pagination to the right, matching Product and Orders */
       align-items: center;
       gap: 10px;
       margin-top: 20px;

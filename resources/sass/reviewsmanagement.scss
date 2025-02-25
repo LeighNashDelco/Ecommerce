@@ -6,196 +6,214 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .reviewmanagement-app {
   display: flex;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  background: #f4f4f4;
 }
 
-/* Sidebar styles (unchanged - assumed to be handled by Sidebar component) */
-
-/* Dashboard styles */
 .reviewmanagement-dashboard {
-  flex: 1;
+  flex: 1; /* Takes up remaining space */
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   background: #f4f4f4;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  width: calc(100% - 250px); /* Adjust based on Sidebar width */
+  margin-left: 250px; /* Matches Sidebar width to push content right */
+}
 
-  .reviewmanagement-content {
-    width: 100%;
+.reviewmanagement-content {
+  width: 100%;
+  background: #f4f4f4;
+  flex: 1; /* Allow content to grow */
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    color: #333;
+  }
+
+  .reviewmanagement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
     background: #f4f4f4;
 
-    h2 {
-      margin: 0 0 20px 0;
-      font-size: 24px;
-      color: #333;
-    }
-
-    .reviewmanagement-header {
+    .reviewmanagement-left-actions {
       display: flex;
-      justify-content: space-between; /* Split content to left and right */
-      align-items: center;
-      margin-bottom: 20px;
-      background: #f4f4f4;
-
-      .reviewmanagement-left-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px; /* Spacing between left-side elements */
-      }
-
-      .reviewmanagement-right-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px; /* Spacing between right-side elements */
-      }
-
-      .reviewmanagement-header-button {
-        padding: 10px 20px; /* Match AdminList button padding */
-        height: 40px; /* Match AdminList button height */
-        border: 1px solid #ccc;
-        border-radius: 10px; /* Match AdminList button corner radius */
-        background: #fff; /* White background as in AdminList */
-        color: #333;
-        font-size: 14px;
-        cursor: pointer;
-        transition: 0.3s;
-        text-align: center;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-          background: #ff0000; /* Red background on hover, matching AdminList */
-          color: white;
-          border-color: #ff0000;
-        }
-      }
-
-      .reviewmanagement-search-input {
-        width: 200px;
-        padding: 8px 12px; /* Adjusted padding to match AdminList search input */
-        height: 40px; /* Match height with buttons for alignment, as in AdminList */
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff; /* White background as in AdminList */
-        color: #333;
-        font-size: 14px;
-        outline: none;
-        box-sizing: border-box; /* Ensure padding doesn’t affect total height */
-        line-height: 15px; /* Fine-tune vertical alignment of text inside input */
-
-        &:focus {
-          border-color: #ff0000;
-        }
-      }
-    }
-
-    .reviewmanagement-table {
-      table {
-        width: 100%;
-        border-collapse: collapse;
-
-        th {
-          padding: 12px 20px;
-          text-align: left;
-          border: 1px solid #555;
-          color: #fff;
-          font-size: 14px;
-          background: #ff0000;
-          font-weight: 600;
-        }
-
-        td {
-          padding: 12px 20px;
-          text-align: left;
-          border: 1px solid #555;
-          color: #fff;
-          font-size: 14px;
-          background: #333;
-        }
-
-        tr {
-          border-bottom: 1px solid #555;
-
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-
-        .reviewmanagement-header-actions-icon {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
-
-        .reviewmanagement-action-icons {
-          display: flex; /* Use flex to align icons horizontally */
-          align-items: center; /* Vertically center the icons within the div */
-          gap: 10px; /* Add spacing between icons for better visual separation */
-          cursor: pointer; /* Indicate that the icons are clickable/interactive */
-
-          &:hover {
-            opacity: 0.8; /* Reduce opacity on hover for visual feedback */
-          }
-        }
-
-        .reviewmanagement-checkbox-icon,
-        .reviewmanagement-delete-icon,
-        .reviewmanagement-edit-icon {
-          display: inline-flex; /* Ensure icons are treated as inline flex items */
-          align-items: center; /* Center the icon vertically within its container */
-          transition: opacity 0.3s; /* Smooth transition for hover effect */
-          color: #fff; /* Ensure icons are white on dark background */
-
-          &:hover {
-            opacity: 0.6; /* Slightly reduce opacity on hover for individual icons */
-            color: #ff0000; /* Change color on hover for visual feedback */
-          }
-        }
-      }
-    }
-
-    .reviewmanagement-pagination {
-      display: flex;
-      justify-content: flex-end;
       align-items: center;
       gap: 10px;
-      margin-top: 20px;
-      background: #f4f4f4;
+    }
 
-      span {
-        color: #333;
+    .reviewmanagement-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reviewmanagement-header-button {
+      padding: 10px 20px;
+      height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+      color: #333;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: #ff0000;
+        color: white;
+        border-color: #ff0000;
+      }
+    }
+
+    .reviewmanagement-search-input {
+      width: 200px;
+      padding: 8px 12px;
+      height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      color: #333;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      line-height: 15px;
+
+      &:focus {
+        border-color: #ff0000;
+      }
+    }
+  }
+
+  .reviewmanagement-table {
+    flex: 1; /* Allow table to grow */
+    overflow-y: auto; /* Ensure table can scroll if content overflows */
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th {
+        padding: 12px 20px;
+        text-align: left;
+        border: 1px solid #555;
+        color: #fff;
         font-size: 14px;
+        background: #ff0000;
+        font-weight: 600;
       }
 
-      button {
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff;
-        color: #333;
+      td {
+        padding: 12px 20px;
+        text-align: left;
+        border: 1px solid #555;
+        color: #fff;
         font-size: 14px;
+        background: #333;
+      }
+
+      tr {
+        border-bottom: 1px solid #555;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .reviewmanagement-header-actions-icon {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .reviewmanagement-action-icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         cursor: pointer;
-        transition: 0.3s;
 
         &:hover {
-          background: #ff0000;
-          color: white;
-          border-color: #ff0000;
+          opacity: 0.8;
         }
+      }
 
-        &.active {
-          background: #ff0000;
-          color: white;
-          border-color: #ff0000;
+      .reviewmanagement-checkbox-icon,
+      .reviewmanagement-delete-icon,
+      .reviewmanagement-edit-icon {
+        display: inline-flex;
+        align-items: center;
+        transition: opacity 0.3s;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.6;
+          color: #ff0000;
         }
       }
     }
   }
+
+  .reviewmanagement-pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    background: #f4f4f4;
+
+    span {
+      color: #333;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      color: #333;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #ff0000;
+        color: white;
+        border-color: #ff0000;
+      }
+
+      &.active {
+        background: #ff0000;
+        color: white;
+        border-color: #ff0000;
+      }
+    }
+  }
+}
+
+
+.sidebar {
+  width: 250px; 
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+ 
 }
