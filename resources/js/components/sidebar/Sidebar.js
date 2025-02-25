@@ -14,98 +14,102 @@ import {
   FaUser,
   FaChevronDown,
   FaUserShield,
-  FaBars, // Add this icon for the toggle button
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import "./../../../sass/components/_sidebar.scss";
+import adminPhoto from "../../../../resources/sass/img/aadmin.svg";
 
-const Sidebar = () => {
+const Sidebar = ({ activeItem: propActiveItem }) => {
   const [adminDropdown, setAdminDropdown] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
+  const [activeItem, setActiveItem] = useState(propActiveItem || "Dashboard");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
+  const menuItems = [
+    { icon: <FaTachometerAlt />, label: "Dashboard", path: "/admindashboard" },
+    { icon: <FaBoxOpen />, label: "Products", path: "/products" },
+    { icon: <FaShoppingCart />, label: "Orders", path: "/orders" },
+    { icon: <FaClipboardList />, label: "Inventory", path: "/inventory" },
+    { icon: <FaUsers />, label: "Users", path: "/users" },
+    { icon: <FaUser />, label: "Customer List", path: "/customerlist" },
+    { icon: <FaUser />, label: "Seller List", path: "/sellerlist" },
+    { icon: <FaUser />, label: "Admin List", path: "/adminlist" },
+    { icon: <FaStar />, label: "Reviews & Notifications", path: "/reviewsandnotifications" },
+  ];
+
+  const adminSettingsItems = [
+    { icon: <FaMoneyBill />, label: "Payment Management", path: "/paymentmanagement" },
+    { icon: <FaChartBar />, label: "Status & Category", path: "/statusandcategory" },
+    { icon: <FaBell />, label: "Help & Support", path: "/helpandsupport" },
+    { icon: <FaUserShield />, label: "Roles", path: "/roles" },
+  ];
+
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
-    <>
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <h2>ADMIN</h2>
-        <ul>
-          <li className={isActive("/admindashboard")} onClick={() => navigate("/admindashboard")}>
-            <FaTachometerAlt />
-            <span>Dashboard</span>
-          </li>
-          <li className={isActive("/products")} onClick={() => navigate("/products")}>
-            <FaBoxOpen />
-            <span>Products</span>
-          </li>
-          <li className={isActive("/orders")} onClick={() => navigate("/orders")}>
-            <FaShoppingCart />
-            <span>Orders</span>
-          </li>
-          <li className={isActive("/inventory")} onClick={() => navigate("/inventory")}>
-            <FaClipboardList />
-            <span>Inventory</span>
-          </li>
-          <li className={isActive("/users")} onClick={() => navigate("/users")}>
-            <FaUsers />
-            <span>Users</span>
-          </li>
-          <li className={isActive("/customerlist")} onClick={() => navigate("/customerlist")}>
-            <FaUser />
-            <span>Customer List</span>
-          </li>
-          <li className={isActive("/sellerlist")} onClick={() => navigate("/sellerlist")}>
-            <FaUser />
-            <span>Seller List</span>
-          </li>
-          <li className={isActive("/adminlist")} onClick={() => navigate("/adminlist")}>
-            <FaUser />
-            <span>Admin List</span>
-          </li>
-          <li className={isActive("/reviewsandnotifications")} onClick={() => navigate("/reviewsandnotifications")}>
-            <FaStar />
-            <span>Reviews & Notifications</span>
-          </li>
-
-          <hr className="separator" />
-
-          <div className="admin-settings-header" onClick={() => setAdminDropdown(!adminDropdown)}>
-            <FaCog />
-            <span>Admin Settings</span>
-            <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
-          </div>
-
-          {adminDropdown && (
-            <ul className="dropdown">
-              <li className={isActive("/paymentmanagement")} onClick={() => navigate("/paymentmanagement")}>
-                <FaMoneyBill />
-                <span>Payment Management</span>
-              </li>
-              <li className={isActive("/statusandcategory")} onClick={() => navigate("/statusandcategory")}>
-                <FaChartBar />
-                <span>Status & Category</span>
-              </li>
-              <li className={isActive("/helpandsupport")} onClick={() => navigate("/helpandsupport")}>
-                <FaBell />
-                <span>Help & Support</span>
-              </li>
-              <li className={isActive("/roles")} onClick={() => navigate("/roles")}>
-                <FaUserShield />
-                <span>Roles</span>
-              </li>
-            </ul>
+    <div className={`sidebar ${isSidebarCollapsed ? "collapsed" : "expanded"}`}>
+      <div className="sidebar-header">
+        <div className="mobile-toggle">
+          {isSidebarCollapsed ? (
+            <FaBars
+              className="toggle-icon"
+              onClick={() => setIsSidebarCollapsed(false)}
+            />
+          ) : (
+            <FaTimes
+              className="toggle-icon"
+              onClick={() => setIsSidebarCollapsed(true)}
+            />
           )}
-        </ul>
+        </div>
+        <img src={adminPhoto} alt="Admin Logo" className="admin-photo" />
       </div>
-      <div className="toggle-icon" onClick={toggleSidebar}>
-        <FaBars />
-      </div>
-    </>
+      <ul className="sidebar-menu">
+        {menuItems.map((item) => (
+          <li
+            key={item.label}
+            className={isActive(item.path)}
+            onClick={() => {
+              navigate(item.path);
+              setActiveItem(item.label);
+              setIsSidebarCollapsed(true); // Close on mobile
+            }}
+          >
+            {item.icon}
+            <span>{item.label}</span>
+          </li>
+        ))}
+        <hr className="separator" />
+        <div
+          className="admin-settings-header"
+          onClick={() => setAdminDropdown(!adminDropdown)}
+        >
+          <FaCog />
+          <span>Admin Settings</span>
+          <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
+        </div>
+        {adminDropdown && (
+          <ul className="dropdown">
+            {adminSettingsItems.map((item) => (
+              <li
+                key={item.label}
+                className={isActive(item.path)}
+                onClick={() => {
+                  navigate(item.path);
+                  setActiveItem(item.label);
+                  setIsSidebarCollapsed(true); // Close on mobile
+                }}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </ul>
+    </div>
   );
 };
 
