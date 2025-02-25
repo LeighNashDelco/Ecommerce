@@ -10,14 +10,30 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'product_name',
         'description',
         'price',
-        'stock'
+        'quantity',
+        'profile_id',
+        'brand_id',
+        'category_id',
+        'product_img',
     ];
 
-    public function orderItems()
+    public $timestamps = true; // This is enabled by default, but just in case.
+
+    public function brand()
     {
-        return $this->hasMany(OrderItem::class, 'product_id');
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(Profile::class, 'profile_id');
     }
 }
