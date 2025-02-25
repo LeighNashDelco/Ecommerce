@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaBoxOpen,
@@ -13,16 +13,19 @@ import {
   FaChartBar,
   FaUser,
   FaChevronDown,
+  FaTruck, // Shipment
+  FaWarehouse, // Inventory
+  FaClipboardCheck, // Review
+  FaUserShield, // Roles
 } from "react-icons/fa";
 import "./../../../sass/components/_sidebar.scss";
 
 const Sidebar = () => {
   const [adminDropdown, setAdminDropdown] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); // Get current route
+  const location = useLocation();
 
-  // Function to check if the link is active
-  const isActive = (path) => location.pathname === path ? "active" : "";
+  const isActive = (path) => (location.pathname === path ? "active" : "");
 
   return (
     <div className="sidebar">
@@ -41,8 +44,12 @@ const Sidebar = () => {
           <span>Orders</span>
         </li>
         <li className={isActive("/inventory")} onClick={() => navigate("/inventory")}>
-          <FaClipboardList />
+          <FaWarehouse />
           <span>Inventory</span>
+        </li>
+        <li className={isActive("/shipment")} onClick={() => navigate("/shipment")}>
+          <FaTruck />
+          <span>Shipment</span>
         </li>
         <li className={isActive("/users")} onClick={() => navigate("/users")}>
           <FaUsers />
@@ -51,10 +58,6 @@ const Sidebar = () => {
         <li className={isActive("/customerlist")} onClick={() => navigate("/customerlist")}>
           <FaUser />
           <span>Customer List</span>
-        </li>
-        <li className={isActive("/sellerlist")} onClick={() => navigate("/sellerlist")}>
-          <FaUser />
-          <span>Seller List</span>
         </li>
         <li className={isActive("/adminlist")} onClick={() => navigate("/adminlist")}>
           <FaUser />
@@ -86,6 +89,10 @@ const Sidebar = () => {
             <li className={isActive("/helpandsupport")} onClick={() => navigate("/helpandsupport")}>
               <FaBell />
               <span>Help & Support</span>
+            </li>
+            <li className={isActive("/roles")} onClick={() => navigate("/roles")}>
+              <FaUserShield />
+              <span>Roles</span>
             </li>
           </ul>
         )}

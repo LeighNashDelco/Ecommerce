@@ -41,6 +41,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth.api' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class, // ✅ Added Passport middleware
+        'auth:api' => \Illuminate\Auth\Middleware\Authenticate::class,
     ];
 }

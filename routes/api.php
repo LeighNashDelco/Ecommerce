@@ -16,7 +16,7 @@ use App\Http\Controllers\SellerController;
 # AUTHENTICATION ROUTES (Passport)
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api'); // Fixed redundancy
+Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 
 # AUTHENTICATED USER INFO
 Route::middleware('auth:api')->get('/user', function (Request $request) {
