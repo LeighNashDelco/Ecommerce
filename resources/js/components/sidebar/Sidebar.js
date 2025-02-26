@@ -18,6 +18,7 @@ import {
   FaClipboardCheck, // Review
   FaUserShield, // Roles
 } from "react-icons/fa";
+import adminPhoto from "./../../../sass/img/aadmin.svg"; // Adjust path if needed
 import "./../../../sass/components/_sidebar.scss";
 
 const Sidebar = () => {
@@ -29,7 +30,10 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <h2>ADMIN</h2>
+      <div className="admin-heading">
+        <img src={adminPhoto} alt="Admin" className="admin-photo" />
+      </div>
+      
       <ul>
         <li className={isActive("/admindashboard")} onClick={() => navigate("/admindashboard")}>
           <FaTachometerAlt />

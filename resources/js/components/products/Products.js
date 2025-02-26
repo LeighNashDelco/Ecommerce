@@ -2,45 +2,43 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./../sidebar/Sidebar";
 import { FaSquare, FaTrash, FaChevronDown } from "react-icons/fa";
 import ProductModal from "./Product_modal";
-import axios from "axios"; // Import axios for API requests
+import axios from "axios";
 import "./../../../sass/components/_products.scss";
 import "./../../../sass/components/_products_modal.scss";
+import TopNavbar from "./../topnavbar/TopNavbar";
 
 const Product = () => {
-  const [products, setProducts] = useState([]); // Ensure it's initialized as an empty array
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
 
-  // Filter options for the category filter
   const filterOptions = [
     { value: "all", label: "All" },
     { value: "Gaming Mouse", label: "Gaming Mouse" },
-    { value: "Wireless", label: "Wireless" },
-    { value: "Office", label: "Office" },
+    { value: "Wireless Mouse", label: "Wireless Mouse" },
+    { value: "Office Mouse", label: "Office Mouse" },
   ];
 
-  // Fetch products from API dynamically
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/products");
-        // Ensure the products are set to an array
         setProducts(response.data || []);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setProducts([]); // Set to empty array in case of error
+        setProducts([]);
       }
     };
     fetchData();
-  }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+  }, []);
 
-  // Handle the search functionality and category filter
-  const filteredProducts = products.filter((product) => 
-    product.product_name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (filterValue === "all" || product.category === filterValue)
+  const filteredProducts = products.filter(
+    (product) =>
+      product.product_name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (filterValue === "all" || product.category === filterValue)
   );
 
   const handleAddNewClick = () => {
@@ -51,13 +49,43 @@ const Product = () => {
     setIsModalOpen(false);
   };
 
+  const handleProductAdd = async (newProduct) => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/products", newProduct);
+  
+      if (response.status === 201) {
+        const addedProduct = response.data; 
+        
+  
+        setProducts((prevProducts) => [addedProduct, ...prevProducts]);
+        setIsModalOpen(false); 
+      } else {
+        console.error("Failed to add product. Response status:", response.status);
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };
+  
+  
+  // Pagination logic
+  const productsPerPage = 8;
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const currentPageProducts = filteredProducts.slice(
+    (pagination.currentPage - 1) * productsPerPage,
+    pagination.currentPage * productsPerPage
+  );
+
   const handlePageChange = (page) => {
     setPagination({ ...pagination, currentPage: page });
   };
 
   return (
     <div className="app">
-      <Sidebar activeItem="Products" /> 
+      <TopNavbar />
+      <Sidebar activeItem="Products" />
       <div className="product-dashboard">
         <div className="product-products">
           <h2>Products</h2>
@@ -120,8 +148,8 @@ const Product = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredProducts.length > 0 ? (
-                  filteredProducts.map((product) => (
+                {currentPageProducts.length > 0 ? (
+                  currentPageProducts.map((product) => (
                     <tr key={product.id}>
                       <td>
                         <div className="action-icons">
@@ -135,7 +163,7 @@ const Product = () => {
                           src={product.product_img}
                           alt={product.product_name}
                           className="product-image"
-                          style={{ width: '3rem', height: '3rem', objectFit: 'cover' }} 
+                          style={{ width: '3rem', height: '3rem', objectFit: 'cover' }}
                         />
                       </td>
                       <td>{product.product_name}</td>
@@ -154,14 +182,14 @@ const Product = () => {
             </table>
           </div>
           <div className="product-pagination">
-            <span>Page {pagination.currentPage} of {pagination.totalPages}</span>
+            <span>Page {pagination.currentPage} of {totalPages}</span>
             <button 
               onClick={() => handlePageChange(pagination.currentPage - 1)} 
               disabled={pagination.currentPage <= 1}
             >
               &lt;
             </button>
-            {[...Array(pagination.totalPages)].map((_, index) => (
+            {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
                 className={pagination.currentPage === index + 1 ? "active" : ""}
@@ -172,14 +200,14 @@ const Product = () => {
             ))}
             <button 
               onClick={() => handlePageChange(pagination.currentPage + 1)} 
-              disabled={pagination.currentPage >= pagination.totalPages}
+              disabled={pagination.currentPage >= totalPages}
             >
               &gt;
             </button>
           </div>
         </div>
       </div>
-      {isModalOpen && <ProductModal onClose={handleModalClose} />}
+      {isModalOpen && <ProductModal onClose={handleModalClose} onAdd={handleProductAdd} />}
     </div>
   );
 };

@@ -15,9 +15,12 @@ import PaymentManagement from "./components/paymentmanagement/PaymentManagement"
 import Products from "./components/products/Products";
 import Register from "./components/register/Register";
 import ReviewsAndNotifications from "./components/reviewsandnotification/ReviewsAndNotifications";
-import SellerList from "./components/sellerlist/SellerList";
+import Roles from "./components/roles/Roles";
+import Shipment from "./components/shipment/Shipment";
 import StatusAndCategory from "./components/statusandcategory/StatusAndCategory";
 import Users from "./components/users/Users";
+import PrivateRoute from "./components/routes/PrivateRoute.js"; // Import the PrivateRoute
+
 
 export default function Routers() {
   return (
@@ -25,20 +28,21 @@ export default function Routers() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} /> {/* Default route */}
         <Route path="login" element={<Login />} />
-        <Route path="admindashboard" element={<Dashboard />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="adminlist" element={<AdminList />} />
-        <Route path="customerlist" element={<CustomerList />} />
-        <Route path="helpandsupport" element={<HelpAndSupport />} />
-        <Route path="inventory" element={<Inventory />} />
-        <Route path="orders" element={<Orders />} />
-        <Route path="paymentmanagement" element={<PaymentManagement />} />
-        <Route path="products" element={<Products />} />
+        <Route path="admindashboard" element={<PrivateRoute element={<Dashboard />} />} />
+        <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
+        <Route path="adminlist" element={<PrivateRoute element={<AdminList />} />} />
+        <Route path="customerlist" element={<PrivateRoute element={<CustomerList />} />} />
+        <Route path="helpandsupport" element={<PrivateRoute element={<HelpAndSupport />} />} />
+        <Route path="inventory" element={<PrivateRoute element={<Inventory />} />} />
+        <Route path="orders" element={<PrivateRoute element={<Orders />} />} />
+        <Route path="paymentmanagement" element={<PrivateRoute element={<PaymentManagement />} />} />
+        <Route path="products" element={<PrivateRoute element={<Products />} />} />
         <Route path="register" element={<Register />} />
-        <Route path="reviewsandnotifications" element={<ReviewsAndNotifications />} />
-        <Route path="sellerlist" element={<SellerList />} />
-        <Route path="statusandcategory" element={<StatusAndCategory />} />
-        <Route path="users" element={<Users />} />
+        <Route path="reviewsandnotifications" element={<PrivateRoute element={<ReviewsAndNotifications />} />} />
+        <Route path="roles" element={<PrivateRoute element={<Roles />} />} />
+        <Route path="shipment" element={<PrivateRoute element={<Shipment />} />} />
+        <Route path="statusandcategory" element={<PrivateRoute element={<StatusAndCategory />} />} />
+        <Route path="users" element={<PrivateRoute element={<Users />} />} />
       </Routes>
     </Router>
   );

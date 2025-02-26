@@ -12,6 +12,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 import "./../../../sass/components/_admindashboard.scss";
+import "./../../../sass/components/_usersdashboard.scss";
 
 const AdminDashboard = () => {
   const [activeItem, setActiveItem] = useState("Payment Management");

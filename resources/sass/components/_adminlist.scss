@@ -1,0 +1,197 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+}
+
+.adminlist-app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.adminlist-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+  margin-top: 50px;
+
+  .adminlist-content {
+    width: 100%;
+    background: #f4f4f4;
+
+    h2 {
+      margin: 0 0 20px 0;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .adminlist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #f4f4f4;
+
+      .adminlist-search-input {
+        width: 200px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        outline: none;
+
+        &:focus {
+          border-color: #ff0000;
+        }
+      }
+
+      .adminlist-actions {
+        display: flex;
+        gap: 10px;
+
+        .adminlist-action-button {
+          padding: 12px 20px;
+          width: 120px;
+          height: 48px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background: #fff;
+          color: #333;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 0.3s;
+          text-align: center;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
+          }
+        }
+      }
+    }
+
+    .adminlist-table {
+      width: 100%;
+      margin-top: 20px;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #ff0000;
+          font-weight: 600;
+
+          .adminlist-header-actions-icon {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .adminlist-checkbox-icon {
+              color: #fff;
+              cursor: pointer;
+              font-size: 16px;
+
+              &:hover {
+                color: #ff0000;
+              }
+            }
+          }
+        }
+
+        td {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #333;
+        }
+
+        tr {
+          border-bottom: 1px solid #555;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+
+      .adminlist-action-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .adminlist-checkbox-icon,
+        .adminlist-delete-icon,
+        .adminlist-edit-icon {
+          color: #fff;
+          cursor: pointer !important;
+          font-size: 16px;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #ff0000 !important;
+          }
+        }
+      }
+    }
+
+    .adminlist-pagination {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: #f4f4f4;
+
+      span {
+        color: #333;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+
+        &.active {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+      }
+    }
+  }
+}
