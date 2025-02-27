@@ -8,7 +8,8 @@ function ProductModal({ onClose }) {
   const [imageFile, setImageFile] = useState(null);
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [sellers, setSellers] = useState([]); // Fetch sellers (profile_id)
+  const [profileId, setProfileId] = useState(null); // Store logged-in user's profile ID
+
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -16,24 +17,28 @@ function ProductModal({ onClose }) {
     setStock: "",
     brand: "",
     category: "",
-    profileId: "", // Store selected profileId
   });
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/brands")
-      .then((response) => setBrands(response.data))
-      .catch((error) => console.error("Error fetching brands:", error));
+    const fetchData = async () => {
+      try {
+        const [brandsRes, categoriesRes, userRes] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/api/brands"),
+          axios.get("http://127.0.0.1:8000/api/categories"),
+          axios.get("http://127.0.0.1:8000/api/user", {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          }),
+        ]);
 
-    axios
-      .get("http://127.0.0.1:8000/api/categories")
-      .then((response) => setCategories(response.data))
-      .catch((error) => console.error("Error fetching categories:", error));
+        setBrands(brandsRes.data);
+        setCategories(categoriesRes.data);
+        setProfileId(userRes.data.profile.id);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-    axios
-      .get("http://127.0.0.1:8000/api/sellers") // Fetch sellers (profile_id)
-      .then((response) => setSellers(response.data))
-      .catch((error) => console.error("Error fetching sellers:", error));
+    fetchData();
   }, []);
 
   const handleImageUpload = (e) => {
@@ -57,7 +62,11 @@ function ProductModal({ onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare FormData for submission
+    if (!profileId) {
+      console.error("Profile ID is missing");
+      return;
+    }
+
     const submissionData = new FormData();
     submissionData.append("product_name", formData.productName);
     submissionData.append("description", formData.description);
@@ -65,35 +74,33 @@ function ProductModal({ onClose }) {
     submissionData.append("quantity", formData.setStock);
     submissionData.append("brand_id", formData.brand);
     submissionData.append("category_id", formData.category);
-
-    // Check if profileId is valid before submitting
-    if (formData.profileId) {
-      submissionData.append("profile_id", formData.profileId); // Append profile_id instead of seller_id
-    } else {
-      console.error("Profile ID is missing");
-      return; // Don't submit the form if profileId is missing
-    }
+    submissionData.append("profile_id", profileId); // Attach logged-in user's profile ID
 
     if (imageFile) {
       submissionData.append("product_img", imageFile);
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/products", submissionData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/products",
+        submissionData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       console.log("Product added:", response.data);
-      onClose(); // Close modal after submission
+      onClose(); // Close modal after successful submission
     } catch (error) {
       console.error("Error adding product:", error.response?.data || error.message);
-
       if (error.response) {
-        const validationErrors = error.response.data.errors;
-        console.log("Validation Errors:", validationErrors);
+        console.log("Validation Errors:", error.response.data.errors);
       }
     }
-};
+  };
 
   return (
     <div className="modal-overlay">
@@ -186,23 +193,6 @@ function ProductModal({ onClose }) {
                     <option value="" disabled>Select Category</option>
                     {categories.map((category) => (
                       <option key={category.id} value={category.id}>{category.category_name}</option>
-                    ))}
-                  </select>
-                  <FaChevronDown className="dropdown-icon" />
-                </div>
-                <div className="select-wrapper">
-                  <select
-                    className="select-field"
-                    name="profileId" // Changed to profileId
-                    value={formData.profileId} // Changed to profileId
-                    onChange={handleInputChange}
-                    required
-                  >
-                    <option value="" disabled>Select Seller</option>
-                    {sellers.map((seller) => (
-                      <option key={seller.profile_id} value={seller.profile_id}>
-                        {seller.username} ({seller.profile_id})
-                      </option>
                     ))}
                   </select>
                   <FaChevronDown className="dropdown-icon" />

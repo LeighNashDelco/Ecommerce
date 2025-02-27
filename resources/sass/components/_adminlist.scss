@@ -195,3 +195,17 @@ body {
     }
   }
 }
+.adminlist-archive-button {
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #ff0000;
+  }
+}

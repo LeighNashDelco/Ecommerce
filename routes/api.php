@@ -12,16 +12,21 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RolesTableController;
+use App\Http\Controllers\UserListController;
+use App\Http\Controllers\CustomerListController;
 
 # AUTHENTICATION ROUTES (Passport)
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 
-# AUTHENTICATED USER INFO
+// routes/api.php
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return response()->json($request->user()->load('profile')); // Ensure it loads profile
 });
+
 
 # PROFILE ROUTE (Requires Authentication)
 Route::post('/profiles', [ProfileController::class, 'store'])->middleware('auth:api');
@@ -43,5 +48,15 @@ Route::post('/products', [ProductController::class, 'store']);
 Route::get('/products', [ProductController::class, 'getProducts']);
 
 
+
+# GET USERS
+Route::get('/getUserList', [UserListController::class, 'getUserList']);
+
+# GET CUSTOMER
+Route::get('/customers', [CustomerListController::class, 'getCustomer']);
 # GET SELLERS
 Route::get('/sellers', [SellerController::class, 'getSellers']);
+# GET ADMIN
+Route::get('/admins', [AdminController::class, 'getAdmins']);
+# GET ROLES
+Route::get('/roleslist', [RolesTableController::class, 'getRolesList']);

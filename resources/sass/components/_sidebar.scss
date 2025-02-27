@@ -159,7 +159,7 @@
   
     &.outside {
       position: fixed;
-      top: 20px; // Same height as inside sidebar header
+      top: 10px; // Same height as inside sidebar header
       left: 20px;
       z-index: 1002; // Above sidebar and navbar
       opacity: 1;
