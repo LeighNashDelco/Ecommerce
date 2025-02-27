@@ -20,7 +20,7 @@ class BrandSeeder extends Seeder
 
         // Insert brand data
         DB::table('brands')->insert([
-            ['brand_name' => 'Attack Shark X3'],
+            ['brand_name' => 'Attack Shark'],
             ['brand_name' => 'Logitech'],
             ['brand_name' => 'Razer'],
         ]);

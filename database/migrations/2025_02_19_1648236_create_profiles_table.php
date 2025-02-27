@@ -9,11 +9,11 @@ return new class extends Migration {
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); 
             $table->string('first_name');
             $table->string('middlename')->nullable();
             $table->string('last_name');
-            $table->string('gender'); // Store 'Male', 'Female', etc.
+            $table->string('gender'); 
             $table->string('suffix', 50)->nullable();
             $table->string('contact_number', 20)->nullable();
             $table->string('street')->nullable();

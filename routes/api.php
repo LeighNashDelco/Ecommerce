@@ -2,61 +2,79 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RolesController;
-use App\Http\Controllers\GenderController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SellerController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\RolesTableController;
-use App\Http\Controllers\UserListController;
-use App\Http\Controllers\CustomerListController;
+use App\Http\Controllers\{
+    RegisterController,
+    LoginController,
+    ProfileController,
+    RolesController,
+    GenderController,
+    AdminDashboardController,
+    BrandController,
+    CategoryController,
+    ProductController,
+    SellerController,
+    AdminController,
+    RolesTableController,
+    UserListController,
+    CustomerListController
+};
+use App\Models\Profile;
 
+# ==============================
 # AUTHENTICATION ROUTES (Passport)
+# ==============================
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
+
+# Protected Logout Route
 Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 
-// routes/api.php
+# Get Authenticated User
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return response()->json($request->user()->load('profile')); // Ensure it loads profile
+    return $request->user();
 });
 
+# ==============================
+# PUBLIC ROUTES
+# ==============================
 
-# PROFILE ROUTE (Requires Authentication)
-Route::post('/profiles', [ProfileController::class, 'store'])->middleware('auth:api');
-
-# FETCH FOR REGISTRATION ROLES AND GENDERS
+# Fetch Roles & Genders for Registration
 Route::get('/roles', [RolesController::class, 'index']);
 Route::get('/genders', [GenderController::class, 'index']);
 
-# FETCH FOR CATEGORIES AND BRAND
+# Fetch Categories & Brands
 Route::get('/brands', [BrandController::class, 'getBrands']);
 Route::get('/categories', [CategoryController::class, 'getCategories']);
 
-# STATISTICS
-Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
-Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);
-
-# ADMIN PRODUCTS FUNCTION
-Route::post('/products', [ProductController::class, 'store']);
+# Fetch Products (Public)
 Route::get('/products', [ProductController::class, 'getProducts']);
 
-
-
-# GET USERS
+# Fetch Users, Customers, Sellers, and Admins
 Route::get('/getUserList', [UserListController::class, 'getUserList']);
-
-# GET CUSTOMER
 Route::get('/customers', [CustomerListController::class, 'getCustomer']);
-# GET SELLERS
 Route::get('/sellers', [SellerController::class, 'getSellers']);
-# GET ADMIN
 Route::get('/admins', [AdminController::class, 'getAdmins']);
-# GET ROLES
+
+# Fetch Roles
 Route::get('/roleslist', [RolesTableController::class, 'getRolesList']);
+
+# Fetch User Profile by User ID
+Route::get('/profiles/user/{userId}', function ($userId) {
+    return Profile::where('user_id', $userId)->first();
+});
+
+
+# ==============================
+# PROTECTED ROUTES (Require Authentication)
+# ==============================
+Route::middleware('auth:api')->group(function () {
+    # Profile Management
+    Route::post('/profiles', [ProfileController::class, 'store']);
+
+    # Product Management
+    Route::post('/products', [ProductController::class, 'store']);
+
+    # Admin Dashboard Statistics
+    Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
+    Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);
+});

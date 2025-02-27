@@ -20,25 +20,71 @@ function ProductModal({ onClose }) {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [brandsRes, categoriesRes, userRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/brands"),
-          axios.get("http://127.0.0.1:8000/api/categories"),
-          axios.get("http://127.0.0.1:8000/api/user", {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-          }),
-        ]);
+    const token = localStorage.getItem("LaravelPassportToken");
 
-        setBrands(brandsRes.data);
-        setCategories(categoriesRes.data);
-        setProfileId(userRes.data.profile.id);
+    if (!token) {
+      console.error("Token is missing");
+      return;
+    }
+
+    const fetchBrands = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/brands", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setBrands(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching brands:", error.response?.data || error.message);
       }
     };
 
-    fetchData();
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/categories", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error.response?.data || error.message);
+      }
+    };
+
+    const fetchUserProfile = async () => {
+      try {
+        // Fetch authenticated user data
+        const userResponse = await axios.get("http://127.0.0.1:8000/api/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        console.log("User Data:", userResponse.data);
+        const userId = userResponse.data.id; // Get user ID
+
+        if (!userId) {
+          console.error("User ID not found");
+          return;
+        }
+
+        // Fetch the profile where user_id matches the authenticated user's ID
+        const profileResponse = await axios.get(
+          `http://127.0.0.1:8000/api/profiles/user/${userId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        console.log("Profile Data:", profileResponse.data);
+
+        if (profileResponse.data && profileResponse.data.id) {
+          setProfileId(profileResponse.data.id); // Set profile_id in state
+        } else {
+          console.error("Profile ID not found");
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error.response?.data || error.message);
+      }
+    };
+
+    fetchBrands();
+    fetchCategories();
+    fetchUserProfile();
   }, []);
 
   const handleImageUpload = (e) => {
@@ -61,6 +107,13 @@ function ProductModal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const token = localStorage.getItem("LaravelPassportToken");
+
+    if (!token) {
+      console.error("Token is missing");
+      return;
+    }
 
     if (!profileId) {
       console.error("Profile ID is missing");
@@ -87,7 +140,7 @@ function ProductModal({ onClose }) {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
