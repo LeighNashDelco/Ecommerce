@@ -19,6 +19,7 @@ const AdminDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [orders, setOrders] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   const [stats, setStats] = useState({
     total_customers: 0,
@@ -60,8 +61,15 @@ const AdminDashboard = () => {
 
   return (
     <div className="app">
-      <Sidebar activeItem={activeItem} setActiveItem={setActiveItem} />
-      <div className="dashboard">
+      <Sidebar
+        activeItem={activeItem}
+        setActiveItem={setActiveItem}
+        isSidebarExpanded={isSidebarExpanded}
+        setIsSidebarExpanded={setIsSidebarExpanded}
+      />
+      <div
+        className={`dashboard ${isSidebarExpanded ? "sidebar-expanded" : "sidebar-collapsed"}`}
+      >
         <TopNavbar />
 
         {/* Stats Section */}
@@ -97,7 +105,7 @@ const AdminDashboard = () => {
           <div className="stat-box">
             <FaMoneyBill className="icon" />
             <p>Total Earnings</p>
-            <h2>₱{stats.total_earnings}</h2> {/* Changed to ₱ */}
+            <h2>₱{stats.total_earnings}</h2>
           </div>
           <div className="stat-box">
             <FaChartBar className="icon" />
@@ -135,37 +143,41 @@ const AdminDashboard = () => {
                   <th>Customer</th>
                   <th>Product</th>
                   <th>Order Date</th>
-                  <th>Quantity</th>
+                  <th>Qty</th>
                   <th>Amount</th>
-                  <th>Order Status</th>
+                  <th>Status</th>
                 </tr>
               </thead>
 
               <tbody>
-                {orders.map((order) => (
-                  <tr key={order.id}>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={selectedOrders.includes(order.id)}
-                        onChange={() => handleSelectOrder(order.id)}
-                        className="checkbox"
-                      />
-                    </td>
-                    <td>
-                      <FaEye className="icon action-icon" />
-                      <FaTrash className="icon action-icon" />
-                    </td>
-                    <td>{order.customer}</td>
-                        <td>{order.product}</td>
-                        <td>{new Date(order.order_date).toLocaleDateString()}</td>
-                        <td>{order.quantity}</td>
-                        <td>₱{order.total_amount}</td>
-                        <td>{order.status}</td>
-                  </tr>
-                ))}
+                {orders
+                  .filter((order) =>
+                    order.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    order.product.toLowerCase().includes(searchTerm.toLowerCase())
+                  )
+                  .map((order) => (
+                    <tr key={order.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={selectedOrders.includes(order.id)}
+                          onChange={() => handleSelectOrder(order.id)}
+                          className="checkbox"
+                        />
+                      </td>
+                      <td>
+                        <FaEye className="icon action-icon view-icon" />
+                        <FaTrash className="icon action-icon delete-icon" />
+                      </td>
+                      <td>{order.customer}</td>
+                      <td>{order.product}</td>
+                      <td>{new Date(order.order_date).toLocaleDateString()}</td>
+                      <td>{order.quantity}</td>
+                      <td>₱{order.total_amount}</td>
+                      <td>{order.status}</td>
+                    </tr>
+                  ))}
               </tbody>
-
             </table>
           </div>
         </div>

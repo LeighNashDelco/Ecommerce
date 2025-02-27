@@ -1,32 +1,35 @@
 import React, { useState } from "react";
-import Sidebar from "./../sidebar/Sidebar";
-import { FaSquare, FaTrash, FaChevronDown } from "react-icons/fa";
-import TopNavbar from "./../topnavbar/TopNavbar"; 
+import { useNavigate, useLocation } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
+import TopNavbar from "../topnavbar/TopNavbar";
+import { FaSquare, FaChevronDown } from "react-icons/fa";
+import { IconTrash, IconEdit } from "@tabler/icons-react";
+import "./../../../sass/components/_usersdashboard.scss";
 
-console.log("Rendering Users component");
-import "../../../sass/components/_usersdashboard.scss";
-
-const Users = () => {
+const UsersDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
 
   const filterOptions = [
-    { value: "all", label: "All" },
-    { value: "admin", label: "Admin" },
-    { value: "customer", label: "Customer" },
-    { value: "seller", label: "Seller" },
+    { value: "all", label: "All Users" },
+    { value: "admin", label: "Admins" },
+    { value: "teacher", label: "Teachers" },
+    { value: "student", label: "Students" },
   ];
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="app">
       <Sidebar activeItem="Users" />
+      <TopNavbar />
       <div className="user-dashboard">
-        <TopNavbar />
         <div className="user-users">
-          <h2>Users</h2>
+          <h2>User Management</h2>
           <div className="user-users-header">
-            <div className="header-actions">
+            <div className="left-actions">
               <input
                 type="text"
                 className="search-users-input"
@@ -34,33 +37,33 @@ const Users = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <div className="right-actions">
-                <button className="action-button">View Archived</button>
-                <button className="action-button">Add users</button>
-                <div className="filter-container">
-                  <button
-                    className="filter-button"
-                    onClick={() => setFilterOpen(!filterOpen)}
-                  >
-                    <span>Filter</span>
-                    <FaChevronDown />
-                  </button>
-                  {filterOpen && (
-                    <ul className="filter-dropdown">
-                      {filterOptions.map((option) => (
-                        <li
-                          key={option.value}
-                          onClick={() => {
-                            setFilterValue(option.value);
-                            setFilterOpen(false);
-                          }}
-                        >
-                          {option.label}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+            </div>
+            <div className="right-actions">
+              <button className="action-button">Add User</button>
+              <button className="action-button">View Archived</button>
+              <div className="filter-container">
+                <button
+                  className="filter-button"
+                  onClick={() => setFilterOpen(!filterOpen)}
+                >
+                  <span>Filter</span>
+                  <FaChevronDown />
+                </button>
+                {filterOpen && (
+                  <ul className="filter-dropdown">
+                    {filterOptions.map((option) => (
+                      <li
+                        key={option.value}
+                        onClick={() => {
+                          setFilterValue(option.value);
+                          setFilterOpen(false);
+                        }}
+                      >
+                        {option.label}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           </div>
@@ -74,11 +77,10 @@ const Users = () => {
                       Actions
                     </div>
                   </th>
-                  <th>Username</th>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Role</th>
                   <th>Email</th>
-                  <th>Roles</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
                 </tr>
               </thead>
               <tbody>
@@ -86,11 +88,11 @@ const Users = () => {
                   <tr key={index}>
                     <td>
                       <div className="action-icons">
-                        <FaSquare className="checkbox-icon" />
-                        <FaTrash className="delete-icon" />
+                        <FaSquare className="checkbox-icon" size={16} />
+                        <IconTrash size={16} className="delete-icon" />
+                        <IconEdit size={16} className="edit-icon" />
                       </div>
                     </td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -114,4 +116,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UsersDashboard;

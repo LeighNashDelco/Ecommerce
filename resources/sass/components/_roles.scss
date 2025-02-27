@@ -1,118 +1,270 @@
-@import "./../utilities/variables";
-
-.roles-container {
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #f5f5f5;
-  min-height: 100vh;
+  background-color: #f4f4f4;
+}
 
-  h2 {
-    color: #ff9f00;
-    text-align: center;
-  }
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
 
-  .roles-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: space-between;
-    padding: 0.5rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.roles-dashboard {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #f4f4f4;
+  margin-top: 50px;
 
-    .btn {
-      background: blue;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        background: darkblue;
-      }
-
-      &.active {
-        background: #ff9f00;
-      }
-    }
-
-    .search-input {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 200px;
-    }
-  }
-
-  .roles-table {
+  .roles-container {
     width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    background: #f4f4f4;
 
-    th, td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+    h2 {
+      margin: 0 0 20px 0;
+      font-size: 24px;
+      color: #333;
     }
 
-    th {
-      background: #ff9f00;
-      color: white;
-    }
+    .roles-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #f4f4f4;
 
-    .icon {
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-right: 0.5rem;
-      transition: 0.3s;
+      .left-actions {
+        flex-grow: 1;
+      }
 
-      &.delete-icon {
-        color: red;
-        &:hover {
-          color: darkred;
+      .search-input {
+        width: 200px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        outline: none;
+
+        &:focus {
+          border-color: #ff0000;
         }
       }
 
-      &.edit-icon {
-        color: green;
-        &:hover {
-          color: darkgreen;
+      .right-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+
+        .header-button {
+          padding: 12px 20px;
+          width: 120px;
+          height: 48px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background: #fff;
+          color: #333;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 0.3s;
+          text-align: center;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
+          }
         }
       }
     }
-  }
 
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem;
+    .filter-container {
+      position: relative;
 
-    button {
-      background: white;
-      border: 1px solid #ccc;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
+      .filter-button {
+        padding: 12px 20px;
+        width: 120px;
+        height: 48px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
 
-      &:hover {
-        background: #ff9f00;
-        color: white;
+        &:hover {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+
+        span {
+          flex: 1;
+          text-align: left;
+        }
       }
 
-      &.active {
-        background: #ff9f00;
-        color: white;
+      .filter-dropdown {
+        position: absolute;
+        top: 53px;
+        right: 0;
+        width: 120px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+
+        li {
+          padding: 8px 15px;
+          color: #333;
+          font-size: 14px;
+          cursor: pointer;
+
+          &:hover {
+            background: #ff0000;
+            color: white;
+          }
+        }
       }
     }
   }
 }
+
+    .roles-table {
+      width: 100%;
+      margin-top: 20px;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #ff0000;
+          font-weight: 600;
+        }
+
+        td {
+          padding: 12px 20px;
+          text-align: left;
+          border: 1px solid #555;
+          color: #fff;
+          font-size: 14px;
+          background: #333;
+        }
+
+        tr {
+          border-bottom: 1px solid #555;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+
+      .role-badge {
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+
+        &.admin {
+          background: #ff0000;
+          color: white;
+        }
+
+        &.teacher {
+          background: #007bff;
+          color: white;
+        }
+
+        &.student {
+          background: #28a745;
+          color: white;
+        }
+      }
+    }
+
+    .action-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      .checkbox-icon,
+      .delete-icon {
+        color: #fff;
+        cursor: pointer !important;
+        font-size: 16px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #ff0000 !important;
+        }
+      }
+    }
+  
+
+    .roles-pagination {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: #f4f4f4;
+
+      span {
+        color: #333;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+
+        &.active {
+          background: #ff0000;
+          color: white;
+          border-color: #ff0000;
+        }
+      }
+    }
+  

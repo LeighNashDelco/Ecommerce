@@ -13,94 +13,177 @@ import {
   FaChartBar,
   FaUser,
   FaChevronDown,
-  FaTruck, // Shipment
-  FaWarehouse, // Inventory
-  FaClipboardCheck, // Review
-  FaUserShield, // Roles
+  FaTruck,
+  FaWarehouse,
+  FaClipboardCheck,
+  FaUserShield,
+  FaBars,
+  FaTimes, // Added for the "X" icon
 } from "react-icons/fa";
-import adminPhoto from "./../../../sass/img/aadmin.svg"; // Adjust path if needed
+import adminPhoto from "./../../../sass/img/aadmin.svg";
 import "./../../../sass/components/_sidebar.scss";
 
-const Sidebar = () => {
+const Sidebar = ({ children }) => {
   const [adminDropdown, setAdminDropdown] = useState(false);
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
+  const toggleSidebar = () => {
+    setIsSidebarExpanded(!isSidebarExpanded);
+  };
+
   return (
-    <div className="sidebar">
-      <div className="admin-heading">
-        <img src={adminPhoto} alt="Admin" className="admin-photo" />
-      </div>
-      
-      <ul>
-        <li className={isActive("/admindashboard")} onClick={() => navigate("/admindashboard")}>
-          <FaTachometerAlt />
-          <span>Dashboard</span>
-        </li>
-        <li className={isActive("/products")} onClick={() => navigate("/products")}>
-          <FaBoxOpen />
-          <span>Products</span>
-        </li>
-        <li className={isActive("/orders")} onClick={() => navigate("/orders")}>
-          <FaShoppingCart />
-          <span>Orders</span>
-        </li>
-        <li className={isActive("/inventory")} onClick={() => navigate("/inventory")}>
-          <FaWarehouse />
-          <span>Inventory</span>
-        </li>
-        <li className={isActive("/shipment")} onClick={() => navigate("/shipment")}>
-          <FaTruck />
-          <span>Shipment</span>
-        </li>
-        <li className={isActive("/users")} onClick={() => navigate("/users")}>
-          <FaUsers />
-          <span>Users</span>
-        </li>
-        <li className={isActive("/customerlist")} onClick={() => navigate("/customerlist")}>
-          <FaUser />
-          <span>Customer List</span>
-        </li>
-        <li className={isActive("/adminlist")} onClick={() => navigate("/adminlist")}>
-          <FaUser />
-          <span>Admin List</span>
-        </li>
-        <li className={isActive("/reviewsandnotifications")} onClick={() => navigate("/reviewsandnotifications")}>
-          <FaStar />
-          <span>Reviews & Notifications</span>
-        </li>
+    <div className="main-container">
+      {/* Overlay for mobile */}
+      <div
+        className={`overlay ${isSidebarExpanded ? "active" : ""}`}
+        onClick={toggleSidebar}
+      ></div>
 
-        <hr className="separator" />
+      {/* Sidebar with toggle button */}
+      <div className="sidebar-wrapper">
+        <div className={`sidebar ${isSidebarExpanded ? "expanded" : ""}`}>
+          <div className="sidebar-header">
+            <div className="admin-heading">
+              <img src={adminPhoto} alt="Admin" className="admin-photo" />
+            </div>
+            {isSidebarExpanded && (
+              <button className="sidebar-toggle inside" onClick={toggleSidebar}>
+                {isSidebarExpanded ? (
+                  <FaTimes className="toggle-icon" />
+                ) : (
+                  <FaBars className="toggle-icon" />
+                )}
+              </button>
+            )}
+          </div>
 
-        <div className="admin-settings-header" onClick={() => setAdminDropdown(!adminDropdown)}>
-          <FaCog />
-          <span>Admin Settings</span>
-          <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
-        </div>
+          <ul>
+            <li
+              className={isActive("/admindashboard")}
+              onClick={() => navigate("/admindashboard")}
+            >
+              <FaTachometerAlt />
+              <span>Dashboard</span>
+            </li>
+            <li
+              className={isActive("/products")}
+              onClick={() => navigate("/products")}
+            >
+              <FaBoxOpen />
+              <span>Products</span>
+            </li>
+            <li
+              className={isActive("/orders")}
+              onClick={() => navigate("/orders")}
+            >
+              <FaShoppingCart />
+              <span>Orders</span>
+            </li>
+            <li
+              className={isActive("/inventory")}
+              onClick={() => navigate("/inventory")}
+            >
+              <FaWarehouse />
+              <span>Inventory</span>
+            </li>
+            <li
+              className={isActive("/shipment")}
+              onClick={() => navigate("/shipment")}
+            >
+              <FaTruck />
+              <span>Shipment</span>
+            </li>
+            <li
+              className={isActive("/users")}
+              onClick={() => navigate("/users")}
+            >
+              <FaUsers />
+              <span>Users</span>
+            </li>
+            <li
+              className={isActive("/customerlist")}
+              onClick={() => navigate("/customerlist")}
+            >
+              <FaUser />
+              <span>Customer List</span>
+            </li>
+            <li
+              className={isActive("/adminlist")}
+              onClick={() => navigate("/adminlist")}
+            >
+              <FaUser />
+              <span>Admin List</span>
+            </li>
+            <li
+              className={isActive("/reviewsandnotifications")}
+              onClick={() => navigate("/reviewsandnotifications")}
+            >
+              <FaStar />
+              <span>Reviews & Notifications</span>
+            </li>
 
-        {adminDropdown && (
-          <ul className="dropdown">
-            <li className={isActive("/paymentmanagement")} onClick={() => navigate("/paymentmanagement")}>
-              <FaMoneyBill />
-              <span>Payment Management</span>
-            </li>
-            <li className={isActive("/statusandcategory")} onClick={() => navigate("/statusandcategory")}>
-              <FaChartBar />
-              <span>Status & Category</span>
-            </li>
-            <li className={isActive("/helpandsupport")} onClick={() => navigate("/helpandsupport")}>
-              <FaBell />
-              <span>Help & Support</span>
-            </li>
-            <li className={isActive("/roles")} onClick={() => navigate("/roles")}>
-              <FaUserShield />
-              <span>Roles</span>
-            </li>
+            <hr className="separator" />
+
+            <div
+              className="admin-settings-header"
+              onClick={() => setAdminDropdown(!adminDropdown)}
+            >
+              <FaCog />
+              <span>Admin Settings</span>
+              <FaChevronDown className={adminDropdown ? "rotate-icon" : ""} />
+            </div>
+
+            {adminDropdown && (
+              <ul className="dropdown">
+                <li
+                  className={isActive("/paymentmanagement")}
+                  onClick={() => navigate("/paymentmanagement")}
+                >
+                  <FaMoneyBill />
+                  <span>Payment Management</span>
+                </li>
+                <li
+                  className={isActive("/statusandcategory")}
+                  onClick={() => navigate("/statusandcategory")}
+                >
+                  <FaChartBar />
+                  <span>Status & Category</span>
+                </li>
+                <li
+                  className={isActive("/helpandsupport")}
+                  onClick={() => navigate("/helpandsupport")}
+                >
+                  <FaBell />
+                  <span>Help & Support</span>
+                </li>
+                <li
+                  className={isActive("/roles")}
+                  onClick={() => navigate("/roles")}
+                >
+                  <FaUserShield />
+                  <span>Roles</span>
+                </li>
+              </ul>
+            )}
           </ul>
+        </div>
+        {!isSidebarExpanded && (
+          <button className="sidebar-toggle outside" onClick={toggleSidebar}>
+            {isSidebarExpanded ? (
+              <FaTimes className="toggle-icon" />
+            ) : (
+              <FaBars className="toggle-icon" />
+            )}
+          </button>
         )}
-      </ul>
+      </div>
+
+      {/* Content area */}
+      <div className="content">{children}</div>
     </div>
   );
 };
