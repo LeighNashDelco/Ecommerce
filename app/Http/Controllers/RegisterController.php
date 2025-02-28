@@ -15,10 +15,8 @@ class RegisterController extends Controller
     {
         DB::beginTransaction();
         try {
-            // Log incoming request data
             \Log::info('Register request data:', $request->all());
-
-            // Validate input
+    
             $validatedData = $request->validate([
                 'first_name' => 'required|string|max:255',
                 'middlename' => 'nullable|string|max:255',
@@ -29,34 +27,30 @@ class RegisterController extends Controller
                 'password' => 'required|string|min:8',
                 'role_id' => 'required|integer|exists:roles,id',
             ]);
-
-            // Fetch gender to ensure it exists
+    
             $gender = Gender::find($validatedData['gender']);
             if (!$gender) {
                 return response()->json(['error' => 'Invalid gender selection'], 400);
             }
-
-            // Generate a unique username
+    
             $usernameBase = strtolower($validatedData['first_name'] . '.' . $validatedData['last_name']);
             $username = $usernameBase;
             $counter = 1;
-
+    
             while (User::where('username', $username)->exists()) {
                 $username = $usernameBase . $counter;
                 $counter++;
             }
-
-            // Create user with hashed password
+    
             $user = User::create([
                 'username' => $username,
                 'email' => $validatedData['email'],
                 'password' => Hash::make($validatedData['password']),
                 'role_id' => $validatedData['role_id'],
             ]);
-
+    
             \Log::info('User created', ['user' => $user->toArray()]);
-
-            // Create profile
+    
             Profile::create([
                 'user_id' => $user->id,
                 'first_name' => $validatedData['first_name'],
@@ -65,9 +59,9 @@ class RegisterController extends Controller
                 'gender' => $validatedData['gender'],
                 'suffix' => $validatedData['suffix'] ?? null,
             ]);
-
+    
             DB::commit();
-
+    
             return response()->json([
                 'message' => 'User registered successfully!',
                 'user' => $user,
