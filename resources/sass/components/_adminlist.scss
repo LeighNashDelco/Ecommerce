@@ -8,7 +8,7 @@ body {
   background-color: #f4f4f4;
 }
 
-.adminlist-app {
+.app {
   display: flex;
   width: 100%;
   height: 100vh;
@@ -40,7 +40,11 @@ body {
       margin-bottom: 20px;
       background: #f4f4f4;
 
-      .adminlist-search-input {
+      .left-actions {
+        flex-grow: 1;
+      }
+
+      .search-input {
         width: 200px;
         padding: 8px 12px;
         border: 1px solid #ccc;
@@ -55,11 +59,12 @@ body {
         }
       }
 
-      .adminlist-actions {
+      .right-actions {
         display: flex;
         gap: 10px;
+        justify-content: flex-end;
 
-        .adminlist-action-button {
+        .header-button {
           padding: 12px 20px;
           width: 120px;
           height: 48px;
@@ -82,6 +87,76 @@ body {
             border-color: #ff0000;
           }
         }
+
+        .archive-all-button {
+          background: #ff4444;
+          color: white;
+          border-color: #ff4444;
+
+          &:hover {
+            background: darken(#ff4444, 10%);
+            border-color: darken(#ff4444, 10%);
+          }
+        }
+
+        .filter-container {
+          position: relative;
+
+          .filter-button {
+            padding: 12px 20px;
+            width: 120px;
+            height: 48px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+
+            &:hover {
+              background: #ff0000;
+              color: white;
+              border-color: #ff0000;
+            }
+
+            span {
+              flex: 1;
+              text-align: left;
+            }
+          }
+
+          .filter-dropdown {
+            position: absolute;
+            top: 53px;
+            right: 0;
+            width: 120px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            list-style: none;
+            padding: 5px 0;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+
+            li {
+              padding: 8px 15px;
+              color: #333;
+              font-size: 14px;
+              cursor: pointer;
+
+              &:hover {
+                background: #ff0000;
+                color: white;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -102,12 +177,12 @@ body {
           background: #ff0000;
           font-weight: 600;
 
-          .adminlist-header-actions-icon {
+          .header-actions-icon {
             display: flex;
             align-items: center;
             gap: 10px;
 
-            .adminlist-checkbox-icon {
+            .checkbox-icon {
               color: #fff;
               cursor: pointer;
               font-size: 16px;
@@ -135,23 +210,24 @@ body {
             border-bottom: none;
           }
         }
-      }
 
-      .adminlist-action-icons {
-        display: flex;
-        gap: 10px;
-        align-items: center;
+        .action-icons {
+          display: flex;
+          gap: 10px;
+          align-items: center;
 
-        .adminlist-checkbox-icon,
-        .adminlist-delete-icon,
-        .adminlist-edit-icon {
-          color: #fff;
-          cursor: pointer !important;
-          font-size: 16px;
-          transition: color 0.3s;
+          .checkbox-icon,
+          .delete-icon,
+          .edit-icon,
+          .restore-icon {
+            color: #fff;
+            cursor: pointer !important;
+            font-size: 16px;
+            transition: color 0.3s;
 
-          &:hover {
-            color: #ff0000 !important;
+            &:hover {
+              color: #ff0000 !important;
+            }
           }
         }
       }
@@ -191,21 +267,78 @@ body {
           color: white;
           border-color: #ff0000;
         }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
       }
     }
   }
 }
-.adminlist-archive-button {
-  background-color: #ffffff;
-  color: black;
-  border: none;
-  padding: 8px 12px;
-  margin-left: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
 
-  &:hover {
-    background-color: #ff0000;
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  h3 {
+    margin: 0 0 10px;
+    color: #333;
+  }
+
+  p {
+    margin: 0 0 20px;
+    color: #666;
+  }
+
+  .confirm-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .confirm-button {
+      padding: 10px 20px;
+      background: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ff0000, 10%);
+      }
+    }
+
+    .cancel-button {
+      padding: 10px 20px;
+      background: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ccc, 10%);
+      }
+    }
   }
 }

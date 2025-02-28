@@ -87,69 +87,78 @@ body {
             border-color: #ff0000;
           }
         }
-      }
-    }
 
-    .filter-container {
-      position: relative;
-
-      .filter-button {
-        padding: 12px 20px;
-        width: 120px;
-        height: 48px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff;
-        color: #333;
-        font-size: 14px;
-        cursor: pointer;
-        transition: 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 5px;
-
-        &:hover {
-          background: #ff0000;
+        .archive-all-button {
+          background: #ff4444;
           color: white;
-          border-color: #ff0000;
-        }
-
-        span {
-          flex: 1;
-          text-align: left;
-        }
-      }
-
-      .filter-dropdown {
-        position: absolute;
-        top: 53px;
-        right: 0;
-        width: 120px;
-        background: #fff;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        list-style: none;
-        padding: 5px 0;
-        margin: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-
-        li {
-          padding: 8px 15px;
-          color: #333;
-          font-size: 14px;
-          cursor: pointer;
+          border-color: #ff4444;
 
           &:hover {
-            background: #ff0000;
-            color: white;
+            background: darken(#ff4444, 10%);
+            border-color: darken(#ff4444, 10%);
+          }
+        }
+
+        .filter-container {
+          position: relative;
+
+          .filter-button {
+            padding: 12px 20px;
+            width: 120px;
+            height: 48px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+
+            &:hover {
+              background: #ff0000;
+              color: white;
+              border-color: #ff0000;
+            }
+
+            span {
+              flex: 1;
+              text-align: left;
+            }
+          }
+
+          .filter-dropdown {
+            position: absolute;
+            top: 53px;
+            right: 0;
+            width: 120px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            list-style: none;
+            padding: 5px 0;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+
+            li {
+              padding: 8px 15px;
+              color: #333;
+              font-size: 14px;
+              cursor: pointer;
+
+              &:hover {
+                background: #ff0000;
+                color: white;
+              }
+            }
           }
         }
       }
     }
-  }
-}
 
     .roles-table {
       width: 100%;
@@ -167,6 +176,22 @@ body {
           font-size: 14px;
           background: #ff0000;
           font-weight: 600;
+
+          .header-actions-icon {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .checkbox-icon {
+              color: #fff;
+              cursor: pointer;
+              font-size: 16px;
+
+              &:hover {
+                color: #ff0000;
+              }
+            }
+          }
         }
 
         td {
@@ -187,49 +212,26 @@ body {
         }
       }
 
-      .role-badge {
-        padding: 5px 10px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        display: inline-block;
+      .action-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
 
-        &.admin {
-          background: #ff0000;
-          color: white;
-        }
+        .checkbox-icon,
+        .delete-icon,
+        .edit-icon,
+        .restore-icon {
+          color: #fff;
+          cursor: pointer !important;
+          font-size: 16px;
+          transition: color 0.3s;
 
-        &.teacher {
-          background: #007bff;
-          color: white;
-        }
-
-        &.student {
-          background: #28a745;
-          color: white;
+          &:hover {
+            color: #ff0000 !important;
+          }
         }
       }
     }
-
-    .action-icons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-
-      .checkbox-icon,
-      .delete-icon {
-        color: #fff;
-        cursor: pointer !important;
-        font-size: 16px;
-        transition: color 0.3s;
-
-        &:hover {
-          color: #ff0000 !important;
-        }
-      }
-    }
-  
 
     .roles-pagination {
       display: flex;
@@ -267,4 +269,5 @@ body {
         }
       }
     }
-  
+  }
+}

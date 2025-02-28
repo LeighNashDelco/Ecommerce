@@ -14,7 +14,6 @@ body {
   height: 100vh;
 }
 
-/* Product Dashboard styles */
 .product-dashboard {
   flex: 1;
   padding: 40px;
@@ -41,6 +40,10 @@ body {
       margin-bottom: 20px;
       background: #f4f4f4;
 
+      .left-actions {
+        flex-grow: 1;
+      }
+
       .search-input {
         width: 200px;
         padding: 8px 12px;
@@ -56,11 +59,12 @@ body {
         }
       }
 
-      .actions {
+      .right-actions {
         display: flex;
         gap: 10px;
-
-        .action-button {
+        justify-content: flex-end;
+      
+        .header-button {
           padding: 12px 20px;
           width: 120px;
           height: 48px;
@@ -76,11 +80,22 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
-
+      
           &:hover {
             background: #ff0000;
             color: white;
             border-color: #ff0000;
+          }
+        }
+      
+        .archive-all-button {
+          background: #ff4444; // Different color to distinguish
+          color: white;
+          border-color: #ff4444;
+      
+          &:hover {
+            background: darken(#ff4444, 10%);
+            border-color: darken(#ff4444, 10%);
           }
         }
 
@@ -102,7 +117,6 @@ body {
             align-items: center;
             justify-content: space-between;
             gap: 5px;
-            line-height: 1;
 
             &:hover {
               background: #ff0000;
@@ -149,6 +163,7 @@ body {
     .product-product-table {
       width: 100%;
       margin-top: 20px;
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -186,6 +201,12 @@ body {
           color: #fff;
           font-size: 14px;
           background: #333;
+
+          img {
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+          }
         }
 
         tr {
@@ -204,14 +225,15 @@ body {
 
         .checkbox-icon,
         .delete-icon,
-        .edit-icon {
+        .edit-icon,
+        .restore-icon {
           color: #fff;
-          cursor: pointer !important; /* Ensure cursor is pointer */
+          cursor: pointer !important;
           font-size: 16px;
-          transition: color 0.3s; /* Smooth transition for hover effect */
+          transition: color 0.3s;
 
           &:hover {
-            color: #ff0000 !important; /* Ensure hover color applies */
+            color: #ff0000 !important;
           }
         }
       }
@@ -256,33 +278,68 @@ body {
   }
 }
 
-.product-product-table {
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-top: 20px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.product-product-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.product-product-table th,
-.product-product-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.product-product-table img {
-  max-width: 100px;
-  max-height: 100px;
-}
-
-.product-pagination {
-  margin-top: 20px;
+.confirm-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
   text-align: center;
-}
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-.product-pagination button {
-  margin: 0 5px;
+  h3 {
+    margin: 0 0 10px;
+    color: #333;
+  }
+
+  p {
+    margin: 0 0 20px;
+    color: #666;
+  }
+
+  .confirm-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .confirm-button {
+      padding: 10px 20px;
+      background: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ff0000, 10%);
+      }
+    }
+
+    .cancel-button {
+      padding: 10px 20px;
+      background: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ccc, 10%);
+      }
+    }
+  }
 }

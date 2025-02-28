@@ -1,114 +1,354 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "./../topnavbar/TopNavbar";
-import { FaSquare } from "react-icons/fa";
-import { IconTrash, IconEdit } from "@tabler/icons-react";
+import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
+import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
 import "./../../../sass/components/_customerlist.scss";
 
-// Function to format date into a readable format
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
-    month: "short", // Feb, Mar, Apr, etc.
+    month: "short",
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true, // Ensures AM/PM format
+    hour12: true,
   }).format(new Date(dateString));
 };
 
 const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterValue, setFilterValue] = useState("all");
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [showArchived, setShowArchived] = useState(false);
+  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [customerToArchive, setCustomerToArchive] = useState(null);
+  const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const filterOptions = [
+    { value: "all", label: "All" },
+    { value: "customer", label: "Customer" },
+  ];
 
   useEffect(() => {
-    const fetchCustomers = async () => {
+    const fetchData = async () => {
       try {
-        const token = localStorage.getItem("token"); // Get Bearer token from localStorage
-        const response = await axios.get("http://127.0.0.1:8000/api/customers", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setCustomers(response.data); // Store fetched customers
+        setLoading(true);
+        const token = localStorage.getItem("LaravelPassportToken");
+        const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+
+        const [activeResponse, archivedResponse] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/api/customers", config),
+          axios.get("http://127.0.0.1:8000/api/customers/archived", config),
+        ]);
+
+        const activeCustomers = activeResponse.data.map(customer => ({ ...customer, archived: false }));
+        const archivedCustomers = archivedResponse.data.map(customer => ({ ...customer, archived: true }));
+        setCustomers([...activeCustomers, ...archivedCustomers]);
       } catch (error) {
         console.error("Error fetching customers:", error);
+        console.log("Response:", error.response?.data);
+        setCustomers([]);
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchCustomers();
+    fetchData();
   }, []);
 
+  const filteredCustomers = customers.filter((customer) => {
+    const matchesSearch = customer.username?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filterValue === "all" || customer.role_name?.toLowerCase() === filterValue;
+    const matchesArchived = customer.archived === showArchived;
+    return matchesSearch && matchesFilter && matchesArchived;
+  });
+
+  const toggleSelectCustomer = (customerId) => {
+    setSelectedCustomers((prev) =>
+      prev.includes(customerId)
+        ? prev.filter((id) => id !== customerId)
+        : [...prev, customerId]
+    );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedCustomers.length === filteredCustomers.length) {
+      setSelectedCustomers([]);
+    } else {
+      setSelectedCustomers(filteredCustomers.map((customer) => customer.id));
+    }
+  };
+
+  const handleToggleArchived = () => {
+    setShowArchived((prev) => !prev);
+    setPagination({ ...pagination, currentPage: 1 });
+    setSelectedCustomers([]);
+  };
+
+  const handleArchiveClick = (customer) => {
+    setCustomerToArchive(customer);
+    setIsConfirmModalOpen(true);
+  };
+
+  const handleArchiveConfirm = async () => {
+    if (!customerToArchive) return;
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/customers/${customerToArchive.id}/archive`,
+        { archived: true },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.status === 200) {
+        setCustomers((prevCustomers) =>
+          prevCustomers.map((customer) =>
+            customer.id === customerToArchive.id ? { ...customer, archived: true } : customer
+          )
+        );
+        setIsConfirmModalOpen(false);
+        setCustomerToArchive(null);
+      }
+    } catch (error) {
+      console.error("Error archiving customer:", error);
+    }
+  };
+
+  const handleRestoreCustomer = async (customerId) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/customers/${customerId}/archive`,
+        { archived: false },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.status === 200) {
+        setCustomers((prevCustomers) =>
+          prevCustomers.map((customer) =>
+            customer.id === customerId ? { ...customer, archived: false } : customer
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error restoring customer:", error);
+    }
+  };
+
+  const handleBulkAction = async (action) => {
+    if (selectedCustomers.length === 0) return;
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const requests = selectedCustomers.map((customerId) =>
+        axios.patch(
+          `http://127.0.0.1:8000/api/customers/${customerId}/archive`,
+          { archived: action === "archive" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+      );
+      await Promise.all(requests);
+      setCustomers((prevCustomers) =>
+        prevCustomers.map((customer) =>
+          selectedCustomers.includes(customer.id)
+            ? { ...customer, archived: action === "archive" }
+            : customer
+        )
+      );
+      setSelectedCustomers([]);
+    } catch (error) {
+      console.error(`Error ${action}ing customers:`, error);
+    }
+  };
+
+  const customersPerPage = 5;
+  const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
+  const currentCustomers = filteredCustomers.slice(
+    (pagination.currentPage - 1) * customersPerPage,
+    pagination.currentPage * customersPerPage
+  );
+
+  const handlePageChange = (page) => {
+    setPagination({ ...pagination, currentPage: page });
+  };
+
   return (
-    <div className="customer-app">
+    <div className="app">
       <Sidebar activeItem="Customer List" />
       <TopNavbar />
-      <div className="customer-dashboard">
-        <div className="customer-content">
-          <h2>Customer</h2>
-          <div className="customer-header">
-            <input
-              type="text"
-              className="customer-search-input"
-              placeholder="Search Users"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="customer-actions">
-              <button className="customer-action-button">View Archived</button>
+      <div className="customerlist-dashboard">
+        <div className="customerlist-content">
+          <h2>{showArchived ? "Archived Customers" : "Customer List"}</h2>
+          <div className="customerlist-header">
+            <div className="left-actions">
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search Customers"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="right-actions">
+              {selectedCustomers.length > 0 && (
+                <button
+                  className="header-button archive-all-button"
+                  onClick={() => handleBulkAction(showArchived ? "restore" : "archive")}
+                >
+                  {showArchived ? "Restore All" : "Archive All"}
+                </button>
+              )}
+              <button className="header-button">Add New</button>
+              <button className="header-button" onClick={handleToggleArchived}>
+                {showArchived ? "View Active" : "View Archived"}
+              </button>
+              <div className="filter-container">
+                <button
+                  className="filter-button"
+                  onClick={() => setFilterOpen(!filterOpen)}
+                >
+                  <span>Filter</span>
+                  <FaChevronDown />
+                </button>
+                {filterOpen && (
+                  <ul className="filter-dropdown">
+                    {filterOptions.map((option) => (
+                      <li
+                        key={option.value}
+                        onClick={() => {
+                          setFilterValue(option.value);
+                          setFilterOpen(false);
+                        }}
+                      >
+                        {option.label}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
-          <div className="customer-table">
+
+          <div className="customerlist-table">
             <table>
               <thead>
                 <tr>
                   <th>
-                    <div className="customer-header-actions-icon">
-                      <FaSquare className="customer-checkbox-icon" />
+                    <div className="header-actions-icon">
+                      <span onClick={toggleSelectAll} style={{ cursor: "pointer" }}>
+                        {selectedCustomers.length === filteredCustomers.length && filteredCustomers.length > 0 ? (
+                          <FaCheckSquare className="checkbox-icon" />
+                        ) : (
+                          <FaSquare className="checkbox-icon" />
+                        )}
+                      </span>
                       Actions
                     </div>
                   </th>
                   <th>Username</th>
                   <th>Email</th>
                   <th>Role</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
+                  <th>Created At</th>
+                  <th>Updated At</th>
                 </tr>
               </thead>
               <tbody>
-                {customers.map((customer) => (
-                  <tr key={customer.id}>
-                    <td>
-                      <div className="customer-action-icons">
-                        <FaSquare className="customer-checkbox-icon" size={16} />
-                        <IconTrash size={16} className="customer-delete-icon" />
-                        <IconEdit size={16} className="customer-edit-icon" />
-                      </div>
-                    </td>
-                    <td>{customer.username}</td>
-                    <td>{customer.email}</td>
-                    <td>{customer.role_name}</td>
-                    <td>{formatDate(customer.created_at)}</td>
-                    <td>{formatDate(customer.updated_at)}</td>
+                {loading ? (
+                  <tr>
+                    <td colSpan="6" className="loading-row">Loading customers...</td>
                   </tr>
-                ))}
+                ) : currentCustomers.length > 0 ? (
+                  currentCustomers.map((customer) => (
+                    <tr key={customer.id}>
+                      <td>
+                        <div className="action-icons">
+                          <span onClick={() => toggleSelectCustomer(customer.id)} style={{ cursor: "pointer" }}>
+                            {selectedCustomers.includes(customer.id) ? (
+                              <FaCheckSquare className="checkbox-icon" size={16} />
+                            ) : (
+                              <FaSquare className="checkbox-icon" size={16} />
+                            )}
+                          </span>
+                          {showArchived ? (
+                            <IconRefresh
+                              size={16}
+                              className="restore-icon"
+                              onClick={() => handleRestoreCustomer(customer.id)}
+                            />
+                          ) : (
+                            <IconTrash
+                              size={16}
+                              className="delete-icon"
+                              onClick={() => handleArchiveClick(customer)}
+                            />
+                          )}
+                          <IconEdit size={16} className="edit-icon" />
+                        </div>
+                      </td>
+                      <td>{customer.username || "N/A"}</td>
+                      <td>{customer.email || "N/A"}</td>
+                      <td>{customer.role_name || "N/A"}</td>
+                      <td>{formatDate(customer.created_at)}</td>
+                      <td>{formatDate(customer.updated_at)}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6">No {showArchived ? "archived" : "active"} customers found</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
-          <div className="customer-pagination">
-            <span>Page 1 of 1</span>
-            <button>&lt;</button>
-            <button className="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>&gt;</button>
+
+          <div className="customerlist-pagination">
+            <span>Page {pagination.currentPage} of {totalPages}</span>
+            <button
+              onClick={() => handlePageChange(pagination.currentPage - 1)}
+              disabled={pagination.currentPage <= 1}
+            >
+              &lt;
+            </button>
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index}
+                className={pagination.currentPage === index + 1 ? "active" : ""}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePageChange(pagination.currentPage + 1)}
+              disabled={pagination.currentPage >= totalPages}
+            >
+              &gt;
+            </button>
           </div>
         </div>
       </div>
+
+      {isConfirmModalOpen && (
+        <div className="confirm-modal-overlay">
+          <div className="confirm-modal">
+            <h3>Are you sure?</h3>
+            <p>Do you want to archive "{customerToArchive?.username}"?</p>
+            <div className="confirm-modal-buttons">
+              <button className="confirm-button" onClick={handleArchiveConfirm}>
+                Yes, Archive
+              </button>
+              <button className="cancel-button" onClick={() => setIsConfirmModalOpen(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

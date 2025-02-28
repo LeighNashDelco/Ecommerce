@@ -14,13 +14,20 @@ import {
 import "./../../../sass/components/_admindashboard.scss";
 import "./../../../sass/components/_usersdashboard.scss";
 
+// Ensure Axios headers are set on component mount
+const setAuthHeader = () => {
+  const token = localStorage.getItem("LaravelPassportToken");
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+};
+
 const AdminDashboard = () => {
   const [activeItem, setActiveItem] = useState("Payment Management");
   const [searchTerm, setSearchTerm] = useState("");
   const [orders, setOrders] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-
   const [stats, setStats] = useState({
     total_customers: 0,
     total_sellers: 0,
@@ -30,17 +37,34 @@ const AdminDashboard = () => {
     total_earnings: 0,
     total_product_sales: 0,
   });
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/dashboard/totals")
-      .then((response) => setStats(response.data))
-      .catch((error) => console.error("Error fetching totals:", error));
+    setAuthHeader(); // Set header on mount
 
-    axios
-      .get("http://127.0.0.1:8000/api/dashboard/orders")
-      .then((response) => setOrders(response.data))
-      .catch((error) => console.error("Error fetching orders:", error));
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("LaravelPassportToken");
+        if (!token) throw new Error("No token found. Please log in.");
+
+        const [totalsResponse, ordersResponse] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/api/dashboard/totals", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get("http://127.0.0.1:8000/api/dashboard/orders", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+        ]);
+
+        setStats(totalsResponse.data);
+        setOrders(ordersResponse.data);
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+        setError(error.response ? error.response.data.message : "Failed to load dashboard data.");
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleSelectAll = () => {
@@ -59,6 +83,8 @@ const AdminDashboard = () => {
     );
   };
 
+  if (error) return <div className="app">Error: {error}</div>;
+
   return (
     <div className="app">
       <Sidebar
@@ -67,12 +93,8 @@ const AdminDashboard = () => {
         isSidebarExpanded={isSidebarExpanded}
         setIsSidebarExpanded={setIsSidebarExpanded}
       />
-      <div
-        className={`dashboard ${isSidebarExpanded ? "sidebar-expanded" : "sidebar-collapsed"}`}
-      >
+      <div className={`dashboard ${isSidebarExpanded ? "sidebar-expanded" : "sidebar-collapsed"}`}>
         <TopNavbar />
-
-        {/* Stats Section */}
         <div className="stats">
           <div className="stat-box">
             <FaUser className="icon" />
@@ -90,7 +112,6 @@ const AdminDashboard = () => {
             <h2>{stats.total_admins}</h2>
           </div>
         </div>
-
         <div className="stats">
           <div className="stat-box">
             <FaBoxOpen className="icon" />
@@ -113,8 +134,6 @@ const AdminDashboard = () => {
             <h2>{stats.total_product_sales}</h2>
           </div>
         </div>
-
-        {/* Orders Section */}
         <div className="orders">
           <h3>Today's New Orders</h3>
           <div className="search-container">
@@ -126,7 +145,6 @@ const AdminDashboard = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-
           <div className="order-table">
             <table>
               <thead>
@@ -135,7 +153,7 @@ const AdminDashboard = () => {
                     <input
                       type="checkbox"
                       onChange={handleSelectAll}
-                      checked={selectedOrders.length === orders.length}
+                      checked={selectedOrders.length === orders.length && orders.length > 0}
                       className="checkbox"
                     />
                   </th>
@@ -148,12 +166,12 @@ const AdminDashboard = () => {
                   <th>Status</th>
                 </tr>
               </thead>
-
               <tbody>
                 {orders
-                  .filter((order) =>
-                    order.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    order.product.toLowerCase().includes(searchTerm.toLowerCase())
+                  .filter(
+                    (order) =>
+                      order.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                      order.product.toLowerCase().includes(searchTerm.toLowerCase())
                   )
                   .map((order) => (
                     <tr key={order.id}>
