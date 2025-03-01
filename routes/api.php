@@ -16,7 +16,8 @@ use App\Http\Controllers\{
     AdminController,
     RolesTableController,
     UserListController,
-    CustomerListController
+    CustomerListController,
+    UserController,
 };
 use App\Models\Profile;
 
@@ -29,6 +30,8 @@ Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout'
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->get('/user-profile', [UserController::class, 'getUserProfile']);
 
 # ==============================
 # PUBLIC ROUTES
@@ -47,8 +50,11 @@ Route::get('/profiles/user/{userId}', function ($userId) {
 # PROTECTED ROUTES (Require Authentication)
 # ==============================
 Route::middleware('auth:api')->group(function () {
+
     # Profile Management
     Route::post('/profiles', [ProfileController::class, 'store']);
+    Route::middleware('auth:api')->put('/update-profile', [UserController::class, 'updateUserProfile']);
+
 
     # Product Management
     Route::post('/products', [ProductController::class, 'store']);

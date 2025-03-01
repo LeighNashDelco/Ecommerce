@@ -19,12 +19,15 @@
     gap: 8px; // Adds spacing between icons
 
     .profile-icon {
-      font-size: 35px; // ⬅️ Adjust icon size
-      color: #333;
+      width: 35px; // Same size as FaUserCircle icon
+      height: 35px; 
+      border-radius: 50%; // Makes it circular
+      object-fit: cover; // Ensures proper scaling
+      border: 2px solid #ddd; // Optional border
     }
 
     .dropdown-button {
-      font-size: 20px; // ⬅️ Adjust dropdown icon size
+      font-size: 20px;
       color: #333;
       cursor: pointer;
     }
