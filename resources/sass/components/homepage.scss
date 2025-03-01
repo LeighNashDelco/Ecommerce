@@ -1,0 +1,202 @@
+.homepage-customer {
+  background-color: #F0F8FF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  padding-right: 17px;
+  padding-top: 60px;
+
+  .navbar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    height: 60px;
+    background-color: #000000;
+    z-index: 1100;
+    padding: 0 20px;
+
+    & > * {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+  }
+
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 17px;
+
+    -ms-overflow-style: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .product-container,
+    .logos,
+    .product-grid-wrapper {
+      width: 100%;
+      max-width: 1200px;
+    }
+  }
+
+  .product-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 120px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 40px;
+
+    .product-details {
+      flex: 1;
+      text-align: left;
+      padding-right: 40px;
+
+      .product-title {
+        color: #000000;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        letter-spacing: 2px;
+      }
+
+      .product-subtitle {
+        color: #333333;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+      }
+
+      .product-description {
+        color: #666666;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .product-price {
+        color: #000000;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .product-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-start;
+
+        .add-to-cart-button {
+          background-color: #ff4444;
+          color: #ffffff;
+          padding: 10px 30px;
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #cc0000;
+          }
+        }
+
+        .show-more-button {
+          background-color: #ffffff;
+          color: #333333;
+          padding: 10px 30px;
+          border: 2px solid #333333;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: color 0.3s ease, border-color 0.3s ease;
+
+          &:hover {
+            color: #ff4444;
+            border-color: #ff4444;
+          }
+        }
+      }
+    }
+
+    .product-image {
+      max-width: 50%;
+      height: auto;
+      margin-left: 40px;
+    }
+  }
+
+  .logos {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .product-grid-wrapper {
+    margin-top: 40px;
+    margin-bottom: 80px; // Maintain space above footer
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; // Ensure vertical alignment
+
+    .product-grid {
+      width: 100%;
+      max-width: 1200px;
+      
+      .products-container {
+        display: flex; // Use flex for static grid layout
+        flex-wrap: wrap; // Allow wrapping to 4 per row
+        gap: 20px; // Match the spacing in product_grid.scss
+        justify-content: center; // Center the cards
+        padding: 0 20px; // Added padding to prevent sticking to edges
+        align-items: center; // Ensure vertical alignment
+      }
+    }
+  }
+
+  /* Footer Styling */
+  footer {
+    width: 110%; // Full width of the viewport
+    background-color: #1E1E1E; // Updated to match your requested color
+    padding: 20px 0; // Vertical padding only, horizontal handled by inner container
+    flex-shrink: 0; // Prevents footer from shrinking
+
+    .footer-container,
+    .footer-columns,
+    .footer-logo,
+    .footer-bottom {
+      max-width: 1200px; // Matches content wrapper max-width for alignment
+      margin: 0 auto; // Centers the content block
+      padding: 0 20px; // Inner padding for content
+    }
+  }
+}

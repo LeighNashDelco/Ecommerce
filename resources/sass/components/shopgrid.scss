@@ -1,0 +1,224 @@
+.shop-grid-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto; // Center the wrapper if needed
+  padding: 0 20px; // Add some padding to avoid edge sticking
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; // Allow buttons to stretch within the column
+  justify-content: space-between; // Push buttons to opposite sides
+
+  .shop-grid-container {
+    background-color: transparent;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    .shop-grid-products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      justify-content: flex-start;
+      width: 120%;
+
+      .shop-grid-card {
+        background-color: #4a4a4a;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 210px;
+        min-width: 210px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        flex: 0 0 210px;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .shop-grid-info {
+          padding: 12.6px;
+          color: #fff;
+          text-align: center;
+
+          .shop-grid-stars {
+            margin-bottom: 8.4px;
+
+            .star {
+              font-size: 16.8px;
+              color: #ccc; // Default (empty star) color
+              cursor: pointer;
+              transition: color 0.2s ease;
+
+              &.filled {
+                color: #ffd700; // Filled star color
+              }
+
+              &:hover,
+              &.filled:hover {
+                color: #ffea00; // Slightly brighter on hover
+              }
+            }
+          }
+
+          h3 {
+            font-size: 14.7px;
+            margin: 8.4px 0;
+            color: #fff;
+          }
+
+          p {
+            font-size: 12.6px;
+            color: #ffd700;
+            margin: 8.4px 0;
+          }
+
+          .shop-grid-add-to-cart {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 6.3px 16.8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12.6px;
+            width: 100%;
+            margin-top: 8.4px;
+
+            &:hover {
+              background-color: #cc0000;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .shop-grid-show-more {
+    background-color: #000; // Black background
+    color: #fff; // White text
+    border: none;
+    padding: 10px 20px; // Maintain padding for vertical alignment
+    border-radius: 5px; // Rounded edges
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; // Space between grid and button
+    display: block; // Ensure it behaves as a block element
+    align-self: flex-start; // Align to the left
+    width: 210px; // Match the default card width
+    text-align: center; // Center the text within the button
+    transition: background-color 0.3s ease;
+    font-family: 'Arial', sans-serif; // Professional font
+
+    &:hover {
+      background-color: #333; // Darker shade on hover
+    }
+  }
+
+  .shop-grid-back-to-top {
+    background-color: #e0e0e0; // Light professional gray
+    color: #333; // Medium gray text for contrast
+    border: 1px solid #1E1E1E; // Subtle stroke with requested color
+    padding: 5px 10px; // Compact padding
+    border-radius: 5px; // Reduced from 20px to 5px for less rounded corners
+    cursor: pointer;
+    margin-top: 10px; // Space between "Show more" and "Back to Top"
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px; // Compact width for a professional look
+    height: 30px; // Fixed height for consistency
+    align-self: flex-end; // Align to the right
+    font-size: 12px; // Smaller, readable font
+    font-family: 'Arial', sans-serif; // Professional font
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    transition: all 0.3s ease;
+
+    .arrow {
+      margin-right: 5px; // Space between arrow and text
+      font-size: 12px; // Match the text size
+    }
+
+    &:hover {
+      background-color: #1E1E1E; // Dark gray on hover as requested
+      color: #F0F8FF; // AliceBlue text on hover as requested
+      border: none; // Remove border on hover for a clean look
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); // Enhanced shadow on hover
+      transform: translateY(-1px); // Slight lift effect
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .shop-grid-wrapper {
+    max-width: 860px;
+  }
+
+  .shop-grid-products .shop-grid-card {
+    width: 270px;
+    flex: 0 0 270px; // Fixed typo: was "270x"
+  }
+
+  .shop-grid-show-more {
+    width: 270px; // Match the card width at this breakpoint
+  }
+}
+
+@media (max-width: 900px) {
+  .shop-grid-wrapper {
+    max-width: 440px;
+  }
+
+  .shop-grid-products .shop-grid-card {
+    width: 210px;
+    flex: 0 0 210px;
+  }
+
+  .shop-grid-show-more {
+    width: 210px; // Match the card width at this breakpoint
+    margin-top: 15px; // Adjust space for smaller screens
+    padding: 8px 16px; // Reduce padding
+    font-size: 14px; // Reduce font size
+  }
+
+  .shop-grid-back-to-top {
+    width: 80px; // Slightly smaller for medium screens
+    height: 28px; // Adjust height
+    font-size: 11px; // Reduce font size
+    padding: 4px 8px; // Reduce padding
+    margin-top: 8px; // Adjust space
+    border-radius: 5px; // Reduced roundedness for consistency
+    border: 1px solid #1E1E1E; // Maintain stroke
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-grid-wrapper {
+    max-width: 230px;
+  }
+
+  .shop-grid-products .shop-grid-card {
+    width: 100%;
+    max-width: 210px;
+    flex: 0 0 210px;
+  }
+
+  .shop-grid-show-more {
+    width: 100%; // Full width on very small screens to match card behavior
+    max-width: 210px; // Ensure it doesn't exceed card width
+    margin-top: 10px; // Further adjust space
+    padding: 6px 12px; // Further reduce padding
+    font-size: 12px; // Further reduce font size
+  }
+
+  .shop-grid-back-to-top {
+    width: 70px; // Even smaller for small screens
+    height: 26px; // Further adjust height
+    font-size: 10px; // Further reduce font size
+    padding: 3px 6px; // Further reduce padding
+    margin-top: 6px; // Further adjust space
+    border-radius: 5px; // Reduced roundedness for consistency
+    border: 1px solid #1E1E1E; // Maintain stroke
+  }
+}

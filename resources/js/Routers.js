@@ -18,6 +18,8 @@ import ReviewsAndNotifications from "./components/reviewsandnotification/Reviews
 import SellerList from "./components/sellerlist/SellerList";
 import StatusAndCategory from "./components/statusandcategory/StatusAndCategory";
 import Users from "./components/users/Users";
+import Homepage from "./components/Homepage/homepage";
+import Shop from "./components/shop/shop";
 
 
 export default function Routers() {
@@ -40,6 +42,8 @@ export default function Routers() {
         <Route path="sellerlist" element={<SellerList />} />
         <Route path="statusandcategory" element={<StatusAndCategory />} />
         <Route path="users" element={<Users />} />
+        <Route path="homepage" element={<Homepage />} />
+        <Route path="shop" element={<Shop />} />
       </Routes>
     </Router>
   );

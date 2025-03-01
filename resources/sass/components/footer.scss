@@ -1,0 +1,173 @@
+.footer {
+  background-color: #4ECDC4; // Teal background similar to the image
+  color: #F0F8FF; // Light blue-gray text for headings and other text
+  padding: 20px 0;
+  width: 100%; // Full width
+  position: relative;
+  bottom: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; // Logo on left, columns on right
+    align-items: flex-start;
+    gap: 30px; // Increased spacing between logo and columns
+
+    .footer-logo {
+      flex: 0 0 auto;
+      padding: 10px 0;
+
+      .logo {
+        height: 90px; // Increased logo size (adjust if needed)
+        width: auto;
+      }
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: flex-end; // Right-align columns
+      flex: 1;
+      gap: 40px; // Increased spacing between columns
+
+      .footer-column {
+        text-align: left; // Left-align text within columns
+
+        h3 {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 15px; // Increased spacing below headings
+          color: #F0F8FF; // Light blue-gray for headings
+        }
+
+        p {
+          font-size: 14px;
+          color: #E0F0FF; // Less bright version of #F0F8FF for list items
+          margin-bottom: 10px; // Increased spacing between paragraphs
+          line-height: 1.5;
+        }
+
+        &.socials {
+          .social-icons {
+            display: flex;
+            gap: 20px; // Increased spacing between social icons
+            margin-top: 15px; // Increased spacing below the "Socials" heading
+            justify-content: center; // Center the social icons within their column
+
+            .social-icon {
+              height: 20px;
+              width: 20px;
+              filter: invert(100%); // White icons on teal background
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    border-top: 1px solid #F0F8FF; // Light blue-gray line
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+
+    .footer-copyright,
+    .footer-links,
+    .footer-back-to-top {
+      p {
+        font-size: 12px;
+        color: #F0F8FF; // Light blue-gray text
+        margin: 0;
+      }
+    }
+
+    .footer-back-to-top {
+      cursor: pointer;
+
+      p:hover {
+        text-decoration: underline;
+        color: #E6F0FF; // Slightly lighter on hover for contrast
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px;
+      gap: 20px; // Reduced spacing on mobile
+
+      .footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 20px; // Reduced spacing between columns on mobile
+        width: 100%; // Full width on mobile
+        text-align: center; // Center-align columns on mobile
+
+        .footer-column {
+          max-width: 100%;
+          &.socials .social-icons {
+            justify-content: center; // Center social icons on mobile
+            gap: 15px; // Reduced spacing between social icons on mobile
+          }
+        }
+      }
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px 15px 0;
+      gap: 10px; // Reduced spacing on mobile
+
+      .footer-copyright,
+      .footer-links,
+      .footer-back-to-top {
+        margin-bottom: 10px;
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 15px 0;
+
+    .footer-container {
+      padding: 0 10px;
+      gap: 15px; // Further reduced spacing on very small screens
+
+      .footer-logo {
+        margin-bottom: 15px;
+      }
+
+      .footer-columns {
+        gap: 15px; // Further reduced spacing between columns on mobile
+      }
+    }
+
+    .footer-bottom {
+      padding: 10px 10px 0;
+      gap: 8px; // Further reduced spacing on very small screens
+
+      .footer-copyright,
+      .footer-links,
+      .footer-back-to-top {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
