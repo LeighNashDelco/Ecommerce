@@ -165,36 +165,41 @@ const HelpAndSupport = () => {
 
   const handleFaqAdd = async (newFaq) => {
     try {
-      const token = localStorage.getItem("LaravelPassportToken");
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/helpandsupport",
-        newFaq.formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.status === 201) {
-        const addedFaq = {
-          id: response.data.faq.id,
-          question: response.data.faq.question,
-          answer: response.data.faq.answer,
-          category: { name: response.data.faq.category_name },
-          created_at: response.data.faq.created_at || new Date().toISOString(),
-          updated_at: response.data.faq.updated_at || new Date().toISOString(),
-          archived: false,
+        const token = localStorage.getItem("LaravelPassportToken");
+        const payload = {
+            question: newFaq.formData.question,
+            answer: newFaq.formData.answer,
+            category_id: parseInt(newFaq.formData.category_id, 10), // Convert to integer
         };
-        setFaqs((prevFaqs) => [addedFaq, ...prevFaqs]);
-        setPagination({ ...pagination, currentPage: 1 });
-        setIsAddModalOpen(false);
-      }
+        console.log("Submitting FAQ payload:", payload);
+        const response = await axios.post(
+            "http://127.0.0.1:8000/api/helpandsupport",
+            payload,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        if (response.status === 201) {
+            const addedFaq = {
+                id: response.data.faq.id,
+                question: response.data.faq.question,
+                answer: response.data.faq.answer,
+                category: { name: response.data.faq.category_name },
+                created_at: response.data.faq.created_at || new Date().toISOString(),
+                updated_at: response.data.faq.updated_at || new Date().toISOString(),
+                archived: false,
+            };
+            setFaqs((prevFaqs) => [addedFaq, ...prevFaqs]);
+            setPagination({ ...pagination, currentPage: 1 });
+            setIsAddModalOpen(false);
+        }
     } catch (error) {
-      console.error("Error adding FAQ:", error.response?.data || error.message);
+        console.error("Error adding FAQ:", JSON.stringify(error.response?.data || error.message));
     }
-  };
+};
 
   const faqsPerPage = 10;
   const totalPages = Math.ceil(filteredFaqs.length / faqsPerPage);

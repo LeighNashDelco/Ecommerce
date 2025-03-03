@@ -18,6 +18,7 @@ use App\Http\Controllers\{
     UserListController,
     CustomerListController,
     UserController,
+    StatusAndCategoryController // Add this
 };
 use App\Models\Profile;
 
@@ -30,7 +31,6 @@ Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout'
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::middleware('auth:api')->get('/user-profile', [UserController::class, 'getUserProfile']);
 
 # ==============================
@@ -50,11 +50,9 @@ Route::get('/profiles/user/{userId}', function ($userId) {
 # PROTECTED ROUTES (Require Authentication)
 # ==============================
 Route::middleware('auth:api')->group(function () {
-
     # Profile Management
     Route::post('/profiles', [ProfileController::class, 'store']);
-    Route::middleware('auth:api')->put('/update-profile', [UserController::class, 'updateUserProfile']);
-
+    Route::put('/update-profile', [UserController::class, 'updateUserProfile']);
 
     # Product Management
     Route::post('/products', [ProductController::class, 'store']);
@@ -77,12 +75,23 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/users/{id}/archive', [UserListController::class, 'archive']);
 
     # Roles Management
-    Route::get('/roleslist', [RolesTableController::class, 'getRolesList']); // Existing
-    Route::get('/roleslist/archived', [RolesTableController::class, 'getArchivedRolesList']); // New
-    Route::patch('/roleslist/{id}/archive', [RolesTableController::class, 'archive']); // New
-    Route::post('/roleslist', [RolesTableController::class, 'store']); // New
+    Route::get('/roleslist', [RolesTableController::class, 'getRolesList']);
+    Route::get('/roleslist/archived', [RolesTableController::class, 'getArchivedRolesList']);
+    Route::patch('/roleslist/{id}/archive', [RolesTableController::class, 'archive']);
+    Route::post('/roleslist', [RolesTableController::class, 'store']);
 
     # Admin Dashboard Statistics
     Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
     Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);
+
+    # Status and Category Management
+    Route::get('/statuses', [StatusAndCategoryController::class, 'getActiveStatuses']);
+    Route::get('/statuses/archived', [StatusAndCategoryController::class, 'getArchivedStatuses']);
+    Route::post('/statuses', [StatusAndCategoryController::class, 'storeStatus']);
+    Route::patch('/statuses/{id}/archive', [StatusAndCategoryController::class, 'archiveStatus']);
+
+    Route::get('/categories', [StatusAndCategoryController::class, 'getActiveCategories']);
+    Route::get('/categories/archived', [StatusAndCategoryController::class, 'getArchivedCategories']);
+    Route::post('/categories', [StatusAndCategoryController::class, 'storeCategory']);
+    Route::patch('/categories/{id}/archive', [StatusAndCategoryController::class, 'archiveCategory']);
 });

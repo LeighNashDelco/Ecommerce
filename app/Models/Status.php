@@ -9,12 +9,9 @@ class Status extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $fillable = ['status_name', 'archived'];
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'status_id');
-    }
+    protected $casts = [
+        'archived' => 'boolean',
+    ];
 }

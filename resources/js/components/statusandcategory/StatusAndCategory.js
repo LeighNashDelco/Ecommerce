@@ -35,36 +35,41 @@ const StatusAndCategory = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        setLoading(true);
-        const token = localStorage.getItem("LaravelPassportToken");
-        const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+        try {
+            setLoading(true);
+            const token = localStorage.getItem("LaravelPassportToken");
+            const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
 
-        const [statusActiveResponse, statusArchivedResponse, categoryActiveResponse, categoryArchivedResponse] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/statuses", config),
-          axios.get("http://127.0.0.1:8000/api/statuses/archived", config),
-          axios.get("http://127.0.0.1:8000/api/categories", config),
-          axios.get("http://127.0.0.1:8000/api/categories/archived", config),
-        ]);
+            const [statusActiveResponse, statusArchivedResponse, categoryActiveResponse, categoryArchivedResponse] = await Promise.all([
+                axios.get("http://127.0.0.1:8000/api/statuses", config),
+                axios.get("http://127.0.0.1:8000/api/statuses/archived", config),
+                axios.get("http://127.0.0.1:8000/api/categories", config),
+                axios.get("http://127.0.0.1:8000/api/categories/archived", config),
+            ]);
 
-        const activeStatuses = statusActiveResponse.data.map(status => ({ ...status, archived: false }));
-        const archivedStatuses = statusArchivedResponse.data.map(status => ({ ...status, archived: true }));
-        const activeCategories = categoryActiveResponse.data.map(category => ({ ...category, archived: false }));
-        const archivedCategories = categoryArchivedResponse.data.map(category => ({ ...category, archived: true }));
+            console.log("Active Statuses:", statusActiveResponse.data);
+            console.log("Archived Statuses:", statusArchivedResponse.data);
+            console.log("Active Categories:", categoryActiveResponse.data);
+            console.log("Archived Categories:", categoryArchivedResponse.data);
 
-        setStatuses([...activeStatuses, ...archivedStatuses]);
-        setCategories([...activeCategories, ...archivedCategories]);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        console.log("Response:", error.response?.data);
-        setStatuses([]);
-        setCategories([]);
-      } finally {
-        setLoading(false);
-      }
+            const activeStatuses = statusActiveResponse.data.map(status => ({ ...status, archived: false }));
+            const archivedStatuses = statusArchivedResponse.data.map(status => ({ ...status, archived: true }));
+            const activeCategories = categoryActiveResponse.data.map(category => ({ ...category, archived: false }));
+            const archivedCategories = categoryArchivedResponse.data.map(category => ({ ...category, archived: true }));
+
+            setStatuses([...activeStatuses, ...archivedStatuses]);
+            setCategories([...activeCategories, ...archivedCategories]);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            console.log("Response:", JSON.stringify(error.response?.data || error.message));
+            setStatuses([]);
+            setCategories([]);
+        } finally {
+            setLoading(false);
+        }
     };
     fetchData();
-  }, []);
+}, []);
 
   const filteredStatuses = statuses.filter((status) =>
     status.status_name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -221,39 +226,46 @@ const StatusAndCategory = () => {
 
   const handleItemAdd = async (newItem) => {
     try {
-      const token = localStorage.getItem("LaravelPassportToken");
-      const endpoint = activeTab === "statuses" ? "statuses" : "categories";
-      const response = await axios.post(
-        `http://127.0.0.1:8000/api/${endpoint}`,
-        newItem.formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+        const token = localStorage.getItem("LaravelPassportToken");
+        const endpoint = activeTab === "statuses" ? "statuses" : "categories";
+        console.log("Adding item payload:", newItem.formData); // Debug payload
+        const response = await axios.post(
+            `http://127.0.0.1:8000/api/${endpoint}`,
+            newItem.formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
 
-      if (response.status === 201) {
-        const addedItem = {
-          id: response.data.item.id,
-          [activeTab === "statuses" ? "status_name" : "category_name"]: response.data.item.name,
-          created_at: response.data.item.created_at || new Date().toISOString(),
-          updated_at: response.data.item.updated_at || new Date().toISOString(),
-          archived: false,
-        };
-        if (activeTab === "statuses") {
-          setStatuses((prevStatuses) => [addedItem, ...prevStatuses]);
-        } else {
-          setCategories((prevCategories) => [addedItem, ...prevCategories]);
+        if (response.status === 201) {
+            const addedItem = {
+                id: response.data.item.id,
+                [activeTab === "statuses" ? "status_name" : "category_name"]: response.data.item.name,
+                created_at: response.data.item.created_at || new Date().toISOString(),
+                updated_at: response.data.item.updated_at || new Date().toISOString(),
+                archived: false,
+            };
+            console.log("Added item:", addedItem); // Debug added item
+            if (activeTab === "statuses") {
+                setStatuses((prevStatuses) => [addedItem, ...prevStatuses]);
+            } else {
+                setCategories((prevCategories) => [addedItem, ...prevCategories]);
+            }
+            // Fix pagination reference
+            if (activeTab === "statuses") {
+                setStatusPagination({ currentPage: 1, totalPages: Math.ceil((statuses.length + 1) / itemsPerPage) });
+            } else {
+                setCategoryPagination({ currentPage: 1, totalPages: Math.ceil((categories.length + 1) / itemsPerPage) });
+            }
+            setIsAddModalOpen(false);
         }
-        setPagination({ currentPage: 1, totalPages: activeTab === "statuses" ? totalStatusPages : totalCategoryPages });
-        setIsAddModalOpen(false);
-      }
     } catch (error) {
-      console.error("Error adding item:", error.response?.data || error.message);
+        console.error("Error adding item:", JSON.stringify(error.response?.data || error.message));
     }
-  };
+};
 
   const handleStatusPageChange = (page) => {
     setStatusPagination({ ...statusPagination, currentPage: page });

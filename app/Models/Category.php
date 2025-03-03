@@ -9,5 +9,9 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_name'];
+    protected $fillable = ['category_name', 'archived'];
+
+    protected $casts = [
+        'archived' => 'boolean',
+    ];
 }
