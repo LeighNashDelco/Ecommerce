@@ -19,6 +19,7 @@ import Roles from "./components/roles/Roles";
 import Shipment from "./components/shipment/Shipment";
 import StatusAndCategory from "./components/statusandcategory/StatusAndCategory";
 import Users from "./components/users/Users";
+import Brands from "./components/brands/Brands";
 import PrivateRoute from "./components/routes/PrivateRoute.js"; // Import the PrivateRoute
 
 
@@ -29,6 +30,7 @@ export default function Routers() {
         <Route path="/" element={<Navigate to="/login" />} /> {/* Default route */}
         <Route path="login" element={<Login />} />
         <Route path="admindashboard" element={<PrivateRoute element={<Dashboard />} />} />
+        <Route path="brands" element={<PrivateRoute element={<Brands />} />} />
         <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
         <Route path="adminlist" element={<PrivateRoute element={<AdminList />} />} />
         <Route path="customerlist" element={<PrivateRoute element={<CustomerList />} />} />

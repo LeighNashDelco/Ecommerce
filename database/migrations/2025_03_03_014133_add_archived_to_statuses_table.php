@@ -9,14 +9,18 @@ return new class extends Migration
     public function up()
     {
         Schema::table('statuses', function (Blueprint $table) {
-            $table->boolean('archived')->default(false)->after('status_name');
+            if (!Schema::hasColumn('statuses', 'archived')) {
+                $table->boolean('archived')->default(false)->after('status_name');
+            }
         });
     }
 
     public function down()
     {
         Schema::table('statuses', function (Blueprint $table) {
-            $table->dropColumn('archived');
+            if (Schema::hasColumn('statuses', 'archived')) {
+                $table->dropColumn('archived');
+            }
         });
     }
 };

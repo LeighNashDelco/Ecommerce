@@ -47,6 +47,9 @@ export default function Navs() {
         <li>
           <Link to="/users">Users</Link>
         </li>
+        <li>
+          <Link to="/brands">Brands</Link>
+        </li>
       </ul>
     </nav>
   );

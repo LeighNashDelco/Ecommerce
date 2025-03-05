@@ -18,7 +18,8 @@ import {
   FaClipboardCheck,
   FaUserShield,
   FaBars,
-  FaTimes, // Added for the "X" icon
+  FaTimes,
+  FaTag, // Added for Brands icon
 } from "react-icons/fa";
 import adminPhoto from "./../../../sass/img/aadmin.svg";
 import "./../../../sass/components/_sidebar.scss";
@@ -166,6 +167,13 @@ const Sidebar = ({ children }) => {
                 >
                   <FaUserShield />
                   <span>Roles</span>
+                </li>
+                <li
+                  className={isActive("/brands")} // New Brands item
+                  onClick={() => navigate("/brands")}
+                >
+                  <FaTag />
+                  <span>Brands</span>
                 </li>
               </ul>
             )}

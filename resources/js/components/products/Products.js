@@ -98,55 +98,12 @@ const Product = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleProductEdit = async (updatedProduct) => {
-    try {
-      const token = localStorage.getItem("LaravelPassportToken");
-      if (!token) throw new Error("No token found. Please log in.");
-
-      const productId = updatedProduct.get("id");
-      console.log("PATCH URL:", `http://127.0.0.1:8000/api/products/${productId}`);
-      console.log("Sending PATCH with FormData:");
-      for (const [key, value] of updatedProduct.entries()) {
-        console.log(`${key}: ${value}`);
-      }
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-          "Accept": "application/json",
-        },
-        onUploadProgress: (progressEvent) => {
-          console.log("Upload Progress:", {
-            loaded: progressEvent.loaded,
-            total: progressEvent.total,
-            percent: Math.round((progressEvent.loaded * 100) / progressEvent.total),
-          });
-        },
-      };
-
-      console.log("Request config:", config);
-
-      const response = await axios.patch(
-        `http://127.0.0.1:8000/api/products/${productId}`,
-        updatedProduct,
-        config
-      );
-
-      if (response.status === 200) {
-        const editedProduct = response.data;
-        console.log("Updated product from backend:", editedProduct);
-        setProducts((prevProducts) =>
-          prevProducts.map((p) => (p.id === editedProduct.id ? editedProduct : p))
-        );
-        handleModalClose();
-      }
-    } catch (error) {
-      console.error("Error editing product:", error.response?.data || error.message);
-      console.log("Response status:", error.response?.status);
-      console.log("Response data:", error.response?.data);
-      console.log("Validation errors:", error.response?.data?.errors);
-    }
+  const handleProductEdit = (updatedProduct) => {
+    console.log("Updated product from backend:", updatedProduct);
+    setProducts((prevProducts) =>
+      prevProducts.map((p) => (p.id === updatedProduct.id ? updatedProduct : p))
+    );
+    handleModalClose();
   };
 
   const handleArchiveClick = (product) => {
@@ -421,8 +378,7 @@ const Product = () => {
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage <= 1}
             >
-              &lt;
-            </button>
+&gt;            </button>
             {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
@@ -436,8 +392,7 @@ const Product = () => {
               onClick={() => handlePageChange(pagination.currentPage + 1)}
               disabled={pagination.currentPage >= totalPages}
             >
-              &gt;
-            </button>
+&gt;            </button>
           </div>
         </div>
       </div>
@@ -445,7 +400,7 @@ const Product = () => {
       {isEditModalOpen && (
         <EditProductModal
           onClose={handleModalClose}
-          onSubmit={handleProductEdit}
+          onEdit={handleProductEdit} // Changed from onSubmit to onEdit
           product={productToEdit}
         />
       )}

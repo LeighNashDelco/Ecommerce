@@ -5,6 +5,7 @@ import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "./../topnavbar/TopNavbar";
 import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
+import CustomerModal from "./CustomerModal"; // New modal
 import "./../../../sass/components/_customerlist.scss";
 
 const formatDate = (dateString) => {
@@ -31,12 +32,17 @@ const CustomerList = () => {
   const [customerToArchive, setCustomerToArchive] = useState(null);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [customerToEdit, setCustomerToEdit] = useState(null);
   const navigate = useNavigate();
 
   const filterOptions = [
     { value: "all", label: "All" },
     { value: "customer", label: "Customer" },
   ];
+
+  const baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +55,9 @@ const CustomerList = () => {
           axios.get("http://127.0.0.1:8000/api/customers", config),
           axios.get("http://127.0.0.1:8000/api/customers/archived", config),
         ]);
+
+        console.log("Active Customers:", activeResponse.data);
+        console.log("Archived Customers:", archivedResponse.data);
 
         const activeCustomers = activeResponse.data.map(customer => ({ ...customer, archived: false }));
         const archivedCustomers = archivedResponse.data.map(customer => ({ ...customer, archived: true }));
@@ -166,6 +175,111 @@ const CustomerList = () => {
     }
   };
 
+  const handleAddNewClick = () => {
+    setIsEditMode(false);
+    setCustomerToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = async (customer) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.get(`http://127.0.0.1:8000/api/users/${customer.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("Customer data fetched for edit:", response.data);
+      setCustomerToEdit({
+        ...customer,
+        first_name: response.data.first_name || '',
+        middlename: response.data.middlename || '',
+        last_name: response.data.last_name || '',
+        suffix: response.data.suffix || '',
+        gender: response.data.gender || '',
+      });
+      setIsEditMode(true);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error fetching customer for edit:", error);
+    }
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setIsEditMode(false);
+    setCustomerToEdit(null);
+  };
+
+  const handleCustomerAdd = async (newCustomer) => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/register",
+        newCustomer,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (response.status === 201) {
+        console.log("Response data:", response.data);
+        const addedCustomer = {
+          id: response.data.user.id,
+          username: response.data.user.username,
+          email: response.data.user.email,
+          role_name: "Customer", // Hardcoded since role_id is 2
+          profile_img: null, // No profile_img on add
+          created_at: response.data.user.created_at || new Date().toISOString(),
+          updated_at: response.data.user.updated_at || new Date().toISOString(),
+          archived: false,
+        };
+        setCustomers((prevCustomers) => [addedCustomer, ...prevCustomers]);
+        setIsModalOpen(false);
+      }
+    } catch (error) {
+      console.error("Error adding customer:", error.response?.data || error.message);
+    }
+  };
+
+  const handleCustomerUpdate = async (updatedCustomer) => {
+    try {
+        const token = localStorage.getItem("LaravelPassportToken");
+        console.log("Sending update with token:", token);
+
+        const formDataEntries = {};
+        for (let [key, value] of updatedCustomer.entries()) {
+            formDataEntries[key] = value instanceof File ? value.name : value;
+        }
+        console.log("Update payload (FormData contents):", formDataEntries);
+
+        const response = await axios.post(
+            `http://127.0.0.1:8000/api/users/${customerToEdit.id}`,
+            updatedCustomer,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        );
+        if (response.status === 200) {
+            console.log("Full response from update:", response.data);
+            setCustomers((prevCustomers) =>
+                prevCustomers.map((customer) =>
+                    customer.id === response.data.id ? { ...response.data } : customer
+                )
+            );
+            setIsModalOpen(false);
+            setIsEditMode(false);
+            setCustomerToEdit(null);
+            console.log("Customer updated successfully:", response.data);
+            console.log("Expected image URL:", `${baseImageUrl}${response.data.profile_img}`);
+        }
+    } catch (error) {
+        console.error("Error updating customer:", error.response?.data || error.message);
+        console.log("Full error response:", error.response);
+    }
+};
+
   const customersPerPage = 5;
   const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
   const currentCustomers = filteredCustomers.slice(
@@ -203,7 +317,9 @@ const CustomerList = () => {
                   {showArchived ? "Restore All" : "Archive All"}
                 </button>
               )}
-              <button className="header-button">Add New</button>
+              <button className="header-button" onClick={handleAddNewClick}>
+                Add New
+              </button>
               <button className="header-button" onClick={handleToggleArchived}>
                 {showArchived ? "View Active" : "View Archived"}
               </button>
@@ -287,10 +403,25 @@ const CustomerList = () => {
                               onClick={() => handleArchiveClick(customer)}
                             />
                           )}
-                          <IconEdit size={16} className="edit-icon" />
+                          <IconEdit
+                            size={16}
+                            className="edit-icon"
+                            onClick={() => handleEditClick(customer)}
+                          />
                         </div>
                       </td>
-                      <td>{customer.username || "N/A"}</td>
+                      <td className="username-cell">
+                      <img
+  src={customer.profile_img ? `${baseImageUrl}${customer.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
+  alt="Profile"
+  className="profile-picture"
+  onError={(e) => {
+    console.log("Image load failed for:", `${baseImageUrl}${customer.profile_img}`);
+    e.target.src = `${baseImageUrl}images/pfp/default.png`;
+  }}
+/>
+                        {customer.username || "N/A"}
+                      </td>
                       <td>{customer.email || "N/A"}</td>
                       <td>{customer.role_name || "N/A"}</td>
                       <td>{formatDate(customer.created_at)}</td>
@@ -312,7 +443,7 @@ const CustomerList = () => {
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage <= 1}
             >
-              &lt;
+              {"<"}
             </button>
             {[...Array(totalPages)].map((_, index) => (
               <button
@@ -327,7 +458,7 @@ const CustomerList = () => {
               onClick={() => handlePageChange(pagination.currentPage + 1)}
               disabled={pagination.currentPage >= totalPages}
             >
-              &gt;
+              {">"}
             </button>
           </div>
         </div>
@@ -348,6 +479,14 @@ const CustomerList = () => {
             </div>
           </div>
         </div>
+      )}
+      {isModalOpen && (
+        <CustomerModal
+          onClose={handleModalClose}
+          onSubmit={isEditMode ? handleCustomerUpdate : handleCustomerAdd}
+          isEdit={isEditMode}
+          initialData={customerToEdit}
+        />
       )}
     </div>
   );

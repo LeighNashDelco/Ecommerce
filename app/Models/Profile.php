@@ -24,7 +24,9 @@ class Profile extends Model
         'province',
         'postal_code',
         'country',
+        'profile_img',
         'gender'
+        
     ];
 
     public function user()

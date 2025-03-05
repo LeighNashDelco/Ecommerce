@@ -211,6 +211,19 @@ body {
           }
         }
 
+        .username-cell {
+          display: flex;
+          align-items: center;
+
+          .profile-picture {
+            width: 40px; // Constrain image size
+            height: 40px;
+            object-fit: cover; // Fit without distortion
+            margin-right: 10px; // Space from text
+            border-radius: 50%; // Circular images
+          }
+        }
+
         .action-icons {
           display: flex;
           gap: 10px;

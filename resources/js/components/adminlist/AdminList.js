@@ -5,6 +5,7 @@ import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "../topnavbar/TopNavbar";
 import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
+import AdminModal from "./AdminModal"; // New modal
 import "./../../../sass/components/_adminlist.scss";
 
 const formatDate = (dateString) => {
@@ -31,28 +32,32 @@ const AdminList = () => {
   const [adminToArchive, setAdminToArchive] = useState(null);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [adminToEdit, setAdminToEdit] = useState(null);
   const navigate = useNavigate();
 
   const filterOptions = [
     { value: "all", label: "All" },
     { value: "admin", label: "Admin" },
     { value: "moderator", label: "Moderator" },
-    // Add more role types as needed
   ];
+
+  const baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const token = localStorage.getItem("LaravelPassportToken");
+        const config = { headers: { Authorization: `Bearer ${token}` } };
         const [activeResponse, archivedResponse] = await Promise.all([
-          axios.get("http://localhost:8000/api/admins", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get("http://localhost:8000/api/admins/archived", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
+          axios.get("http://127.0.0.1:8000/api/admins", config),
+          axios.get("http://127.0.0.1:8000/api/admins/archived", config),
         ]);
+
+        console.log("Active Admins:", activeResponse.data);
+        console.log("Archived Admins:", archivedResponse.data);
 
         const activeAdmins = activeResponse.data.map(admin => ({ ...admin, archived: false }));
         const archivedAdmins = archivedResponse.data.map(admin => ({ ...admin, archived: true }));
@@ -106,7 +111,7 @@ const AdminList = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const response = await axios.patch(
-        `http://localhost:8000/api/admins/${adminToArchive.id}/archive`,
+        `http://127.0.0.1:8000/api/admins/${adminToArchive.id}/archive`,
         { archived: true },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -128,7 +133,7 @@ const AdminList = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const response = await axios.patch(
-        `http://localhost:8000/api/admins/${adminId}/archive`,
+        `http://127.0.0.1:8000/api/admins/${adminId}/archive`,
         { archived: false },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -150,7 +155,7 @@ const AdminList = () => {
       const token = localStorage.getItem("LaravelPassportToken");
       const requests = selectedAdmins.map((adminId) =>
         axios.patch(
-          `http://localhost:8000/api/admins/${adminId}/archive`,
+          `http://127.0.0.1:8000/api/admins/${adminId}/archive`,
           { archived: action === "archive" },
           { headers: { Authorization: `Bearer ${token}` } }
         )
@@ -166,6 +171,104 @@ const AdminList = () => {
       setSelectedAdmins([]);
     } catch (error) {
       console.error(`Error ${action}ing admins:`, error);
+    }
+  };
+
+  const handleAddNewClick = () => {
+    setIsEditMode(false);
+    setAdminToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = async (admin) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.get(`http://127.0.0.1:8000/api/users/${admin.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("Admin data fetched for edit:", response.data);
+      setAdminToEdit({
+        ...admin,
+        first_name: response.data.first_name || '',
+        middlename: response.data.middlename || '',
+        last_name: response.data.last_name || '',
+        suffix: response.data.suffix || '',
+        gender: response.data.gender || '',
+        role_id: response.data.role_id || '1', // Default to Admin
+      });
+      setIsEditMode(true);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error fetching admin for edit:", error);
+    }
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setIsEditMode(false);
+    setAdminToEdit(null);
+  };
+
+  const handleAdminAdd = async (newAdmin) => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/register",
+        newAdmin,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (response.status === 201) {
+        console.log("Response data:", response.data);
+        const addedAdmin = {
+          id: response.data.user.id,
+          username: response.data.user.username,
+          email: response.data.user.email,
+          role_name: "Admin", // Adjust based on role_id
+          profile_img: null, // No profile_img on add
+          created_at: response.data.user.created_at || new Date().toISOString(),
+          updated_at: response.data.user.updated_at || new Date().toISOString(),
+          archived: false,
+        };
+        setAdmins((prevAdmins) => [addedAdmin, ...prevAdmins]);
+        setIsModalOpen(false);
+      }
+    } catch (error) {
+      console.error("Error adding admin:", error.response?.data || error.message);
+    }
+  };
+
+  const handleAdminUpdate = async (updatedAdmin) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/users/${adminToEdit.id}`,
+        updatedAdmin,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      if (response.status === 200) {
+        console.log("Full response from update:", response.data);
+        setAdmins((prevAdmins) =>
+          prevAdmins.map((admin) =>
+            admin.id === response.data.id ? { ...response.data } : admin
+          )
+        );
+        setIsModalOpen(false);
+        setIsEditMode(false);
+        setAdminToEdit(null);
+        console.log("Admin updated successfully:", response.data);
+        console.log("Expected image URL:", `${baseImageUrl}${response.data.profile_img}`);
+      }
+    } catch (error) {
+      console.error("Error updating admin:", error.response?.data || error.message);
+      console.log("Full error response:", error.response);
     }
   };
 
@@ -206,7 +309,9 @@ const AdminList = () => {
                   {showArchived ? "Restore All" : "Archive All"}
                 </button>
               )}
-              <button className="header-button">Add New</button>
+              <button className="header-button" onClick={handleAddNewClick}>
+                Add New
+              </button>
               <button className="header-button" onClick={handleToggleArchived}>
                 {showArchived ? "View Active" : "View Archived"}
               </button>
@@ -290,10 +395,25 @@ const AdminList = () => {
                               onClick={() => handleArchiveClick(admin)}
                             />
                           )}
-                          <IconEdit size={16} className="edit-icon" />
+                          <IconEdit
+                            size={16}
+                            className="edit-icon"
+                            onClick={() => handleEditClick(admin)}
+                          />
                         </div>
                       </td>
-                      <td>{admin.username || "N/A"}</td>
+                      <td className="username-cell">
+                        <img
+                          src={admin.profile_img ? `${baseImageUrl}${admin.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
+                          alt="Profile"
+                          className="profile-picture"
+                          onError={(e) => {
+                            console.log("Image load failed for:", `${baseImageUrl}${admin.profile_img}`);
+                            e.target.src = `${baseImageUrl}images/pfp/default.png`;
+                          }}
+                        />
+                        {admin.username || "N/A"}
+                      </td>
                       <td>{admin.email || "N/A"}</td>
                       <td>{admin.role_name || "N/A"}</td>
                       <td>{formatDate(admin.created_at)}</td>
@@ -315,7 +435,7 @@ const AdminList = () => {
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage <= 1}
             >
-              &lt;
+              {"<"}
             </button>
             {[...Array(totalPages)].map((_, index) => (
               <button
@@ -330,7 +450,7 @@ const AdminList = () => {
               onClick={() => handlePageChange(pagination.currentPage + 1)}
               disabled={pagination.currentPage >= totalPages}
             >
-              &gt;
+              {">"}
             </button>
           </div>
         </div>
@@ -351,6 +471,14 @@ const AdminList = () => {
             </div>
           </div>
         </div>
+      )}
+      {isModalOpen && (
+        <AdminModal
+          onClose={handleModalClose}
+          onSubmit={isEditMode ? handleAdminUpdate : handleAdminAdd}
+          isEdit={isEditMode}
+          initialData={adminToEdit}
+        />
       )}
     </div>
   );

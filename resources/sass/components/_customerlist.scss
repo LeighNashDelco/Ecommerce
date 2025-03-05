@@ -162,7 +162,6 @@ body {
 
     .customerlist-table {
       width: 100%;
-      margin-top: 20px;
 
       table {
         width: 100%;
@@ -208,6 +207,19 @@ body {
 
           &:last-child {
             border-bottom: none;
+          }
+        }
+
+        .username-cell {
+          display: flex;
+          align-items: center;
+
+          .profile-picture {
+            width: 40px; // Adjust size as needed
+            height: 40px;
+            object-fit: cover; // Ensures image fits without stretching
+            margin-right: 10px; // Space between image and text
+            border-radius: 50%; // Optional: circular images
           }
         }
 

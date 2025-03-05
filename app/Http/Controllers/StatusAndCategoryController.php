@@ -201,4 +201,77 @@ class StatusAndCategoryController extends Controller
             return response()->json(['error' => 'Failed to update category'], 500);
         }
     }
+    public function updateStatus(Request $request, $id): JsonResponse
+    {
+        try {
+            Log::info('Status update request:', $request->all());
+
+            $status = Status::findOrFail($id);
+
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+            ]);
+
+            $status->update([
+                'status_name' => $validated['name'],
+            ]);
+
+            return response()->json([
+                'message' => 'Status updated successfully',
+                'item' => [
+                    'id' => $status->id,
+                    'name' => $status->status_name,
+                    'created_at' => $status->created_at ? $status->created_at->toISOString() : null,
+                    'updated_at' => $status->updated_at ? $status->updated_at->toISOString() : null,
+                    'archived' => $status->archived,
+                ],
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error('Status not found for update:', ['id' => $id]);
+            return response()->json(['error' => 'Status not found'], 404);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation error in status update:', ['errors' => $e->errors()]);
+            return response()->json(['error' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            Log::error('Error updating status:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return response()->json(['error' => 'Failed to update status'], 500);
+        }
+    }
+
+    public function updateCategory(Request $request, $id): JsonResponse
+    {
+        try {
+            Log::info('Category update request:', $request->all());
+
+            $category = Category::findOrFail($id);
+
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+            ]);
+
+            $category->update([
+                'category_name' => $validated['name'],
+            ]);
+
+            return response()->json([
+                'message' => 'Category updated successfully',
+                'item' => [
+                    'id' => $category->id,
+                    'name' => $category->category_name,
+                    'created_at' => $category->created_at ? $category->created_at->toISOString() : null,
+                    'updated_at' => $category->updated_at ? $category->updated_at->toISOString() : null,
+                    'archived' => $category->archived,
+                ],
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error('Category not found for update:', ['id' => $id]);
+            return response()->json(['error' => 'Category not found'], 404);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation error in category update:', ['errors' => $e->errors()]);
+            return response()->json(['error' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            Log::error('Error updating category:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return response()->json(['error' => 'Failed to update category'], 500);
+        }
+    }
 }

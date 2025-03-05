@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('faq_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
+            $table->string('name');
             $table->boolean('archived')->default(false);
             $table->timestamps();
         });
@@ -18,6 +18,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('faq_categories');
     }
 };

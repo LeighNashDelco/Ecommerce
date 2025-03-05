@@ -13,13 +13,15 @@ class AdminController extends Controller
     {
         try {
             $admins = User::where('role_id', 1)
-                ->where('users.archived', false) // Specify users.archived
+                ->where('users.archived', false)
                 ->join('roles', 'users.role_id', '=', 'roles.id')
+                ->leftJoin('profiles', 'users.id', '=', 'profiles.user_id')
                 ->select(
                     'users.id',
                     'users.username',
                     'users.email',
                     'roles.role_name',
+                    'profiles.profile_img', // Added profile_img
                     'users.created_at',
                     'users.updated_at',
                     'users.archived'
@@ -31,7 +33,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             Log::error('Error in getAdmins: ' . $e->getMessage(), [
                 'trace' => $e->getTraceAsString(),
-                'query' => 'SELECT users.id, users.username, users.email, roles.role_name, users.created_at, users.updated_at, users.archived FROM users JOIN roles ON users.role_id = roles.id WHERE role_id = 1 AND users.archived = 0'
+                'query' => 'SELECT users.id, users.username, users.email, roles.role_name, profiles.profile_img, users.created_at, users.updated_at, users.archived FROM users JOIN roles ON users.role_id = roles.id LEFT JOIN profiles ON users.id = profiles.user_id WHERE role_id = 1 AND users.archived = 0'
             ]);
             return response()->json(['error' => 'Internal Server Error: ' . $e->getMessage()], 500);
         }
@@ -41,13 +43,15 @@ class AdminController extends Controller
     {
         try {
             $admins = User::where('role_id', 1)
-                ->where('users.archived', true) // Specify users.archived
+                ->where('users.archived', true)
                 ->join('roles', 'users.role_id', '=', 'roles.id')
+                ->leftJoin('profiles', 'users.id', '=', 'profiles.user_id')
                 ->select(
                     'users.id',
                     'users.username',
                     'users.email',
                     'roles.role_name',
+                    'profiles.profile_img', // Added profile_img
                     'users.created_at',
                     'users.updated_at',
                     'users.archived'
@@ -59,7 +63,7 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             Log::error('Error in getArchivedAdmins: ' . $e->getMessage(), [
                 'trace' => $e->getTraceAsString(),
-                'query' => 'SELECT users.id, users.username, users.email, roles.role_name, users.created_at, users.updated_at, users.archived FROM users JOIN roles ON users.role_id = roles.id WHERE role_id = 1 AND users.archived = 1'
+                'query' => 'SELECT users.id, users.username, users.email, roles.role_name, profiles.profile_img, users.created_at, users.updated_at, users.archived FROM users JOIN roles ON users.role_id = roles.id LEFT JOIN profiles ON users.id = profiles.user_id WHERE role_id = 1 AND users.archived = 1'
             ]);
             return response()->json(['error' => 'Internal Server Error: ' . $e->getMessage()], 500);
         }
@@ -72,8 +76,20 @@ class AdminController extends Controller
             $admin->archived = $request->input('archived', false);
             $admin->save();
             
+            $admin->load('role');
+            $adminData = [
+                'id' => $admin->id,
+                'username' => $admin->username,
+                'email' => $admin->email,
+                'role_name' => $admin->role->role_name,
+                'profile_img' => $admin->profile ? $admin->profile->profile_img : null, // Include profile_img
+                'created_at' => $admin->created_at,
+                'updated_at' => $admin->updated_at,
+                'archived' => $admin->archived,
+            ];
+            
             Log::info('Admin archived status updated', ['user_id' => $id, 'archived' => $admin->archived]);
-            return response()->json($admin);
+            return response()->json($adminData);
         } catch (\Exception $e) {
             Log::error('Error in archive admin: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
             return response()->json(['error' => 'Internal Server Error: ' . $e->getMessage()], 500);

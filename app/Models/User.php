@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'archived', // Added archived
     ];
 
     protected $hidden = [
@@ -30,13 +31,8 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'archived' => 'boolean', // Cast archived as boolean
     ];
-
-    // Removed setPasswordAttribute to prevent double hashing
-    // public function setPasswordAttribute($value)
-    // {
-    //     $this->attributes['password'] = bcrypt($value);
-    // }
 
     public function role()
     {
@@ -46,5 +42,15 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'user_id');
+    }
+
+    /**
+     * Check if the user is active (not archived).
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return !$this->archived;
     }
 }

@@ -3,24 +3,25 @@ import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
 import "./../../../sass/components/_products_modal.scss";
 
-function EditProductModal({ onClose, onSubmit, product }) {
-  const [productImage, setProductImage] = useState(product?.product_img || null);
+function EditProductModal({ onClose, onEdit, product }) {
+  const [productImage, setProductImage] = useState(product.product_img || null);
   const [imageFile, setImageFile] = useState(null);
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [profileId, setProfileId] = useState(null);
 
   const [formData, setFormData] = useState({
-    id: product?.id || "",
-    productName: product?.product_name || "",
-    description: product?.description || "",
-    setPrice: product?.price ? String(product.price).replace(/,/g, "") : "",
-    setStock: product?.quantity ? String(product.quantity) : "",
-    brand: product?.brand_id ? String(product.brand_id) : "",
-    category: product?.category_id ? String(product.category_id) : "",
+    id: product.id,
+    productName: product.product_name,
+    description: product.description || "",
+    setPrice: product.price,
+    setStock: product.quantity,
+    brand: product.brand_id || "",
+    category: product.category_id || "",
   });
 
   useEffect(() => {
-    console.log("Initial product data:", product);
+    console.log("Editing product:", product);
     console.log("Initial formData:", formData);
 
     const token = localStorage.getItem("LaravelPassportToken");
@@ -31,7 +32,7 @@ function EditProductModal({ onClose, onSubmit, product }) {
 
     const fetchBrands = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/brands", {
+        const response = await axios.get("http://127.0.0.1:8000/api/brands/active", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Brands response:", response.data);
@@ -53,8 +54,27 @@ function EditProductModal({ onClose, onSubmit, product }) {
       }
     };
 
+    const fetchUserProfile = async () => {
+      try {
+        const userResponse = await axios.get("http://127.0.0.1:8000/api/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const userId = userResponse.data.id;
+        const profileResponse = await axios.get(
+          `http://127.0.0.1:8000/api/profiles/user/${userId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        if (profileResponse.data && profileResponse.data.id) {
+          setProfileId(profileResponse.data.id);
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error.response?.data || error.message);
+      }
+    };
+
     fetchBrands();
     fetchCategories();
+    fetchUserProfile();
   }, [product]);
 
   const handleImageUpload = (e) => {
@@ -78,32 +98,77 @@ function EditProductModal({ onClose, onSubmit, product }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const token = localStorage.getItem("LaravelPassportToken");
     if (!token) {
       console.error("Token is missing");
       return;
     }
-
-    const submissionData = new FormData();
-    submissionData.append("product_name", formData.productName || product?.product_name || "");
-    submissionData.append("description", formData.description || product?.description || "");
-    submissionData.append("price", Number(formData.setPrice || product?.price || 0));
-    submissionData.append("quantity", Number(formData.setStock || product?.quantity || 0));
-    submissionData.append("brand_id", Number(formData.brand || product?.brand_id || 0));
-    submissionData.append("category_id", Number(formData.category || product?.category_id || 0));
-    submissionData.append("id", formData.id);
-    if (imageFile) {
-      submissionData.append("product_img", imageFile);
+  
+    if (!profileId) {
+      console.error("Profile ID is missing");
+      return;
     }
-
-    console.log("FormData state before submit:", formData);
-    console.log("Submitting Edit FormData:");
-    for (const [key, value] of submissionData.entries()) {
-      console.log(`${key}: ${value}`);
+  
+    try {
+      // Step 1: Update text fields with JSON
+      const jsonData = {
+        product_name: formData.productName,
+        description: formData.description || "",
+        price: formData.setPrice,
+        quantity: formData.setStock,
+        brand_id: formData.brand,
+        category_id: formData.category,
+        id: formData.id,
+      };
+      console.log("Submitting Edit JSON:", jsonData);
+  
+      const url = `http://127.0.0.1:8000/api/products/${formData.id}`;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await axios.patch(url, jsonData, config);
+      console.log("Text update response:", response.data);
+  
+      // Step 2: Update image if present with POST
+      if (imageFile) {
+        const imageData = new FormData();
+        imageData.append("product_img", imageFile);
+  
+        console.log("Submitting Image FormData:");
+        for (let [key, value] of imageData.entries()) {
+          console.log(`${key}: ${value}`);
+        }
+  
+        const imageResponse = await axios.post(
+          `http://127.0.0.1:8000/api/products/${formData.id}/image`,
+          imageData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            onUploadProgress: (progressEvent) => {
+              const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+              console.log("Upload Progress:", { loaded: progressEvent.loaded, total: progressEvent.total, percent });
+            },
+          }
+        );
+        console.log("Image update response:", imageResponse.data);
+        onEdit(imageResponse.data); // Use final response with image
+      } else {
+        onEdit(response.data); // Use text-only response
+      }
+  
+      onClose();
+    } catch (error) {
+      console.error("Error editing product:", error.response?.data || error.message);
+      console.log("Response status:", error.response?.status);
+      console.log("Response data:", error.response?.data);
+      console.log("Validation errors:", error.response?.data?.errors);
     }
-
-    onSubmit(submissionData);
   };
 
   return (
@@ -127,7 +192,7 @@ function EditProductModal({ onClose, onSubmit, product }) {
               )}
             </div>
             <label htmlFor="image-upload" className="upload-button">
-              Change Image
+              Update Image
             </label>
             <input
               type="file"

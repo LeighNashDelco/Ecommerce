@@ -201,6 +201,20 @@ body {
           color: #fff;
           font-size: 14px;
           background: #333;
+
+          &.username-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between image and username */
+
+            .profile-picture {
+              width: 30px; /* Adjust size as needed */
+              height: 30px;
+              border-radius: 50%; /* Circular image */
+              object-fit: cover; /* Ensure image fits nicely */
+              border: 1px solid #ff0000; /* Red border to match theme */
+            }
+          }
         }
 
         tr {
@@ -417,7 +431,7 @@ body {
           border: 1px solid #ccc;
           border-radius: 4px;
           font-size: 14px;
-          color: #333; /* Ensure text visibility */
+          color: #333;
           background: #fff;
           outline: none;
           transition: border-color 0.3s;
@@ -434,7 +448,7 @@ body {
         input {
           width: 100%;
           padding-right: 40px;
-          color: #333; /* Ensure password visibility */
+          color: #333;
         }
 
         .password-toggle {

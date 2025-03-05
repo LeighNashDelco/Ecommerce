@@ -20,7 +20,7 @@ const formatDate = (dateString) => {
 };
 
 const StatusAndCategory = () => {
-  const [activeTab, setActiveTab] = useState("statuses"); // Default to Statuses tab
+  const [activeTab, setActiveTab] = useState("statuses");
   const [statuses, setStatuses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,45 +31,47 @@ const StatusAndCategory = () => {
   const [statusPagination, setStatusPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [categoryPagination, setCategoryPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [loading, setLoading] = useState(true);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            setLoading(true);
-            const token = localStorage.getItem("LaravelPassportToken");
-            const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+      try {
+        setLoading(true);
+        const token = localStorage.getItem("LaravelPassportToken");
+        const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
 
-            const [statusActiveResponse, statusArchivedResponse, categoryActiveResponse, categoryArchivedResponse] = await Promise.all([
-                axios.get("http://127.0.0.1:8000/api/statuses", config),
-                axios.get("http://127.0.0.1:8000/api/statuses/archived", config),
-                axios.get("http://127.0.0.1:8000/api/categories", config),
-                axios.get("http://127.0.0.1:8000/api/categories/archived", config),
-            ]);
+        const [statusActiveResponse, statusArchivedResponse, categoryActiveResponse, categoryArchivedResponse] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/api/statuses", config),
+          axios.get("http://127.0.0.1:8000/api/statuses/archived", config),
+          axios.get("http://127.0.0.1:8000/api/categories", config),
+          axios.get("http://127.0.0.1:8000/api/categories/archived", config),
+        ]);
 
-            console.log("Active Statuses:", statusActiveResponse.data);
-            console.log("Archived Statuses:", statusArchivedResponse.data);
-            console.log("Active Categories:", categoryActiveResponse.data);
-            console.log("Archived Categories:", categoryArchivedResponse.data);
+        console.log("Active Statuses:", statusActiveResponse.data);
+        console.log("Archived Statuses:", statusArchivedResponse.data);
+        console.log("Active Categories:", categoryActiveResponse.data);
+        console.log("Archived Categories:", categoryArchivedResponse.data);
 
-            const activeStatuses = statusActiveResponse.data.map(status => ({ ...status, archived: false }));
-            const archivedStatuses = statusArchivedResponse.data.map(status => ({ ...status, archived: true }));
-            const activeCategories = categoryActiveResponse.data.map(category => ({ ...category, archived: false }));
-            const archivedCategories = categoryArchivedResponse.data.map(category => ({ ...category, archived: true }));
+        const activeStatuses = statusActiveResponse.data.map(status => ({ ...status, archived: false }));
+        const archivedStatuses = statusArchivedResponse.data.map(status => ({ ...status, archived: true }));
+        const activeCategories = categoryActiveResponse.data.map(category => ({ ...category, archived: false }));
+        const archivedCategories = categoryArchivedResponse.data.map(category => ({ ...category, archived: true }));
 
-            setStatuses([...activeStatuses, ...archivedStatuses]);
-            setCategories([...activeCategories, ...archivedCategories]);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            console.log("Response:", JSON.stringify(error.response?.data || error.message));
-            setStatuses([]);
-            setCategories([]);
-        } finally {
-            setLoading(false);
-        }
+        setStatuses([...activeStatuses, ...archivedStatuses]);
+        setCategories([...activeCategories, ...archivedCategories]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        console.log("Response:", JSON.stringify(error.response?.data || error.message));
+        setStatuses([]);
+        setCategories([]);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-}, []);
+  }, []);
 
   const filteredStatuses = statuses.filter((status) =>
     status.status_name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -217,55 +219,104 @@ const StatusAndCategory = () => {
   };
 
   const handleAddNewClick = () => {
-    setIsAddModalOpen(true);
+    setIsEditMode(false);
+    setItemToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = (item) => {
+    setIsEditMode(true);
+    setItemToEdit(item);
+    setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
-    setIsAddModalOpen(false);
+    setIsModalOpen(false);
+    setItemToEdit(null);
   };
 
   const handleItemAdd = async (newItem) => {
     try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        const endpoint = activeTab === "statuses" ? "statuses" : "categories";
-        console.log("Adding item payload:", newItem.formData); // Debug payload
-        const response = await axios.post(
-            `http://127.0.0.1:8000/api/${endpoint}`,
-            newItem.formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-
-        if (response.status === 201) {
-            const addedItem = {
-                id: response.data.item.id,
-                [activeTab === "statuses" ? "status_name" : "category_name"]: response.data.item.name,
-                created_at: response.data.item.created_at || new Date().toISOString(),
-                updated_at: response.data.item.updated_at || new Date().toISOString(),
-                archived: false,
-            };
-            console.log("Added item:", addedItem); // Debug added item
-            if (activeTab === "statuses") {
-                setStatuses((prevStatuses) => [addedItem, ...prevStatuses]);
-            } else {
-                setCategories((prevCategories) => [addedItem, ...prevCategories]);
-            }
-            // Fix pagination reference
-            if (activeTab === "statuses") {
-                setStatusPagination({ currentPage: 1, totalPages: Math.ceil((statuses.length + 1) / itemsPerPage) });
-            } else {
-                setCategoryPagination({ currentPage: 1, totalPages: Math.ceil((categories.length + 1) / itemsPerPage) });
-            }
-            setIsAddModalOpen(false);
+      const token = localStorage.getItem("LaravelPassportToken");
+      const endpoint = activeTab === "statuses" ? "statuses" : "categories";
+      console.log("Adding item payload:", newItem.formData);
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/${endpoint}`,
+        newItem.formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
+      );
+
+      if (response.status === 201) {
+        const addedItem = {
+          id: response.data.item.id,
+          [activeTab === "statuses" ? "status_name" : "category_name"]: response.data.item.name,
+          created_at: response.data.item.created_at || new Date().toISOString(),
+          updated_at: response.data.item.updated_at || new Date().toISOString(),
+          archived: false,
+        };
+        console.log("Added item:", addedItem);
+        if (activeTab === "statuses") {
+          setStatuses((prevStatuses) => [addedItem, ...prevStatuses]);
+          setStatusPagination({ currentPage: 1, totalPages: Math.ceil((statuses.length + 1) / itemsPerPage) });
+        } else {
+          setCategories((prevCategories) => [addedItem, ...prevCategories]);
+          setCategoryPagination({ currentPage: 1, totalPages: Math.ceil((categories.length + 1) / itemsPerPage) });
+        }
+        setIsModalOpen(false);
+      }
     } catch (error) {
-        console.error("Error adding item:", JSON.stringify(error.response?.data || error.message));
+      console.error("Error adding item:", JSON.stringify(error.response?.data || error.message));
     }
-};
+  };
+
+  const handleItemUpdate = async (updatedItem) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const endpoint = activeTab === "statuses" ? "statuses" : "categories";
+      const payload = {
+        name: updatedItem.formData.name,
+      };
+      console.log("Submitting Item update payload:", payload);
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/${endpoint}/${itemToEdit.id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 200) {
+        const editedItem = {
+          id: response.data.item.id,
+          [activeTab === "statuses" ? "status_name" : "category_name"]: response.data.item.name,
+          created_at: itemToEdit.created_at,
+          updated_at: response.data.item.updated_at || new Date().toISOString(),
+          archived: itemToEdit.archived,
+        };
+        console.log("Updated item:", editedItem);
+        if (activeTab === "statuses") {
+          setStatuses((prevStatuses) =>
+            prevStatuses.map((status) => (status.id === editedItem.id ? editedItem : status))
+          );
+        } else {
+          setCategories((prevCategories) =>
+            prevCategories.map((category) => (category.id === editedItem.id ? editedItem : category))
+          );
+        }
+        setIsModalOpen(false);
+        setItemToEdit(null);
+      }
+    } catch (error) {
+      console.error("Error updating item:", JSON.stringify(error.response?.data || error.message));
+    }
+  };
 
   const handleStatusPageChange = (page) => {
     setStatusPagination({ ...statusPagination, currentPage: page });
@@ -379,7 +430,11 @@ const StatusAndCategory = () => {
                                     onClick={() => handleArchiveClick(status)}
                                   />
                                 )}
-                                <IconEdit size={16} className="edit-icon" />
+                                <IconEdit
+                                  size={16}
+                                  className="edit-icon"
+                                  onClick={() => handleEditClick(status)}
+                                />
                               </div>
                             </td>
                             <td>{status.id}</td>
@@ -477,7 +532,11 @@ const StatusAndCategory = () => {
                                     onClick={() => handleArchiveClick(category)}
                                   />
                                 )}
-                                <IconEdit size={16} className="edit-icon" />
+                                <IconEdit
+                                  size={16}
+                                  className="edit-icon"
+                                  onClick={() => handleEditClick(category)}
+                                />
                               </div>
                             </td>
                             <td>{category.id}</td>
@@ -540,17 +599,31 @@ const StatusAndCategory = () => {
           </div>
         </div>
       )}
-      {isAddModalOpen && (
-        <AddItemModal onClose={handleModalClose} onSubmit={handleItemAdd} activeTab={activeTab} />
+      {isModalOpen && (
+        <ItemModal
+          onClose={handleModalClose}
+          onSubmit={isEditMode ? handleItemUpdate : handleItemAdd}
+          activeTab={activeTab}
+          isEdit={isEditMode}
+          initialData={itemToEdit}
+        />
       )}
     </div>
   );
 };
 
-const AddItemModal = ({ onClose, onSubmit, activeTab }) => {
+const ItemModal = ({ onClose, onSubmit, activeTab, isEdit = false, initialData = null }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    name: isEdit && initialData ? (activeTab === "statuses" ? initialData.status_name : initialData.category_name) : '',
   });
+
+  useEffect(() => {
+    if (isEdit && initialData) {
+      setFormData({
+        name: activeTab === "statuses" ? initialData.status_name : initialData.category_name,
+      });
+    }
+  }, [isEdit, initialData, activeTab]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -569,7 +642,7 @@ const AddItemModal = ({ onClose, onSubmit, activeTab }) => {
     <div className="modal-overlay">
       <div className="add-item-modal">
         <div className="modal-header">
-          <h2>Add {activeTab === "statuses" ? "Status" : "Category"}</h2>
+          <h2>{isEdit ? `Edit ${activeTab === "statuses" ? "Status" : "Category"}` : `Add ${activeTab === "statuses" ? "Status" : "Category"}`}</h2>
           <button className="close-button" onClick={onClose}>
             ✕
           </button>
@@ -594,7 +667,7 @@ const AddItemModal = ({ onClose, onSubmit, activeTab }) => {
                   Cancel
                 </button>
                 <button type="submit" className="save-button">
-                  Save
+                  {isEdit ? "Update" : "Save"}
                 </button>
               </div>
             </div>

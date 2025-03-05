@@ -10,28 +10,50 @@ use Illuminate\Support\Facades\Log;
 class HelpAndSupportController extends Controller
 {
     public function getActiveFaqs(): JsonResponse
-    {
-        try {
-            $faqs = Faq::with('faqCategory')
-                ->where('archived', false)
-                ->get()
-                ->map(function ($faq) {
-                    return [
-                        'id' => $faq->id,
-                        'question' => $faq->question,
-                        'answer' => $faq->answer,
-                        'category' => ['name' => optional($faq->faqCategory)->name ?? 'Unknown'],
-                        'created_at' => $faq->created_at ? $faq->created_at->toISOString() : null,
-                        'updated_at' => $faq->updated_at ? $faq->updated_at->toISOString() : null,
-                    ];
-                });
+{
+    try {
+        Log::info('Fetching active FAQs - Starting');
 
-            return response()->json($faqs);
-        } catch (\Exception $e) {
-            Log::error('Error fetching active FAQs:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-            return response()->json(['error' => 'Failed to fetch FAQs'], 500);
+        // Verify model loading
+        if (!class_exists('App\Models\Faq')) {
+            throw new \Exception('Faq model class not found');
         }
+
+        $faqs = Faq::with('faqCategory')
+            ->where('archived', false)
+            ->get();
+
+        Log::info('FAQs fetched:', ['count' => $faqs->count()]);
+
+        $mappedFaqs = $faqs->map(function ($faq) {
+            Log::info('Mapping FAQ:', [
+                'id' => $faq->id,
+                'faq_category_id' => $faq->faq_category_id,
+                'category' => $faq->faqCategory ? $faq->faqCategory->name : 'null'
+            ]);
+            return [
+                'id' => $faq->id,
+                'question' => $faq->question,
+                'answer' => $faq->answer,
+                'category' => ['name' => optional($faq->faqCategory)->name ?? 'Unknown'],
+                'created_at' => $faq->created_at ? $faq->created_at->toISOString() : null,
+                'updated_at' => $faq->updated_at ? $faq->updated_at->toISOString() : null,
+            ];
+        })->all();
+
+        Log::info('FAQs mapped successfully', ['count' => count($mappedFaqs)]);
+        return response()->json($mappedFaqs);
+    } catch (\Exception $e) {
+        Log::error('Error fetching active FAQs:', [
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        return response()->json(['error' => 'Failed to fetch FAQs'], 500);
     }
+}
+
 
     public function getArchivedFaqs(): JsonResponse
     {
@@ -58,27 +80,67 @@ class HelpAndSupportController extends Controller
     }
 
     public function store(Request $request): JsonResponse
+{
+    try {
+        Log::info('FAQ store request:', $request->all());
+
+        $validated = $request->validate([
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
+            'faq_category_id' => 'required|exists:faq_categories,id', // Changed
+        ]);
+
+        $faq = Faq::create([
+            'question' => $validated['question'],
+            'answer' => $validated['answer'],
+            'faq_category_id' => $validated['faq_category_id'], // Changed
+            'archived' => false,
+        ]);
+
+        $faq->load('faqCategory');
+
+        return response()->json([
+            'message' => 'FAQ created successfully',
+            'faq' => [
+                'id' => $faq->id,
+                'question' => $faq->question,
+                'answer' => $faq->answer,
+                'category_name' => optional($faq->faqCategory)->name ?? 'Unknown',
+                'created_at' => $faq->created_at ? $faq->created_at->toISOString() : null,
+                'updated_at' => $faq->updated_at ? $faq->updated_at->toISOString() : null,
+            ],
+        ], 201);
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        Log::error('Validation error in FAQ store:', ['errors' => $e->errors()]);
+        return response()->json(['error' => $e->errors()], 422);
+    } catch (\Exception $e) {
+        Log::error('Error storing FAQ:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+        return response()->json(['error' => 'Failed to create FAQ'], 500);
+    }
+}
+public function update(Request $request, $id): JsonResponse
     {
         try {
-            Log::info('FAQ store request:', $request->all());
+            Log::info('FAQ update request:', $request->all());
+
+            $faq = Faq::findOrFail($id);
 
             $validated = $request->validate([
                 'question' => 'required|string|max:255',
                 'answer' => 'required|string',
-                'category_id' => 'required|exists:faq_categories,id',
+                'faq_category_id' => 'required|exists:faq_categories,id',
             ]);
 
-            $faq = Faq::create([
+            $faq->update([
                 'question' => $validated['question'],
                 'answer' => $validated['answer'],
-                'faq_category_id' => $validated['category_id'],
-                'archived' => false,
+                'faq_category_id' => $validated['faq_category_id'],
             ]);
 
             $faq->load('faqCategory');
 
             return response()->json([
-                'message' => 'FAQ created successfully',
+                'message' => 'FAQ updated successfully',
                 'faq' => [
                     'id' => $faq->id,
                     'question' => $faq->question,
@@ -87,16 +149,19 @@ class HelpAndSupportController extends Controller
                     'created_at' => $faq->created_at ? $faq->created_at->toISOString() : null,
                     'updated_at' => $faq->updated_at ? $faq->updated_at->toISOString() : null,
                 ],
-            ], 201);
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error('FAQ not found for update:', ['id' => $id]);
+            return response()->json(['error' => 'FAQ not found'], 404);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('Validation error in FAQ store:', ['errors' => $e->errors()]);
+            Log::error('Validation error in FAQ update:', ['errors' => $e->errors()]);
             return response()->json(['error' => $e->errors()], 422);
         } catch (\Exception $e) {
-            Log::error('Error storing FAQ:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-            return response()->json(['error' => 'Failed to create FAQ'], 500);
+            Log::error('Error updating FAQ:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return response()->json(['error' => 'Failed to update FAQ'], 500);
         }
     }
-
+    
     public function archive(Request $request, $id): JsonResponse
     {
         try {

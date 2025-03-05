@@ -11,8 +11,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GenderSeeder::class,
             RoleSeeder::class,
-            MouseCategorySeeder::class,
+            CategorySeeder::class,
             BrandSeeder::class,
+            FaqCategorySeeder::class,
         ]);
     }
 }

@@ -9,5 +9,15 @@ class Brand extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['brand_name'];
+    protected $fillable = [
+        'brand_name',
+        'archived', // Add this
+    ];
+
+    public $timestamps = true;
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id');
+    }
 }

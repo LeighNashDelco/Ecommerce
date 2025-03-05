@@ -30,7 +30,9 @@ const Roles = () => {
   const [roleToArchive, setRoleToArchive] = useState(null);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [loading, setLoading] = useState(true);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [roleToEdit, setRoleToEdit] = useState(null);
 
   const filterOptions = [
     { value: "all", label: "All Roles" },
@@ -166,11 +168,20 @@ const Roles = () => {
   };
 
   const handleAddNewClick = () => {
-    setIsAddModalOpen(true);
+    setIsEditMode(false);
+    setRoleToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = (role) => {
+    setIsEditMode(true);
+    setRoleToEdit(role);
+    setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
-    setIsAddModalOpen(false);
+    setIsModalOpen(false);
+    setRoleToEdit(null);
   };
 
   const handleRoleAdd = async (newRole) => {
@@ -197,12 +208,52 @@ const Roles = () => {
         };
         setRoles((prevRoles) => [addedRole, ...prevRoles]);
         setPagination({ ...pagination, currentPage: 1 });
-        setIsAddModalOpen(false);
+        setIsModalOpen(false);
       }
     } catch (error) {
       console.error("Error adding role:", error.response?.data || error.message);
     }
   };
+
+  const handleRoleUpdate = async (updatedRole) => {
+    try {
+        const token = localStorage.getItem("LaravelPassportToken");
+        const payload = {
+            role_name: updatedRole.formData.role_name,
+        };
+        console.log("Submitting Role update payload:", payload);
+        const response = await axios.patch(
+            `http://127.0.0.1:8000/api/roleslist/${roleToEdit.id}`,
+            payload,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        if (response.status === 200) {
+            const editedRole = {
+                id: response.data.role.id,
+                role_name: response.data.role.role_name,
+                created_at: roleToEdit.created_at,
+                updated_at: response.data.role.updated_at || new Date().toISOString(),
+                archived: roleToEdit.archived,
+            };
+            setRoles((prevRoles) =>
+                prevRoles.map((role) => (role.id === editedRole.id ? editedRole : role))
+            );
+            setIsModalOpen(false); // Ensure this runs
+            setRoleToEdit(null);   // Ensure this runs
+            console.log("Role updated successfully:", editedRole);
+        }
+    } catch (error) {
+        console.error("Error updating role:", JSON.stringify(error.response?.data || error.message));
+        console.log("Response status:", error.response?.status);
+        console.log("Response data:", error.response?.data);
+        // Optionally keep modal open on error to show feedback
+    }
+};
 
   const rolesPerPage = 10;
   const totalPages = Math.ceil(filteredRoles.length / rolesPerPage);
@@ -325,7 +376,11 @@ const Roles = () => {
                               onClick={() => handleArchiveClick(role)}
                             />
                           )}
-                          <IconEdit size={16} className="edit-icon" />
+                          <IconEdit
+                            size={16}
+                            className="edit-icon"
+                            onClick={() => handleEditClick(role)}
+                          />
                         </div>
                       </td>
                       <td>{role.id}</td>
@@ -389,17 +444,30 @@ const Roles = () => {
           </div>
         </div>
       )}
-      {isAddModalOpen && (
-        <AddRoleModal onClose={handleModalClose} onSubmit={handleRoleAdd} />
+      {isModalOpen && (
+        <RoleModal
+          onClose={handleModalClose}
+          onSubmit={isEditMode ? handleRoleUpdate : handleRoleAdd}
+          isEdit={isEditMode}
+          initialData={roleToEdit}
+        />
       )}
     </div>
   );
 };
 
-const AddRoleModal = ({ onClose, onSubmit }) => {
+const RoleModal = ({ onClose, onSubmit, isEdit = false, initialData = null }) => {
   const [formData, setFormData] = useState({
-    role_name: '',
+    role_name: isEdit && initialData ? initialData.role_name : '',
   });
+
+  useEffect(() => {
+    if (isEdit && initialData) {
+      setFormData({
+        role_name: initialData.role_name,
+      });
+    }
+  }, [isEdit, initialData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -418,7 +486,7 @@ const AddRoleModal = ({ onClose, onSubmit }) => {
     <div className="modal-overlay">
       <div className="add-role-modal">
         <div className="modal-header">
-          <h2>Add Role</h2>
+          <h2>{isEdit ? "Edit Role" : "Add Role"}</h2>
           <button className="close-button" onClick={onClose}>
             ✕
           </button>
@@ -443,7 +511,7 @@ const AddRoleModal = ({ onClose, onSubmit }) => {
                   Cancel
                 </button>
                 <button type="submit" className="save-button">
-                  Save
+                  {isEdit ? "Update" : "Save"}
                 </button>
               </div>
             </div>

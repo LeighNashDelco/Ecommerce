@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
 class RolesTableController extends Controller
@@ -73,6 +74,42 @@ class RolesTableController extends Controller
         } catch (\Exception $e) {
             Log::error('Error in store role: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
             return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+    public function update(Request $request, $id): JsonResponse
+    {
+        try {
+            Log::info('Role update request:', $request->all());
+
+            $role = Role::findOrFail($id);
+
+            $validated = $request->validate([
+                'role_name' => 'required|string|max:255',
+            ]);
+
+            $role->update([
+                'role_name' => $validated['role_name'],
+            ]);
+
+            return response()->json([
+                'message' => 'Role updated successfully',
+                'role' => [
+                    'id' => $role->id,
+                    'role_name' => $role->role_name,
+                    'created_at' => $role->created_at ? $role->created_at->toISOString() : null,
+                    'updated_at' => $role->updated_at ? $role->updated_at->toISOString() : null,
+                    'archived' => false, // Hardcode since model doesn't have it
+                ],
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            Log::error('Role not found for update:', ['id' => $id]);
+            return response()->json(['error' => 'Role not found'], 404);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation error in role update:', ['errors' => $e->errors()]);
+            return response()->json(['error' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            Log::error('Error updating role:', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return response()->json(['error' => 'Failed to update role'], 500);
         }
     }
 }

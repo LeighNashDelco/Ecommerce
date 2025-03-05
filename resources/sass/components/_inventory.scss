@@ -1,20 +1,5 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #f4f4f4;
-}
-
-.app {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-
-.inventory-dashboard {
+// Inventory Management Dashboard
+.inventorymanagement-dashboard {
   flex: 1;
   padding: 40px;
   display: flex;
@@ -23,7 +8,7 @@ body {
   background: #f4f4f4;
   margin-top: 50px;
 
-  .inventory-orders {
+  .inventorymanagement-content {
     width: 100%;
     background: #f4f4f4;
 
@@ -33,7 +18,8 @@ body {
       color: #333;
     }
 
-    .inventory-orders-header {
+    // Header Section
+    .inventorymanagement-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -42,20 +28,20 @@ body {
 
       .left-actions {
         flex-grow: 1;
-      }
 
-      .search-input {
-        width: 200px;
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff;
-        color: #333;
-        font-size: 14px;
-        outline: none;
+        .search-input {
+          width: 200px;
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background: #fff;
+          color: #333;
+          font-size: 14px;
+          outline: none;
 
-        &:focus {
-          border-color: #ff0000;
+          &:focus {
+            border-color: #ff0000;
+          }
         }
       }
 
@@ -88,68 +74,21 @@ body {
           }
         }
 
-        .filter-container {
-          position: relative;
+        .archive-all-button {
+          background: #ff4444;
+          color: white;
+          border-color: #ff4444;
 
-          .filter-button {
-            padding: 12px 20px;
-            width: 120px;
-            height: 48px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #fff;
-            color: #333;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 5px;
-
-            &:hover {
-              background: #ff0000;
-              color: white;
-              border-color: #ff0000;
-            }
-
-            span {
-              flex: 1;
-              text-align: left;
-            }
-          }
-
-          .filter-dropdown {
-            position: absolute;
-            top: 53px;
-            right: 0;
-            width: 120px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            list-style: none;
-            padding: 5px 0;
-            margin: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-
-            li {
-              padding: 8px 15px;
-              color: #333;
-              font-size: 14px;
-              cursor: pointer;
-
-              &:hover {
-                background: #ff0000;
-                color: white;
-              }
-            }
+          &:hover {
+            background: darken(#ff4444, 10%);
+            border-color: darken(#ff4444, 10%);
           }
         }
       }
     }
 
-    .inventory-order-table {
+    // Table Section
+    .inventorymanagement-table {
       width: 100%;
       margin-top: 20px;
 
@@ -177,7 +116,7 @@ body {
               font-size: 16px;
 
               &:hover {
-                color: #ff0000;
+                color: #f4f4f4; // Slight contrast on hover
               }
             }
           }
@@ -190,6 +129,13 @@ body {
           color: #fff;
           font-size: 14px;
           background: #333;
+
+          img {
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+            border-radius: 4px;
+          }
         }
 
         tr {
@@ -199,28 +145,38 @@ body {
             border-bottom: none;
           }
         }
-      }
 
-      .action-icons {
-        display: flex;
-        gap: 10px;
-        align-items: center;
+        .action-icons {
+          display: flex;
+          gap: 10px;
+          align-items: center;
 
-        .checkbox-icon,
-        .delete-icon {
-          color: #fff;
-          cursor: pointer !important;
-          font-size: 16px;
-          transition: color 0.3s;
+          .checkbox-icon,
+          .delete-icon,
+          .edit-icon,
+          .restore-icon {
+            color: #fff;
+            cursor: pointer !important;
+            font-size: 16px;
+            transition: color 0.3s;
 
-          &:hover {
-            color: #ff0000 !important;
+            &:hover {
+              color: #ff0000 !important;
+            }
           }
+        }
+
+        .loading-row {
+          text-align: center;
+          padding: 20px;
+          color: #fff;
+          background: #333;
         }
       }
     }
 
-    .inventory-pagination {
+    // Pagination
+    .inventorymanagement-pagination {
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -254,6 +210,80 @@ body {
           color: white;
           border-color: #ff0000;
         }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+// Modal Styles (Archive Confirmation)
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0 0 20px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .confirm-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .confirm-button {
+      padding: 10px 20px;
+      background: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ff0000, 10%);
+      }
+    }
+
+    .cancel-button {
+      padding: 10px 20px;
+      background: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: darken(#ccc, 10%);
       }
     }
   }

@@ -28,7 +28,9 @@ const HelpAndSupport = () => {
   const [faqToArchive, setFaqToArchive] = useState(null);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
   const [loading, setLoading] = useState(true);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [faqToEdit, setFaqToEdit] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -156,50 +158,99 @@ const HelpAndSupport = () => {
   };
 
   const handleAddNewClick = () => {
-    setIsAddModalOpen(true);
+    setIsEditMode(false);
+    setFaqToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = (faq) => {
+    setIsEditMode(true);
+    setFaqToEdit(faq);
+    setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
-    setIsAddModalOpen(false);
+    setIsModalOpen(false);
+    setFaqToEdit(null);
   };
 
   const handleFaqAdd = async (newFaq) => {
     try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        const payload = {
-            question: newFaq.formData.question,
-            answer: newFaq.formData.answer,
-            category_id: parseInt(newFaq.formData.category_id, 10), // Convert to integer
-        };
-        console.log("Submitting FAQ payload:", payload);
-        const response = await axios.post(
-            "http://127.0.0.1:8000/api/helpandsupport",
-            payload,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-        if (response.status === 201) {
-            const addedFaq = {
-                id: response.data.faq.id,
-                question: response.data.faq.question,
-                answer: response.data.faq.answer,
-                category: { name: response.data.faq.category_name },
-                created_at: response.data.faq.created_at || new Date().toISOString(),
-                updated_at: response.data.faq.updated_at || new Date().toISOString(),
-                archived: false,
-            };
-            setFaqs((prevFaqs) => [addedFaq, ...prevFaqs]);
-            setPagination({ ...pagination, currentPage: 1 });
-            setIsAddModalOpen(false);
+      const token = localStorage.getItem("LaravelPassportToken");
+      const payload = {
+        question: newFaq.formData.question,
+        answer: newFaq.formData.answer,
+        faq_category_id: parseInt(newFaq.formData.faq_category_id, 10),
+      };
+      console.log("Submitting FAQ payload:", payload);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/helpandsupport",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
+      );
+      if (response.status === 201) {
+        const addedFaq = {
+          id: response.data.faq.id,
+          question: response.data.faq.question,
+          answer: response.data.faq.answer,
+          category: { name: response.data.faq.category_name },
+          created_at: response.data.faq.created_at || new Date().toISOString(),
+          updated_at: response.data.faq.updated_at || new Date().toISOString(),
+          archived: false,
+        };
+        setFaqs((prevFaqs) => [addedFaq, ...prevFaqs]);
+        setPagination({ ...pagination, currentPage: 1 });
+        setIsModalOpen(false);
+      }
     } catch (error) {
-        console.error("Error adding FAQ:", JSON.stringify(error.response?.data || error.message));
+      console.error("Error adding FAQ:", JSON.stringify(error.response?.data || error.message));
     }
-};
+  };
+
+  const handleFaqUpdate = async (updatedFaq) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const payload = {
+        question: updatedFaq.formData.question,
+        answer: updatedFaq.formData.answer,
+        faq_category_id: parseInt(updatedFaq.formData.faq_category_id, 10),
+      };
+      console.log("Submitting FAQ update payload:", payload);
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/helpandsupport/${faqToEdit.id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 200) {
+        const editedFaq = {
+          id: response.data.faq.id,
+          question: response.data.faq.question,
+          answer: response.data.faq.answer,
+          category: { name: response.data.faq.category_name },
+          created_at: faqToEdit.created_at, // Preserve original created_at
+          updated_at: response.data.faq.updated_at || new Date().toISOString(),
+          archived: faqToEdit.archived,
+        };
+        setFaqs((prevFaqs) =>
+          prevFaqs.map((faq) => (faq.id === editedFaq.id ? editedFaq : faq))
+        );
+        setIsModalOpen(false);
+        setFaqToEdit(null);
+      }
+    } catch (error) {
+      console.error("Error updating FAQ:", JSON.stringify(error.response?.data || error.message));
+    }
+  };
 
   const faqsPerPage = 10;
   const totalPages = Math.ceil(filteredFaqs.length / faqsPerPage);
@@ -301,7 +352,11 @@ const HelpAndSupport = () => {
                                 onClick={() => handleArchiveClick(faq)}
                               />
                             )}
-                            <IconEdit size={16} className="edit-icon" />
+                            <IconEdit
+                              size={16}
+                              className="edit-icon"
+                              onClick={() => handleEditClick(faq)}
+                            />
                           </div>
                         </td>
                         <td>{faq.id}</td>
@@ -364,19 +419,49 @@ const HelpAndSupport = () => {
           </div>
         </div>
       )}
-      {isAddModalOpen && (
-        <AddFaqModal onClose={handleModalClose} onSubmit={handleFaqAdd} />
+      {isModalOpen && (
+        <FaqModal
+          onClose={handleModalClose}
+          onSubmit={isEditMode ? handleFaqUpdate : handleFaqAdd}
+          isEdit={isEditMode}
+          initialData={faqToEdit}
+        />
       )}
     </div>
   );
 };
 
-const AddFaqModal = ({ onClose, onSubmit }) => {
+const FaqModal = ({ onClose, onSubmit, isEdit = false, initialData = null }) => {
   const [formData, setFormData] = useState({
-    question: '',
-    answer: '',
-    category_id: '1', // Default to General category (ID 1)
+    question: isEdit && initialData ? initialData.question : '',
+    answer: isEdit && initialData ? initialData.answer : '',
+    faq_category_id: isEdit && initialData ? initialData.faq_category_id || '' : '',
   });
+  const [faqCategories, setFaqCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchFaqCategories = async () => {
+      try {
+        const token = localStorage.getItem("LaravelPassportToken");
+        const response = await axios.get("http://127.0.0.1:8000/api/faq_categories", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setFaqCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching FAQ categories:", error.response?.data || error.message);
+      }
+    };
+    fetchFaqCategories();
+
+    // Pre-fill form data for edit mode
+    if (isEdit && initialData) {
+      setFormData({
+        question: initialData.question,
+        answer: initialData.answer,
+        faq_category_id: initialData.faq_category_id || '',
+      });
+    }
+  }, [isEdit, initialData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -395,7 +480,7 @@ const AddFaqModal = ({ onClose, onSubmit }) => {
     <div className="modal-overlay">
       <div className="add-faq-modal">
         <div className="modal-header">
-          <h2>Add FAQ</h2>
+          <h2>{isEdit ? "Edit FAQ" : "Add FAQ"}</h2>
           <button className="close-button" onClick={onClose}>
             ✕
           </button>
@@ -429,15 +514,18 @@ const AddFaqModal = ({ onClose, onSubmit }) => {
               <div className="field-group full-width">
                 <label>Category</label>
                 <select
-                  name="category_id"
-                  value={formData.category_id}
+                  name="faq_category_id"
+                  value={formData.faq_category_id}
                   onChange={handleInputChange}
                   className="input-field"
                   required
                 >
-                  <option value="1">General</option>
-                  <option value="2">Billing</option>
-                  <option value="3">Technical</option>
+                  <option value="" disabled>Select Category</option>
+                  {faqCategories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="button-group">
@@ -445,7 +533,7 @@ const AddFaqModal = ({ onClose, onSubmit }) => {
                   Cancel
                 </button>
                 <button type="submit" className="save-button">
-                  Save
+                  {isEdit ? "Update" : "Save"}
                 </button>
               </div>
             </div>

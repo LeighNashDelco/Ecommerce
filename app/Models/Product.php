@@ -18,7 +18,8 @@ class Product extends Model
         'brand_id',
         'category_id',
         'product_img',
-        'archived', // Add this
+        'archived',
+        'sold', // Add this
     ];
 
     public $timestamps = true;
