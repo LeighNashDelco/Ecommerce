@@ -25,7 +25,7 @@ function UserModal({ onClose, onSubmit, isEdit = false, initialData = null }) {
       try {
         const [genderResponse, roleResponse] = await Promise.all([
           axios.get("http://127.0.0.1:8000/api/genders"),
-          axios.get("http://127.0.0.1:8000/api/roles"),
+          axios.get("http://127.0.0.1:8000/api/roles/activeroles"),
         ]);
         console.log("Fetched Genders:", genderResponse.data);
         console.log("Fetched Roles:", roleResponse.data);

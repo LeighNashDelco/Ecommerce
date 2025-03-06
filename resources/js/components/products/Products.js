@@ -24,9 +24,9 @@ const Product = () => {
 
   const filterOptions = [
     { value: "all", label: "All" },
-    { value: "Gaming Mouse", label: "Gaming Mouse" },
-    { value: "Wireless Mouse", label: "Wireless Mouse" },
-    { value: "Office Mouse", label: "Office Mouse" },
+    { value: "Gaming", label: "Gaming" },
+    { value: "Wireless", label: "Wireless" },
+    { value: "Office", label: "Office" },
   ];
 
   useEffect(() => {

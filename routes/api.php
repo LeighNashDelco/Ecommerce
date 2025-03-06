@@ -38,7 +38,9 @@ Route::middleware('auth:api')->get('/user-profile', [UserController::class, 'get
 # ==============================
 # PUBLIC ROUTES
 # ==============================
-Route::get('/roles', [RolesController::class, 'index']);
+Route::get('/roles', [RolesController::class, 'getAllRoles']);
+Route::get('/roles/specific', [RolesController::class, 'getSpecificRoles']);
+Route::get('/roles/activeroles', [RolesController::class, 'ActiveRoles']);
 Route::get('/genders', [GenderController::class, 'index']);
 Route::get('/brands', [BrandController::class, 'getBrands']);
 Route::get('/categories', [CategoryController::class, 'getCategories']);

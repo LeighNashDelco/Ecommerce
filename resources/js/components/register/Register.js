@@ -38,7 +38,7 @@ const Register = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/roles");
+        const response = await axios.get("http://localhost:8000/api/roles/specific");
         console.log("Fetched Roles:", response.data); // Debugging log
         setRoles(response.data || []);
       } catch (error) {

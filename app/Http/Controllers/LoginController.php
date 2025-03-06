@@ -15,12 +15,12 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-    
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
 
-            // Check if user is archived
-            if (!$user->isActive()) {
+            // Ensure archived users cannot log in
+            if ($user->archived) {
                 Auth::logout(); // Log out the user if archived
                 return response()->json([
                     'error' => 'Your account is archived and cannot log in.'
@@ -29,7 +29,7 @@ class LoginController extends Controller
 
             // Generate token for active user
             $token = $user->createToken('LaravelPassportToken')->accessToken;
-    
+
             return response()->json([
                 'message' => 'Login successful',
                 'user' => $user,
