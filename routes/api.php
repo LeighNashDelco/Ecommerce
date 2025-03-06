@@ -20,7 +20,8 @@ use App\Http\Controllers\{
     UserController,
     StatusAndCategoryController,
     HelpAndSupportController,
-    FaqCategoryController
+    FaqCategoryController,
+    ChangePasswordAdminController,
 };
 use App\Models\Profile;
 
@@ -126,4 +127,7 @@ Route::middleware('auth:api')->group(function () {
 
     # FAQ Category Management
     Route::get('/faq_categories', [FaqCategoryController::class, 'index']);
+
+    # Change Password
+    Route::middleware('auth:api')->post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
 });

@@ -149,7 +149,7 @@ const Profile = () => {
           <h3>{profile?.first_name} {profile?.last_name}</h3>
           <p>{profile?.email}</p>
           <div className="sidebar-item selected">Personal Information</div>
-          <div className="sidebar-item" onClick={() => navigate("/change-password")}>
+          <div className="sidebar-item" onClick={() => navigate("/changepassadmin")}>
             Change Password
           </div>
           <div className="sidebar-item logout" onClick={handleLogout}>

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./components/login/Login";
 import Dashboard from "./components//admindashboard/admindashboard";
 import Profile from "./components/profile/Profile";
+import ChangePassAdmin from "./components/profile/ChangePassAdmin.js";
 import AdminList from "./components/adminlist/AdminList";
 import CustomerList from "./components/customerlist/CustomerList";
 import HelpAndSupport from "./components/helpandsupport/HelpAndSupport";
@@ -32,6 +33,7 @@ export default function Routers() {
         <Route path="admindashboard" element={<PrivateRoute element={<Dashboard />} />} />
         <Route path="brands" element={<PrivateRoute element={<Brands />} />} />
         <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
+        <Route path="changepassadmin" element={<PrivateRoute element={<ChangePassAdmin />} />} />
         <Route path="adminlist" element={<PrivateRoute element={<AdminList />} />} />
         <Route path="customerlist" element={<PrivateRoute element={<CustomerList />} />} />
         <Route path="helpandsupport" element={<PrivateRoute element={<HelpAndSupport />} />} />
