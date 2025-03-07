@@ -72,7 +72,8 @@ const Profile = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     const token = localStorage.getItem("LaravelPassportToken");
 
     if (!token) {
@@ -88,7 +89,7 @@ const Profile = () => {
           first_name: profile.first_name,
           middlename: profile.middlename || null,
           last_name: profile.last_name,
-          gender: profile.gender, // Send gender as name
+          gender: profile.gender,
           suffix: profile.suffix || null,
           contact_number: profile.contact_number || null,
           street: profile.street || null,
@@ -137,7 +138,7 @@ const Profile = () => {
   return (
     <div className="profile-settings-container">
       <TopNavbar />
-      <div className="profile-main">
+      <form className="form-container" onSubmit={handleSave}>
         <div className="profile-sidebar">
           <img
             src={profile?.profileImg}
@@ -161,58 +162,59 @@ const Profile = () => {
           <h2>Personal Information</h2>
 
           {alert.message && (
-            <div className={`custom-alert ${alert.type}`}>
-              {alert.message}
-            </div>
+            <div className={`custom-alert ${alert.type}`}>{alert.message}</div>
           )}
 
           <div className="profile-grid">
-            {profile && Object.keys(profile).map((key) =>
-              key !== "profileImg" ? (
-                <div className="profile-card" key={key}>
-                  <strong>{key.replace("_", " ").toUpperCase()}:</strong>
-                  {isEditing ? (
-                    key === "gender" ? (
-                      <select
-                        value={genders.find((g) => g.name === profile.gender)?.name || ""}
-                        onChange={(e) =>
-                          setProfile({ ...profile, gender: e.target.value })
-                        }
-                      >
-                        {genders.map((gender) => (
-                          <option key={gender.id} value={gender.name}>
-                            {gender.name}
-                          </option>
-                        ))}
-                      </select>
+            {profile &&
+              Object.keys(profile).map((key) =>
+                key !== "profileImg" ? (
+                  <div className="profile-card" key={key}>
+                    <strong>{key.replace("_", " ").toUpperCase()}:</strong>
+                    {isEditing ? (
+                      key === "gender" ? (
+                        <select
+                          value={genders.find((g) => g.name === profile.gender)?.name || ""}
+                          onChange={(e) =>
+                            setProfile({ ...profile, gender: e.target.value })
+                          }
+                        >
+                          {genders.map((gender) => (
+                            <option key={gender.id} value={gender.name}>
+                              {gender.name}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          type="text"
+                          value={profile[key]}
+                          onChange={(e) =>
+                            setProfile({ ...profile, [key]: e.target.value })
+                          }
+                        />
+                      )
                     ) : (
-                      <input
-                        type="text"
-                        value={profile[key]}
-                        onChange={(e) =>
-                          setProfile({ ...profile, [key]: e.target.value })
-                        }
-                      />
-                    )
-                  ) : (
-                    <p>{profile[key]}</p>
-                  )}
-                </div>
-              ) : null
-            )}
+                      <p>{profile[key]}</p>
+                    )}
+                  </div>
+                ) : null
+              )}
           </div>
 
           {isEditing && (
             <div className="profile-save-btn">
-              <button onClick={handleSave}>Save Changes</button>
+              <button type="submit">Save Changes</button>
             </div>
           )}
 
           <div className="profile-edit-btn">
-            <button onClick={handleEditToggle}>{isEditing ? "Cancel" : "Edit Profile"}</button>
+            <button type="button" onClick={handleEditToggle}>
+              {isEditing ? "Cancel" : "Edit Profile"}
+            </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

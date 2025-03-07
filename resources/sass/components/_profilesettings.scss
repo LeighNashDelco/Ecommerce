@@ -1,195 +1,240 @@
+// _profilesettings.scss
+
+// Variables for colors and fonts
+$background-dark: #141414;
+$container-bg: #1c1c1c;
+$sidebar-bg: #252525;
+$card-bg: white;
+$text-primary: white;
+$text-secondary: black;
+$accent-red: #ff4d4d;
+$border-gray: #555;
+$input-bg: #2a2a2a;
+$input-bg-focus: #333;
+$input-border: #444;
+$spinner-light-red: rgba(208, 0, 0, 0.3);
+$spinner-red: #d00000;
+$success-green: #28a745;
+$error-red: #dc3545;
+
+// Global container for profile settings
 .profile-settings-container {
-  background: #141414;
-  color: white;
+  background: $background-dark;
+  color: $text-primary;
   font-family: "Arial", sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.profile-main {
+// Form container to wrap sidebar and content
+.form-container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row; // Ensures side-by-side layout
+  align-items: stretch; // Keeps sidebar and content heights aligned
   gap: 20px;
-  max-width: 1200px;
-  width: 100%;
+  max-width: 1200px; // Wide layout
+  width: 100%; // Takes full available width
   margin: auto;
-  padding: 40px 20px;
-  background: #1c1c1c;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  background: $container-bg;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
   }
 }
 
+// Sidebar styling (clean and minimal spacing)
 .profile-sidebar {
-  width: 280px;
-  background: #252525;
-  padding: 2rem;
+  width: 200px;
+  background: $sidebar-bg;
+  padding: 1rem; // Reduced padding for a cleaner look
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 8px;
   box-sizing: border-box;
-  min-height: 60vh;
   text-align: center;
+  flex-shrink: 0;
+  justify-content: flex-start; // Aligns content tightly at the top
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 4px 0; // Minimal margin for name
+    color: $text-primary;
+  }
+
+  p {
+    font-size: 0.8rem;
+    color: $text-primary;
+    margin: 4px 0; // Minimal margin for email
+  }
+
+  .upload-text {
+    font-size: 0.8rem;
+    color: $accent-red;
+    margin: 4px 0; // Minimal margin for Upload text
+    cursor: pointer;
+  }
 
   @media (max-width: 900px) {
     width: 100%;
+    border-radius: 6px;
+    padding: 0.75rem; // Reduced padding for mobile
     min-height: auto;
-    border-radius: 10px;
-    padding: 1.5rem;
   }
 }
 
-.sidebar-nav {
-  width: 100%;
-  margin-top: 20px;
-  text-align: left;
-}
-
-.sidebar-item {
-  padding: 10px 0;
-  font-size: 1rem;
+// Sidebar navigation (clean and compact)
+.profile-sidebar .sidebar-item {
+  padding: 6px 0; // Reduced padding for navigation items
+  font-size: 0.9rem;
   font-weight: bold;
-  color: white;
-  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.sidebar-item:hover {
-  color: #ff4d4d;
-  transform: scale(1.05);
-}
-
-.sidebar-item.selected {
-  color: #ff4d4d;
-}
-
-.sidebar-item.logout {
+  color: $text-primary;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
+
+  &:hover {
+    color: $accent-red;
+  }
+
+  &.selected {
+    color: $accent-red;
+  }
+
+  &.logout {
+    cursor: pointer;
+  }
 }
 
+// Profile image
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  border: 3px solid #ff4d4d;
+  border: 2px solid $accent-red;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin: 4px 0; // Minimal margin for image
 }
 
+// Main profile content
 .profile-content {
   flex-grow: 1;
-  background: #252525;
-  padding: 2rem;
-  border-radius: 12px;
-  min-height: 60vh;
-  width: 100%;
+  background: $sidebar-bg;
+  padding: 1.5rem;
+  border-radius: 8px;
   box-sizing: border-box;
 
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: $text-primary;
+  }
+
   @media (max-width: 900px) {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 }
 
+// Grid for profile information cards
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  min-height: 0;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
+// Individual profile card
 .profile-card {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  transition: transform 0.2s ease-in-out;
+  background: $card-bg;
+  padding: 0.8rem;
+  border-radius: 6px;
   text-align: left;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  strong {
+    font-size: 0.8rem;
+    color: $accent-red;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  p,
+  input,
+  select {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: $text-secondary;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  input,
+  select {
+    background: $input-bg;
+    color: $text-primary;
+    border: 1px solid $border-gray;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 3px;
+    height: 100%;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $accent-red;
+      background: $input-bg-focus;
+    }
+
+    &.edit-mode {
+      background: $input-bg-focus;
+      color: $text-primary;
+      border: 1px solid $accent-red;
+    }
+  }
 }
 
-.profile-card:hover {
-  transform: scale(1.03);
+// Edit and Save buttons (unified styling)
+.profile-edit-btn,
+.profile-save-btn {
+  button {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: $accent-red;
+    color: $text-primary;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: darken($accent-red, 10%);
+    }
+  }
 }
 
-.profile-card strong {
-  font-size: 0.9rem;
-  color: #ff4d4d;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.profile-card p {
-  font-size: 1rem;
-  font-weight: bold;
-  color: black;
-  margin: 0;
-}
-
-.profile-card input {
-  background: #2a2a2a;
-  color: white;
-  border: 1px solid #555;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.profile-card input:focus {
-  outline: none;
-  border: 1px solid #ff4d4d;
-  background: #333;
-}
-
-.profile-card input.edit-mode {
-  background: #333;
-  color: white;
-  border: 1px solid #ff4d4d;
-}
-
-.profile-card input,
-.profile-card select {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 5px;
-}
-
-.profile-edit-btn button,
-.profile-save-btn button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-}
-
-.profile-edit-btn button:hover,
-.profile-save-btn button:hover {
-  background: #e14a4a;
-}
+// Loading state
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -201,30 +246,36 @@
   h2 {
     font-size: 1.5rem;
     margin-top: 20px;
-    color: #d00000; // Red color
+    color: $spinner-red;
   }
 }
 
 .spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid rgba(208, 0, 0, 0.3); // Light red
-  border-top: 5px solid #d00000; // Solid red for animation
+  border: 5px solid $spinner-light-red;
+  border-top: 5px solid $spinner-red;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+// Custom alert for notifications
 .custom-alert {
   position: fixed;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff4d4d;
-  color: white;
+  background: $accent-red;
+  color: $text-primary;
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 1rem;
@@ -233,14 +284,14 @@
   z-index: 1000;
   opacity: 0;
   animation: slideDown 0.4s ease-out forwards, fadeOut 0.5s ease-in 3.5s forwards;
-}
 
-.custom-alert.success {
-  background: #28a745; /* Green for success */
-}
+  &.success {
+    background: $success-green;
+  }
 
-.custom-alert.error {
-  background: #dc3545; /* Red for errors */
+  &.error {
+    background: $error-red;
+  }
 }
 
 @keyframes slideDown {

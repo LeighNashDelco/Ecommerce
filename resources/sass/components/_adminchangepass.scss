@@ -1,0 +1,145 @@
+// Variables for colors and fonts
+$background-dark: #141414;
+$container-bg: #1c1c1c;
+$sidebar-bg: #252525;
+$text-primary: white;
+$text-secondary: black;
+$accent-red: #ff4d4d;
+$border-gray: #555;
+$input-bg: #2a2a2a;
+$input-bg-focus: #333;
+$input-border: #444;
+
+// Main container
+.profile-settings-container {
+    background: $background-dark;
+    color: $text-primary;
+    font-family: "Arial", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+// Profile container to hold sidebar and content
+.profile-container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    background: $container-bg;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    align-items: stretch; // Ensures equal height for both sidebar and content
+  }
+
+// Wrapper to contain both sidebar and content
+.changepass-wrapper {
+  display: flex;
+  align-items: stretch; // Makes both sidebar and content equal height
+  max-width: 900px;
+  width: 100%;
+  background: $container-bg;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+// Sidebar
+.profile-sidebar {
+  width: 250px;
+  background: $sidebar-bg;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid $border-gray;
+}
+
+// Sidebar avatar
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: gray;
+  margin-bottom: 15px;
+}
+
+// Sidebar links
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a {
+    color: $text-primary;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+
+    &:hover {
+      background: darken($sidebar-bg, 10%);
+    }
+  }
+}
+
+// Profile content area
+.profile-content {
+  flex: 1; // Takes up the remaining space
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Change password form
+.changepass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    font-size: 1.3rem;
+    color: $text-primary;
+    margin-bottom: 15px;
+  }
+
+  input {
+    background: $input-bg;
+    color: $text-primary;
+    border: 1px solid $border-gray;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $accent-red;
+      background: $input-bg-focus;
+    }
+  }
+
+  .changepass-btn {
+    padding: 10px;
+    background: $accent-red;
+    color: $text-primary;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: darken($accent-red, 10%);
+    }
+  }
+}

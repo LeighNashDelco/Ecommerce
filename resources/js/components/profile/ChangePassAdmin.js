@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./../../../sass/components/_profilesettings.scss";
+import "./../../../sass/components/_adminchangepass.scss";
 import TopNavbar from "./../topnavbar/TopNavbar";
 
 const ChangePassAdmin = () => {
@@ -91,7 +91,7 @@ const ChangePassAdmin = () => {
   return (
     <div className="profile-settings-container">
       <TopNavbar />
-      <div className="profile-main">
+      <div className="profile-container">
         <div className="profile-sidebar">
           <img
             src={profile.profileImg}
@@ -102,7 +102,7 @@ const ChangePassAdmin = () => {
           <span className="upload-text">Upload</span>
           <h3>{profile.first_name} {profile.last_name}</h3>
           <p>{profile.email}</p>
-
+  
           <div className="sidebar-item" onClick={() => navigate("/profile")}>
             Personal Information
           </div>
@@ -111,14 +111,14 @@ const ChangePassAdmin = () => {
             Logout
           </div>
         </div>
-
+  
         <div className="profile-content">
           <h2>Change Password</h2>
-
+  
           {alert.message && (
             <div className={`custom-alert ${alert.type}`}>{alert.message}</div>
           )}
-
+  
           <div className="password-grid">
             <div className="password-card">
               <label>Current Password:</label>
@@ -137,14 +137,16 @@ const ChangePassAdmin = () => {
               />
             </div>
           </div>
-
+  
           <div className="profile-save-btn">
             <button onClick={handleChangePassword}>Change Password</button>
           </div>
         </div>
       </div>
     </div>
-  );
+  );  
 };
 
 export default ChangePassAdmin;
+
+

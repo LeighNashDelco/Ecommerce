@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaArrowLeft } from "react-icons/fa"; // Added FaArrowLeft
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./../../../sass/components/_register.scss";
 
@@ -24,8 +25,6 @@ const Register = () => {
   // Show alert function
   const showAlert = (message, type) => {
     setAlert({ message, type });
-
-    // Auto-hide after 5 seconds
     setTimeout(() => setAlert({ message: "", type: "" }), 5000);
   };
 
@@ -39,7 +38,7 @@ const Register = () => {
     const fetchRoles = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/roles/specific");
-        console.log("Fetched Roles:", response.data); // Debugging log
+        console.log("Fetched Roles:", response.data);
         setRoles(response.data || []);
       } catch (error) {
         console.error("Error fetching roles:", error);
@@ -47,25 +46,23 @@ const Register = () => {
     };
     fetchRoles();
   }, []);
-  
+
   useEffect(() => {
     const fetchGenders = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/genders");
-        console.log("Fetched Genders Data:", response.data); // Debugging log
+        console.log("Fetched Genders Data:", response.data);
         setGenders(response.data || []);
       } catch (error) {
         console.error("Error fetching genders:", error);
       }
     };
     fetchGenders();
-  }, []);  
-  
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
     if (e.target.name === "password") {
       validatePassword(e.target.value);
     }
@@ -79,68 +76,65 @@ const Register = () => {
   };
 
   // Handle registration
-  // Handle registration
-const handleRegister = async (e) => {
-  e.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = {
+        first_name: formData.firstName || "",
+        middlename: formData.middleName.trim() ? formData.middleName : null,
+        last_name: formData.lastName || "",
+        gender: formData.gender ? parseInt(formData.gender, 10) : null,
+        suffix: formData.suffix.trim() ? formData.suffix : null,
+        email: formData.email || "",
+        password: formData.password || "",
+        role_id: formData.role ? parseInt(formData.role, 10) : null,
+      };
 
-  try {
-    const userData = {
-      first_name: formData.firstName || "",
-      middlename: formData.middleName.trim() ? formData.middleName : null,
-      last_name: formData.lastName || "",
-      gender: formData.gender ? parseInt(formData.gender, 10) : null,
-      suffix: formData.suffix.trim() ? formData.suffix : null,
-      email: formData.email || "",
-      password: formData.password || "",
-      role_id: formData.role ? parseInt(formData.role, 10) : null,
-    };
+      console.log("🚀 Sending user data:", userData);
+      const response = await axios.post("http://localhost:8000/api/register", userData);
 
-    console.log("🚀 Sending user data:", userData);
-    const response = await axios.post("http://localhost:8000/api/register", userData);
+      console.log("Registration successful:", response.data);
+      showAlert("✅ Registration successful!", "success");
 
-    console.log("Registration successful:", response.data);
-    showAlert("✅ Registration successful!", "success");
-
-    // **Clear all fields after success**
-    setFormData({
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      role: "",
-      gender: "",
-      suffix: "",
-    });
-
-  } catch (error) {
-    console.error("Error during registration:", error);
-
-    if (error.response) {
-      console.error("Server Response Data:", error.response.data);
-
-      if (error.response.data.errors?.email) {
-        showAlert("🚫 Email is already registered. Try another one!", "error");
+      setFormData({
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        role: "",
+        gender: "",
+        suffix: "",
+      });
+    } catch (error) {
+      console.error("Error during registration:", error);
+      if (error.response) {
+        console.error("Server Response Data:", error.response.data);
+        if (error.response.data.errors?.email) {
+          showAlert("🚫 Email is already registered. Try another one!", "error");
+        } else {
+          showAlert("🚫 Email is already registered. Try another one!", "error");
+        }
       } else {
-        showAlert("🚫 Email is already registered. Try another one!", "error");
+        showAlert("❌ Network error. Please try again.", "error");
       }
-    } else {
-      showAlert("❌ Network error. Please try again.", "error");
     }
-  }
-};
-
+  };
 
   return (
     <div className="register-wrapper">
-{/* Alert Message */}
-{alert.message && (
-  <div className={`custom-alert ${alert.type}`}>
-    {alert.message}
-    <button className="alert-close-btn" onClick={closeAlert}>×</button>
-  </div>
-)}
+      {/* Back Button with Icon */}
+      <Link to="/" className="back-btn">
+        <FaArrowLeft />
+      </Link>
 
+      {/* Alert Message */}
+      {alert.message && (
+        <div className={`custom-alert ${alert.type}`}>
+          {alert.message}
+          <button className="alert-close-btn" onClick={closeAlert}>×</button>
+        </div>
+      )}
 
       <div className="register-card">
         <div className="register-content">
@@ -161,7 +155,6 @@ const handleRegister = async (e) => {
             </div>
             {passwordError && <p className="error-message">{passwordError}</p>}
 
-            {/* 🔹 DROPDOWNS RESTORED HERE */}
             <div className="register-dropdowns">
               <select name="role" value={formData.role} onChange={handleChange} required>
                 <option value="" disabled>Select Role</option>
@@ -170,7 +163,7 @@ const handleRegister = async (e) => {
               <select name="gender" value={formData.gender} onChange={handleChange} required>
                 <option value="" disabled>Select Gender</option>
                 {genders.map(gender => <option key={gender.id} value={gender.id}>{gender.name}</option>)}
-                </select>
+              </select>
               <select name="suffix" value={formData.suffix} onChange={handleChange}>
                 <option value="">Suffix</option>
                 <option value="Jr.">Jr.</option>
@@ -179,7 +172,6 @@ const handleRegister = async (e) => {
                 <option value="III">III</option>
               </select>
             </div>
-            {/* 🔹 DROPDOWNS END HERE */}
 
             <button type="submit" className="register-submit-btn">Register</button>
           </form>

@@ -4,7 +4,60 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #eaf1f8; /* Updated to match login.scss */
+  background-color: #eaf1f8;
+  position: relative;
+
+  .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px; // Moved to top-left
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; // Smaller width for icon-only
+    height: 40px; // Square shape
+    background: #222;
+    color: white;
+    text-decoration: none;
+    font-size: 18px; // Size for the icon
+    border-radius: 50%; // Circular button
+    border: 1px solid #666;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1100;
+
+    // Hover effect
+    &:hover {
+      background: red;
+      border-color: darkred;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    // Click effect
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    // Shine effect
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%; // Matches circular shape
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
 }
 
 .register-card {
@@ -17,7 +70,7 @@
 }
 
 .register-content {
-  background: #111; /* Updated to match login.scss */
+  background: #111;
   padding: 60px;
   width: 50%;
   display: flex;
@@ -46,19 +99,19 @@ input, select {
   width: 100%;
   padding: 14px;
   margin-bottom: 15px;
-  border: 1px solid #666; /* Updated border color */
+  border: 1px solid #666;
   background: transparent;
   color: white;
   border-radius: 6px;
 }
 
 select {
-  background-color: #222; /* Updated dropdown background */
+  background-color: #222;
   color: white;
 }
 
 option {
-  background-color: #222; /* Ensures dropdown options are visible */
+  background-color: #222;
   color: white;
 }
 
@@ -70,7 +123,7 @@ option {
   input {
     width: 100%;
     padding: 14px;
-    padding-right: 45px; // Ensure space for the icon
+    padding-right: 45px;
     border: 1px solid #666;
     background: transparent;
     color: white;
@@ -80,9 +133,9 @@ option {
 
   .password-toggle {
     position: absolute;
-    right: 15px; // Far right alignment
-    top: 40%; // Move up slightly
-    transform: translateY(-50%); // Ensure middle alignment
+    right: 15px;
+    top: 40%;
+    transform: translateY(-50%);
     cursor: pointer;
     font-size: 18px;
     color: #666;
@@ -116,7 +169,7 @@ option {
 
 .register-image-section {
   width: 50%;
-  height: 100vh; /* Matched size to login.scss */
+  height: 100vh;
   background: url("./../img/vero.svg") center/cover;
   display: flex;
   align-items: center;
@@ -145,13 +198,22 @@ option {
     width: 100%;
     height: 40vh;
   }
+
+  .back-btn {
+    top: 15px;
+    left: 15px; // Adjusted for mobile
+    width: 36px; // Slightly smaller
+    height: 36px;
+    font-size: 16px; // Smaller icon
+  }
 }
+
 .custom-alert {
   position: fixed;
-  top: 50px; // Moved slightly lower
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8); // Sleek dark background
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 15px 20px;
   border-radius: 6px;
