@@ -1,75 +1,88 @@
 .product-grid {
-    background-color: #f5f9ff; // Light blue background as in the reference image
-    padding: 20px;
-    
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px; // Keep this as is
-      color: #000;
-      text-align: left; // Align h2 to the left, cards will be centered below it
-    }
-  
-    .products-container {
-      display: flex; // Use flex for a grid layout
-      flex-wrap: wrap; // Allow wrapping
-      gap: 20px; // Match the spacing in the reference image
-      justify-content: center; // Center the cards under the h2
-      padding: 0 20px; // Added padding to prevent sticking to edges
-      max-width: 1200px; // Limit the width to prevent excessive spreading
-      margin: 0 auto; // Center the container horizontally
-    }
-  
-    .product-card {
-      background-color: #4a4a4a; // Dark gray background as in the reference
-      border-radius: 8px; // Rounded corners as in the reference
-      overflow: hidden;
-      width: 250px; // Maintain card width, similar to the reference
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); // Subtle shadow
-      margin-top: 20px; // Add this to move the cards down (adjust as needed)
-      
+  background-color: #f5f9ff; // Light blue background
+  padding: 20px 0; // Remove horizontal padding to allow full width
+  width: 100vw; // Full viewport width
+  margin: 0; // Remove any margin
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: left;
+    padding-left: 20px; // Keep some left padding for alignment
+  }
+
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; // Center the cards
+    padding: 0 20px; // Minimal padding to avoid edge sticking
+    width: 100%; // Full width of the parent
+    margin: 0 auto; // Center the container
+  }
+
+  .product-card {
+    background-color: #4a4a4a;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 250px; // Keep card width consistent
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+
+    .product-image-container {
+      position: relative; // Ensure container can handle hover and click
+      cursor: pointer; // Indicate clickability
+
       img {
         width: 100%;
         height: auto;
         display: block;
+        transition: transform 0.3s ease; // Smooth transition for image scaling
+
+        &:hover {
+          transform: scale(1.1); // Scale only the image on hover
+        }
       }
-  
-      .product-info {
-        padding: 15px;
-        color: #fff;
-        text-align: center;
-  
-        .stars {
-          color: #ffd700; // Gold stars
-          font-size: 18px;
-          margin-bottom: 10px;
-        }
-  
-        h3 {
-          font-size: 16px;
-          margin: 10px 0;
-        }
-  
-        p {
-          font-size: 14px;
-          color: #ffd700; // Yellow price color as in the reference
-          margin: 10px 0;
-        }
-  
-        .add-to-cart {
-          background-color: #ff0000; // Red button as in the reference
-          color: white;
-          border: none;
-          padding: 8px 20px;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 14px;
-          width: 100%;
-          margin-top: 10px; // Add some space above the button
-          
-          &:hover {
-            background-color: #cc0000;
-          }
+    }
+
+    .product-info {
+      padding: 15px;
+      color: #fff;
+      text-align: center;
+
+      .stars {
+        color: #ffd700;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #ffd700;
+        margin: 10px 0;
+      }
+
+      .add-to-cart {
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+        margin-top: 10px;
+
+        &:hover {
+          background-color: #cc0000;
         }
       }
     }
   }
+}

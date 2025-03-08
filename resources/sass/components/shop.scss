@@ -1,87 +1,55 @@
 .shop-page-container {
-  padding-top: 100px;
   background-color: #F0F8FF;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  .banner-ad-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 230px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    border-radius: 8px;
-  }
-
-  .banner-ad-slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 8px;
-  }
-
-  .banner-ad-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    border-radius: 8px;
-
-    &.active {
-      opacity: 1;
-    }
-  }
+  width: 100%;
+  margin: 0;
+  padding: 0;
 
   .shop-content {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    margin-bottom: 100px; // Increased bottom margin to create space above the footer
-    align-items: stretch;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
     flex: 1 0 auto;
+    position: relative;
 
+    // Sidebar (FilterSidebar)
     & > :first-child {
-      flex: 0 0 300px;
-      padding: 20px;
-      margin-left: 0;
+      width: 300px; // Fixed sidebar width
+      flex-shrink: 0; // Prevent sidebar from shrinking
     }
 
+    // ShopGrid
     & > :last-child {
-      flex: 1;
+      flex: 1; // Take up remaining space
       padding: 20px;
+      display: flex;
+      justify-content: center; // Center the grid horizontally
+      max-width: calc(100% - 300px); // Ensure it respects sidebar width
     }
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 10px;
-      margin: 10px auto;
-      margin-bottom: 80px; // Reduced margin on mobile for compactness
 
       & > :first-child {
-        flex: 0 0 auto;
-        padding: 10px;
-        margin-left: 0;
+        width: 100%; // Sidebar full width on mobile
       }
 
       & > :last-child {
         padding: 10px;
+        max-width: 100%; // Full width on mobile
       }
     }
   }
 
-  /* Footer Styles */
   footer {
     width: 100%;
-    background-color: #1E1E1E; /* Updated to your desired color */
+    background-color: #1E1E1E;
     padding: 20px 0;
     flex-shrink: 0;
 
@@ -100,7 +68,43 @@
 
       .footer-content {
         padding: 0 10px;
+        max-width: 100%;
       }
     }
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+  }
+
+  .login-btn {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
   }
 }

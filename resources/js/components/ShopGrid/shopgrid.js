@@ -15,7 +15,6 @@ import mouse12 from "../../../../resources/sass/img/green.svg";
 import mouse13 from "../../../../resources/sass/img/ATKA2.svg";
 import mouse14 from "../../../../resources/sass/img/ATKBLACK.svg";
 import mouse15 from "../../../../resources/sass/img/ATKX5.svg";
-// Updated imports for additional 15 images
 import mouse16 from "../../../../resources/sass/img/ATKA2.svg";
 import mouse17 from "../../../../resources/sass/img/ATKBLACK.svg";
 import mouse18 from "../../../../resources/sass/img/ATKCOLOR.svg";
@@ -45,7 +44,7 @@ const StarRating = ({ rating, onRatingChange }) => {
 
   const handleClick = (star) => {
     if (onRatingChange) {
-      onRatingChange(star); // For future backend integration
+      onRatingChange(star);
     }
   };
 
@@ -68,7 +67,6 @@ const StarRating = ({ rating, onRatingChange }) => {
 
 function ShopGrid() {
   const allProducts = [
-    // Initial 15 products
     { id: 1, img: mouse1, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
     { id: 2, img: mouse2, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
     { id: 3, img: mouse3, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
@@ -84,7 +82,6 @@ function ShopGrid() {
     { id: 13, img: mouse13, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
     { id: 14, img: mouse14, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
     { id: 15, img: mouse15, name: "Attack Shark X3", price: "₱2,000", rating: 5 },
-    // Additional 15 products with different details and new images
     { id: 16, img: mouse16, name: "Blaze Mouse Pro", price: "₱2,200", rating: 4 },
     { id: 17, img: mouse17, name: "Thunder Mouse Elite", price: "₱2,300", rating: 4 },
     { id: 18, img: mouse18, name: "Shadow Mouse X1", price: "₱2,100", rating: 5 },
@@ -102,27 +99,58 @@ function ShopGrid() {
     { id: 30, img: mouse30, name: "Galaxy Mouse R9", price: "₱2,500", rating: 5 },
   ];
 
-  const [visibleCount, setVisibleCount] = useState(15); // Start with 15 items
+  const [visibleCount, setVisibleCount] = useState(15);
+  const [sortBy, setSortBy] = useState('newest');
 
   const handleRatingChange = (productId, newRating) => {
-    console.log(`Product ${productId} rated ${newRating}`); // Placeholder for backend call
+    console.log(`Product ${productId} rated ${newRating}`);
   };
 
   const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 15); // Add 15 more items (3 rows × 5 cards)
+    setVisibleCount((prevCount) => prevCount + 15);
   };
 
   const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleProductClick = (productId) => {
+    console.log(`Product image clicked - Product ID: ${productId}`);
+  };
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+    // Add sorting logic here if needed
+  };
+
+  // Calculate the number of products currently displayed
+  const displayedProductsCount = Math.min(allProducts.length, visibleCount);
 
   return (
     <div className="shop-grid-wrapper">
       <div className="shop-grid-container">
+        <div className="shop-grid-header">
+          <div className="available-products">
+            Available Products: {displayedProductsCount}
+          </div>
+          <div className="sort-view-container">
+            <div>
+              <label>Sort by</label>
+              <select value={sortBy} onChange={handleSortChange}>
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Rating</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div className="shop-grid-products">
           {allProducts.slice(0, visibleCount).map((product) => (
             <div className="shop-grid-card" key={product.id}>
-              <img src={product.img} alt={`Mouse ${product.id}`} />
+              <a href="#" onClick={() => handleProductClick(product.id)} className="product-link">
+                <img src={product.img} alt={`Mouse ${product.id}`} className="product-image" />
+              </a>
               <div className="shop-grid-info">
                 <StarRating
                   rating={product.rating}

@@ -1,86 +1,177 @@
 .customer-topbar {
-    background-color: #1a1a1a; // Dark background similar to the image
-    padding: 10px 0;
-    position: fixed;
+  background-color: #1a1a1a; // Dark background similar to the image
+  padding: 10px 20px; // Consistent padding with content below
+  position: fixed;
+  width: 100%; // Ensure full width
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box; // Include padding in width calculation
+
+  // Add the red line at the bottom
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    top: 0;
-    z-index: 1000;
-  
-    .customer-topbar-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    height: 2px; // Thin line similar to the image
+    background-color: #FF1C1C; // Red color as requested
+    z-index: 1; // Ensure it stays above the background but below content
+  }
+
+  .customer-topbar-container {
+    width: 100%; // Remove max-width constraint
+    display: flex;
+    justify-content: space-between; // Keeps logo+nav on left, auth on right
+    align-items: center;
+    padding: 0; // No additional padding to maintain full width
+    position: relative; // Ensure the container is a positioning context for the line
+
+    .customer-logo-and-nav {
       display: flex;
-      justify-content: space-between; // Keeps logo left, nav centered, auth right
       align-items: center;
-      padding: 0; // Removed padding to allow full edge positioning
-  
-      // Center the nav links specifically
-      .customer-nav-links {
-        flex: 1; // Allows nav links to take available space and center
-        display: flex;
-        justify-content: center; // Centers the nav links
-        gap: 30px;
-  
-        .customer-nav-link {
-          color: #ffffff;
-          text-decoration: none;
-          font-size: 16px;
-          transition: color 0.3s ease;
-  
-          &:hover {
-            color: #ff4444; // Red color for hover, matching the Login button
-          }
-        }
-      }
-  
+      gap: 20px; // Space between logo and nav links
+
       .customer-logo {
         margin-left: 0; // Push logo to the very left
         padding-left: 0; // Ensure no padding interferes
-  
+
         .customer-logo-img {
           height: 40px; // Adjust height as needed for your logo
           width: auto; // Maintain aspect ratio
         }
       }
-  
-      .customer-auth-section {
-        margin-right: 0; // Push auth section to the very right
-        padding-right: 0; // Ensure no padding interferes
+
+      .customer-nav-links {
         display: flex;
-        align-items: center;
-        gap: 20px;
-  
-        .customer-cart-icon {
+        gap: 30px; // Space between nav links
+
+        .customer-nav-link {
           color: #ffffff;
-          font-size: 20px;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-  
-          svg { // Style for Font Awesome icon
-            font-size: 24px; // Adjust size as needed
-          }
-        }
-  
-        .customer-login-button {
-          background-color: #ff4444; // Red button like in the image
-          color: #ffffff;
-          padding: 8px 20px;
-          border: none;
-          border-radius: 4px;
           text-decoration: none;
           font-size: 16px;
-          transition: background-color 0.3s ease;
-  
+          transition: color 0.3s ease;
+
           &:hover {
-            background-color: #cc0000; // Darker red on hover
+            color: #ff4444; // Red color for hover, matching the Login button
           }
         }
       }
     }
+
+    .customer-auth-section {
+      margin-right: 0; // Push auth section to the very right
+      padding-right: 0; // Ensure no padding interferes
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .customer-cart-icon {
+        color: #ffffff;
+        font-size: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer; // Indicate it's clickable
+
+        svg {
+          font-size: 24px; // Adjust size as needed
+        }
+
+        .cart-count {
+          position: absolute;
+          top: -5px;
+          right: -10px;
+          background: #FF1C1C; // Red background for count
+          color: #ffffff;
+          border-radius: 50%;
+          padding: 2px 6px;
+          font-size: 12px;
+          min-width: 18px;
+          text-align: center;
+        }
+      }
+
+      .customer-login-button {
+        background-color: #ff4444; // Red button like in the image
+        color: #ffffff;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #cc0000; // Darker red on hover
+        }
+      }
+    }
   }
-  
-  // If you want to style the rest of your homepage content to not overlap with the navbar
-  .homepage {
-    margin-top: 60px; // Adjust based on navbar height
+}
+
+// Adjust content below navbar to avoid overlap
+.payment-methods-page-container {
+  padding-top: 70px; // Adjust based on navbar height (10px padding + 40px logo height + 20px buffer)
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .customer-topbar {
+    padding: 10px; // Reduce padding on mobile for full edge alignment
+
+    // Ensure the line adjusts on mobile
+    &::after {
+      height: 2px; // Keep the line thickness
+    }
+
+    .customer-topbar-container {
+      flex-direction: column;
+      align-items: stretch; // Full width on mobile
+
+      .customer-logo-and-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        .customer-nav-links {
+          flex-direction: column;
+          gap: 10px;
+
+          .customer-nav-link {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .customer-auth-section {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .customer-cart-icon {
+          svg {
+            font-size: 20px; // Slightly smaller on mobile
+          }
+
+          .cart-count {
+            top: -3px;
+            right: -8px;
+            font-size: 10px;
+            padding: 1px 4px;
+          }
+        }
+
+        .customer-login-button {
+          padding: 6px 15px;
+          font-size: 14px;
+        }
+      }
+    }
   }
+
+  .payment-methods-page-container {
+    padding-top: 80px; // Adjust for mobile navbar height
+  }
+}

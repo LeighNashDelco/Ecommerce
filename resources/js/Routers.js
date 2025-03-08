@@ -20,6 +20,12 @@ import StatusAndCategory from "./components/statusandcategory/StatusAndCategory"
 import Users from "./components/users/Users";
 import Homepage from "./components/Homepage/homepage";
 import Shop from "./components/shop/shop";
+import Cart from "./components/Customer/cart";
+import Checkout from "./components/Customer/checkout";
+import Checkout_adress from "./components/Customer/checkout_address";
+import Payment_methods from "./components/Customer/payment_methods";
+import Developer from "./components/Developers/developer";
+import Order_complete from "./components/OrderComplete/order_complete";
 
 
 export default function Routers() {
@@ -44,6 +50,13 @@ export default function Routers() {
         <Route path="users" element={<Users />} />
         <Route path="homepage" element={<Homepage />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="checkout_address" element={<Checkout_adress />} />
+        <Route path="payment_methods" element={<Payment_methods />} />
+        <Route path="developer" element={<Developer />} />
+        <Route path="order_complete" element={<Order_complete />} />
+
       </Routes>
     </Router>
   );

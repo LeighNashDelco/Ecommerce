@@ -1,43 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './../../../sass/components/shop.scss';
 import Navbar from "../Customer/topvar_notlogin";
 import ShopGrid from "../ShopGrid/shopgrid";
-import ShopFilter from "../ShopFilter/shop_filter";
-import Footer from "../footer/footer"; // Footer import
-import bannerAdPrimary from '../../../../resources/sass/img/banner1.svg';
-import bannerAdSecondary from '../../../../resources/sass/img/banner2.svg';
+import Footer from "../footer/footer";
+import FilterSidebar from "../Filter/filter_sidebar"; // Import the new component
 
 export default function Shop() {
-  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-  const bannerAdImages = [bannerAdPrimary, bannerAdSecondary];
+  const [filters, setFilters] = useState({
+    gamingMouse: false,
+    wiredWirelessMouse: false,
+    officeMouse: false,
+    priceRange: [10, 80], // Updated initial range to 10-80
+    brands: {
+      attackShark: false,
+      razer: false,
+      logitech: false,
+      hitscan: false,
+      vxe: false,
+    },
+  });
 
-  useEffect(() => {
-    const bannerTimer = setInterval(() => {
-      setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % bannerAdImages.length);
-    }, 5000);
+  const handleCheckboxChange = (filterName) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterName]: !prevFilters[filterName],
+    }));
+  };
 
-    return () => clearInterval(bannerTimer);
-  }, [bannerAdImages.length]);
+  const handleBrandChange = (brandName) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      brands: {
+        ...prevFilters.brands,
+        [brandName]: !prevFilters.brands[brandName],
+      },
+    }));
+  };
+
+  const handlePriceChange = (e) => {
+    const [min, max] = e.target.value.split(',').map(Number);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      priceRange: [min, max],
+    }));
+  };
+
+  const clearFilters = () => {
+    setFilters({
+      gamingMouse: false,
+      wiredWirelessMouse: false,
+      officeMouse: false,
+      priceRange: [10, 80], // Reset to initial range
+      brands: {
+        attackShark: false,
+        razer: false,
+        logitech: false,
+        hitscan: false,
+        vxe: false,
+      },
+    });
+  };
 
   return (
     <div className="shop-page-container">
       <Navbar />
-      <div className="banner-ad-container">
-        <div className="banner-ad-slides">
-          {bannerAdImages.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Banner Ad ${index + 1}`}
-              className={`banner-ad-image ${
-                index === currentBannerIndex ? 'active' : ''
-              }`}
-            />
-          ))}
-        </div>
-      </div>
       <div className="shop-content">
-        <ShopFilter />
+        <FilterSidebar
+          filters={filters}
+          handleCheckboxChange={handleCheckboxChange}
+          handleBrandChange={handleBrandChange}
+          handlePriceChange={handlePriceChange}
+          clearFilters={clearFilters}
+        />
         <ShopGrid />
       </div>
       <Footer />
