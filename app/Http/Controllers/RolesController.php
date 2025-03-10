@@ -24,22 +24,6 @@ class RolesController extends Controller
         }
     }
 
-    /**
-     * Get all roles (id and role_name).
-     */
-    public function getAllRoles()
-    {
-        try {
-            $allRoles = Role::select('id', 'role_name')->get();
-
-            Log::info('Fetched all roles', ['count' => $allRoles->count()]);
-
-            return response()->json($allRoles);
-        } catch (\Exception $e) {
-            Log::error('Error fetching all roles: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
-            return response()->json(['error' => 'Internal Server Error'], 500);
-        }
-    }
     public function ActiveRoles()
     {
         try {

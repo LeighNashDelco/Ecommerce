@@ -30,16 +30,20 @@ use App\Models\Profile;
 # ==============================
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::get('/user-profile', [UserController::class, 'getUserProfile']);
 });
-Route::middleware('auth:api')->get('/user-profile', [UserController::class, 'getUserProfile']);
+
+# Change Password
+Route::middleware('auth:api')->post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
 
 # ==============================
 # PUBLIC ROUTES
 # ==============================
-Route::get('/roles', [RolesController::class, 'getAllRoles']);
 Route::get('/roles/specific', [RolesController::class, 'getSpecificRoles']);
 Route::get('/roles/activeroles', [RolesController::class, 'ActiveRoles']);
 Route::get('/genders', [GenderController::class, 'index']);
@@ -80,7 +84,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/users/archived', [UserListController::class, 'getArchivedUsers']);
     Route::patch('/users/{id}/archive', [UserListController::class, 'archive']);
     Route::patch('/users/{id}', [UserListController::class, 'update']);
-    Route::get('/users/{id}', [UserListController::class, 'getUser']); // Added this line
+    Route::get('/users/{id}', [UserListController::class, 'getUser']);
 
     # Roles Management
     Route::get('/roleslist', [RolesTableController::class, 'getRolesList']);
@@ -127,7 +131,4 @@ Route::middleware('auth:api')->group(function () {
 
     # FAQ Category Management
     Route::get('/faq_categories', [FaqCategoryController::class, 'index']);
-
-    # Change Password
-    Route::middleware('auth:api')->post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
 });

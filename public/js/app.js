@@ -8457,6 +8457,11 @@ var AdminDashboard = function AdminDashboard() {
     _useState14 = _slicedToArray(_useState13, 2),
     error = _useState14[0],
     setError = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loading = _useState16[0],
+    setLoading = _useState16[1]; // Add loading state
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setAuthHeader(); // Set header on mount
 
@@ -8474,7 +8479,8 @@ var AdminDashboard = function AdminDashboard() {
               }
               throw new Error("No token found. Please log in.");
             case 4:
-              _context.next = 6;
+              setLoading(true); // Start loading
+              _context.next = 7;
               return Promise.all([axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/dashboard/totals", {
                 headers: {
                   Authorization: "Bearer ".concat(token)
@@ -8484,25 +8490,27 @@ var AdminDashboard = function AdminDashboard() {
                   Authorization: "Bearer ".concat(token)
                 }
               })]);
-            case 6:
+            case 7:
               _yield$Promise$all = _context.sent;
               _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
               totalsResponse = _yield$Promise$all2[0];
               ordersResponse = _yield$Promise$all2[1];
               setStats(totalsResponse.data);
               setOrders(ordersResponse.data);
-              _context.next = 18;
+              setLoading(false); // Stop loading
+              _context.next = 21;
               break;
-            case 14:
-              _context.prev = 14;
+            case 16:
+              _context.prev = 16;
               _context.t0 = _context["catch"](0);
               console.error("Error fetching dashboard data:", _context.t0);
               setError(_context.t0.response ? _context.t0.response.data.message : "Failed to load dashboard data.");
-            case 18:
+              setLoading(false); // Stop loading on error
+            case 21:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 14]]);
+        }, _callee, null, [[0, 16]]);
       }));
       return function fetchData() {
         return _ref.apply(this, arguments);
@@ -8547,7 +8555,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Customers"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_customers
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8556,7 +8566,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Sellers"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_sellers
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8565,7 +8577,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Admins"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_admins
           })]
         })]
@@ -8577,7 +8591,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Products"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_products
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8586,7 +8602,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_orders
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8595,7 +8613,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Earnings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
             children: ["\u20B1", stats.total_earnings]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -8604,7 +8624,9 @@ var AdminDashboard = function AdminDashboard() {
             className: "icon"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             children: "Total Product Sales"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            className: "loading-spinner"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
             children: stats.total_product_sales
           })]
         })]
@@ -8746,7 +8768,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // New modal
+
 
 
 var formatDate = function formatDate(dateString) {
@@ -8770,66 +8792,47 @@ var AdminList = function AdminList() {
     _useState4 = _slicedToArray(_useState3, 2),
     searchTerm = _useState4[0],
     setSearchTerm = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    filterValue = _useState6[0],
-    setFilterValue = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showArchived = _useState6[0],
+    setShowArchived = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    filterOpen = _useState8[0],
-    setFilterOpen = _useState8[1];
+    selectedAdmins = _useState8[0],
+    setSelectedAdmins = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    showArchived = _useState10[0],
-    setShowArchived = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    isConfirmModalOpen = _useState10[0],
+    setIsConfirmModalOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    selectedAdmins = _useState12[0],
-    setSelectedAdmins = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState14 = _slicedToArray(_useState13, 2),
-    isConfirmModalOpen = _useState14[0],
-    setIsConfirmModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState16 = _slicedToArray(_useState15, 2),
-    adminToArchive = _useState16[0],
-    setAdminToArchive = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    adminToArchive = _useState12[0],
+    setAdminToArchive = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       currentPage: 1,
       totalPages: 1
     }),
+    _useState14 = _slicedToArray(_useState13, 2),
+    pagination = _useState14[0],
+    setPagination = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loading = _useState16[0],
+    setLoading = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState18 = _slicedToArray(_useState17, 2),
-    pagination = _useState18[0],
-    setPagination = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    isModalOpen = _useState18[0],
+    setIsModalOpen = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState20 = _slicedToArray(_useState19, 2),
-    loading = _useState20[0],
-    setLoading = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isEditMode = _useState20[0],
+    setIsEditMode = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState22 = _slicedToArray(_useState21, 2),
-    isModalOpen = _useState22[0],
-    setIsModalOpen = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState24 = _slicedToArray(_useState23, 2),
-    isEditMode = _useState24[0],
-    setIsEditMode = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState26 = _slicedToArray(_useState25, 2),
-    adminToEdit = _useState26[0],
-    setAdminToEdit = _useState26[1];
+    adminToEdit = _useState22[0],
+    setAdminToEdit = _useState22[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "admin",
-    label: "Admin"
-  }, {
-    value: "moderator",
-    label: "Moderator"
-  }];
-  var baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
-
+  var baseImageUrl = "http://127.0.0.1:8000/";
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -8889,11 +8892,10 @@ var AdminList = function AdminList() {
     fetchData();
   }, []);
   var filteredAdmins = admins.filter(function (admin) {
-    var _admin$username, _admin$role_name;
+    var _admin$username;
     var matchesSearch = (_admin$username = admin.username) === null || _admin$username === void 0 ? void 0 : _admin$username.toLowerCase().includes(searchTerm.toLowerCase());
-    var matchesFilter = filterValue === "all" || ((_admin$role_name = admin.role_name) === null || _admin$role_name === void 0 ? void 0 : _admin$role_name.toLowerCase()) === filterValue;
     var matchesArchived = admin.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
   var toggleSelectAdmin = function toggleSelectAdmin(adminId) {
     setSelectedAdmins(function (prev) {
@@ -9096,7 +9098,7 @@ var AdminList = function AdminList() {
               last_name: response.data.last_name || '',
               suffix: response.data.suffix || '',
               gender: response.data.gender || '',
-              role_id: response.data.role_id || '1' // Default to Admin
+              role_id: response.data.role_id || '1'
             }));
             setIsEditMode(true);
             setIsModalOpen(true);
@@ -9143,9 +9145,7 @@ var AdminList = function AdminList() {
                 username: response.data.user.username,
                 email: response.data.user.email,
                 role_name: "Admin",
-                // Adjust based on role_id
                 profile_img: null,
-                // No profile_img on add
                 created_at: response.data.user.created_at || new Date().toISOString(),
                 updated_at: response.data.user.updated_at || new Date().toISOString(),
                 archived: false
@@ -9265,28 +9265,6 @@ var AdminList = function AdminList() {
               className: "header-button",
               onClick: handleToggleArchived,
               children: showArchived ? "View Active" : "View Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "filter-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-                className: "filter-button",
-                onClick: function onClick() {
-                  return setFilterOpen(!filterOpen);
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  children: "Filter"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaChevronDown, {})]
-              }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-                className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-                    onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
-                    },
-                    children: option.label
-                  }, option.value);
-                })
-              })]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -10618,7 +10596,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // New modal
+
 
 
 var formatDate = function formatDate(dateString) {
@@ -10642,63 +10620,47 @@ var CustomerList = function CustomerList() {
     _useState4 = _slicedToArray(_useState3, 2),
     searchTerm = _useState4[0],
     setSearchTerm = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    filterValue = _useState6[0],
-    setFilterValue = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showArchived = _useState6[0],
+    setShowArchived = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    filterOpen = _useState8[0],
-    setFilterOpen = _useState8[1];
+    selectedCustomers = _useState8[0],
+    setSelectedCustomers = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    showArchived = _useState10[0],
-    setShowArchived = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    isConfirmModalOpen = _useState10[0],
+    setIsConfirmModalOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    selectedCustomers = _useState12[0],
-    setSelectedCustomers = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState14 = _slicedToArray(_useState13, 2),
-    isConfirmModalOpen = _useState14[0],
-    setIsConfirmModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState16 = _slicedToArray(_useState15, 2),
-    customerToArchive = _useState16[0],
-    setCustomerToArchive = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    customerToArchive = _useState12[0],
+    setCustomerToArchive = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       currentPage: 1,
       totalPages: 1
     }),
+    _useState14 = _slicedToArray(_useState13, 2),
+    pagination = _useState14[0],
+    setPagination = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loading = _useState16[0],
+    setLoading = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState18 = _slicedToArray(_useState17, 2),
-    pagination = _useState18[0],
-    setPagination = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    isModalOpen = _useState18[0],
+    setIsModalOpen = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState20 = _slicedToArray(_useState19, 2),
-    loading = _useState20[0],
-    setLoading = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isEditMode = _useState20[0],
+    setIsEditMode = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState22 = _slicedToArray(_useState21, 2),
-    isModalOpen = _useState22[0],
-    setIsModalOpen = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState24 = _slicedToArray(_useState23, 2),
-    isEditMode = _useState24[0],
-    setIsEditMode = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState26 = _slicedToArray(_useState25, 2),
-    customerToEdit = _useState26[0],
-    setCustomerToEdit = _useState26[1];
+    customerToEdit = _useState22[0],
+    setCustomerToEdit = _useState22[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "customer",
-    label: "Customer"
-  }];
-  var baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
-
+  var baseImageUrl = "http://127.0.0.1:8000/";
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -10759,11 +10721,10 @@ var CustomerList = function CustomerList() {
     fetchData();
   }, []);
   var filteredCustomers = customers.filter(function (customer) {
-    var _customer$username, _customer$role_name;
+    var _customer$username;
     var matchesSearch = (_customer$username = customer.username) === null || _customer$username === void 0 ? void 0 : _customer$username.toLowerCase().includes(searchTerm.toLowerCase());
-    var matchesFilter = filterValue === "all" || ((_customer$role_name = customer.role_name) === null || _customer$role_name === void 0 ? void 0 : _customer$role_name.toLowerCase()) === filterValue;
     var matchesArchived = customer.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
   var toggleSelectCustomer = function toggleSelectCustomer(customerId) {
     setSelectedCustomers(function (prev) {
@@ -11012,9 +10973,7 @@ var CustomerList = function CustomerList() {
                 username: response.data.user.username,
                 email: response.data.user.email,
                 role_name: "Customer",
-                // Hardcoded since role_id is 2
                 profile_img: null,
-                // No profile_img on add
                 created_at: response.data.user.created_at || new Date().toISOString(),
                 updated_at: response.data.user.updated_at || new Date().toISOString(),
                 archived: false
@@ -11148,28 +11107,6 @@ var CustomerList = function CustomerList() {
               className: "header-button",
               onClick: handleToggleArchived,
               children: showArchived ? "View Active" : "View Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "filter-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-                className: "filter-button",
-                onClick: function onClick() {
-                  return setFilterOpen(!filterOpen);
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  children: "Filter"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaChevronDown, {})]
-              }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-                className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-                    onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
-                    },
-                    children: option.label
-                  }, option.value);
-                })
-              })]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -14360,6 +14297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
 /* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
@@ -14368,7 +14306,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
 /* harmony import */ var _AddProductModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AddProductModal */ "./resources/js/components/products/AddProductModal.js");
 /* harmony import */ var _EditProductModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditProductModal */ "./resources/js/components/products/EditProductModal.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _sass_components_products_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../sass/components/_products.scss */ "./resources/sass/components/_products.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -14413,391 +14350,379 @@ var Product = function Product() {
     _useState6 = _slicedToArray(_useState5, 2),
     filterValue = _useState6[0],
     setFilterValue = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("All"),
     _useState8 = _slicedToArray(_useState7, 2),
-    filterOpen = _useState8[0],
-    setFilterOpen = _useState8[1];
+    filterLabel = _useState8[0],
+    setFilterLabel = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    isAddModalOpen = _useState10[0],
-    setIsAddModalOpen = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    filterOpen = _useState10[0],
+    setFilterOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      value: "all",
+      label: "All"
+    }]),
     _useState12 = _slicedToArray(_useState11, 2),
-    isEditModalOpen = _useState12[0],
-    setIsEditModalOpen = _useState12[1];
+    categories = _useState12[0],
+    setCategories = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState14 = _slicedToArray(_useState13, 2),
-    isConfirmModalOpen = _useState14[0],
-    setIsConfirmModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    isAddModalOpen = _useState14[0],
+    setIsAddModalOpen = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState16 = _slicedToArray(_useState15, 2),
-    productToArchive = _useState16[0],
-    setProductToArchive = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    isEditModalOpen = _useState16[0],
+    setIsEditModalOpen = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState18 = _slicedToArray(_useState17, 2),
-    productToEdit = _useState18[0],
-    setProductToEdit = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    isConfirmModalOpen = _useState18[0],
+    setIsConfirmModalOpen = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    productToArchive = _useState20[0],
+    setProductToArchive = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState22 = _slicedToArray(_useState21, 2),
+    productToEdit = _useState22[0],
+    setProductToEdit = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState24 = _slicedToArray(_useState23, 2),
+    showArchived = _useState24[0],
+    setShowArchived = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState26 = _slicedToArray(_useState25, 2),
+    selectedProducts = _useState26[0],
+    setSelectedProducts = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       currentPage: 1,
       totalPages: 1
     }),
-    _useState20 = _slicedToArray(_useState19, 2),
-    pagination = _useState20[0],
-    setPagination = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState22 = _slicedToArray(_useState21, 2),
-    showArchived = _useState22[0],
-    setShowArchived = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState24 = _slicedToArray(_useState23, 2),
-    selectedProducts = _useState24[0],
-    setSelectedProducts = _useState24[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "Gaming",
-    label: "Gaming"
-  }, {
-    value: "Wireless",
-    label: "Wireless"
-  }, {
-    value: "Office",
-    label: "Office"
-  }];
+    _useState28 = _slicedToArray(_useState27, 2),
+    pagination = _useState28[0],
+    setPagination = _useState28[1];
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState30 = _slicedToArray(_useState29, 2),
+    error = _useState30[0],
+    setError = _useState30[1];
+  var productsPerPage = 8;
+  var setAuthHeader = function setAuthHeader() {
+    var token = localStorage.getItem("LaravelPassportToken");
+    if (!token) {
+      setError("No token found. Please log in.");
+      return false;
+    }
+    axios__WEBPACK_IMPORTED_MODULE_7__["default"].defaults.headers.common["Authorization"] = "Bearer ".concat(token);
+    return true;
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var fetchData = /*#__PURE__*/function () {
+    var fetchProducts = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, response, fetchedProducts;
+        var _yield$axios$get, data, _err$response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              token = localStorage.getItem("LaravelPassportToken");
-              _context.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/products", {
-                headers: {
-                  Authorization: "Bearer ".concat(token)
-                }
-              });
-            case 4:
-              response = _context.sent;
-              fetchedProducts = response.data.map(function (product) {
+              if (setAuthHeader()) {
+                _context.next = 2;
+                break;
+              }
+              return _context.abrupt("return");
+            case 2:
+              _context.prev = 2;
+              _context.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/products");
+            case 5:
+              _yield$axios$get = _context.sent;
+              data = _yield$axios$get.data;
+              setProducts(data.map(function (product) {
                 return _objectSpread(_objectSpread({}, product), {}, {
-                  archived: Boolean(product.archived) === true
+                  archived: Boolean(product.archived),
+                  id: product.id || Date.now() // Fallback ID if missing
                 });
-              });
-              setProducts(fetchedProducts);
-              _context.next = 13;
+              }));
+              setError(null); // Clear error on success
+              _context.next = 15;
               break;
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
-              console.error("Error fetching data:", _context.t0);
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](2);
+              setError(((_err$response = _context.t0.response) === null || _err$response === void 0 || (_err$response = _err$response.data) === null || _err$response === void 0 ? void 0 : _err$response.message) || "Failed to fetch products.");
               setProducts([]);
-            case 13:
+            case 15:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[2, 11]]);
       }));
-      return function fetchData() {
+      return function fetchProducts() {
         return _ref.apply(this, arguments);
       };
     }();
-    fetchData();
+    fetchProducts();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchCategories = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var _yield$axios$get2, data, fetchedCategories, _err$response2;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              if (setAuthHeader()) {
+                _context2.next = 2;
+                break;
+              }
+              return _context2.abrupt("return");
+            case 2:
+              _context2.prev = 2;
+              _context2.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/categories");
+            case 5:
+              _yield$axios$get2 = _context2.sent;
+              data = _yield$axios$get2.data;
+              console.log("Categories API Response:", data);
+              fetchedCategories = Array.isArray(data) ? data.map(function (cat) {
+                return {
+                  value: cat.category_name || "Unknown",
+                  label: cat.category_name || "Unknown"
+                };
+              }) : [];
+              console.log("Mapped Categories:", fetchedCategories);
+              setCategories([{
+                value: "all",
+                label: "All"
+              }].concat(_toConsumableArray(fetchedCategories)));
+              setError(null); // Clear error on success
+              _context2.next = 19;
+              break;
+            case 14:
+              _context2.prev = 14;
+              _context2.t0 = _context2["catch"](2);
+              console.error("Error fetching categories:", _context2.t0.response || _context2.t0.message);
+              setError(((_err$response2 = _context2.t0.response) === null || _err$response2 === void 0 || (_err$response2 = _err$response2.data) === null || _err$response2 === void 0 ? void 0 : _err$response2.message) || "Failed to fetch categories.");
+              setCategories([{
+                value: "all",
+                label: "All"
+              }]);
+            case 19:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, null, [[2, 14]]);
+      }));
+      return function fetchCategories() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    fetchCategories();
   }, []);
   var filteredProducts = products.filter(function (product) {
-    var matchesSearch = product.product_name.toLowerCase().includes(searchTerm.toLowerCase());
-    var matchesFilter = filterValue === "all" || product.category === filterValue;
-    var matchesArchived = product.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    var _product$product_name;
+    return ((_product$product_name = product.product_name) === null || _product$product_name === void 0 ? void 0 : _product$product_name.toLowerCase().includes(searchTerm.toLowerCase())) && (filterValue === "all" || product.category === filterValue) && product.archived === showArchived;
   });
-  var handleAddNewClick = function handleAddNewClick() {
-    setIsAddModalOpen(true);
-  };
-  var handleModalClose = function handleModalClose() {
-    setIsAddModalOpen(false);
-    setIsEditModalOpen(false);
-    setProductToEdit(null);
-  };
-  var handleProductAdd = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newProduct) {
-      var token, response, addedProduct, _error$response;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.prev = 0;
-            token = localStorage.getItem("LaravelPassportToken");
-            if (token) {
-              _context2.next = 4;
-              break;
-            }
-            throw new Error("No token found. Please log in.");
-          case 4:
-            console.log("Adding product with FormData:", Array.from(newProduct.entries()));
-            _context2.next = 7;
-            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].post("http://127.0.0.1:8000/api/products", newProduct, {
-              headers: {
-                Authorization: "Bearer ".concat(token),
-                "Content-Type": "multipart/form-data"
-              }
-            });
-          case 7:
-            response = _context2.sent;
-            if (response.status === 201) {
-              addedProduct = response.data;
-              console.log("Added product:", addedProduct);
-              setProducts(function (prevProducts) {
-                return [addedProduct].concat(_toConsumableArray(prevProducts));
-              });
-              handleModalClose();
-            }
-            _context2.next = 14;
-            break;
-          case 11:
-            _context2.prev = 11;
-            _context2.t0 = _context2["catch"](0);
-            console.error("Error adding product:", ((_error$response = _context2.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context2.t0.message);
-          case 14:
-          case "end":
-            return _context2.stop();
-        }
-      }, _callee2, null, [[0, 11]]);
-    }));
-    return function handleProductAdd(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  var handleEditClick = function handleEditClick(product) {
-    console.log("Editing product:", product);
-    setProductToEdit(product);
-    setIsEditModalOpen(true);
-  };
-  var handleProductEdit = function handleProductEdit(updatedProduct) {
-    console.log("Updated product from backend:", updatedProduct);
-    setProducts(function (prevProducts) {
-      return prevProducts.map(function (p) {
-        return p.id === updatedProduct.id ? updatedProduct : p;
+  var totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+  var currentProducts = filteredProducts.slice((pagination.currentPage - 1) * productsPerPage, pagination.currentPage * productsPerPage);
+  var handleFilterSelect = function handleFilterSelect(value, label) {
+    setFilterValue(value);
+    setFilterLabel(label);
+    setFilterOpen(false);
+    setPagination(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        currentPage: 1,
+        totalPages: totalPages
       });
     });
-    handleModalClose();
   };
-  var handleArchiveClick = function handleArchiveClick(product) {
-    setProductToArchive(product);
-    setIsConfirmModalOpen(true);
+  var toggleModal = function toggleModal(type, state) {
+    var product = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    if (type === "add") setIsAddModalOpen(state);
+    if (type === "edit") {
+      setIsEditModalOpen(state);
+      setProductToEdit(state ? product : null);
+    }
+    if (type === "confirm") {
+      setIsConfirmModalOpen(state);
+      setProductToArchive(state ? product : null);
+    }
   };
-  var handleArchiveConfirm = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var token, response, _error$response2;
+  var handleProductAdd = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(newProduct) {
+      var _yield$axios$post, data, status, _err$response3;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            if (productToArchive) {
+            if (setAuthHeader()) {
               _context3.next = 2;
               break;
             }
             return _context3.abrupt("return");
           case 2:
             _context3.prev = 2;
-            token = localStorage.getItem("LaravelPassportToken");
-            if (token) {
-              _context3.next = 6;
-              break;
-            }
-            throw new Error("No token found. Please log in.");
-          case 6:
-            console.log("Archiving URL:", "http://127.0.0.1:8000/api/products/".concat(productToArchive.id, "/archive"));
-            console.log("Payload:", {
-              archived: true
-            });
-            _context3.next = 10;
-            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/products/".concat(productToArchive.id, "/archive"), {
-              archived: true
-            }, {
+            _context3.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].post("http://127.0.0.1:8000/api/products", newProduct, {
               headers: {
-                Authorization: "Bearer ".concat(token)
+                "Content-Type": "multipart/form-data"
               }
             });
-          case 10:
-            response = _context3.sent;
-            if (response.status === 200) {
-              setProducts(function (prevProducts) {
-                return prevProducts.map(function (product) {
-                  return product.id === productToArchive.id ? _objectSpread(_objectSpread({}, product), {}, {
-                    archived: true
-                  }) : product;
-                });
+          case 5:
+            _yield$axios$post = _context3.sent;
+            data = _yield$axios$post.data;
+            status = _yield$axios$post.status;
+            if (status === 201) {
+              setProducts(function (prev) {
+                return [data].concat(_toConsumableArray(prev));
               });
-              setIsConfirmModalOpen(false);
-              setProductToArchive(null);
+              toggleModal("add", false);
+              setError(null);
             }
-            _context3.next = 18;
+            _context3.next = 14;
             break;
-          case 14:
-            _context3.prev = 14;
+          case 11:
+            _context3.prev = 11;
             _context3.t0 = _context3["catch"](2);
-            console.error("Error archiving product:", ((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data) || _context3.t0.message);
-            alert(_context3.t0.message || "Failed to archive product.");
-          case 18:
+            setError(((_err$response3 = _context3.t0.response) === null || _err$response3 === void 0 || (_err$response3 = _err$response3.data) === null || _err$response3 === void 0 ? void 0 : _err$response3.message) || "Failed to add product.");
+          case 14:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[2, 14]]);
+      }, _callee3, null, [[2, 11]]);
     }));
-    return function handleArchiveConfirm() {
+    return function handleProductAdd(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
-  var handleRestoreProduct = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(productId) {
-      var token, response, _error$response3;
+  var handleProductEdit = function handleProductEdit(updatedProduct) {
+    setProducts(function (prev) {
+      return prev.map(function (p) {
+        return p.id === updatedProduct.id ? updatedProduct : p;
+      });
+    });
+    toggleModal("edit", false);
+    setError(null);
+  };
+  var handleArchive = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(productId, archive) {
+      var _yield$axios$patch, status, _err$response4;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            _context4.prev = 0;
-            token = localStorage.getItem("LaravelPassportToken");
-            if (token) {
-              _context4.next = 4;
+            if (setAuthHeader()) {
+              _context4.next = 2;
               break;
             }
-            throw new Error("No token found. Please log in.");
-          case 4:
-            console.log("Restoring URL:", "http://127.0.0.1:8000/api/products/".concat(productId, "/archive"));
-            console.log("Payload:", {
-              archived: false
-            });
-            _context4.next = 8;
+            return _context4.abrupt("return");
+          case 2:
+            _context4.prev = 2;
+            _context4.next = 5;
             return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/products/".concat(productId, "/archive"), {
-              archived: false
-            }, {
-              headers: {
-                Authorization: "Bearer ".concat(token)
-              }
+              archived: archive
             });
-          case 8:
-            response = _context4.sent;
-            if (response.status === 200) {
-              setProducts(function (prevProducts) {
-                return prevProducts.map(function (product) {
-                  return product.id === productId ? _objectSpread(_objectSpread({}, product), {}, {
-                    archived: false
-                  }) : product;
+          case 5:
+            _yield$axios$patch = _context4.sent;
+            status = _yield$axios$patch.status;
+            if (status === 200) {
+              setProducts(function (prev) {
+                return prev.map(function (p) {
+                  return p.id === productId ? _objectSpread(_objectSpread({}, p), {}, {
+                    archived: archive
+                  }) : p;
                 });
               });
+              toggleModal("confirm", false);
+              setError(null);
             }
-            _context4.next = 16;
+            _context4.next = 13;
             break;
-          case 12:
-            _context4.prev = 12;
-            _context4.t0 = _context4["catch"](0);
-            console.error("Error restoring product:", ((_error$response3 = _context4.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context4.t0.message);
-            alert(_context4.t0.message || "Failed to restore product.");
-          case 16:
+          case 10:
+            _context4.prev = 10;
+            _context4.t0 = _context4["catch"](2);
+            setError(((_err$response4 = _context4.t0.response) === null || _err$response4 === void 0 || (_err$response4 = _err$response4.data) === null || _err$response4 === void 0 ? void 0 : _err$response4.message) || "Failed to ".concat(archive ? "archive" : "restore", " product."));
+          case 13:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[0, 12]]);
+      }, _callee4, null, [[2, 10]]);
     }));
-    return function handleRestoreProduct(_x2) {
+    return function handleArchive(_x2, _x3) {
       return _ref4.apply(this, arguments);
     };
   }();
-  var toggleSelectProduct = function toggleSelectProduct(productId) {
-    setSelectedProducts(function (prev) {
-      return prev.includes(productId) ? prev.filter(function (id) {
-        return id !== productId;
-      }) : [].concat(_toConsumableArray(prev), [productId]);
-    });
-  };
-  var toggleSelectAll = function toggleSelectAll() {
-    if (selectedProducts.length === filteredProducts.length) {
-      setSelectedProducts([]);
-    } else {
-      setSelectedProducts(filteredProducts.map(function (product) {
-        return product.id;
-      }));
-    }
-  };
   var handleBulkAction = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(action) {
-      var token, requests, _error$response4;
+      var _err$response5;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            if (!(selectedProducts.length === 0)) {
+            if (!(!selectedProducts.length || !setAuthHeader())) {
               _context5.next = 2;
               break;
             }
             return _context5.abrupt("return");
           case 2:
             _context5.prev = 2;
-            token = localStorage.getItem("LaravelPassportToken");
-            if (token) {
-              _context5.next = 6;
-              break;
-            }
-            throw new Error("No token found. Please log in.");
-          case 6:
-            requests = selectedProducts.map(function (productId) {
-              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/products/".concat(productId, "/archive"), {
+            _context5.next = 5;
+            return Promise.all(selectedProducts.map(function (id) {
+              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/products/".concat(id, "/archive"), {
                 archived: action === "archive"
-              }, {
-                headers: {
-                  Authorization: "Bearer ".concat(token)
-                }
               });
-            });
-            console.log("Bulk action URLs:", selectedProducts.map(function (id) {
-              return "http://127.0.0.1:8000/api/products/".concat(id, "/archive");
             }));
-            console.log("Payload:", {
-              archived: action === "archive"
-            });
-            _context5.next = 11;
-            return Promise.all(requests);
-          case 11:
-            setProducts(function (prevProducts) {
-              return prevProducts.map(function (product) {
-                return selectedProducts.includes(product.id) ? _objectSpread(_objectSpread({}, product), {}, {
+          case 5:
+            setProducts(function (prev) {
+              return prev.map(function (p) {
+                return selectedProducts.includes(p.id) ? _objectSpread(_objectSpread({}, p), {}, {
                   archived: action === "archive"
-                }) : product;
+                }) : p;
               });
             });
             setSelectedProducts([]);
-            _context5.next = 19;
+            setError(null);
+            _context5.next = 13;
             break;
-          case 15:
-            _context5.prev = 15;
+          case 10:
+            _context5.prev = 10;
             _context5.t0 = _context5["catch"](2);
-            console.error("Error ".concat(action, "ing products:"), ((_error$response4 = _context5.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context5.t0.message);
-            alert("Failed to ".concat(action, " products."));
-          case 19:
+            setError(((_err$response5 = _context5.t0.response) === null || _err$response5 === void 0 || (_err$response5 = _err$response5.data) === null || _err$response5 === void 0 ? void 0 : _err$response5.message) || "Failed to ".concat(action, " products."));
+          case 13:
           case "end":
             return _context5.stop();
         }
-      }, _callee5, null, [[2, 15]]);
+      }, _callee5, null, [[2, 10]]);
     }));
-    return function handleBulkAction(_x3) {
+    return function handleBulkAction(_x4) {
       return _ref5.apply(this, arguments);
     };
   }();
+  var toggleSelectProduct = function toggleSelectProduct(id) {
+    setSelectedProducts(function (prev) {
+      return prev.includes(id) ? prev.filter(function (pid) {
+        return pid !== id;
+      }) : [].concat(_toConsumableArray(prev), [id]);
+    });
+  };
+  var toggleSelectAll = function toggleSelectAll() {
+    setSelectedProducts(selectedProducts.length === filteredProducts.length ? [] : filteredProducts.map(function (p) {
+      return p.id;
+    }).filter(Boolean) // Ensure valid IDs
+    );
+  };
   var handleToggleArchived = function handleToggleArchived() {
     setShowArchived(function (prev) {
       return !prev;
     });
-    setPagination(_objectSpread(_objectSpread({}, pagination), {}, {
-      currentPage: 1
-    }));
+    setPagination(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        currentPage: 1,
+        totalPages: totalPages
+      });
+    });
     setSelectedProducts([]);
   };
-  var productsPerPage = 8;
-  var totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-  var currentPageProducts = filteredProducts.slice((pagination.currentPage - 1) * productsPerPage, pagination.currentPage * productsPerPage);
   var handlePageChange = function handlePageChange(page) {
-    setPagination(_objectSpread(_objectSpread({}, pagination), {}, {
-      currentPage: page
-    }));
+    if (page >= 1 && page <= totalPages) {
+      setPagination(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, {
+          currentPage: page
+        });
+      });
+    }
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "app",
@@ -14809,6 +14734,9 @@ var Product = function Product() {
         className: "product-products",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
           children: showArchived ? "Archived Products" : "Products"
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+          className: "error-message",
+          children: error
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "product-products-header",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -14819,7 +14747,7 @@ var Product = function Product() {
               placeholder: "Search Products",
               value: searchTerm,
               onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
+                return setSearchTerm(e.target.value || "");
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -14832,7 +14760,9 @@ var Product = function Product() {
               children: showArchived ? "Restore All" : "Archive All"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
               className: "header-button",
-              onClick: handleAddNewClick,
+              onClick: function onClick() {
+                return toggleModal("add", true);
+              },
               children: "Add New"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
               className: "header-button",
@@ -14846,15 +14776,14 @@ var Product = function Product() {
                   return setFilterOpen(!filterOpen);
                 },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                  children: "Filter"
+                  children: filterLabel
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaChevronDown, {})]
               }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
                 className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
+                children: categories.map(function (option) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
                     onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
+                      return handleFilterSelect(option.value, option.label);
                     },
                     children: option.label
                   }, option.value);
@@ -14885,9 +14814,9 @@ var Product = function Product() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                   children: "Seller"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-                  children: "Product Image"
+                  children: "Image"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-                  children: "Product Name"
+                  children: "Name"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                   children: "Category"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
@@ -14899,9 +14828,10 @@ var Product = function Product() {
                 })]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
-              children: currentPageProducts.length > 0 ? currentPageProducts.map(function (product) {
+              children: currentProducts.length > 0 ? currentProducts.map(function (product) {
+                var _product$quantity;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                  children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                       className: "action-icons",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
@@ -14922,53 +14852,56 @@ var Product = function Product() {
                         size: 16,
                         className: "restore-icon",
                         onClick: function onClick() {
-                          return handleRestoreProduct(product.id);
+                          return handleArchive(product.id, false);
                         }
                       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
                         size: 16,
                         className: "delete-icon",
                         onClick: function onClick() {
-                          return handleArchiveClick(product);
+                          return toggleModal("confirm", true, product);
                         }
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
                         size: 16,
                         className: "edit-icon",
                         onClick: function onClick() {
-                          return handleEditClick(product);
+                          return toggleModal("edit", true, product);
                         }
                       })]
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-                    children: product.profile_name
+                    children: product.profile_name || "N/A"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                     children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
                       src: product.product_img,
-                      alt: product.product_name,
+                      alt: product.product_name || "Product",
                       className: "product-image",
                       style: {
                         width: "3rem",
                         height: "3rem",
                         objectFit: "cover"
-                      }
-                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-                      children: "No Image"
-                    })
+                      },
+                      onError: function onError(e) {
+                        return e.target.src = "/fallback-image.jpg";
+                      } // Fallback image
+                    }) : "No Image"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-                    children: product.product_name
+                    children: product.product_name || "Unnamed"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-                    children: product.category
+                    children: product.category || "Uncategorized"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-                    children: product.brand
+                    children: product.brand || "N/A"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
-                    children: ["\u20B1", product.price]
+                    children: ["\u20B1", (product.price || 0).toLocaleString("en-US", {
+                      minimumFractionDigits: 2
+                    })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-                    children: product.quantity
+                    children: (_product$quantity = product.quantity) !== null && _product$quantity !== void 0 ? _product$quantity : "N/A"
                   })]
-                }, product.id);
+                }, product.id || Math.random());
               }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                   colSpan: "8",
-                  children: products.length === 0 ? "No products available" : "No products match the current filters"
+                  children: products.length === 0 ? "No products available" : "No matching products found"
                 })
               })
             })]
@@ -14982,52 +14915,57 @@ var Product = function Product() {
               return handlePageChange(pagination.currentPage - 1);
             },
             disabled: pagination.currentPage <= 1,
-            children: ">            "
-          }), _toConsumableArray(Array(totalPages)).map(function (_, index) {
+            children: "<"
+          }), _toConsumableArray(Array(totalPages)).map(function (_, i) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-              className: pagination.currentPage === index + 1 ? "active" : "",
+              className: pagination.currentPage === i + 1 ? "active" : "",
               onClick: function onClick() {
-                return handlePageChange(index + 1);
+                return handlePageChange(i + 1);
               },
-              children: index + 1
-            }, index);
+              children: i + 1
+            }, i);
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             onClick: function onClick() {
               return handlePageChange(pagination.currentPage + 1);
             },
             disabled: pagination.currentPage >= totalPages,
-            children: ">            "
+            children: ">"
           })]
         })]
       })
     }), isAddModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AddProductModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      onClose: handleModalClose,
+      onClose: function onClose() {
+        return toggleModal("add", false);
+      },
       onSubmit: handleProductAdd
-    }), isEditModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditProductModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      onClose: handleModalClose,
-      onEdit: handleProductEdit // Changed from onSubmit to onEdit
-      ,
+    }), isEditModalOpen && productToEdit && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_EditProductModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      onClose: function onClose() {
+        return toggleModal("edit", false);
+      },
+      onEdit: handleProductEdit,
       product: productToEdit
-    }), isConfirmModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }), isConfirmModalOpen && productToArchive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "confirm-modal-overlay",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "confirm-modal",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-          children: "Are you sure?"
+          children: "Confirm Archive"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
-          children: ["Do you want to archive \"", productToArchive === null || productToArchive === void 0 ? void 0 : productToArchive.product_name, "\"?"]
+          children: ["Archive \"", productToArchive.product_name || "this product", "\"?"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "confirm-modal-buttons",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "confirm-button",
-            onClick: handleArchiveConfirm,
-            children: "Yes, Archive"
+            onClick: function onClick() {
+              return handleArchive(productToArchive.id, true);
+            },
+            children: "Yes"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "cancel-button",
             onClick: function onClick() {
-              return setIsConfirmModalOpen(false);
+              return toggleModal("confirm", false);
             },
-            children: "Cancel"
+            children: "No"
           })]
         })]
       })
@@ -17100,66 +17038,45 @@ var Roles = function Roles() {
     _useState4 = _slicedToArray(_useState3, 2),
     searchTerm = _useState4[0],
     setSearchTerm = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    filterValue = _useState6[0],
-    setFilterValue = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showArchived = _useState6[0],
+    setShowArchived = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    filterOpen = _useState8[0],
-    setFilterOpen = _useState8[1];
+    selectedRoles = _useState8[0],
+    setSelectedRoles = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    showArchived = _useState10[0],
-    setShowArchived = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    isConfirmModalOpen = _useState10[0],
+    setIsConfirmModalOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    selectedRoles = _useState12[0],
-    setSelectedRoles = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState14 = _slicedToArray(_useState13, 2),
-    isConfirmModalOpen = _useState14[0],
-    setIsConfirmModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState16 = _slicedToArray(_useState15, 2),
-    roleToArchive = _useState16[0],
-    setRoleToArchive = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    roleToArchive = _useState12[0],
+    setRoleToArchive = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       currentPage: 1,
       totalPages: 1
     }),
+    _useState14 = _slicedToArray(_useState13, 2),
+    pagination = _useState14[0],
+    setPagination = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState16 = _slicedToArray(_useState15, 2),
+    loading = _useState16[0],
+    setLoading = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState18 = _slicedToArray(_useState17, 2),
-    pagination = _useState18[0],
-    setPagination = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    isModalOpen = _useState18[0],
+    setIsModalOpen = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState20 = _slicedToArray(_useState19, 2),
-    loading = _useState20[0],
-    setLoading = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isEditMode = _useState20[0],
+    setIsEditMode = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState22 = _slicedToArray(_useState21, 2),
-    isModalOpen = _useState22[0],
-    setIsModalOpen = _useState22[1];
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState24 = _slicedToArray(_useState23, 2),
-    isEditMode = _useState24[0],
-    setIsEditMode = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState26 = _slicedToArray(_useState25, 2),
-    roleToEdit = _useState26[0],
-    setRoleToEdit = _useState26[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All Roles"
-  }, {
-    value: "Admin",
-    label: "Admin"
-  }, {
-    value: "Customer",
-    label: "Customer"
-  }, {
-    value: "Seller",
-    label: "Seller"
-  }];
+    roleToEdit = _useState22[0],
+    setRoleToEdit = _useState22[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -17219,9 +17136,8 @@ var Roles = function Roles() {
   }, []);
   var filteredRoles = roles.filter(function (role) {
     var matchesSearch = role.role_name.toLowerCase().includes(searchTerm.toLowerCase());
-    var matchesFilter = filterValue === "all" || role.role_name.toLowerCase() === filterValue.toLowerCase();
     var matchesArchived = role.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
   var toggleSelectRole = function toggleSelectRole(roleId) {
     setSelectedRoles(function (prev) {
@@ -17461,7 +17377,7 @@ var Roles = function Roles() {
   }();
   var handleRoleUpdate = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(updatedRole) {
-      var token, payload, response, editedRole, _error$response3, _error$response4, _error$response5;
+      var token, payload, response, editedRole, _error$response3;
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
           case 0:
@@ -17493,20 +17409,17 @@ var Roles = function Roles() {
                   return role.id === editedRole.id ? editedRole : role;
                 });
               });
-              setIsModalOpen(false); // Ensure this runs
-              setRoleToEdit(null); // Ensure this runs
+              setIsModalOpen(false);
+              setRoleToEdit(null);
               console.log("Role updated successfully:", editedRole);
             }
-            _context6.next = 15;
+            _context6.next = 13;
             break;
           case 10:
             _context6.prev = 10;
             _context6.t0 = _context6["catch"](0);
             console.error("Error updating role:", JSON.stringify(((_error$response3 = _context6.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context6.t0.message));
-            console.log("Response status:", (_error$response4 = _context6.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.status);
-            console.log("Response data:", (_error$response5 = _context6.t0.response) === null || _error$response5 === void 0 ? void 0 : _error$response5.data);
-            // Optionally keep modal open on error to show feedback
-          case 15:
+          case 13:
           case "end":
             return _context6.stop();
         }
@@ -17563,28 +17476,6 @@ var Roles = function Roles() {
               className: "header-button",
               onClick: handleToggleArchived,
               children: showArchived ? "View Active" : "View Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "filter-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                className: "filter-button",
-                onClick: function onClick() {
-                  return setFilterOpen(!filterOpen);
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  children: "Filter"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-              }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                    onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
-                    },
-                    children: option.label
-                  }, option.value);
-                })
-              })]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -17746,12 +17637,12 @@ var RoleModal = function RoleModal(_ref7) {
     isEdit = _ref7$isEdit === void 0 ? false : _ref7$isEdit,
     _ref7$initialData = _ref7.initialData,
     initialData = _ref7$initialData === void 0 ? null : _ref7$initialData;
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      role_name: isEdit && initialData ? initialData.role_name : ''
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      role_name: isEdit && initialData ? initialData.role_name : ""
     }),
-    _useState28 = _slicedToArray(_useState27, 2),
-    formData = _useState28[0],
-    setFormData = _useState28[1];
+    _useState24 = _slicedToArray(_useState23, 2),
+    formData = _useState24[0],
+    setFormData = _useState24[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isEdit && initialData) {
       setFormData({
@@ -19644,7 +19535,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_components_usersdashboard_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../sass/components/_usersdashboard.scss */ "./resources/sass/components/_usersdashboard.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -19696,71 +19586,62 @@ var UsersDashboard = function UsersDashboard() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
     _useState6 = _slicedToArray(_useState5, 2),
     filterValue = _useState6[0],
-    setFilterValue = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    setFilterValue = _useState6[1]; // Default to "all"
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("All"),
     _useState8 = _slicedToArray(_useState7, 2),
-    filterOpen = _useState8[0],
-    setFilterOpen = _useState8[1];
+    filterLabel = _useState8[0],
+    setFilterLabel = _useState8[1]; // Default label to "All"
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    showArchived = _useState10[0],
-    setShowArchived = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    filterOpen = _useState10[0],
+    setFilterOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState12 = _slicedToArray(_useState11, 2),
-    selectedUsers = _useState12[0],
-    setSelectedUsers = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    showArchived = _useState12[0],
+    setShowArchived = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState14 = _slicedToArray(_useState13, 2),
-    isConfirmModalOpen = _useState14[0],
-    setIsConfirmModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    selectedUsers = _useState14[0],
+    setSelectedUsers = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState16 = _slicedToArray(_useState15, 2),
-    userToArchive = _useState16[0],
-    setUserToArchive = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    isConfirmModalOpen = _useState16[0],
+    setIsConfirmModalOpen = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    userToArchive = _useState18[0],
+    setUserToArchive = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       currentPage: 1,
       totalPages: 1
     }),
-    _useState18 = _slicedToArray(_useState17, 2),
-    pagination = _useState18[0],
-    setPagination = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState20 = _slicedToArray(_useState19, 2),
-    loading = _useState20[0],
-    setLoading = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    pagination = _useState20[0],
+    setPagination = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState22 = _slicedToArray(_useState21, 2),
-    isModalOpen = _useState22[0],
-    setIsModalOpen = _useState22[1];
+    loading = _useState22[0],
+    setLoading = _useState22[1];
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState24 = _slicedToArray(_useState23, 2),
-    isEditMode = _useState24[0],
-    setIsEditMode = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    isModalOpen = _useState24[0],
+    setIsModalOpen = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState26 = _slicedToArray(_useState25, 2),
-    userToEdit = _useState26[0],
-    setUserToEdit = _useState26[1];
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    isEditMode = _useState26[0],
+    setIsEditMode = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState28 = _slicedToArray(_useState27, 2),
-    roles = _useState28[0],
-    setRoles = _useState28[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All Users"
-  }, {
-    value: "Admin",
-    label: "Admins"
-  }, {
-    value: "Customer",
-    label: "Customers"
-  }, {
-    value: "Seller",
-    label: "Sellers"
-  }];
+    userToEdit = _useState28[0],
+    setUserToEdit = _useState28[1];
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState30 = _slicedToArray(_useState29, 2),
+    roles = _useState30[0],
+    setRoles = _useState30[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, config, _yield$Promise$all, _yield$Promise$all2, activeResponse, archivedResponse, rolesResponse, activeUsers, archivedUsers, _error$response;
+        var token, config, _yield$Promise$all, _yield$Promise$all2, activeResponse, archivedResponse, rolesResponse, activeUsers, archivedUsers, roleOptions, _error$response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -19773,7 +19654,7 @@ var UsersDashboard = function UsersDashboard() {
                 }
               } : {};
               _context.next = 6;
-              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/users", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/users/archived", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/roles", config)]);
+              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/users", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/users/archived", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/roles/activeroles", config)]);
             case 6:
               _yield$Promise$all = _context.sent;
               _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 3);
@@ -19782,6 +19663,7 @@ var UsersDashboard = function UsersDashboard() {
               rolesResponse = _yield$Promise$all2[2];
               console.log("Active Users Response:", activeResponse.data);
               console.log("Archived Users Response:", archivedResponse.data);
+              console.log("Roles Response:", rolesResponse.data);
               activeUsers = activeResponse.data.map(function (user) {
                 return _objectSpread(_objectSpread({}, user), {}, {
                   archived: false
@@ -19793,24 +19675,39 @@ var UsersDashboard = function UsersDashboard() {
                 });
               });
               setUsers([].concat(_toConsumableArray(activeUsers), _toConsumableArray(archivedUsers)));
-              setRoles(rolesResponse.data || []);
-              _context.next = 24;
+
+              // Map roles to filter options
+              roleOptions = rolesResponse.data.map(function (role) {
+                return {
+                  value: role.role_name.toLowerCase(),
+                  label: role.role_name
+                };
+              });
+              setRoles([{
+                value: "all",
+                label: "All"
+              }].concat(_toConsumableArray(roleOptions))); // Set "All" as default
+              _context.next = 27;
               break;
-            case 19:
-              _context.prev = 19;
+            case 21:
+              _context.prev = 21;
               _context.t0 = _context["catch"](0);
-              console.error("Error fetching users:", _context.t0);
+              console.error("Error fetching data:", _context.t0);
               console.log("Response:", (_error$response = _context.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data);
               setUsers([]);
-            case 24:
-              _context.prev = 24;
-              setLoading(false);
-              return _context.finish(24);
+              setRoles([{
+                value: "all",
+                label: "All"
+              }]); // Fallback with "All"
             case 27:
+              _context.prev = 27;
+              setLoading(false);
+              return _context.finish(27);
+            case 30:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 19, 24, 27]]);
+        }, _callee, null, [[0, 21, 27, 30]]);
       }));
       return function fetchData() {
         return _ref.apply(this, arguments);
@@ -19821,7 +19718,7 @@ var UsersDashboard = function UsersDashboard() {
   var filteredUsers = users.filter(function (user) {
     var _user$username, _user$role_name;
     var matchesSearch = (_user$username = user.username) === null || _user$username === void 0 ? void 0 : _user$username.toLowerCase().includes(searchTerm.toLowerCase());
-    var matchesFilter = filterValue === "all" || ((_user$role_name = user.role_name) === null || _user$role_name === void 0 ? void 0 : _user$role_name.toLowerCase()) === filterValue.toLowerCase();
+    var matchesFilter = filterValue === "all" || ((_user$role_name = user.role_name) === null || _user$role_name === void 0 ? void 0 : _user$role_name.toLowerCase()) === filterValue;
     var matchesArchived = user.archived === showArchived;
     return matchesSearch && matchesFilter && matchesArchived;
   });
@@ -19924,7 +19821,6 @@ var UsersDashboard = function UsersDashboard() {
           case 4:
             response = _context3.sent;
             if (response.status === 200) {
-              // Fixed status check from 201 to 200 for PATCH
               setUsers(function (prevUsers) {
                 return prevUsers.map(function (user) {
                   return user.id === userId ? _objectSpread(_objectSpread({}, user), {}, {
@@ -20006,20 +19902,19 @@ var UsersDashboard = function UsersDashboard() {
   };
   var handleEditClick = /*#__PURE__*/function () {
     var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(user) {
-      var _roles$find, token, response, _error$response2;
+      var _roles$find, token, response;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) switch (_context5.prev = _context5.next) {
           case 0:
             _context5.prev = 0;
             token = localStorage.getItem("LaravelPassportToken");
-            console.log("Token:", token); // Debug token
-            _context5.next = 5;
+            _context5.next = 4;
             return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/users/".concat(user.id), {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 5:
+          case 4:
             response = _context5.sent;
             console.log("User data fetched for edit:", response.data);
             setUserToEdit(_objectSpread(_objectSpread({}, user), {}, {
@@ -20029,23 +19924,22 @@ var UsersDashboard = function UsersDashboard() {
               suffix: response.data.suffix || '',
               gender: response.data.gender || '',
               role_id: response.data.role_name ? ((_roles$find = roles.find(function (r) {
-                return r.role_name === response.data.role_name;
-              })) === null || _roles$find === void 0 ? void 0 : _roles$find.id) || '' : ''
+                return r.label === response.data.role_name;
+              })) === null || _roles$find === void 0 ? void 0 : _roles$find.value) || '' : ''
             }));
             setIsEditMode(true);
             setIsModalOpen(true);
-            _context5.next = 16;
+            _context5.next = 14;
             break;
-          case 12:
-            _context5.prev = 12;
+          case 11:
+            _context5.prev = 11;
             _context5.t0 = _context5["catch"](0);
             console.error("Error fetching user for edit:", _context5.t0);
-            console.log("Error response:", (_error$response2 = _context5.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data);
-          case 16:
+          case 14:
           case "end":
             return _context5.stop();
         }
-      }, _callee5, null, [[0, 12]]);
+      }, _callee5, null, [[0, 11]]);
     }));
     return function handleEditClick(_x3) {
       return _ref5.apply(this, arguments);
@@ -20058,7 +19952,7 @@ var UsersDashboard = function UsersDashboard() {
   };
   var handleUserAdd = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(newUser) {
-      var response, _roles$find2, addedUser, _error$response3;
+      var response, _roles$find2, addedUser, _error$response2;
       return _regeneratorRuntime().wrap(function _callee6$(_context6) {
         while (1) switch (_context6.prev = _context6.next) {
           case 0:
@@ -20072,36 +19966,30 @@ var UsersDashboard = function UsersDashboard() {
           case 3:
             response = _context6.sent;
             if (response.status === 201) {
-              console.log("Response data:", response.data);
               addedUser = {
                 id: response.data.user.id,
                 username: response.data.user.username,
                 email: response.data.user.email,
                 role_name: ((_roles$find2 = roles.find(function (r) {
-                  return r.id === parseInt(newUser.get('role_id'));
-                })) === null || _roles$find2 === void 0 ? void 0 : _roles$find2.role_name) || "Unknown",
+                  return r.value === newUser.get('role_id');
+                })) === null || _roles$find2 === void 0 ? void 0 : _roles$find2.label) || "Unknown",
                 profile_img: null,
-                // No profile_img on add
                 created_at: response.data.user.created_at || new Date().toISOString(),
                 updated_at: response.data.user.updated_at || new Date().toISOString(),
                 archived: false
               };
-              console.log("Added user object:", addedUser);
               setUsers(function (prevUsers) {
-                var updatedUsers = [addedUser].concat(_toConsumableArray(prevUsers));
-                console.log("Updated users state:", updatedUsers);
-                return updatedUsers;
+                return [addedUser].concat(_toConsumableArray(prevUsers));
               });
               setIsModalOpen(false);
             }
-            _context6.next = 11;
+            _context6.next = 10;
             break;
           case 7:
             _context6.prev = 7;
             _context6.t0 = _context6["catch"](0);
-            console.error("Error adding user:", ((_error$response3 = _context6.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context6.t0.message);
-            console.log("Full error response:", _context6.t0.response);
-          case 11:
+            console.error("Error adding user:", ((_error$response2 = _context6.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data) || _context6.t0.message);
+          case 10:
           case "end":
             return _context6.stop();
         }
@@ -20113,67 +20001,55 @@ var UsersDashboard = function UsersDashboard() {
   }();
   var handleUserUpdate = /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(updatedUser) {
-      var token, formDataEntries, _iterator, _step, _step$value, key, value, response, _error$response4;
+      var token, response, _error$response3;
       return _regeneratorRuntime().wrap(function _callee7$(_context7) {
         while (1) switch (_context7.prev = _context7.next) {
           case 0:
             _context7.prev = 0;
             token = localStorage.getItem("LaravelPassportToken");
-            console.log("Sending update with token:", token);
-            formDataEntries = {};
-            _iterator = _createForOfIteratorHelper(updatedUser.entries());
-            try {
-              for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                _step$value = _slicedToArray(_step.value, 2), key = _step$value[0], value = _step$value[1];
-                formDataEntries[key] = value instanceof File ? value.name : value;
-              }
-            } catch (err) {
-              _iterator.e(err);
-            } finally {
-              _iterator.f();
-            }
-            console.log("Update payload (FormData contents):", formDataEntries);
-            _context7.next = 9;
+            _context7.next = 4;
             return axios__WEBPACK_IMPORTED_MODULE_6__["default"].post("http://127.0.0.1:8000/api/users/".concat(userToEdit.id), updatedUser, {
               headers: {
                 Authorization: "Bearer ".concat(token),
                 'Content-Type': 'multipart/form-data'
               }
             });
-          case 9:
+          case 4:
             response = _context7.sent;
             if (response.status === 200) {
-              console.log("Full response from update:", response.data);
               setUsers(function (prevUsers) {
-                var newUsers = prevUsers.map(function (user) {
+                return prevUsers.map(function (user) {
                   return user.id === response.data.id ? _objectSpread({}, response.data) : user;
                 });
-                console.log("Updated users state:", newUsers);
-                return newUsers;
               });
               setIsModalOpen(false);
               setIsEditMode(false);
               setUserToEdit(null);
-              console.log("User updated successfully:", response.data);
-              console.log("Expected image URL:", "".concat(baseImageUrl).concat(response.data.profile_img));
             }
-            _context7.next = 17;
+            _context7.next = 11;
             break;
-          case 13:
-            _context7.prev = 13;
+          case 8:
+            _context7.prev = 8;
             _context7.t0 = _context7["catch"](0);
-            console.error("Error updating user:", ((_error$response4 = _context7.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context7.t0.message);
-            console.log("Full error response:", _context7.t0.response);
-          case 17:
+            console.error("Error updating user:", ((_error$response3 = _context7.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context7.t0.message);
+          case 11:
           case "end":
             return _context7.stop();
         }
-      }, _callee7, null, [[0, 13]]);
+      }, _callee7, null, [[0, 8]]);
     }));
     return function handleUserUpdate(_x5) {
       return _ref7.apply(this, arguments);
     };
   }();
+  var handleFilterSelect = function handleFilterSelect(value, label) {
+    setFilterValue(value);
+    setFilterLabel(label);
+    setFilterOpen(false);
+    setPagination(_objectSpread(_objectSpread({}, pagination), {}, {
+      currentPage: 1
+    }));
+  };
   var usersPerPage = 10;
   var totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   var currentUsers = filteredUsers.slice((pagination.currentPage - 1) * usersPerPage, pagination.currentPage * usersPerPage);
@@ -20230,18 +20106,17 @@ var UsersDashboard = function UsersDashboard() {
                   return setFilterOpen(!filterOpen);
                 },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                  children: "Filter"
+                  children: filterLabel
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__.FaChevronDown, {})]
               }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
                 className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
+                children: roles.map(function (role) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
                     onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
+                      return handleFilterSelect(role.value, role.label);
                     },
-                    children: option.label
-                  }, option.value);
+                    children: role.label
+                  }, role.value);
                 })
               })]
             })]
@@ -20287,8 +20162,8 @@ var UsersDashboard = function UsersDashboard() {
                 })
               }) : currentUsers.length > 0 ? currentUsers.map(function (user) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                       className: "action-icons",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                         onClick: function onClick() {
@@ -20323,7 +20198,7 @@ var UsersDashboard = function UsersDashboard() {
                           return handleEditClick(user);
                         }
                       })]
-                    }), " "]
+                    })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
                     className: "username-cell",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
@@ -20331,8 +20206,7 @@ var UsersDashboard = function UsersDashboard() {
                       alt: "Profile",
                       className: "profile-picture",
                       onError: function onError(e) {
-                        console.log("Image load failed for:", "".concat(baseImageUrl).concat(user.profile_img));
-                        e.target.src = "".concat(baseImageUrl, "images/pfp/default.png");
+                        return e.target.src = "".concat(baseImageUrl, "images/pfp/default.png");
                       }
                     }), user.username || "N/A"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
@@ -20407,7 +20281,8 @@ var UsersDashboard = function UsersDashboard() {
       onClose: handleModalClose,
       onSubmit: isEditMode ? handleUserUpdate : handleUserAdd,
       isEdit: isEditMode,
-      initialData: userToEdit
+      initialData: userToEdit,
+      roles: roles // Pass roles to UserModal if needed
     })]
   });
 };
@@ -26892,7 +26767,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".app {\n  display: flex;\n  flex-direction: row;\n  min-height: 100vh;\n}\n\n.dashboard {\n  flex: 1;\n  padding: 80px 20px 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: white;\n  transition: margin-left 0.3s ease-in-out;\n  overflow-x: hidden;\n}\n.dashboard.sidebar-expanded {\n  margin-left: 250px;\n}\n.dashboard.sidebar-collapsed {\n  margin-left: 0;\n}\n@media (max-width: 768px) {\n  .dashboard {\n    padding: 60px 10px 10px;\n  }\n  .dashboard.sidebar-expanded {\n    margin-left: 0;\n  }\n}\n\n.stats {\n  display: flex;\n  gap: 15px;\n  margin-bottom: 15px;\n  flex-wrap: wrap;\n}\n.stats:first-child {\n  margin-top: 0;\n}\n@media (max-width: 768px) {\n  .stats {\n    flex-direction: column;\n    gap: 10px;\n  }\n}\n\n.stat-box {\n  flex: 1;\n  background: #222;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 10px;\n  min-width: 150px;\n}\n.stat-box .icon {\n  font-size: 24px;\n  color: red;\n}\n.stat-box p {\n  margin: 5px 0;\n  font-size: 14px;\n}\n.stat-box h2 {\n  margin-top: 5px;\n  font-size: 1.5rem;\n}\n@media (max-width: 768px) {\n  .stat-box {\n    padding: 15px;\n  }\n  .stat-box h2 {\n    font-size: 1.2rem;\n  }\n}\n\n.orders {\n  color: white;\n  padding: 15px;\n  border-radius: 10px;\n  background: #333;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.orders h3 {\n  font-size: 1.25rem;\n  margin-bottom: 0.75rem;\n  font-weight: 600;\n  color: white;\n}\n.orders .search-container {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0.75rem;\n}\n@media (max-width: 768px) {\n  .orders .search-container {\n    justify-content: flex-start;\n  }\n}\n.orders .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #555;\n  border-radius: 5px;\n  background: white;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  cursor: text;\n}\n.orders .search-input:focus {\n  border-color: #ff0000;\n}\n@media (max-width: 768px) {\n  .orders .search-input {\n    width: 100%;\n  }\n}\n.orders .order-table {\n  overflow-x: auto;\n  padding: 0;\n  border-radius: 10px;\n  overflow-y: hidden;\n  -webkit-overflow-scrolling: touch;\n}\n.orders .order-table table {\n  width: 100%;\n  min-width: 700px;\n  border-collapse: collapse;\n  background: #333;\n  table-layout: fixed;\n}\n.orders .order-table th,\n.orders .order-table td {\n  padding: 10px 8px;\n  text-align: center;\n  border-bottom: 1px solid #ddd;\n  color: white;\n  font-size: 14px;\n  vertical-align: middle;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.orders .order-table th {\n  background: #ff0000;\n  font-weight: 600;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n.orders .order-table td {\n  background: #333;\n}\n.orders .order-table tr {\n  border-bottom: 1px solid #555;\n}\n.orders .order-table tr:last-child {\n  border-bottom: none;\n}\n.orders .order-table th:nth-child(1),\n.orders .order-table td:nth-child(1) {\n  width: 30px;\n}\n.orders .order-table th:nth-child(2),\n.orders .order-table td:nth-child(2) {\n  width: 60px;\n}\n.orders .order-table th:nth-child(3),\n.orders .order-table td:nth-child(3) {\n  width: 120px;\n}\n.orders .order-table th:nth-child(4),\n.orders .order-table td:nth-child(4) {\n  width: 120px;\n}\n.orders .order-table th:nth-child(5),\n.orders .order-table td:nth-child(5) {\n  width: 100px;\n}\n.orders .order-table th:nth-child(6),\n.orders .order-table td:nth-child(6) {\n  width: 50px;\n}\n.orders .order-table th:nth-child(7),\n.orders .order-table td:nth-child(7) {\n  width: 80px;\n}\n.orders .order-table th:nth-child(8),\n.orders .order-table td:nth-child(8) {\n  width: 100px;\n}\n.orders .order-table .checkbox {\n  transform: scale(1.2);\n}\n.orders .order-table .icon {\n  cursor: pointer;\n  font-size: 16px;\n  transition: color 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.orders .order-table .icon.view-icon {\n  color: #007bff;\n}\n.orders .order-table .icon.view-icon:hover {\n  color: #0056b3;\n}\n.orders .order-table .icon.delete-icon {\n  color: #dc3545;\n}\n.orders .order-table .icon.delete-icon:hover {\n  color: #a71d2a;\n}\n@media (max-width: 768px) {\n  .orders .order-table th,\n  .orders .order-table td {\n    padding: 8px 6px;\n    font-size: 12px;\n  }\n  .orders .order-table .checkbox {\n    transform: scale(1);\n  }\n  .orders .order-table .icon {\n    font-size: 14px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".app {\n  display: flex;\n  flex-direction: row;\n  min-height: 100vh;\n}\n\n.dashboard {\n  flex: 1;\n  padding: 80px 20px 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: white;\n  transition: margin-left 0.3s ease-in-out;\n  overflow-x: hidden;\n}\n.dashboard.sidebar-expanded {\n  margin-left: 250px;\n}\n.dashboard.sidebar-collapsed {\n  margin-left: 0;\n}\n@media (max-width: 768px) {\n  .dashboard {\n    padding: 60px 10px 10px;\n  }\n  .dashboard.sidebar-expanded {\n    margin-left: 0;\n  }\n}\n\n.stats {\n  display: flex;\n  gap: 15px;\n  margin-bottom: 15px;\n  flex-wrap: wrap;\n}\n.stats:first-child {\n  margin-top: 0;\n}\n@media (max-width: 768px) {\n  .stats {\n    flex-direction: column;\n    gap: 10px;\n  }\n}\n\n.stat-box {\n  flex: 1;\n  background: #222;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 10px;\n  min-width: 150px;\n}\n.stat-box .icon {\n  font-size: 24px;\n  color: red;\n}\n.stat-box p {\n  margin: 5px 0;\n  font-size: 14px;\n}\n.stat-box h2 {\n  margin-top: 5px;\n  font-size: 1.5rem;\n}\n.stat-box .loading-spinner {\n  width: 24px;\n  height: 24px;\n  border: 3px solid #ff0000;\n  border-top: 3px solid transparent;\n  border-radius: 50%;\n  animation: spin 1s linear infinite;\n  margin: 5px auto;\n}\n@media (max-width: 768px) {\n  .stat-box {\n    padding: 15px;\n  }\n  .stat-box h2 {\n    font-size: 1.2rem;\n  }\n  .stat-box .loading-spinner {\n    width: 20px;\n    height: 20px;\n  }\n}\n\n.orders {\n  color: white;\n  padding: 15px;\n  border-radius: 10px;\n  background: #333;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.orders h3 {\n  font-size: 1.25rem;\n  margin-bottom: 0.75rem;\n  font-weight: 600;\n  color: white;\n}\n.orders .search-container {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0.75rem;\n}\n@media (max-width: 768px) {\n  .orders .search-container {\n    justify-content: flex-start;\n  }\n}\n.orders .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #555;\n  border-radius: 5px;\n  background: white;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  cursor: text;\n}\n.orders .search-input:focus {\n  border-color: #ff0000;\n}\n@media (max-width: 768px) {\n  .orders .search-input {\n    width: 100%;\n  }\n}\n.orders .order-table {\n  overflow-x: auto;\n  padding: 0;\n  border-radius: 10px;\n  overflow-y: hidden;\n  -webkit-overflow-scrolling: touch;\n}\n.orders .order-table table {\n  width: 100%;\n  min-width: 700px;\n  border-collapse: collapse;\n  background: #333;\n  table-layout: fixed;\n}\n.orders .order-table th,\n.orders .order-table td {\n  padding: 10px 8px;\n  text-align: center;\n  border-bottom: 1px solid #ddd;\n  color: white;\n  font-size: 14px;\n  vertical-align: middle;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.orders .order-table th {\n  background: #ff0000;\n  font-weight: 600;\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n.orders .order-table td {\n  background: #333;\n}\n.orders .order-table tr {\n  border-bottom: 1px solid #555;\n}\n.orders .order-table tr:last-child {\n  border-bottom: none;\n}\n.orders .order-table th:nth-child(1),\n.orders .order-table td:nth-child(1) {\n  width: 30px;\n}\n.orders .order-table th:nth-child(2),\n.orders .order-table td:nth-child(2) {\n  width: 60px;\n}\n.orders .order-table th:nth-child(3),\n.orders .order-table td:nth-child(3) {\n  width: 120px;\n}\n.orders .order-table th:nth-child(4),\n.orders .order-table td:nth-child(4) {\n  width: 120px;\n}\n.orders .order-table th:nth-child(5),\n.orders .order-table td:nth-child(5) {\n  width: 100px;\n}\n.orders .order-table th:nth-child(6),\n.orders .order-table td:nth-child(6) {\n  width: 50px;\n}\n.orders .order-table th:nth-child(7),\n.orders .order-table td:nth-child(7) {\n  width: 80px;\n}\n.orders .order-table th:nth-child(8),\n.orders .order-table td:nth-child(8) {\n  width: 100px;\n}\n.orders .order-table .checkbox {\n  transform: scale(1.2);\n}\n.orders .order-table .icon {\n  cursor: pointer;\n  font-size: 16px;\n  transition: color 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.orders .order-table .icon.view-icon {\n  color: #007bff;\n}\n.orders .order-table .icon.view-icon:hover {\n  color: #0056b3;\n}\n.orders .order-table .icon.delete-icon {\n  color: #dc3545;\n}\n.orders .order-table .icon.delete-icon:hover {\n  color: #a71d2a;\n}\n@media (max-width: 768px) {\n  .orders .order-table th,\n  .orders .order-table td {\n    padding: 8px 6px;\n    font-size: 12px;\n  }\n  .orders .order-table .checkbox {\n    transform: scale(1);\n  }\n  .orders .order-table .icon {\n    font-size: 14px;\n  }\n}\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -27090,7 +26965,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n\n.product-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.product-dashboard .product-products {\n  width: 100%;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n}\n.product-dashboard .product-products .product-products-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products .product-products-header .left-actions {\n  flex-grow: 1;\n}\n.product-dashboard .product-products .product-products-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n}\n.product-dashboard .product-products .product-products-header .search-input:focus {\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button {\n  padding: 12px 20px;\n  width: 120px;\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions .archive-all-button {\n  background: #ff4444;\n  color: white;\n  border-color: #ff4444;\n}\n.product-dashboard .product-products .product-products-header .right-actions .archive-all-button:hover {\n  background: #ff1111;\n  border-color: #ff1111;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container {\n  position: relative;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button {\n  padding: 12px 20px;\n  width: 120px;\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 53px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown li:hover {\n  background: #ff0000;\n  color: white;\n}\n.product-dashboard .product-products .product-product-table {\n  width: 100%;\n  margin-top: 20px;\n}\n.product-dashboard .product-products .product-product-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.product-dashboard .product-products .product-product-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.product-dashboard .product-products .product-product-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.product-dashboard .product-products .product-product-table table td img {\n  width: 3rem;\n  height: 3rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.product-dashboard .product-products .product-product-table table tr {\n  border-bottom: 1px solid #555;\n}\n.product-dashboard .product-products .product-product-table table tr:last-child {\n  border-bottom: none;\n}\n.product-dashboard .product-products .product-product-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon,\n.product-dashboard .product-products .product-product-table .action-icons .restore-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .restore-icon:hover {\n  color: #ff0000 !important;\n}\n.product-dashboard .product-products .product-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products .product-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.product-dashboard .product-products .product-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.product-dashboard .product-products .product-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n.confirm-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.confirm-modal {\n  background: #fff;\n  padding: 20px;\n  border-radius: 8px;\n  width: 400px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.confirm-modal h3 {\n  margin: 0 0 10px;\n  color: #333;\n}\n.confirm-modal p {\n  margin: 0 0 20px;\n  color: #666;\n}\n.confirm-modal .confirm-modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button:hover {\n  background: #cc0000;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n\n.product-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.product-dashboard .product-products {\n  width: 100%;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n}\n.product-dashboard .product-products .error-message {\n  color: #ff0000;\n  font-size: 14px;\n  margin: 10px 0;\n}\n.product-dashboard .product-products .product-products-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products .product-products-header .left-actions {\n  flex-grow: 1;\n}\n.product-dashboard .product-products .product-products-header .left-actions .search-input {\n  padding: 8px 12px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  font-size: 14px;\n  width: 200px;\n  background: #fff;\n  color: #333;\n  outline: none;\n}\n.product-dashboard .product-products .product-products-header .left-actions .search-input:focus {\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button {\n  padding: 12px 20px;\n  width: 120px;\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: background 0.3s, color 0.3s, border-color 0.3s;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button.archive-all-button {\n  background: #ff4444;\n  color: white;\n  border-color: #ff4444;\n}\n.product-dashboard .product-products .product-products-header .right-actions .header-button.archive-all-button:hover {\n  background: #ff1111;\n  border-color: #ff1111;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container {\n  position: relative;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button {\n  padding: 12px 16px;\n  width: 100px; /* Slightly wider for readability */\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background 0.3s, color 0.3s, border-color 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button:hover {\n  background: #f8f8f8; /* Subtle hover effect */\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 50px; /* Adjusted for new height */\n  right: 0;\n  width: 140px; /* Matches filter-button */\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown li {\n  padding: 10px 16px;\n  color: #333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background 0.2s, color 0.2s;\n}\n.product-dashboard .product-products .product-products-header .right-actions .filter-container .filter-dropdown li:hover {\n  background: #ff0000;\n  color: white;\n}\n.product-dashboard .product-products .product-product-table {\n  width: 100%;\n  margin-top: 20px;\n}\n.product-dashboard .product-products .product-product-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.product-dashboard .product-products .product-product-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ffd700; /* Gold hover for contrast */\n}\n.product-dashboard .product-products .product-product-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.product-dashboard .product-products .product-product-table table td img {\n  width: 3rem;\n  height: 3rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.product-dashboard .product-products .product-product-table table tr {\n  border-bottom: 1px solid #555;\n}\n.product-dashboard .product-products .product-product-table table tr:last-child {\n  border-bottom: none;\n}\n.product-dashboard .product-products .product-product-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon,\n.product-dashboard .product-products .product-product-table .action-icons .restore-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .restore-icon:hover {\n  color: #ffd700; /* Consistent hover color */\n}\n.product-dashboard .product-products .product-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products .product-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.product-dashboard .product-products .product-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: background 0.3s, color 0.3s, border-color 0.3s;\n}\n.product-dashboard .product-products .product-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n.confirm-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.confirm-modal {\n  background: #fff;\n  padding: 20px;\n  border-radius: 8px;\n  width: 400px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.confirm-modal h3 {\n  margin: 0 0 10px;\n  color: #333;\n}\n.confirm-modal p {\n  margin: 0 0 20px;\n  color: #666;\n}\n.confirm-modal .confirm-modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button:hover {\n  background: #cc0000;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

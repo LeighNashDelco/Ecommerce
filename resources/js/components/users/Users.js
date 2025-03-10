@@ -23,7 +23,8 @@ const formatDate = (dateString) => {
 const UsersDashboard = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
+  const [filterValue, setFilterValue] = useState("all"); // Default to "all"
+  const [filterLabel, setFilterLabel] = useState("All"); // Default label to "All"
   const [filterOpen, setFilterOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -36,13 +37,6 @@ const UsersDashboard = () => {
   const [userToEdit, setUserToEdit] = useState(null);
   const [roles, setRoles] = useState([]);
 
-  const filterOptions = [
-    { value: "all", label: "All Users" },
-    { value: "Admin", label: "Admins" },
-    { value: "Customer", label: "Customers" },
-    { value: "Seller", label: "Sellers" },
-  ];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,20 +47,28 @@ const UsersDashboard = () => {
         const [activeResponse, archivedResponse, rolesResponse] = await Promise.all([
           axios.get("http://127.0.0.1:8000/api/users", config),
           axios.get("http://127.0.0.1:8000/api/users/archived", config),
-          axios.get("http://127.0.0.1:8000/api/roles", config),
+          axios.get("http://127.0.0.1:8000/api/roles/activeroles", config),
         ]);
 
         console.log("Active Users Response:", activeResponse.data);
         console.log("Archived Users Response:", archivedResponse.data);
+        console.log("Roles Response:", rolesResponse.data);
 
         const activeUsers = activeResponse.data.map(user => ({ ...user, archived: false }));
         const archivedUsers = archivedResponse.data.map(user => ({ ...user, archived: true }));
         setUsers([...activeUsers, ...archivedUsers]);
-        setRoles(rolesResponse.data || []);
+
+        // Map roles to filter options
+        const roleOptions = rolesResponse.data.map(role => ({
+          value: role.role_name.toLowerCase(),
+          label: role.role_name
+        }));
+        setRoles([{ value: "all", label: "All" }, ...roleOptions]); // Set "All" as default
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching data:", error);
         console.log("Response:", error.response?.data);
         setUsers([]);
+        setRoles([{ value: "all", label: "All" }]); // Fallback with "All"
       } finally {
         setLoading(false);
       }
@@ -76,7 +78,7 @@ const UsersDashboard = () => {
 
   const filteredUsers = users.filter((user) => {
     const matchesSearch = user.username?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterValue === "all" || user.role_name?.toLowerCase() === filterValue.toLowerCase();
+    const matchesFilter = filterValue === "all" || user.role_name?.toLowerCase() === filterValue;
     const matchesArchived = user.archived === showArchived;
     return matchesSearch && matchesFilter && matchesArchived;
   });
@@ -137,7 +139,7 @@ const UsersDashboard = () => {
         { archived: false },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      if (response.status === 200) { // Fixed status check from 201 to 200 for PATCH
+      if (response.status === 200) {
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
             user.id === userId ? { ...user, archived: false } : user
@@ -183,7 +185,6 @@ const UsersDashboard = () => {
   const handleEditClick = async (user) => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
-      console.log("Token:", token); // Debug token
       const response = await axios.get(`http://127.0.0.1:8000/api/users/${user.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -195,13 +196,12 @@ const UsersDashboard = () => {
         last_name: response.data.last_name || '',
         suffix: response.data.suffix || '',
         gender: response.data.gender || '',
-        role_id: response.data.role_name ? roles.find(r => r.role_name === response.data.role_name)?.id || '' : '',
+        role_id: response.data.role_name ? roles.find(r => r.label === response.data.role_name)?.value || '' : '',
       });
       setIsEditMode(true);
       setIsModalOpen(true);
     } catch (error) {
       console.error("Error fetching user for edit:", error);
-      console.log("Error response:", error.response?.data);
     }
   };
 
@@ -224,72 +224,59 @@ const UsersDashboard = () => {
       );
   
       if (response.status === 201) {
-        console.log("Response data:", response.data);
         const addedUser = {
           id: response.data.user.id,
           username: response.data.user.username,
           email: response.data.user.email,
-          role_name: roles.find((r) => r.id === parseInt(newUser.get('role_id')))?.role_name || "Unknown",
-          profile_img: null, // No profile_img on add
+          role_name: roles.find((r) => r.value === newUser.get('role_id'))?.label || "Unknown",
+          profile_img: null,
           created_at: response.data.user.created_at || new Date().toISOString(),
           updated_at: response.data.user.updated_at || new Date().toISOString(),
           archived: false,
         };
-        console.log("Added user object:", addedUser);
-        setUsers((prevUsers) => {
-          const updatedUsers = [addedUser, ...prevUsers];
-          console.log("Updated users state:", updatedUsers);
-          return updatedUsers;
-        });
+        setUsers((prevUsers) => [addedUser, ...prevUsers]);
         setIsModalOpen(false);
       }
     } catch (error) {
       console.error("Error adding user:", error.response?.data || error.message);
-      console.log("Full error response:", error.response);
     }
   };
 
   const handleUserUpdate = async (updatedUser) => {
     try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        console.log("Sending update with token:", token);
-
-        const formDataEntries = {};
-        for (let [key, value] of updatedUser.entries()) {
-            formDataEntries[key] = value instanceof File ? value.name : value;
+      const token = localStorage.getItem("LaravelPassportToken");
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/users/${userToEdit.id}`,
+        updatedUser,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
         }
-        console.log("Update payload (FormData contents):", formDataEntries);
-
-        const response = await axios.post(
-            `http://127.0.0.1:8000/api/users/${userToEdit.id}`,
-            updatedUser,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
+      );
+      if (response.status === 200) {
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === response.data.id ? { ...response.data } : user
+          )
         );
-        if (response.status === 200) {
-            console.log("Full response from update:", response.data);
-            setUsers((prevUsers) => {
-                const newUsers = prevUsers.map((user) =>
-                    user.id === response.data.id ? { ...response.data } : user
-                );
-                console.log("Updated users state:", newUsers);
-                return newUsers;
-            });
-            setIsModalOpen(false);
-            setIsEditMode(false);
-            setUserToEdit(null);
-            console.log("User updated successfully:", response.data);
-            console.log("Expected image URL:", `${baseImageUrl}${response.data.profile_img}`);
-        }
+        setIsModalOpen(false);
+        setIsEditMode(false);
+        setUserToEdit(null);
+      }
     } catch (error) {
-        console.error("Error updating user:", error.response?.data || error.message);
-        console.log("Full error response:", error.response);
+      console.error("Error updating user:", error.response?.data || error.message);
     }
-};
+  };
+
+  const handleFilterSelect = (value, label) => {
+    setFilterValue(value);
+    setFilterLabel(label);
+    setFilterOpen(false);
+    setPagination({ ...pagination, currentPage: 1 });
+  };
+
   const usersPerPage = 10;
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   const currentUsers = filteredUsers.slice(
@@ -340,20 +327,17 @@ const UsersDashboard = () => {
                   className="filter-button"
                   onClick={() => setFilterOpen(!filterOpen)}
                 >
-                  <span>Filter</span>
+                  <span>{filterLabel}</span>
                   <FaChevronDown />
                 </button>
                 {filterOpen && (
                   <ul className="filter-dropdown">
-                    {filterOptions.map((option) => (
+                    {roles.map((role) => (
                       <li
-                        key={option.value}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
+                        key={role.value}
+                        onClick={() => handleFilterSelect(role.value, role.label)}
                       >
-                        {option.label}
+                        {role.label}
                       </li>
                     ))}
                   </ul>
@@ -420,20 +404,17 @@ const UsersDashboard = () => {
                             className="edit-icon"
                             onClick={() => handleEditClick(user)}
                           />
-                        </div> {/* Added closing div tag */}
+                        </div>
                       </td>
                       <td className="username-cell">
-  <img
-    src={user.profile_img ? `${baseImageUrl}${user.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
-    alt="Profile"
-    className="profile-picture"
-    onError={(e) => {
-      console.log("Image load failed for:", `${baseImageUrl}${user.profile_img}`);
-      e.target.src = `${baseImageUrl}images/pfp/default.png`;
-    }}
-  />
-  {user.username || "N/A"}
-</td>
+                        <img
+                          src={user.profile_img ? `${baseImageUrl}${user.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
+                          alt="Profile"
+                          className="profile-picture"
+                          onError={(e) => (e.target.src = `${baseImageUrl}images/pfp/default.png`)}
+                        />
+                        {user.username || "N/A"}
+                      </td>
                       <td>{user.role_name || "N/A"}</td>
                       <td>{user.email || "N/A"}</td>
                       <td>{formatDate(user.created_at)}</td>
@@ -498,6 +479,7 @@ const UsersDashboard = () => {
           onSubmit={isEditMode ? handleUserUpdate : handleUserAdd}
           isEdit={isEditMode}
           initialData={userToEdit}
+          roles={roles} // Pass roles to UserModal if needed
         />
       )}
     </div>

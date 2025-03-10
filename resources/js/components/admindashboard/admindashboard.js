@@ -38,6 +38,7 @@ const AdminDashboard = () => {
     total_product_sales: 0,
   });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     setAuthHeader(); // Set header on mount
@@ -47,6 +48,7 @@ const AdminDashboard = () => {
         const token = localStorage.getItem("LaravelPassportToken");
         if (!token) throw new Error("No token found. Please log in.");
 
+        setLoading(true); // Start loading
         const [totalsResponse, ordersResponse] = await Promise.all([
           axios.get("http://127.0.0.1:8000/api/dashboard/totals", {
             headers: { Authorization: `Bearer ${token}` },
@@ -58,9 +60,11 @@ const AdminDashboard = () => {
 
         setStats(totalsResponse.data);
         setOrders(ordersResponse.data);
+        setLoading(false); // Stop loading
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
         setError(error.response ? error.response.data.message : "Failed to load dashboard data.");
+        setLoading(false); // Stop loading on error
       }
     };
 
@@ -99,39 +103,39 @@ const AdminDashboard = () => {
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Customers</p>
-            <h2>{stats.total_customers}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_customers}</h2>}
           </div>
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Sellers</p>
-            <h2>{stats.total_sellers}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_sellers}</h2>}
           </div>
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Admins</p>
-            <h2>{stats.total_admins}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_admins}</h2>}
           </div>
         </div>
         <div className="stats">
           <div className="stat-box">
             <FaBoxOpen className="icon" />
             <p>Total Products</p>
-            <h2>{stats.total_products}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_products}</h2>}
           </div>
           <div className="stat-box">
             <FaShoppingCart className="icon" />
             <p>Total Orders</p>
-            <h2>{stats.total_orders}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_orders}</h2>}
           </div>
           <div className="stat-box">
             <FaMoneyBill className="icon" />
             <p>Total Earnings</p>
-            <h2>₱{stats.total_earnings}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>₱{stats.total_earnings}</h2>}
           </div>
           <div className="stat-box">
             <FaChartBar className="icon" />
             <p>Total Product Sales</p>
-            <h2>{stats.total_product_sales}</h2>
+            {loading ? <div className="loading-spinner"></div> : <h2>{stats.total_product_sales}</h2>}
           </div>
         </div>
         <div className="orders">

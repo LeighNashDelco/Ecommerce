@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "./../topnavbar/TopNavbar";
-import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
+import { FaSquare, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
-import CustomerModal from "./CustomerModal"; // New modal
+import CustomerModal from "./CustomerModal";
 import "./../../../sass/components/_customerlist.scss";
 
 const formatDate = (dateString) => {
@@ -24,8 +24,6 @@ const formatDate = (dateString) => {
 const CustomerList = () => {
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
-  const [filterOpen, setFilterOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -37,12 +35,7 @@ const CustomerList = () => {
   const [customerToEdit, setCustomerToEdit] = useState(null);
   const navigate = useNavigate();
 
-  const filterOptions = [
-    { value: "all", label: "All" },
-    { value: "customer", label: "Customer" },
-  ];
-
-  const baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
+  const baseImageUrl = "http://127.0.0.1:8000/";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,9 +68,8 @@ const CustomerList = () => {
 
   const filteredCustomers = customers.filter((customer) => {
     const matchesSearch = customer.username?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterValue === "all" || customer.role_name?.toLowerCase() === filterValue;
     const matchesArchived = customer.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
 
   const toggleSelectCustomer = (customerId) => {
@@ -226,8 +218,8 @@ const CustomerList = () => {
           id: response.data.user.id,
           username: response.data.user.username,
           email: response.data.user.email,
-          role_name: "Customer", // Hardcoded since role_id is 2
-          profile_img: null, // No profile_img on add
+          role_name: "Customer",
+          profile_img: null,
           created_at: response.data.user.created_at || new Date().toISOString(),
           updated_at: response.data.user.updated_at || new Date().toISOString(),
           archived: false,
@@ -242,43 +234,43 @@ const CustomerList = () => {
 
   const handleCustomerUpdate = async (updatedCustomer) => {
     try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        console.log("Sending update with token:", token);
+      const token = localStorage.getItem("LaravelPassportToken");
+      console.log("Sending update with token:", token);
 
-        const formDataEntries = {};
-        for (let [key, value] of updatedCustomer.entries()) {
-            formDataEntries[key] = value instanceof File ? value.name : value;
+      const formDataEntries = {};
+      for (let [key, value] of updatedCustomer.entries()) {
+        formDataEntries[key] = value instanceof File ? value.name : value;
+      }
+      console.log("Update payload (FormData contents):", formDataEntries);
+
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/users/${customerToEdit.id}`,
+        updatedCustomer,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
         }
-        console.log("Update payload (FormData contents):", formDataEntries);
-
-        const response = await axios.post(
-            `http://127.0.0.1:8000/api/users/${customerToEdit.id}`,
-            updatedCustomer,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
+      );
+      if (response.status === 200) {
+        console.log("Full response from update:", response.data);
+        setCustomers((prevCustomers) =>
+          prevCustomers.map((customer) =>
+            customer.id === response.data.id ? { ...response.data } : customer
+          )
         );
-        if (response.status === 200) {
-            console.log("Full response from update:", response.data);
-            setCustomers((prevCustomers) =>
-                prevCustomers.map((customer) =>
-                    customer.id === response.data.id ? { ...response.data } : customer
-                )
-            );
-            setIsModalOpen(false);
-            setIsEditMode(false);
-            setCustomerToEdit(null);
-            console.log("Customer updated successfully:", response.data);
-            console.log("Expected image URL:", `${baseImageUrl}${response.data.profile_img}`);
-        }
+        setIsModalOpen(false);
+        setIsEditMode(false);
+        setCustomerToEdit(null);
+        console.log("Customer updated successfully:", response.data);
+        console.log("Expected image URL:", `${baseImageUrl}${response.data.profile_img}`);
+      }
     } catch (error) {
-        console.error("Error updating customer:", error.response?.data || error.message);
-        console.log("Full error response:", error.response);
+      console.error("Error updating customer:", error.response?.data || error.message);
+      console.log("Full error response:", error.response);
     }
-};
+  };
 
   const customersPerPage = 5;
   const totalPages = Math.ceil(filteredCustomers.length / customersPerPage);
@@ -323,30 +315,6 @@ const CustomerList = () => {
               <button className="header-button" onClick={handleToggleArchived}>
                 {showArchived ? "View Active" : "View Archived"}
               </button>
-              <div className="filter-container">
-                <button
-                  className="filter-button"
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  <span>Filter</span>
-                  <FaChevronDown />
-                </button>
-                {filterOpen && (
-                  <ul className="filter-dropdown">
-                    {filterOptions.map((option) => (
-                      <li
-                        key={option.value}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
-                      >
-                        {option.label}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
             </div>
           </div>
 
@@ -411,15 +379,15 @@ const CustomerList = () => {
                         </div>
                       </td>
                       <td className="username-cell">
-                      <img
-  src={customer.profile_img ? `${baseImageUrl}${customer.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
-  alt="Profile"
-  className="profile-picture"
-  onError={(e) => {
-    console.log("Image load failed for:", `${baseImageUrl}${customer.profile_img}`);
-    e.target.src = `${baseImageUrl}images/pfp/default.png`;
-  }}
-/>
+                        <img
+                          src={customer.profile_img ? `${baseImageUrl}${customer.profile_img}` : `${baseImageUrl}images/pfp/default.png`}
+                          alt="Profile"
+                          className="profile-picture"
+                          onError={(e) => {
+                            console.log("Image load failed for:", `${baseImageUrl}${customer.profile_img}`);
+                            e.target.src = `${baseImageUrl}images/pfp/default.png`;
+                          }}
+                        />
                         {customer.username || "N/A"}
                       </td>
                       <td>{customer.email || "N/A"}</td>

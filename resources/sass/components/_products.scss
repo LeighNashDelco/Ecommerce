@@ -33,37 +33,43 @@ body {
       color: #333;
     }
 
+    .error-message {
+      color: #ff0000;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
     .product-products-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       background: #f4f4f4;
 
       .left-actions {
         flex-grow: 1;
-      }
 
-      .search-input {
-        width: 200px;
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff;
-        color: #333;
-        font-size: 14px;
-        outline: none;
+        .search-input {
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+          width: 200px;
+          background: #fff;
+          color: #333;
+          outline: none;
 
-        &:focus {
-          border-color: #ff0000;
+          &:focus {
+            border-color: #ff0000;
+          }
         }
       }
 
       .right-actions {
         display: flex;
         gap: 10px;
-        justify-content: flex-end;
-      
+        align-items: center;
+
         .header-button {
           padding: 12px 20px;
           width: 120px;
@@ -74,28 +80,27 @@ body {
           color: #333;
           font-size: 14px;
           cursor: pointer;
-          transition: 0.3s;
+          transition: background 0.3s, color 0.3s, border-color 0.3s;
           text-align: center;
-          line-height: 1;
           display: flex;
           align-items: center;
           justify-content: center;
-      
+
           &:hover {
             background: #ff0000;
             color: white;
             border-color: #ff0000;
           }
-        }
-      
-        .archive-all-button {
-          background: #ff4444; // Different color to distinguish
-          color: white;
-          border-color: #ff4444;
-      
-          &:hover {
-            background: darken(#ff4444, 10%);
-            border-color: darken(#ff4444, 10%);
+
+          &.archive-all-button {
+            background: #ff4444;
+            color: white;
+            border-color: #ff4444;
+
+            &:hover {
+              background: darken(#ff4444, 10%);
+              border-color: darken(#ff4444, 10%);
+            }
           }
         }
 
@@ -103,24 +108,24 @@ body {
           position: relative;
 
           .filter-button {
-            padding: 12px 20px;
-            width: 120px;
+            padding: 12px 16px;
+            width: 100px; /* Slightly wider for readability */
             height: 48px;
             border: 1px solid #ccc;
             border-radius: 4px;
             background: #fff;
             color: #333;
             font-size: 14px;
+            font-weight: 400;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 5px;
+            gap: 8px;
 
             &:hover {
-              background: #ff0000;
-              color: white;
+              background: #f8f8f8; /* Subtle hover effect */
               border-color: #ff0000;
             }
 
@@ -132,23 +137,25 @@ body {
 
           .filter-dropdown {
             position: absolute;
-            top: 53px;
+            top: 50px; /* Adjusted for new height */
             right: 0;
-            width: 120px;
+            width: 140px; /* Matches filter-button */
             background: #fff;
             border: 1px solid #ccc;
             border-radius: 4px;
             list-style: none;
-            padding: 5px 0;
+            padding: 0;
             margin: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 10;
 
             li {
-              padding: 8px 15px;
+              padding: 10px 16px;
               color: #333;
               font-size: 14px;
+              font-weight: 400;
               cursor: pointer;
+              transition: background 0.2s, color 0.2s;
 
               &:hover {
                 background: #ff0000;
@@ -188,7 +195,7 @@ body {
               font-size: 16px;
 
               &:hover {
-                color: #ff0000;
+                color: #ffd700; /* Gold hover for contrast */
               }
             }
           }
@@ -228,12 +235,12 @@ body {
         .edit-icon,
         .restore-icon {
           color: #fff;
-          cursor: pointer !important;
+          cursor: pointer;
           font-size: 16px;
           transition: color 0.3s;
 
           &:hover {
-            color: #ff0000 !important;
+            color: #ffd700; /* Consistent hover color */
           }
         }
       }
@@ -260,7 +267,7 @@ body {
         color: #333;
         font-size: 14px;
         cursor: pointer;
-        transition: 0.3s;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
 
         &:hover {
           background: #ff0000;

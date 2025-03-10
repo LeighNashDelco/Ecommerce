@@ -1,262 +1,285 @@
 .app {
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.dashboard {
+  flex: 1;
+  padding: 80px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: white;
+  transition: margin-left 0.3s ease-in-out;
+  overflow-x: hidden; // Prevent horizontal scrolling on dashboard
+
+  &.sidebar-expanded {
+    margin-left: 250px;
   }
-  
-  .dashboard {
-    flex: 1;
-    padding: 80px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    background: white;
-    transition: margin-left 0.3s ease-in-out;
-    overflow-x: hidden; // Prevent horizontal scrolling on dashboard
-  
+
+  &.sidebar-collapsed {
+    margin-left: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 10px 10px; // Adjusted for 50px TopNavbar
     &.sidebar-expanded {
-      margin-left: 250px;
-    }
-  
-    &.sidebar-collapsed {
       margin-left: 0;
     }
-  
-    @media (max-width: 768px) {
-      padding: 60px 10px 10px; // Adjusted for 50px TopNavbar
-      &.sidebar-expanded {
-        margin-left: 0;
-      }
-    }
   }
-  
-  .stats {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-  
-    &:first-child {
-      margin-top: 0;
-    }
-  
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 10px;
-    }
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+
+  &:first-child {
+    margin-top: 0;
   }
-  
-  .stat-box {
-    flex: 1;
-    background: #222;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    min-width: 150px;
-  
-    .icon {
-      font-size: 24px;
-      color: red;
-    }
-  
-    p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-  
-    h2 {
-      margin-top: 5px;
-      font-size: 1.5rem;
-    }
-  
-    @media (max-width: 768px) {
-      padding: 15px;
-      h2 {
-        font-size: 1.2rem;
-      }
-    }
-  }
-  
-  .orders {
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    background: #333;
-    display: flex;
+
+  @media (max-width: 768px) {
     flex-direction: column;
     gap: 10px;
-  
-    h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
+  }
+}
+
+.stat-box {
+  flex: 1;
+  background: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  min-width: 150px;
+
+  .icon {
+    font-size: 24px;
+    color: red;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  h2 {
+    margin-top: 5px;
+    font-size: 1.5rem;
+  }
+
+  .loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #ff0000; // Red border
+    border-top: 3px solid transparent; // Transparent top for spinning effect
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 5px auto; // Center it like h2
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    h2 {
+      font-size: 1.2rem;
+    }
+    .loading-spinner {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.orders {
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+
+    @media (max-width: 768px) {
+      justify-content: flex-start; // Align left on mobile for better usability
+    }
+  }
+
+  .search-input {
+    width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    cursor: text;
+
+    &:focus {
+      border-color: #ff0000;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%; // Full width on mobile
+    }
+  }
+
+  .order-table {
+    overflow-x: auto; // Only the table is swipeable
+    padding: 0;
+    border-radius: 10px;
+    overflow-y: hidden; // Prevent vertical scrolling within table container
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+
+    table {
+      width: 100%;
+      min-width: 700px; // Ensure table is wide enough to require swiping on mobile
+      border-collapse: collapse;
+      background: #333;
+      table-layout: fixed; // Fixed layout for consistent column widths
+    }
+
+    th,
+    td {
+      padding: 10px 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
       color: white;
-    }
-  
-    .search-container {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 0.75rem;
-  
-      @media (max-width: 768px) {
-        justify-content: flex-start; // Align left on mobile for better usability
-      }
-    }
-  
-    .search-input {
-      width: 200px;
-      padding: 8px 12px;
-      border: 1px solid #555;
-      border-radius: 5px;
-      background: white;
-      color: #333;
       font-size: 14px;
-      outline: none;
-      cursor: text;
-  
-      &:focus {
-        border-color: #ff0000;
-      }
-  
-      @media (max-width: 768px) {
-        width: 100%; // Full width on mobile
+      vertical-align: middle;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th {
+      background: #ff0000;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    td {
+      background: #333;
+    }
+
+    tr {
+      border-bottom: 1px solid #555;
+
+      &:last-child {
+        border-bottom: none;
       }
     }
-  
-    .order-table {
-      overflow-x: auto; // Only the table is swipeable
-      padding: 0;
-      border-radius: 10px;
-      overflow-y: hidden; // Prevent vertical scrolling within table container
-      -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
-  
-      table {
-        width: 100%;
-        min-width: 700px; // Ensure table is wide enough to require swiping on mobile
-        border-collapse: collapse;
-        background: #333;
-        table-layout: fixed; // Fixed layout for consistent column widths
+
+    // Define column widths
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 30px; // Checkbox
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 60px; // Actions
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 120px; // Customer
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 120px; // Product
+    }
+
+    th:nth-child(5),
+    td:nth-child(5) {
+      width: 100px; // Order Date
+    }
+
+    th:nth-child(6),
+    td:nth-child(6) {
+      width: 50px; // Quantity
+    }
+
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 80px; // Amount
+    }
+
+    th:nth-child(8),
+    td:nth-child(8) {
+      width: 100px; // Status
+    }
+
+    .checkbox {
+      transform: scale(1.2);
+    }
+
+    .icon {
+      cursor: pointer;
+      font-size: 16px;
+      transition: color 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.view-icon {
+        color: #007bff;
+
+        &:hover {
+          color: #0056b3;
+        }
       }
-  
+
+      &.delete-icon {
+        color: #dc3545;
+
+        &:hover {
+          color: #a71d2a;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
       th,
       td {
-        padding: 10px 8px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-        color: white;
-        font-size: 14px;
-        vertical-align: middle;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        padding: 8px 6px;
+        font-size: 12px;
       }
-  
-      th {
-        background: #ff0000;
-        font-weight: 600;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-  
-      td {
-        background: #333;
-      }
-  
-      tr {
-        border-bottom: 1px solid #555;
-  
-        &:last-child {
-          border-bottom: none;
-        }
-      }
-  
-      // Define column widths
-      th:nth-child(1),
-      td:nth-child(1) {
-        width: 30px; // Checkbox
-      }
-  
-      th:nth-child(2),
-      td:nth-child(2) {
-        width: 60px; // Actions
-      }
-  
-      th:nth-child(3),
-      td:nth-child(3) {
-        width: 120px; // Customer
-      }
-  
-      th:nth-child(4),
-      td:nth-child(4) {
-        width: 120px; // Product
-      }
-  
-      th:nth-child(5),
-      td:nth-child(5) {
-        width: 100px; // Order Date
-      }
-  
-      th:nth-child(6),
-      td:nth-child(6) {
-        width: 50px; // Quantity
-      }
-  
-      th:nth-child(7),
-      td:nth-child(7) {
-        width: 80px; // Amount
-      }
-  
-      th:nth-child(8),
-      td:nth-child(8) {
-        width: 100px; // Status
-      }
-  
+
       .checkbox {
-        transform: scale(1.2);
+        transform: scale(1);
       }
-  
+
       .icon {
-        cursor: pointer;
-        font-size: 16px;
-        transition: color 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-  
-        &.view-icon {
-          color: #007bff;
-  
-          &:hover {
-            color: #0056b3;
-          }
-        }
-  
-        &.delete-icon {
-          color: #dc3545;
-  
-          &:hover {
-            color: #a71d2a;
-          }
-        }
-      }
-  
-      @media (max-width: 768px) {
-        th,
-        td {
-          padding: 8px 6px;
-          font-size: 12px;
-        }
-  
-        .checkbox {
-          transform: scale(1);
-        }
-  
-        .icon {
-          font-size: 14px;
-        }
+        font-size: 14px;
       }
     }
   }
-  
+}
+
+// Keyframes for spinning animation
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "../topnavbar/TopNavbar";
-import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
+import { FaSquare, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
-import AdminModal from "./AdminModal"; // New modal
+import AdminModal from "./AdminModal";
 import "./../../../sass/components/_adminlist.scss";
 
 const formatDate = (dateString) => {
@@ -24,8 +24,6 @@ const formatDate = (dateString) => {
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
-  const [filterOpen, setFilterOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const [selectedAdmins, setSelectedAdmins] = useState([]);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -37,13 +35,7 @@ const AdminList = () => {
   const [adminToEdit, setAdminToEdit] = useState(null);
   const navigate = useNavigate();
 
-  const filterOptions = [
-    { value: "all", label: "All" },
-    { value: "admin", label: "Admin" },
-    { value: "moderator", label: "Moderator" },
-  ];
-
-  const baseImageUrl = "http://127.0.0.1:8000/"; // Matches full path in DB (images/pfp/<filename>)
+  const baseImageUrl = "http://127.0.0.1:8000/";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,9 +66,8 @@ const AdminList = () => {
 
   const filteredAdmins = admins.filter((admin) => {
     const matchesSearch = admin.username?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterValue === "all" || admin.role_name?.toLowerCase() === filterValue;
     const matchesArchived = admin.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
 
   const toggleSelectAdmin = (adminId) => {
@@ -194,7 +185,7 @@ const AdminList = () => {
         last_name: response.data.last_name || '',
         suffix: response.data.suffix || '',
         gender: response.data.gender || '',
-        role_id: response.data.role_id || '1', // Default to Admin
+        role_id: response.data.role_id || '1',
       });
       setIsEditMode(true);
       setIsModalOpen(true);
@@ -226,8 +217,8 @@ const AdminList = () => {
           id: response.data.user.id,
           username: response.data.user.username,
           email: response.data.user.email,
-          role_name: "Admin", // Adjust based on role_id
-          profile_img: null, // No profile_img on add
+          role_name: "Admin",
+          profile_img: null,
           created_at: response.data.user.created_at || new Date().toISOString(),
           updated_at: response.data.user.updated_at || new Date().toISOString(),
           archived: false,
@@ -315,30 +306,6 @@ const AdminList = () => {
               <button className="header-button" onClick={handleToggleArchived}>
                 {showArchived ? "View Active" : "View Archived"}
               </button>
-              <div className="filter-container">
-                <button
-                  className="filter-button"
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  <span>Filter</span>
-                  <FaChevronDown />
-                </button>
-                {filterOpen && (
-                  <ul className="filter-dropdown">
-                    {filterOptions.map((option) => (
-                      <li
-                        key={option.value}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
-                      >
-                        {option.label}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
             </div>
           </div>
 

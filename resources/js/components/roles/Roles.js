@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "../topnavbar/TopNavbar";
-import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
+import { FaSquare, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh } from "@tabler/icons-react";
 import axios from "axios";
 import "./../../../sass/components/_roles.scss";
@@ -22,8 +22,6 @@ const formatDate = (dateString) => {
 const Roles = () => {
   const [roles, setRoles] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
-  const [filterOpen, setFilterOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const [selectedRoles, setSelectedRoles] = useState([]);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -33,13 +31,6 @@ const Roles = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [roleToEdit, setRoleToEdit] = useState(null);
-
-  const filterOptions = [
-    { value: "all", label: "All Roles" },
-    { value: "Admin", label: "Admin" },
-    { value: "Customer", label: "Customer" },
-    { value: "Seller", label: "Seller" },
-  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,8 +44,8 @@ const Roles = () => {
           axios.get("http://127.0.0.1:8000/api/roleslist/archived", config),
         ]);
 
-        const activeRoles = activeResponse.data.map(role => ({ ...role, archived: false }));
-        const archivedRoles = archivedResponse.data.map(role => ({ ...role, archived: true }));
+        const activeRoles = activeResponse.data.map((role) => ({ ...role, archived: false }));
+        const archivedRoles = archivedResponse.data.map((role) => ({ ...role, archived: true }));
         setRoles([...activeRoles, ...archivedRoles]);
       } catch (error) {
         console.error("Error fetching roles:", error);
@@ -69,9 +60,8 @@ const Roles = () => {
 
   const filteredRoles = roles.filter((role) => {
     const matchesSearch = role.role_name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterValue === "all" || role.role_name.toLowerCase() === filterValue.toLowerCase();
     const matchesArchived = role.archived === showArchived;
-    return matchesSearch && matchesFilter && matchesArchived;
+    return matchesSearch && matchesArchived;
   });
 
   const toggleSelectRole = (roleId) => {
@@ -217,43 +207,40 @@ const Roles = () => {
 
   const handleRoleUpdate = async (updatedRole) => {
     try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        const payload = {
-            role_name: updatedRole.formData.role_name,
-        };
-        console.log("Submitting Role update payload:", payload);
-        const response = await axios.patch(
-            `http://127.0.0.1:8000/api/roleslist/${roleToEdit.id}`,
-            payload,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-        if (response.status === 200) {
-            const editedRole = {
-                id: response.data.role.id,
-                role_name: response.data.role.role_name,
-                created_at: roleToEdit.created_at,
-                updated_at: response.data.role.updated_at || new Date().toISOString(),
-                archived: roleToEdit.archived,
-            };
-            setRoles((prevRoles) =>
-                prevRoles.map((role) => (role.id === editedRole.id ? editedRole : role))
-            );
-            setIsModalOpen(false); // Ensure this runs
-            setRoleToEdit(null);   // Ensure this runs
-            console.log("Role updated successfully:", editedRole);
+      const token = localStorage.getItem("LaravelPassportToken");
+      const payload = {
+        role_name: updatedRole.formData.role_name,
+      };
+      console.log("Submitting Role update payload:", payload);
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/roleslist/${roleToEdit.id}`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
+      );
+      if (response.status === 200) {
+        const editedRole = {
+          id: response.data.role.id,
+          role_name: response.data.role.role_name,
+          created_at: roleToEdit.created_at,
+          updated_at: response.data.role.updated_at || new Date().toISOString(),
+          archived: roleToEdit.archived,
+        };
+        setRoles((prevRoles) =>
+          prevRoles.map((role) => (role.id === editedRole.id ? editedRole : role))
+        );
+        setIsModalOpen(false);
+        setRoleToEdit(null);
+        console.log("Role updated successfully:", editedRole);
+      }
     } catch (error) {
-        console.error("Error updating role:", JSON.stringify(error.response?.data || error.message));
-        console.log("Response status:", error.response?.status);
-        console.log("Response data:", error.response?.data);
-        // Optionally keep modal open on error to show feedback
+      console.error("Error updating role:", JSON.stringify(error.response?.data || error.message));
     }
-};
+  };
 
   const rolesPerPage = 10;
   const totalPages = Math.ceil(filteredRoles.length / rolesPerPage);
@@ -298,30 +285,6 @@ const Roles = () => {
               <button className="header-button" onClick={handleToggleArchived}>
                 {showArchived ? "View Active" : "View Archived"}
               </button>
-              <div className="filter-container">
-                <button
-                  className="filter-button"
-                  onClick={() => setFilterOpen(!filterOpen)}
-                >
-                  <span>Filter</span>
-                  <FaChevronDown />
-                </button>
-                {filterOpen && (
-                  <ul className="filter-dropdown">
-                    {filterOptions.map((option) => (
-                      <li
-                        key={option.value}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
-                      >
-                        {option.label}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
             </div>
           </div>
           <div className="roles-table">
@@ -458,7 +421,7 @@ const Roles = () => {
 
 const RoleModal = ({ onClose, onSubmit, isEdit = false, initialData = null }) => {
   const [formData, setFormData] = useState({
-    role_name: isEdit && initialData ? initialData.role_name : '',
+    role_name: isEdit && initialData ? initialData.role_name : "",
   });
 
   useEffect(() => {
