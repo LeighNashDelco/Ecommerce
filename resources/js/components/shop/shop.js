@@ -3,14 +3,14 @@ import './../../../sass/components/shop.scss';
 import Navbar from "../Customer/topvar_notlogin";
 import ShopGrid from "../ShopGrid/shopgrid";
 import Footer from "../footer/footer";
-import FilterSidebar from "../Filter/filter_sidebar"; // Import the new component
+import FilterSidebar from "../Filter/filter_sidebar";
 
 export default function Shop() {
   const [filters, setFilters] = useState({
     gamingMouse: false,
     wiredWirelessMouse: false,
     officeMouse: false,
-    priceRange: [10, 80], // Updated initial range to 10-80
+    priceRange: [10, 80], 
     brands: {
       attackShark: false,
       razer: false,
@@ -50,7 +50,7 @@ export default function Shop() {
       gamingMouse: false,
       wiredWirelessMouse: false,
       officeMouse: false,
-      priceRange: [10, 80], // Reset to initial range
+      priceRange: [10, 80],
       brands: {
         attackShark: false,
         razer: false,

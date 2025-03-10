@@ -118,7 +118,7 @@ const Login = () => {
                 </div>
 
                 <div className="login-image-section">
-                    {/* Background image will be handled via CSS */}
+                
                 </div>
             </div>
         </div>

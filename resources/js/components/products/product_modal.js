@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Match Sidebar imports
-import { FaChevronDown } from "react-icons/fa"; // Match Sidebar icons
-import "./../../../sass/components/product_modal.scss"; // New SCSS file for this modal
+import { useNavigate, useLocation } from "react-router-dom"; 
+import { FaChevronDown } from "react-icons/fa"; 
+import "./../../../sass/components/product_modal.scss"; 
 
 function ProductModal({ onClose }) {
   const [productImage, setProductImage] = useState(null);

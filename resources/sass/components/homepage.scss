@@ -182,7 +182,7 @@
     }
 
     .logos {
-      margin-top: 40px;
+      margin-top: 0; // Removed margin to place it directly below hero-section
       margin-bottom: 40px;
       width: 100%;
       background-color: #F0F8FF; // Only section with this background
@@ -292,6 +292,79 @@
                 background-color: #cc0000;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design for mobile (≤768px)
+@media (max-width: 768px) {
+  .homepage-customer {
+    padding-top: 75px; // Adjusted for taller mobile navbar
+
+    .content-wrapper {
+      .hero-section {
+        height: calc(100vh - 75px); // Adjusted for taller mobile navbar
+        min-height: 500px; // Increased min-height to better fit the image
+        width: 100vw; // Ensure full width
+        padding: 0;
+
+        .hero-image {
+          width: 100vw; // Match the container width
+          height: 100%; // Ensure the image fills the height
+          object-fit: cover; // Reverted to cover to fill the container
+          object-position: center; // Center the image to avoid awkward cropping
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .hero-text {
+          padding: 60px 20px 0 20px; // Reduced padding for mobile
+          text-align: center;
+
+          .hero-title {
+            font-size: 28px; // Reduced font size for mobile
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+          }
+
+          .hero-buttons {
+            flex-direction: row; // Inline buttons
+            gap: 20px; // Maintain gap between buttons
+            justify-content: center;
+            margin-top: 15px;
+
+            .learn-more-text,
+            .add-to-cart-text {
+              font-size: 16px; // Slightly reduced font size
+              width: auto; // Remove max-width to allow inline flexibility
+              max-width: none; // Remove max-width constraint
+              margin: 0; // Remove margin to align properly
+            }
+          }
+        }
+      }
+
+      .logos,
+      .video-section,
+      .product-grid-wrapper {
+        width: 100vw;
+      }
+
+      .video-section {
+        height: 50vh; // Reduced height for mobile
+        min-height: 200px;
+      }
+
+      .product-grid-wrapper {
+        .product-grid {
+          .products-container {
+            grid-template-columns: repeat(2, 1fr); // Adjust to 2 columns on mobile
+            padding: 0 20px;
           }
         }
       }

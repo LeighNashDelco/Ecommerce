@@ -1,5 +1,5 @@
 import React from 'react';
-import developerBackground from '../../../../resources/sass/img/devs.svg'; // Update the path to where your SVG is stored
+import developerBackground from '../../../../resources/sass/img/devs.svg'; 
 import './../../../sass/components/developer.scss';
 import Navbar from "../Customer/topvar_notlogin";
 

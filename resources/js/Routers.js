@@ -26,6 +26,8 @@ import Checkout_adress from "./components/Customer/checkout_address";
 import Payment_methods from "./components/Customer/payment_methods";
 import Developer from "./components/Developers/developer";
 import Order_complete from "./components/OrderComplete/order_complete";
+import Notfound from "./components/Pagenotfound/notfound";
+import Product_view from "./components/ProductView/product_view";
 
 
 export default function Routers() {
@@ -56,6 +58,8 @@ export default function Routers() {
         <Route path="payment_methods" element={<Payment_methods />} />
         <Route path="developer" element={<Developer />} />
         <Route path="order_complete" element={<Order_complete />} />
+        <Route path="notfound" element={<Notfound />} />
+        <Route path="product_view" element={<Product_view />} />
 
       </Routes>
     </Router>

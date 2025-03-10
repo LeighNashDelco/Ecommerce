@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './../../../sass/components/orders_cart.scss'; // Adjust the path if needed
-import mouseCart from '../../../../resources/sass/img/ATKCOLOR.svg'; // Import the image for Attack Shark X3PRO
-
+import { useNavigate } from 'react-router-dom'; 
+import './../../../sass/components/orders_cart.scss'; 
+import mouseCart from '../../../../resources/sass/img/ATKCOLOR.svg'; 
 function OrdersCart({ isOpen, onClose }) {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
-  // State to manage cart items and their quantities
+ 
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
@@ -26,13 +25,12 @@ function OrdersCart({ isOpen, onClose }) {
     },
   ]);
 
-  // Calculate total price
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  // Calculate total item count (sum of quantities)
+ 
   const totalItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-  // Handle quantity changes
+
   const handleDecreaseQuantity = (id) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
@@ -55,11 +53,11 @@ function OrdersCart({ isOpen, onClose }) {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
-  // Handle Checkout button click
+
   const handleCheckout = () => {
-    // Navigate to PaymentMethods page without passing state
+
     navigate('/payment_methods');
-    onClose(); // Close the modal after navigation
+    onClose(); 
   };
 
   return (

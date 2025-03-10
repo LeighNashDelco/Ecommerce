@@ -1,10 +1,10 @@
 .shop-filter {
-    background-color: #F0F8FF; // Light blue background
-    padding: 20px;
-    width: 300px; // Fixed width
+  
+    padding: 60px;
     position: sticky;
     top: 60px; // Start below the navbar
-    height: calc(100vh - 60px); // Full height minus navbar
+    
+   
     z-index: 10;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15); // Slightly more visible shadow
   

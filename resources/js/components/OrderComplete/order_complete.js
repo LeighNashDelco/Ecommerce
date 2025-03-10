@@ -1,6 +1,6 @@
 import React from 'react';
 import "./../../../sass/components/order_complete.scss";
-import orderIllustration from '../../../../resources/sass/img/thankyou.svg'; // Placeholder SVG import (replace with your actual SVG path)
+import orderIllustration from '../../../../resources/sass/img/thankyou.svg'; 
 import Footer from "../footer/footer";
 import Navbar from "../Customer/topvar_notlogin";
 function OrderComplete() {
@@ -15,7 +15,7 @@ function OrderComplete() {
         </p>
         <button className="continue-shopping-btn">Continue Shopping</button>
       </div>
-      <Footer /> {/* Assuming Footer is imported and available from your previous setup */}
+      <Footer /> 
     </div>
   );
 }

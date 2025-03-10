@@ -6,7 +6,7 @@ import logo from "../../../../resources/sass/img/v.svg";
 import Navbar from "../Customer/topvar_notlogin";
 import Footer from "../footer/footer";
 import { FaTrash } from "react-icons/fa";
-// Import BPI and BDO logos (replace with actual paths to your logo files)
+
 import bpiLogo from "../../../../resources/sass/img/bpi.svg";
 import bdoLogo from "../../../../resources/sass/img/bdo.svg";
 
@@ -14,9 +14,9 @@ function Checkout() {
   const [isAllSelected, setIsAllSelected] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState(new Set());
   const navigate = useNavigate();
-  const [paymentMethod, setPaymentMethod] = useState("Linked Bank Account"); // State for payment method navigation
+  const [paymentMethod, setPaymentMethod] = useState("Linked Bank Account"); 
 
-  // Sample checkout items
+ 
   const [checkoutItems, setCheckoutItems] = useState([
     { id: 1, name: "Attack Shark X3", price: 2000, quantity: 1 },
     { id: 2, name: "Attack Shark X4", price: 2000, quantity: 1 },
@@ -68,10 +68,10 @@ function Checkout() {
   };
 
   const handleCheckout = () => {
-    navigate("/checkout"); // Update with actual checkout logic
+    navigate("/checkout"); 
   };
 
-  // Calculate total price dynamically
+
   const totalPrice = checkoutItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 100;
   const grandTotal = totalPrice + shipping;

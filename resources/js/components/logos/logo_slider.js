@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import "./../../../sass/components/logo_slider.scss";
-import logo1 from '../../../../resources/sass/img/corsair.svg'; // Replace with your actual logo paths
+import logo1 from '../../../../resources/sass/img/corsair.svg'; 
 import logo3 from '../../../../resources/sass/img/logitech.svg';
 import logo4 from '../../../../resources/sass/img/scyrox.svg';
 import logo5 from '../../../../resources/sass/img/vxe.svg';
@@ -12,7 +12,7 @@ function LogoSlider() {
   const logosRef = useRef(null);
 
   useEffect(() => {
-    // Clone the slide to create the infinite loop effect
+  
     const slide = logosRef.current.querySelector('.logos-slide');
     const clone = slide.cloneNode(true);
     logosRef.current.appendChild(clone);

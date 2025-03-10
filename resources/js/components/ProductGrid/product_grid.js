@@ -7,14 +7,14 @@ import mouse5 from '../../../../resources/sass/img/redrazer.svg';
 import mouse6 from '../../../../resources/sass/img/ht.svg';
 import mouse7 from '../../../../resources/sass/img/logiM10.svg';
 import mouse8 from '../../../../resources/sass/img/SILVERBLACK.svg';
-import mouse9 from '../../../../resources/sass/img/ATKG2.svg'; // Placeholder for new product (replace with actual image)
-import mouse10 from '../../../../resources/sass/img/ATKX5.svg'; // Placeholder for new product (replace with actual image)
+import mouse9 from '../../../../resources/sass/img/ATKG2.svg'; 
+import mouse10 from '../../../../resources/sass/img/ATKX5.svg'; 
 import './../../../sass/components/product_grid.scss';
 
 function ProductGrid() {
-  // Placeholder function for future click functionality
+ 
   const handleImageClick = () => {
-    // No functionality implemented yet
+   
     console.log('Image clicked - functionality to be added');
   };
 
@@ -23,7 +23,7 @@ function ProductGrid() {
       <h2>Top Rated Products</h2>
       <div className="products-container">
         <div className="product-card">
-          <div className="product-image-container" onClick={handleImageClick}> {/* Make container clickable */}
+          <div className="product-image-container" onClick={handleImageClick}> 
             <img src={mouse1} alt="Attack Shark G2 Mouse" />
           </div>
           <div className="product-info">

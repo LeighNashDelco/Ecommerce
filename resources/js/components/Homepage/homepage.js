@@ -7,9 +7,14 @@ import LogoSlider from "../logos/logo_slider";
 import Footer from "../footer/footer";
 import ProductGrid from "../ProductGrid/product_grid";
 import OrdersCart from "../CartModals/orders_cart";
+{/*import EmptyCart from "../CartModals/empty_cart";*/}
+
+
+
+
 
 function Homepage() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -42,6 +47,9 @@ function Homepage() {
       </div>
       <Footer />
       <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      {/*<EmptyCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />*/}
+     
+    
     </div>
   );
 }
