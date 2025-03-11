@@ -1,0 +1,184 @@
+.all-order {
+    font-family: Arial, sans-serif;
+    color: #333;
+  
+    .order-tabs {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden; // Ensure rounded corners are respected
+  
+      .tab {
+        flex: 1; // Distribute space equally among tabs
+        background: #f0f4f8;
+        border: none;
+        border-right: 1px solid #ccc; // Separator between tabs
+        color: #333;
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+  
+        &:last-child {
+          border-right: none; // Remove border on the last tab
+        }
+  
+        &.active {
+          background-color: #ff0000;
+          color: #fff;
+          font-weight: bold;
+        }
+  
+        &:hover {
+          background-color: #ff3333;
+          color: #fff;
+        }
+      }
+    }
+  
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px; // Increased gap for better separation
+  
+      .order-item-container {
+        background-color: #fff; // White background for container
+        border: 1px solid #ccc; // Border to separate containers
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+        padding: 10px; // Padding inside the container
+      }
+  
+      .order-item {
+        background-color: #f0f4f8;
+        border-radius: 5px;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .order-details {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+  
+          .order-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+          }
+  
+          .order-info {
+            h4 {
+              font-size: 1rem;
+              margin: 0 0 5px 0;
+            }
+  
+            p {
+              font-size: 0.8rem;
+              margin: 0;
+              color: #666;
+            }
+  
+            .status {
+              font-size: 0.8rem;
+              margin-top: 5px;
+  
+              &.shipped {
+                color: #008000;
+              }
+              &.received {
+                color: #008000;
+              }
+            }
+          }
+        }
+  
+        .order-actions {
+          display: flex;
+          gap: 10px;
+  
+          .action-btn {
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+  
+            &:hover {
+              background-color: #ff0000;
+              color: #fff;
+              border-color: #ff0000;
+            }
+          }
+        }
+      }
+  
+      p {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .all-order {
+      .order-tabs {
+        .tab {
+          font-size: 0.8rem;
+          padding: 8px 10px;
+        }
+      }
+  
+      .orders-list {
+        gap: 15px;
+  
+        .order-item-container {
+          padding: 8px;
+        }
+  
+        .order-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+  
+          .order-details {
+            .order-image {
+              width: 50px;
+              height: 50px;
+            }
+  
+            .order-info {
+              h4 {
+                font-size: 0.9rem;
+              }
+  
+              p {
+                font-size: 0.7rem;
+              }
+  
+              .status {
+                font-size: 0.7rem;
+              }
+            }
+          }
+  
+          .order-actions {
+            width: 100%;
+            justify-content: flex-end;
+  
+            .action-btn {
+              font-size: 0.7rem;
+              padding: 5px 10px;
+            }
+          }
+        }
+      }
+    }
+  }

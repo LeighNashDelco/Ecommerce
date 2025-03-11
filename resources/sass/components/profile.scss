@@ -40,17 +40,17 @@
           align-items: center;
           justify-content: center;
           position: relative;
-          cursor: pointer; // Indicate clickable area
+          cursor: pointer;
   
           .avatar-image {
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            transition: transform 0.3s ease, opacity 0.3s ease; // Smooth transition for hover
+            transition: transform 0.3s ease, opacity 0.3s ease;
   
             &:hover {
-              transform: scale(1.05); // Slightly scale up on hover
-              opacity: 0.8; // Slightly reduce opacity for effect
+              transform: scale(1.05);
+              opacity: 0.8;
             }
           }
   
@@ -160,6 +160,35 @@
             font-size: 0.9rem;
             margin: 0;
           }
+
+          // Styling for editable input fields
+          .edit-input {
+            width: 100%;
+            padding: 5px;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            color: #333;
+
+            &:focus {
+              outline: none;
+              border-color: #ff0000;
+            }
+
+            &.password-input {
+              &.weak {
+                border-color: #ff0000;
+              }
+              &.medium {
+                border-color: #ffa500;
+              }
+              &.strong {
+                border-color: #008000;
+              }
+            }
+          }
   
           .edit-btn {
             position: absolute;
@@ -174,6 +203,85 @@
   
             svg {
               vertical-align: middle;
+            }
+          }
+
+          // Styling for password edit fields
+          .password-edit {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .password-field {
+              display: flex;
+              flex-direction: column;
+
+              label {
+                font-size: 0.9rem;
+                color: #333;
+                margin-bottom: 5px;
+              }
+
+              .strength-indicator {
+                font-size: 0.8rem;
+                margin-top: 5px;
+
+                &.weak {
+                  color: #ff0000;
+                }
+                &.medium {
+                  color: #ffa500;
+                }
+                &.strong {
+                  color: #008000;
+                }
+              }
+
+              .error-message {
+                font-size: 0.8rem;
+                color: #ff0000;
+                margin-top: 5px;
+              }
+            }
+          }
+
+          // Styling for Cancel and Save buttons
+          .edit-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+
+            .cancel-btn, .save-btn {
+              padding: 5px 10px;
+              font-size: 0.9rem;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+            }
+
+            .cancel-btn {
+              background-color: #ccc;
+              color: #333;
+
+              &:hover {
+                background-color: #bbb;
+              }
+            }
+
+            .save-btn {
+              background-color: #ff0000;
+              color: #fff;
+
+              &:hover {
+                background-color: #e60000;
+              }
+
+              &:disabled {
+                background-color: #ff6666;
+                cursor: not-allowed;
+              }
             }
           }
         }
@@ -248,5 +356,9 @@
   
     footer {
       margin-top: 150px;
+    }
+
+    .info-grid .info-box .edit-actions {
+      justify-content: center;
     }
   }

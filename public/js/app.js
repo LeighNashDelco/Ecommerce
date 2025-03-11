@@ -8115,34 +8115,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _components_login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/login/Login */ "./resources/js/components/login/Login.js");
-/* harmony import */ var _components_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components//admindashboard/admindashboard */ "./resources/js/components/admindashboard/admindashboard.js");
-/* harmony import */ var _components_profile_Profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/profile/Profile */ "./resources/js/components/profile/Profile.js");
-/* harmony import */ var _components_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/adminlist/AdminList */ "./resources/js/components/adminlist/AdminList.js");
-/* harmony import */ var _components_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/customerlist/CustomerList */ "./resources/js/components/customerlist/CustomerList.js");
-/* harmony import */ var _components_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/helpandsupport/HelpAndSupport */ "./resources/js/components/helpandsupport/HelpAndSupport.js");
-/* harmony import */ var _components_inventory_Inventory__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inventory/Inventory */ "./resources/js/components/inventory/Inventory.js");
-/* harmony import */ var _components_orders_Orders__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/orders/Orders */ "./resources/js/components/orders/Orders.js");
-/* harmony import */ var _components_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/paymentmanagement/PaymentManagement */ "./resources/js/components/paymentmanagement/PaymentManagement.js");
-/* harmony import */ var _components_products_Products__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/products/Products */ "./resources/js/components/products/Products.js");
-/* harmony import */ var _components_register_Register__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/register/Register */ "./resources/js/components/register/Register.js");
-/* harmony import */ var _components_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/reviewsandnotification/ReviewsAndNotifications */ "./resources/js/components/reviewsandnotification/ReviewsAndNotifications.js");
-/* harmony import */ var _components_sellerlist_SellerList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/sellerlist/SellerList */ "./resources/js/components/sellerlist/SellerList.js");
-/* harmony import */ var _components_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/statusandcategory/StatusAndCategory */ "./resources/js/components/statusandcategory/StatusAndCategory.js");
-/* harmony import */ var _components_users_Users__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/users/Users */ "./resources/js/components/users/Users.js");
-/* harmony import */ var _components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Homepage/homepage */ "./resources/js/components/Homepage/homepage.js");
-/* harmony import */ var _components_shop_shop__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/shop/shop */ "./resources/js/components/shop/shop.js");
-/* harmony import */ var _components_Customer_cart__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Customer/cart */ "./resources/js/components/Customer/cart.js");
-/* harmony import */ var _components_Customer_checkout__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Customer/checkout */ "./resources/js/components/Customer/checkout.js");
-/* harmony import */ var _components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Customer/checkout_address */ "./resources/js/components/Customer/checkout_address.js");
-/* harmony import */ var _components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/Customer/payment_methods */ "./resources/js/components/Customer/payment_methods.js");
-/* harmony import */ var _components_Developers_developer__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/Developers/developer */ "./resources/js/components/Developers/developer.js");
-/* harmony import */ var _components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/OrderComplete/order_complete */ "./resources/js/components/OrderComplete/order_complete.js");
-/* harmony import */ var _components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/Pagenotfound/notfound */ "./resources/js/components/Pagenotfound/notfound.js");
-/* harmony import */ var _components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/ProductView/product_view */ "./resources/js/components/ProductView/product_view.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_profile_Profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile/Profile */ "./resources/js/components/profile/Profile.js");
+/* harmony import */ var _components_register_Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/register/Register */ "./resources/js/components/register/Register.js");
+/* harmony import */ var _components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Homepage/homepage */ "./resources/js/components/Homepage/homepage.js");
+/* harmony import */ var _components_shop_shop__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/shop/shop */ "./resources/js/components/shop/shop.js");
+/* harmony import */ var _components_Customer_cart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Customer/cart */ "./resources/js/components/Customer/cart.js");
+/* harmony import */ var _components_Customer_checkout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Customer/checkout */ "./resources/js/components/Customer/checkout.js");
+/* harmony import */ var _components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Customer/checkout_address */ "./resources/js/components/Customer/checkout_address.js");
+/* harmony import */ var _components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Customer/payment_methods */ "./resources/js/components/Customer/payment_methods.js");
+/* harmony import */ var _components_Developers_developer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Developers/developer */ "./resources/js/components/Developers/developer.js");
+/* harmony import */ var _components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/OrderComplete/order_complete */ "./resources/js/components/OrderComplete/order_complete.js");
+/* harmony import */ var _components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Pagenotfound/notfound */ "./resources/js/components/Pagenotfound/notfound.js");
+/* harmony import */ var _components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/ProductView/product_view */ "./resources/js/components/ProductView/product_view.js");
+/* harmony import */ var _components_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/TrackOrder/track_order */ "./resources/js/components/TrackOrder/track_order.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -8163,106 +8152,62 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 function Routers() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_28__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Navigate, {
-          to: "/login"
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Navigate, {
+          to: "homepage"
         })
-      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "admindashboard",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "profile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_profile_Profile__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "adminlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "customerlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "helpandsupport",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "inventory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_inventory_Inventory__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "orders",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_orders_Orders__WEBPACK_IMPORTED_MODULE_9__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "paymentmanagement",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_10__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "products",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_products_Products__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_register_Register__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "reviewsandnotifications",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_13__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "sellerlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_sellerlist_SellerList__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "statusandcategory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_15__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
-        path: "users",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_users_Users__WEBPACK_IMPORTED_MODULE_16__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_register_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "homepage",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_17__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "shop",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_shop_shop__WEBPACK_IMPORTED_MODULE_18__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_shop_shop__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "cart",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Customer_cart__WEBPACK_IMPORTED_MODULE_19__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Customer_cart__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "checkout",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Customer_checkout__WEBPACK_IMPORTED_MODULE_20__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Customer_checkout__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "checkout_address",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_21__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "payment_methods",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_22__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "developer",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Developers_developer__WEBPACK_IMPORTED_MODULE_23__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Developers_developer__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "order_complete",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_24__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "notfound",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_25__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_29__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
         path: "product_view",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(_components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_26__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+        path: "profile",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_profile_Profile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+        path: "track_order",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_15__["default"], {})
       })]
     })
   });
 }
 if (document.getElementById("root")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_27__.jsx)(Routers, {}), document.getElementById("root"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(Routers, {}), document.getElementById("root"));
 }
 
 /***/ }),
@@ -10814,11 +10759,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _sass_components_product_view_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/product_view.scss */ "./resources/sass/components/product_view.scss");
 /* harmony import */ var _resources_sass_img_ATKG2_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/ATKG2.svg */ "./resources/sass/img/ATKG2.svg");
-/* harmony import */ var _Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Customer/topvar_notlogin */ "./resources/js/components/Customer/topvar_notlogin.js");
-/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/footer/footer.js");
-/* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/CartModals/orders_cart.js");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconExternalLink.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../resources/sass/img/pfp.svg */ "./resources/sass/img/pfp.svg");
+/* harmony import */ var _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../resources/sass/img/ATKCOLOR.svg */ "./resources/sass/img/ATKCOLOR.svg");
+/* harmony import */ var _Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Customer/topvar_notlogin */ "./resources/js/components/Customer/topvar_notlogin.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/footer/footer.js");
+/* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/CartModals/orders_cart.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconExternalLink.mjs");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -10828,6 +10776,10 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+ // Placeholder for PFP SVG
+// Importing two placeholder images for the first review
+ // Replace with your actual SVG
+ // Replace with your actual SVG
 
 
 
@@ -10856,164 +10808,374 @@ var ProductView = function ProductView() {
   var handleExpandClick = function handleExpandClick() {
     console.log('Expand icon clicked - functionality to be added');
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+
+  // Function to render stars based on rating
+  var renderStars = function renderStars(rating) {
+    var totalStars = 5;
+    var filledStars = Math.min(Math.max(rating, 0), 5);
+    var emptyStars = totalStars - filledStars;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+      children: [Array(filledStars).fill().map(function (_, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          size: 18,
+          fill: "#ff0000",
+          color: "#ff0000"
+        }, "filled-".concat(index));
+      }), Array(emptyStars).fill().map(function (_, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          size: 18,
+          fill: "none",
+          color: "#ccc"
+        }, "empty-".concat(index));
+      })]
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "product-view-page",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_5__["default"], {
       onCartClick: toggleCart
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "content-wrapper",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "product-view-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "product-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "product-image",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
               src: _resources_sass_img_ATKG2_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
               alt: "Attack Shark X3"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "product-details",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "product-title-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
                 children: "Attack Shark X3"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "expand-icon",
                 onClick: handleExpandClick,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
                   size: 24,
                   strokeWidth: 1.5,
                   color: "#000"
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
               className: "company",
               children: "Delco. Company"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "price-rating",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                 className: "price",
                 children: ["$", 2000]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "rating",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                  children: "\u2605\u2605\u2605\u2605\u2605"
-                })
+                children: renderStars(5)
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
               className: "description",
               children: "Logitech MX Master 3S: Comfortable, quiet, and precise. Designed for smooth tracking and better productivity anywhere."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "quantity-controls",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                 onClick: decreaseQuantity,
                 disabled: quantity === 1,
                 children: "-"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                 children: quantity
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                 onClick: increaseQuantity,
                 children: "+"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "action-buttons",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
                 className: "add-to-cart",
                 children: ["Add to Cart: $", 2000 * quantity]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
                 className: "buy-now",
                 children: ["Buy Now: $", 2000 * quantity]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "shipping-info",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                 className: "shipping-hover",
                 children: "Free standard shipping"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                 className: "shipping-hover",
                 children: "Free Returns"
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-          className: "reviews-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-            children: "Reviews"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-            className: "overall-rating",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-              children: "\u2605\u2605\u2605\u2605\u2605"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-              children: "5 Reviews"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-            className: "rating-breakdown",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              children: "5 Stars --- (5)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              children: "5 Stars --- (1)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              children: "5 Stars --- (1)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              children: "5 Stars --- (0)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              children: "5 Stars --- (0)"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-            className: "review",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-              className: "review-header",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                children: "\u2605\u2605\u2605\u2605\u2605"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-                children: "IMPRESSIVE AND RELIABLE MOUSE!"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-                className: "review-date",
-                children: "December 12, 2024"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-                className: "reviewer-name",
-                children: "Kean D."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "reviews-container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "reviews-section",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
+              children: "Reviews"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "overall-rating",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                className: "overall-score",
+                children: "4.9 out of 5"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                className: "rating",
+                children: renderStars(5)
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "filter-buttons",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn active",
+                  children: "All"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn",
+                  children: "5 star (10)"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn",
+                  children: "4 star (0)"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn",
+                  children: "3 star (0)"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn",
+                  children: "2 star (0)"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "filter-btn",
+                  children: "1 star (0)"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                className: "media-btn",
+                children: "With Media"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              className: "review-text",
-              children: "IMPRESSIVE AND RELIABLE MOUSE! I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
-              className: "review-helpful",
-              children: ["Was this review helpful? Yes (4) No (0) ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                href: "#",
-                children: "Flag as inappropriate"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "reviews-scroll",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Kean D."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "December 12, 2024"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Light and Smooth"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-images",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                    src: _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
+                    alt: "Review Image 1",
+                    className: "review-img"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                    src: _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
+                    alt: "Review Image 2",
+                    className: "review-img"
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Ryan M."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "January 18, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Light and Smooth"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Sarah L."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "February 5, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Precision"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "This mouse is a game-changer! The precision is unmatched, and it\u2019s so comfortable to use for long sessions. Highly recommend it for gamers and professionals alike!"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Mike T."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "February 15, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Ergonomic Design"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "Got this for my office work, and it\u2019s been a delight. Smooth tracking and ergonomic design make it worth every penny!"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Emma R."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "March 1, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Build Quality"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "Bought this as a gift, and my brother loves it! Great build quality and performance for the price."
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "John K."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "March 8, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(5)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Design"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "The design is sleek, and the performance is top-notch. Perfect for both work and casual gaming!"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "review",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "review-header",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                    className: "reviewer-info",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                      alt: "Profile",
+                      className: "pfp"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "reviewer-name",
+                        children: "Lisa P."
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                        className: "review-date",
+                        children: "March 10, 2025"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "rating",
+                    children: renderStars(4)
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "best-feature",
+                  children: "Best Feature: Performance"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "review-text",
+                  children: "Great mouse, but the battery life could be better. Otherwise, it\u2019s a fantastic product!"
+                })]
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-            className: "review",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-              className: "review-header",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                children: "\u2605\u2605\u2605\u2605\u2605"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-                children: "IMPRESSIVE AND RELIABLE MOUSE!"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-                className: "review-date",
-                children: "January 18, 2025"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-                className: "reviewer-name",
-                children: "Ryan M."
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-              className: "review-text",
-              children: "IMPRESSIVE AND RELIABLE MOUSE! I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
-              className: "review-helpful",
-              children: ["Was this review helpful? Yes (4) No (0) ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                href: "#",
-                children: "Flag as inappropriate"
-              })]
-            })]
-          })]
+          })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_7__["default"], {
       isOpen: isCartOpen,
       onClose: function onClose() {
         return setIsCartOpen(false);
@@ -11424,581 +11586,10 @@ function ShopGrid() {
 
 /***/ }),
 
-/***/ "./resources/js/components/admindashboard/admindashboard.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/admindashboard/admindashboard.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _sass_components_admindashboard_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/_admindashboard.scss */ "./resources/sass/components/_admindashboard.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-var AdminDashboard = function AdminDashboard() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Dashboard"),
-    _useState2 = _slicedToArray(_useState, 2),
-    activeItem = _useState2[0],
-    setActiveItem = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState4 = _slicedToArray(_useState3, 2),
-    searchTerm = _useState4[0],
-    setSearchTerm = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    orders = _useState6[0],
-    setOrders = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState8 = _slicedToArray(_useState7, 2),
-    selectedOrders = _useState8[0],
-    setSelectedOrders = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      total_customers: 0,
-      total_sellers: 0,
-      total_admins: 0,
-      total_products: 0,
-      total_orders: 0,
-      total_earnings: 0,
-      total_product_sales: 0
-    }),
-    _useState10 = _slicedToArray(_useState9, 2),
-    stats = _useState10[0],
-    setStats = _useState10[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/dashboard/totals").then(function (response) {
-      return setStats(response.data);
-    })["catch"](function (error) {
-      return console.error("Error fetching totals:", error);
-    });
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/dashboard/orders").then(function (response) {
-      return setOrders(response.data);
-    })["catch"](function (error) {
-      return console.error("Error fetching orders:", error);
-    });
-  }, []);
-  var handleSelectAll = function handleSelectAll() {
-    if (selectedOrders.length === orders.length) {
-      setSelectedOrders([]);
-    } else {
-      setSelectedOrders(orders.map(function (order) {
-        return order.id;
-      }));
-    }
-  };
-  var handleSelectOrder = function handleSelectOrder(id) {
-    setSelectedOrders(function (prevSelected) {
-      return prevSelected.includes(id) ? prevSelected.filter(function (orderId) {
-        return orderId !== id;
-      }) : [].concat(_toConsumableArray(prevSelected), [id]);
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "app-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: activeItem,
-      setActiveItem: setActiveItem
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("main", {
-      className: "dashboard-content",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "dashboard",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "stats desktop-stats",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Customers"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_customers
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Sellers"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_sellers
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Admins"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_admins
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "stats desktop-stats",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBoxOpen, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Products"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_products
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaShoppingCart, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Orders"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_orders
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaMoneyBill, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Earnings"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
-              children: ["$", stats.total_earnings]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChartBar, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Product Sales"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_product_sales
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "stats standalone mobile-only",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-box",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-              className: "icon"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Total Customers"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              children: stats.total_customers
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "stats two-per-row mobile-only",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Sellers"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                children: stats.total_sellers
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Admins"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                children: stats.total_admins
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBoxOpen, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Products"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                children: stats.total_products
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaShoppingCart, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Orders"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                children: stats.total_orders
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "stat-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaMoneyBill, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Earnings"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
-                children: ["$", stats.total_earnings]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "stat-box",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChartBar, {
-                className: "icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                children: "Total Product Sales"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                children: stats.total_product_sales
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "orders",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-            children: "Today's New Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "search-container",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "text",
-              className: "search-input",
-              placeholder: "Search Orders",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "order-table desktop-only",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                      type: "checkbox",
-                      onChange: handleSelectAll,
-                      checked: selectedOrders.length === orders.length,
-                      className: "checkbox"
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Actions"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Customer"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Order ID"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Date"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Quantity"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Amount"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Order Status"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Payment Status"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                children: orders.length > 0 ? orders.map(function (order) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                    className: "order-row",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                        type: "checkbox",
-                        checked: selectedOrders.includes(order.id),
-                        onChange: function onChange() {
-                          return handleSelectOrder(order.id);
-                        },
-                        className: "checkbox"
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
-                      className: "action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaEye, {
-                        className: "action-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTrash, {
-                        className: "action-icon"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: order.customer
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: order.id
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "date-data",
-                      children: order.date
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "quantity-data",
-                      children: order.quantity
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
-                      children: ["$", order.amount]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: order.status
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "payment-status-data",
-                      children: order.payment_status
-                    })]
-                  }, order.id);
-                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                    colSpan: "9",
-                    children: "No orders found"
-                  })
-                })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "order-cards mobile-only",
-            children: orders.length > 0 ? orders.map(function (order) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "order-card",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "order-card-header",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                    className: "order-id",
-                    children: ["Order ID: ", order.id]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                    className: "order-status",
-                    children: ["Status: ", order.status]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "order-card-body",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                      children: "Customer:"
-                    }), " ", order.customer]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                      children: "Date:"
-                    }), " ", order.date]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                      children: "Quantity:"
-                    }), " ", order.quantity]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                      children: "Amount:"
-                    }), " $", order.amount]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                      children: "Payment:"
-                    }), " ", order.payment_status]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "order-card-actions",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    className: "action-icon separate-icon",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaEye, {
-                      className: "action-icon"
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    className: "action-icon separate-icon",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTrash, {
-                      className: "action-icon"
-                    })
-                  })]
-                })]
-              }, order.id);
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "No orders found"
-            })
-          })]
-        })]
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminDashboard);
-
-/***/ }),
-
-/***/ "./resources/js/components/adminlist/AdminList.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/adminlist/AdminList.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_admin_list_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../sass/components/admin_list.scss */ "./resources/sass/components/admin_list.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
- // Routing imports
- // Use the same Sidebar from your second page
- // Icon imports
- // Additional icons
- // SCSS file for this page
-
-var AdminList = function AdminList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1]; // Included for potential future use
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1]; // Included for potential future use
-
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "active",
-    label: "Active"
-  }, {
-    value: "inactive",
-    label: "Inactive"
-  }, {
-    value: "recent",
-    label: "Recent Activity"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); // For navigation
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)(); // For location tracking
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "adminlist-app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Admin List"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "adminlist-dashboard",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "adminlist-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-          children: "List of Admins"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "adminlist-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-            type: "text",
-            className: "adminlist-search-input",
-            placeholder: "Search Admins",
-            value: searchTerm,
-            onChange: function onChange(e) {
-              return setSearchTerm(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "adminlist-actions",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "adminlist-action-button",
-              children: "View Archived"
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "adminlist-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                    className: "adminlist-header-actions-icon",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaSquare, {
-                      className: "adminlist-checkbox-icon"
-                    }), "Actions"]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Admin ID"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Roles"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Created at"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Updated at"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-              children: _toConsumableArray(Array(5)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                      className: "adminlist-action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaSquare, {
-                        className: "adminlist-checkbox-icon",
-                        size: 16
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                        size: 16,
-                        className: "adminlist-delete-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                        size: 16,
-                        className: "adminlist-edit-icon"
-                      })]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {})]
-                }, index);
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "adminlist-pagination",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Page 1 of 1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "<"
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            className: "active",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: ">"
-          }), " "]
-        })]
-      })
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminList);
-
-/***/ }),
-
-/***/ "./resources/js/components/customerlist/CustomerList.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/customerlist/CustomerList.js ***!
-  \**************************************************************/
+/***/ "./resources/js/components/TrackOrder/track_order.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/TrackOrder/track_order.js ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12008,156 +11599,156 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_customer_list_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/customer_list.scss */ "./resources/sass/components/customer_list.scss");
+/* harmony import */ var _sass_components_track_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/track_order.scss */ "./resources/sass/components/track_order.scss");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruck.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruckDelivery.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconHome.mjs");
+/* harmony import */ var _Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Customer/topvar_notlogin */ "./resources/js/components/Customer/topvar_notlogin.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/footer/footer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // Import useLocation to access state
 
 
 
 
 
-
-
-
-var CustomerList = function CustomerList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
+var TrackOrder = function TrackOrder() {
+  var _location$state;
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)(); // Hook to access navigation state
+  var order = ((_location$state = location.state) === null || _location$state === void 0 ? void 0 : _location$state.order) || {
+    // Use passed order or fallback to default
+    orderNumber: '#2241',
+    status: 'In Transit',
+    total: '2365.00 USD',
+    shipTo: 'Alexander Otaza',
+    estimatedDeliveryDate: 'March 17, 2025',
+    orderPlacedDate: 'March 14, 2025',
+    orderReadyDate: 'March 13, 2025',
+    inTransitDate: 'March 14, 2025',
+    outForDeliveryDate: null,
+    deliveredDate: null,
+    productName: 'Attack Shark X3',
+    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
+  };
+  var timelineSteps = [{
+    label: 'Order Placed',
+    date: order.orderPlacedDate,
+    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"],
+    active: true
   }, {
-    value: "active",
-    label: "Active"
+    label: 'Order Ready',
+    date: order.orderReadyDate,
+    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"],
+    active: true
   }, {
-    value: "inactive",
-    label: "Inactive"
+    label: 'In Transit',
+    date: order.inTransitDate,
+    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"],
+    active: true
   }, {
-    value: "recent",
-    label: "Recent Activity"
+    label: 'Out for Delivery',
+    date: order.outForDeliveryDate,
+    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"],
+    active: false
+  }, {
+    label: 'Delivered',
+    date: order.deliveredDate,
+    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"],
+    active: false
   }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "customer-app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Customer List"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "customer-dashboard",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "customer-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: "Customer"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "customer-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "text",
-            className: "customer-search-input",
-            placeholder: "Search Users",
-            value: searchTerm,
-            onChange: function onChange(e) {
-              return setSearchTerm(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "customer-actions",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "customer-action-button",
-              children: "View Archived"
-            })
+    className: "track-order-page",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "track-order",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "order-status",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+          children: ["Order Status: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            className: "status-text",
+            children: order.status
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "customer-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "customer-header-actions-icon",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                      className: "customer-checkbox-icon"
-                    }), "Actions"]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "User ID"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Roles"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Created at"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Updated at"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-              children: _toConsumableArray(Array(5)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "customer-action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "customer-checkbox-icon",
-                        size: 16
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                        size: 16,
-                        className: "customer-delete-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                        size: 16,
-                        className: "customer-edit-icon"
-                      })]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                }, index);
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "customer-pagination",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: ["Estimated Delivery Date: ", order.estimatedDeliveryDate]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "order-info",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "info-item",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Page 1 of 1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "<"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "active",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: ">"
+            children: "ORDER PLACED"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: order.orderPlacedDate
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: "TOTAL"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: order.total
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: "SHIP TO"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: order.shipTo
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: "ORDER"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: order.orderNumber
           })]
         })]
-      })
-    })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "timeline",
+        children: timelineSteps.map(function (step, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "timeline-step ".concat(step.active ? 'active' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "timeline-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(step.icon, {
+                size: 20
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "timeline-label",
+              children: step.label
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "timeline-date",
+              children: step.date || 'N/A'
+            })]
+          }, index);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "order-details",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          children: "Order Details"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+            children: "Product Name:"
+          }), " ", order.name || order.productName]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+            children: "Order number:"
+          }), " ", order.orderNumber]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+            children: "Estimated Delivery Date:"
+          }), " ", order.estimatedDeliveryDate]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+            children: "Shipping Address:"
+          }), " ", order.shippingAddress]
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomerList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TrackOrder);
 
 /***/ }),
 
@@ -12311,219 +11902,6 @@ function Footer() {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
-
-/***/ }),
-
-/***/ "./resources/js/components/helpandsupport/HelpAndSupport.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/helpandsupport/HelpAndSupport.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ HelpAndSupport)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function HelpAndSupport() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-    children: "Help & Support Page"
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/inventory/Inventory.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/inventory/Inventory.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_inventory_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/inventory.scss */ "./resources/sass/components/inventory.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-var Inventory = function Inventory() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "low",
-    label: "Low Stock"
-  }, {
-    value: "high",
-    label: "High Stock"
-  }, {
-    value: "sold",
-    label: "Sold Out"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Inventory"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "inventory-dashboard",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "inventory-orders",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: "Inventory Management"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "inventory-orders-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "left-actions",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "text",
-              className: "search-input",
-              placeholder: "Search Orders",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "right-actions",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "header-button",
-              children: "Inventory"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "header-button",
-              children: "View Archived"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "filter-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                className: "filter-button",
-                onClick: function onClick() {
-                  return setFilterOpen(!filterOpen);
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  children: "Filter"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-              }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                className: "filter-dropdown",
-                children: filterOptions.map(function (option) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                    onClick: function onClick() {
-                      setFilterValue(option.value);
-                      setFilterOpen(false);
-                    },
-                    children: option.label
-                  }, option.value);
-                })
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "inventory-order-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "header-actions-icon",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                      className: "checkbox-icon"
-                    }), "Actions"]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Product ID"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Product Name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Current Stock"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Sold"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-              children: _toConsumableArray(Array(5)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "checkbox-icon",
-                        size: 16
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                        size: 16,
-                        className: "delete-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                        size: 16,
-                        className: "edit-icon"
-                      })]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                }, index);
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "inventory-pagination",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Page 1 of 1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "<"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "active",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: ">"
-          })]
-        })]
-      })
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Inventory);
 
 /***/ }),
 
@@ -12801,449 +12179,9 @@ function LogoSlider() {
 
 /***/ }),
 
-/***/ "./resources/js/components/orders/Orders.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/orders/Orders.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_orders_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/orders.scss */ "./resources/sass/components/orders.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-var Orders = function Orders() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "pending",
-    label: "Pending"
-  }, {
-    value: "shipped",
-    label: "Shipped"
-  }, {
-    value: "delivered",
-    label: "Delivered"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Orders"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "main-content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "order-dashboard",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "order-orders",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            children: "Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "order-orders-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "left-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "text",
-                className: "search-input",
-                placeholder: "Search Orders",
-                value: searchTerm,
-                onChange: function onChange(e) {
-                  return setSearchTerm(e.target.value);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "Orders"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "Returns"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "right-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "View Archived"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "filter-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  className: "filter-button",
-                  onClick: function onClick() {
-                    return setFilterOpen(!filterOpen);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    children: "Filter"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-                }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                  className: "filter-dropdown",
-                  children: filterOptions.map(function (option) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                      onClick: function onClick() {
-                        setFilterValue(option.value);
-                        setFilterOpen(false);
-                      },
-                      children: option.label
-                    }, option.value);
-                  })
-                })]
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "order-order-table",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "header-actions-icon",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "checkbox-icon"
-                      }), "Actions"]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Order ID"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "User"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Total Amount"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Status"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Created at"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Updated at"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                children: _toConsumableArray(Array(5)).map(function (_, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "action-icons",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                          className: "checkbox-icon",
-                          size: 16
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                          size: 16,
-                          className: "delete-icon"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                          size: 16,
-                          className: "edit-icon"
-                        })]
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                  }, index);
-                })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "order-pagination",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              children: "Page 1 of 1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "<"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "active",
-              children: "1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "2"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "3"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: ">"
-            })]
-          })]
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Orders);
-
-/***/ }),
-
-/***/ "./resources/js/components/paymentmanagement/PaymentManagement.js":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/paymentmanagement/PaymentManagement.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ PaymentManagement)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function PaymentManagement() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-    children: "Payment Management Page"
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/products/Products.js":
-/*!******************************************************!*\
-  !*** ./resources/js/components/products/Products.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_product_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/product.scss */ "./resources/sass/components/product.scss");
-/* harmony import */ var _products_product_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../products/product_modal */ "./resources/js/components/products/product_modal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-
-var Products = function Products() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState8 = _slicedToArray(_useState7, 2),
-    isModalOpen = _useState8[0],
-    setIsModalOpen = _useState8[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)();
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "gaming",
-    label: "Gaming"
-  }, {
-    value: "wireless",
-    label: "Wireless"
-  }, {
-    value: "office",
-    label: "Office"
-  }];
-  var handleAddNewClick = function handleAddNewClick() {
-    setIsModalOpen(true);
-  };
-  var handleModalClose = function handleModalClose() {
-    setIsModalOpen(false);
-  };
-  var handleViewArchived = function handleViewArchived() {
-    navigate("/archived_products");
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Products"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "main-content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "product-dashboard",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "product-products",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-            children: "Products"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "product-products-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-              type: "text",
-              className: "search-input",
-              placeholder: "Search Products",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                className: "action-button",
-                onClick: handleAddNewClick,
-                children: "Add New"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                className: "action-button",
-                onClick: handleViewArchived,
-                children: "View Archived"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                className: "filter-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
-                  className: "filter-button",
-                  onClick: function onClick() {
-                    return setFilterOpen(!filterOpen);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                    children: "Filter"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__.FaChevronDown, {})]
-                }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-                  className: "filter-dropdown",
-                  children: filterOptions.map(function (option) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-                      onClick: function onClick() {
-                        setFilterValue(option.value);
-                        setFilterOpen(false);
-                      },
-                      children: option.label
-                    }, option.value);
-                  })
-                })]
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "product-product-table",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                      className: "header-actions-icon",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__.FaSquare, {
-                        className: "checkbox-icon"
-                      }), "Actions"]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Product Image"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Category"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Brand"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Price"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Stock"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Created at"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                    children: "Updated at"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-                children: _toConsumableArray(Array(5)).map(function (_, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-                        className: "action-icons",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__.FaSquare, {
-                          className: "checkbox-icon",
-                          size: 16
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                          size: 16,
-                          className: "delete-icon"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                          size: 16,
-                          className: "edit-icon"
-                        })]
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {})]
-                  }, index);
-                })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-            className: "product-pagination",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-              children: "Page 1 of 1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              children: "<"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              className: "active",
-              children: "1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              children: "2"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              children: "3"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              children: ">"
-            })]
-          })]
-        })
-      })]
-    }), isModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_products_product_modal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      onClose: handleModalClose
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Products);
-
-/***/ }),
-
-/***/ "./resources/js/components/products/product_modal.js":
+/***/ "./resources/js/components/orderHistory/all_order.js":
 /*!***********************************************************!*\
-  !*** ./resources/js/components/products/product_modal.js ***!
+  !*** ./resources/js/components/orderHistory/all_order.js ***!
   \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13253,15 +12191,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _sass_components_product_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/product_modal.scss */ "./resources/sass/components/product_modal.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _sass_components_all_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/all_order.scss */ "./resources/sass/components/all_order.scss");
+/* harmony import */ var _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/ATKX5.svg */ "./resources/sass/img/ATKX5.svg");
+/* harmony import */ var _orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../orderHistory/cancel_order */ "./resources/js/components/orderHistory/cancel_order.js");
+/* harmony import */ var _orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../orderHistory/rate_product */ "./resources/js/components/orderHistory/rate_product.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -13272,180 +12207,445 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+ // Adjust the path to your cancel_order.js file
+ // Adjust the path to your rate_product.js file
 
-function ProductModal(_ref) {
-  var onClose = _ref.onClose;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+var AllOrder = function AllOrder() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
     _useState2 = _slicedToArray(_useState, 2),
-    productImage = _useState2[0],
-    setProductImage = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      productName: "",
-      description: "",
-      setPrice: "",
-      setStock: ""
-    }),
+    activeTab = _useState2[0],
+    setActiveTab = _useState2[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
+
+  // State to manage the cancel modal
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    formData = _useState4[0],
-    setFormData = _useState4[1];
-  var handleImageUpload = function handleImageUpload(e) {
-    var file = e.target.files[0];
-    if (file) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        setProductImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
+    isCancelModalOpen = _useState4[0],
+    setIsCancelModalOpen = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    selectedOrderForCancel = _useState6[0],
+    setSelectedOrderForCancel = _useState6[1];
+
+  // State to manage the rate modal
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isRateModalOpen = _useState8[0],
+    setIsRateModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    selectedOrderForRate = _useState10[0],
+    setSelectedOrderForRate = _useState10[1];
+  var orders = [{
+    id: 1,
+    image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: 'Attack Shark X3',
+    quantity: 1,
+    status: 'Shipped',
+    tab: 'to_ship',
+    actions: ['Track', 'Cancel Order'],
+    orderNumber: '#2241',
+    total: '2365.00 USD',
+    shipTo: 'Alexander Otaza',
+    estimatedDeliveryDate: 'March 17, 2025',
+    orderPlacedDate: 'March 14, 2025',
+    orderReadyDate: 'March 13, 2025',
+    inTransitDate: 'March 14, 2025',
+    outForDeliveryDate: null,
+    deliveredDate: null,
+    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
+  }, {
+    id: 2,
+    image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: 'Attack Shark X3',
+    quantity: 1,
+    status: 'Received',
+    tab: 'to_receive',
+    actions: ['Rate', 'Refund'],
+    orderNumber: '#2242',
+    total: '2365.00 USD',
+    shipTo: 'Alexander Otaza',
+    estimatedDeliveryDate: 'March 18, 2025',
+    orderPlacedDate: 'March 15, 2025',
+    orderReadyDate: 'March 16, 2025',
+    inTransitDate: 'March 17, 2025',
+    outForDeliveryDate: null,
+    deliveredDate: null,
+    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
+  }];
+  var filteredOrders = activeTab === 'all' ? orders : orders.filter(function (order) {
+    return order.tab === activeTab;
+  });
+  var handleTrackOrder = function handleTrackOrder(order) {
+    navigate('/track_order', {
+      state: {
+        order: order
+      }
+    });
+  };
+
+  // Open the cancel modal for the selected order
+  var handleCancelOrder = function handleCancelOrder(order) {
+    setSelectedOrderForCancel(order);
+    setIsCancelModalOpen(true);
+  };
+
+  // Handle confirmation from the cancel modal
+  var handleConfirmCancel = function handleConfirmCancel(reason) {
+    if (selectedOrderForCancel) {
+      console.log('Order cancelled:', selectedOrderForCancel.orderNumber, 'Reason:', reason);
+      setIsCancelModalOpen(false);
     }
   };
-  var handleInputChange = function handleInputChange(e) {
-    var _e$target = e.target,
-      name = _e$target.name,
-      value = _e$target.value;
-    setFormData(function (prevData) {
-      return _objectSpread(_objectSpread({}, prevData), {}, _defineProperty({}, name, value));
-    });
-    console.log("Input changed: ".concat(name, " = ").concat(value));
+
+  // Close the cancel modal
+  var handleCloseCancelModal = function handleCloseCancelModal() {
+    setIsCancelModalOpen(false);
+    setSelectedOrderForCancel(null);
   };
-  var handleClose = function handleClose() {
-    onClose();
+
+  // Open the rate modal for the selected order
+  var handleRateOrder = function handleRateOrder(order) {
+    setSelectedOrderForRate(order);
+    setIsRateModalOpen(true);
   };
+
+  // Handle submission from the rate modal
+  var handleSubmitRating = function handleSubmitRating(_ref) {
+    var rating = _ref.rating,
+      review = _ref.review;
+    if (selectedOrderForRate) {
+      console.log('Rating submitted for order:', selectedOrderForRate.orderNumber, {
+        rating: rating,
+        review: review
+      });
+      // Add your rating submission logic here (e.g., API call)
+      setIsRateModalOpen(false);
+    }
+  };
+
+  // Close the rate modal
+  var handleCloseRateModal = function handleCloseRateModal() {
+    setIsRateModalOpen(false);
+    setSelectedOrderForRate(null);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "all-order",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "order-tabs",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'all' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('all');
+        },
+        children: "All Order"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('to_pay');
+        },
+        children: "To Pay"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('to_ship');
+        },
+        children: "To Ship"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('to_receive');
+        },
+        children: "To Receive"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('completed');
+        },
+        children: "Completed"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'cancelled' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('cancelled');
+        },
+        children: "Cancelled"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('refunded');
+        },
+        children: "Refunded"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "orders-list",
+      children: filteredOrders.length > 0 ? filteredOrders.map(function (order) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "order-item-container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "order-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "order-details",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                src: order.image,
+                alt: order.name,
+                className: "order-image"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "order-info",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+                  children: order.name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                  children: ["x", order.quantity]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                  className: "status ".concat(order.status.toLowerCase()),
+                  children: ["Status: ", order.status]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              className: "order-actions",
+              children: order.actions.map(function (action, index) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  className: "action-btn",
+                  onClick: action === 'Track' ? function () {
+                    return handleTrackOrder(order);
+                  } : action === 'Cancel Order' ? function () {
+                    return handleCancelOrder(order);
+                  } : action === 'Rate' ? function () {
+                    return handleRateOrder(order);
+                  } : undefined,
+                  children: action
+                }, index);
+              })
+            })]
+          })
+        }, order.id);
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        children: "No orders found for this tab."
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      isOpen: isCancelModalOpen,
+      onClose: handleCloseCancelModal,
+      onConfirm: handleConfirmCancel
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      isOpen: isRateModalOpen,
+      onClose: handleCloseRateModal,
+      onSubmit: handleSubmitRating
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllOrder);
+
+/***/ }),
+
+/***/ "./resources/js/components/orderHistory/cancel_order.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/orderHistory/cancel_order.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sass_components_cancel_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/cancel_order.scss */ "./resources/sass/components/cancel_order.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var CancelOrder = function CancelOrder(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    selectedReason = _useState2[0],
+    setSelectedReason = _useState2[1];
+  var cancellationReasons = ["I don't want to buy it anymore.", "I changed my mind.", "I ordered by mistake.", "I found a better price elsewhere."];
+  var handleReasonChange = function handleReasonChange(event) {
+    setSelectedReason(event.target.value);
+  };
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    if (selectedReason) {
+      onConfirm(selectedReason);
+      onClose();
+    }
+  };
+  if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal-overlay",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "product-modal",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "modal-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Add New Products"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          className: "close-button",
-          onClick: handleClose,
-          children: "\u2715"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "modal-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "image-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "image-preview",
-            children: productImage ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-              src: productImage,
-              alt: "Product Preview"
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "placeholder",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: "Upload Product Image"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-            htmlFor: "image-upload",
-            className: "upload-button",
-            children: "Add Image"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-            type: "file",
-            id: "image-upload",
-            accept: "image/*",
-            onChange: handleImageUpload,
-            style: {
-              display: "none"
-            }
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "form-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-            type: "text",
-            name: "productName",
-            placeholder: "Product Name",
-            className: "input-field",
-            value: formData.productName,
-            onChange: handleInputChange
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
-            name: "description",
-            placeholder: "Description",
-            className: "input-field description",
-            value: formData.description,
-            onChange: handleInputChange
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "action-fields",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "input-wrapper",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "number",
-                name: "setPrice",
-                placeholder: "Set Price",
-                className: "input-field price-field",
-                value: formData.setPrice,
-                onChange: handleInputChange,
-                min: "0",
-                step: "0.01"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "input-wrapper",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "number",
-                name: "setStock",
-                placeholder: "Set Stock",
-                className: "input-field stock-field",
-                value: formData.setStock,
-                onChange: handleInputChange,
-                min: "0"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "select-wrapper",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                className: "select-field",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "",
-                  disabled: true,
-                  selected: true,
-                  children: "Select Brand"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "attackshark",
-                  children: "Attack Shark"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "logitech",
-                  children: "Logitech"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "razer",
-                  children: "Razer"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaChevronDown, {
-                className: "dropdown-icon"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "select-wrapper",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                className: "select-field",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "",
-                  disabled: true,
-                  selected: true,
-                  children: "Select Category"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "gamingmouse",
-                  children: "Gaming Mouse"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "wirelessmouse",
-                  children: "Wireless Mouse"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                  value: "officemouse",
-                  children: "Office Mouse"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaChevronDown, {
-                className: "dropdown-icon"
-              })]
+      className: "modal-content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: "Cancel Order"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Please select a cancellation reason. Please take note that this will cancel the selected items and the action cannot be undone."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+        onSubmit: handleSubmit,
+        className: "radio-group",
+        children: [cancellationReasons.map(function (reason, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+            className: "radio-label",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "radio",
+              value: reason,
+              checked: selectedReason === reason,
+              onChange: handleReasonChange,
+              required: true // Ensures a selection is made
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              children: reason
             })]
+          }, index);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            type: "button",
+            className: "btn no-btn",
+            onClick: onClose,
+            children: "No"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            className: "submit-button",
-            children: "Submit Product"
+            type: "submit",
+            className: "btn yes-btn",
+            disabled: !selectedReason,
+            children: "Yes"
           })]
         })]
       })]
     })
   });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductModal);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CancelOrder);
+
+/***/ }),
+
+/***/ "./resources/js/components/orderHistory/rate_product.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/orderHistory/rate_product.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
+/* harmony import */ var _sass_components_rate_product_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/rate_product.scss */ "./resources/sass/components/rate_product.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+var RateProduct = function RateProduct(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose,
+    onSubmit = _ref.onSubmit;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    rating = _useState2[0],
+    setRating = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState4 = _slicedToArray(_useState3, 2),
+    hoverRating = _useState4[0],
+    setHoverRating = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    review = _useState6[0],
+    setReview = _useState6[1];
+  var handleRatingClick = function handleRatingClick(value) {
+    setRating(value);
+  };
+  var handleRatingHover = function handleRatingHover(value) {
+    setHoverRating(value);
+  };
+  var handleMouseLeave = function handleMouseLeave() {
+    setHoverRating(0);
+  };
+  var handleReviewChange = function handleReviewChange(event) {
+    setReview(event.target.value);
+  };
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    if (rating > 0) {
+      onSubmit({
+        rating: rating,
+        review: review
+      });
+      onClose();
+    }
+  };
+  if (!isOpen) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "modal-overlay",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "modal-content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: "Overall Rating"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "star-rating",
+        children: [1, 2, 3, 4, 5].map(function (star) {
+          var isFilled = star <= (hoverRating || rating);
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "star ".concat(isFilled ? 'filled' : ''),
+            onClick: function onClick() {
+              return handleRatingClick(star);
+            },
+            onMouseEnter: function onMouseEnter() {
+              return handleRatingHover(star);
+            },
+            onMouseLeave: handleMouseLeave,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              size: 24,
+              fill: isFilled ? '#FF0000' : 'none',
+              stroke: isFilled ? '#FF0000' : '#ccc'
+            })
+          }, star);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+        onSubmit: handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "review",
+          children: "Product Review"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+          id: "review",
+          value: review,
+          onChange: handleReviewChange,
+          placeholder: "Write your review here...",
+          rows: "4",
+          required: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            type: "submit",
+            className: "btn submit-btn",
+            disabled: rating === 0,
+            children: "Submit"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            type: "button",
+            className: "btn cancel-btn",
+            onClick: onClose,
+            children: "Cancel"
+          })]
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RateProduct);
 
 /***/ }),
 
@@ -13467,9 +12667,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Customer/topvar_notlogin */ "./resources/js/components/Customer/topvar_notlogin.js");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/footer/footer.js");
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/CartModals/orders_cart.js");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconUpload.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconUpload.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
+/* harmony import */ var _profile_address_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../profile/address_modal */ "./resources/js/components/profile/address_modal.js");
+/* harmony import */ var _profile_password_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../profile/password_modal */ "./resources/js/components/profile/password_modal.js");
+/* harmony import */ var _orderHistory_all_order__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../orderHistory/all_order */ "./resources/js/components/orderHistory/all_order.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -13485,6 +12688,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
+ // Import the AllOrder component
+
 function Profile() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('personal'),
     _useState2 = _slicedToArray(_useState, 2),
@@ -13498,6 +12704,61 @@ function Profile() {
     _useState6 = _slicedToArray(_useState5, 2),
     avatarImage = _useState6[0],
     setAvatarImage = _useState6[1];
+
+  // State for field values
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Alexander Otaza'),
+    _useState8 = _slicedToArray(_useState7, 2),
+    name = _useState8[0],
+    setName = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Alexander Otaza'),
+    _useState10 = _slicedToArray(_useState9, 2),
+    email = _useState10[0],
+    setEmail = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('************'),
+    _useState12 = _slicedToArray(_useState11, 2),
+    password = _useState12[0],
+    setPassword = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      street: 'San Francisco St',
+      city: 'Butuan City',
+      province: 'Agusan Del Norte',
+      postalCode: '8600',
+      country: 'Philippines'
+    }),
+    _useState14 = _slicedToArray(_useState13, 2),
+    address = _useState14[0],
+    setAddress = _useState14[1];
+
+  // State for edit modes
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      name: false,
+      email: false,
+      password: false,
+      address: false
+    }),
+    _useState16 = _slicedToArray(_useState15, 2),
+    editMode = _useState16[0],
+    setEditMode = _useState16[1];
+
+  // Temporary state for editing values
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name),
+    _useState18 = _slicedToArray(_useState17, 2),
+    tempName = _useState18[0],
+    setTempName = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(email),
+    _useState20 = _slicedToArray(_useState19, 2),
+    tempEmail = _useState20[0],
+    setTempEmail = _useState20[1];
+
+  // State to control the modals
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState22 = _slicedToArray(_useState21, 2),
+    isAddressModalOpen = _useState22[0],
+    setIsAddressModalOpen = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState24 = _slicedToArray(_useState23, 2),
+    isPasswordModalOpen = _useState24[0],
+    setIsPasswordModalOpen = _useState24[1];
   var handleTabChange = function handleTabChange(tab) {
     setActiveTab(tab);
   };
@@ -13505,7 +12766,7 @@ function Profile() {
     setIsCartOpen(!isCartOpen);
   };
 
-  // Handle file upload
+  // Handle file upload for avatar
   var handleFileChange = function handleFileChange(event) {
     var file = event.target.files[0];
     if (file) {
@@ -13527,35 +12788,91 @@ function Profile() {
   var handleUploadIconClick = function handleUploadIconClick() {
     document.getElementById('avatar-upload').click();
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+
+  // Handle edit button click for each field
+  var handleEditClick = function handleEditClick(field) {
+    if (field === 'address') {
+      setIsAddressModalOpen(true);
+      return;
+    }
+    if (field === 'password') {
+      setIsPasswordModalOpen(true);
+      return;
+    }
+    setEditMode({
+      name: field === 'name',
+      email: field === 'email',
+      password: false,
+      address: false
+    });
+    if (field === 'name') setTempName(name);
+    if (field === 'email') setTempEmail(email);
+  };
+
+  // Handle save button click for inline editing
+  var handleSave = function handleSave(field) {
+    if (field === 'name') setName(tempName);
+    if (field === 'email') setEmail(tempEmail);
+    setEditMode({
+      name: false,
+      email: false,
+      password: false,
+      address: false
+    });
+  };
+
+  // Handle cancel button click for inline editing
+  var handleCancel = function handleCancel() {
+    setTempName(name);
+    setTempEmail(email);
+    setEditMode({
+      name: false,
+      email: false,
+      password: false,
+      address: false
+    });
+  };
+
+  // Handle saving the address from the modal
+  var handleSaveAddress = function handleSaveAddress(updatedAddress) {
+    setAddress(updatedAddress);
+    setIsAddressModalOpen(false);
+  };
+
+  // Handle saving the password from the modal
+  var handleSavePassword = function handleSavePassword(newPassword) {
+    setPassword(newPassword || '************');
+    setIsPasswordModalOpen(false);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
     className: "profile-page",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_4__["default"], {
       onCartClick: toggleCart
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "background-section",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
           src: _resources_sass_img_coverp_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
           alt: "Background",
           className: "background-image"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "profile-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "avatar-container",
           onClick: handleAvatarClick,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
             src: avatarImage,
             alt: "Avatar",
             className: "avatar-image"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: "upload-photo-icon",
             onClick: handleUploadIconClick,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
               size: 18
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
             type: "file",
             id: "avatar-upload",
             accept: "image/*",
@@ -13564,83 +12881,146 @@ function Profile() {
               display: 'none'
             }
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
           className: "username",
           children: "alexdooe02122"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "tabs-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
           className: "tab ".concat(activeTab === 'personal' ? 'active' : ''),
           onClick: function onClick() {
             return handleTabChange('personal');
           },
           children: "Personal Information"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
           className: "tab ".concat(activeTab === 'orders' ? 'active' : ''),
           onClick: function onClick() {
             return handleTabChange('orders');
           },
           children: "Order History"
         })]
-      }), activeTab === 'personal' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), activeTab === 'personal' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "info-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "info-box",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
             children: "Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: "Alexander Otaza"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          }), editMode.name ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+            type: "text",
+            value: tempName,
+            onChange: function onChange(e) {
+              return setTempName(e.target.value);
+            },
+            className: "edit-input"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+            children: name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
             className: "edit-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onClick: function onClick() {
+              return handleEditClick('name');
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
               size: 24
             })
+          }), editMode.name && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "edit-actions",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+              className: "cancel-btn",
+              onClick: handleCancel,
+              children: "Cancel"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+              className: "save-btn",
+              onClick: function onClick() {
+                return handleSave('name');
+              },
+              children: "Save"
+            })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "info-box",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
             children: "Email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: "Alexander Otaza"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          }), editMode.email ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+            type: "email",
+            value: tempEmail,
+            onChange: function onChange(e) {
+              return setTempEmail(e.target.value);
+            },
+            className: "edit-input"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+            children: email
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
             className: "edit-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onClick: function onClick() {
+              return handleEditClick('email');
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
               size: 24
             })
+          }), editMode.email && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            className: "edit-actions",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+              className: "cancel-btn",
+              onClick: handleCancel,
+              children: "Cancel"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+              className: "save-btn",
+              onClick: function onClick() {
+                return handleSave('email');
+              },
+              children: "Save"
+            })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "info-box",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
             children: "Address"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: "San Francisco St, Butuan City, Agusan Del Norte 8600, Philippines"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+            children: "".concat(address.street, ", ").concat(address.city, ", ").concat(address.province, " ").concat(address.postalCode, ", ").concat(address.country)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
             className: "edit-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onClick: function onClick() {
+              return handleEditClick('address');
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
               size: 24
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "info-box",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
             children: "Password"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: "************"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+            children: password
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
             className: "edit-btn",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            onClick: function onClick() {
+              return handleEditClick('password');
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
               size: 24
             })
           })]
         })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "order-history",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-          children: "Order history will be displayed here."
-        })
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_orderHistory_all_order__WEBPACK_IMPORTED_MODULE_9__["default"], {}), " "]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_profile_address_modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        isOpen: isAddressModalOpen,
+        onClose: function onClose() {
+          return setIsAddressModalOpen(false);
+        },
+        onSave: handleSaveAddress,
+        initialAddress: address
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_profile_password_modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        isOpen: isPasswordModalOpen,
+        onClose: function onClose() {
+          return setIsPasswordModalOpen(false);
+        },
+        onSave: handleSavePassword
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       isOpen: isCartOpen,
       onClose: function onClose() {
         return setIsCartOpen(false);
@@ -13649,6 +13029,404 @@ function Profile() {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile);
+
+/***/ }),
+
+/***/ "./resources/js/components/profile/address_modal.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/profile/address_modal.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sass_components_address_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/address_modal.scss */ "./resources/sass/components/address_modal.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var AddressModal = function AddressModal(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose,
+    onSave = _ref.onSave,
+    initialAddress = _ref.initialAddress;
+  // Split the initial address into parts (you might want to adjust this based on your address format)
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      street: initialAddress.street || '',
+      city: initialAddress.city || '',
+      province: initialAddress.province || '',
+      postalCode: initialAddress.postalCode || '',
+      country: initialAddress.country || ''
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    address = _useState2[0],
+    setAddress = _useState2[1];
+
+  // Handle input changes
+  var handleChange = function handleChange(e) {
+    var _e$target = e.target,
+      name = _e$target.name,
+      value = _e$target.value;
+    setAddress(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, name, value));
+    });
+  };
+
+  // Handle save
+  var handleSave = function handleSave() {
+    onSave(address);
+    onClose();
+  };
+
+  // Handle cancel
+  var handleCancel = function handleCancel() {
+    onClose();
+  };
+
+  // Don't render the modal if it's not open
+  if (!isOpen) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "address-modal-overlay",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "address-modal",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+          children: "Edit Address"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "close-btn",
+          onClick: onClose,
+          children: "\xD7"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-body",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "street",
+            children: "Street"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            id: "street",
+            name: "street",
+            value: address.street,
+            onChange: handleChange,
+            placeholder: "Enter street"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "city",
+            children: "City"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            id: "city",
+            name: "city",
+            value: address.city,
+            onChange: handleChange,
+            placeholder: "Enter city"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "province",
+            children: "Province"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            id: "province",
+            name: "province",
+            value: address.province,
+            onChange: handleChange,
+            placeholder: "Enter province"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "postalCode",
+            children: "Postal Code"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            id: "postalCode",
+            name: "postalCode",
+            value: address.postalCode,
+            onChange: handleChange,
+            placeholder: "Enter postal code"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "country",
+            children: "Country"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            id: "country",
+            name: "country",
+            value: address.country,
+            onChange: handleChange,
+            placeholder: "Enter country"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-footer",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "cancel-btn",
+          onClick: handleCancel,
+          children: "Cancel"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "save-btn",
+          onClick: handleSave,
+          children: "Save"
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddressModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/profile/password_modal.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/profile/password_modal.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sass_components_password_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/password_modal.scss */ "./resources/sass/components/password_modal.scss");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEyeOff.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+ // Import eye icons
+
+var PasswordModal = function PasswordModal(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose,
+    onSave = _ref.onSave;
+  // State for new password, confirm password, and visibility
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    newPassword = _useState2[0],
+    setNewPassword = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    confirmPassword = _useState4[0],
+    setConfirmPassword = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      "new": false,
+      confirm: false
+    }),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showPassword = _useState6[0],
+    setShowPassword = _useState6[1]; // State to toggle visibility
+
+  // State for password strength and matching
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    passwordStrength = _useState8[0],
+    setPasswordStrength = _useState8[1]; // Null when empty, otherwise weak/medium/strong
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState10 = _slicedToArray(_useState9, 2),
+    passwordsMatch = _useState10[0],
+    setPasswordsMatch = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    confirmTouched = _useState12[0],
+    setConfirmTouched = _useState12[1];
+
+  // Password strength checker
+  var checkPasswordStrength = function checkPasswordStrength(password) {
+    if (!password) return null; // Return null if empty
+    var strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (strongPasswordRegex.test(password)) {
+      return 'strong';
+    } else if (password.length >= 6) {
+      return 'medium';
+    } else {
+      return 'weak';
+    }
+  };
+
+  // Handle new password change
+  var handleNewPasswordChange = function handleNewPasswordChange(e) {
+    var password = e.target.value;
+    setNewPassword(password);
+    var strength = checkPasswordStrength(password);
+    setPasswordStrength(strength);
+    if (confirmTouched) {
+      setPasswordsMatch(password === confirmPassword);
+    }
+  };
+
+  // Handle confirm password change
+  var handleConfirmPasswordChange = function handleConfirmPasswordChange(e) {
+    var password = e.target.value;
+    setConfirmTouched(true);
+    setConfirmPassword(password);
+    setPasswordsMatch(newPassword === password);
+  };
+
+  // Toggle password visibility
+  var togglePasswordVisibility = function togglePasswordVisibility(field) {
+    setShowPassword(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, field, !prev[field]));
+    });
+  };
+
+  // Handle save
+  var handleSave = function handleSave() {
+    if (passwordStrength === 'strong' && passwordsMatch) {
+      onSave(newPassword);
+      onClose();
+    }
+  };
+
+  // Handle cancel
+  var handleCancel = function handleCancel() {
+    setNewPassword('');
+    setConfirmPassword('');
+    setPasswordStrength(null);
+    setPasswordsMatch(true);
+    setConfirmTouched(false);
+    setShowPassword({
+      "new": false,
+      confirm: false
+    });
+    onClose();
+  };
+
+  // Don't render the modal if it's not open
+  if (!isOpen) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "password-modal-overlay",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "password-modal",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+          children: "Edit Password"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "close-btn",
+          onClick: handleCancel,
+          children: "\xD7"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-body",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "newPassword",
+            children: "New Password"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "password-input-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: showPassword["new"] ? 'text' : 'password',
+              id: "newPassword",
+              name: "newPassword",
+              value: newPassword,
+              onChange: handleNewPasswordChange,
+              placeholder: "Enter new password",
+              className: "password-input ".concat(passwordStrength || '')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "eye-icon",
+              onClick: function onClick() {
+                return togglePasswordVisibility('new');
+              },
+              children: showPassword["new"] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                size: 18
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                size: 18
+              })
+            })]
+          }), passwordStrength === 'weak' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "strength-indicator ".concat(passwordStrength),
+            children: "Weak"
+          }), (passwordStrength === 'medium' || passwordStrength === 'strong') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "strength-indicator ".concat(passwordStrength),
+            children: passwordStrength === 'medium' ? 'Medium' : 'Strong'
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "confirmPassword",
+            children: "Confirm Password"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "password-input-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: showPassword.confirm ? 'text' : 'password',
+              id: "confirmPassword",
+              name: "confirmPassword",
+              value: confirmPassword,
+              onChange: handleConfirmPasswordChange,
+              placeholder: "Confirm new password",
+              className: "password-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "eye-icon",
+              onClick: function onClick() {
+                return togglePasswordVisibility('confirm');
+              },
+              children: showPassword.confirm ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                size: 18
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                size: 18
+              })
+            })]
+          }), confirmTouched && !passwordsMatch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "error-message",
+            children: "Passwords do not match"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-footer",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "cancel-btn",
+          onClick: handleCancel,
+          children: "Cancel"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "save-btn",
+          onClick: handleSave,
+          disabled: passwordStrength !== 'strong' || confirmTouched && !passwordsMatch,
+          children: "Save"
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PasswordModal);
 
 /***/ }),
 
@@ -14033,369 +13811,6 @@ var Register = function Register() {
 
 /***/ }),
 
-/***/ "./resources/js/components/reviewsandnotification/ReviewsAndNotifications.js":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/reviewsandnotification/ReviewsAndNotifications.js ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_reviews_notif_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../sass/components/reviews&notif.scss */ "./resources/sass/components/reviews&notif.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
- // Routing imports
- // Assuming this matches your project structure
- // Icon imports
- // Additional icons
- // SCSS file
-
-var ReviewsAndNotifications = function ReviewsAndNotifications() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1]; // Included for potential future use
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1]; // Included for potential future use
-
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "positive",
-    label: "Positive"
-  }, {
-    value: "negative",
-    label: "Negative"
-  }, {
-    value: "recent",
-    label: "Recent Reviews"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); // For navigation
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)(); // For location tracking
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "reviewsnotifications-app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Reviews & Notifications"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "reviewsnotifications-dashboard",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "reviewsnotifications-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-          children: "Reviews & Notifications"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "reviewsnotifications-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "reviewsnotifications-left-actions",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-              type: "text",
-              className: "reviewsnotifications-search-input",
-              placeholder: "Search Reviews",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "reviewsnotifications-right-actions",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "reviewsnotifications-header-button",
-              children: "Notifications"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "reviewsnotifications-header-button",
-              children: "View Archived"
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "reviewsnotifications-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                    className: "reviewsnotifications-header-actions-icon",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaSquare, {
-                      className: "reviewsnotifications-checkbox-icon"
-                    }), "Actions"]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Product ID"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Rating"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Created at"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                  children: "Updated at"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-              children: _toConsumableArray(Array(5)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                      className: "reviewsnotifications-action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaSquare, {
-                        className: "reviewsnotifications-checkbox-icon",
-                        size: 16
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                        size: 16,
-                        className: "reviewsnotifications-delete-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                        size: 16,
-                        className: "reviewsnotifications-edit-icon"
-                      })]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {})]
-                }, index);
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "reviewsnotifications-pagination",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Page 1 of 1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "<"
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            className: "active",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-            children: ">"
-          }), " "]
-        })]
-      })
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsAndNotifications);
-
-/***/ }),
-
-/***/ "./resources/js/components/sellerlist/SellerList.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/sellerlist/SellerList.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_seller_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/seller.scss */ "./resources/sass/components/seller.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-var SellerList = function SellerList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "active",
-    label: "Active"
-  }, {
-    value: "inactive",
-    label: "Inactive"
-  }, {
-    value: "top",
-    label: "Top Sellers"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  var handleViewArchived = function handleViewArchived() {
-    navigate("/archived_sellers"); // Adjusted for sellers
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Seller List"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "main-content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "seller-dashboard",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "seller-sellers",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            children: "Seller List"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "seller-sellers-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "text",
-              className: "search-input" // Standardized class name
-              ,
-              placeholder: "Search Sellers",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "action-button",
-                children: "Add New"
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "action-button",
-                onClick: handleViewArchived,
-                children: "View Archived"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "filter-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  className: "filter-button",
-                  onClick: function onClick() {
-                    return setFilterOpen(!filterOpen);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    children: "Filter"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-                }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                  className: "filter-dropdown",
-                  children: filterOptions.map(function (option) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                      onClick: function onClick() {
-                        setFilterValue(option.value);
-                        setFilterOpen(false);
-                      },
-                      children: option.label
-                    }, option.value);
-                  })
-                })]
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "seller-seller-table",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "header-actions-icon",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "checkbox-icon"
-                      }), "Actions"]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Seller ID"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Seller Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Total Sales"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Status"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                children: _toConsumableArray(Array(5)).map(function (_, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "action-icons",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                          className: "checkbox-icon",
-                          size: 16
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                          size: 16,
-                          className: "delete-icon"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                          size: 16,
-                          className: "edit-icon"
-                        })]
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                  }, index);
-                })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "seller-pagination",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "<"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "active",
-              children: "1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "2"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "3"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: ">"
-            })]
-          })]
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SellerList);
-
-/***/ }),
-
 /***/ "./resources/js/components/shop/shop.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/shop/shop.js ***!
@@ -14502,483 +13917,6 @@ function Shop() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_4__["default"], {})]
   });
 }
-
-/***/ }),
-
-/***/ "./resources/js/components/sidebar/Sidebar.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/sidebar/Sidebar.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _sass_components_sidebar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/_sidebar.scss */ "./resources/sass/components/_sidebar.scss");
-/* harmony import */ var _resources_sass_img_aadmin_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/aadmin.svg */ "./resources/sass/img/aadmin.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-var Sidebar = function Sidebar(_ref) {
-  var propActiveItem = _ref.activeItem;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    adminDropdown = _useState2[0],
-    setAdminDropdown = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(propActiveItem || "Dashboard"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    activeItem = _useState4[0],
-    setActiveItem = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState6 = _slicedToArray(_useState5, 2),
-    isSidebarCollapsed = _useState6[0],
-    setIsSidebarCollapsed = _useState6[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
-  var menuItems = [{
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTachometerAlt, {}),
-    label: "Dashboard",
-    path: "/admindashboard"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBoxOpen, {}),
-    label: "Products",
-    path: "/products"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaShoppingCart, {}),
-    label: "Orders",
-    path: "/orders"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaClipboardList, {}),
-    label: "Inventory",
-    path: "/inventory"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUsers, {}),
-    label: "Users",
-    path: "/users"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUser, {}),
-    label: "Customer List",
-    path: "/customerlist"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUser, {}),
-    label: "Seller List",
-    path: "/sellerlist"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUser, {}),
-    label: "Admin List",
-    path: "/adminlist"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaStar, {}),
-    label: "Reviews & Notifications",
-    path: "/reviewsandnotifications"
-  }];
-  var adminSettingsItems = [{
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaMoneyBill, {}),
-    label: "Payment Management",
-    path: "/paymentmanagement"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaChartBar, {}),
-    label: "Status & Category",
-    path: "/statusandcategory"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBell, {}),
-    label: "Help & Support",
-    path: "/helpandsupport"
-  }, {
-    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUserShield, {}),
-    label: "Roles",
-    path: "/roles"
-  }];
-  var isActive = function isActive(path) {
-    return location.pathname === path ? "active" : "";
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "sidebar ".concat(isSidebarCollapsed ? "collapsed" : "expanded"),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "sidebar-header",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "mobile-toggle",
-        children: isSidebarCollapsed ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBars, {
-          className: "toggle-icon",
-          onClick: function onClick() {
-            return setIsSidebarCollapsed(false);
-          }
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTimes, {
-          className: "toggle-icon",
-          onClick: function onClick() {
-            return setIsSidebarCollapsed(true);
-          }
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        src: _resources_sass_img_aadmin_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-        alt: "Admin Logo",
-        className: "admin-photo"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
-      className: "sidebar-menu",
-      children: [menuItems.map(function (item) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
-          className: isActive(item.path),
-          onClick: function onClick() {
-            navigate(item.path);
-            setActiveItem(item.label);
-            setIsSidebarCollapsed(true); // Close on mobile
-          },
-          children: [item.icon, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: item.label
-          })]
-        }, item.label);
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {
-        className: "separator"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "admin-settings-header",
-        onClick: function onClick() {
-          return setAdminDropdown(!adminDropdown);
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaCog, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          children: "Admin Settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaChevronDown, {
-          className: adminDropdown ? "rotate-icon" : ""
-        })]
-      }), adminDropdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
-        className: "dropdown",
-        children: adminSettingsItems.map(function (item) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
-            className: isActive(item.path),
-            onClick: function onClick() {
-              navigate(item.path);
-              setActiveItem(item.label);
-              setIsSidebarCollapsed(true); // Close on mobile
-            },
-            children: [item.icon, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: item.label
-            })]
-          }, item.label);
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sidebar);
-
-/***/ }),
-
-/***/ "./resources/js/components/statusandcategory/StatusAndCategory.js":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/statusandcategory/StatusAndCategory.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ StatusAndCategory)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function StatusAndCategory() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-    children: "Status & Category Page"
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/topnavbar/TopNavbar.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/topnavbar/TopNavbar.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sass_components_topnavbar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/_topnavbar.scss */ "./resources/sass/components/_topnavbar.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-var TopNavbar = function TopNavbar() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isDropdownOpen = _useState2[0],
-    setIsDropdownOpen = _useState2[1];
-  var dropdownRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-  var toggleDropdown = function toggleDropdown() {
-    setIsDropdownOpen(function (prev) {
-      return !prev;
-    });
-  };
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var handleClickOutside = function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return function () {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-  var handleLogout = function handleLogout() {
-    console.log("🔹 Logging out...");
-    localStorage.clear();
-    sessionStorage.clear();
-    setIsDropdownOpen(false);
-    setTimeout(function () {
-      navigate("/login", {
-        replace: true
-      });
-    }, 200);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "top-navbar",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "profile",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUserCircle, {
-        className: "profile-icon"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCaretDown, {
-        className: "dropdown-button",
-        onClick: toggleDropdown,
-        ref: dropdownRef
-      }), isDropdownOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "dropdown-menu",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-            children: "Profile Settings"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-            onClick: handleLogout,
-            children: "Logout"
-          }), " "]
-        })
-      })]
-    })
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TopNavbar);
-
-/***/ }),
-
-/***/ "./resources/js/components/users/Users.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/users/Users.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_users_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../sass/components/users.scss */ "./resources/sass/components/users.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-
-
-var Users = function Users() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
-    _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
-    value: "all",
-    label: "All"
-  }, {
-    value: "admin",
-    label: "Admin"
-  }, {
-    value: "customer",
-    label: "Customer"
-  }, {
-    value: "seller",
-    label: "Seller"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Users"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "user-dashboard",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "user-users",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: "Users"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "user-users-header",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "header-actions",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "text",
-              className: "search-users-input",
-              placeholder: "Search Users",
-              value: searchTerm,
-              onChange: function onChange(e) {
-                return setSearchTerm(e.target.value);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "right-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "action-button",
-                children: "View Archived"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "action-button",
-                children: "Add Users"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "filter-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  className: "filter-button",
-                  onClick: function onClick() {
-                    return setFilterOpen(!filterOpen);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    children: "Filter"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-                }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                  className: "filter-dropdown",
-                  children: filterOptions.map(function (option) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                      onClick: function onClick() {
-                        setFilterValue(option.value);
-                        setFilterOpen(false);
-                      },
-                      children: option.label
-                    }, option.value);
-                  })
-                })]
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "user-user-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "header-actions-icon",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                      className: "checkbox-icon"
-                    }), "Actions"]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Username"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Roles"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Created at"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                  children: "Updated at"
-                })]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-              children: _toConsumableArray(Array(5)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "action-icons",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "checkbox-icon",
-                        size: 16
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                        size: 16,
-                        className: "delete-icon"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                        size: 16,
-                        className: "edit-icon"
-                      })]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                }, index);
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "user-pagination",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Page 1 of 1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "<"
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            className: "active",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            children: ">"
-          }), " "]
-        })]
-      })
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Users);
 
 /***/ }),
 
@@ -21418,30 +20356,6 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_admindashboard.scss":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_admindashboard.scss ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n}\n\n.app-container {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow: hidden;\n}\n\n.dashboard-content {\n  flex: 1;\n  overflow-y: auto;\n  padding: 20px;\n  background: #f4f4f4;\n  margin-left: 250px;\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .dashboard-content {\n    margin-left: 0;\n    padding: 10px;\n  }\n}\n\n.dashboard {\n  max-width: 1200px;\n  margin: 0 auto;\n  width: 100%;\n  padding-top: 60px;\n}\n\n.stats {\n  margin-bottom: 30px;\n}\n.stats.desktop-stats {\n  display: flex;\n  gap: 20px;\n}\n.stats.desktop-stats:nth-child(2) {\n  margin-top: 20px;\n}\n.stats.standalone {\n  display: none;\n}\n@media (max-width: 768px) {\n  .stats.standalone {\n    display: block;\n    margin-bottom: 15px;\n  }\n  .stats.standalone .stat-box {\n    width: 100%;\n  }\n}\n.stats.two-per-row {\n  display: none;\n}\n@media (max-width: 768px) {\n  .stats.two-per-row {\n    display: block;\n  }\n  .stats.two-per-row .stat-row {\n    display: flex;\n    gap: 15px;\n    margin-bottom: 15px;\n  }\n  .stats.two-per-row .stat-row .stat-box {\n    flex: 1;\n    width: 50%;\n    padding: 15px;\n  }\n}\n\n.stat-box {\n  flex: 1;\n  background: #222;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 10px;\n  transition: background 0.3s, transform 0.3s;\n}\n.stat-box:hover {\n  background: #2a2a2a;\n  transform: scale(1.02);\n  cursor: pointer;\n}\n.stat-box .icon {\n  font-size: 24px;\n  color: #ff0000;\n}\n.stat-box p {\n  margin: 10px 0 5px;\n  font-size: 14px;\n  color: #ccc;\n}\n.stat-box h2 {\n  margin: 0;\n  font-size: 24px;\n  font-weight: 600;\n}\n\n@media (min-width: 769px) {\n  .stats.desktop-stats {\n    display: flex;\n    gap: 20px;\n  }\n  .stats.desktop-stats:nth-child(2) {\n    margin-top: 20px;\n  }\n  .stats.standalone,\n  .stats.two-per-row {\n    display: none;\n  }\n}\n.orders {\n  background: #333;\n  color: white;\n  padding: 20px;\n  border-radius: 10px;\n  transition: all 0.3s ease;\n}\n\n.orders h3 {\n  margin: 0 0 15px;\n  font-size: 18px;\n  font-weight: 600;\n  color: #fff;\n}\n\n.search-container {\n  margin-bottom: 15px;\n  display: flex;\n  justify-content: flex-end;\n}\n\n.search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #555;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  transition: border-color 0.3s ease;\n}\n.search-input:focus {\n  border-color: #ff0000;\n}\n\n.order-table {\n  overflow: hidden;\n  border-radius: 10px;\n}\n\n.order-table table {\n  width: 100%;\n  border-collapse: collapse;\n  background: #333;\n}\n\n.order-table th,\n.order-table td {\n  padding: 12px 20px;\n  font-size: 14px;\n  transition: background 0.3s ease;\n}\n\n.order-table th {\n  background: #ff0000;\n  color: white;\n  font-weight: 600;\n  text-align: center;\n}\n\n.order-table td {\n  color: #fff;\n}\n\n.date-data,\n.quantity-data,\n.payment-status-data {\n  text-align: center;\n}\n\n.order-table td:not(.date-data):not(.quantity-data):not(.payment-status-data) {\n  text-align: left;\n}\n\n.order-table td:hover {\n  background: #2a2a2a;\n}\n\n.order-row:hover {\n  background: #2a2a2a;\n  cursor: pointer;\n}\n\n.action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  justify-content: center;\n}\n\n.action-icon {\n  font-size: 16px;\n  color: #fff;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.action-icon:hover {\n  color: #ff0000;\n}\n\n.checkbox {\n  transform: scale(1.2);\n}\n\n.desktop-only {\n  display: block;\n}\n\n.mobile-only {\n  display: none;\n}\n\n@media (max-width: 768px) {\n  .app-container {\n    flex-direction: column;\n    height: auto;\n  }\n  .dashboard-content {\n    padding: 10px;\n    margin-top: 0;\n  }\n  .dashboard {\n    max-width: 100%;\n    padding-top: 50px;\n  }\n  .stats {\n    flex-direction: column;\n    gap: 15px;\n  }\n  .stats.desktop-stats {\n    display: none;\n  }\n  .stat-box {\n    padding: 15px;\n  }\n  .orders {\n    padding: 15px;\n  }\n  .search-container {\n    justify-content: flex-start;\n    margin-bottom: 10px;\n  }\n  .search-input {\n    width: 100%;\n    max-width: 300px;\n  }\n  .desktop-only {\n    display: none;\n  }\n  .mobile-only {\n    display: block;\n  }\n  .order-cards {\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n  }\n  .order-card {\n    background: #333;\n    border-radius: 8px;\n    padding: 15px;\n    color: #fff;\n    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n    transition: transform 0.3s ease;\n  }\n  .order-card:hover {\n    transform: scale(1.02);\n  }\n  .order-card-header {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-bottom: 10px;\n    border-bottom: 1px solid #555;\n    padding-bottom: 5px;\n  }\n  .order-id {\n    font-weight: 600;\n    color: #ff0000;\n  }\n  .order-status {\n    font-size: 12px;\n    background: #444;\n    padding: 2px 8px;\n    border-radius: 12px;\n    color: #fff;\n  }\n  .order-card-body p {\n    margin: 5px 0;\n    font-size: 14px;\n    color: #fff;\n  }\n  .order-card-body p strong {\n    color: #ccc;\n  }\n  .order-card-actions {\n    margin-top: 10px;\n    text-align: right;\n    display: flex;\n    justify-content: flex-end;\n    gap: 10px;\n  }\n  .separate-icon {\n    background: #ff0000;\n    color: #fff;\n    border: none;\n    padding: 5px;\n    border-radius: 4px;\n    cursor: pointer;\n    transition: background 0.2s ease;\n  }\n  .separate-icon:hover {\n    background: #ff3b3b;\n  }\n  .separate-icon .action-icon {\n    font-size: 16px;\n    color: #fff;\n  }\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_login.scss":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_login.scss ***!
@@ -21502,10 +20416,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".register-wrapper {\n  display: flex;\
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_sidebar.scss":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_sidebar.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/address_modal.scss":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/address_modal.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21519,17 +20433,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n  background: #222;\n  color: #fff;\n  width: 250px;\n  height: 100vh;\n  padding: 20px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);\n  z-index: 1100;\n  overflow-y: auto;\n  scrollbar-width: none;\n  -ms-overflow-style: none;\n}\n.sidebar::-webkit-scrollbar {\n  display: none;\n}\n.sidebar .sidebar-header {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.sidebar .mobile-toggle {\n  display: none;\n}\n.sidebar .toggle-icon {\n  font-size: 24px;\n  cursor: pointer;\n  color: #fff;\n  transition: color 0.2s ease;\n}\n.sidebar .toggle-icon:hover {\n  color: #ff0000;\n}\n.sidebar .admin-photo {\n  width: 70%;\n  max-width: 175px;\n  height: auto;\n  display: block;\n  margin: 0 auto;\n}\n.sidebar .sidebar-menu {\n  list-style: none;\n  padding: 0;\n  min-width: 100%;\n  box-sizing: border-box;\n}\n.sidebar .sidebar-menu li {\n  padding: 12px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n  border-radius: 5px;\n  margin-bottom: 5px;\n  transition: background 0.2s ease;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.sidebar .sidebar-menu li:not(.active):hover {\n  background: #333;\n}\n.sidebar .sidebar-menu li.active {\n  background: #ff0000;\n  font-weight: 600;\n}\n.sidebar .sidebar-menu li.active span {\n  color: #fff;\n}\n.sidebar .sidebar-menu .separator {\n  border: none;\n  height: 1px;\n  background: #555;\n  margin: 15px 0;\n}\n.sidebar .sidebar-menu .admin-settings-header {\n  padding: 12px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n  transition: background 0.2s ease;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  border-radius: 5px;\n}\n.sidebar .sidebar-menu .admin-settings-header:not(.active):hover {\n  background: #333;\n}\n.sidebar .sidebar-menu .admin-settings-header .rotate-icon {\n  transform: rotate(180deg);\n  transition: transform 0.3s ease;\n}\n.sidebar .sidebar-menu .dropdown {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.sidebar .sidebar-menu .dropdown li {\n  padding: 12px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 5px;\n  transition: background 0.2s ease;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  border-radius: 5px;\n}\n.sidebar .sidebar-menu .dropdown li:not(.active):hover {\n  background: #333;\n}\n.sidebar .sidebar-menu .dropdown li.active {\n  background: #ff0000;\n  font-weight: 600;\n}\n.sidebar .sidebar-menu .dropdown li.active span {\n  color: #fff;\n}\n@media (max-width: 768px) {\n  .sidebar.collapsed {\n    width: 60px;\n    padding: 10px;\n    height: 100vh;\n    background: #222;\n    z-index: 1100;\n    overflow: hidden;\n  }\n  .sidebar.collapsed .sidebar-header {\n    flex-direction: column;\n    align-items: center;\n    padding-top: 10px;\n  }\n  .sidebar.collapsed .mobile-toggle {\n    display: block;\n  }\n  .sidebar.collapsed .admin-photo {\n    display: none;\n  }\n  .sidebar.collapsed .sidebar-menu {\n    display: none;\n  }\n  .sidebar.expanded {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100vh;\n    padding: 20px;\n    background: rgba(34, 34, 34, 0.95);\n    z-index: 1100;\n    overflow-y: auto;\n    scrollbar-width: none;\n    -ms-overflow-style: none;\n  }\n  .sidebar.expanded::-webkit-scrollbar {\n    display: none;\n  }\n  .sidebar.expanded .sidebar-header {\n    position: absolute;\n    top: 20px;\n    left: 20px;\n    flex-direction: row;\n  }\n  .sidebar.expanded .mobile-toggle {\n    display: block;\n  }\n  .sidebar.expanded .admin-photo {\n    display: none;\n  }\n  .sidebar.expanded .sidebar-menu {\n    width: 80%;\n    max-width: 300px;\n    margin-top: 60px;\n    margin-left: 20px;\n    text-align: left;\n  }\n  .sidebar.expanded .sidebar-menu li,\n  .sidebar.expanded .sidebar-menu .admin-settings-header {\n    justify-content: flex-start;\n    padding: 15px;\n    font-size: 16px;\n    margin-bottom: 15px;\n    white-space: normal;\n    overflow-wrap: break-word;\n    border-radius: 5px;\n  }\n  .sidebar.expanded .sidebar-menu .dropdown {\n    width: 100%;\n    margin-top: 10px;\n  }\n  .sidebar.expanded .sidebar-menu .dropdown li {\n    margin-bottom: 15px;\n    white-space: normal;\n    overflow-wrap: break-word;\n    border-radius: 5px;\n  }\n}\n@keyframes slideIn {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".address-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.address-modal {\n  background-color: #fff;\n  border-radius: 10px;\n  width: 100%;\n  max-width: 500px;\n  padding: 20px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  position: relative;\n  color: #333;\n  font-family: Arial, sans-serif;\n}\n.address-modal .modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.address-modal .modal-header h2 {\n  font-size: 1.5rem;\n  color: #ff0000;\n  margin: 0;\n}\n.address-modal .modal-header .close-btn {\n  background: none;\n  border: none;\n  font-size: 1.5rem;\n  cursor: pointer;\n  color: #333;\n  transition: color 0.3s ease;\n}\n.address-modal .modal-header .close-btn:hover {\n  color: #ff0000;\n}\n.address-modal .modal-body {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.address-modal .modal-body .form-group {\n  display: flex;\n  flex-direction: column;\n}\n.address-modal .modal-body .form-group label {\n  font-size: 0.9rem;\n  color: #333;\n  margin-bottom: 5px;\n}\n.address-modal .modal-body .form-group input {\n  padding: 8px;\n  font-size: 0.9rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.address-modal .modal-body .form-group input:focus {\n  outline: none;\n  border-color: #ff0000;\n}\n.address-modal .modal-footer {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 20px;\n}\n.address-modal .modal-footer .cancel-btn,\n.address-modal .modal-footer .save-btn {\n  padding: 8px 16px;\n  font-size: 0.9rem;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.address-modal .modal-footer .cancel-btn {\n  background-color: #ccc;\n  color: #333;\n}\n.address-modal .modal-footer .cancel-btn:hover {\n  background-color: #bbb;\n}\n.address-modal .modal-footer .save-btn {\n  background-color: #ff0000;\n  color: #fff;\n}\n.address-modal .modal-footer .save-btn:hover {\n  background-color: #e60000;\n}\n\n@media (max-width: 480px) {\n  .address-modal {\n    width: 90%;\n    padding: 15px;\n  }\n  .address-modal .modal-header h2 {\n    font-size: 1.2rem;\n  }\n  .address-modal .modal-header .close-btn {\n    font-size: 1.2rem;\n  }\n  .address-modal .modal-body .form-group label {\n    font-size: 0.8rem;\n  }\n  .address-modal .modal-body .form-group input {\n    font-size: 0.8rem;\n    padding: 6px;\n  }\n  .address-modal .modal-footer .cancel-btn,\n  .address-modal .modal-footer .save-btn {\n    font-size: 0.8rem;\n    padding: 6px 12px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_topnavbar.scss":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_topnavbar.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/all_order.scss":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/all_order.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21543,17 +20457,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".top-navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 60px;\n  background-color: white;\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  padding: 0 20px;\n  z-index: 1000;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.top-navbar .profile {\n  position: relative;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.top-navbar .profile .profile-icon {\n  font-size: 35px;\n  color: #333;\n}\n.top-navbar .profile .dropdown-button {\n  font-size: 20px;\n  color: #333;\n  cursor: pointer;\n}\n.top-navbar .dropdown-menu {\n  position: absolute;\n  top: 50px;\n  right: 0;\n  background-color: white;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  z-index: 1001;\n  display: block;\n}\n.top-navbar .dropdown-menu ul {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.top-navbar .dropdown-menu ul li {\n  padding: 10px 20px;\n  font-size: 14px;\n  color: #333;\n  cursor: pointer;\n}\n.top-navbar .dropdown-menu ul li:hover {\n  background-color: #f4f4f4;\n}\n@media (max-width: 768px) {\n  .top-navbar {\n    left: 60px;\n    width: calc(100% - 60px);\n  }\n  .top-navbar.expanded + .top-navbar {\n    left: 0;\n    width: 100%;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 10px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f0f4f8;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0 0 5px 0;\n}\n.all-order .orders-list .order-item .order-details .order-info p {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.shipped {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.received {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n}\n\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 8px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info p {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    justify-content: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/admin_list.scss":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/admin_list.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/cancel_order.scss":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/cancel_order.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21567,7 +20481,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n}\n\n.adminlist-app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n  background: #f4f4f4;\n}\n\n.adminlist-dashboard {\n  flex: 1; /* Takes up remaining space */\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  background: #f4f4f4;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n  width: calc(100% - 250px); /* Adjust based on Sidebar width */\n  margin-left: 250px; /* Matches Sidebar width to push content right */\n}\n\n.adminlist-content {\n  width: 100%;\n  background: #fff;\n  padding: 20px;\n  border-radius: 5px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  flex: 1; /* Allow content to grow */\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto; /* Ensure content can scroll if needed */\n}\n.adminlist-content h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n}\n.adminlist-content .adminlist-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #fff;\n}\n.adminlist-content .adminlist-header .adminlist-search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  height: 40px; /* Match button height */\n}\n.adminlist-content .adminlist-header .adminlist-search-input:focus {\n  border-color: #ff0000;\n}\n.adminlist-content .adminlist-header .adminlist-actions {\n  display: flex;\n  gap: 10px;\n}\n.adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.adminlist-content .adminlist-header .adminlist-actions .adminlist-action-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.adminlist-content .adminlist-table {\n  flex: 1; /* Allow table to grow */\n  overflow-y: auto; /* Ensure table can scroll if content overflows */\n}\n.adminlist-content .adminlist-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.adminlist-content .adminlist-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #ff0000;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.adminlist-content .adminlist-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.adminlist-content .adminlist-table table tr {\n  border-bottom: 1px solid #555;\n}\n.adminlist-content .adminlist-table table tr:last-child {\n  border-bottom: none;\n}\n.adminlist-content .adminlist-table table .adminlist-header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.adminlist-content .adminlist-table table .adminlist-action-icons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.adminlist-content .adminlist-table table .adminlist-action-icons:hover {\n  opacity: 0.8;\n}\n.adminlist-content .adminlist-table table .adminlist-checkbox-icon,\n.adminlist-content .adminlist-table table .adminlist-delete-icon,\n.adminlist-content .adminlist-table table .adminlist-edit-icon {\n  display: inline-flex;\n  align-items: center;\n  transition: opacity 0.3s;\n  color: #fff;\n}\n.adminlist-content .adminlist-table table .adminlist-checkbox-icon:hover,\n.adminlist-content .adminlist-table table .adminlist-delete-icon:hover,\n.adminlist-content .adminlist-table table .adminlist-edit-icon:hover {\n  opacity: 0.6;\n  color: #ff0000;\n}\n.adminlist-content .adminlist-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #fff;\n}\n.adminlist-content .adminlist-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.adminlist-content .adminlist-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.adminlist-content .adminlist-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.adminlist-content .adminlist-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n/* Sidebar styling without color changes */\n.sidebar {\n  width: 250px; /* Adjust this to match your actual Sidebar width */\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  left: 0;\n  /* No background or color specified to preserve your existing styles */\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.modal-content {\n  background-color: #F0F8FF;\n  padding: 25px;\n  border-radius: 8px;\n  width: 400px;\n  max-width: 90%;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  border: 1px solid #ccc;\n  text-align: left;\n}\n.modal-content h2 {\n  font-size: 1.5rem;\n  color: #000;\n  margin-bottom: 15px;\n  text-align: left;\n  font-weight: 600;\n}\n.modal-content p {\n  font-size: 0.9rem;\n  color: #333;\n  line-height: 1.5;\n  margin-bottom: 20px;\n}\n.modal-content .radio-group {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  margin-bottom: 25px;\n}\n.modal-content .radio-group .radio-label {\n  display: flex;\n  align-items: center;\n  font-size: 0.9rem;\n  color: #333;\n  cursor: pointer;\n}\n.modal-content .radio-group .radio-label input[type=radio] {\n  margin-right: 12px;\n  width: 16px;\n  height: 16px;\n  cursor: pointer;\n}\n.modal-content .radio-group .radio-label span {\n  line-height: 1.4;\n}\n.modal-content .button-group {\n  display: flex;\n  justify-content: flex-start;\n  gap: 15px;\n}\n.modal-content .button-group .btn {\n  padding: 10px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  width: 140px;\n  transition: background-color 0.3s ease;\n}\n.modal-content .button-group .btn.no-btn {\n  background-color: #FF0000;\n  color: #fff;\n}\n.modal-content .button-group .btn.no-btn:hover {\n  background-color: #cc0000;\n}\n.modal-content .button-group .btn.yes-btn {\n  background-color: transparent;\n  border: 2px solid #3F3F3F;\n  color: #3F3F3F;\n  text-align: center;\n}\n.modal-content .button-group .btn.yes-btn:hover {\n  background-color: rgba(63, 63, 63, 0.1);\n  color: #3F3F3F;\n}\n.modal-content .button-group .btn.yes-btn:disabled {\n  border-color: #3F3F3F;\n  color: #3F3F3F;\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n\n@media (max-width: 500px) {\n  .modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .modal-content h2 {\n    font-size: 1.3rem;\n  }\n  .modal-content p {\n    font-size: 0.85rem;\n  }\n  .modal-content .radio-group {\n    gap: 10px;\n    margin-bottom: 20px;\n  }\n  .modal-content .radio-group .radio-label {\n    font-size: 0.85rem;\n  }\n  .modal-content .radio-group .radio-label input[type=radio] {\n    margin-right: 10px;\n    width: 14px;\n    height: 14px;\n  }\n  .modal-content .button-group {\n    gap: 10px;\n  }\n  .modal-content .button-group .btn {\n    padding: 8px 0;\n    font-size: 0.9rem;\n    width: 120px;\n  }\n  .modal-content .button-group .btn.yes-btn {\n    border-width: 2px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21640,30 +20554,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".checkout-address-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 100px;\n}\n.checkout-address-page-container .checkout-address-content {\n  flex: 1;\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 20px 0;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body {\n  display: flex;\n  justify-content: center;\n  gap: 30px;\n  padding: 0 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .top-section {\n  display: flex;\n  gap: 30px;\n  width: 100%;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .top-section .shipping-information,\n.checkout-address-page-container .checkout-address-content .checkout-address-body .top-section .cart-details {\n  flex: 1;\n  padding: 30px;\n  min-width: 0;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information h1 {\n  font-size: 32px;\n  color: #000000;\n  margin-bottom: 15px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information p {\n  font-size: 16px;\n  margin-bottom: 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information p a {\n  color: #007bff;\n  text-decoration: none;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information p a:hover {\n  text-decoration: underline;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps {\n  display: flex;\n  gap: 10px;\n  font-size: 16px;\n  margin-bottom: 20px;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps .step {\n  cursor: pointer;\n  position: relative;\n  transition: color 0.3s ease;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps .step.active {\n  color: #ff4444;\n  font-weight: bold;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps .step:hover {\n  color: #ff4444;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps .step::after {\n  content: \"\";\n  position: absolute;\n  width: 0;\n  height: 2px;\n  bottom: -5px;\n  left: 0;\n  background-color: #ff4444;\n  transition: width 0.4s ease;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps .step:hover::after {\n  width: 100%;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps span:nth-child(2), .checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .address-steps span:nth-child(4) {\n  color: #999999;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information h2 {\n  font-size: 24px;\n  color: #000000;\n  margin-bottom: 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row {\n  display: flex;\n  gap: 15px;\n  margin-bottom: 15px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .input-field {\n  flex: 1;\n  padding: 12px;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n  font-size: 16px;\n  background-color: #ffffff;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .input-field::-moz-placeholder {\n  color: #999999;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .input-field::placeholder {\n  color: #999999;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .input-field:focus {\n  outline: none;\n  border-color: #ff4444;\n  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .select-field {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background: url('data:image/svg+xml;utf8,<svg fill=\"%23999999\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>') no-repeat right 10px center;\n  padding-right: 30px;\n  background-color: #ffffff;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .select-field:focus {\n  outline: none;\n  border-color: #ff4444;\n  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .field-row .select-field option {\n  background-color: #ffffff;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .input-field:not(.select-field) {\n  width: 100%;\n  margin-bottom: 15px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .last-name-field,\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .address-field,\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .apartment-field {\n  background-color: #ffffff !important;\n  color: #333333 !important;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .last-name-field:focus,\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .address-field:focus,\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .shipping-fields .apartment-field:focus {\n  outline: none;\n  border-color: #ff4444;\n  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .continue-checkout-btn {\n  width: 100%;\n  padding: 15px;\n  background-color: #ff4444;\n  color: #ffffff;\n  border: none;\n  border-radius: 4px;\n  font-size: 18px;\n  cursor: pointer;\n  margin-top: 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .shipping-information .continue-checkout-btn:hover {\n  background-color: #cc0000;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details h2 {\n  font-size: 24px;\n  color: #000000;\n  margin-bottom: 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 20px;\n  margin-bottom: 25px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .product-link {\n  display: inline-block;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .product-link .cart-item-image {\n  width: 100px;\n  height: auto;\n  margin: 0 10px;\n  transition: transform 0.3s ease, border 0.3s ease;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .product-link .cart-item-image:hover {\n  transform: scale(1.05);\n  border: 2px solid #ffffff;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .cart-item-details {\n  flex: 1;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .cart-item-details p {\n  margin: 8px 0;\n  font-size: 16px;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .cart-item-details .cart-item-price {\n  color: #ff4444;\n  font-weight: bold;\n  font-size: 20px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 2px solid #cccccc;\n  padding: 8px 15px;\n  cursor: pointer;\n  font-size: 16px;\n  position: relative;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  border-radius: 4px;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .remove-btn::after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: -100%;\n  background: rgba(255, 68, 68, 0.2);\n  transition: all 0.4s ease;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .remove-btn:hover {\n  background: #ff4444;\n  color: #ffffff;\n  border-color: #ff4444;\n  transform: scale(1.05);\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .remove-btn:hover::after {\n  left: 100%;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 15px;\n  font-size: 16px;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 20px;\n  font-weight: bold;\n  margin-top: 20px;\n  padding-top: 15px;\n  border-top: 1px solid #cccccc;\n  color: #333333;\n}\n.checkout-address-page-container .checkout-address-content .checkout-address-body .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.checkout-address-page-container .checkout-address-content footer {\n  background-color: #1E1E1E !important;\n}\n@media (max-width: 768px) {\n  .checkout-address-page-container .checkout-address-body {\n    flex-direction: column;\n    align-items: center;\n  }\n  .checkout-address-page-container .checkout-address-body .shipping-information,\n  .checkout-address-page-container .checkout-address-body .cart-details {\n    width: 100%;\n  }\n  .checkout-address-page-container .checkout-address-body .cart-item {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .checkout-address-page-container .checkout-address-body .cart-item .cart-item-image {\n    width: 80px;\n  }\n  .checkout-address-page-container .checkout-address-body .cart-item .remove-btn {\n    width: 100%;\n    margin-top: 10px;\n  }\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/customer_list.scss":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/customer_list.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  overflow-x: hidden;\n}\n\n.customer-app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden;\n  background: #f4f4f4;\n}\n\n/* Customer Dashboard styles */\n.customer-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  background: #f4f4f4;\n  overflow-x: hidden;\n  width: calc(100% - 250px);\n  margin-left: 250px;\n  margin-top: 60px; /* Added to push content below TopNavbar - adjust this value */\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .customer-dashboard {\n    margin-left: 0;\n    padding: 10px;\n    margin-top: 60px; /* Keep this consistent on mobile */\n  }\n}\n\n.customer-content {\n  width: 100%;\n  background: #f4f4f4;\n}\n.customer-content h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n}\n.customer-content .customer-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #f4f4f4;\n}\n.customer-content .customer-header .customer-search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n}\n.customer-content .customer-header .customer-search-input:focus {\n  border-color: #ff0000;\n}\n.customer-content .customer-header .customer-actions {\n  display: flex;\n  gap: 10px;\n}\n.customer-content .customer-header .customer-actions .customer-action-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.customer-content .customer-header .customer-actions .customer-action-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.customer-content .customer-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.customer-content .customer-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.customer-content .customer-table table th .customer-header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-content .customer-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.customer-content .customer-table table tr {\n  border-bottom: 1px solid #555;\n}\n.customer-content .customer-table table tr:last-child {\n  border-bottom: none;\n}\n.customer-content .customer-table table .customer-action-icons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.customer-content .customer-table table .customer-action-icons:hover {\n  opacity: 0.8;\n}\n.customer-content .customer-table table .customer-checkbox-icon,\n.customer-content .customer-table table .customer-delete-icon,\n.customer-content .customer-table table .customer-edit-icon {\n  display: inline-flex;\n  align-items: center;\n  transition: opacity 0.3s;\n  color: #fff;\n}\n.customer-content .customer-table table .customer-checkbox-icon:hover,\n.customer-content .customer-table table .customer-delete-icon:hover,\n.customer-content .customer-table table .customer-edit-icon:hover {\n  opacity: 0.6;\n  color: #ff0000;\n}\n.customer-content .customer-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.customer-content .customer-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.customer-content .customer-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.customer-content .customer-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.customer-content .customer-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n/* Assuming Sidebar has a fixed width */\n.sidebar {\n  width: 250px;\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  left: 0;\n  background: #222;\n  color: #fff;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21767,30 +20657,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".homepage-customer {\n  background-col
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/inventory.scss":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/inventory.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-y: auto;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n/* Inventory Dashboard styles */\n.inventory-dashboard {\n  flex: 1;\n  overflow-y: auto;\n  padding: 20px;\n  background: #f4f4f4;\n  margin-left: 250px;\n  margin-top: 60px; /* Added to push content below TopNavbar - adjust this value */\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .inventory-dashboard {\n    margin-left: 0;\n    padding: 10px;\n    margin-top: 60px; /* Keep this consistent on mobile */\n  }\n}\n.inventory-dashboard .inventory-orders {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  background: #f4f4f4;\n  display: flex;\n  flex-direction: column;\n}\n.inventory-dashboard .inventory-orders h2 {\n  margin: 0 0 30px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n  line-height: 1;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #fff;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .left-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .right-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .header-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  box-sizing: border-box;\n  line-height: 1;\n  vertical-align: middle;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .search-input:focus {\n  border-color: #ff0000;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container {\n  position: relative;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n  line-height: 1;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown {\n  position: absolute;\n  top: 53px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.inventory-dashboard .inventory-orders .inventory-orders-header .filter-container .filter-dropdown li:hover {\n  background: #eeadad;\n  color: #333;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  overflow-x: auto;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table tr {\n  border-bottom: 1px solid #555;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table tr:last-child {\n  border-bottom: none;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table .action-icons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table .action-icons:hover {\n  opacity: 0.8;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table .checkbox-icon,\n.inventory-dashboard .inventory-orders .inventory-order-table table .delete-icon,\n.inventory-dashboard .inventory-orders .inventory-order-table table .edit-icon {\n  display: inline-flex;\n  align-items: center;\n  transition: opacity 0.3s;\n  color: #fff;\n}\n.inventory-dashboard .inventory-orders .inventory-order-table table .checkbox-icon:hover,\n.inventory-dashboard .inventory-orders .inventory-order-table table .delete-icon:hover,\n.inventory-dashboard .inventory-orders .inventory-order-table table .edit-icon:hover {\n  opacity: 0.6;\n  color: #ff0000;\n}\n.inventory-dashboard .inventory-orders .inventory-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.inventory-dashboard .inventory-orders .inventory-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.inventory-dashboard .inventory-orders .inventory-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.inventory-dashboard .inventory-orders .inventory-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.inventory-dashboard .inventory-orders .inventory-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/logo_slider.scss":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/logo_slider.scss ***!
@@ -21863,30 +20729,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".order-complete-page {\n  display: fle
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/orders.scss":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/orders.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-y: auto;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: calc(100% - 250px); /* Adjust based on Sidebar width */\n  margin-left: 250px; /* Match sidebar width */\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .main-content-wrapper {\n    margin-left: 0;\n    width: 100%;\n  }\n}\n\n/* Order Dashboard styles */\n.order-dashboard {\n  flex: 1;\n  overflow-y: auto;\n  padding: 20px; /* Base padding */\n  padding-top: 90px; /* Extra padding to account for TopNavbar height (assumed 70px) + some spacing */\n  background: #f4f4f4;\n}\n@media (max-width: 768px) {\n  .order-dashboard {\n    padding: 10px;\n    padding-top: 80px; /* Slightly less on mobile, adjust based on your TopNavbar */\n  }\n}\n.order-dashboard .order-orders {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  background: #f4f4f4;\n  display: flex;\n  flex-direction: column;\n}\n.order-dashboard .order-orders h2 {\n  margin: 0 0 30px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n  line-height: 1;\n}\n.order-dashboard .order-orders .order-orders-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #fff;\n}\n.order-dashboard .order-orders .order-orders-header .left-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.order-dashboard .order-orders .order-orders-header .right-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.order-dashboard .order-orders .order-orders-header .header-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.order-dashboard .order-orders .order-orders-header .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  box-sizing: border-box;\n  line-height: 1;\n  vertical-align: middle;\n}\n.order-dashboard .order-orders .order-orders-header .search-input:focus {\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container {\n  position: relative;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n  line-height: 1;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown {\n  position: absolute;\n  top: 53px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li:hover {\n  background: #eeadad;\n  color: #333;\n}\n.order-dashboard .order-orders .order-order-table {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  overflow-x: auto;\n}\n.order-dashboard .order-orders .order-order-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.order-dashboard .order-orders .order-order-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.order-dashboard .order-orders .order-order-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.order-dashboard .order-orders .order-order-table table tr {\n  border-bottom: 1px solid #555;\n}\n.order-dashboard .order-orders .order-order-table table tr:last-child {\n  border-bottom: none;\n}\n.order-dashboard .order-orders .order-order-table table .action-icons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.order-dashboard .order-orders .order-order-table table .action-icons:hover {\n  opacity: 0.8;\n}\n.order-dashboard .order-orders .order-order-table table .checkbox-icon,\n.order-dashboard .order-orders .order-order-table table .delete-icon,\n.order-dashboard .order-orders .order-order-table table .edit-icon {\n  display: inline-flex;\n  align-items: center;\n  transition: opacity 0.3s;\n  color: #fff;\n}\n.order-dashboard .order-orders .order-order-table table .checkbox-icon:hover,\n.order-dashboard .order-orders .order-order-table table .delete-icon:hover,\n.order-dashboard .order-orders .order-order-table table .edit-icon:hover {\n  opacity: 0.6;\n  color: #ff0000;\n}\n.order-dashboard .order-orders .order-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.order-dashboard .order-orders .order-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.order-dashboard .order-orders .order-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.order-dashboard .order-orders .order-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/orders_cart.scss":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/orders_cart.scss ***!
@@ -21905,6 +20747,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".cart-modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.5);\n  z-index: 1200;\n  display: flex;\n  justify-content: flex-end;\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open {\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s linear 0s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open .cart-modal-content {\n  transform: translateX(0);\n}\n.cart-modal .cart-modal-content {\n  background: #f0f8ff;\n  width: 400px;\n  height: 100%;\n  padding: 20px;\n  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);\n  transform: translateX(100%);\n  transition: transform 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  font-family: \"Jost\", sans-serif;\n  z-index: 1201;\n}\n.cart-modal .cart-modal-content .cart-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  padding-bottom: 10px;\n  margin-bottom: 15px;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title h2 {\n  font-size: 24px;\n  color: #000;\n  margin: 0;\n  line-height: 1;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title .cart-count {\n  background: #000;\n  color: #fff;\n  border-radius: 50%;\n  padding: 2px 8px;\n  font-size: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 20px;\n  width: 20px;\n}\n.cart-modal .cart-modal-content .cart-header .close-button {\n  background: none;\n  border: none;\n  font-size: 18px;\n  cursor: pointer;\n  color: #000;\n}\n.cart-modal .cart-modal-content .cart-items {\n  flex: 1;\n  overflow-y: auto;\n  margin-bottom: 20px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item {\n  display: flex;\n  gap: 15px;\n  padding: 15px 0;\n  border-bottom: 1px solid #ddd;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-image {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  padding-right: 60px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details h3 {\n  font-size: 16px;\n  color: #000;\n  margin: 0 0 5px 0;\n  font-weight: 500;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .price {\n  font-size: 16px;\n  color: #000;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .variant {\n  font-size: 14px;\n  color: #666;\n  margin: 0 0 10px 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 10px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button {\n  background: none;\n  border: none;\n  color: #000;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 14px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  padding: 0;\n  margin: 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button:hover {\n  color: #ff0000;\n}\n.cart-modal .cart-modal-content .cart-footer {\n  border-top: 1px solid #ddd;\n  padding-top: 20px;\n}\n.cart-modal .cart-modal-content .cart-footer .shipping-note {\n  font-size: 14px;\n  color: #666;\n  margin: 0 0 10px 0;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price {\n  font-size: 16px;\n  color: #000;\n  text-align: left;\n  margin: 0 0 20px 0;\n  font-weight: 500;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price span {\n  color: #ff0000;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions {\n  display: flex;\n  gap: 10px;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button {\n  flex: 1;\n  padding: 10px;\n  border: none;\n  cursor: pointer;\n  font-size: 16px;\n  border-radius: 4px;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary {\n  background: #333;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary:hover {\n  background: #444;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary {\n  background: #ff0000;\n  color: #fff;\n  font-weight: 700;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary:hover {\n  background: #e60000;\n  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/password_modal.scss":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/password_modal.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".password-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.password-modal {\n  background-color: #fff;\n  border-radius: 10px;\n  width: 100%;\n  max-width: 400px;\n  padding: 20px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  position: relative;\n  color: #333;\n  font-family: Arial, sans-serif;\n}\n.password-modal .modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.password-modal .modal-header h2 {\n  font-size: 1.5rem;\n  color: #ff0000;\n  margin: 0;\n}\n.password-modal .modal-header .close-btn {\n  background: none;\n  border: none;\n  font-size: 1.5rem;\n  cursor: pointer;\n  color: #333;\n  transition: color 0.3s ease;\n}\n.password-modal .modal-header .close-btn:hover {\n  color: #ff0000;\n}\n.password-modal .modal-body {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.password-modal .modal-body .form-group {\n  display: flex;\n  flex-direction: column;\n}\n.password-modal .modal-body .form-group label {\n  font-size: 0.9rem;\n  color: #333;\n  margin-bottom: 5px;\n}\n.password-modal .modal-body .form-group .password-input-container {\n  position: relative;\n  display: flex;\n  align-items: center;\n}\n.password-modal .modal-body .form-group .password-input-container .password-input {\n  padding: 8px;\n  font-size: 0.9rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  color: #333;\n  width: 100%;\n  padding-right: 40px;\n}\n.password-modal .modal-body .form-group .password-input-container .password-input:focus {\n  outline: none;\n  border-color: #ff0000;\n}\n.password-modal .modal-body .form-group .password-input-container .password-input.weak {\n  border-color: #ff0000;\n}\n.password-modal .modal-body .form-group .password-input-container .password-input.medium {\n  border-color: #ffa500;\n}\n.password-modal .modal-body .form-group .password-input-container .password-input.strong {\n  border-color: #008000;\n}\n.password-modal .modal-body .form-group .password-input-container .eye-icon {\n  position: absolute;\n  right: 10px;\n  cursor: pointer;\n  color: #333;\n  transition: color 0.3s ease;\n  vertical-align: middle;\n  top: 50%;\n  transform: translateY(-90%);\n}\n.password-modal .modal-body .form-group .password-input-container .eye-icon:hover {\n  color: #ff0000;\n}\n.password-modal .modal-body .form-group .password-input-container .eye-icon svg {\n  vertical-align: middle;\n}\n.password-modal .modal-body .form-group .strength-indicator {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.password-modal .modal-body .form-group .strength-indicator.weak {\n  color: #ff0000;\n}\n.password-modal .modal-body .form-group .strength-indicator.medium {\n  color: #ffa500;\n}\n.password-modal .modal-body .form-group .strength-indicator.strong {\n  color: #008000;\n}\n.password-modal .modal-body .form-group .error-message {\n  font-size: 0.8rem;\n  color: #ff0000;\n  margin-top: 5px;\n}\n.password-modal .modal-footer {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 20px;\n}\n.password-modal .modal-footer .cancel-btn,\n.password-modal .modal-footer .save-btn {\n  padding: 8px 16px;\n  font-size: 0.9rem;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.password-modal .modal-footer .cancel-btn {\n  background-color: #ccc;\n  color: #333;\n}\n.password-modal .modal-footer .cancel-btn:hover {\n  background-color: #bbb;\n}\n.password-modal .modal-footer .save-btn {\n  background-color: #ff0000;\n  color: #fff;\n}\n.password-modal .modal-footer .save-btn:hover {\n  background-color: #e60000;\n}\n.password-modal .modal-footer .save-btn:disabled {\n  background-color: #ff6666;\n  cursor: not-allowed;\n}\n\n@media (max-width: 480px) {\n  .password-modal {\n    width: 90%;\n    padding: 15px;\n  }\n  .password-modal .modal-header h2 {\n    font-size: 1.2rem;\n  }\n  .password-modal .modal-header .close-btn {\n    font-size: 1.2rem;\n  }\n  .password-modal .modal-body .form-group label {\n    font-size: 0.8rem;\n  }\n  .password-modal .modal-body .form-group .password-input-container .password-input {\n    font-size: 0.8rem;\n    padding: 6px;\n  }\n  .password-modal .modal-body .form-group .password-input-container .eye-icon {\n    right: 8px;\n    top: 50%;\n    transform: translateY(-50%);\n  }\n  .password-modal .modal-body .form-group .strength-indicator,\n  .password-modal .modal-body .form-group .error-message {\n    font-size: 0.7rem;\n  }\n  .password-modal .modal-footer .cancel-btn,\n  .password-modal .modal-footer .save-btn {\n    font-size: 0.8rem;\n    padding: 6px 12px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21935,30 +20801,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  d
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product.scss":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product.scss ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-y: auto;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: calc(100% - 250px); /* Adjust based on Sidebar width */\n  margin-left: 250px; /* Match sidebar width */\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .main-content-wrapper {\n    margin-left: 0;\n    width: 100%;\n  }\n}\n\n/* Product Dashboard styles */\n.product-dashboard {\n  flex: 1;\n  overflow-y: auto;\n  padding: 20px; /* Base padding */\n  padding-top: 90px; /* Extra padding to account for TopNavbar height (assumed 70px) + some spacing */\n  background: #f4f4f4;\n}\n@media (max-width: 768px) {\n  .product-dashboard {\n    padding: 10px;\n    padding-top: 80px; /* Slightly less on mobile, adjust based on your TopNavbar */\n  }\n}\n.product-dashboard .product-products {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products h2 {\n  margin: 0 0 30px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n}\n.product-dashboard .product-products .product-products-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #fff;\n}\n.product-dashboard .product-products .product-products-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  box-sizing: border-box;\n  line-height: 15px;\n}\n.product-dashboard .product-products .product-products-header .search-input:focus {\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.product-dashboard .product-products .product-products-header .actions .action-button, .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.product-dashboard .product-products .product-products-header .actions .action-button:hover, .product-dashboard .product-products .product-products-header .actions .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container {\n  position: relative;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n  padding: 10px 20px;\n  height: 40px;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 1000;\n  min-width: 120px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  cursor: pointer;\n  color: #333;\n  transition: background 0.3s;\n  background: #f0f0f0;\n  border-bottom: 1px solid #ccc;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li:hover {\n  background: #eeadad;\n  color: #333;\n}\n.product-dashboard .product-products .product-products-header .actions .filter-container .filter-dropdown li:last-child {\n  border-bottom: none;\n}\n.product-dashboard .product-products .product-product-table {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  overflow-x: auto;\n}\n.product-dashboard .product-products .product-product-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.product-dashboard .product-products .product-product-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.product-dashboard .product-products .product-product-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.product-dashboard .product-products .product-product-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.product-dashboard .product-products .product-product-table table tr {\n  border-bottom: 1px solid #555;\n}\n.product-dashboard .product-products .product-product-table table tr:last-child {\n  border-bottom: none;\n}\n.product-dashboard .product-products .product-product-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.product-dashboard .product-products .product-product-table .action-icons .checkbox-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .delete-icon:hover,\n.product-dashboard .product-products .product-product-table .action-icons .edit-icon:hover {\n  color: #ff0000 !important;\n}\n.product-dashboard .product-products .product-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.product-dashboard .product-products .product-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.product-dashboard .product-products .product-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.product-dashboard .product-products .product-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.product-dashboard .product-products .product-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_grid.scss":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_grid.scss ***!
@@ -21983,30 +20825,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".product-grid {\n  background-color: #
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_modal.scss":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_modal.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n  pointer-events: auto;\n}\n\n.product-modal {\n  background: #f0f8ff;\n  border-radius: 12px;\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);\n  padding: 24px;\n  width: 90%;\n  max-width: 900px;\n  max-height: 85vh;\n  overflow-y: auto;\n  position: relative;\n  z-index: 1001;\n}\n.product-modal .modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 30px;\n}\n.product-modal .modal-header h2 {\n  font-size: 28px;\n  color: #1e1e1e;\n  font-weight: 700;\n  margin: 0;\n}\n.product-modal .modal-header .close-button {\n  background: none;\n  border: none;\n  font-size: 24px;\n  cursor: pointer;\n  color: #1e1e1e;\n  padding: 0;\n  line-height: 1;\n  z-index: 1002;\n}\n.product-modal .modal-header .close-button:hover {\n  color: #e74c3c;\n}\n.product-modal .modal-content {\n  display: grid;\n  grid-template-columns: 1fr 1.5fr;\n  gap: 32px;\n}\n.product-modal .modal-content .image-section {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.product-modal .modal-content .image-section .image-preview {\n  width: 250px;\n  height: 250px;\n  border-radius: 10px;\n  background: #f0f8ff;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  margin-bottom: 20px;\n  border: 2px dashed #1e1e1e;\n  transition: border-color 0.3s ease, box-shadow 0.3s ease;\n  pointer-events: auto;\n  z-index: 1001;\n}\n.product-modal .modal-content .image-section .image-preview:hover {\n  border-color: #1e1e1e;\n  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);\n}\n.product-modal .modal-content .image-section .image-preview img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.product-modal .modal-content .image-section .image-preview .placeholder {\n  color: #1e1e1e;\n  font-size: 16px;\n  text-align: center;\n  padding: 10px;\n  line-height: 1.5;\n}\n.product-modal .modal-content .image-section .upload-button {\n  background: #1e1e1e;\n  color: white;\n  width: 250px;\n  padding: 12px 0;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 16px;\n  text-align: center;\n  transition: background 0.3s ease, transform 0.2s ease;\n  pointer-events: auto;\n  z-index: 1001;\n}\n.product-modal .modal-content .image-section .upload-button:hover {\n  background: #ff0000;\n  transform: translateY(-2px);\n}\n.product-modal .modal-content .form-section {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  position: relative;\n  z-index: 1001;\n}\n.product-modal .modal-content .form-section .input-field {\n  width: 100%;\n  padding: 14px;\n  border: 2px solid #1e1e1e;\n  border-radius: 8px;\n  font-size: 16px;\n  background: #f0f8ff;\n  color: #1e1e1e;\n  transition: border-color 0.3s ease;\n  pointer-events: auto;\n  z-index: 1002;\n}\n.product-modal .modal-content .form-section .input-field:focus {\n  outline: none;\n  border-color: #1e1e1e;\n}\n.product-modal .modal-content .form-section .input-field::-moz-placeholder {\n  color: #808080;\n  opacity: 1;\n}\n.product-modal .modal-content .form-section .input-field::placeholder {\n  color: #808080;\n  opacity: 1;\n}\n.product-modal .modal-content .form-section .input-field.description {\n  height: 120px;\n  resize: vertical;\n}\n.product-modal .modal-content .form-section .action-fields {\n  display: flex;\n  gap: 16px;\n  flex-wrap: wrap;\n  z-index: 1001;\n}\n.product-modal .modal-content .form-section .action-fields .input-wrapper {\n  position: relative;\n  flex: 1;\n  min-width: 200px;\n}\n.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field,\n.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field {\n  width: 100%;\n  padding: 12px 14px;\n  border: 2px solid #1e1e1e;\n  border-radius: 8px;\n  font-size: 16px;\n  background: #f0f8ff;\n  color: #1e1e1e;\n  appearance: textfield;\n  -webkit-appearance: textfield;\n  -moz-appearance: textfield;\n  transition: border-color 0.3s ease;\n  pointer-events: auto;\n  z-index: 1002;\n}\n.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field:focus,\n.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field:focus {\n  outline: none;\n  border-color: #1e1e1e;\n}\n.product-modal .modal-content .form-section .action-fields .input-wrapper .price-field::-webkit-inner-spin-button, .product-modal .modal-content .form-section .action-fields .input-wrapper .price-field::-webkit-outer-spin-button,\n.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field::-webkit-inner-spin-button,\n.product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.product-modal .modal-content .form-section .action-fields .select-wrapper {\n  position: relative;\n  flex: 1;\n  min-width: 200px;\n}\n.product-modal .modal-content .form-section .action-fields .select-wrapper .select-field {\n  width: 100%;\n  padding: 12px 40px 12px 14px;\n  border: 2px solid #1e1e1e;\n  border-radius: 8px;\n  font-size: 16px;\n  background: #f0f8ff;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  cursor: pointer;\n  color: #1e1e1e;\n  transition: border-color 0.3s ease;\n  pointer-events: auto;\n  z-index: 1002;\n}\n.product-modal .modal-content .form-section .action-fields .select-wrapper .select-field:focus {\n  outline: none;\n  border-color: #1e1e1e;\n}\n.product-modal .modal-content .form-section .action-fields .select-wrapper .dropdown-icon {\n  position: absolute;\n  right: 12px;\n  top: 50%;\n  transform: translateY(-50%);\n  color: #1e1e1e;\n  font-size: 16px;\n  pointer-events: none;\n}\n.product-modal .modal-content .form-section .submit-button {\n  background: #1e1e1e;\n  color: white;\n  padding: 14px 24px;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  font-size: 18px;\n  transition: background 0.3s ease, transform 0.2s ease;\n  width: 100%;\n  margin-top: 20px;\n  pointer-events: auto;\n  z-index: 1002;\n}\n.product-modal .modal-content .form-section .submit-button:hover {\n  background: #ff0000;\n  transform: translateY(-2px);\n}\n\n/* Mobile Layout (430px and below, iPhone 14 Pro Max Portrait) */\n@media (max-width: 430px) {\n  .product-modal {\n    padding: 16px;\n    max-width: 95%;\n    max-height: 90vh;\n  }\n  .product-modal .modal-header {\n    margin-bottom: 20px;\n  }\n  .product-modal .modal-header h2 {\n    font-size: 20px;\n  }\n  .product-modal .modal-header .close-button {\n    font-size: 20px;\n  }\n  .product-modal .modal-content {\n    display: flex;\n    flex-direction: column;\n    gap: 20px;\n  }\n  .product-modal .modal-content .image-section {\n    order: -1; /* Moves to the top */\n    width: 100%;\n    align-items: center;\n  }\n  .product-modal .modal-content .image-section .image-preview {\n    width: 200px;\n    height: 200px;\n    margin-bottom: 16px;\n  }\n  .product-modal .modal-content .image-section .upload-button {\n    width: 200px;\n    padding: 10px 0;\n    font-size: 14px;\n  }\n  .product-modal .modal-content .form-section {\n    gap: 16px;\n  }\n  .product-modal .modal-content .form-section .input-field {\n    padding: 12px;\n    font-size: 14px;\n  }\n  .product-modal .modal-content .form-section .input-field.description {\n    height: 100px;\n  }\n  .product-modal .modal-content .form-section .action-fields {\n    flex-direction: column;\n    gap: 12px;\n  }\n  .product-modal .modal-content .form-section .action-fields .input-wrapper {\n    min-width: 100%; /* Full width on mobile */\n  }\n  .product-modal .modal-content .form-section .action-fields .input-wrapper .price-field,\n  .product-modal .modal-content .form-section .action-fields .input-wrapper .stock-field {\n    padding: 10px 12px;\n    font-size: 14px;\n    height: 40px; /* Match input height */\n    line-height: 1; /* Ensure consistent line height */\n  }\n  .product-modal .modal-content .form-section .action-fields .select-wrapper {\n    min-width: 100%; /* Full width on mobile */\n  }\n  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field {\n    padding: 10px 12px; /* Match input-field padding, no extra space for icon */\n    font-size: 14px; /* Match other inputs */\n    height: 40px; /* Fixed height to match input fields */\n    line-height: 1; /* Ensure consistent line height */\n    border: 2px solid #1e1e1e; /* Match input border */\n    border-radius: 8px; /* Match input border radius */\n    background: #f0f8ff; /* Match input background */\n    color: #1e1e1e; /* Match input text color */\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none; /* Remove default arrow */\n    cursor: pointer;\n    transition: border-color 0.3s ease;\n    pointer-events: auto;\n    z-index: 1002;\n  }\n  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field:focus {\n    outline: none;\n    border-color: #1e1e1e;\n  }\n  .product-modal .modal-content .form-section .action-fields .select-wrapper .select-field::-ms-expand { /* Hide default dropdown arrow in IE/Edge */\n    display: none;\n  }\n  .product-modal .modal-content .form-section .action-fields .select-wrapper .dropdown-icon {\n    right: 10px;\n    font-size: 12px; /* Smaller icon to fit */\n  }\n  .product-modal .modal-content .form-section .submit-button {\n    padding: 12px 20px;\n    font-size: 16px;\n    margin-top: 16px;\n  }\n  /* Style the dropdown list (options) for WebKit browsers (e.g., Safari, Chrome on iPhone) */\n  /* Style the dropdown list for Firefox */\n}\n@media (max-width: 430px) and (max-width: 430px) {\n  .select-field::-webkit-calendar-picker-indicator { /* Hide default dropdown arrow */\n    display: none;\n  }\n  .select-field::-webkit-scrollbar {\n    width: 0; /* Hide scrollbar in dropdown */\n  }\n  .select-field option {\n    padding: 8px 12px; /* Match mobile input padding */\n    font-size: 14px; /* Match mobile font size */\n    background: #ffffff; /* White background for options */\n    color: #1e1e1e; /* Dark text for options */\n    border: none; /* Remove any default borders */\n    border-radius: 0; /* Reset border radius */\n    line-height: 1.2; /* Ensure compact line height */\n    max-width: 100%; /* Prevent overflow */\n    white-space: nowrap; /* Prevent text wrapping */\n  }\n  .select-field optgroup {\n    background: #ffffff; /* White background for optgroups */\n    color: #1e1e1e; /* Dark text for optgroups */\n    font-weight: bold; /* Bold for optgroup labels */\n    padding: 8px 12px; /* Match option padding */\n    line-height: 1.2; /* Ensure compact line height */\n  }\n  .select-field:-webkit-autofill, .select-field:-webkit-autofill:hover, .select-field:-webkit-autofill:focus {\n    -webkit-box-shadow: 0 0 0 30px #f0f8ff inset !important; /* Match background */\n    -webkit-text-fill-color: #1e1e1e !important; /* Match text color */\n  }\n}\n@media (max-width: 430px) and (max-width: 430px) {\n  .select-field::-moz-focus-inner {\n    border: 0; /* Remove focus outline in Firefox */\n  }\n  .select-field:-moz-focusring {\n    color: transparent; /* Hide focus ring in Firefox */\n    text-shadow: 0 0 0 #1e1e1e; /* Ensure text is visible */\n  }\n  .select-field option {\n    padding: 8px 12px; /* Match mobile input padding */\n    font-size: 14px; /* Match mobile font size */\n    background: #ffffff; /* White background for options */\n    color: #1e1e1e; /* Dark text for options */\n    border: none; /* Remove any default borders */\n    border-radius: 0; /* Reset border radius */\n    line-height: 1.2; /* Ensure compact line height */\n    max-width: 100%; /* Prevent overflow */\n    white-space: nowrap; /* Prevent text wrapping */\n  }\n  .select-field optgroup {\n    background: #ffffff; /* White background for optgroups */\n    color: #1e1e1e; /* Dark text for optgroups */\n    font-weight: bold; /* Bold for optgroup labels */\n    padding: 8px 12px; /* Match option padding */\n    line-height: 1.2; /* Ensure compact line height */\n  }\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_view.scss":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_view.scss ***!
@@ -22023,8 +20841,9 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: Arial, sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  color: #ffcc00;\n  font-size: 20px;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-section .overall-rating span:first-child {\n  color: #ffcc00;\n  font-size: 18px;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-section .rating-breakdown {\n  margin-bottom: 20px;\n}\n.product-view-page .product-view-container .reviews-section .rating-breakdown p {\n  margin: 5px 0;\n  font-size: 14px;\n}\n.product-view-page .product-view-container .reviews-section .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-section .review .review-header {\n  display: flex;\n  flex-direction: column;\n}\n.product-view-page .product-view-container .reviews-section .review .review-header span {\n  color: #ffcc00;\n  font-size: 18px;\n}\n.product-view-page .product-view-container .reviews-section .review .review-header h3 {\n  font-size: 16px;\n  margin: 5px 0;\n}\n.product-view-page .product-view-container .reviews-section .review .review-header .review-date {\n  font-size: 14px;\n  color: #666;\n}\n.product-view-page .product-view-container .reviews-section .review .review-header .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-section .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .reviews-section .review .review-helpful {\n  font-size: 12px;\n  color: #666;\n}\n.product-view-page .product-view-container .reviews-section .review .review-helpful a {\n  color: #0066cc;\n  text-decoration: none;\n}\n.product-view-page .product-view-container .reviews-section .review .review-helpful a:hover {\n  text-decoration: underline;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22048,17 +20867,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".profile-page {\n  background-color: #000000;\n  color: #fff;\n  min-height: 100vh;\n  font-family: Arial, sans-serif;\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper {\n  padding: 40px 20px 20px 20px;\n  flex: 1;\n}\n.profile-page .content-wrapper .background-section {\n  height: 150px;\n  width: 100%;\n  overflow: hidden;\n  margin-bottom: 0;\n}\n.profile-page .content-wrapper .background-section .background-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.profile-page .content-wrapper .profile-header {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  position: relative;\n  top: -50px;\n}\n.profile-page .content-wrapper .profile-header .avatar-container {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  background-color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image:hover {\n  transform: scale(1.05);\n  opacity: 0.8;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon {\n  position: absolute;\n  bottom: 0;\n  right: -23px;\n  width: 25px;\n  height: 25px;\n  background: transparent;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  background: transparent;\n  transition: border-color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon svg {\n  position: relative;\n  z-index: 1;\n  color: #fff;\n  width: 18px;\n  height: 18px;\n  stroke-width: 1.5;\n  transition: color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover:before {\n  border-color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover svg {\n  color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .upload-photo-icon-external {\n  display: none;\n}\n.profile-page .content-wrapper .profile-header .username {\n  margin-top: 10px;\n  font-size: 1.5rem;\n  font-weight: bold;\n  line-height: 1.2;\n}\n.profile-page .content-wrapper .tabs-section {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n}\n.profile-page .content-wrapper .tabs-section .tab {\n  background: none;\n  border: none;\n  color: #fff;\n  font-size: 1rem;\n  padding: 10px 20px;\n  cursor: pointer;\n  border-bottom: 2px solid transparent;\n}\n.profile-page .content-wrapper .tabs-section .tab.active {\n  border-bottom: 2px solid #ff0000;\n}\n.profile-page .content-wrapper .tabs-section .tab:hover {\n  color: #ccc;\n}\n.profile-page .content-wrapper .info-grid {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  gap: 20px;\n}\n.profile-page .content-wrapper .info-grid .info-box {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  position: relative;\n}\n.profile-page .content-wrapper .info-grid .info-box h3 {\n  color: #ff0000;\n  font-size: 1rem;\n  margin-bottom: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box p {\n  font-size: 0.9rem;\n  margin: 0;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 2px;\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn svg {\n  vertical-align: middle;\n}\n.profile-page .content-wrapper .order-history {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  text-align: center;\n}\n.profile-page footer {\n  margin-top: 200px;\n  padding: 20px;\n  width: 100%;\n  color: #fff;\n}\n\n@media (max-width: 768px) {\n  .info-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-wrapper {\n    padding: 30px 15px 15px 15px;\n  }\n  .background-section {\n    margin-bottom: 0;\n  }\n  .profile-header {\n    top: -40px;\n  }\n  .profile-header .avatar-container .upload-photo-icon {\n    bottom: 0;\n    right: -8px;\n    width: 24px;\n    height: 24px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:before {\n    border-width: 1.5px;\n  }\n  .profile-header .avatar-container .upload-photo-icon svg {\n    width: 16px;\n    height: 16px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover:before {\n    border-color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover svg {\n    color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .username {\n    margin-top: 8px;\n    font-size: 1.2rem;\n  }\n  footer {\n    margin-top: 150px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".profile-page {\n  background-color: #000000;\n  color: #fff;\n  min-height: 100vh;\n  font-family: Arial, sans-serif;\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper {\n  padding: 40px 20px 20px 20px;\n  flex: 1;\n}\n.profile-page .content-wrapper .background-section {\n  height: 150px;\n  width: 100%;\n  overflow: hidden;\n  margin-bottom: 0;\n}\n.profile-page .content-wrapper .background-section .background-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.profile-page .content-wrapper .profile-header {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  position: relative;\n  top: -50px;\n}\n.profile-page .content-wrapper .profile-header .avatar-container {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  background-color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image:hover {\n  transform: scale(1.05);\n  opacity: 0.8;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon {\n  position: absolute;\n  bottom: 0;\n  right: -23px;\n  width: 25px;\n  height: 25px;\n  background: transparent;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  background: transparent;\n  transition: border-color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon svg {\n  position: relative;\n  z-index: 1;\n  color: #fff;\n  width: 18px;\n  height: 18px;\n  stroke-width: 1.5;\n  transition: color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover:before {\n  border-color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover svg {\n  color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .upload-photo-icon-external {\n  display: none;\n}\n.profile-page .content-wrapper .profile-header .username {\n  margin-top: 10px;\n  font-size: 1.5rem;\n  font-weight: bold;\n  line-height: 1.2;\n}\n.profile-page .content-wrapper .tabs-section {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n}\n.profile-page .content-wrapper .tabs-section .tab {\n  background: none;\n  border: none;\n  color: #fff;\n  font-size: 1rem;\n  padding: 10px 20px;\n  cursor: pointer;\n  border-bottom: 2px solid transparent;\n}\n.profile-page .content-wrapper .tabs-section .tab.active {\n  border-bottom: 2px solid #ff0000;\n}\n.profile-page .content-wrapper .tabs-section .tab:hover {\n  color: #ccc;\n}\n.profile-page .content-wrapper .info-grid {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  gap: 20px;\n}\n.profile-page .content-wrapper .info-grid .info-box {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  position: relative;\n}\n.profile-page .content-wrapper .info-grid .info-box h3 {\n  color: #ff0000;\n  font-size: 1rem;\n  margin-bottom: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box p {\n  font-size: 0.9rem;\n  margin: 0;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input {\n  width: 100%;\n  padding: 5px;\n  font-size: 0.9rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input:focus {\n  outline: none;\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.weak {\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.medium {\n  border-color: #ffa500;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.strong {\n  border-color: #008000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 2px;\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn svg {\n  vertical-align: middle;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field {\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field label {\n  font-size: 0.9rem;\n  color: #333;\n  margin-bottom: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.weak {\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.medium {\n  color: #ffa500;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.strong {\n  color: #008000;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .error-message {\n  font-size: 0.8rem;\n  color: #ff0000;\n  margin-top: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn, .profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  padding: 5px 10px;\n  font-size: 0.9rem;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn {\n  background-color: #ccc;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn:hover {\n  background-color: #bbb;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  background-color: #ff0000;\n  color: #fff;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:hover {\n  background-color: #e60000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:disabled {\n  background-color: #ff6666;\n  cursor: not-allowed;\n}\n.profile-page .content-wrapper .order-history {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  text-align: center;\n}\n.profile-page footer {\n  margin-top: 200px;\n  padding: 20px;\n  width: 100%;\n  color: #fff;\n}\n\n@media (max-width: 768px) {\n  .info-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-wrapper {\n    padding: 30px 15px 15px 15px;\n  }\n  .background-section {\n    margin-bottom: 0;\n  }\n  .profile-header {\n    top: -40px;\n  }\n  .profile-header .avatar-container .upload-photo-icon {\n    bottom: 0;\n    right: -8px;\n    width: 24px;\n    height: 24px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:before {\n    border-width: 1.5px;\n  }\n  .profile-header .avatar-container .upload-photo-icon svg {\n    width: 16px;\n    height: 16px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover:before {\n    border-color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover svg {\n    color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .username {\n    margin-top: 8px;\n    font-size: 1.2rem;\n  }\n  footer {\n    margin-top: 150px;\n  }\n  .info-grid .info-box .edit-actions {\n    justify-content: center;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/reviews&notif.scss":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/reviews&notif.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/rate_product.scss":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/rate_product.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22072,31 +20891,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n}\n\n.reviewsnotifications-app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n  background: #f4f4f4;\n}\n\n.reviewsnotifications-dashboard {\n  flex: 1; /* Takes up remaining space */\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  background: #f4f4f4;\n  overflow-x: hidden; /* Prevent horizontal overflow */\n  width: calc(100% - 250px); /* Adjust based on Sidebar width */\n  margin-left: 250px; /* Matches Sidebar width to push content right */\n}\n\n.reviewsnotifications-content {\n  width: 100%;\n  background: #f4f4f4;\n  flex: 1; /* Allow content to grow */\n  display: flex;\n  flex-direction: column;\n}\n.reviewsnotifications-content h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n}\n.reviewsnotifications-content .reviewsnotifications-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #f4f4f4;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-left-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-right-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-header-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-search-input {\n  width: 200px;\n  padding: 8px 12px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  box-sizing: border-box;\n  line-height: 15px;\n}\n.reviewsnotifications-content .reviewsnotifications-header .reviewsnotifications-search-input:focus {\n  border-color: #ff0000;\n}\n.reviewsnotifications-content .reviewsnotifications-table {\n  flex: 1; /* Allow table to grow */\n  overflow-y: auto; /* Ensure table can scroll if content overflows */\n}\n.reviewsnotifications-content .reviewsnotifications-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.reviewsnotifications-content .reviewsnotifications-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.reviewsnotifications-content .reviewsnotifications-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.reviewsnotifications-content .reviewsnotifications-table table tr {\n  border-bottom: 1px solid #555;\n}\n.reviewsnotifications-content .reviewsnotifications-table table tr:last-child {\n  border-bottom: none;\n}\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-action-icons {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  cursor: pointer;\n}\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-action-icons:hover {\n  opacity: 0.8;\n}\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-checkbox-icon,\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-delete-icon,\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-edit-icon {\n  display: inline-flex;\n  align-items: center;\n  transition: opacity 0.3s;\n  color: #fff;\n}\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-checkbox-icon:hover,\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-delete-icon:hover,\n.reviewsnotifications-content .reviewsnotifications-table table .reviewsnotifications-edit-icon:hover {\n  opacity: 0.6;\n  color: #ff0000;\n}\n.reviewsnotifications-content .reviewsnotifications-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.reviewsnotifications-content .reviewsnotifications-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.reviewsnotifications-content .reviewsnotifications-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.reviewsnotifications-content .reviewsnotifications-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsnotifications-content .reviewsnotifications-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n.sidebar {\n  width: 250px;\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  left: 0;\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/seller.scss":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/seller.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-y: auto;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: calc(100% - 250px); /* Match Sidebar width */\n  margin-left: 250px;\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .main-content-wrapper {\n    margin-left: 0;\n    width: 100%;\n  }\n}\n\n/* Seller Dashboard styles */\n.seller-dashboard {\n  flex: 1;\n  overflow-y: auto;\n  padding: 20px; /* Base padding */\n  padding-top: 90px; /* Match Products page - adjust for TopNavbar height */\n  background: #f4f4f4;\n}\n@media (max-width: 768px) {\n  .seller-dashboard {\n    padding: 10px;\n    padding-top: 80px; /* Match Products mobile adjustment */\n  }\n}\n.seller-dashboard .seller-sellers {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  background: #f4f4f4;\n}\n.seller-dashboard .seller-sellers h2 {\n  margin: 0 0 30px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  background: #fff;\n  flex-wrap: wrap; /* Added for responsiveness */\n  gap: 10px; /* Space between items when wrapping */\n}\n@media (max-width: 768px) {\n  .seller-dashboard .seller-sellers .seller-sellers-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  box-sizing: border-box;\n  line-height: 15px;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .search-input:focus {\n  border-color: #ff0000;\n}\n@media (max-width: 768px) {\n  .seller-dashboard .seller-sellers .seller-sellers-header .search-input {\n    width: 100%; /* Full width on mobile */\n  }\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  justify-content: flex-end;\n  flex-wrap: wrap; /* Allow wrapping on smaller screens */\n}\n@media (max-width: 768px) {\n  .seller-dashboard .seller-sellers .seller-sellers-header .actions {\n    justify-content: flex-start;\n    width: 100%;\n  }\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .action-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .action-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container {\n  position: relative;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 1000;\n  min-width: 120px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  cursor: pointer;\n  color: #333;\n  transition: background 0.3s;\n  background: #f0f0f0;\n  border-bottom: 1px solid #ccc;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-dropdown li:hover {\n  background: #eeadad;\n  color: #333;\n}\n.seller-dashboard .seller-sellers .seller-sellers-header .actions .filter-container .filter-dropdown li:last-child {\n  border-bottom: none;\n}\n.seller-dashboard .seller-sellers .seller-seller-table {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  overflow-x: auto;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table tr {\n  border-bottom: 1px solid #555;\n}\n.seller-dashboard .seller-sellers .seller-seller-table table tr:last-child {\n  border-bottom: none;\n}\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .checkbox-icon,\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .delete-icon,\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .edit-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .checkbox-icon:hover,\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .delete-icon:hover,\n.seller-dashboard .seller-sellers .seller-seller-table .action-icons .edit-icon:hover {\n  color: #ff0000 !important;\n}\n.seller-dashboard .seller-sellers .seller-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n  flex-wrap: wrap; /* Added for responsiveness */\n}\n@media (max-width: 768px) {\n  .seller-dashboard .seller-sellers .seller-pagination {\n    justify-content: center;\n  }\n}\n.seller-dashboard .seller-sellers .seller-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.seller-dashboard .seller-sellers .seller-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.seller-dashboard .seller-sellers .seller-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.seller-dashboard .seller-sellers .seller-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n/* Assuming Sidebar has a fixed width */\n.sidebar {\n  width: 250px;\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  left: 0;\n  background: #333;\n  color: #fff;\n}\n@media (max-width: 768px) {\n  .sidebar {\n    width: 100%;\n    height: auto;\n    position: relative;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.modal-content {\n  background-color: #fff;\n  padding: 25px;\n  border-radius: 8px;\n  width: 400px;\n  max-width: 90%;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  border: 1px solid #ccc;\n  text-align: left;\n}\n.modal-content h2 {\n  font-size: 1.5rem;\n  color: #000;\n  margin-bottom: 15px;\n  text-align: left;\n  font-weight: 600;\n}\n.modal-content .star-rating {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  margin-bottom: 20px;\n}\n.modal-content .star-rating .star {\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n}\n.modal-content .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.modal-content label {\n  font-size: 1rem;\n  color: #333;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.modal-content textarea {\n  width: 100%;\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  font-size: 0.9rem;\n  resize: none;\n  background-color: #1E1E1E;\n  color: #fff;\n  margin-bottom: 20px;\n}\n.modal-content textarea:focus {\n  outline: none;\n  border-color: #666;\n}\n.modal-content .button-group {\n  display: flex;\n  justify-content: flex-start;\n  gap: 15px;\n}\n.modal-content .button-group .btn {\n  padding: 10px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  width: 140px;\n  transition: background-color 0.3s ease;\n}\n.modal-content .button-group .btn.submit-btn {\n  background-color: #000;\n  color: #fff;\n}\n.modal-content .button-group .btn.submit-btn:hover {\n  background-color: #333;\n}\n.modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.modal-content .button-group .btn.cancel-btn {\n  background-color: #FF0000;\n  color: #fff;\n}\n.modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 500px) {\n  .modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .modal-content h2 {\n    font-size: 1.3rem;\n  }\n  .modal-content .star-rating .star svg {\n    width: 20px;\n    height: 20px;\n  }\n  .modal-content label {\n    font-size: 0.9rem;\n  }\n  .modal-content textarea {\n    font-size: 0.85rem;\n  }\n  .modal-content .button-group {\n    gap: 10px;\n  }\n  .modal-content .button-group .btn {\n    padding: 8px 0;\n    font-size: 0.9rem;\n    width: 120px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22120,7 +20915,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-page-container {\n  background-color: #F0F8FF;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n.shop-page-container .shop-content {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  align-items: flex-start;\n  flex: 1 0 auto;\n  position: relative;\n}\n.shop-page-container .shop-content > :first-child {\n  width: 300px;\n  flex-shrink: 0;\n}\n.shop-page-container .shop-content > :last-child {\n  flex: 1;\n  padding: 20px;\n  display: flex;\n  justify-content: center;\n  max-width: calc(100% - 300px);\n}\n@media (max-width: 768px) {\n  .shop-page-container .shop-content {\n    flex-direction: column;\n  }\n  .shop-page-container .shop-content > :first-child {\n    width: 100%;\n  }\n  .shop-page-container .shop-content > :last-child {\n    padding: 10px;\n    max-width: 100%;\n  }\n}\n.shop-page-container footer {\n  width: 100%;\n  background-color: #1E1E1E;\n  padding: 20px 0;\n  flex-shrink: 0;\n}\n.shop-page-container footer .footer-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n  text-align: left;\n  color: #fff;\n}\n@media (max-width: 768px) {\n  .shop-page-container footer {\n    padding: 10px 0;\n  }\n  .shop-page-container footer .footer-content {\n    padding: 0 10px;\n    max-width: 100%;\n  }\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #000;\n  color: #fff;\n  padding: 10px 20px;\n  z-index: 1000;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.navbar .nav-links {\n  display: flex;\n  gap: 20px;\n}\n.navbar .nav-links a {\n  color: #fff;\n  text-decoration: none;\n  font-size: 1.1em;\n}\n.navbar .login-btn {\n  background-color: #ff0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".shop-page-container {\n  background-color: #F0F8FF;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n.shop-page-container .shop-content {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  align-items: flex-start;\n  flex: 1 0 auto;\n  position: relative;\n}\n.shop-page-container .shop-content > :first-child {\n  width: 300px;\n  flex-shrink: 0;\n}\n.shop-page-container .shop-content > :last-child {\n  flex: 1;\n  padding: 20px;\n  display: flex;\n  justify-content: center;\n  max-width: calc(100% - 300px);\n  background-color: #edede9;\n}\n@media (max-width: 768px) {\n  .shop-page-container .shop-content {\n    flex-direction: column;\n  }\n  .shop-page-container .shop-content > :first-child {\n    width: 100%;\n  }\n  .shop-page-container .shop-content > :last-child {\n    padding: 10px;\n    max-width: 100%;\n  }\n}\n.shop-page-container footer {\n  width: 100%;\n  background-color: #1E1E1E;\n  padding: 20px 0;\n  flex-shrink: 0;\n}\n.shop-page-container footer .footer-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n  text-align: left;\n  color: #fff;\n}\n@media (max-width: 768px) {\n  .shop-page-container footer {\n    padding: 10px 0;\n  }\n  .shop-page-container footer .footer-content {\n    padding: 0 10px;\n    max-width: 100%;\n  }\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #000;\n  color: #fff;\n  padding: 10px 20px;\n  z-index: 1000;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.navbar .nav-links {\n  display: flex;\n  gap: 20px;\n}\n.navbar .nav-links a {\n  color: #fff;\n  text-decoration: none;\n  font-size: 1.1em;\n}\n.navbar .login-btn {\n  background-color: #ff0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22175,10 +20970,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/users.scss":
-/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/users.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/track_order.scss":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/track_order.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22192,7 +20987,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  overflow-y: auto;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n/* User Dashboard styles */\n.user-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  background: #f4f4f4;\n  overflow-x: hidden;\n  width: calc(100% - 250px);\n  margin-left: 250px;\n  margin-top: 60px; /* Added to push content below TopNavbar - adjust this value */\n  transition: margin-left 0.3s ease;\n}\n@media (max-width: 768px) {\n  .user-dashboard {\n    margin-left: 0;\n    padding: 10px;\n    margin-top: 60px; /* Keep this consistent on mobile */\n  }\n}\n\n.user-users {\n  width: 100%;\n  background: #f4f4f4;\n}\n.user-users h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n  text-align: left;\n}\n.user-users .user-users-header {\n  background: #f4f4f4;\n  margin-bottom: 20px;\n}\n.user-users .user-users-header .header-actions {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.user-users .user-users-header .header-actions .search-users-input {\n  padding: 12px 20px;\n  width: 200px;\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  text-align: left;\n  box-sizing: border-box;\n}\n.user-users .user-users-header .header-actions .search-users-input:focus {\n  border-color: #ff0000;\n}\n.user-users .user-users-header .header-actions .right-actions {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.user-users .user-users-header .header-actions .right-actions .action-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n  line-height: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.user-users .user-users-header .header-actions .right-actions .action-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.user-users .user-users-header .header-actions .filter-container {\n  position: relative;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-button {\n  padding: 10px 20px;\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n  line-height: 1;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 53px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.user-users .user-users-header .header-actions .filter-container .filter-dropdown li:hover {\n  background: #eeadad;\n  color: #333;\n}\n.user-users .user-user-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.user-users .user-user-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.user-users .user-user-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.user-users .user-user-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.user-users .user-user-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.user-users .user-user-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.user-users .user-user-table table tr {\n  border-bottom: 1px solid #555;\n}\n.user-users .user-user-table table tr:last-child {\n  border-bottom: none;\n}\n.user-users .user-user-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.user-users .user-user-table .action-icons .checkbox-icon,\n.user-users .user-user-table .action-icons .delete-icon,\n.user-users .user-user-table .action-icons .edit-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.user-users .user-user-table .action-icons .checkbox-icon:hover,\n.user-users .user-user-table .action-icons .delete-icon:hover,\n.user-users .user-user-table .action-icons .edit-icon:hover {\n  color: #ff0000;\n}\n.user-users .user-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.user-users .user-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.user-users .user-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.user-users .user-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.user-users .user-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n\n/* Assuming Sidebar has a fixed width */\n.sidebar {\n  width: 250px;\n  height: 100vh;\n  position: fixed;\n  top: 0;\n  left: 0;\n  background: #222;\n  color: #fff;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  max-width: 100%;\n  min-height: 100vh;\n  margin: 0;\n  padding: 20px;\n  color: #333;\n  background-color: #F0F8FF;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 20px;\n}\n.track-order .order-status h2 {\n  font-size: 1.5rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  border: 2px solid #1E1E1E;\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 5px;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  right: 0;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  animation: growLine 1.5s ease-out forwards;\n  transform: translateY(-50%);\n  width: 60%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 20%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #F0F8FF;\n  border: 2px solid #FF1C1C;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #FF1C1C;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .order-details {\n  background-color: transparent;\n  border: 2px dashed #1E1E1E;\n  padding: 15px;\n  border-radius: 0;\n}\n.track-order .order-details h3 {\n  font-size: 1.2rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-details p {\n  font-size: 0.9rem;\n  margin: 5px 0;\n  color: #333;\n}\n.track-order .order-details p strong {\n  color: #333;\n  font-weight: bold;\n}\n\n/* Animation for the growing line */\n@keyframes growLine {\n  from {\n    width: 0;\n  }\n  to {\n    width: 60%;\n  }\n}\n@media (max-width: 600px) {\n  .track-order {\n    padding: 10px;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before {\n    display: none;\n  }\n  .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 10px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22451,21 +21246,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/SILVERBLACK.svg?1d246fc0cdaf6fa51bcc5d94c90e4813");
-
-/***/ }),
-
-/***/ "./resources/sass/img/aadmin.svg":
-/*!***************************************!*\
-  !*** ./resources/sass/img/aadmin.svg ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/aadmin.svg?a5f2ff1f834570352396ff9fda4fa020");
 
 /***/ }),
 
@@ -22766,6 +21546,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/paypal.svg?cba0c1f7eb7e0f72d821c421213be058");
+
+/***/ }),
+
+/***/ "./resources/sass/img/pfp.svg":
+/*!************************************!*\
+  !*** ./resources/sass/img/pfp.svg ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/pfp.svg?552f13fdba5fe3dcd8dca3de97a8ad39");
 
 /***/ }),
 
@@ -74644,36 +73439,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./resources/sass/components/_admindashboard.scss":
-/*!********************************************************!*\
-  !*** ./resources/sass/components/_admindashboard.scss ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admindashboard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_admindashboard.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_admindashboard.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admindashboard_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admindashboard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./resources/sass/components/_login.scss":
 /*!***********************************************!*\
   !*** ./resources/sass/components/_login.scss ***!
@@ -74734,10 +73499,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/_sidebar.scss":
-/*!*************************************************!*\
-  !*** ./resources/sass/components/_sidebar.scss ***!
-  \*************************************************/
+/***/ "./resources/sass/components/address_modal.scss":
+/*!******************************************************!*\
+  !*** ./resources/sass/components/address_modal.scss ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74747,7 +73512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_sidebar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_sidebar.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_sidebar.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_address_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./address_modal.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/address_modal.scss");
 
             
 
@@ -74756,18 +73521,18 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_sidebar_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_address_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_sidebar_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_address_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
-/***/ "./resources/sass/components/_topnavbar.scss":
-/*!***************************************************!*\
-  !*** ./resources/sass/components/_topnavbar.scss ***!
-  \***************************************************/
+/***/ "./resources/sass/components/all_order.scss":
+/*!**************************************************!*\
+  !*** ./resources/sass/components/all_order.scss ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74777,7 +73542,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_topnavbar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_topnavbar.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_topnavbar.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_all_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./all_order.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/all_order.scss");
 
             
 
@@ -74786,18 +73551,18 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_topnavbar_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_all_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_topnavbar_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_all_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
-/***/ "./resources/sass/components/admin_list.scss":
-/*!***************************************************!*\
-  !*** ./resources/sass/components/admin_list.scss ***!
-  \***************************************************/
+/***/ "./resources/sass/components/cancel_order.scss":
+/*!*****************************************************!*\
+  !*** ./resources/sass/components/cancel_order.scss ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74807,7 +73572,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admin_list_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./admin_list.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/admin_list.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_cancel_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./cancel_order.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/cancel_order.scss");
 
             
 
@@ -74816,11 +73581,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admin_list_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_cancel_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_admin_list_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_cancel_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -74911,36 +73676,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_checkout_address_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./resources/sass/components/customer_list.scss":
-/*!******************************************************!*\
-  !*** ./resources/sass/components/customer_list.scss ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_customer_list_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./customer_list.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/customer_list.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_customer_list_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_customer_list_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -75064,36 +73799,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/inventory.scss":
-/*!**************************************************!*\
-  !*** ./resources/sass/components/inventory.scss ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_inventory_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./inventory.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/inventory.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_inventory_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_inventory_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./resources/sass/components/logo_slider.scss":
 /*!****************************************************!*\
   !*** ./resources/sass/components/logo_slider.scss ***!
@@ -75184,36 +73889,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/orders.scss":
-/*!***********************************************!*\
-  !*** ./resources/sass/components/orders.scss ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./orders.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/orders.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./resources/sass/components/orders_cart.scss":
 /*!****************************************************!*\
   !*** ./resources/sass/components/orders_cart.scss ***!
@@ -75241,6 +73916,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_cart_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/sass/components/password_modal.scss":
+/*!*******************************************************!*\
+  !*** ./resources/sass/components/password_modal.scss ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_password_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./password_modal.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/password_modal.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_password_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_password_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -75274,36 +73979,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/product.scss":
-/*!************************************************!*\
-  !*** ./resources/sass/components/product.scss ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./product.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./resources/sass/components/product_grid.scss":
 /*!*****************************************************!*\
   !*** ./resources/sass/components/product_grid.scss ***!
@@ -75331,36 +74006,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_grid_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./resources/sass/components/product_modal.scss":
-/*!******************************************************!*\
-  !*** ./resources/sass/components/product_modal.scss ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./product_modal.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/product_modal.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_product_modal_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -75424,10 +74069,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/reviews&notif.scss":
-/*!******************************************************!*\
-  !*** ./resources/sass/components/reviews&notif.scss ***!
-  \******************************************************/
+/***/ "./resources/sass/components/rate_product.scss":
+/*!*****************************************************!*\
+  !*** ./resources/sass/components/rate_product.scss ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75437,7 +74082,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_reviews_notif_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./reviews&notif.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/reviews&notif.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_rate_product_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./rate_product.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/rate_product.scss");
 
             
 
@@ -75446,41 +74091,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_reviews_notif_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_rate_product_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_reviews_notif_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./resources/sass/components/seller.scss":
-/*!***********************************************!*\
-  !*** ./resources/sass/components/seller.scss ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_seller_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./seller.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/seller.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_seller_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_seller_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_rate_product_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -75574,10 +74189,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/users.scss":
-/*!**********************************************!*\
-  !*** ./resources/sass/components/users.scss ***!
-  \**********************************************/
+/***/ "./resources/sass/components/track_order.scss":
+/*!****************************************************!*\
+  !*** ./resources/sass/components/track_order.scss ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75587,7 +74202,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_users_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./users.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/users.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_track_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./track_order.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/track_order.scss");
 
             
 
@@ -75596,11 +74211,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_users_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_track_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_users_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_track_order_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -79722,6 +78337,64 @@ var defaultAttributes = {
 
 /***/ }),
 
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconBox)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconBox = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "box", "IconBox", [["path", { "d": "M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5", "key": "svg-0" }], ["path", { "d": "M12 12l8 -4.5", "key": "svg-1" }], ["path", { "d": "M12 12l0 9", "key": "svg-2" }], ["path", { "d": "M12 12l-8 -4.5", "key": "svg-3" }]]);
+
+
+//# sourceMappingURL=IconBox.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconCheck)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconCheck = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "check", "IconCheck", [["path", { "d": "M5 12l5 5l10 -10", "key": "svg-0" }]]);
+
+
+//# sourceMappingURL=IconCheck.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs":
 /*!**********************************************************************!*\
   !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs ***!
@@ -79776,6 +78449,93 @@ var IconExternalLink = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__
 
 
 //# sourceMappingURL=IconExternalLink.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconEye)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconEye = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "eye", "IconEye", [["path", { "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0", "key": "svg-0" }], ["path", { "d": "M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6", "key": "svg-1" }]]);
+
+
+//# sourceMappingURL=IconEye.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEyeOff.mjs":
+/*!************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconEyeOff.mjs ***!
+  \************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconEyeOff)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconEyeOff = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "eye-off", "IconEyeOff", [["path", { "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828", "key": "svg-0" }], ["path", { "d": "M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87", "key": "svg-1" }], ["path", { "d": "M3 3l18 18", "key": "svg-2" }]]);
+
+
+//# sourceMappingURL=IconEyeOff.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconHome.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconHome.mjs ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconHome)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconHome = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "home", "IconHome", [["path", { "d": "M5 12l-2 0l9 -9l9 9l-2 0", "key": "svg-0" }], ["path", { "d": "M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7", "key": "svg-1" }], ["path", { "d": "M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6", "key": "svg-2" }]]);
+
+
+//# sourceMappingURL=IconHome.mjs.map
 
 
 /***/ }),
@@ -79838,16 +78598,16 @@ var IconSearch = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["defa
 
 /***/ }),
 
-/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs ***!
-  \***********************************************************************/
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ IconTrash)
+/* harmony export */   "default": () => (/* binding */ IconStar)
 /* harmony export */ });
 /* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
 /**
@@ -79859,10 +78619,68 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var IconTrash = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "trash", "IconTrash", [["path", { "d": "M4 7l16 0", "key": "svg-0" }], ["path", { "d": "M10 11l0 6", "key": "svg-1" }], ["path", { "d": "M14 11l0 6", "key": "svg-2" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-3" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-4" }]]);
+var IconStar = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "star", "IconStar", [["path", { "d": "M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z", "key": "svg-0" }]]);
 
 
-//# sourceMappingURL=IconTrash.mjs.map
+//# sourceMappingURL=IconStar.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruck.mjs":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconTruck.mjs ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconTruck)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconTruck = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "truck", "IconTruck", [["path", { "d": "M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-0" }], ["path", { "d": "M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-1" }], ["path", { "d": "M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5", "key": "svg-2" }]]);
+
+
+//# sourceMappingURL=IconTruck.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruckDelivery.mjs":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconTruckDelivery.mjs ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconTruckDelivery)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconTruckDelivery = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "truck-delivery", "IconTruckDelivery", [["path", { "d": "M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-0" }], ["path", { "d": "M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0", "key": "svg-1" }], ["path", { "d": "M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5", "key": "svg-2" }], ["path", { "d": "M3 9l4 0", "key": "svg-3" }]]);
+
+
+//# sourceMappingURL=IconTruckDelivery.mjs.map
 
 
 /***/ }),

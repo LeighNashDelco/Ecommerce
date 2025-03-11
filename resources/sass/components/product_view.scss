@@ -1,68 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 .product-view-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // Ensures the page takes up the full viewport height
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
 
   .content-wrapper {
-    flex: 1; // Makes the content take up the remaining space between navbar and footer
+    flex: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #f0f7ff; // Background color for the content area
-    padding-top: 80px; // Adds space below the navbar (adjust based on your navbar height)
+    background-color: #f0f7ff;
+    padding-top: 80px;
   }
 
   .product-view-container {
     max-width: 1200px;
-    width: 100%; // Ensures the container takes up the full width of the parent
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box; // Ensures padding doesn't affect the width
+    box-sizing: border-box;
 
     // Product Section
     .product-section {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start; // Aligns items at the top to prevent stretching
+      align-items: flex-start;
       margin-bottom: 40px;
 
       .product-image {
-        flex: 0 0 auto; // Prevents the image from stretching
-        border: 1px solid #000000; // Updated to 1px width and black color
-        padding: 10px; // Adds padding inside the border to match the spacing
-        box-sizing: border-box; // Ensures padding doesn't affect the width
-        width: 380px; // Increased width to maximize the image
-        height: 380px; // Increased height to maximize the image
-        background-color: transparent; // Ensures the background is transparent
+        flex: 0 0 auto;
+        border: 1px solid #000000;
+        padding: 10px;
+        box-sizing: border-box;
+        width: 380px;
+        height: 380px;
+        background-color: transparent;
 
         img {
-          width: 100%; // Ensures the image fills the container
-          height: 100%; // Ensures the image fills the container
-          object-fit: contain; // Maintains aspect ratio and prevents distortion
-          display: block; // Removes extra space below the image
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
         }
       }
 
       .product-details {
         flex: 1;
-        padding-left: 30px; // Increased padding to balance the larger image
+        padding-left: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: center; // Vertically centers the content
-        align-items: flex-start; // Aligns content to the left within the right side
-        max-width: 600px; // Slightly increased to balance the layout with the larger image
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 600px;
 
         .product-title-container {
           display: flex;
-          justify-content: space-between; // Adds space between title and icon
+          justify-content: space-between;
           align-items: center;
           width: 100%;
-          margin-bottom: 5px; // Small gap below the title
+          margin-bottom: 5px;
 
           h1 {
-            font-size: 28px; // Slightly larger font to match the larger image
+            font-size: 28px;
             margin: 0;
+            font-family: 'Inter', sans-serif;
           }
 
           .expand-icon {
@@ -70,12 +73,12 @@
             transition: color 0.3s ease;
 
             &:hover {
-              color: #0066cc; // Change color on hover for interactivity
+              color: #0066cc;
             }
 
             svg {
-              width: 30px; // Updated to match the new size
-              height: 30px; // Updated to match the new size
+              width: 30px;
+              height: 30px;
             }
           }
         }
@@ -84,6 +87,7 @@
           color: #666;
           font-size: 14px;
           margin: 5px 0;
+          font-family: 'Inter', sans-serif;
         }
 
         .price-rating {
@@ -92,14 +96,20 @@
           margin: 10px 0;
 
           .price {
-            font-size: 24px; // Slightly larger font
+            font-size: 24px;
             font-weight: bold;
             margin-right: 10px;
+            font-family: 'Inter', sans-serif;
           }
 
           .rating {
-            color: #ffcc00;
-            font-size: 20px; // Slightly larger stars
+            display: flex;
+            align-items: center;
+            gap: 2px;
+
+            svg {
+              margin: 0;
+            }
           }
         }
 
@@ -107,6 +117,7 @@
           font-size: 16px;
           color: #333;
           margin: 10px 0;
+          font-family: 'Inter', sans-serif;
         }
 
         .quantity-controls {
@@ -116,36 +127,37 @@
           margin: 10px 0;
 
           button {
-            background: transparent; // Transparent background for stroke effect
-            border: 2px solid #494949; // Default stroke color
+            background: transparent;
+            border: 2px solid #494949;
             padding: 5px 10px;
             cursor: pointer;
             font-size: 16px;
             width: 30px;
             text-align: center;
-            color: #494949; // Default text color
-            border-radius: 4px; // Slight rounding for a modern look
-            transition: background-color 0.3s ease, color 0.3s ease; // Smooth transition
+            color: #494949;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Inter', sans-serif;
 
             &:hover {
-              background: #494949; // Fill on hover
-              color: #fff; // White text on hover
+              background: #494949;
+              color: #fff;
             }
 
             &:disabled {
-              border-color: #eee; // Lighter border for disabled state
+              border-color: #eee;
               color: #eee;
               cursor: not-allowed;
-              background: transparent; // Keep transparent when disabled
+              background: transparent;
             }
 
-            &:nth-child(3) { // Target the third button (the "+" button)
-              border-color: #FF1C1C; // Change stroke color to #FF1C1C
-              color: #FF1C1C; // Match text color to border
+            &:nth-child(3) {
+              border-color: #FF1C1C;
+              color: #FF1C1C;
 
               &:hover {
-                background: #FF1C1C; // Fill with #FF1C1C on hover
-                color: #fff; // White text on hover
+                background: #FF1C1C;
+                color: #fff;
               }
             }
           }
@@ -154,6 +166,7 @@
             font-size: 16px;
             width: 30px;
             text-align: center;
+            font-family: 'Inter', sans-serif;
           }
         }
 
@@ -162,15 +175,17 @@
           flex-direction: column;
           gap: 10px;
           margin: 10px 0;
-          width: 100%; // Ensures buttons take up the full width of the container
+          width: 100%;
 
           button {
-            padding: 12px; // Slightly larger buttons
+            padding: 12px;
             font-size: 16px;
             border: none;
             cursor: pointer;
             color: white;
             background-color: #ff3333;
+            font-family: 'Inter', sans-serif;
+
             &:hover {
               background-color: #e60000;
             }
@@ -186,6 +201,7 @@
             color: #666;
             cursor: pointer;
             transition: color 0.3s ease;
+            font-family: 'Inter', sans-serif;
 
             &:hover {
               color: #0066cc;
@@ -196,78 +212,168 @@
       }
     }
 
-    // Reviews Section
-    .reviews-section {
-      h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
+    // Reviews Container and Section
+    .reviews-container {
+      margin-top: 40px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #F0F8FF;
+      padding: 20px;
 
-      .overall-rating {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-
-        span:first-child {
-          color: #ffcc00;
-          font-size: 18px;
-          margin-right: 10px;
+      .reviews-section {
+        h2 {
+          font-size: 20px;
+          margin-bottom: 10px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
         }
-      }
 
-      .rating-breakdown {
-        margin-bottom: 20px;
-        p {
-          margin: 5px 0;
-          font-size: 14px;
-        }
-      }
-
-      .review {
-        border-bottom: 1px solid #ddd;
-        padding: 10px 0;
-
-        .review-header {
+        .overall-rating {
           display: flex;
-          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px;
 
-          span {
-            color: #ffcc00;
-            font-size: 18px;
-          }
-
-          h3 {
-            font-size: 16px;
-            margin: 5px 0;
-          }
-
-          .review-date {
-            font-size: 14px;
-            color: #666;
-          }
-
-          .reviewer-name {
-            font-size: 14px;
+          .overall-score {
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 10px;
+            color: #000;
+            margin-right: 10px;
+            font-family: 'Inter', sans-serif;
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+
+            svg {
+              margin: 0;
+            }
+          }
+
+          .filter-buttons {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+
+            .filter-btn {
+              padding: 5px 10px;
+              border: 1px solid #ddd;
+              background-color: #fff;
+              cursor: pointer;
+              font-size: 14px;
+              border-radius: 3px;
+              font-family: 'Inter', sans-serif;
+
+              &.active {
+                background-color: #ff0000;
+                color: #fff;
+                border-color: #ff0000;
+              }
+
+              &:hover {
+                background-color: #f0f0f0;
+              }
+            }
+          }
+
+          .media-btn {
+            margin-left: 20px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+            font-family: 'Inter', sans-serif;
+
+            &:hover {
+              background-color: #f0f0f0;
+            }
           }
         }
 
-        .review-text {
-          font-size: 14px;
-          color: #333;
-          margin: 10px 0;
-        }
+        .reviews-scroll {
+          max-height: 400px;
+          overflow-y: auto;
+          padding-right: 10px;
 
-        .review-helpful {
-          font-size: 12px;
-          color: #666;
+          .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
 
-          a {
-            color: #0066cc;
-            text-decoration: none;
-            &:hover {
-              text-decoration: underline;
+            .review-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 10px;
+
+              .reviewer-info {
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+
+                .pfp {
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  margin-right: 10px;
+                }
+
+                .reviewer-name {
+                  font-size: 14px;
+                  font-weight: bold;
+                  font-family: 'Inter', sans-serif;
+                  margin: 0;
+                }
+
+                .review-date {
+                  font-size: 12px;
+                  color: #666;
+                  font-family: 'Inter', sans-serif;
+                  margin: 0;
+                }
+              }
+
+              .rating {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+
+                svg {
+                  margin: 0;
+                }
+              }
+            }
+
+            .best-feature {
+              font-size: 14px;
+              color: #666;
+              margin: 5px 0;
+              font-family: 'Inter', sans-serif;
+              font-style: italic;
+            }
+
+            .review-text {
+              font-size: 14px;
+              color: #333;
+              margin: 10px 0;
+              font-family: 'Inter', sans-serif;
+            }
+
+            // Styling for review images (corrected scoping)
+            .review-images {
+              display: flex;
+              gap: 10px;
+              margin-top: 10px;
+
+              .review-img {
+                width: 80px; // Reduced from 100px to a more standard size
+                height: 80px; // Reduced from 100px to a more standard size
+                object-fit: cover;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+              }
             }
           }
         }
@@ -278,24 +384,24 @@
     @media (max-width: 768px) {
       .product-view-container {
         .product-section {
-          flex-direction: column; // Stack image and details vertically on smaller screens
+          flex-direction: column;
           align-items: center;
 
           .product-image {
-            width: 100%; // Full width on smaller screens
-            max-width: 400px; // Limit the maximum size
-            height: 400px; // Adjust height to maintain proportions
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
             margin-bottom: 20px;
           }
 
           .product-details {
             padding-left: 0;
-            max-width: 100%; // Allow details to take full width
-            text-align: center; // Center-align text for better appearance
+            max-width: 100%;
+            text-align: center;
 
             .product-title-container {
-              justify-content: center; // Center on smaller screens
-              flex-direction: column; // Stack title and icon vertically on small screens
+              justify-content: center;
+              flex-direction: column;
               align-items: center;
 
               h1 {
@@ -320,6 +426,37 @@
             }
           }
         }
+
+        .reviews-container {
+          .reviews-section {
+            .reviews-scroll {
+              max-height: 300px;
+            }
+
+            .review .review-header {
+              flex-direction: column;
+              align-items: flex-start;
+
+              .reviewer-info {
+                margin-bottom: 10px;
+              }
+
+              .rating {
+                margin-top: 5px;
+              }
+            }
+
+            .review .review-images {
+              flex-direction: column;
+              align-items: flex-start;
+
+              .review-img {
+                width: 60px; // Adjusted for smaller screens
+                height: 60px; // Adjusted for smaller screens
+              }
+            }
+          }
+        }
       }
     }
 
@@ -327,7 +464,7 @@
       .product-view-container {
         .product-section {
           .product-image {
-            max-width: 300px; // Further reduce size for very small screens
+            max-width: 300px;
             height: 300px;
           }
 
@@ -343,6 +480,34 @@
 
               .rating {
                 font-size: 16px;
+              }
+            }
+          }
+        }
+
+        .reviews-container {
+          .reviews-section {
+            .reviews-scroll {
+              max-height: 250px;
+            }
+
+            .review .review-header {
+              flex-direction: column;
+              align-items: flex-start;
+
+              .reviewer-info {
+                margin-bottom: 10px;
+              }
+
+              .rating {
+                margin-top: 5px;
+              }
+            }
+
+            .review .review-images {
+              .review-img {
+                width: 50px; // Further reduced for very small screens
+                height: 50px; // Further reduced for very small screens
               }
             }
           }

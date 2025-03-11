@@ -6,11 +6,43 @@ import Navbar from "../Customer/topvar_notlogin";
 import Footer from "../footer/footer";
 import OrdersCart from "../CartModals/orders_cart";
 import { IconEdit, IconUpload } from '@tabler/icons-react';
+import AddressModal from '../profile/address_modal';
+import PasswordModal from '../profile/password_modal';
+import AllOrder from '../orderHistory/all_order'; // Import the AllOrder component
 
 function Profile() {
   const [activeTab, setActiveTab] = useState('personal');
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [avatarImage, setAvatarImage] = useState(Avatar); 
+  const [avatarImage, setAvatarImage] = useState(Avatar);
+  
+  // State for field values
+  const [name, setName] = useState('Alexander Otaza');
+  const [email, setEmail] = useState('Alexander Otaza');
+  const [password, setPassword] = useState('************');
+  const [address, setAddress] = useState({
+    street: 'San Francisco St',
+    city: 'Butuan City',
+    province: 'Agusan Del Norte',
+    postalCode: '8600',
+    country: 'Philippines',
+  });
+
+  // State for edit modes
+  const [editMode, setEditMode] = useState({
+    name: false,
+    email: false,
+    password: false,
+    address: false,
+  });
+
+  // Temporary state for editing values
+  const [tempName, setTempName] = useState(name);
+  const [tempEmail, setTempEmail] = useState(email);
+
+  // State to control the modals
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
@@ -19,17 +51,17 @@ function Profile() {
     setIsCartOpen(!isCartOpen);
   };
 
-  // Handle file upload
+  // Handle file upload for avatar
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setAvatarImage(e.target.result); 
+        setAvatarImage(e.target.result);
       };
       reader.readAsDataURL(file);
     }
-    event.target.value = null; 
+    event.target.value = null;
   };
 
   // Trigger file input click for avatar
@@ -40,6 +72,65 @@ function Profile() {
   // Trigger file input click for upload icon
   const handleUploadIconClick = () => {
     document.getElementById('avatar-upload').click();
+  };
+
+  // Handle edit button click for each field
+  const handleEditClick = (field) => {
+    if (field === 'address') {
+      setIsAddressModalOpen(true);
+      return;
+    }
+    if (field === 'password') {
+      setIsPasswordModalOpen(true);
+      return;
+    }
+
+    setEditMode({
+      name: field === 'name',
+      email: field === 'email',
+      password: false,
+      address: false,
+    });
+
+    if (field === 'name') setTempName(name);
+    if (field === 'email') setTempEmail(email);
+  };
+
+  // Handle save button click for inline editing
+  const handleSave = (field) => {
+    if (field === 'name') setName(tempName);
+    if (field === 'email') setEmail(tempEmail);
+
+    setEditMode({
+      name: false,
+      email: false,
+      password: false,
+      address: false,
+    });
+  };
+
+  // Handle cancel button click for inline editing
+  const handleCancel = () => {
+    setTempName(name);
+    setTempEmail(email);
+    setEditMode({
+      name: false,
+      email: false,
+      password: false,
+      address: false,
+    });
+  };
+
+  // Handle saving the address from the modal
+  const handleSaveAddress = (updatedAddress) => {
+    setAddress(updatedAddress);
+    setIsAddressModalOpen(false);
+  };
+
+  // Handle saving the password from the modal
+  const handleSavePassword = (newPassword) => {
+    setPassword(newPassword || '************');
+    setIsPasswordModalOpen(false);
   };
 
   return (
@@ -83,38 +174,101 @@ function Profile() {
           <div className="info-grid">
             <div className="info-box">
               <h3>Name</h3>
-              <p>Alexander Otaza</p>
-              <button className="edit-btn">
+              {editMode.name ? (
+                <input
+                  type="text"
+                  value={tempName}
+                  onChange={(e) => setTempName(e.target.value)}
+                  className="edit-input"
+                />
+              ) : (
+                <p>{name}</p>
+              )}
+              <button
+                className="edit-btn"
+                onClick={() => handleEditClick('name')}
+              >
                 <IconEdit size={24} />
               </button>
+              {editMode.name && (
+                <div className="edit-actions">
+                  <button className="cancel-btn" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                  <button className="save-btn" onClick={() => handleSave('name')}>
+                    Save
+                  </button>
+                </div>
+              )}
             </div>
             <div className="info-box">
               <h3>Email</h3>
-              <p>Alexander Otaza</p>
-              <button className="edit-btn">
+              {editMode.email ? (
+                <input
+                  type="email"
+                  value={tempEmail}
+                  onChange={(e) => setTempEmail(e.target.value)}
+                  className="edit-input"
+                />
+              ) : (
+                <p>{email}</p>
+              )}
+              <button
+                className="edit-btn"
+                onClick={() => handleEditClick('email')}
+              >
                 <IconEdit size={24} />
               </button>
+              {editMode.email && (
+                <div className="edit-actions">
+                  <button className="cancel-btn" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                  <button className="save-btn" onClick={() => handleSave('email')}>
+                    Save
+                  </button>
+                </div>
+              )}
             </div>
             <div className="info-box">
               <h3>Address</h3>
-              <p>San Francisco St, Butuan City, Agusan Del Norte 8600, Philippines</p>
-              <button className="edit-btn">
+              <p>{`${address.street}, ${address.city}, ${address.province} ${address.postalCode}, ${address.country}`}</p>
+              <button
+                className="edit-btn"
+                onClick={() => handleEditClick('address')}
+              >
                 <IconEdit size={24} />
               </button>
             </div>
             <div className="info-box">
               <h3>Password</h3>
-              <p>************</p>
-              <button className="edit-btn">
+              <p>{password}</p>
+              <button
+                className="edit-btn"
+                onClick={() => handleEditClick('password')}
+              >
                 <IconEdit size={24} />
               </button>
             </div>
           </div>
         ) : (
           <div className="order-history">
-            <p>Order history will be displayed here.</p>
+            <AllOrder /> {/* Replace the placeholder with the AllOrder component */}
           </div>
         )}
+        {/* Render the Address Modal */}
+        <AddressModal
+          isOpen={isAddressModalOpen}
+          onClose={() => setIsAddressModalOpen(false)}
+          onSave={handleSaveAddress}
+          initialAddress={address}
+        />
+        {/* Render the Password Modal */}
+        <PasswordModal
+          isOpen={isPasswordModalOpen}
+          onClose={() => setIsPasswordModalOpen(false)}
+          onSave={handleSavePassword}
+        />
       </div>
       <Footer />
       <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />

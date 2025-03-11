@@ -32,6 +32,7 @@
       display: flex;
       justify-content: center; // Center the grid horizontally
       max-width: calc(100% - 300px); // Ensure it respects sidebar width
+      background-color: #edede9;
     }
 
     @media (max-width: 768px) {
