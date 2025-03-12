@@ -17,6 +17,8 @@ import Order_complete from "./components/OrderComplete/order_complete";
 import Notfound from "./components/Pagenotfound/notfound";
 import Product_view from "./components/ProductView/product_view";
 import TrackOrder from "./components/TrackOrder/track_order";
+import About_us from "./components/AboutUs/about_us";
+
 
 
 export default function Routers() {
@@ -38,6 +40,7 @@ export default function Routers() {
         <Route path="product_view" element={<Product_view />} />
         <Route path="profile" element={<Profile />} />
         <Route path="track_order" element={<TrackOrder />} />
+        <Route path="about_us" element={<About_us />} />
       </Routes>
     </Router>
   );

@@ -9,6 +9,11 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    navigate('/'); // Navigate to the Homepage (root route)
+  };
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     navigate('/login');
@@ -17,6 +22,16 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
   const handleShopClick = (e) => {
     e.preventDefault();
     navigate('/shop');
+  };
+
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    navigate('/about_us');
+  };
+
+  const handleStartSellingClick = (e) => {
+    e.preventDefault();
+    navigate('/register'); // Navigate to the Register page
   };
 
   const toggleMenu = () => {
@@ -33,10 +48,10 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
           <img src={logoImage} alt="Customer Logo" className="customer-logo-img" />
         </div>
         <nav className={`customer-nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <a href="#home" className="customer-nav-link">Home</a>
+          <a href="#home" className="customer-nav-link" onClick={handleHomeClick}>Home</a>
           <a href="#shop" className="customer-nav-link" onClick={handleShopClick}>Shop</a> 
-          <a href="#start-selling" className="customer-nav-link">Start Selling</a>
-          <a href="#about" className="customer-nav-link">About</a>
+          <a href="#start-selling" className="customer-nav-link" onClick={handleStartSellingClick}>Start Selling</a>
+          <a href="#about" className="customer-nav-link" onClick={handleAboutClick}>About</a>
         </nav>
         <div className="customer-auth-section">
           <a href="#search" className="customer-search-icon" onClick={(e) => e.preventDefault()}>
@@ -61,9 +76,10 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
           <IconX size={24} color="#ffffff" />
         </div>
         <nav className="customer-mobile-nav">
-          <a href="#home" className="customer-nav-link" onClick={toggleMenu}>HOME</a>
+          <a href="#home" className="customer-nav-link" onClick={(e) => { handleHomeClick(e); toggleMenu(); }}>HOME</a>
           <a href="#shop" className="customer-nav-link" onClick={(e) => { handleShopClick(e); toggleMenu(); }}>SHOP</a>
-          <a href="#start-selling" className="customer-nav-link" onClick={toggleMenu}>START SELLING</a>
+          <a href="#start-selling" className="customer-nav-link" onClick={(e) => { handleStartSellingClick(e); toggleMenu(); }}>START SELLING</a>
+          <a href="#about" className="customer-nav-link" onClick={(e) => { handleAboutClick(e); toggleMenu(); }}>ABOUT</a>
           <a href="#login" className="customer-nav-link" onClick={(e) => { handleLoginClick(e); toggleMenu(); }}>LOGIN</a>
         </nav>
       </div>
