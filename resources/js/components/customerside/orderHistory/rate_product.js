@@ -34,8 +34,8 @@ const RateProduct = ({ isOpen, onClose, onSubmit }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="rate-product-modal-overlay">
+      <div className="rate-product-modal-content">
         <h2>Overall Rating</h2>
         <div className="star-rating">
           {[1, 2, 3, 4, 5].map((star) => {

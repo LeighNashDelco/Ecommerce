@@ -26,8 +26,8 @@ const CancelOrder = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="cancel-order-modal-overlay">
+      <div className="cancel-order-modal-content">
         <h2>Cancel Order</h2>
         <p>
           Please select a cancellation reason. Please take note that this will
@@ -41,7 +41,7 @@ const CancelOrder = ({ isOpen, onClose, onConfirm }) => {
                 value={reason}
                 checked={selectedReason === reason}
                 onChange={handleReasonChange}
-                required // Ensures a selection is made
+                required
               />
               <span>{reason}</span>
             </label>

@@ -33,14 +33,17 @@ const TopNavbar = () => {
   }, []);
 
   const toggleDropdown = () => {
+    console.log("Toggling dropdown:", !isDropdownOpen);
     setIsDropdownOpen((prev) => !prev);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        console.log("Clicked outside, closing dropdown");
         setIsDropdownOpen(false);
       }
+      console.log("Dropdown Ref:", dropdownRef.current); // Debug the DOM structure
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -68,26 +71,27 @@ const TopNavbar = () => {
   return (
     <div className="top-navbar">
       <div className="profile">
-        {/* Profile Image */}
         <img
           src={profileImg}
           alt="Profile"
           className="profile-icon"
-          onError={(e) => (e.target.src = "default-profile.png")} // Fallback if image fails to load
+          onError={(e) => (e.target.src = "default-profile.png")}
         />
-
-        {/* Dropdown Button */}
-        <FaCaretDown className="dropdown-button" onClick={toggleDropdown} ref={dropdownRef} />
-
-        {/* Dropdown Menu */}
-        {isDropdownOpen && (
-          <div className="dropdown-menu">
-            <ul>
-              <li onClick={handleProfileSettings}>Profile Settings</li>
-              <li onClick={handleLogout}>Logout</li>
-            </ul>
-          </div>
-        )}
+        <div
+          className={`dropdown-toggle ${isDropdownOpen ? "open" : ""}`}
+          ref={dropdownRef}
+          onClick={toggleDropdown}
+        >
+          <FaCaretDown className="dropdown-icon" />
+          {isDropdownOpen && (
+            <div className="dropdown-menu">
+              <ul>
+                <li onClick={handleProfileSettings}>Profile Settings</li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
