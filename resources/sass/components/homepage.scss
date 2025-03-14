@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+
+.homepage-customer {
+  background-color: #000; // Changed to match video section's background
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  padding-top: 60px;
+
+  .navbar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    height: 60px;
+    background-color: #000000;
+    z-index: 1100;
+    padding: 0 20px;
+
+    & > * {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+  }
+
+  .content-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    z-index: 0;
+
+    -ms-overflow-style: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      z-index: -1;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .hero-section,
+    .logos,
+    .video-section,
+    .product-grid-wrapper {
+      width: 100%;
+    }
+
+    .hero-section {
+      position: relative;
+      width: calc(100vw + 8px);
+      height: calc(100vh - 60px);
+      min-height: 600px;
+      background-color: #000000; // Already matches the page background
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      z-index: 1;
+
+      .hero-image {
+        width: calc(100vw + 8px);
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      .hero-text {
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+        text-align: center;
+        padding: 100px 40px 0 40px;
+        width: 100%;
+
+        .hero-title {
+          font-family: 'Jost', sans-serif;
+          font-size: 48px;
+          font-weight: 500;
+          margin: 0 0 20px 0;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          line-height: 1.2;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin-top: 20px;
+
+          .learn-more-text,
+          .add-to-cart-text {
+            position: relative;
+            color: #F0F8FF;
+            font-size: 18px;
+            padding: 0 0 4px 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-decoration: none;
+
+            &::after {
+              content: '>';
+              color: #FF1C1C;
+              margin-left: 4px;
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 2px;
+              background: #FF1C1C;
+              transform: scaleY(0);
+              transform-origin: bottom;
+              transition: transform 0.3s ease-in-out;
+              z-index: 0;
+            }
+
+            &:hover::before {
+              transform: scaleY(1);
+            }
+
+            &:hover {
+              color: #F0F8FF;
+            }
+
+            &:active {
+              color: #d1e6ff;
+            }
+          }
+
+          .add-to-cart-text {
+            color: #F0F8FF;
+
+            &:hover {
+              color: #F0F8FF;
+            }
+
+            &:active {
+              color: #d1e6ff;
+            }
+          }
+        }
+      }
+    }
+
+    .logos {
+      margin-top: 0; // Removed margin to place it directly below hero-section
+      margin-bottom: 40px;
+      width: 100%;
+      background-color: #F0F8FF; // Only section with this background
+    }
+
+    .video-section {
+      width: 100vw;
+      height: 70vh;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      background-color: #000; // Matches page background
+      margin-bottom: 40px;
+
+      .fullscreen-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+
+    .product-grid-wrapper {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 80px;
+      background-color: #000; // Matches page background
+
+      .product-grid {
+        width: 100%;
+        background-color: #000; // Changed from #f5f9ff to match page background
+        padding: 20px 0;
+        margin: 0;
+
+        h2 {
+          font-size: 24px;
+          margin-bottom: 20px;
+          color: #fff; // Changed to white for visibility on black background
+          text-align: left;
+          padding-left: 95px;
+        }
+
+        .products-container {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 20px;
+          padding: 0 40px;
+          width: 100%;
+          max-width: 1400px;
+          margin: 0 auto;
+          justify-items: center;
+        }
+
+        .product-card {
+          background-color: #4a4a4a;
+          border-radius: 8px;
+          overflow: hidden;
+          width: 250px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          margin-top: 20px;
+
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
+
+          .product-info {
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+
+            .stars {
+              color: #ffd700;
+              font-size: 18px;
+              margin-bottom: 10px;
+            }
+
+            h3 {
+              font-size: 16px;
+              margin: 10px 0;
+            }
+
+            p {
+              font-size: 14px;
+              color: #ffd700;
+              margin: 10px 0;
+            }
+
+            .add-to-cart {
+              background-color: #ff0000;
+              color: white;
+              border: none;
+              padding: 8px 20px;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 14px;
+              width: 100%;
+              margin-top: 10px;
+
+              &:hover {
+                background-color: #cc0000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design for mobile (≤768px)
+@media (max-width: 768px) {
+  .homepage-customer {
+    padding-top: 75px; // Adjusted for taller mobile navbar
+
+    .content-wrapper {
+      .hero-section {
+        height: calc(100vh - 75px); // Adjusted for taller mobile navbar
+        min-height: 500px; // Increased min-height to better fit the image
+        width: 100vw; // Ensure full width
+        padding: 0;
+
+        .hero-image {
+          width: 100vw; // Match the container width
+          height: 100%; // Ensure the image fills the height
+          object-fit: cover; // Reverted to cover to fill the container
+          object-position: center; // Center the image to avoid awkward cropping
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .hero-text {
+          padding: 60px 20px 0 20px; // Reduced padding for mobile
+          text-align: center;
+
+          .hero-title {
+            font-size: 28px; // Reduced font size for mobile
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+          }
+
+          .hero-buttons {
+            flex-direction: row; // Inline buttons
+            gap: 20px; // Maintain gap between buttons
+            justify-content: center;
+            margin-top: 15px;
+
+            .learn-more-text,
+            .add-to-cart-text {
+              font-size: 16px; // Slightly reduced font size
+              width: auto; // Remove max-width to allow inline flexibility
+              max-width: none; // Remove max-width constraint
+              margin: 0; // Remove margin to align properly
+            }
+          }
+        }
+      }
+
+      .logos,
+      .video-section,
+      .product-grid-wrapper {
+        width: 100vw;
+      }
+
+      .video-section {
+        height: 50vh; // Reduced height for mobile
+        min-height: 200px;
+      }
+
+      .product-grid-wrapper {
+        .product-grid {
+          .products-container {
+            grid-template-columns: repeat(2, 1fr); // Adjust to 2 columns on mobile
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+  }
+}

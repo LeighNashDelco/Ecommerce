@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Profile;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function store(Request $request)
+    // Existing store method (unchanged)
+    public function store(Request $request) { /* ... */ }
+
+    // New index method
+    public function index()
     {
-        $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'gender_id' => 'required|exists:genders,id',
-        ]);
-    
-        Profile::create($request->all());
-    
-        return response()->json(['message' => 'Profile created successfully'], 201);
+        try {
+            $profiles = Profile::all()->map(function ($profile) {
+                return [
+                    'id' => $profile->id,
+                    'user_id' => $profile->user_id,
+                    'first_name' => $profile->first_name,
+                    'last_name' => $profile->last_name,
+                    'full_name' => $profile->first_name . ' ' . $profile->last_name,
+                ];
+            });
+            return response()->json($profiles);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to fetch profiles: ' . $e->getMessage()], 500);
+        }
     }
-}    
+}

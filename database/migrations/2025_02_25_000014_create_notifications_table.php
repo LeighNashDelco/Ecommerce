@@ -4,16 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+class CreateNotificationsTable extends Migration
+{
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
+            $table->unsignedBigInteger('profile_id');
             $table->text('message');
-            $table->foreignId('faqs_id')->nullable()->constrained('faqs')->onDelete('cascade');
-            $table->enum('type', ['order', 'payment', 'support', 'general']);
-            $table->enum('status', ['unread', 'read'])->default('unread');
+            $table->unsignedBigInteger('faqs_id')->nullable();
+            $table->string('type');
+            $table->string('status');
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }
@@ -22,4 +24,4 @@ return new class extends Migration {
     {
         Schema::dropIfExists('notifications');
     }
-};
+}

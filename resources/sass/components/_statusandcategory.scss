@@ -1,3 +1,5 @@
+// _statusandcategory.scss
+
 html,
 body {
   height: 100%;
@@ -23,7 +25,7 @@ body {
 
 .statusandcategory-dashboard {
   flex: 1;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -35,62 +37,53 @@ body {
     background: #f4f4f4;
 
     h2 {
-      margin: 0 0 20px 0;
+      margin: 0 0 15px 0;
       font-size: 24px;
       color: #333;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-
-      .tab-button {
-        padding: 10px 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: #fff;
-        color: #333;
-        font-size: 14px;
-        cursor: pointer;
-        transition: 0.3s;
-
-        &:hover {
-          background: #ff0000;
-          color: white;
-          border-color: #ff0000;
-        }
-
-        &.active {
-          background: #ff0000;
-          color: white;
-          border-color: #ff0000;
-        }
-      }
     }
 
     .statusandcategory-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      background: #f4f4f4;
+      margin-bottom: 15px;
+      gap: 10px;
+      min-height: 40px; // Ensures the header has a minimum height to align content
 
       .left-actions {
-        flex-grow: 1;
+        display: flex;
+        align-items: center; // Vertically center the search container
+        margin: 0; // Remove any default margins
 
-        .search-input {
-          width: 200px;
-          padding: 8px 12px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          background: #fff;
-          color: #333;
-          font-size: 14px;
-          outline: none;
+        .search-container {
+          position: relative;
+          width: 100%;
+          max-width: 300px;
 
-          &:focus {
-            border-color: #ff0000;
+          .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+          }
+
+          .search-input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            outline: none;
+            height: 40px;
+            box-sizing: border-box;
+            margin: 0; // Remove any default margins
+
+            &:focus {
+              border-color: #ff0000;
+            }
           }
         }
       }
@@ -99,11 +92,10 @@ body {
         display: flex;
         gap: 10px;
         justify-content: flex-end;
+        align-items: center; // Vertically center the buttons
 
         .header-button {
-          padding: 12px 20px;
-          width: 120px;
-          height: 48px;
+          height: 40px;
           border: 1px solid #ccc;
           border-radius: 4px;
           background: #fff;
@@ -111,11 +103,21 @@ body {
           font-size: 14px;
           cursor: pointer;
           transition: 0.3s;
-          text-align: center;
-          line-height: 1;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 0 12px;
+          min-width: 40px;
+          margin: 0; // Remove any default margins
+
+          .button-icon {
+            margin-right: 8px;
+            display: inline-block;
+          }
+
+          .button-text {
+            display: inline-block;
+          }
 
           &:hover {
             background: #ff0000;
@@ -139,14 +141,38 @@ body {
 
     .statusandcategory-table {
       width: 100%;
-      margin-top: 20px;
+      overflow-x: auto;
+
+      .tabs {
+        background-color: #333333;
+        display: flex;
+        border-radius: 5px 5px 0px 0px;
+      }
+
+      .tab-button {
+        flex: 1;
+        height: 40px;
+        border-radius: 5px 5px 0px 0px;
+        border: 0px solid transparent;
+        background-color: transparent;
+        color: #a4a4a4;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+
+        &.active {
+          background-color: #ff0000;
+          color: white;
+        }
+      }
 
       table {
         width: 100%;
         border-collapse: collapse;
+        min-width: 600px;
 
         th {
-          padding: 12px 20px;
+          padding: 12px 15px;
           text-align: left;
           border: 1px solid #555;
           color: #fff;
@@ -172,7 +198,7 @@ body {
         }
 
         td {
-          padding: 12px 20px;
+          padding: 12px 15px;
           text-align: left;
           border: 1px solid #555;
           color: #fff;
@@ -221,8 +247,8 @@ body {
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
-      margin-top: 20px;
-      background: #f4f4f4;
+      margin-top: 15px;
+      flex-wrap: wrap;
 
       span {
         color: #333;
@@ -277,7 +303,8 @@ body {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 400px;
+  width: 90%;
+  max-width: 400px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -342,7 +369,8 @@ body {
 .add-item-modal {
   background: #fff;
   border-radius: 10px;
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -446,6 +474,95 @@ body {
             background: darken(#ff0000, 10%);
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .statusandcategory-dashboard {
+    padding: 10px;
+  }
+
+  .statusandcategory-content {
+    h2 {
+      font-size: 20px;
+    }
+
+    .statusandcategory-header {
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .left-actions {
+        .search-container {
+          max-width: 150px;
+
+          .search-input {
+            font-size: 12px;
+            padding: 10px 10px 10px 30px;
+          }
+
+          .search-icon {
+            left: 8px;
+          }
+        }
+      }
+
+      .right-actions {
+        gap: 5px;
+
+        .header-button {
+          width: 40px;
+          padding: 0;
+          min-width: 40px;
+
+          .button-icon {
+            margin-right: 0;
+            display: inline-block;
+          }
+
+          .button-text {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .statusandcategory-table {
+      .tab-button {
+        font-size: 12px;
+      }
+
+      table {
+        th, td {
+          padding: 8px 10px;
+          font-size: 12px;
+        }
+
+        .action-icons {
+          gap: 8px;
+
+          .checkbox-icon,
+          .delete-icon,
+          .edit-icon,
+          .restore-icon {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .statusandcategory-pagination {
+      justify-content: center;
+      gap: 5px;
+
+      span {
+        font-size: 12px;
+      }
+
+      button {
+        padding: 4px 8px;
+        font-size: 12px;
       }
     }
   }

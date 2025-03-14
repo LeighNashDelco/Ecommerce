@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('product_reviews', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
-            $table->integer('rating')->check('rating >= 1 AND rating <= 5');
-            $table->text('comment')->nullable();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('profile_id');
+            $table->integer('rating');
+            $table->text('comment');
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }

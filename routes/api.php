@@ -22,6 +22,8 @@ use App\Http\Controllers\{
     HelpAndSupportController,
     FaqCategoryController,
     ChangePasswordAdminController,
+    ReviewController,        // Added
+    NotificationController   // Added
 };
 use App\Models\Profile;
 
@@ -35,6 +37,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::middleware('auth:api')->get('/user-profile', [UserController::class, 'getUserProfile']);
+Route::middleware('auth:api')->get('/profiles', [ProfileController::class, 'index']);
 
 # ==============================
 # PUBLIC ROUTES
@@ -80,7 +83,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/users/archived', [UserListController::class, 'getArchivedUsers']);
     Route::patch('/users/{id}/archive', [UserListController::class, 'archive']);
     Route::patch('/users/{id}', [UserListController::class, 'update']);
-    Route::get('/users/{id}', [UserListController::class, 'getUser']); // Added this line
+    Route::get('/users/{id}', [UserListController::class, 'getUser']);
 
     # Roles Management
     Route::get('/roleslist', [RolesTableController::class, 'getRolesList']);
@@ -125,9 +128,25 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/helpandsupport/{id}/archive', [HelpAndSupportController::class, 'archive']);
     Route::patch('/helpandsupport/{id}', [HelpAndSupportController::class, 'update']);
 
+    # Review Management
+    Route::get('/reviews', [ReviewController::class, 'index']);                    // Get active reviews
+    Route::get('/reviews/archived', [ReviewController::class, 'archived']);        // Get archived reviews
+    Route::get('/reviews/{id}', [ReviewController::class, 'show']);                // Get a single review
+    Route::post('/reviews', [ReviewController::class, 'store']);                   // Create a new review
+    Route::patch('/reviews/{id}/archive', [ReviewController::class, 'archive']);   // Archive a review
+    Route::patch('/reviews/{id}', [ReviewController::class, 'update']);            // Update a review
+
+    # Notification Management
+    Route::get('/notifications', [NotificationController::class, 'index']);                    // Get active notifications
+    Route::get('/notifications/archived', [NotificationController::class, 'archived']);        // Get archived notifications
+    Route::get('/notifications/{id}', [NotificationController::class, 'show']);                // Get a single notification
+    Route::post('/notifications', [NotificationController::class, 'store']);                   // Create a new notification
+    Route::patch('/notifications/{id}/archive', [NotificationController::class, 'archive']);   // Archive a notification
+    Route::patch('/notifications/{id}', [NotificationController::class, 'update']);            // Update a notification
+
     # FAQ Category Management
     Route::get('/faq_categories', [FaqCategoryController::class, 'index']);
 
     # Change Password
-    Route::middleware('auth:api')->post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
+    Route::post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
 });
