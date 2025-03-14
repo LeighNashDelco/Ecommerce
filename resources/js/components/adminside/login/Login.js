@@ -8,10 +8,13 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [forgotPassword, setForgotPassword] = useState(false);
+    const [resetEmail, setResetEmail] = useState("");
+    const [resetMessage, setResetMessage] = useState(null);
+    const [resetLoading, setResetLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Redirect if already logged in
         const token = localStorage.getItem("LaravelPassportToken");
         if (token) {
             navigate("/homepage");
@@ -25,7 +28,6 @@ const Login = () => {
 
         try {
             console.log("Attempting login...", { email, password });
-
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/login",
                 { email, password },
@@ -41,14 +43,10 @@ const Login = () => {
             console.log("Login successful:", response.data);
             const { token, user } = response.data;
 
-            // Store token & user details in localStorage
             localStorage.setItem("LaravelPassportToken", token);
             localStorage.setItem("user", JSON.stringify(user));
-
-            // Set Axios default header for future requests
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-            // Redirect based on role
             if (user?.role_id === 1) {
                 navigate("/admindashboard");
             } else {
@@ -56,24 +54,50 @@ const Login = () => {
             }
         } catch (err) {
             console.error("Login failed:", err);
-
             if (err.response) {
                 console.error("Error response:", err.response.data);
                 if (err.response.status === 401) {
                     setError("Invalid email or password.");
+                } else if (err.response.status === 403) {
+                    setError("Your account is archived and cannot log in.");
                 } else {
                     setError("Login failed. Please try again.");
                 }
-            } else if (err.request) {
-                setError("Server is not responding. Check your connection.");
             } else {
-                setError("Something went wrong. Try again later.");
+                setError("Server error. Please try again later.");
             }
         } finally {
             setLoading(false);
         }
     };
 
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
+        setResetMessage(null);
+        setResetLoading(true);
+
+        try {
+            console.log("Sending reset request for:", resetEmail);
+            const response = await axios.post(
+                "http://127.0.0.1:8000/api/forgot-password",
+                { email: resetEmail },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    },
+                }
+            );
+            console.log("Reset response:", response.data);
+            setResetMessage(response.data.message);
+            setResetEmail("");
+        } catch (err) {
+            console.error("Forgot password failed:", err);
+            setResetMessage(err.response?.data.message || "Failed to send reset link.");
+        } finally {
+            setResetLoading(false);
+        }
+    };
 
     return (
         <div className="login-wrapper">
@@ -111,7 +135,13 @@ const Login = () => {
                             <label className="login-remember-label">
                                 <input type="checkbox" className="login-checkbox" /> Remember me
                             </label>
-                            <a href="/forgot-password" className="login-forgot-link">Forgot password?</a>
+                            <button
+                                type="button"
+                                className="login-forgot-link"
+                                onClick={() => setForgotPassword(true)}
+                            >
+                                Forgot password?
+                            </button>
                         </div>
 
                         <button type="submit" className="login-submit-btn" disabled={loading}>
@@ -126,10 +156,44 @@ const Login = () => {
                     </div>
                 </div>
 
-                <div className="login-image-section">
-                    {/* Background image will be handled via CSS */}
-                </div>
+                <div className="login-image-section"></div>
             </div>
+
+            {forgotPassword && (
+                <div className="forgot-password-modal">
+                    <div className="forgot-password-content">
+                        <h3>Reset Password</h3>
+                        <p>Enter your email to receive a password reset link.</p>
+                        {resetMessage && (
+                            <p className={resetMessage.includes("sent") ? "reset-success" : "reset-error"}>
+                                {resetMessage}
+                            </p>
+                        )}
+                        <form onSubmit={handleForgotPassword}>
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                value={resetEmail}
+                                onChange={(e) => setResetEmail(e.target.value)}
+                                required
+                                className="forgot-password-input"
+                            />
+                            <div className="forgot-password-buttons">
+                                <button type="submit" className="reset-submit-btn" disabled={resetLoading}>
+                                    {resetLoading ? "Sending..." : "Send Reset Link"}
+                                </button>
+                                <button
+                                    type="button"
+                                    className="reset-cancel-btn"
+                                    onClick={() => setForgotPassword(false)}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

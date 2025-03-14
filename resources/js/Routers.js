@@ -2,24 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
+// Shared components
+import Login from "./components/adminside/login/Login";
+import Register from "./components/adminside/register/Register"; // Adjust if you have a different path
+import ResetPassword from "./components/adminside/login/ResetPassword";
+
 // Customer components
 import CustomerProfile from "./components/customerside/profile/CustomerProfile";
 import Homepage from "./components/customerside/Homepage/homepage";
 import Shop from "./components/customerside/shop/shop";
 import Cart from "./components/customerside/Customer/cart";
 import Checkout from "./components/customerside/Customer/checkout";
-import CheckoutAddress from "./components/customerside/Customer/checkout_address"; // Renamed for consistency
-import PaymentMethods from "./components/customerside/Customer/payment_methods";   // Renamed for consistency
+import CheckoutAddress from "./components/customerside/Customer/checkout_address";
+import PaymentMethods from "./components/customerside/Customer/payment_methods";
 import Developer from "./components/customerside/Developers/developer";
-import OrderComplete from "./components/customerside/OrderComplete/order_complete"; // Renamed for consistency
+import OrderComplete from "./components/customerside/OrderComplete/order_complete";
 import Notfound from "./components/customerside/Pagenotfound/notfound";
-import ProductView from "./components/customerside/ProductView/product_view";      // Renamed for consistency
+import ProductView from "./components/customerside/ProductView/product_view";
 import TrackOrder from "./components/customerside/TrackOrder/track_order";
-import AboutUs from "./components/customerside/AboutUs/about_us";                 // Renamed for consistency
+import AboutUs from "./components/customerside/AboutUs/about_us";
 
 // Admin components
-import AdminLogin from "./components/adminside/login/Login";
-import AdminRegister from "./components/adminside/register/Register";
 import AdminDashboard from "./components/adminside/admindashboard/admindashboard";
 import AdminProfile from "./components/adminside/profile/Profile";
 import ChangePassAdmin from "./components/adminside/profile/ChangePassAdmin.js";
@@ -42,8 +45,13 @@ export default function Routers() {
   return (
     <Router>
       <Routes>
-        {/* Customer Routes */}
+        {/* Shared Routes */}
         <Route path="/" element={<Navigate to="/homepage" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
+        {/* Customer Routes */}
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
@@ -59,8 +67,6 @@ export default function Routers() {
         <Route path="/about_us" element={<AboutUs />} />
 
         {/* Admin Routes */}
-        <Route path="/login" element={<AdminLogin />} />
-        <Route path="/register" element={<AdminRegister />} />
         <Route
           path="/admindashboard"
           element={<PrivateRoute element={<AdminDashboard />} />}

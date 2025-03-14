@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Notifications\CustomResetPassword;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'archived', // Added archived
+        'archived',
     ];
 
     protected $hidden = [
@@ -31,7 +32,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'archived' => 'boolean', // Cast archived as boolean
+        'archived' => 'boolean',
     ];
 
     public function role()
@@ -44,13 +45,19 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
 
-    /**
-     * Check if the user is active (not archived).
-     *
-     * @return bool
-     */
     public function isActive()
     {
         return !$this->archived;
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPassword($token));
     }
 }

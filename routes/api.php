@@ -22,8 +22,8 @@ use App\Http\Controllers\{
     HelpAndSupportController,
     FaqCategoryController,
     ChangePasswordAdminController,
-    ReviewController,        // Added
-    NotificationController   // Added
+    ReviewController,
+    NotificationController
 };
 use App\Models\Profile;
 
@@ -31,6 +31,8 @@ use App\Models\Profile;
 # AUTHENTICATION ROUTES (Passport)
 # ==============================
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/forgot-password', [LoginController::class, 'forgotPassword']);
+Route::post('/reset-password', [LoginController::class, 'resetPassword']); // Added for reset
 Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -129,20 +131,20 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/helpandsupport/{id}', [HelpAndSupportController::class, 'update']);
 
     # Review Management
-    Route::get('/reviews', [ReviewController::class, 'index']);                    // Get active reviews
-    Route::get('/reviews/archived', [ReviewController::class, 'archived']);        // Get archived reviews
-    Route::get('/reviews/{id}', [ReviewController::class, 'show']);                // Get a single review
-    Route::post('/reviews', [ReviewController::class, 'store']);                   // Create a new review
-    Route::patch('/reviews/{id}/archive', [ReviewController::class, 'archive']);   // Archive a review
-    Route::patch('/reviews/{id}', [ReviewController::class, 'update']);            // Update a review
+    Route::get('/reviews', [ReviewController::class, 'index']);
+    Route::get('/reviews/archived', [ReviewController::class, 'archived']);
+    Route::get('/reviews/{id}', [ReviewController::class, 'show']);
+    Route::post('/reviews', [ReviewController::class, 'store']);
+    Route::patch('/reviews/{id}/archive', [ReviewController::class, 'archive']);
+    Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
 
     # Notification Management
-    Route::get('/notifications', [NotificationController::class, 'index']);                    // Get active notifications
-    Route::get('/notifications/archived', [NotificationController::class, 'archived']);        // Get archived notifications
-    Route::get('/notifications/{id}', [NotificationController::class, 'show']);                // Get a single notification
-    Route::post('/notifications', [NotificationController::class, 'store']);                   // Create a new notification
-    Route::patch('/notifications/{id}/archive', [NotificationController::class, 'archive']);   // Archive a notification
-    Route::patch('/notifications/{id}', [NotificationController::class, 'update']);            // Update a notification
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications/archived', [NotificationController::class, 'archived']);
+    Route::get('/notifications/{id}', [NotificationController::class, 'show']);
+    Route::post('/notifications', [NotificationController::class, 'store']);
+    Route::patch('/notifications/{id}/archive', [NotificationController::class, 'archive']);
+    Route::patch('/notifications/{id}', [NotificationController::class, 'update']);
 
     # FAQ Category Management
     Route::get('/faq_categories', [FaqCategoryController::class, 'index']);

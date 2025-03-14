@@ -18,16 +18,16 @@
 
 .login-content {
   flex: 1;
-  padding: 60px 100px 60px 100px; 
+  padding: 60px 100px;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left; // Align text to the left
+  text-align: left;
 }
 
 .login-title {
-  font-size: 36px; // Slightly larger for better visibility
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -37,19 +37,24 @@
   margin-bottom: 25px;
 }
 
+.login-error {
+  color: #ff4444;
+  margin-bottom: 15px;
+}
+
 .login-input-group,
 .login-password-group {
   width: 100%;
-  max-width: 500px; // Increase max width for better UI
+  max-width: 500px;
   margin-bottom: 20px;
 
   input {
     width: 100%;
-    padding: 16px; // Increase padding for larger textboxes
+    padding: 16px;
     border: 1px solid #666;
     background: transparent;
     color: white;
-    font-size: 18px; // Increase font size for readability
+    font-size: 18px;
     border-radius: 6px;
   }
 }
@@ -74,31 +79,30 @@
     height: 16px;
     margin: 0;
   }
-
-  span {
-    line-height: 1; // Resets line height to ensure alignment
-    display: flex;
-    align-items: center;
-  }
 }
 
 .login-checkbox {
   width: 16px;
   height: 16px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
-.login-remember-label span {
-  display: inline-block;
-  vertical-align: middle;
-  
+.login-forgot-link {
+  color: #ff9f00;
+  text-decoration: none;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .login-submit-btn {
   width: 100%;
   max-width: 500px;
-  padding: 16px; // Increase padding for a bigger button
+  padding: 16px;
   background: red;
   color: white;
   font-size: 18px;
@@ -135,6 +139,98 @@
   align-items: center;
 }
 
+/* Forgot Password Modal */
+.forgot-password-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.forgot-password-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .reset-success {
+    color: #00cc00;
+    margin-bottom: 15px;
+  }
+
+  .reset-error {
+    color: #ff4444;
+    margin-bottom: 15px;
+  }
+
+  .forgot-password-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #666;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .forgot-password-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+    .reset-submit-btn {
+      padding: 12px 20px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background: darkred;
+      }
+
+      &:disabled {
+        background: #666;
+        cursor: not-allowed;
+      }
+    }
+
+    .reset-cancel-btn {
+      padding: 12px 20px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background: #666;
+      }
+    }
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .login-card {
@@ -147,5 +243,10 @@
 
   .login-image-section {
     height: 40vh;
+  }
+
+  .forgot-password-content {
+    width: 90%;
+    padding: 20px;
   }
 }
