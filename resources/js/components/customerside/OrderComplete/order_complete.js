@@ -2,7 +2,7 @@ import React from 'react';
 import "./../../../../sass/components/order_complete.scss";
 import orderIllustration from '../../../../../resources/sass/img/thankyou.svg'; 
 import Footer from "../footer/footer";
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 function OrderComplete() {
   return (
     <div className="order-complete-page">

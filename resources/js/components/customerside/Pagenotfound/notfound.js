@@ -2,7 +2,7 @@
 import React from 'react';
 import './../../../../sass/components/notfound.scss';
 import illustration from '../../../../../resources/sass/img/notfound.svg'; 
-import Navbar from "../Customer/topvar_notlogin"; 
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 function NotFound() {

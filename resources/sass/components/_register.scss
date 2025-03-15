@@ -6,57 +6,54 @@
   width: 100vw;
   background-color: #eaf1f8;
   position: relative;
+}
 
-  .back-btn {
+.back-btn {
+  position: absolute;
+  top: 24px; /* Slightly increased for better balance */
+  left: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #222;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 50%;
+  border: 1px solid #666;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 1100;
+
+  &:hover {
+    background: red;
+    border-color: darkred;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.25);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  &::before {
+    content: "";
     position: absolute;
-    top: 20px;
-    left: 20px; // Moved to top-left
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; // Smaller width for icon-only
-    height: 40px; // Square shape
-    background: #222;
-    color: white;
-    text-decoration: none;
-    font-size: 18px; // Size for the icon
-    border-radius: 50%; // Circular button
-    border: 1px solid #666;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 1100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-    // Hover effect
-    &:hover {
-      background: red;
-      border-color: darkred;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
-    }
-
-    // Click effect
-    &:active {
-      transform: scale(0.95);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    // Shine effect
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%; // Matches circular shape
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover::before {
-      opacity: 1;
-    }
+  &:hover::before {
+    opacity: 1;
   }
 }
 
@@ -71,7 +68,7 @@
 
 .register-content {
   background: #111;
-  padding: 60px;
+  padding: 60px 80px; /* Increased horizontal padding for better spacing */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -81,28 +78,30 @@
 
 .register-title {
   color: white;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 28px; /* Slightly larger for emphasis */
+  margin-bottom: 30px; /* Increased for better separation */
 }
 
 .register-form-container {
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Added consistent gap between form elements */
 }
 
 .register-row {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Increased gap for better separation */
 }
 
 input, select {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
+  padding: 14px 16px; /* Consistent padding */
+  margin-bottom: 0; /* Removed margin-bottom since gap is handled by container */
   border: 1px solid #666;
   background: transparent;
   color: white;
   border-radius: 6px;
+  font-size: 16px; /* Added for consistency */
 }
 
 select {
@@ -121,20 +120,13 @@ option {
   align-items: center;
 
   input {
-    width: 100%;
-    padding: 14px;
-    padding-right: 45px;
-    border: 1px solid #666;
-    background: transparent;
-    color: white;
-    border-radius: 6px;
-    font-size: 16px;
+    padding-right: 48px; /* Adjusted for toggle icon spacing */
   }
 
   .password-toggle {
     position: absolute;
-    right: 15px;
-    top: 40%;
+    right: 16px; /* Adjusted for better alignment */
+    top: 50%; /* Centered properly */
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 18px;
@@ -147,20 +139,28 @@ option {
   }
 }
 
+.error-message { /* Added for password error */
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: -10px; /* Pulls it closer to the input */
+  margin-bottom: 10px;
+}
+
 .register-dropdowns {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Consistent gap */
 }
 
 .register-submit-btn {
   background: red;
   color: white;
-  padding: 14px;
+  padding: 14px 24px; /* Added horizontal padding for better button size */
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+  font-weight: 600; /* Slightly bolder */
+  font-size: 16px; /* Consistent typography */
+  transition: background 0.3s ease;
 }
 
 .register-submit-btn:hover {
@@ -170,7 +170,7 @@ option {
 .register-image-section {
   width: 50%;
   height: 100vh;
-  background: url("./../img/vero.svg") center/cover;
+  background: url("./../img/vero.svg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,7 +191,7 @@ option {
 
   .register-content {
     width: 100%;
-    padding: 40px;
+    padding: 40px 50px; /* Adjusted for mobile */
   }
 
   .register-image-section {
@@ -200,56 +200,74 @@ option {
   }
 
   .back-btn {
-    top: 15px;
-    left: 15px; // Adjusted for mobile
-    width: 36px; // Slightly smaller
+    top: 16px;
+    left: 16px;
+    width: 36px;
     height: 36px;
-    font-size: 16px; // Smaller icon
+    font-size: 16px;
+  }
+
+  .register-row {
+    flex-direction: column; /* Stack inputs on mobile */
+    gap: 15px;
+  }
+
+  .register-dropdowns {
+    flex-direction: column; /* Stack dropdowns on mobile */
+    gap: 15px;
   }
 }
 
-.custom-alert {
+.alert-container {
   position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 15px 20px;
-  border-radius: 6px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-width: 300px;
-  max-width: 500px;
+  top: 24px; /* Consistent with back-btn */
+  right: 24px;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+  width: 320px; /* Slightly wider for better readability */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-  &.success {
-    background: #28a745;
-  }
+  .ant-alert {
+    border-radius: 8px;
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    padding: 12px 16px; /* Adjusted padding */
+    font-size: 14px;
 
-  &.error {
-    background: #dc3545;
-  }
+    &.ant-alert-success {
+      color: #52c41a;
+    }
 
-  .alert-close-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.2s;
+    &.ant-alert-error {
+      background-color: #fff2f0;
+      border-color: #ffccc7;
+      color: #ff4d4f;
+    }
 
-    &:hover {
-      color: #ddd;
+    .ant-alert-message {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    .ant-alert-icon {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .ant-alert-close-icon {
+      top: 50%;
+      transform: translateY(-50%);
+      right: 8px;
+      font-size: 12px;
+      color: #999;
+      &:hover {
+        color: #666;
+      }
     }
   }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -20px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
 }

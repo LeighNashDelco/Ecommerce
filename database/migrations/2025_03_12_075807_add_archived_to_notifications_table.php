@@ -8,15 +8,19 @@ class AddArchivedToNotificationsTable extends Migration
 {
     public function up()
     {
-        Schema::table('notifications', function (Blueprint $table) {
-            $table->boolean('archived')->default(false)->after('status');
-        });
+        if (!Schema::hasColumn('notifications', 'archived')) {
+            Schema::table('notifications', function (Blueprint $table) {
+                $table->boolean('archived')->default(0)->after('status');
+            });
+        }
     }
 
     public function down()
     {
-        Schema::table('notifications', function (Blueprint $table) {
-            $table->dropColumn('archived');
-        });
+        if (Schema::hasColumn('notifications', 'archived')) {
+            Schema::table('notifications', function (Blueprint $table) {
+                $table->dropColumn('archived');
+            });
+        }
     }
-}   
+}

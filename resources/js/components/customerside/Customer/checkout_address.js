@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './../../../../sass/components/checkout_address.scss';
 import attackShark from '../../../../../resources/sass/img/cartmouse.svg';
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 function CheckoutAddress() {

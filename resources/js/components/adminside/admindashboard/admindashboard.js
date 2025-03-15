@@ -22,6 +22,33 @@ const setAuthHeader = () => {
   }
 };
 
+// Custom red circular loader component
+const RedCircularLoader = () => (
+  <div
+    style={{
+      width: "20px",
+      height: "20px",
+      border: "3px solid #f0f0f0",
+      borderTop: "3px solid red",
+      borderRadius: "50%",
+      animation: "spin 1s linear infinite",
+      display: "inline-block",
+    }}
+  ></div>
+);
+
+// Add keyframes for spinning animation via a style tag
+const SpinnerStyle = () => (
+  <style>
+    {`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}
+  </style>
+);
+
 const AdminDashboard = () => {
   const [activeItem, setActiveItem] = useState("Payment Management");
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,12 +65,14 @@ const AdminDashboard = () => {
     total_product_sales: 0,
   });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     setAuthHeader(); // Set header on mount
 
     const fetchData = async () => {
       try {
+        setLoading(true); // Start loading
         const token = localStorage.getItem("LaravelPassportToken");
         if (!token) throw new Error("No token found. Please log in.");
 
@@ -61,6 +90,8 @@ const AdminDashboard = () => {
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
         setError(error.response ? error.response.data.message : "Failed to load dashboard data.");
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -87,6 +118,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="app">
+      <SpinnerStyle /> {/* Add spinner keyframes */}
       <Sidebar
         activeItem={activeItem}
         setActiveItem={setActiveItem}
@@ -99,39 +131,43 @@ const AdminDashboard = () => {
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Customers</p>
-            <h2>{stats.total_customers}</h2>
+            <h2>{loading && stats.total_customers === 0 ? <RedCircularLoader /> : stats.total_customers}</h2>
           </div>
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Sellers</p>
-            <h2>{stats.total_sellers}</h2>
+            <h2>{loading && stats.total_sellers === 0 ? <RedCircularLoader /> : stats.total_sellers}</h2>
           </div>
           <div className="stat-box">
             <FaUser className="icon" />
             <p>Total Admins</p>
-            <h2>{stats.total_admins}</h2>
+            <h2>{loading && stats.total_admins === 0 ? <RedCircularLoader /> : stats.total_admins}</h2>
           </div>
         </div>
         <div className="stats">
           <div className="stat-box">
             <FaBoxOpen className="icon" />
             <p>Total Products</p>
-            <h2>{stats.total_products}</h2>
+            <h2>{loading && stats.total_products === 0 ? <RedCircularLoader /> : stats.total_products}</h2>
           </div>
           <div className="stat-box">
             <FaShoppingCart className="icon" />
             <p>Total Orders</p>
-            <h2>{stats.total_orders}</h2>
+            <h2>{loading && stats.total_orders === 0 ? <RedCircularLoader /> : stats.total_orders}</h2>
           </div>
           <div className="stat-box">
             <FaMoneyBill className="icon" />
             <p>Total Earnings</p>
-            <h2>₱{stats.total_earnings}</h2>
+            <h2>
+              {loading && stats.total_earnings === 0 ? <RedCircularLoader /> : `₱${stats.total_earnings}`}
+            </h2>
           </div>
           <div className="stat-box">
             <FaChartBar className="icon" />
             <p>Total Product Sales</p>
-            <h2>{stats.total_product_sales}</h2>
+            <h2>
+              {loading && stats.total_product_sales === 0 ? <RedCircularLoader /> : stats.total_product_sales}
+            </h2>
           </div>
         </div>
         <div className="orders">

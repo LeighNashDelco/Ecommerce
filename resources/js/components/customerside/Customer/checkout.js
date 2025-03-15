@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./../../../../sass/components/checkout.scss";
 import attackShark from "../../../../../resources/sass/img/cartmouse.svg";
 import logo from "../../../../../resources/sass/img/v.svg";
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 import { FaTrash } from "react-icons/fa";
 

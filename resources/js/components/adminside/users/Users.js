@@ -23,7 +23,8 @@ const formatDate = (dateString) => {
 const UsersDashboard = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
+  const [filterValue, setFilterValue] = useState("all"); // Default filter value
+  const [selectedFilterLabel, setSelectedFilterLabel] = useState("All Users"); // Display label for filter
   const [filterOpen, setFilterOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -58,7 +59,7 @@ const UsersDashboard = () => {
         setUsers([...activeUsers, ...archivedUsers]);
 
         const fetchedRoles = rolesResponse.data.map((role) => ({
-          value: role.role_name.toLowerCase(), // Ensure consistency
+          value: role.role_name.toLowerCase(),
           label: role.role_name,
           id: role.id,
         }));
@@ -81,10 +82,9 @@ const UsersDashboard = () => {
     const matchesFilter =
       filterValue === "all" ||
       (userRole && userRole.value.toLowerCase() === filterValue.toLowerCase()) ||
-      (user.role_name && user.role_name.toLowerCase() === filterValue.toLowerCase()); // Fallback to role_name
+      (user.role_name && user.role_name.toLowerCase() === filterValue.toLowerCase());
     const matchesArchived = user.archived === showArchived;
 
-    // Debugging logs
     console.log(`User: ${user.username}, Role ID: ${user.role_id}, Role Name: ${user.role_name}, Filter Value: ${filterValue}, Matches Filter: ${matchesFilter}`);
 
     return matchesSearch && matchesFilter && matchesArchived;
@@ -295,6 +295,13 @@ const UsersDashboard = () => {
     }
   };
 
+  const handleFilterSelect = (value, label) => {
+    setFilterValue(value);
+    setSelectedFilterLabel(label); // Update the display label
+    setFilterOpen(false);
+    console.log("Selected filter:", value);
+  };
+
   const usersPerPage = 10;
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   const currentUsers = filteredUsers.slice(
@@ -348,7 +355,7 @@ const UsersDashboard = () => {
               </button>
               <div className="filter-container">
                 <button className="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
-                  <span>Filter</span>
+                  <span>{selectedFilterLabel}</span> {/* Display selected filter label */}
                   <FaChevronDown />
                 </button>
                 {filterOpen && (
@@ -356,11 +363,7 @@ const UsersDashboard = () => {
                     {roles.map((role) => (
                       <li
                         key={role.id || "all"}
-                        onClick={() => {
-                          setFilterValue(role.value);
-                          setFilterOpen(false);
-                          console.log("Selected filter:", role.value);
-                        }}
+                        onClick={() => handleFilterSelect(role.value, role.label)}
                       >
                         {role.label}
                       </li>

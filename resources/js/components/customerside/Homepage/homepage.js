@@ -1,17 +1,11 @@
-// Homepage.jsx
 import React, { useState } from 'react';
 import './../../../../sass/components/homepage.scss';
 import heroImage from '../../../../../resources/sass/img/heroimg.svg';
-import Navbar from "../Customer/topvar_notlogin";
+import LoggedinCustomerTopNavBar from "../Customer/topnav_login"; 
 import LogoSlider from "../logos/logo_slider";
 import Footer from "../footer/footer";
 import ProductGrid from "../ProductGrid/product_grid";
 import OrdersCart from "../CartModals/orders_cart";
-{/*import EmptyCart from "../CartModals/empty_cart";*/}
-
-
-
-
 
 function Homepage() {
   const [isCartOpen, setIsCartOpen] = useState(false); 
@@ -22,7 +16,7 @@ function Homepage() {
 
   return (
     <div className="homepage-customer">
-      <Navbar onCartClick={toggleCart} />
+      <LoggedinCustomerTopNavBar onCartClick={toggleCart} /> {/* Updated to match import */}
       <div className="content-wrapper">
         <div className="hero-section">
           <img src={heroImage} alt="Razer Viper V3 Pro Faker Edition" className="hero-image" />
@@ -47,9 +41,6 @@ function Homepage() {
       </div>
       <Footer />
       <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      {/*<EmptyCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />*/}
-     
-    
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
+import { Alert } from "antd"; // Import only Alert from Ant Design
 import "./../../../../sass/components/_products_modal.scss";
 
 function AddProductModal({ onClose, onSubmit }) {
@@ -9,6 +10,7 @@ function AddProductModal({ onClose, onSubmit }) {
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
   const [profileId, setProfileId] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false); // State for success alert
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -126,7 +128,16 @@ function AddProductModal({ onClose, onSubmit }) {
     }
 
     console.log("Submitting Add FormData:", Array.from(submissionData.entries()));
-    onSubmit(submissionData);
+    
+    try {
+      await onSubmit(submissionData);
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000); // Hide alert after 3 seconds
+    } catch (error) {
+      console.error("Error submitting product:", error);
+    }
   };
 
   return (
@@ -138,6 +149,15 @@ function AddProductModal({ onClose, onSubmit }) {
             ✕
           </button>
         </div>
+        {showSuccess && (
+          <Alert
+            message="Success"
+            description="Product added successfully!"
+            type="success"
+            showIcon
+            style={{ marginBottom: "20px" }}
+          />
+        )}
         <div className="modal-content">
           <div className="image-section">
             <div className="image-preview">

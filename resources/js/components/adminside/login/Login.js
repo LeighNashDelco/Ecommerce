@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Alert } from "antd";
 import "./../../../../sass/components/_login.scss";
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
     const [resetEmail, setResetEmail] = useState("");
     const [resetMessage, setResetMessage] = useState(null);
     const [resetLoading, setResetLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,7 +29,6 @@ const Login = () => {
         setLoading(true);
 
         try {
-            console.log("Attempting login...", { email, password });
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/login",
                 { email, password },
@@ -40,22 +41,23 @@ const Login = () => {
                 }
             );
 
-            console.log("Login successful:", response.data);
             const { token, user } = response.data;
 
             localStorage.setItem("LaravelPassportToken", token);
             localStorage.setItem("user", JSON.stringify(user));
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-            if (user?.role_id === 1) {
-                navigate("/admindashboard");
-            } else {
-                navigate("/homepage");
-            }
+            setSuccessMessage("Login successful! Redirecting...");
+
+            setTimeout(() => {
+                if (user?.role_id === 1) {
+                    navigate("/admindashboard");
+                } else {
+                    navigate("/homepage");
+                }
+            }, 2000);
         } catch (err) {
-            console.error("Login failed:", err);
             if (err.response) {
-                console.error("Error response:", err.response.data);
                 if (err.response.status === 401) {
                     setError("Invalid email or password.");
                 } else if (err.response.status === 403) {
@@ -77,7 +79,6 @@ const Login = () => {
         setResetLoading(true);
 
         try {
-            console.log("Sending reset request for:", resetEmail);
             const response = await axios.post(
                 "http://127.0.0.1:8000/api/forgot-password",
                 { email: resetEmail },
@@ -88,11 +89,9 @@ const Login = () => {
                     },
                 }
             );
-            console.log("Reset response:", response.data);
             setResetMessage(response.data.message);
             setResetEmail("");
         } catch (err) {
-            console.error("Forgot password failed:", err);
             setResetMessage(err.response?.data.message || "Failed to send reset link.");
         } finally {
             setResetLoading(false);
@@ -101,6 +100,17 @@ const Login = () => {
 
     return (
         <div className="login-wrapper">
+            {successMessage && (
+                <div className="alert-container">
+                    <Alert
+                        message={<span><strong>Success:</strong> {successMessage}</span>}
+                        type="success"
+                        showIcon
+                        closable
+                        className="custom-success-alert"
+                    />
+                </div>
+            )}
             <div className="login-card">
                 <div className="login-content">
                     <h2 className="login-title">Welcome Back</h2>

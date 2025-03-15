@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './../../../../sass/components/shop.scss';
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 import ShopGrid from "../ShopGrid/shopgrid";
 import Footer from "../footer/footer";
 import FilterSidebar from "../Filter/filter_sidebar";

@@ -361,4 +361,40 @@
     .info-grid .info-box .edit-actions {
       justify-content: center;
     }
+    // profile.scss
+.ant-alert {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  z-index: 1000;
+
+  .ant-alert-message {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  .ant-alert-icon {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+
+  .ant-alert-close-icon {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    font-size: 12px;
+    color: #999;
+
+    &:hover {
+      color: #666;
+    }
+  }
+}
   }

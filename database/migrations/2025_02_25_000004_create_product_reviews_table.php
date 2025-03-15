@@ -4,17 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+class CreateProductReviewsTable extends Migration
+{
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('profile_id');
-            $table->integer('rating');
+            $table->unsignedBigInteger('user_id');
             $table->text('comment');
-            $table->boolean('archived')->default(false);
+            $table->integer('rating');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -22,4 +25,4 @@ return new class extends Migration {
     {
         Schema::dropIfExists('product_reviews');
     }
-};
+}

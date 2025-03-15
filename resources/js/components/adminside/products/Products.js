@@ -12,7 +12,8 @@ const Product = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterValue, setFilterValue] = useState("all");
+  const [filterValue, setFilterValue] = useState("all"); // Default filter value
+  const [selectedFilterLabel, setSelectedFilterLabel] = useState("All"); // Display label for filter
   const [filterOpen, setFilterOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -46,8 +47,8 @@ const Product = () => {
         });
         console.log("Categories:", categoryResponse.data);
         const fetchedCategories = categoryResponse.data.map((category) => ({
-          value: category.category_name, // Use category_name
-          label: category.category_name, // Use category_name
+          value: category.category_name,
+          label: category.category_name,
           id: category.id,
         }));
         setCategories([{ value: "all", label: "All", id: null }, ...fetchedCategories]);
@@ -223,6 +224,12 @@ const Product = () => {
     setSelectedProducts([]);
   };
 
+  const handleFilterSelect = (value, label) => {
+    setFilterValue(value);
+    setSelectedFilterLabel(label); // Update the display label
+    setFilterOpen(false);
+  };
+
   const productsPerPage = 8;
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const currentPageProducts = filteredProducts.slice(
@@ -274,7 +281,7 @@ const Product = () => {
               </button>
               <div className="filter-container">
                 <button className="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
-                  <span>Filter</span>
+                  <span>{selectedFilterLabel}</span> {/* Display selected filter label */}
                   <FaChevronDown />
                 </button>
                 {filterOpen && (
@@ -282,10 +289,7 @@ const Product = () => {
                     {categories.map((option) => (
                       <li
                         key={option.id || "all"}
-                        onClick={() => {
-                          setFilterValue(option.value);
-                          setFilterOpen(false);
-                        }}
+                        onClick={() => handleFilterSelect(option.value, option.label)}
                       >
                         {option.label}
                       </li>

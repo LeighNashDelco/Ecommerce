@@ -3,7 +3,7 @@ import './../../../../sass/components/about_us.scss';
 import aboutUsImage from '../../../../../resources/sass/img/aboutvero.svg'; // Existing SVG (adjust path as needed)
 import aboutUsImage1 from '../../../../../resources/sass/img/vero_sign.svg'; // Placeholder for "About VERO" image
 import aboutUsImage2 from '../../../../../resources/sass/img/aboutus_mouse.svg'; // Placeholder for "Who Are We" image
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 function AboutUs() {

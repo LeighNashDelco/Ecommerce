@@ -5,7 +5,7 @@ import attackShark from '../../../../../resources/sass/img/cartmouse.svg';
 import creditCardLogos from '../../../../../resources/sass/img/cardz.svg';
 import paypalIllustration from '../../../../../resources/sass/img/paypal.svg';
 import paypalLogo from '../../../../../resources/sass/img/payp_logo.svg';
-import Navbar from "../Customer/topvar_notlogin";
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 function PaymentMethods() {

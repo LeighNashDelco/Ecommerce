@@ -5,7 +5,7 @@ import pfpImage from '../../../../../resources/sass/img/pfp.svg'; // Placeholder
 // Importing two placeholder images for the first review
 import reviewImage1 from "../../../../../resources/sass/img/ATKCOLOR.svg"; // Replace with your actual SVG
 import reviewImage2 from "../../../../../resources/sass/img/ATKCOLOR.svg"; // Replace with your actual SVG
-import Navbar from '../Customer/topvar_notlogin';
+import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from '../footer/footer';
 import OrdersCart from '../CartModals/orders_cart';
 import { IconExternalLink, IconStar } from '@tabler/icons-react'; 

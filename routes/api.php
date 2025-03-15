@@ -32,7 +32,7 @@ use App\Models\Profile;
 # ==============================
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/forgot-password', [LoginController::class, 'forgotPassword']);
-Route::post('/reset-password', [LoginController::class, 'resetPassword']); // Added for reset
+Route::post('/reset-password', [LoginController::class, 'resetPassword']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::middleware('auth:api')->post('/logout', [LoginController::class, 'logout']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -62,7 +62,8 @@ Route::get('/profiles/user/{userId}', function ($userId) {
 Route::middleware('auth:api')->group(function () {
     # Profile Management
     Route::post('/profiles', [ProfileController::class, 'store']);
-    Route::put('/update-profile', [UserController::class, 'updateUserProfile']);
+    Route::get('/user-profile', [UserController::class, 'getUserProfile']);
+    Route::post('/update-profile', [UserController::class, 'updateUserProfile']);
 
     # Product Management
     Route::post('/products', [ProductController::class, 'store']);
