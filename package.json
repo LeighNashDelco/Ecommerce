@@ -26,7 +26,7 @@
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
-        "@ant-design/charts": "^1.4.3",
+        "@ant-design/charts": "^2.2.7",
         "@tabler/icons": "^3.30.0",
         "@tabler/icons-react": "^3.31.0",
         "antd": "^5.24.3",
