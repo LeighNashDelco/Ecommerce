@@ -18,6 +18,7 @@ class BrandController extends Controller
                 return [
                     'id' => $brand->id,
                     'brand_name' => $brand->brand_name,
+                    'archived' => $brand->archived, // Added archived field
                     'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                     'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
                 ];
@@ -37,6 +38,7 @@ class BrandController extends Controller
                 return [
                     'id' => $brand->id,
                     'brand_name' => $brand->brand_name,
+                    'archived' => $brand->archived, // Added archived field for consistency
                     'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                     'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
                 ];
@@ -56,6 +58,7 @@ class BrandController extends Controller
                 return [
                     'id' => $brand->id,
                     'brand_name' => $brand->brand_name,
+                    'archived' => $brand->archived, // Added archived field for consistency
                     'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                     'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
                 ];
@@ -85,6 +88,7 @@ class BrandController extends Controller
                 'brand' => [
                     'id' => $brand->id,
                     'brand_name' => $brand->brand_name,
+                    'archived' => $brand->archived, // Already included
                     'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                     'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
                 ],
@@ -110,9 +114,9 @@ class BrandController extends Controller
             return response()->json([
                 'id' => $brand->id,
                 'brand_name' => $brand->brand_name,
+                'archived' => $brand->archived, // Already included
                 'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                 'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
-                'archived' => $brand->archived,
             ]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Brand not found'], 404);
@@ -121,6 +125,8 @@ class BrandController extends Controller
             return response()->json(['error' => 'Failed to update brand'], 500);
         }
     }
+
+    // Admin: Update Brand
     public function update(Request $request, $id): JsonResponse
     {
         try {
@@ -141,9 +147,9 @@ class BrandController extends Controller
                 'brand' => [
                     'id' => $brand->id,
                     'brand_name' => $brand->brand_name,
+                    'archived' => $brand->archived, // Already included
                     'created_at' => $brand->created_at ? $brand->created_at->toISOString() : null,
                     'updated_at' => $brand->updated_at ? $brand->updated_at->toISOString() : null,
-                    'archived' => $brand->archived,
                 ],
             ], 200);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

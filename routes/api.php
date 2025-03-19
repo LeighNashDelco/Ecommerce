@@ -23,7 +23,8 @@ use App\Http\Controllers\{
     FaqCategoryController,
     ChangePasswordAdminController,
     ReviewController,
-    NotificationController
+    NotificationController,
+    ShopController
 };
 use App\Models\Profile;
 
@@ -49,12 +50,14 @@ Route::get('/roles/specific', [RolesController::class, 'getSpecificRoles']);
 Route::get('/roles/activeroles', [RolesController::class, 'ActiveRoles']);
 Route::get('/genders', [GenderController::class, 'index']);
 Route::get('/brands', [BrandController::class, 'getBrands']);
-Route::get('/categories', [CategoryController::class, 'getCategories']);
+Route::get('/categories/active', [CategoryController::class, 'getActiveCategories']);
+Route::get('/categories/archived', [CategoryController::class, 'getArchivedCategories']);
 Route::get('/products', [ProductController::class, 'getProducts']);
 Route::get('/sellers', [SellerController::class, 'getSellers']);
 Route::get('/profiles/user/{userId}', function ($userId) {
     return Profile::where('user_id', $userId)->first();
 });
+Route::get('/shop-products', [ShopController::class, 'getActiveProducts']);
 
 # ==============================
 # PROTECTED ROUTES (Require Authentication)
@@ -99,18 +102,70 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/dashboard/totals', [AdminDashboardController::class, 'getTotalCounts']);
     Route::get('/dashboard/orders', [AdminDashboardController::class, 'getTodayOrders']);
 
-    # Status and Category Management
-    Route::get('/statuses', [StatusAndCategoryController::class, 'getActiveStatuses']);
-    Route::get('/statuses/archived', [StatusAndCategoryController::class, 'getArchivedStatuses']);
-    Route::post('/statuses', [StatusAndCategoryController::class, 'storeStatus']);
-    Route::patch('/statuses/{id}/archive', [StatusAndCategoryController::class, 'archiveStatus']);
-    Route::patch('/statuses/{id}', [StatusAndCategoryController::class, 'updateStatus']);
+    # Status and Category Management with Custom Unauthenticated Response
+    Route::middleware(['auth:api'])->group(function () {
+        Route::get('/statuses', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->getActiveStatuses();
+        });
+        Route::get('/statuses/archived', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->getArchivedStatuses();
+        });
+        Route::post('/statuses', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->storeStatus($request);
+        });
+        Route::patch('/statuses/{id}/archive', function (Request $request, $id) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->archiveStatus($id);
+        });
+        Route::patch('/statuses/{id}', function (Request $request, $id) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->updateStatus($request, $id);
+        });
 
-    Route::get('/categories', [StatusAndCategoryController::class, 'getActiveCategories']);
-    Route::get('/categories/archived', [StatusAndCategoryController::class, 'getArchivedCategories']);
-    Route::post('/categories', [StatusAndCategoryController::class, 'storeCategory']);
-    Route::patch('/categories/{id}/archive', [StatusAndCategoryController::class, 'archiveCategory']);
-    Route::patch('/categories/{id}', [StatusAndCategoryController::class, 'updateCategory']);
+        Route::get('/categories', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->getActiveCategories();
+        });
+        Route::get('/categories/archived', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->getArchivedCategories();
+        });
+        Route::post('/categories', function (Request $request) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->storeCategory($request);
+        });
+        Route::patch('/categories/{id}/archive', function (Request $request, $id) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->archiveCategory($id);
+        });
+        Route::patch('/categories/{id}', function (Request $request, $id) {
+            if (!auth()->guard('api')->check()) {
+                return response()->json(['message' => 'Please login first'], 401);
+            }
+            return app(StatusAndCategoryController::class)->updateCategory($request, $id);
+        });
+    });
 
     # Inventory Management
     Route::get('/inventory', [ProductController::class, 'getActiveInventory']);

@@ -29,7 +29,7 @@ const Product = () => {
       try {
         const token = localStorage.getItem("LaravelPassportToken");
         if (!token) throw new Error("No token found. Please log in.");
-
+  
         // Fetch products
         const productResponse = await axios.get("http://127.0.0.1:8000/api/products", {
           headers: { Authorization: `Bearer ${token}` },
@@ -40,13 +40,14 @@ const Product = () => {
           archived: Boolean(product.archived) === true,
         }));
         setProducts(fetchedProducts);
-
+  
         // Fetch categories
-        const categoryResponse = await axios.get("http://127.0.0.1:8000/api/categories", {
+        const categoryResponse = await axios.get("http://127.0.0.1:8000/api/categories/active", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Categories:", categoryResponse.data);
-        const fetchedCategories = categoryResponse.data.map((category) => ({
+        // Access the 'active' array from the response
+        const fetchedCategories = categoryResponse.data.active.map((category) => ({
           value: category.category_name,
           label: category.category_name,
           id: category.id,

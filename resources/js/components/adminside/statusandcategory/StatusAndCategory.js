@@ -40,19 +40,71 @@ const StatusAndCategory = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem("LaravelPassportToken");
-        const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
+        if (!token) {
+          console.error("No token found in localStorage. Please log in.");
+          return;
+        }
+        const config = { headers: { Authorization: `Bearer ${token}` } };
 
-        const [statusActiveResponse, statusArchivedResponse, categoryActiveResponse, categoryArchivedResponse] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/statuses", config),
-          axios.get("http://127.0.0.1:8000/api/statuses/archived", config),
-          axios.get("http://127.0.0.1:8000/api/categories", config),
-          axios.get("http://127.0.0.1:8000/api/categories/archived", config),
+        const [
+          statusActiveResponse,
+          statusArchivedResponse,
+          categoryActiveResponse,
+          categoryArchivedResponse,
+        ] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/api/statuses", config).catch((err) => {
+            console.error("Statuses Active Error:", {
+              status: err.response?.status,
+              data: err.response?.data,
+              message: err.message,
+            });
+            throw err;
+          }),
+          axios.get("http://127.0.0.1:8000/api/statuses/archived", config).catch((err) => {
+            console.error("Statuses Archived Error:", {
+              status: err.response?.status,
+              data: err.response?.data,
+              message: err.message,
+            });
+            throw err;
+          }),
+          axios.get("http://127.0.0.1:8000/api/categories", config).catch((err) => {
+            console.error("Categories Active Error:", {
+              status: err.response?.status,
+              data: err.response?.data,
+              message: err.message,
+            });
+            throw err;
+          }),
+          axios.get("http://127.0.0.1:8000/api/categories/archived", config).catch((err) => {
+            console.error("Categories Archived Error:", {
+              status: err.response?.status,
+              data: err.response?.data,
+              message: err.message,
+            });
+            throw err;
+          }),
         ]);
 
-        const activeStatuses = statusActiveResponse.data.map(status => ({ ...status, archived: false }));
-        const archivedStatuses = statusArchivedResponse.data.map(status => ({ ...status, archived: true }));
-        const activeCategories = categoryActiveResponse.data.map(category => ({ ...category, archived: false }));
-        const archivedCategories = categoryArchivedResponse.data.map(category => ({ ...category, archived: true }));
+        // Log responses for debugging
+        console.log("Statuses Active Response:", statusActiveResponse.data);
+        console.log("Statuses Archived Response:", statusArchivedResponse.data);
+        console.log("Categories Active Response:", categoryActiveResponse.data);
+        console.log("Categories Archived Response:", categoryArchivedResponse.data);
+
+        // Normalize data (assuming direct array response from controller)
+        const activeStatuses = Array.isArray(statusActiveResponse.data)
+          ? statusActiveResponse.data.map((status) => ({ ...status, archived: false }))
+          : [];
+        const archivedStatuses = Array.isArray(statusArchivedResponse.data)
+          ? statusArchivedResponse.data.map((status) => ({ ...status, archived: true }))
+          : [];
+        const activeCategories = Array.isArray(categoryActiveResponse.data)
+          ? categoryActiveResponse.data.map((category) => ({ ...category, archived: false }))
+          : [];
+        const archivedCategories = Array.isArray(categoryArchivedResponse.data)
+          ? categoryArchivedResponse.data.map((category) => ({ ...category, archived: true }))
+          : [];
 
         setStatuses([...activeStatuses, ...archivedStatuses]);
         setCategories([...activeCategories, ...archivedCategories]);
@@ -597,7 +649,7 @@ const StatusAndCategory = () => {
         <div className="confirm-modal-overlay">
           <div className="confirm-modal">
             <h3>Are you sure?</h3>
-            <p>Do you want to archive "{activeTab === 'statuses' ? itemToArchive?.status_name : itemToArchive?.category_name}"?</p>
+            <p>Do you want to archive "{activeTab === "statuses" ? itemToArchive?.status_name : itemToArchive?.category_name}"?</p>
             <div className="confirm-modal-buttons">
               <button className="confirm-button" onClick={handleArchiveConfirm}>
                 Yes, Archive
@@ -624,7 +676,7 @@ const StatusAndCategory = () => {
 
 const ItemModal = ({ onClose, onSubmit, activeTab, isEdit = false, initialData = null }) => {
   const [formData, setFormData] = useState({
-    name: isEdit && initialData ? (activeTab === "statuses" ? initialData.status_name : initialData.category_name) : '',
+    name: isEdit && initialData ? (activeTab === "statuses" ? initialData.status_name : initialData.category_name) : "",
   });
 
   useEffect(() => {

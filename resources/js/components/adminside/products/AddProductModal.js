@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
-import { Alert } from "antd"; // Import only Alert from Ant Design
+import { Alert } from "antd";
 import "./../../../../sass/components/_products_modal.scss";
 
 function AddProductModal({ onClose, onSubmit }) {
@@ -10,8 +10,7 @@ function AddProductModal({ onClose, onSubmit }) {
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
   const [profileId, setProfileId] = useState(null);
-  const [showSuccess, setShowSuccess] = useState(false); // State for success alert
-
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -28,13 +27,15 @@ function AddProductModal({ onClose, onSubmit }) {
       return;
     }
 
+    let isMounted = true; // Flag to prevent state updates on unmounted component
+
     const fetchBrands = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/brands", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Brands response:", response.data);
-        setBrands(response.data);
+        if (isMounted) setBrands(response.data);
       } catch (error) {
         console.error("Error fetching brands:", error.response?.data || error.message);
       }
@@ -42,11 +43,11 @@ function AddProductModal({ onClose, onSubmit }) {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/categories", {
+        const response = await axios.get("http://127.0.0.1:8000/api/categories/active", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Categories response:", response.data);
-        setCategories(response.data);
+        if (isMounted) setCategories(response.data.active); // Access the 'active' array
       } catch (error) {
         console.error("Error fetching categories:", error.response?.data || error.message);
       }
@@ -63,12 +64,11 @@ function AddProductModal({ onClose, onSubmit }) {
           return;
         }
 
-        const profileResponse = await axios.get(
-          `http://127.0.0.1:8000/api/profiles/user/${userId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const profileResponse = await axios.get(`http://127.0.0.1:8000/api/profiles/user/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-        if (profileResponse.data && profileResponse.data.id) {
+        if (profileResponse.data && profileResponse.data.id && isMounted) {
           setProfileId(profileResponse.data.id);
         } else {
           console.error("Profile ID not found");
@@ -81,6 +81,11 @@ function AddProductModal({ onClose, onSubmit }) {
     fetchBrands();
     fetchCategories();
     fetchUserProfile();
+
+    // Cleanup function to prevent state updates after unmount
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleImageUpload = (e) => {
@@ -128,13 +133,11 @@ function AddProductModal({ onClose, onSubmit }) {
     }
 
     console.log("Submitting Add FormData:", Array.from(submissionData.entries()));
-    
+
     try {
       await onSubmit(submissionData);
       setShowSuccess(true);
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 3000); // Hide alert after 3 seconds
+      setTimeout(() => setShowSuccess(false), 3000); // Hide alert after 3 seconds
     } catch (error) {
       console.error("Error submitting product:", error);
     }
