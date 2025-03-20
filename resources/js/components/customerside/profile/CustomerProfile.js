@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { message } from "antd"; // Import Ant Design message
 import "./../../../../sass/components/profile.scss";
 import Background from "../../../../../resources/sass/img/coverp.svg";
 import Navbar from "../../customerside/Customer/topnav_login";
@@ -30,47 +31,71 @@ const CustomerProfile = () => {
   const [tempProfile, setTempProfile] = useState({});
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [profileId, setProfileId] = useState(null); // Added for cart functionality
 
   const navigate = useNavigate();
 
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem("LaravelPassportToken");
+    return token ? {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    } : { "Content-Type": "application/json" };
+  };
+
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchProfileAndId = async () => {
       const token = localStorage.getItem("LaravelPassportToken");
       if (!token) {
+        message.error({
+          content: "Please log in to view your profile.",
+          style: { marginTop: "20px" },
+        });
         navigate("/login");
         return;
       }
 
       try {
         setLoading(true);
-        const response = await axios.get("http://127.0.0.1:8000/api/user-profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+
+        // Fetch user profile
+        const userResponse = await axios.get("http://127.0.0.1:8000/api/user-profile", {
+          headers: getAuthHeaders(),
         });
 
+        const userData = userResponse.data;
         const profileData = {
-          first_name: response.data.profile?.first_name || "N/A",
-          middlename: response.data.profile?.middlename || "N/A",
-          last_name: response.data.profile?.last_name || "N/A",
-          gender: response.data.profile?.gender || "Unknown",
-          suffix: response.data.profile?.suffix || "N/A",
-          contact_number: response.data.profile?.contact_number || "N/A",
-          street: response.data.profile?.street || "N/A",
-          city: response.data.profile?.city || "N/A",
-          province: response.data.profile?.province || "N/A",
-          postal_code: response.data.profile?.postal_code || "N/A",
-          country: response.data.profile?.country || "N/A",
-          email: response.data.user?.email || "N/A",
-          profileImg: response.data.profile?.profile_img || null,
+          first_name: userData.profile?.first_name || "N/A",
+          middlename: userData.profile?.middlename || "N/A",
+          last_name: userData.profile?.last_name || "N/A",
+          gender: userData.profile?.gender || "Unknown",
+          suffix: userData.profile?.suffix || "N/A",
+          contact_number: userData.profile?.contact_number || "N/A",
+          street: userData.profile?.street || "N/A",
+          city: userData.profile?.city || "N/A",
+          province: userData.profile?.province || "N/A",
+          postal_code: userData.profile?.postal_code || "N/A",
+          country: userData.profile?.country || "N/A",
+          email: userData.user?.email || "N/A",
+          profileImg: userData.profile?.profile_img || null,
         };
+
+        // Fetch profile ID
+        const profileResponse = await axios.get(`http://127.0.0.1:8000/api/profiles/user/${userData.user.id}`, {
+          headers: getAuthHeaders(),
+        });
+        const profileIdData = profileResponse.data;
 
         setProfile(profileData);
         setTempProfile(profileData);
+        setProfileId(profileIdData.id);
         setTimeout(() => setLoading(false), 2000);
       } catch (error) {
         setError("Failed to load profile data. Please try again.");
+        message.error({
+          content: "Failed to load profile data. Please try again.",
+          style: { marginTop: "20px" },
+        });
         if (error.response?.status === 401) {
           localStorage.removeItem("LaravelPassportToken");
           navigate("/login");
@@ -79,11 +104,27 @@ const CustomerProfile = () => {
       }
     };
 
-    fetchProfile();
+    fetchProfileAndId();
   }, [navigate]);
 
   const handleTabChange = (tab) => setActiveTab(tab);
   const toggleCart = () => setIsCartOpen((prev) => !prev);
+
+  const handleViewCart = () => {
+    if (!profileId) {
+      message.error({
+        content: "Please log in to view your cart.",
+        style: { marginTop: "20px" },
+      });
+      navigate("/login");
+      return;
+    }
+    setIsCartOpen(true); // Open cart modal instead of navigating
+    message.info({
+      content: "Viewing your cart.",
+      style: { marginTop: "20px" },
+    });
+  };
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -99,6 +140,10 @@ const CustomerProfile = () => {
     const token = localStorage.getItem("LaravelPassportToken");
     if (!token) {
       setError("Authentication required. Please log in.");
+      message.error({
+        content: "Authentication required. Please log in.",
+        style: { marginTop: "20px" },
+      });
       navigate("/login");
       return;
     }
@@ -123,11 +168,19 @@ const CustomerProfile = () => {
       setTempProfile((prev) => ({ ...prev, profileImg: updatedProfile.profile_img }));
       setSuccess("Profile image updated successfully!");
       setError(null);
+      message.success({
+        content: "Profile image updated successfully!",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setSuccess(null), 3000);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to upload image. Please try again.");
       setProfile((prev) => ({ ...prev, profileImg: null }));
       setTempProfile((prev) => ({ ...prev, profileImg: null }));
+      message.error({
+        content: error.response?.data?.message || "Failed to upload image. Please try again.",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setError(null), 3000);
     } finally {
       event.target.value = null;
@@ -158,6 +211,10 @@ const CustomerProfile = () => {
     const token = localStorage.getItem("LaravelPassportToken");
     if (!token) {
       setError("Authentication required. Please log in.");
+      message.error({
+        content: "Authentication required. Please log in.",
+        style: { marginTop: "20px" },
+      });
       navigate("/login");
       return;
     }
@@ -176,10 +233,7 @@ const CustomerProfile = () => {
         "http://127.0.0.1:8000/api/update-profile",
         updatedProfileData,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+          headers: getAuthHeaders(),
         }
       );
 
@@ -187,9 +241,17 @@ const CustomerProfile = () => {
       setEditMode((prev) => ({ ...prev, [field]: false }));
       setSuccess("Profile updated successfully!");
       setError(null);
+      message.success({
+        content: "Profile updated successfully!",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setSuccess(null), 3000);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to update profile. Please try again.");
+      message.error({
+        content: error.response?.data?.message || "Failed to update profile. Please try again.",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -208,6 +270,10 @@ const CustomerProfile = () => {
     const token = localStorage.getItem("LaravelPassportToken");
     if (!token) {
       setError("Authentication required. Please log in.");
+      message.error({
+        content: "Authentication required. Please log in.",
+        style: { marginTop: "20px" },
+      });
       navigate("/login");
       return;
     }
@@ -225,10 +291,7 @@ const CustomerProfile = () => {
         "http://127.0.0.1:8000/api/update-profile",
         updatedProfileData,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+          headers: getAuthHeaders(),
         }
       );
 
@@ -236,9 +299,17 @@ const CustomerProfile = () => {
       setIsAddressModalOpen(false);
       setSuccess("Address updated successfully!");
       setError(null);
+      message.success({
+        content: "Address updated successfully!",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setSuccess(null), 3000);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to update address. Please try again.");
+      message.error({
+        content: error.response?.data?.message || "Failed to update address. Please try again.",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -247,6 +318,10 @@ const CustomerProfile = () => {
     const token = localStorage.getItem("LaravelPassportToken");
     if (!token) {
       setError("Authentication required. Please log in.");
+      message.error({
+        content: "Authentication required. Please log in.",
+        style: { marginTop: "20px" },
+      });
       navigate("/login");
       return;
     }
@@ -256,19 +331,24 @@ const CustomerProfile = () => {
         "http://127.0.0.1:8000/api/update-profile",
         { password: newPassword },
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+          headers: getAuthHeaders(),
         }
       );
 
       setIsPasswordModalOpen(false);
       setSuccess("Password updated successfully!");
       setError(null);
+      message.success({
+        content: "Password updated successfully!",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setSuccess(null), 3000);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to update password. Please try again.");
+      message.error({
+        content: error.response?.data?.message || "Failed to update password. Please try again.",
+        style: { marginTop: "20px" },
+      });
       setTimeout(() => setError(null), 3000);
     }
   };
@@ -409,6 +489,9 @@ const CustomerProfile = () => {
             />
           </div>
           <h2 className="username">{formatFullName()}</h2>
+          <button className="view-cart-btn" onClick={handleViewCart}>
+            View Cart
+          </button>
         </div>
         <div className="tabs-section">
           <button
@@ -543,7 +626,7 @@ const CustomerProfile = () => {
         />
       </div>
       <Footer />
-      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} profileId={profileId} />
     </div>
   );
 };

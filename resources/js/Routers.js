@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 // Shared components
 import Login from "./components/adminside/login/Login";
-import Register from "./components/adminside/register/Register"; // Adjust if you have a different path
+import Register from "./components/adminside/register/Register";
 import ResetPassword from "./components/adminside/login/ResetPassword";
 
 // Customer components
@@ -45,15 +45,13 @@ export default function Routers() {
   return (
     <Router>
       <Routes>
-        {/* Shared Routes */}
         <Route path="/" element={<Navigate to="/homepage" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-
-        {/* Customer Routes */}
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/product/:id" element={<ProductView />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout_address" element={<CheckoutAddress />} />
@@ -65,72 +63,22 @@ export default function Routers() {
         <Route path="/customerprofile" element={<CustomerProfile />} />
         <Route path="/track_order" element={<TrackOrder />} />
         <Route path="/about_us" element={<AboutUs />} />
-
-        {/* Admin Routes */}
-        <Route
-          path="/admindashboard"
-          element={<PrivateRoute element={<AdminDashboard />} />}
-        />
-        <Route
-          path="/brands"
-          element={<PrivateRoute element={<Brands />} />}
-        />
-        <Route
-          path="/profile"
-          element={<PrivateRoute element={<AdminProfile />} />}
-        />
-        <Route
-          path="/changepassadmin"
-          element={<PrivateRoute element={<ChangePassAdmin />} />}
-        />
-        <Route
-          path="/adminlist"
-          element={<PrivateRoute element={<AdminList />} />}
-        />
-        <Route
-          path="/customerlist"
-          element={<PrivateRoute element={<CustomerList />} />}
-        />
-        <Route
-          path="/helpandsupport"
-          element={<PrivateRoute element={<HelpAndSupport />} />}
-        />
-        <Route
-          path="/inventory"
-          element={<PrivateRoute element={<Inventory />} />}
-        />
-        <Route
-          path="/orders"
-          element={<PrivateRoute element={<Orders />} />}
-        />
-        <Route
-          path="/paymentmanagement"
-          element={<PrivateRoute element={<PaymentManagement />} />}
-        />
-        <Route
-          path="/products"
-          element={<PrivateRoute element={<Products />} />}
-        />
-        <Route
-          path="/reviewsandnotifications"
-          element={<PrivateRoute element={<ReviewsAndNotifications />} />}
-        />
-        <Route
-          path="/roles"
-          element={<PrivateRoute element={<Roles />} />}
-        />
-        <Route
-          path="/shipment"
-          element={<PrivateRoute element={<Shipment />} />}
-        />
-        <Route
-          path="/statusandcategory"
-          element={<PrivateRoute element={<StatusAndCategory />} />}
-        />
-        <Route
-          path="/users"
-          element={<PrivateRoute element={<Users />} />}
-        />
+        <Route path="/admindashboard" element={<PrivateRoute element={<AdminDashboard />} />} />
+        <Route path="/brands" element={<PrivateRoute element={<Brands />} />} />
+        <Route path="/profile" element={<PrivateRoute element={<AdminProfile />} />} />
+        <Route path="/changepassadmin" element={<PrivateRoute element={<ChangePassAdmin />} />} />
+        <Route path="/adminlist" element={<PrivateRoute element={<AdminList />} />} />
+        <Route path="/customerlist" element={<PrivateRoute element={<CustomerList />} />} />
+        <Route path="/helpandsupport" element={<PrivateRoute element={<HelpAndSupport />} />} />
+        <Route path="/inventory" element={<PrivateRoute element={<Inventory />} />} />
+        <Route path="/orders" element={<PrivateRoute element={<Orders />} />} />
+        <Route path="/paymentmanagement" element={<PrivateRoute element={<PaymentManagement />} />} />
+        <Route path="/products" element={<PrivateRoute element={<Products />} />} />
+        <Route path="/reviewsandnotifications" element={<PrivateRoute element={<ReviewsAndNotifications />} />} />
+        <Route path="/roles" element={<PrivateRoute element={<Roles />} />} />
+        <Route path="/shipment" element={<PrivateRoute element={<Shipment />} />} />
+        <Route path="/statusandcategory" element={<PrivateRoute element={<StatusAndCategory />} />} />
+        <Route path="/users" element={<PrivateRoute element={<Users />} />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { message } from 'antd'; // Import Ant Design message
 import './../../../../sass/components/shopgrid.scss';
+import OrdersCart from "../CartModals/orders_cart";
 
 const StarRating = ({ rating }) => {
   return (
@@ -13,19 +16,30 @@ const StarRating = ({ rating }) => {
   );
 };
 
-const ShopGrid = ({ products, loading }) => {
+const ShopGrid = ({ products, loading, profileId }) => {
+  const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(15);
   const [sortBy, setSortBy] = useState('newest');
   const [sortedProducts, setSortedProducts] = useState(products);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    } : { 'Content-Type': 'application/json' };
+  };
 
   useEffect(() => {
+    console.log('ShopGrid profileId:', profileId); // Debug profileId
     const sorted = [...products];
     switch (sortBy) {
       case 'price-low':
         sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
         break;
       case 'price-high':
-        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(b.price));
         break;
       case 'newest':
         sorted.sort((a, b) => b.id - a.id);
@@ -34,12 +48,47 @@ const ShopGrid = ({ products, loading }) => {
         break;
     }
     setSortedProducts(sorted);
-  }, [sortBy, products]);
+  }, [sortBy, products, profileId]);
 
   const handleShowMore = () => setVisibleCount((prev) => prev + 5);
   const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  const handleProductClick = (productId) => console.log(`Product ID: ${productId} clicked`);
   const handleSortChange = (e) => setSortBy(e.target.value);
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
+
+  const handleAddToCart = async (productId) => {
+    console.log('Adding to cart, profileId:', profileId); // Debug before adding
+    if (!profileId) {
+      message.error({
+        content: 'Please log in to add items to your cart.',
+        style: { marginTop: '20px' }, // Clean top positioning
+      });
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/cart/add`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ profile_id: profileId, product_id: productId, quantity: 1 }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to add to cart');
+      }
+      setIsCartOpen(true);
+      message.success({
+        content: 'Item added to cart successfully!',
+        style: { marginTop: '20px' }, // Clean top positioning
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      message.error({
+        content: `Failed to add item to cart: ${error.message}`,
+        style: { marginTop: '20px' }, // Clean top positioning
+      });
+    }
+  };
 
   const displayedProductsCount = Math.min(sortedProducts.length, visibleCount);
 
@@ -59,7 +108,6 @@ const ShopGrid = ({ products, loading }) => {
             </div>
           </div>
           <div className="shop-grid-products">
-            {/* Render 15 skeleton cards to match initial visibleCount */}
             {Array.from({ length: 15 }).map((_, index) => (
               <div className="shop-grid-card skeleton" key={index}>
                 <div className="skeleton-image"></div>
@@ -94,7 +142,7 @@ const ShopGrid = ({ products, loading }) => {
         <div className="shop-grid-products">
           {sortedProducts.slice(0, visibleCount).map((product) => (
             <div className="shop-grid-card" key={product.id}>
-              <a href="#" onClick={() => handleProductClick(product.id)} className="product-link">
+              <Link to={`/shop/product/${product.id}`} className="product-link">
                 {product.product_img ? (
                   <img src={product.product_img} alt={product.product_name} className="product-image" />
                 ) : (
@@ -102,12 +150,17 @@ const ShopGrid = ({ products, loading }) => {
                     <span>No Image</span>
                   </div>
                 )}
-              </a>
+              </Link>
               <div className="shop-grid-info">
                 <StarRating rating={5} />
                 <h3 className="product-name">{product.product_name}</h3>
                 <p className="product-price">₱{product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
-                <button className="shop-grid-add-to-cart">Add to cart</button>
+                <button
+                  className="shop-grid-add-to-cart"
+                  onClick={() => handleAddToCart(product.id)}
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           ))}
@@ -123,6 +176,7 @@ const ShopGrid = ({ products, loading }) => {
           </button>
         )}
       </div>
+      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} profileId={profileId} />
     </div>
   );
 };

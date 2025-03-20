@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { message } from 'antd'; // Import Ant Design message
 import './../../../../sass/components/homepage.scss';
 import heroImage from '../../../../../resources/sass/img/heroimg.svg';
 import LoggedinCustomerTopNavBar from "../Customer/topnav_login"; 
@@ -11,48 +12,108 @@ function Homepage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 15; // 5 columns x 3 rows
+  const [profileId, setProfileId] = useState(null); // Added for cart functionality
+  const productsPerPage = 15;
+
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    } : { 'Content-Type': 'application/json' };
+  };
 
   useEffect(() => {
     let isMounted = true;
 
-    const fetchProducts = async () => {
+    const fetchProfileAndProducts = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/shop-products');
+        // Fetch profile ID
+        const token = localStorage.getItem('LaravelPassportToken');
+        if (token) {
+          const userResponse = await fetch('http://127.0.0.1:8000/api/user-profile', {
+            headers: getAuthHeaders(),
+          });
+          if (!userResponse.ok) throw new Error('Failed to fetch user profile');
+          const userData = await userResponse.json();
+          const profileResponse = await fetch(`http://127.0.0.1:8000/api/profiles/user/${userData.user.id}`, {
+            headers: getAuthHeaders(),
+          });
+          if (!profileResponse.ok) throw new Error('Failed to fetch profile ID');
+          const profileData = await profileResponse.json();
+          if (isMounted) setProfileId(profileData.id);
+        }
+
+        // Fetch products
+        const response = await fetch('http://127.0.0.1:8000/api/shop-products', {
+          headers: getAuthHeaders(),
+        });
         const result = await response.json();
         if (isMounted) {
           setProducts(Array.isArray(result.data) ? result.data : []);
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching data:', error);
         if (isMounted) {
           setProducts([]);
           setLoading(false);
+          message.error({
+            content: 'Failed to load products. Please try again.',
+            style: { marginTop: '20px' },
+          });
         }
       }
     };
 
-    fetchProducts();
+    fetchProfileAndProducts();
 
     return () => {
       isMounted = false;
     };
   }, []);
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
 
-  // Pagination logic
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = Array.isArray(products) ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
-  const totalPages = Math.ceil(products.length / productsPerPage) || 1;
+  const handleAddToCart = async (productId) => {
+    if (!profileId) {
+      message.error({
+        content: 'Please log in to add items to your cart.',
+        style: { marginTop: '20px' },
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/cart/add', {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ profile_id: profileId, product_id: productId, quantity: 1 }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Failed to add to cart');
+      setIsCartOpen(true);
+      message.success({
+        content: 'Item added to cart successfully!',
+        style: { marginTop: '20px' },
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      message.error({
+        content: `Failed to add item to cart: ${error.message}`,
+        style: { marginTop: '20px' },
+      });
+    }
+  };
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const ProductGrid = () => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = Array.isArray(products) ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
+    const totalPages = Math.ceil(products.length / productsPerPage) || 1;
+
     return (
       <div className="product-grid">
         <h2>Top Rated Products</h2>
@@ -95,8 +156,10 @@ function Homepage() {
                   <h3 data-long-name={product.product_name.length > 20 ? "true" : "false"}>
                     {product.product_name}
                   </h3>
-                  <p>${parseFloat(product.price).toFixed(2)}</p>
-                  <button className="add-to-cart">Add to Cart</button>
+                  <p>₱{parseFloat(product.price).toFixed(2)}</p> {/* Updated to ₱ */}
+                  <button className="add-to-cart" onClick={() => handleAddToCart(product.id)}>
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             ))
@@ -111,7 +174,7 @@ function Homepage() {
               disabled={currentPage === 1}
               className="pagination-arrow"
             >
-              &lt; {/* Use HTML entity for < */}
+              &lt; {/* Fixed HTML entity */}
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -127,7 +190,7 @@ function Homepage() {
               disabled={currentPage === totalPages}
               className="pagination-arrow"
             >
-              &gt; {/* Use HTML entity for > */}
+              &gt; {/* Fixed HTML entity */}
             </button>
           </div>
         )}
@@ -145,7 +208,9 @@ function Homepage() {
             <h1 className="hero-title">RAZER VIPER V3 PRO FAKER EDITION</h1>
             <div className="hero-buttons">
               <button className="learn-more-text">Learn More</button>
-              <button className="add-to-cart-text">Add to cart</button>
+              <button className="add-to-cart-text" onClick={() => handleAddToCart(1)}> {/* Assuming product ID 1 */}
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
@@ -161,7 +226,7 @@ function Homepage() {
         </div>
       </div>
       <Footer />
-      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} profileId={profileId} />
     </div>
   );
 }

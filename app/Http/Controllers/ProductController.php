@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
-    // Existing store method (unchanged)
     public function store(Request $request)
     {
         $request->validate([
@@ -77,7 +76,6 @@ class ProductController extends Controller
         ], 201);
     }
 
-    // Existing getProducts (unchanged)
     public function getProducts(): JsonResponse
     {
         $products = Product::with(['seller', 'category', 'brand'])
@@ -105,7 +103,6 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-    // Updated update method (handles text fields only)
     public function update(Request $request, $id): JsonResponse
     {
         $product = Product::find($id);
@@ -167,7 +164,6 @@ class ProductController extends Controller
         ]);
     }
 
-    // Existing archive (unchanged)
     public function archive(Request $request, $id): JsonResponse
     {
         $product = Product::find($id);
@@ -196,7 +192,6 @@ class ProductController extends Controller
         ]);
     }
 
-    // Existing getActiveInventory (unchanged)
     public function getActiveInventory(): JsonResponse
     {
         try {
@@ -222,7 +217,6 @@ class ProductController extends Controller
         }
     }
 
-    // Existing getArchivedInventory (unchanged)
     public function getArchivedInventory(): JsonResponse
     {
         try {
@@ -248,59 +242,88 @@ class ProductController extends Controller
         }
     }
 
-    // New method for image update
     public function storeImage(Request $request, $id): JsonResponse
-{
-    $product = Product::find($id);
+    {
+        $product = Product::find($id);
 
-    if (!$product) {
-        return response()->json(['message' => 'Product not found'], 404);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        \Log::info('Raw POST image request data:', [
+            'all' => $request->all(),
+            'files' => $request->files->all(),
+            'headers' => $request->headers->all(),
+            'rawBody' => $request->getContent(),
+        ]);
+
+        $request->validate([
+            'product_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('product_img')) {
+            if ($product->product_img && Storage::exists($product->product_img)) {
+                Storage::delete($product->product_img);
+            }
+            $image = $request->file('product_img');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $destinationPath = public_path('images/products/');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+            $image->move($destinationPath, $imageName);
+            $product->product_img = 'images/products/' . $imageName;
+        }
+
+        $product->updated_at = now();
+        $product->save();
+
+        $product->load('seller', 'category', 'brand');
+        return response()->json([
+            'id' => $product->id,
+            'product_name' => $product->product_name,
+            'description' => $product->description,
+            'price' => $product->price,
+            'quantity' => $product->quantity,
+            'product_img' => $product->product_img,
+            'category' => optional($product->category)->category_name ?? 'Unknown Category',
+            'brand' => optional($product->brand)->brand_name ?? 'Unknown Brand',
+            'profile_name' => optional($product->seller)
+                ? optional($product->seller)->first_name . ' ' . optional($product->seller)->last_name
+                : 'Unknown Seller',
+            'created_at' => Carbon::parse($product->created_at)->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::parse($product->updated_at)->format('Y-m-d H:i:s'),
+            'archived' => $product->archived,
+        ]);
     }
 
-    \Log::info('Raw POST image request data:', [
-        'all' => $request->all(),
-        'files' => $request->files->all(),
-        'headers' => $request->headers->all(),
-        'rawBody' => $request->getContent(),
-    ]);
+    public function show($id): JsonResponse
+    {
+        $product = Product::with(['seller', 'category', 'brand'])->find($id);
 
-    $request->validate([
-        'product_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
 
-    if ($request->hasFile('product_img')) {
-        if ($product->product_img && Storage::exists($product->product_img)) {
-            Storage::delete($product->product_img);
-        }
-        $image = $request->file('product_img');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $destinationPath = public_path('images/products/');
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0777, true);
-        }
-        $image->move($destinationPath, $imageName);
-        $product->product_img = 'images/products/' . $imageName;
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'id' => $product->id,
+                'product_name' => $product->product_name,
+                'description' => $product->description,
+                'price' => number_format($product->price, 2),
+                'quantity_available' => $product->quantity,
+                'product_img' => $product->product_img,
+                'category' => optional($product->category)->category_name ?? 'Unknown Category',
+                'brand' => optional($product->brand)->brand_name ?? 'Unknown Brand',
+                'profile_id' => $product->profile_id,
+                'profile_name' => optional($product->seller)
+                    ? optional($product->seller)->first_name . ' ' . optional($product->seller)->last_name
+                    : 'Unknown Seller',
+                'created_at' => Carbon::parse($product->created_at)->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::parse($product->updated_at)->format('Y-m-d H:i:s'),
+                'archived' => $product->archived,
+            ]
+        ]);
     }
-
-    $product->updated_at = now();
-    $product->save();
-
-    $product->load('seller', 'category', 'brand');
-    return response()->json([
-        'id' => $product->id,
-        'product_name' => $product->product_name,
-        'description' => $product->description,
-        'price' => $product->price,
-        'quantity' => $product->quantity,
-        'product_img' => $product->product_img,
-        'category' => optional($product->category)->category_name ?? 'Unknown Category',
-        'brand' => optional($product->brand)->brand_name ?? 'Unknown Brand',
-        'profile_name' => optional($product->seller)
-            ? optional($product->seller)->first_name . ' ' . optional($product->seller)->last_name
-            : 'Unknown Seller',
-        'created_at' => Carbon::parse($product->created_at)->format('Y-m-d H:i:s'),
-        'updated_at' => Carbon::parse($product->updated_at)->format('Y-m-d H:i:s'),
-        'archived' => $product->archived,
-    ]);
-}
 }

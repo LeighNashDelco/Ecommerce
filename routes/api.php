@@ -24,7 +24,8 @@ use App\Http\Controllers\{
     ChangePasswordAdminController,
     ReviewController,
     NotificationController,
-    ShopController
+    ShopController,
+    CartController
 };
 use App\Models\Profile;
 
@@ -58,6 +59,7 @@ Route::get('/profiles/user/{userId}', function ($userId) {
     return Profile::where('user_id', $userId)->first();
 });
 Route::get('/shop-products', [ShopController::class, 'getActiveProducts']);
+Route::get('/shop-products/{id}', [ProductController::class, 'show']);
 
 # ==============================
 # PROTECTED ROUTES (Require Authentication)
@@ -67,6 +69,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/profiles', [ProfileController::class, 'store']);
     Route::get('/user-profile', [UserController::class, 'getUserProfile']);
     Route::post('/update-profile', [UserController::class, 'updateUserProfile']);
+    Route::get('/profiles/{id}', [ProfileController::class, 'show']); // Added this line
 
     # Product Management
     Route::post('/products', [ProductController::class, 'store']);
@@ -207,4 +210,10 @@ Route::middleware('auth:api')->group(function () {
 
     # Change Password
     Route::post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
+
+    # Cart Management
+    Route::get('/cart/{profileId}', [CartController::class, 'getCart']);
+    Route::post('/cart/add', [CartController::class, 'addToCart']);
+    Route::put('/cart/update', [CartController::class, 'updateCart']);
+    Route::delete('/cart/remove', [CartController::class, 'removeFromCart']);
 });

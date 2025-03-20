@@ -1,15 +1,86 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { message } from 'antd'; // Import Ant Design message
 import './../../../../sass/components/about_us.scss';
-import aboutUsImage from '../../../../../resources/sass/img/aboutvero.svg'; // Existing SVG (adjust path as needed)
-import aboutUsImage1 from '../../../../../resources/sass/img/vero_sign.svg'; // Placeholder for "About VERO" image
-import aboutUsImage2 from '../../../../../resources/sass/img/aboutus_mouse.svg'; // Placeholder for "Who Are We" image
+import aboutUsImage from '../../../../../resources/sass/img/aboutvero.svg';
+import aboutUsImage1 from '../../../../../resources/sass/img/vero_sign.svg';
+import aboutUsImage2 from '../../../../../resources/sass/img/aboutus_mouse.svg';
 import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
+import OrdersCart from "../CartModals/orders_cart";
 
 function AboutUs() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [profileId, setProfileId] = useState(null);
+
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    } : { 'Content-Type': 'application/json' };
+  };
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem('LaravelPassportToken');
+        if (token) {
+          const userResponse = await fetch('http://127.0.0.1:8000/api/user-profile', {
+            headers: getAuthHeaders(),
+          });
+          if (!userResponse.ok) throw new Error('Failed to fetch user profile');
+          const userData = await userResponse.json();
+          const profileResponse = await fetch(`http://127.0.0.1:8000/api/profiles/user/${userData.user.id}`, {
+            headers: getAuthHeaders(),
+          });
+          if (!profileResponse.ok) throw new Error('Failed to fetch profile ID');
+          const profileData = await profileResponse.json();
+          setProfileId(profileData.id);
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
+
+  const handleAddToCart = async (productId = 1) => { // Default product ID for demo
+    if (!profileId) {
+      message.error({
+        content: 'Please log in to add items to your cart.',
+        style: { marginTop: '20px' },
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/cart/add', {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ profile_id: profileId, product_id: productId, quantity: 1 }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Failed to add to cart');
+      setIsCartOpen(true);
+      message.success({
+        content: 'Item added to cart successfully!',
+        style: { marginTop: '20px' },
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      message.error({
+        content: `Failed to add item to cart: ${error.message}`,
+        style: { marginTop: '20px' },
+      });
+    }
+  };
+
   return (
     <div className="about-us-page">
-      <Navbar />
+      <Navbar onCartClick={toggleCart} />
       <div className="content-wrapper">
         <div className="about-us-section">
           <img src={aboutUsImage} alt="About Us" className="about-us-image" />
@@ -36,6 +107,7 @@ function AboutUs() {
         </div>
       </div>
       <Footer />
+      <OrdersCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} profileId={profileId} />
     </div>
   );
 }

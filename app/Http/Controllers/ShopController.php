@@ -27,7 +27,6 @@ class ShopController extends Controller
         }
     }
 
-    // Add methods for fetching categories and brands (if not already present)
     public function getCategories()
     {
         try {
