@@ -27357,10 +27357,10 @@ var NotificationModal = function NotificationModal(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/adminside/reviewsandnotification/ReviewModal.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/adminside/reviewsandnotification/ReviewModal.js ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27369,24 +27369,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/adminside/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../topnavbar/TopNavbar */ "./resources/js/components/adminside/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconRefresh.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconPlus.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _NotificationModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotificationModal */ "./resources/js/components/adminside/reviewsandnotification/NotificationModal.js");
-/* harmony import */ var _sass_components_reviewsandnotification_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../../sass/components/_reviewsandnotification.scss */ "./resources/sass/components/_reviewsandnotification.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _sass_components_reviewsandnotification_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/_reviewsandnotification.scss */ "./resources/sass/components/_reviewsandnotification.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -27405,13 +27392,6 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-
-
-
-
-
-// ReviewModal (updated)
-
 var ReviewModal = function ReviewModal(_ref) {
   var onClose = _ref.onClose,
     onSubmit = _ref.onSubmit,
@@ -27421,9 +27401,10 @@ var ReviewModal = function ReviewModal(_ref) {
     initialData = _ref$initialData === void 0 ? null : _ref$initialData;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       product_id: isEdit && initialData ? initialData.product_id || "" : "",
-      profile_id: isEdit && initialData ? initialData.profile_id || "" : "",
+      user_id: isEdit && initialData ? initialData.user_id || "" : "",
       rating: isEdit && initialData ? initialData.rating || "" : "",
-      comment: isEdit && initialData ? initialData.comment || "" : ""
+      comment: isEdit && initialData ? initialData.comment || "" : "",
+      photo: null
     }),
     _useState2 = _slicedToArray(_useState, 2),
     formData = _useState2[0],
@@ -27452,6 +27433,15 @@ var ReviewModal = function ReviewModal(_ref) {
     _useState14 = _slicedToArray(_useState13, 2),
     showProfileDropdown = _useState14[0],
     setShowProfileDropdown = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(isEdit && initialData !== null && initialData !== void 0 && initialData.photo ? initialData.photo : null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    photoPreview = _useState16[0],
+    setPhotoPreview = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState18 = _slicedToArray(_useState17, 2),
+    errors = _useState18[0],
+    setErrors = _useState18[1]; // State for validation errors
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -27467,7 +27457,7 @@ var ReviewModal = function ReviewModal(_ref) {
                 }
               };
               _context.next = 5;
-              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/products", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", config)]);
+              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/products", config), axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/profiles", config)]);
             case 5:
               _yield$Promise$all = _context.sent;
               _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
@@ -27480,7 +27470,7 @@ var ReviewModal = function ReviewModal(_ref) {
                   return p.id === initialData.product_id;
                 });
                 profile = profilesRes.data.find(function (p) {
-                  return p.id === initialData.profile_id;
+                  return p.user_id === initialData.user_id;
                 });
                 setProductSearch(product ? product.product_name : "");
                 setProfileSearch(profile ? profile.full_name : "");
@@ -27502,15 +27492,17 @@ var ReviewModal = function ReviewModal(_ref) {
       };
     }();
     fetchData();
-    if (isEdit && initialData) {
-      setFormData({
-        product_id: initialData.product_id || "",
-        profile_id: initialData.profile_id || "",
-        rating: initialData.rating || "",
-        comment: initialData.comment || ""
-      });
-    }
   }, [isEdit, initialData]);
+  var filteredProducts = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return products.filter(function (p) {
+      return p.product_name.toLowerCase().includes(productSearch.toLowerCase());
+    });
+  }, [products, productSearch]);
+  var filteredProfiles = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return profiles.filter(function (p) {
+      return p.full_name.toLowerCase().includes(profileSearch.toLowerCase());
+    });
+  }, [profiles, profileSearch]);
   var handleInputChange = function handleInputChange(e) {
     var _e$target = e.target,
       name = _e$target.name,
@@ -27518,6 +27510,26 @@ var ReviewModal = function ReviewModal(_ref) {
     setFormData(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, name, value));
     });
+    // Clear error for this field when the user starts typing
+    setErrors(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, name, ""));
+    });
+  };
+  var handlePhotoChange = function handlePhotoChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      setFormData(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, {
+          photo: file
+        });
+      });
+      setPhotoPreview(URL.createObjectURL(file));
+      setErrors(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, {
+          photo: ""
+        });
+      });
+    }
   };
   var handleProductSelect = function handleProductSelect(product) {
     setFormData(function (prev) {
@@ -27527,55 +27539,107 @@ var ReviewModal = function ReviewModal(_ref) {
     });
     setProductSearch(product.product_name);
     setShowProductDropdown(false);
+    setErrors(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        product_id: ""
+      });
+    });
   };
   var handleProfileSelect = function handleProfileSelect(profile) {
     setFormData(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, {
-        profile_id: profile.id
+        user_id: profile.user_id
       });
     });
     setProfileSearch(profile.full_name);
     setShowProfileDropdown(false);
-  };
-  var filteredProducts = products.filter(function (p) {
-    return p.product_name.toLowerCase().includes(productSearch.toLowerCase());
-  });
-  var filteredProfiles = profiles.filter(function (p) {
-    return p.full_name.toLowerCase().includes(profileSearch.toLowerCase());
-  });
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
-    onSubmit({
-      formData: formData
+    setErrors(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        user_id: ""
+      });
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  var validateForm = function validateForm() {
+    var newErrors = {};
+    if (!formData.product_id) {
+      newErrors.product_id = "Please select a product.";
+    }
+    if (!formData.user_id) {
+      newErrors.user_id = "Please select a user.";
+    }
+    var rating = parseInt(formData.rating, 10);
+    if (!formData.rating || isNaN(rating) || rating < 1 || rating > 5) {
+      newErrors.rating = "Please enter a rating between 1 and 5.";
+    }
+    if (formData.photo && formData.photo.size > 2 * 1024 * 1024) {
+      newErrors.photo = "Photo must be less than 2MB.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
+    var submitData = new FormData();
+    submitData.append("product_id", formData.product_id);
+    submitData.append("user_id", formData.user_id);
+    submitData.append("rating", parseInt(formData.rating, 10)); // Ensure rating is an integer
+    submitData.append("comment", formData.comment || "");
+    if (formData.photo) {
+      submitData.append("photo", formData.photo);
+    }
+    if (isEdit) {
+      submitData.append("_method", "PUT");
+    }
+
+    // Log the FormData contents
+    var formDataEntries = {};
+    var _iterator = _createForOfIteratorHelper(submitData.entries()),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var _step$value = _slicedToArray(_step.value, 2),
+          key = _step$value[0],
+          value = _step$value[1];
+        formDataEntries[key] = value;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    console.log("Submitting review data:", formDataEntries);
+    onSubmit(submitData);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "modal-overlay",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "add-item-modal",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "modal-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: isEdit ? "Edit Review" : "Add Review"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           className: "close-button",
           onClick: onClose,
           children: "\u2715"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "modal-content",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("form", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
           onSubmit: handleSubmit,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "form-section",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "field-group full-width",
               style: {
                 position: "relative"
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Product Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 placeholder: "Search products...",
                 value: productSearch,
@@ -27586,9 +27650,15 @@ var ReviewModal = function ReviewModal(_ref) {
                 onFocus: function onFocus() {
                   return setShowProductDropdown(true);
                 },
-                className: "input-field",
-                required: true
-              }), showProductDropdown && filteredProducts.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+                className: "input-field"
+              }), errors.product_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "error-message",
+                style: {
+                  color: "red",
+                  fontSize: "12px"
+                },
+                children: errors.product_id
+              }), showProductDropdown && filteredProducts.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
                 style: {
                   maxHeight: "150px",
                   overflowY: "auto",
@@ -27604,7 +27674,7 @@ var ReviewModal = function ReviewModal(_ref) {
                   margin: 0
                 },
                 children: filteredProducts.map(function (product) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
                     onClick: function onClick() {
                       return handleProductSelect(product);
                     },
@@ -27616,14 +27686,14 @@ var ReviewModal = function ReviewModal(_ref) {
                   }, product.id);
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "field-group full-width",
               style: {
                 position: "relative"
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "User Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
                 placeholder: "Search users...",
                 value: profileSearch,
@@ -27634,9 +27704,15 @@ var ReviewModal = function ReviewModal(_ref) {
                 onFocus: function onFocus() {
                   return setShowProfileDropdown(true);
                 },
-                className: "input-field",
-                required: true
-              }), showProfileDropdown && filteredProfiles.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+                className: "input-field"
+              }), errors.user_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "error-message",
+                style: {
+                  color: "red",
+                  fontSize: "12px"
+                },
+                children: errors.user_id
+              }), showProfileDropdown && filteredProfiles.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
                 style: {
                   maxHeight: "150px",
                   overflowY: "auto",
@@ -27652,7 +27728,7 @@ var ReviewModal = function ReviewModal(_ref) {
                   margin: 0
                 },
                 children: filteredProfiles.map(function (profile) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
                     onClick: function onClick() {
                       return handleProfileSelect(profile);
                     },
@@ -27664,11 +27740,11 @@ var ReviewModal = function ReviewModal(_ref) {
                   }, profile.id);
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "field-group full-width",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Rating"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "number",
                 name: "rating",
                 placeholder: "Rating (1-5)",
@@ -27676,29 +27752,59 @@ var ReviewModal = function ReviewModal(_ref) {
                 onChange: handleInputChange,
                 className: "input-field",
                 min: "1",
-                max: "5",
-                required: true
+                max: "5"
+              }), errors.rating && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "error-message",
+                style: {
+                  color: "red",
+                  fontSize: "12px"
+                },
+                children: errors.rating
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "field-group full-width",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Comment"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
                 name: "comment",
                 placeholder: "Comment",
                 value: formData.comment,
                 onChange: handleInputChange,
-                className: "input-field",
-                required: true
+                className: "input-field"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "field-group full-width",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                children: "Upload Photo"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "file",
+                accept: "image/*",
+                onChange: handlePhotoChange,
+                className: "input-field"
+              }), errors.photo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "error-message",
+                style: {
+                  color: "red",
+                  fontSize: "12px"
+                },
+                children: errors.photo
+              }), photoPreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                src: photoPreview,
+                alt: "Preview",
+                className: "photo-preview",
+                style: {
+                  maxWidth: "100%",
+                  marginTop: "10px"
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: "button-group",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
                 className: "cancel-button",
                 onClick: onClose,
                 children: "Cancel"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "submit",
                 className: "save-button",
                 children: isEdit ? "Update" : "Save"
@@ -27710,8 +27816,68 @@ var ReviewModal = function ReviewModal(_ref) {
     })
   });
 };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewModal);
 
-// NotificationModal (updated import handling)
+/***/ }),
+
+/***/ "./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/adminside/sidebar/Sidebar.js");
+/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../topnavbar/TopNavbar */ "./resources/js/components/adminside/topnavbar/TopNavbar.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconRefresh.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconPlus.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _NotificationModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotificationModal */ "./resources/js/components/adminside/reviewsandnotification/NotificationModal.js");
+/* harmony import */ var _ReviewModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReviewModal */ "./resources/js/components/adminside/reviewsandnotification/ReviewModal.js");
+/* harmony import */ var _sass_components_reviewsandnotification_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../../sass/components/_reviewsandnotification.scss */ "./resources/sass/components/_reviewsandnotification.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+
+
+
+// NotificationModal handling
+
 var NotificationModal = _NotificationModal__WEBPACK_IMPORTED_MODULE_3__["default"] && _NotificationModal__WEBPACK_IMPORTED_MODULE_3__["default"]["default"] ? _NotificationModal__WEBPACK_IMPORTED_MODULE_3__["default"]["default"] : _NotificationModal__WEBPACK_IMPORTED_MODULE_3__["default"];
 var formatDate = function formatDate(dateString) {
   if (!dateString) return "N/A";
@@ -27726,76 +27892,76 @@ var formatDate = function formatDate(dateString) {
   }).format(new Date(dateString));
 };
 var ReviewsAndNotification = function ReviewsAndNotification() {
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("reviews"),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("reviews"),
+    _useState2 = _slicedToArray(_useState, 2),
+    activeTab = _useState2[0],
+    setActiveTab = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    reviews = _useState4[0],
+    setReviews = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    notifications = _useState6[0],
+    setNotifications = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    searchTerm = _useState8[0],
+    setSearchTerm = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    showArchived = _useState10[0],
+    setShowArchived = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedItems = _useState12[0],
+    setSelectedItems = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState14 = _slicedToArray(_useState13, 2),
+    isConfirmModalOpen = _useState14[0],
+    setIsConfirmModalOpen = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState16 = _slicedToArray(_useState15, 2),
-    activeTab = _useState16[0],
-    setActiveTab = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    itemToArchive = _useState16[0],
+    setItemToArchive = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      currentPage: 1,
+      totalPages: 1
+    }),
     _useState18 = _slicedToArray(_useState17, 2),
-    reviews = _useState18[0],
-    setReviews = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    reviewPagination = _useState18[0],
+    setReviewPagination = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      currentPage: 1,
+      totalPages: 1
+    }),
     _useState20 = _slicedToArray(_useState19, 2),
-    notifications = _useState20[0],
-    setNotifications = _useState20[1];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    notificationPagination = _useState20[0],
+    setNotificationPagination = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState22 = _slicedToArray(_useState21, 2),
-    searchTerm = _useState22[0],
-    setSearchTerm = _useState22[1];
+    loading = _useState22[0],
+    setLoading = _useState22[1];
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState24 = _slicedToArray(_useState23, 2),
-    showArchived = _useState24[0],
-    setShowArchived = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    isModalOpen = _useState24[0],
+    setIsModalOpen = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState26 = _slicedToArray(_useState25, 2),
-    selectedItems = _useState26[0],
-    setSelectedItems = _useState26[1];
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isEditMode = _useState26[0],
+    setIsEditMode = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState28 = _slicedToArray(_useState27, 2),
-    isConfirmModalOpen = _useState28[0],
-    setIsConfirmModalOpen = _useState28[1];
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState30 = _slicedToArray(_useState29, 2),
-    itemToArchive = _useState30[0],
-    setItemToArchive = _useState30[1];
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      currentPage: 1,
-      totalPages: 1
-    }),
-    _useState32 = _slicedToArray(_useState31, 2),
-    reviewPagination = _useState32[0],
-    setReviewPagination = _useState32[1];
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      currentPage: 1,
-      totalPages: 1
-    }),
-    _useState34 = _slicedToArray(_useState33, 2),
-    notificationPagination = _useState34[0],
-    setNotificationPagination = _useState34[1];
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState36 = _slicedToArray(_useState35, 2),
-    loading = _useState36[0],
-    setLoading = _useState36[1];
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState38 = _slicedToArray(_useState37, 2),
-    isModalOpen = _useState38[0],
-    setIsModalOpen = _useState38[1];
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState40 = _slicedToArray(_useState39, 2),
-    isEditMode = _useState40[0],
-    setIsEditMode = _useState40[1];
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState42 = _slicedToArray(_useState41, 2),
-    itemToEdit = _useState42[0],
-    setItemToEdit = _useState42[1];
+    itemToEdit = _useState28[0],
+    setItemToEdit = _useState28[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var token, config, _yield$Promise$all3, _yield$Promise$all4, reviewActiveResponse, reviewArchivedResponse, notificationActiveResponse, notificationArchivedResponse, productsRes, profilesRes, productsMap, profilesMap, activeReviews, archivedReviews, activeNotifications, archivedNotifications, _error$response;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var token, config, _yield$Promise$all, _yield$Promise$all2, reviewActiveResponse, reviewArchivedResponse, notificationActiveResponse, notificationArchivedResponse, productsRes, profilesRes, productsMap, profilesMap, activeReviews, archivedReviews, activeNotifications, archivedNotifications, _error$response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context2.prev = 0;
+              _context.prev = 0;
               setLoading(true);
               token = localStorage.getItem("LaravelPassportToken");
               config = {
@@ -27803,55 +27969,52 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                   Authorization: "Bearer ".concat(token)
                 }
               };
-              _context2.next = 6;
-              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/reviews", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/reviews/archived", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/notifications", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/notifications/archived", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/products", config), axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", config)]);
+              _context.next = 6;
+              return Promise.all([axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/reviews", config), axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/reviews/archived", config), axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/notifications", config), axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/notifications/archived", config), axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/products", config), axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/profiles", config)]);
             case 6:
-              _yield$Promise$all3 = _context2.sent;
-              _yield$Promise$all4 = _slicedToArray(_yield$Promise$all3, 6);
-              reviewActiveResponse = _yield$Promise$all4[0];
-              reviewArchivedResponse = _yield$Promise$all4[1];
-              notificationActiveResponse = _yield$Promise$all4[2];
-              notificationArchivedResponse = _yield$Promise$all4[3];
-              productsRes = _yield$Promise$all4[4];
-              profilesRes = _yield$Promise$all4[5];
-              console.log("Products Response:", productsRes.data);
-              console.log("Profiles Response:", profilesRes.data);
-              console.log("Reviews Active Response:", reviewActiveResponse.data);
-              console.log("Notifications Active Response:", notificationActiveResponse.data);
+              _yield$Promise$all = _context.sent;
+              _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 6);
+              reviewActiveResponse = _yield$Promise$all2[0];
+              reviewArchivedResponse = _yield$Promise$all2[1];
+              notificationActiveResponse = _yield$Promise$all2[2];
+              notificationArchivedResponse = _yield$Promise$all2[3];
+              productsRes = _yield$Promise$all2[4];
+              profilesRes = _yield$Promise$all2[5];
               productsMap = productsRes.data.reduce(function (acc, p) {
                 return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.product_name));
               }, {});
               profilesMap = profilesRes.data.reduce(function (acc, p) {
-                return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.full_name));
-              }, {});
+                return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.user_id, p.full_name));
+              }, {}); // Changed to map user_id to full_name
               activeReviews = reviewActiveResponse.data.map(function (review) {
                 return _objectSpread(_objectSpread({}, review), {}, {
                   archived: false,
                   product_name: productsMap[review.product_id] || "Unknown Product (ID: ".concat(review.product_id, ")"),
-                  user_name: profilesMap[review.profile_id] || "Unknown User (ID: ".concat(review.profile_id, ")")
+                  user_name: profilesMap[review.user_id] || "Unknown User (ID: ".concat(review.user_id, ")") // Changed to use user_id
                 });
               });
               archivedReviews = reviewArchivedResponse.data.map(function (review) {
                 return _objectSpread(_objectSpread({}, review), {}, {
                   archived: true,
                   product_name: productsMap[review.product_id] || "Unknown Product (ID: ".concat(review.product_id, ")"),
-                  user_name: profilesMap[review.profile_id] || "Unknown User (ID: ".concat(review.profile_id, ")")
+                  user_name: profilesMap[review.user_id] || "Unknown User (ID: ".concat(review.user_id, ")") // Changed to use user_id
                 });
               });
               activeNotifications = notificationActiveResponse.data.map(function (notification) {
                 return _objectSpread(_objectSpread({}, notification), {}, {
                   archived: false,
-                  user_name: profilesMap[notification.profile_id] || "Unknown User (ID: ".concat(notification.profile_id, ")")
+                  user_name: profilesMap[notification.profile_id] || "Unknown User (ID: ".concat(notification.profile_id, ")") // Notifications still use profile_id
                 });
               });
               archivedNotifications = notificationArchivedResponse.data.map(function (notification) {
                 return _objectSpread(_objectSpread({}, notification), {}, {
                   archived: true,
-                  user_name: profilesMap[notification.profile_id] || "Unknown User (ID: ".concat(notification.profile_id, ")")
+                  user_name: profilesMap[notification.profile_id] || "Unknown User (ID: ".concat(notification.profile_id, ")") // Notifications still use profile_id
                 });
               });
               setReviews([].concat(_toConsumableArray(activeReviews), _toConsumableArray(archivedReviews)));
               setNotifications([].concat(_toConsumableArray(activeNotifications), _toConsumableArray(archivedNotifications)));
+              console.log("Notifications:", [].concat(_toConsumableArray(activeNotifications), _toConsumableArray(archivedNotifications))); // Debug log
               setReviewPagination({
                 currentPage: 1,
                 totalPages: Math.ceil((activeReviews.length + archivedReviews.length) / 10)
@@ -27860,26 +28023,26 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                 currentPage: 1,
                 totalPages: Math.ceil((activeNotifications.length + archivedNotifications.length) / 10)
               });
-              _context2.next = 35;
+              _context.next = 32;
               break;
-            case 30:
-              _context2.prev = 30;
-              _context2.t0 = _context2["catch"](0);
-              console.error("Error fetching data:", ((_error$response = _context2.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context2.t0.message);
+            case 27:
+              _context.prev = 27;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching data:", ((_error$response = _context.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context.t0.message);
               setReviews([]);
               setNotifications([]);
-            case 35:
-              _context2.prev = 35;
+            case 32:
+              _context.prev = 32;
               setLoading(false);
-              return _context2.finish(35);
-            case 38:
+              return _context.finish(32);
+            case 35:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
-        }, _callee2, null, [[0, 30, 35, 38]]);
+        }, _callee, null, [[0, 27, 32, 35]]);
       }));
       return function fetchData() {
-        return _ref3.apply(this, arguments);
+        return _ref.apply(this, arguments);
       };
     }();
     fetchData();
@@ -27889,7 +28052,7 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
     var _review$comment, _review$product_name, _review$user_name;
     return (((_review$comment = review.comment) === null || _review$comment === void 0 ? void 0 : _review$comment.toLowerCase().includes(searchTerm.toLowerCase())) || ((_review$product_name = review.product_name) === null || _review$product_name === void 0 ? void 0 : _review$product_name.toLowerCase().includes(searchTerm.toLowerCase())) || ((_review$user_name = review.user_name) === null || _review$user_name === void 0 ? void 0 : _review$user_name.toLowerCase().includes(searchTerm.toLowerCase()))) && review.archived === showArchived;
   });
-  var filteredNotifications = reviews.filter(function (notification) {
+  var filteredNotifications = notifications.filter(function (notification) {
     var _notification$message, _notification$type, _notification$user_na;
     return (((_notification$message = notification.message) === null || _notification$message === void 0 ? void 0 : _notification$message.toLowerCase().includes(searchTerm.toLowerCase())) || ((_notification$type = notification.type) === null || _notification$type === void 0 ? void 0 : _notification$type.toLowerCase().includes(searchTerm.toLowerCase())) || ((_notification$user_na = notification.user_name) === null || _notification$user_na === void 0 ? void 0 : _notification$user_na.toLowerCase().includes(searchTerm.toLowerCase()))) && notification.archived === showArchived;
   });
@@ -27931,138 +28094,155 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
     setIsConfirmModalOpen(true);
   };
   var handleArchiveConfirm = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var token, endpoint, response, _error$response2;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var token, endpoint, response, _response$data$review, _response$data$review2, updatedArchived, _error$response2;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
             if (itemToArchive) {
-              _context3.next = 2;
+              _context2.next = 2;
               break;
             }
-            return _context3.abrupt("return");
+            return _context2.abrupt("return");
           case 2:
-            _context3.prev = 2;
+            _context2.prev = 2;
             token = localStorage.getItem("LaravelPassportToken");
             endpoint = activeTab === "reviews" ? "reviews" : "notifications";
-            _context3.next = 7;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemToArchive.id, "/archive"), {
+            console.log("Sending archive request for ".concat(endpoint, "/").concat(itemToArchive.id), {
+              archived: true
+            });
+            _context2.next = 8;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemToArchive.id, "/archive"), {
               archived: true
             }, {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 7:
-            response = _context3.sent;
+          case 8:
+            response = _context2.sent;
+            console.log('Archive response:', response.data);
             if (response.status === 200) {
+              updatedArchived = (_response$data$review = (_response$data$review2 = response.data.review) === null || _response$data$review2 === void 0 ? void 0 : _response$data$review2.archived) !== null && _response$data$review !== void 0 ? _response$data$review : true;
               if (activeTab === "reviews") {
                 setReviews(function (prevReviews) {
                   return prevReviews.map(function (review) {
                     return review.id === itemToArchive.id ? _objectSpread(_objectSpread({}, review), {}, {
-                      archived: true
+                      archived: updatedArchived
                     }) : review;
                   });
                 });
+                setShowArchived(true); // Switch to archived view after archiving
               } else {
                 setNotifications(function (prevNotifications) {
                   return prevNotifications.map(function (notification) {
                     return notification.id === itemToArchive.id ? _objectSpread(_objectSpread({}, notification), {}, {
-                      archived: true
+                      archived: updatedArchived
                     }) : notification;
                   });
                 });
+                setShowArchived(true); // Switch to archived view after archiving
               }
               setIsConfirmModalOpen(false);
               setItemToArchive(null);
             }
-            _context3.next = 14;
+            _context2.next = 16;
             break;
-          case 11:
-            _context3.prev = 11;
-            _context3.t0 = _context3["catch"](2);
-            console.error("Error archiving item:", ((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data) || _context3.t0.message);
-          case 14:
+          case 13:
+            _context2.prev = 13;
+            _context2.t0 = _context2["catch"](2);
+            console.error("Error archiving item:", ((_error$response2 = _context2.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.data) || _context2.t0.message);
+          case 16:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
-      }, _callee3, null, [[2, 11]]);
+      }, _callee2, null, [[2, 13]]);
     }));
     return function handleArchiveConfirm() {
-      return _ref4.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   var handleRestoreItem = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(itemId) {
-      var token, endpoint, response, _error$response3;
-      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(itemId) {
+      var token, endpoint, response, _response$data$review3, _response$data$review4, updatedArchived, _error$response3;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            _context4.prev = 0;
+            _context3.prev = 0;
             token = localStorage.getItem("LaravelPassportToken");
             endpoint = activeTab === "reviews" ? "reviews" : "notifications";
-            _context4.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemId, "/archive"), {
+            console.log("Sending restore request for ".concat(endpoint, "/").concat(itemId), {
+              archived: false
+            });
+            _context3.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemId, "/archive"), {
               archived: false
             }, {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 5:
-            response = _context4.sent;
+          case 6:
+            response = _context3.sent;
+            console.log('Restore response:', response.data);
             if (response.status === 200) {
+              updatedArchived = (_response$data$review3 = (_response$data$review4 = response.data.review) === null || _response$data$review4 === void 0 ? void 0 : _response$data$review4.archived) !== null && _response$data$review3 !== void 0 ? _response$data$review3 : false;
               if (activeTab === "reviews") {
                 setReviews(function (prevReviews) {
                   return prevReviews.map(function (review) {
                     return review.id === itemId ? _objectSpread(_objectSpread({}, review), {}, {
-                      archived: false
+                      archived: updatedArchived
                     }) : review;
                   });
                 });
+                setShowArchived(false); // Switch to active view after restoring
               } else {
                 setNotifications(function (prevNotifications) {
                   return prevNotifications.map(function (notification) {
                     return notification.id === itemId ? _objectSpread(_objectSpread({}, notification), {}, {
-                      archived: false
+                      archived: updatedArchived
                     }) : notification;
                   });
                 });
+                setShowArchived(false); // Switch to active view after restoring
               }
             }
-            _context4.next = 12;
+            _context3.next = 14;
             break;
-          case 9:
-            _context4.prev = 9;
-            _context4.t0 = _context4["catch"](0);
-            console.error("Error restoring item:", ((_error$response3 = _context4.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context4.t0.message);
-          case 12:
+          case 11:
+            _context3.prev = 11;
+            _context3.t0 = _context3["catch"](0);
+            console.error("Error restoring item:", ((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context3.t0.message);
+          case 14:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
-      }, _callee4, null, [[0, 9]]);
+      }, _callee3, null, [[0, 11]]);
     }));
     return function handleRestoreItem(_x) {
-      return _ref5.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
   var handleBulkAction = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(action) {
-      var token, endpoint, requests, _error$response4;
-      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-        while (1) switch (_context5.prev = _context5.next) {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(action) {
+      var token, endpoint, requests, responses, _error$response4;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
             if (!(selectedItems.length === 0)) {
-              _context5.next = 2;
+              _context4.next = 2;
               break;
             }
-            return _context5.abrupt("return");
+            return _context4.abrupt("return");
           case 2:
-            _context5.prev = 2;
+            _context4.prev = 2;
             token = localStorage.getItem("LaravelPassportToken");
             endpoint = activeTab === "reviews" ? "reviews" : "notifications";
+            console.log("Sending bulk ".concat(action, " request for ").concat(endpoint), {
+              items: selectedItems
+            });
             requests = selectedItems.map(function (itemId) {
-              return axios__WEBPACK_IMPORTED_MODULE_6__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemId, "/archive"), {
+              return axios__WEBPACK_IMPORTED_MODULE_7__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemId, "/archive"), {
                 archived: action === "archive"
               }, {
                 headers: {
@@ -28070,41 +28250,62 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                 }
               });
             });
-            _context5.next = 8;
+            _context4.next = 9;
             return Promise.all(requests);
-          case 8:
+          case 9:
+            responses = _context4.sent;
+            console.log('Bulk action responses:', responses);
             if (activeTab === "reviews") {
               setReviews(function (prevReviews) {
                 return prevReviews.map(function (review) {
-                  return selectedItems.includes(review.id) ? _objectSpread(_objectSpread({}, review), {}, {
-                    archived: action === "archive"
-                  }) : review;
+                  if (selectedItems.includes(review.id)) {
+                    var _response$data$review5, _response$data$review6;
+                    var response = responses.find(function (res) {
+                      var _res$data$review;
+                      return ((_res$data$review = res.data.review) === null || _res$data$review === void 0 ? void 0 : _res$data$review.id) === review.id;
+                    });
+                    var updatedArchived = (_response$data$review5 = response === null || response === void 0 || (_response$data$review6 = response.data.review) === null || _response$data$review6 === void 0 ? void 0 : _response$data$review6.archived) !== null && _response$data$review5 !== void 0 ? _response$data$review5 : action === "archive";
+                    return _objectSpread(_objectSpread({}, review), {}, {
+                      archived: updatedArchived
+                    });
+                  }
+                  return review;
                 });
               });
             } else {
               setNotifications(function (prevNotifications) {
                 return prevNotifications.map(function (notification) {
-                  return selectedItems.includes(notification.id) ? _objectSpread(_objectSpread({}, notification), {}, {
-                    archived: action === "archive"
-                  }) : notification;
+                  if (selectedItems.includes(notification.id)) {
+                    var _response$data$review7, _response$data$review8;
+                    var response = responses.find(function (res) {
+                      var _res$data$review2;
+                      return ((_res$data$review2 = res.data.review) === null || _res$data$review2 === void 0 ? void 0 : _res$data$review2.id) === notification.id;
+                    });
+                    var updatedArchived = (_response$data$review7 = response === null || response === void 0 || (_response$data$review8 = response.data.review) === null || _response$data$review8 === void 0 ? void 0 : _response$data$review8.archived) !== null && _response$data$review7 !== void 0 ? _response$data$review7 : action === "archive";
+                    return _objectSpread(_objectSpread({}, notification), {}, {
+                      archived: updatedArchived
+                    });
+                  }
+                  return notification;
                 });
               });
             }
             setSelectedItems([]);
-            _context5.next = 15;
+            setShowArchived(action === "archive"); // Switch view after bulk action
+            _context4.next = 19;
             break;
-          case 12:
-            _context5.prev = 12;
-            _context5.t0 = _context5["catch"](2);
-            console.error("Error ".concat(action, "ing items:"), ((_error$response4 = _context5.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context5.t0.message);
-          case 15:
+          case 16:
+            _context4.prev = 16;
+            _context4.t0 = _context4["catch"](2);
+            console.error("Error ".concat(action, "ing items:"), ((_error$response4 = _context4.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context4.t0.message);
+          case 19:
           case "end":
-            return _context5.stop();
+            return _context4.stop();
         }
-      }, _callee5, null, [[2, 12]]);
+      }, _callee4, null, [[2, 16]]);
     }));
     return function handleBulkAction(_x2) {
-      return _ref6.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
   var handleAddNewClick = function handleAddNewClick() {
@@ -28114,7 +28315,9 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
   };
   var handleEditClick = function handleEditClick(item) {
     setIsEditMode(true);
-    setItemToEdit(item);
+    setItemToEdit(_objectSpread(_objectSpread({}, item), {}, {
+      user_id: item.user_id || ""
+    }));
     setIsModalOpen(true);
   };
   var handleModalClose = function handleModalClose() {
@@ -28122,58 +28325,66 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
     setItemToEdit(null);
   };
   var handleItemAdd = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(newItem) {
-      var token, endpoint, response, addedItem, productsRes, profilesRes, productsMap, profilesMap, _profilesRes, _profilesMap, _error$response5;
-      return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-        while (1) switch (_context6.prev = _context6.next) {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(newItem) {
+      var token, formDataEntries, _iterator, _step, _step$value, key, value, response, addedItem, productsRes, profilesRes, productsMap, profilesMap, _error$response5, _error$response6, _error$response7, errorMessage, validationErrors;
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            _context6.prev = 0;
-            token = localStorage.getItem("LaravelPassportToken");
-            endpoint = activeTab === "reviews" ? "reviews" : "notifications";
-            _context6.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].post("http://127.0.0.1:8000/api/".concat(endpoint), newItem.formData, {
+            _context5.prev = 0;
+            token = localStorage.getItem("LaravelPassportToken"); // Log the FormData contents
+            formDataEntries = {};
+            _iterator = _createForOfIteratorHelper(newItem.entries());
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                _step$value = _slicedToArray(_step.value, 2), key = _step$value[0], value = _step$value[1];
+                formDataEntries[key] = value;
+              }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+            console.log("Sending new review:", formDataEntries);
+            _context5.next = 8;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].post("http://127.0.0.1:8000/api/reviews", newItem, {
               headers: {
                 Authorization: "Bearer ".concat(token),
-                "Content-Type": "application/json"
+                "Content-Type": "multipart/form-data"
               }
             });
-          case 5:
-            response = _context6.sent;
+          case 8:
+            response = _context5.sent;
             if (!(response.status === 201)) {
-              _context6.next = 31;
+              _context5.next = 24;
               break;
             }
             addedItem = _objectSpread(_objectSpread({}, response.data), {}, {
               archived: false
             });
-            if (!(activeTab === "reviews")) {
-              _context6.next = 23;
-              break;
-            }
-            _context6.next = 11;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/products", {
+            _context5.next = 13;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/products", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 11:
-            productsRes = _context6.sent;
-            _context6.next = 14;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", {
+          case 13:
+            productsRes = _context5.sent;
+            _context5.next = 16;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/profiles", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 14:
-            profilesRes = _context6.sent;
+          case 16:
+            profilesRes = _context5.sent;
             productsMap = productsRes.data.reduce(function (acc, p) {
               return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.product_name));
             }, {});
             profilesMap = profilesRes.data.reduce(function (acc, p) {
-              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.full_name));
+              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.user_id, p.full_name));
             }, {});
             addedItem.product_name = productsMap[addedItem.product_id] || "Unknown Product (ID: ".concat(addedItem.product_id, ")");
-            addedItem.user_name = profilesMap[addedItem.profile_id] || "Unknown User (ID: ".concat(addedItem.profile_id, ")");
+            addedItem.user_name = profilesMap[addedItem.user_id] || "Unknown User (ID: ".concat(addedItem.user_id, ")");
             setReviews(function (prevReviews) {
               return [addedItem].concat(_toConsumableArray(prevReviews));
             });
@@ -28181,141 +28392,96 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
               currentPage: 1,
               totalPages: Math.ceil((reviews.length + 1) / itemsPerPage)
             });
-            _context6.next = 30;
-            break;
-          case 23:
-            _context6.next = 25;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", {
-              headers: {
-                Authorization: "Bearer ".concat(token)
-              }
-            });
-          case 25:
-            _profilesRes = _context6.sent;
-            _profilesMap = _profilesRes.data.reduce(function (acc, p) {
-              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.full_name));
-            }, {});
-            addedItem.user_name = _profilesMap[addedItem.profile_id] || "Unknown User (ID: ".concat(addedItem.profile_id, ")");
-            setNotifications(function (prevNotifications) {
-              return [addedItem].concat(_toConsumableArray(prevNotifications));
-            });
-            setNotificationPagination({
-              currentPage: 1,
-              totalPages: Math.ceil((notifications.length + 1) / itemsPerPage)
-            });
-          case 30:
             setIsModalOpen(false);
-          case 31:
-            _context6.next = 36;
+          case 24:
+            _context5.next = 32;
             break;
-          case 33:
-            _context6.prev = 33;
-            _context6.t0 = _context6["catch"](0);
-            console.error("Error adding item:", ((_error$response5 = _context6.t0.response) === null || _error$response5 === void 0 ? void 0 : _error$response5.data) || _context6.t0.message);
-          case 36:
+          case 26:
+            _context5.prev = 26;
+            _context5.t0 = _context5["catch"](0);
+            console.error("Error adding item:", JSON.stringify((_error$response5 = _context5.t0.response) === null || _error$response5 === void 0 ? void 0 : _error$response5.data, null, 2));
+            errorMessage = ((_error$response6 = _context5.t0.response) === null || _error$response6 === void 0 || (_error$response6 = _error$response6.data) === null || _error$response6 === void 0 ? void 0 : _error$response6.error) || _context5.t0.message || "Unknown error";
+            validationErrors = (_error$response7 = _context5.t0.response) !== null && _error$response7 !== void 0 && (_error$response7 = _error$response7.data) !== null && _error$response7 !== void 0 && _error$response7.messages ? "\nValidation Errors: " + JSON.stringify(_context5.t0.response.data.messages, null, 2) : "";
+            alert("Failed to add review: ".concat(errorMessage).concat(validationErrors));
+          case 32:
           case "end":
-            return _context6.stop();
+            return _context5.stop();
         }
-      }, _callee6, null, [[0, 33]]);
+      }, _callee5, null, [[0, 26]]);
     }));
     return function handleItemAdd(_x3) {
-      return _ref7.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
   var handleItemUpdate = /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(updatedItem) {
-      var token, endpoint, response, updatedData, productsRes, profilesRes, productsMap, profilesMap, _profilesRes2, _profilesMap2, _error$response6;
-      return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-        while (1) switch (_context7.prev = _context7.next) {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(updatedItem) {
+      var token, response, updatedData, productsRes, profilesRes, productsMap, profilesMap, _error$response8, _error$response9;
+      return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+        while (1) switch (_context6.prev = _context6.next) {
           case 0:
-            _context7.prev = 0;
+            _context6.prev = 0;
             token = localStorage.getItem("LaravelPassportToken");
-            endpoint = activeTab === "reviews" ? "reviews" : "notifications";
-            _context7.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].patch("http://127.0.0.1:8000/api/".concat(endpoint, "/").concat(itemToEdit.id), updatedItem.formData, {
+            _context6.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].post("http://127.0.0.1:8000/api/reviews/".concat(itemToEdit.id), updatedItem, {
               headers: {
                 Authorization: "Bearer ".concat(token),
-                "Content-Type": "application/json"
+                "Content-Type": "multipart/form-data"
               }
             });
-          case 5:
-            response = _context7.sent;
+          case 4:
+            response = _context6.sent;
             if (!(response.status === 200)) {
-              _context7.next = 30;
+              _context6.next = 20;
               break;
             }
             updatedData = response.data;
-            if (!(activeTab === "reviews")) {
-              _context7.next = 22;
-              break;
-            }
-            _context7.next = 11;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/products", {
+            _context6.next = 9;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/products", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 11:
-            productsRes = _context7.sent;
-            _context7.next = 14;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", {
+          case 9:
+            productsRes = _context6.sent;
+            _context6.next = 12;
+            return axios__WEBPACK_IMPORTED_MODULE_7__["default"].get("http://127.0.0.1:8000/api/profiles", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
-          case 14:
-            profilesRes = _context7.sent;
+          case 12:
+            profilesRes = _context6.sent;
             productsMap = productsRes.data.reduce(function (acc, p) {
               return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.product_name));
             }, {});
             profilesMap = profilesRes.data.reduce(function (acc, p) {
-              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.full_name));
+              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.user_id, p.full_name));
             }, {});
             updatedData.product_name = productsMap[updatedData.product_id] || "Unknown Product (ID: ".concat(updatedData.product_id, ")");
-            updatedData.user_name = profilesMap[updatedData.profile_id] || "Unknown User (ID: ".concat(updatedData.profile_id, ")");
+            updatedData.user_name = profilesMap[updatedData.user_id] || "Unknown User (ID: ".concat(updatedData.user_id, ")");
             setReviews(function (prevReviews) {
               return prevReviews.map(function (review) {
                 return review.id === updatedData.id ? _objectSpread(_objectSpread({}, review), updatedData) : review;
               });
             });
-            _context7.next = 28;
-            break;
-          case 22:
-            _context7.next = 24;
-            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/profiles", {
-              headers: {
-                Authorization: "Bearer ".concat(token)
-              }
-            });
-          case 24:
-            _profilesRes2 = _context7.sent;
-            _profilesMap2 = _profilesRes2.data.reduce(function (acc, p) {
-              return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, p.id, p.full_name));
-            }, {});
-            updatedData.user_name = _profilesMap2[updatedData.profile_id] || "Unknown User (ID: ".concat(updatedData.profile_id, ")");
-            setNotifications(function (prevNotifications) {
-              return prevNotifications.map(function (notification) {
-                return notification.id === updatedData.id ? _objectSpread(_objectSpread({}, notification), updatedData) : notification;
-              });
-            });
-          case 28:
             setIsModalOpen(false);
             setItemToEdit(null);
-          case 30:
-            _context7.next = 35;
+          case 20:
+            _context6.next = 26;
             break;
-          case 32:
-            _context7.prev = 32;
-            _context7.t0 = _context7["catch"](0);
-            console.error("Error updating item:", ((_error$response6 = _context7.t0.response) === null || _error$response6 === void 0 ? void 0 : _error$response6.data) || _context7.t0.message);
-          case 35:
+          case 22:
+            _context6.prev = 22;
+            _context6.t0 = _context6["catch"](0);
+            console.error("Error updating item:", ((_error$response8 = _context6.t0.response) === null || _error$response8 === void 0 ? void 0 : _error$response8.data) || _context6.t0.message);
+            alert("Failed to update review: " + (((_error$response9 = _context6.t0.response) === null || _error$response9 === void 0 || (_error$response9 = _error$response9.data) === null || _error$response9 === void 0 ? void 0 : _error$response9.error) || _context6.t0.message));
+          case 26:
           case "end":
-            return _context7.stop();
+            return _context6.stop();
         }
-      }, _callee7, null, [[0, 32]]);
+      }, _callee6, null, [[0, 22]]);
     }));
     return function handleItemUpdate(_x4) {
-      return _ref8.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
   var handleReviewPageChange = function handleReviewPageChange(page) {
@@ -28328,28 +28494,28 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
       currentPage: page
     }));
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
       activeItem: "ReviewsAndNotification"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "main-content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "reviewsandnotification-dashboard",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "reviewsandnotification-content",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
             children: showArchived ? "Archived Reviews & Notifications" : "Reviews & Notifications"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
             className: "reviewsandnotification-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
               className: "left-actions",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "search-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
                   size: 20,
                   className: "search-icon"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
                   type: "text",
                   className: "search-input",
                   placeholder: "Search ".concat(activeTab === "reviews" ? "Reviews" : "Notifications"),
@@ -28359,133 +28525,135 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                   }
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "right-actions",
-              children: [selectedItems.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              children: [selectedItems.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
                 className: "header-button archive-all-button",
                 onClick: function onClick() {
                   return handleBulkAction(showArchived ? "restore" : "archive");
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
                   size: 20,
                   className: "button-icon"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                   className: "button-text",
                   children: showArchived ? "Restore All" : "Archive All"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
                 className: "header-button",
                 onClick: handleAddNewClick,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
                   size: 20,
                   className: "button-icon"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                   className: "button-text",
                   children: "Add New"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
                 className: "header-button",
                 onClick: handleToggleArchived,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
                   size: 20,
                   className: "button-icon"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                   className: "button-text",
                   children: showArchived ? "View Active" : "View Archived"
                 })]
               })]
             })]
-          }), activeTab === "reviews" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), activeTab === "reviews" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "reviewsandnotification-table",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "tabs",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: "tab-button ".concat(activeTab === "reviews" ? "active" : ""),
                   onClick: function onClick() {
                     return setActiveTab("reviews");
                   },
                   children: "Reviews"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: "tab-button ".concat(activeTab === "notifications" ? "active" : ""),
                   onClick: function onClick() {
                     return setActiveTab("notifications");
                   },
                   children: "Notifications"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                         className: "header-actions-icon",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                           onClick: toggleSelectAll,
                           style: {
                             cursor: "pointer"
                           },
-                          children: selectedItems.length === filteredReviews.length && filteredReviews.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaCheckSquare, {
+                          children: selectedItems.length === filteredReviews.length && filteredReviews.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaCheckSquare, {
                             className: "checkbox-icon"
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaSquare, {
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaSquare, {
                             className: "checkbox-icon"
                           })
                         }), "Actions"]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "ID"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Product Name"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "User Name"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Rating"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Comment"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                      children: "Photo"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Created At"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Updated At"
                     })]
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-                  children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                      colSpan: "8",
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+                  children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                      colSpan: "9",
                       className: "loading-row",
                       children: "Loading reviews..."
                     })
                   }) : currentReviews.length > 0 ? currentReviews.map(function (review) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                           className: "action-icons",
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                             onClick: function onClick() {
                               return toggleSelectItem(review.id);
                             },
                             style: {
                               cursor: "pointer"
                             },
-                            children: selectedItems.includes(review.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaCheckSquare, {
+                            children: selectedItems.includes(review.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaCheckSquare, {
                               className: "checkbox-icon",
                               size: 16
-                            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaSquare, {
+                            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaSquare, {
                               className: "checkbox-icon",
                               size: 16
                             })
-                          }), showArchived ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                          }), showArchived ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
                             size: 16,
                             className: "restore-icon",
                             onClick: function onClick() {
                               return handleRestoreItem(review.id);
                             }
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__["default"], {
                             size: 16,
                             className: "delete-icon",
                             onClick: function onClick() {
                               return handleArchiveClick(review);
                             }
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_14__["default"], {
                             size: 16,
                             className: "edit-icon",
                             onClick: function onClick() {
@@ -28493,49 +28661,55 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                             }
                           })]
                         })
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: review.id
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: review.product_name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: review.user_name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: review.rating
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: review.comment || "N/A"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        className: "photo-cell",
+                        children: review.photo ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+                          src: review.photo,
+                          alt: "Review"
+                        }) : "N/A"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: formatDate(review.created_at)
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: formatDate(review.updated_at)
                       })]
                     }, review.id);
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                      colSpan: "8",
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                      colSpan: "9",
                       children: "No reviews found"
                     })
                   })
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "reviewsandnotification-pagination",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
                 children: ["Page ", reviewPagination.currentPage, " of ", totalReviewPages]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                 onClick: function onClick() {
                   return handleReviewPageChange(reviewPagination.currentPage - 1);
                 },
                 disabled: reviewPagination.currentPage <= 1,
                 children: "<"
               }), _toConsumableArray(Array(totalReviewPages)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: reviewPagination.currentPage === index + 1 ? "active" : "",
                   onClick: function onClick() {
                     return handleReviewPageChange(index + 1);
                   },
                   children: index + 1
                 }, index);
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                 onClick: function onClick() {
                   return handleReviewPageChange(reviewPagination.currentPage + 1);
                 },
@@ -28543,99 +28717,99 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                 children: ">"
               })]
             })]
-          }), activeTab === "notifications" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), activeTab === "notifications" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "reviewsandnotification-table",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "tabs",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: "tab-button ".concat(activeTab === "reviews" ? "active" : ""),
                   onClick: function onClick() {
                     return setActiveTab("reviews");
                   },
                   children: "Reviews"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: "tab-button ".concat(activeTab === "notifications" ? "active" : ""),
                   onClick: function onClick() {
                     return setActiveTab("notifications");
                   },
                   children: "Notifications"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                         className: "header-actions-icon",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                           onClick: toggleSelectAll,
                           style: {
                             cursor: "pointer"
                           },
-                          children: selectedItems.length === filteredNotifications.length && filteredNotifications.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaCheckSquare, {
+                          children: selectedItems.length === filteredNotifications.length && filteredNotifications.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaCheckSquare, {
                             className: "checkbox-icon"
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaSquare, {
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaSquare, {
                             className: "checkbox-icon"
                           })
                         }), "Actions"]
                       })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "ID"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "User Name"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Message"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "FAQ ID"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Type"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Status"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Created At"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
                       children: "Updated At"
                     })]
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-                  children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+                  children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                       colSpan: "9",
                       className: "loading-row",
                       children: "Loading notifications..."
                     })
                   }) : currentNotifications.length > 0 ? currentNotifications.map(function (notification) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                           className: "action-icons",
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                             onClick: function onClick() {
                               return toggleSelectItem(notification.id);
                             },
                             style: {
                               cursor: "pointer"
                             },
-                            children: selectedItems.includes(notification.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaCheckSquare, {
+                            children: selectedItems.includes(notification.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaCheckSquare, {
                               className: "checkbox-icon",
                               size: 16
-                            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__.FaSquare, {
+                            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_12__.FaSquare, {
                               className: "checkbox-icon",
                               size: 16
                             })
-                          }), showArchived ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                          }), showArchived ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
                             size: 16,
                             className: "restore-icon",
                             onClick: function onClick() {
                               return handleRestoreItem(notification.id);
                             }
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__["default"], {
                             size: 16,
                             className: "delete-icon",
                             onClick: function onClick() {
                               return handleArchiveClick(notification);
                             }
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_14__["default"], {
                             size: 16,
                             className: "edit-icon",
                             onClick: function onClick() {
@@ -28643,51 +28817,51 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
                             }
                           })]
                         })
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: notification.id
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: notification.user_name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: notification.message
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        children: notification.message || "N/A"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: notification.faqs_id || "N/A"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: notification.type
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                        children: notification.status
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        children: notification.type || "N/A"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                        children: notification.status || "N/A"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: formatDate(notification.created_at)
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                         children: formatDate(notification.updated_at)
                       })]
                     }, notification.id);
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tr", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                       colSpan: "9",
                       children: "No notifications found"
                     })
                   })
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "reviewsandnotification-pagination",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
                 children: ["Page ", notificationPagination.currentPage, " of ", totalNotificationPages]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                 onClick: function onClick() {
                   return handleNotificationPageChange(notificationPagination.currentPage - 1);
                 },
                 disabled: notificationPagination.currentPage <= 1,
                 children: "<"
               }), _toConsumableArray(Array(totalNotificationPages)).map(function (_, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                   className: notificationPagination.currentPage === index + 1 ? "active" : "",
                   onClick: function onClick() {
                     return handleNotificationPageChange(index + 1);
                   },
                   children: index + 1
                 }, index);
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
                 onClick: function onClick() {
                   return handleNotificationPageChange(notificationPagination.currentPage + 1);
                 },
@@ -28698,21 +28872,21 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
           })]
         })
       })]
-    }), isConfirmModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), isConfirmModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "confirm-modal-overlay",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "confirm-modal",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
           children: "Are you sure?"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
           children: ["Do you want to archive \"", activeTab === "reviews" ? itemToArchive === null || itemToArchive === void 0 ? void 0 : itemToArchive.comment : itemToArchive === null || itemToArchive === void 0 ? void 0 : itemToArchive.message, "\"?"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "confirm-modal-buttons",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "confirm-button",
             onClick: handleArchiveConfirm,
             children: "Yes, Archive"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
             className: "cancel-button",
             onClick: function onClick() {
               return setIsConfirmModalOpen(false);
@@ -28721,18 +28895,18 @@ var ReviewsAndNotification = function ReviewsAndNotification() {
           })]
         })]
       })
-    }), isModalOpen && activeTab === "reviews" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ReviewModal, {
+    }), isModalOpen && activeTab === "reviews" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ReviewModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
       onClose: handleModalClose,
       onSubmit: isEditMode ? handleItemUpdate : handleItemAdd,
       isEdit: isEditMode,
       initialData: itemToEdit
-    }), isModalOpen && activeTab === "notifications" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-      children: typeof NotificationModal === "function" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(NotificationModal, {
+    }), isModalOpen && activeTab === "notifications" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      children: typeof NotificationModal === "function" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(NotificationModal, {
         onClose: handleModalClose,
         onSubmit: isEditMode ? handleItemUpdate : handleItemAdd,
         isEdit: isEditMode,
         initialData: itemToEdit
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         style: {
           position: "fixed",
           top: "50%",
@@ -35379,17 +35553,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var _sass_components_product_view_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/product_view.scss */ "./resources/sass/components/product_view.scss");
-/* harmony import */ var _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../resources/sass/img/pfp.svg */ "./resources/sass/img/pfp.svg");
-/* harmony import */ var _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../resources/sass/img/ATKCOLOR.svg */ "./resources/sass/img/ATKCOLOR.svg");
-/* harmony import */ var _customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../customerside/Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
-/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
-/* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconExternalLink.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../customerside/Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
+/* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconExternalLink.mjs");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -35409,13 +35581,10 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-
-
-
 var ProductView = function ProductView() {
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useParams)(),
     id = _useParams.id;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isCartOpen = _useState2[0],
@@ -35432,18 +35601,34 @@ var ProductView = function ProductView() {
     _useState8 = _slicedToArray(_useState7, 2),
     userProfile = _useState8[0],
     setUserProfile = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState10 = _slicedToArray(_useState9, 2),
-    loading = _useState10[0],
-    setLoading = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    reviews = _useState10[0],
+    setReviews = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState12 = _slicedToArray(_useState11, 2),
-    error = _useState12[0],
-    setError = _useState12[1];
+    loading = _useState12[0],
+    setLoading = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState14 = _slicedToArray(_useState13, 2),
-    profileId = _useState14[0],
-    setProfileId = _useState14[1];
+    error = _useState14[0],
+    setError = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    profileId = _useState16[0],
+    setProfileId = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    filterRating = _useState18[0],
+    setFilterRating = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState20 = _slicedToArray(_useState19, 2),
+    showMediaOnly = _useState20[0],
+    setShowMediaOnly = _useState20[1];
+
+  // Revert baseImageUrl to include trailing slash
+  var baseImageUrl = "http://127.0.0.1:8000/";
+  var defaultProfileImage = "".concat(baseImageUrl, "images/pfp/default.png");
   var getAuthHeaders = function getAuthHeaders() {
     return {
       'Content-Type': 'application/json',
@@ -35451,21 +35636,21 @@ var ProductView = function ProductView() {
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var isMounted = true;
     var fetchProfileAndProductData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, _userData$user, userResponse, userData, profileResponse, profileData, response, data, productData, _profileResponse, _profileData;
+        var token, _userData$user, userResponse, userData, profileResponse, profileData, productResponse, productData, finalProductData, reviewsResponse, errorData, reviewsData, _profileResponse, _profileData;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              // Fetch profile ID
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
                 _context.next = 26;
                 break;
               }
               _context.next = 5;
-              return fetch('http://127.0.0.1:8000/api/user-profile', {
+              return fetch("".concat(baseImageUrl, "api/user-profile"), {
                 headers: getAuthHeaders()
               });
             case 5:
@@ -35480,7 +35665,7 @@ var ProductView = function ProductView() {
               return userResponse.json();
             case 10:
               userData = _context.sent;
-              console.log('User Data:', userData); // Debug user data
+              console.log('User Data:', userData);
               if ((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id) {
                 _context.next = 14;
                 break;
@@ -35488,7 +35673,7 @@ var ProductView = function ProductView() {
               throw new Error('User ID not found in user profile response');
             case 14:
               _context.next = 16;
-              return fetch("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
+              return fetch("".concat(baseImageUrl, "api/profiles/user/").concat(userData.user.id), {
                 headers: getAuthHeaders()
               });
             case 16:
@@ -35497,107 +35682,148 @@ var ProductView = function ProductView() {
                 _context.next = 19;
                 break;
               }
-              throw new Error("Failed to fetch profile ID: ".concat(profileResponse.status, " ").concat(profileResponse.statusText));
+              throw new Error("Failed to fetch profile ID: ".concat(userResponse.status, " ").concat(userResponse.statusText));
             case 19:
               _context.next = 21;
               return profileResponse.json();
             case 21:
               profileData = _context.sent;
-              console.log('Profile Data:', profileData); // Debug profile data
-              setProfileId(profileData.id || null);
+              console.log('Profile Data:', profileData);
+              if (isMounted) {
+                setProfileId(profileData.id || null);
+              }
               _context.next = 27;
               break;
             case 26:
               console.log('No token found, proceeding as guest');
             case 27:
               _context.next = 29;
-              return fetch("http://127.0.0.1:8000/api/shop-products/".concat(id), {
+              return fetch("".concat(baseImageUrl, "api/shop-products/").concat(id), {
                 headers: getAuthHeaders()
               });
             case 29:
-              response = _context.sent;
-              if (response.ok) {
+              productResponse = _context.sent;
+              if (productResponse.ok) {
                 _context.next = 32;
                 break;
               }
-              throw new Error("Failed to fetch product: ".concat(response.status, " ").concat(response.statusText));
+              throw new Error("Failed to fetch product: ".concat(productResponse.status, " ").concat(productResponse.statusText));
             case 32:
               _context.next = 34;
-              return response.json();
+              return productResponse.json();
             case 34:
-              data = _context.sent;
-              productData = data.success && data.data ? data.data : data;
-              console.log('Product Data:', productData); // Debug product data
-
-              if (productData.price && typeof productData.price === 'string') {
-                productData.price = parseFloat(productData.price.replace(/,/g, ''));
+              productData = _context.sent;
+              finalProductData = productData.success && productData.data ? productData.data : productData;
+              console.log('Product Data:', finalProductData);
+              if (finalProductData.price && typeof finalProductData.price === 'string') {
+                finalProductData.price = parseFloat(finalProductData.price.replace(/,/g, ''));
               }
-              setProduct(productData);
-              if (!(productData !== null && productData !== void 0 && productData.profile_id)) {
-                _context.next = 60;
-                break;
+              if (isMounted) {
+                setProduct(finalProductData);
               }
-              _context.prev = 40;
-              _context.next = 43;
-              return fetch("http://127.0.0.1:8000/api/profiles/".concat(productData.profile_id), {
+              _context.next = 41;
+              return fetch("".concat(baseImageUrl, "api/reviews/product/").concat(id), {
                 headers: getAuthHeaders()
               });
-            case 43:
-              _profileResponse = _context.sent;
-              if (_profileResponse.ok) {
-                _context.next = 49;
+            case 41:
+              reviewsResponse = _context.sent;
+              if (reviewsResponse.ok) {
+                _context.next = 47;
                 break;
               }
-              console.warn("Seller profile fetch failed: ".concat(_profileResponse.status, " ").concat(_profileResponse.statusText));
-              setUserProfile(null);
-              _context.next = 54;
-              break;
+              _context.next = 45;
+              return reviewsResponse.json();
+            case 45:
+              errorData = _context.sent;
+              throw new Error("Failed to fetch reviews: ".concat(reviewsResponse.status, " ").concat(reviewsResponse.statusText, " - ").concat(errorData.error || 'Unknown error'));
+            case 47:
+              _context.next = 49;
+              return reviewsResponse.json();
             case 49:
-              _context.next = 51;
-              return _profileResponse.json();
-            case 51:
-              _profileData = _context.sent;
-              console.log('Seller Profile Data:', _profileData); // Debug seller profile
-              setUserProfile(_profileData);
-            case 54:
-              _context.next = 60;
-              break;
+              reviewsData = _context.sent;
+              console.log('Reviews Data:', reviewsData);
+              if (isMounted) {
+                setReviews(reviewsData.data || []);
+              }
+              if (!(finalProductData !== null && finalProductData !== void 0 && finalProductData.profile_id)) {
+                _context.next = 70;
+                break;
+              }
+              _context.prev = 53;
+              _context.next = 56;
+              return fetch("".concat(baseImageUrl, "api/profiles/").concat(finalProductData.profile_id), {
+                headers: getAuthHeaders()
+              });
             case 56:
-              _context.prev = 56;
-              _context.t0 = _context["catch"](40);
-              console.warn('Seller profile fetch error:', _context.t0);
-              setUserProfile(null);
-            case 60:
-              _context.next = 69;
+              _profileResponse = _context.sent;
+              if (_profileResponse.ok) {
+                _context.next = 59;
+                break;
+              }
+              throw new Error("Seller profile fetch failed: ".concat(_profileResponse.status, " ").concat(_profileResponse.statusText));
+            case 59:
+              _context.next = 61;
+              return _profileResponse.json();
+            case 61:
+              _profileData = _context.sent;
+              console.log('Seller Profile Data:', _profileData);
+              if (isMounted) {
+                setUserProfile(_profileData);
+              }
+              _context.next = 70;
               break;
-            case 62:
-              _context.prev = 62;
+            case 66:
+              _context.prev = 66;
+              _context.t0 = _context["catch"](53);
+              console.warn('Seller profile fetch error:', _context.t0);
+              if (isMounted) {
+                setUserProfile(null);
+                antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
+                  content: 'Failed to load seller profile. Using default name.',
+                  style: {
+                    marginTop: '20px'
+                  }
+                });
+              }
+            case 70:
+              _context.next = 76;
+              break;
+            case 72:
+              _context.prev = 72;
               _context.t1 = _context["catch"](0);
               console.error('Error fetching data:', _context.t1);
-              setError(_context.t1.message);
-              setProduct(null);
-              setUserProfile(null);
-              antd__WEBPACK_IMPORTED_MODULE_9__["default"].error({
-                content: "Failed to load product details: ".concat(_context.t1.message),
-                style: {
-                  marginTop: '20px'
-                }
-              });
-            case 69:
-              _context.prev = 69;
-              setLoading(false);
-              return _context.finish(69);
-            case 72:
+              if (isMounted) {
+                setError(_context.t1.message);
+                setProduct(null);
+                setUserProfile(null);
+                setReviews([]);
+                antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+                  content: "Failed to load product details: ".concat(_context.t1.message),
+                  style: {
+                    marginTop: '20px'
+                  }
+                });
+              }
+            case 76:
+              _context.prev = 76;
+              if (isMounted) {
+                setLoading(false);
+              }
+              return _context.finish(76);
+            case 79:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 62, 69, 72], [40, 56]]);
+        }, _callee, null, [[0, 72, 76, 79], [53, 66]]);
       }));
       return function fetchProfileAndProductData() {
         return _ref.apply(this, arguments);
       };
     }();
     fetchProfileAndProductData();
+    return function () {
+      isMounted = false;
+    };
   }, [id, navigate]);
   var toggleCart = function toggleCart() {
     return setIsCartOpen(!isCartOpen);
@@ -35606,7 +35832,7 @@ var ProductView = function ProductView() {
     if (quantity > 1) setQuantity(quantity - 1);
   };
   var increaseQuantity = function increaseQuantity() {
-    if (product && quantity < (product.quantity || Infinity)) {
+    if (product && quantity < (product.quantity_available || Infinity)) {
       setQuantity(quantity + 1);
     }
   };
@@ -35620,7 +35846,7 @@ var ProductView = function ProductView() {
               _context2.next = 4;
               break;
             }
-            antd__WEBPACK_IMPORTED_MODULE_9__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
               content: 'Please log in to add items to your cart.',
               style: {
                 marginTop: '20px'
@@ -35631,7 +35857,7 @@ var ProductView = function ProductView() {
           case 4:
             _context2.prev = 4;
             _context2.next = 7;
-            return fetch("http://127.0.0.1:8000/api/cart/add", {
+            return fetch("".concat(baseImageUrl, "api/cart/add"), {
               method: 'POST',
               headers: getAuthHeaders(),
               body: JSON.stringify({
@@ -35653,7 +35879,7 @@ var ProductView = function ProductView() {
             throw new Error(data.message || 'Failed to add to cart');
           case 13:
             setIsCartOpen(true);
-            antd__WEBPACK_IMPORTED_MODULE_9__["default"].success({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].success({
               content: 'Item added to cart successfully!',
               style: {
                 marginTop: '20px'
@@ -35665,7 +35891,7 @@ var ProductView = function ProductView() {
             _context2.prev = 17;
             _context2.t0 = _context2["catch"](4);
             console.error('Error adding to cart:', _context2.t0);
-            antd__WEBPACK_IMPORTED_MODULE_9__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
               content: "Failed to add item to cart: ".concat(_context2.t0.message),
               style: {
                 marginTop: '20px'
@@ -35686,17 +35912,18 @@ var ProductView = function ProductView() {
   };
   var renderStars = function renderStars(rating) {
     var totalStars = 5;
-    var filledStars = Math.min(Math.max(rating, 0), 5);
+    var parsedRating = parseFloat(rating) || 0;
+    var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
     var emptyStars = totalStars - filledStars;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-      children: [Array(filledStars).fill().map(function (_, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: [Array(Math.max(filledStars, 0)).fill().map(function (_, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
           size: 18,
           fill: "#ff0000",
           color: "#ff0000"
         }, "filled-".concat(index));
-      }), Array(emptyStars).fill().map(function (_, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }), Array(Math.max(emptyStars, 0)).fill().map(function (_, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
           size: 18,
           fill: "none",
           color: "#ccc"
@@ -35704,194 +35931,270 @@ var ProductView = function ProductView() {
       })]
     });
   };
-  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+  var calculateRatingStats = function calculateRatingStats() {
+    if (reviews.length === 0) {
+      return {
+        averageRating: 0,
+        ratingCounts: {
+          5: 0,
+          4: 0,
+          3: 0,
+          2: 0,
+          1: 0
+        }
+      };
+    }
+    var totalRating = reviews.reduce(function (sum, review) {
+      return sum + review.rating;
+    }, 0);
+    var averageRating = parseFloat((totalRating / reviews.length).toFixed(1));
+    var ratingCounts = {
+      5: 0,
+      4: 0,
+      3: 0,
+      2: 0,
+      1: 0
+    };
+    reviews.forEach(function (review) {
+      if (review.rating >= 1 && review.rating <= 5) {
+        ratingCounts[review.rating] += 1;
+      }
+    });
+    return {
+      averageRating: averageRating,
+      ratingCounts: ratingCounts
+    };
+  };
+  var _calculateRatingStats = calculateRatingStats(),
+    averageRating = _calculateRatingStats.averageRating,
+    ratingCounts = _calculateRatingStats.ratingCounts;
+  var filteredReviews = reviews.filter(function (review) {
+    var matchesRating = filterRating ? review.rating === filterRating : true;
+    var matchesMedia = showMediaOnly ? review.photo : true;
+    return matchesRating && matchesMedia;
+  });
+  var formatDate = function formatDate(dateString) {
+    if (!dateString) return 'N/A';
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }).format(new Date(dateString));
+  };
+  var getFullName = function getFullName(user) {
+    if (user !== null && user !== void 0 && user.profile) {
+      return [user.profile.first_name || '', user.profile.middlename !== 'N/A' ? user.profile.middlename : '', user.profile.last_name || '', user.profile.suffix !== 'N/A' ? user.profile.suffix : ''].filter(Boolean).join(' ');
+    }
+    if (user) {
+      return [user.first_name || '', user.middlename !== 'N/A' ? user.middlename : '', user.last_name || '', user.suffix !== 'N/A' ? user.suffix : ''].filter(Boolean).join(' ');
+    }
+    return 'Anonymous';
+  };
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     children: "Loading..."
   });
-  if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     children: ["Error: ", error]
   });
-  if (!product) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+  if (!product) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     children: "Product not found"
   });
-  var fullName = userProfile ? [userProfile.first_name || '', userProfile.middle_name !== 'N/A' ? userProfile.middle_name : '', userProfile.last_name || '', userProfile.suffix !== 'N/A' ? userProfile.suffix : ''].filter(Boolean).join(' ') : product.profile_name || 'Jeff23 Ogabang';
-  var imageUrl = product.product_img ? "http://127.0.0.1:8000/".concat(product.product_img) : '';
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  var fullName = userProfile ? [userProfile.first_name || '', userProfile.middlename !== 'N/A' ? userProfile.middlename : '', userProfile.last_name || '', userProfile.suffix !== 'N/A' ? userProfile.suffix : ''].filter(Boolean).join(' ') : product.profile_name || 'Unknown Seller';
+  var imageUrl = product.product_img ? "".concat(baseImageUrl).concat(product.product_img.replace(/^\//, '')) : '';
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "product-view-page",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {
       onCartClick: toggleCart
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "content-wrapper",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "product-view-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "product-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "product-image",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
               src: imageUrl,
               alt: product.product_name
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "product-details",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "product-title-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
                 children: product.product_name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "expand-icon",
                 onClick: handleExpandClick,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
                   size: 24,
                   strokeWidth: 1.5,
                   color: "#000"
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
               className: "company",
               children: fullName
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "price-rating",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
                 className: "price",
                 children: ["\u20B1", product.price.toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "rating",
-                children: renderStars(5)
+                children: renderStars(averageRating)
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
               className: "description",
               children: product.description || 'No description available'
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
               className: "quantity-available",
               children: ["Available: ", product.quantity_available || 'N/A']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "quantity-controls",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                 onClick: decreaseQuantity,
                 disabled: quantity === 1,
                 children: "-"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                 children: quantity
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                 onClick: increaseQuantity,
-                disabled: quantity >= (product.quantity || Infinity),
+                disabled: quantity >= (product.quantity_available || Infinity),
                 children: "+"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "action-buttons",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("button", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "add-to-cart",
                 onClick: handleAddToCart,
                 children: ["Add to Cart: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "buy-now",
                 children: ["Buy Now: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "shipping-info",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                 className: "shipping-hover",
                 children: "Free standard shipping"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
                 className: "shipping-hover",
                 children: "Free Returns"
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "reviews-container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "reviews-section",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
               children: "Reviews"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "overall-rating",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "overall-score",
-                children: "4.9 out of 5"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                children: [averageRating, " out of 5"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "rating",
-                children: renderStars(5)
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                children: renderStars(averageRating)
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "filter-buttons",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn active",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                  className: "filter-btn ".concat(filterRating === null ? 'active' : ''),
+                  onClick: function onClick() {
+                    return setFilterRating(null);
+                  },
                   children: "All"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn",
-                  children: "5 star (10)"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn",
-                  children: "4 star (0)"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn",
-                  children: "3 star (0)"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn",
-                  children: "2 star (0)"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                  className: "filter-btn",
-                  children: "1 star (0)"
+                }), [5, 4, 3, 2, 1].map(function (star) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
+                    className: "filter-btn ".concat(filterRating === star ? 'active' : ''),
+                    onClick: function onClick() {
+                      return setFilterRating(star);
+                    },
+                    children: [star, " star (", ratingCounts[star], ")"]
+                  }, star);
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-                className: "media-btn",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                className: "media-btn ".concat(showMediaOnly ? 'active' : ''),
+                onClick: function onClick() {
+                  return setShowMediaOnly(!showMediaOnly);
+                },
                 children: "With Media"
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "reviews-scroll",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "review",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "review-header",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                    className: "reviewer-info",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                      src: _resources_sass_img_pfp_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                      alt: "Profile",
-                      className: "pfp"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-                        className: "reviewer-name",
-                        children: "Kean D."
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-                        className: "review-date",
-                        children: "December 12, 2024"
+              children: filteredReviews.length > 0 ? filteredReviews.map(function (review) {
+                var _review$user;
+                var reviewerName = getFullName(review.user);
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "review",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "review-header",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                      className: "reviewer-info",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                        src: (_review$user = review.user) !== null && _review$user !== void 0 && (_review$user = _review$user.profile) !== null && _review$user !== void 0 && _review$user.profile_img ? "".concat(baseImageUrl).concat(review.user.profile.profile_img.replace(/^\//, '')) : defaultProfileImage,
+                        alt: "Profile",
+                        className: "pfp",
+                        onError: function onError(e) {
+                          var _review$user2;
+                          console.log("Image load failed for:", "".concat(baseImageUrl).concat((_review$user2 = review.user) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile_img) === null || _review$user2 === void 0 ? void 0 : _review$user2.replace(/^\//, '')));
+                          e.target.src = defaultProfileImage;
+                        }
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                          className: "reviewer-name",
+                          children: reviewerName
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                          className: "review-date",
+                          children: formatDate(review.created_at)
+                        })]
                       })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                      className: "rating",
+                      children: renderStars(review.rating)
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                    className: "rating",
-                    children: renderStars(5)
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                    className: "review-text",
+                    children: review.comment || 'No comment provided.'
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                    className: "review-images",
+                    children: [review.photo ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                      src: "".concat(baseImageUrl).concat(review.photo.replace(/^\//, '')),
+                      alt: "Review Image",
+                      className: "review-img",
+                      onError: function onError(e) {
+                        console.log("Review image load failed for:", "".concat(baseImageUrl).concat(review.photo.replace(/^\//, '')));
+                        e.target.style.display = 'none';
+                        e.target.parentElement.querySelector('.no-photo').style.display = 'block';
+                      }
+                    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                      className: "no-photo",
+                      style: {
+                        display: review.photo ? 'none' : 'block'
+                      },
+                      children: "No Photo"
+                    })]
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-                  className: "best-feature",
-                  children: "Best Feature: Light and Smooth"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-                  className: "review-text",
-                  children: "I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                  className: "review-images",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                    src: _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-                    alt: "Review Image 1",
-                    className: "review-img"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-                    src: _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-                    alt: "Review Image 2",
-                    className: "review-img"
-                  })]
-                })]
+                }, review.id);
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "no-reviews",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+                  children: "No reviews found for this product."
+                })
               })
             })]
           })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_4__["default"], {
       isOpen: isCartOpen,
       onClose: function onClose() {
         return setIsCartOpen(false);
@@ -45547,7 +45850,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.reviewsandnotification-dashboard {\n  flex: 1;\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content {\n  width: 100%;\n  background: #f4f4f4;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content h2 {\n  margin: 0 0 15px 0;\n  font-size: 24px;\n  color: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n  gap: 10px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions {\n  display: flex;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container {\n  position: relative;\n  width: 100%;\n  max-width: 300px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  color: #666;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input {\n  width: 100%;\n  padding: 10px 10px 10px 35px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  height: 40px;\n  box-sizing: border-box;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input:focus {\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button {\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0 12px;\n  min-width: 40px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-icon {\n  margin-right: 8px;\n  display: inline-block;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-text {\n  display: inline-block;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .archive-all-button {\n  background: #ff4444;\n  color: white;\n  border-color: #ff4444;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .archive-all-button:hover {\n  background: #ff1111;\n  border-color: #ff1111;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table {\n  width: 100%;\n  overflow-x: auto;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tabs {\n  background-color: #333333;\n  display: flex;\n  border-radius: 5px 5px 0px 0px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tab-button {\n  flex: 1;\n  height: 40px;\n  border-radius: 5px 5px 0px 0px;\n  border: 0px solid transparent;\n  background-color: transparent;\n  color: #a4a4a4;\n  font-size: 14px;\n  cursor: pointer;\n  transition: all 0.4s ease-in-out;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tab-button.active {\n  background-color: #ff0000;\n  color: white;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table {\n  width: 100%;\n  border-collapse: collapse;\n  min-width: 600px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th {\n  padding: 12px 15px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table td {\n  padding: 12px 15px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table tr {\n  border-bottom: 1px solid #555;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table tr:last-child {\n  border-bottom: none;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon:hover {\n  color: #ff0000 !important;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .loading-row {\n  text-align: center;\n  color: #fff;\n  background: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 15px;\n  flex-wrap: wrap;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.confirm-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.confirm-modal {\n  background: #fff;\n  padding: 20px;\n  border-radius: 8px;\n  width: 90%;\n  max-width: 400px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.confirm-modal h3 {\n  margin: 0 0 10px;\n  color: #333;\n}\n.confirm-modal p {\n  margin: 0 0 20px;\n  color: #666;\n}\n.confirm-modal .confirm-modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button:hover {\n  background: #cc0000;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}\n\n.modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.add-item-modal {\n  background: #fff;\n  border-radius: 10px;\n  width: 90%;\n  max-width: 500px;\n  max-height: 80vh;\n  overflow-y: auto;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.add-item-modal .modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 15px 20px;\n  border-bottom: 1px solid #eee;\n}\n.add-item-modal .modal-header h2 {\n  margin: 0;\n  font-size: 24px;\n  color: #333;\n}\n.add-item-modal .modal-header .close-button {\n  background: none;\n  border: none;\n  font-size: 20px;\n  cursor: pointer;\n  color: #333;\n  transition: color 0.3s;\n}\n.add-item-modal .modal-header .close-button:hover {\n  color: #ff0000;\n}\n.add-item-modal .modal-content {\n  padding: 20px;\n}\n.add-item-modal .modal-content .form-section {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.add-item-modal .modal-content .form-section .field-group {\n  display: flex;\n  flex-direction: column;\n}\n.add-item-modal .modal-content .form-section .field-group label {\n  margin-bottom: 5px;\n  color: #333;\n  font-size: 14px;\n  font-weight: 600;\n}\n.add-item-modal .modal-content .form-section .field-group .input-field {\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  transition: border-color 0.3s;\n}\n.add-item-modal .modal-content .form-section .field-group .input-field:focus {\n  border-color: #ff0000;\n}\n.add-item-modal .modal-content .form-section .field-group.full-width {\n  width: 100%;\n}\n.add-item-modal .modal-content .form-section .button-group {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 20px;\n}\n.add-item-modal .modal-content .form-section .button-group .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.add-item-modal .modal-content .form-section .button-group .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}\n.add-item-modal .modal-content .form-section .button-group .save-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.add-item-modal .modal-content .form-section .button-group .save-button:hover {\n  background: #cc0000;\n}\n\n@media (max-width: 768px) {\n  .reviewsandnotification-dashboard {\n    padding: 10px;\n  }\n  .reviewsandnotification-content h2 {\n    font-size: 20px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header {\n    flex-wrap: nowrap;\n    align-items: center;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container {\n    max-width: 150px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input {\n    font-size: 12px;\n    padding: 10px 10px 10px 30px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-icon {\n    left: 8px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions {\n    gap: 5px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button {\n    width: 40px;\n    padding: 0;\n    min-width: 40px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-icon {\n    margin-right: 0;\n    display: inline-block;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-text {\n    display: none;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table .tab-button {\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table th, .reviewsandnotification-content .reviewsandnotification-table table td {\n    padding: 8px 10px;\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons {\n    gap: 8px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon {\n    font-size: 14px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination {\n    justify-content: center;\n    gap: 5px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination span {\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination button {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html,\nbody {\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  background-color: #f4f4f4;\n}\n\n.app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n}\n\n.reviewsandnotification-dashboard {\n  flex: 1;\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content {\n  width: 100%;\n  background: #f4f4f4;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content h2 {\n  margin: 0 0 15px 0;\n  font-size: 24px;\n  color: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n  gap: 10px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions {\n  display: flex;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container {\n  position: relative;\n  width: 100%;\n  max-width: 300px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  color: #666;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input {\n  width: 100%;\n  padding: 10px 10px 10px 35px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  height: 40px;\n  box-sizing: border-box;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input:focus {\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button {\n  height: 40px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0 12px;\n  min-width: 40px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-icon {\n  margin-right: 8px;\n  display: inline-block;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-text {\n  display: inline-block;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .archive-all-button {\n  background: #ff4444;\n  color: white;\n  border-color: #ff4444;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-header .right-actions .archive-all-button:hover {\n  background: #ff1111;\n  border-color: #ff1111;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table {\n  width: 100%;\n  overflow-x: auto;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tabs {\n  background-color: #333333 !important;\n  display: flex;\n  border-radius: 5px 5px 0px 0px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tab-button {\n  flex: 1;\n  height: 40px;\n  border-radius: 5px 5px 0px 0px;\n  border: 0px solid transparent;\n  background-color: transparent;\n  color: #a4a4a4;\n  font-size: 14px;\n  cursor: pointer;\n  transition: all 0.4s ease-in-out;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table .tab-button.active {\n  background-color: #ff0000 !important;\n  color: white;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table {\n  width: 100%;\n  border-collapse: collapse;\n  min-width: 600px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th {\n  padding: 12px 15px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table td {\n  padding: 12px 15px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table td.photo-cell {\n  padding: 5px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table td.photo-cell img {\n  max-width: 50px;\n  max-height: 50px;\n  border-radius: 4px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table tr {\n  border-bottom: 1px solid #555;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table tr:last-child {\n  border-bottom: none;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon:hover,\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon:hover {\n  color: #ff0000 !important;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-table table .loading-row {\n  text-align: center;\n  color: #fff;\n  background: #333;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 15px;\n  flex-wrap: wrap;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.reviewsandnotification-dashboard .reviewsandnotification-content .reviewsandnotification-pagination button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.confirm-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.confirm-modal {\n  background: #fff;\n  padding: 20px;\n  border-radius: 8px;\n  width: 90%;\n  max-width: 400px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.confirm-modal h3 {\n  margin: 0 0 10px;\n  color: #333;\n}\n.confirm-modal p {\n  margin: 0 0 20px;\n  color: #666;\n}\n.confirm-modal .confirm-modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .confirm-button:hover {\n  background: #cc0000;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal .confirm-modal-buttons .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}\n\n.modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.add-item-modal {\n  background: #fff;\n  border-radius: 10px;\n  width: 90%;\n  max-width: 500px;\n  max-height: 80vh;\n  overflow-y: auto;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.add-item-modal .modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 15px 20px;\n  border-bottom: 1px solid #eee;\n}\n.add-item-modal .modal-header h2 {\n  margin: 0;\n  font-size: 24px;\n  color: #333;\n}\n.add-item-modal .modal-header .close-button {\n  background: none;\n  border: none;\n  font-size: 20px;\n  cursor: pointer;\n  color: #333;\n  transition: color 0.3s;\n}\n.add-item-modal .modal-header .close-button:hover {\n  color: #ff0000;\n}\n.add-item-modal .modal-content {\n  padding: 20px;\n}\n.add-item-modal .modal-content .form-section {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.add-item-modal .modal-content .form-section .field-group {\n  display: flex;\n  flex-direction: column;\n}\n.add-item-modal .modal-content .form-section .field-group label {\n  margin-bottom: 5px;\n  color: #333;\n  font-size: 14px;\n  font-weight: 600;\n}\n.add-item-modal .modal-content .form-section .field-group .input-field {\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  transition: border-color 0.3s;\n}\n.add-item-modal .modal-content .form-section .field-group .input-field[type=file] {\n  padding: 8px;\n}\n.add-item-modal .modal-content .form-section .field-group .input-field:focus {\n  border-color: #ff0000;\n}\n.add-item-modal .modal-content .form-section .field-group .photo-preview {\n  margin-top: 10px;\n  max-width: 100px;\n  max-height: 100px;\n  border-radius: 4px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.add-item-modal .modal-content .form-section .field-group.full-width {\n  width: 100%;\n}\n.add-item-modal .modal-content .form-section .button-group {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 20px;\n}\n.add-item-modal .modal-content .form-section .button-group .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.add-item-modal .modal-content .form-section .button-group .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}\n.add-item-modal .modal-content .form-section .button-group .save-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.add-item-modal .modal-content .form-section .button-group .save-button:hover {\n  background: #cc0000;\n}\n\n@media (max-width: 768px) {\n  .reviewsandnotification-dashboard {\n    padding: 10px;\n  }\n  .reviewsandnotification-content h2 {\n    font-size: 20px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header {\n    flex-wrap: nowrap;\n    align-items: center;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container {\n    max-width: 150px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-input {\n    font-size: 12px;\n    padding: 10px 10px 10px 30px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .left-actions .search-container .search-icon {\n    left: 8px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions {\n    gap: 5px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button {\n    width: 40px;\n    padding: 0;\n    min-width: 40px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-icon {\n    margin-right: 0;\n    display: inline-block;\n  }\n  .reviewsandnotification-content .reviewsandnotification-header .right-actions .header-button .button-text {\n    display: none;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table .tab-button {\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table th, .reviewsandnotification-content .reviewsandnotification-table table td {\n    padding: 8px 10px;\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table th.photo-cell img, .reviewsandnotification-content .reviewsandnotification-table table td.photo-cell img {\n    max-width: 40px;\n    max-height: 40px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons {\n    gap: 8px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .checkbox-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .delete-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .edit-icon,\n  .reviewsandnotification-content .reviewsandnotification-table table .action-icons .restore-icon {\n    font-size: 14px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination {\n    justify-content: center;\n    gap: 5px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination span {\n    font-size: 12px;\n  }\n  .reviewsandnotification-content .reviewsandnotification-pagination button {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n  .add-item-modal {\n    width: 95%;\n    max-width: 400px;\n  }\n  .add-item-modal .modal-content .form-section .field-group .photo-preview {\n    max-width: 80px;\n    max-height: 80px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46102,7 +46405,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n  align-items: center;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n  font-size: 14px;\n  color: #666;\n  font-style: italic;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews {\n  text-align: center;\n  padding: 20px 0;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews p {\n  margin: 0;\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n    margin-left: 0;\n    margin-top: 10px;\n    flex-wrap: wrap;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n    margin-left: 0;\n    margin-top: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n    margin-top: 10px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n    font-size: 12px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46716,21 +47019,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/paypal.svg?5d47355f56a36c45c846f24910efd57c");
-
-/***/ }),
-
-/***/ "./resources/sass/img/pfp.svg":
-/*!************************************!*\
-  !*** ./resources/sass/img/pfp.svg ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/pfp.svg?7c0ea19d2a51d9c683df1c576c0d3ae4");
 
 /***/ }),
 

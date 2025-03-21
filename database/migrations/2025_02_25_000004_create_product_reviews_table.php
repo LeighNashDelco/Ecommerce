@@ -11,13 +11,14 @@ class CreateProductReviewsTable extends Migration
         Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
-            $table->text('comment');
+            $table->unsignedBigInteger('user_id'); // Changed back to user_id
             $table->integer('rating');
+            $table->text('comment')->nullable();
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('user_id')->references('id')->on('users');
+            // Foreign key constraints
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Updated to reference users
         });
     }
 

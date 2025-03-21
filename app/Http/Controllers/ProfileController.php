@@ -10,7 +10,7 @@ class ProfileController extends Controller
     // Existing store method (unchanged)
     public function store(Request $request) { /* ... */ }
 
-    // New index method
+    // Existing index method
     public function index()
     {
         try {
@@ -26,6 +26,18 @@ class ProfileController extends Controller
             return response()->json($profiles);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to fetch profiles: ' . $e->getMessage()], 500);
+        }
+    }
+
+    // New show method
+    public function show($id)
+    {
+        try {
+            $profile = Profile::with(['user', 'genderRelation'])->findOrFail($id);
+            return response()->json($profile);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching profile ID ' . $id . ': ' . $e->getMessage());
+            return response()->json(['error' => 'Failed to fetch profile: ' . $e->getMessage()], 500);
         }
     }
 }

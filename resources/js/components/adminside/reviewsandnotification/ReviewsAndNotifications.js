@@ -5,199 +5,13 @@ import { FaSquare, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconRefresh, IconPlus, IconEye, IconSearch } from "@tabler/icons-react";
 import axios from "axios";
 import NotificationModalModule from "./NotificationModal";
+import ReviewModal from "./ReviewModal";
 import "./../../../../sass/components/_reviewsandnotification.scss";
 
-// ReviewModal (updated)
-const ReviewModal = ({ onClose, onSubmit, isEdit = false, initialData = null }) => {
-  const [formData, setFormData] = useState({
-    product_id: isEdit && initialData ? initialData.product_id || "" : "",
-    profile_id: isEdit && initialData ? initialData.profile_id || "" : "",
-    rating: isEdit && initialData ? initialData.rating || "" : "",
-    comment: isEdit && initialData ? initialData.comment || "" : "",
-  });
-  const [products, setProducts] = useState([]);
-  const [profiles, setProfiles] = useState([]);
-  const [productSearch, setProductSearch] = useState("");
-  const [profileSearch, setProfileSearch] = useState("");
-  const [showProductDropdown, setShowProductDropdown] = useState(false);
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem("LaravelPassportToken");
-        const config = { headers: { Authorization: `Bearer ${token}` } };
-        const [productsRes, profilesRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/products", config),
-          axios.get("http://127.0.0.1:8000/api/profiles", config),
-        ]);
-        setProducts(productsRes.data);
-        setProfiles(profilesRes.data);
-
-        if (isEdit && initialData) {
-          const product = productsRes.data.find(p => p.id === initialData.product_id);
-          const profile = profilesRes.data.find(p => p.id === initialData.profile_id);
-          setProductSearch(product ? product.product_name : "");
-          setProfileSearch(profile ? profile.full_name : "");
-        }
-      } catch (error) {
-        console.error("Error fetching dropdown data:", error);
-      }
-    };
-    fetchData();
-
-    if (isEdit && initialData) {
-      setFormData({
-        product_id: initialData.product_id || "",
-        profile_id: initialData.profile_id || "",
-        rating: initialData.rating || "",
-        comment: initialData.comment || "",
-      });
-    }
-  }, [isEdit, initialData]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleProductSelect = (product) => {
-    setFormData((prev) => ({ ...prev, product_id: product.id }));
-    setProductSearch(product.product_name);
-    setShowProductDropdown(false);
-  };
-
-  const handleProfileSelect = (profile) => {
-    setFormData((prev) => ({ ...prev, profile_id: profile.id }));
-    setProfileSearch(profile.full_name);
-    setShowProfileDropdown(false);
-  };
-
-  const filteredProducts = products.filter((p) =>
-    p.product_name.toLowerCase().includes(productSearch.toLowerCase())
-  );
-  const filteredProfiles = profiles.filter((p) =>
-    p.full_name.toLowerCase().includes(profileSearch.toLowerCase())
-  );
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ formData });
-  };
-
-  return (
-    <div className="modal-overlay">
-      <div className="add-item-modal">
-        <div className="modal-header">
-          <h2>{isEdit ? "Edit Review" : "Add Review"}</h2>
-          <button className="close-button" onClick={onClose}>
-            ✕
-          </button>
-        </div>
-        <div className="modal-content">
-          <form onSubmit={handleSubmit}>
-            <div className="form-section">
-              <div className="field-group full-width" style={{ position: "relative" }}>
-                <label>Product Name</label>
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  value={productSearch}
-                  onChange={(e) => {
-                    setProductSearch(e.target.value);
-                    setShowProductDropdown(true);
-                  }}
-                  onFocus={() => setShowProductDropdown(true)}
-                  className="input-field"
-                  required
-                />
-                {showProductDropdown && filteredProducts.length > 0 && (
-                  <ul style={{ maxHeight: "150px", overflowY: "auto", border: "1px solid #ccc", position: "absolute", top: "100%", left: 0, right: 0, background: "#fff", zIndex: 10, listStyle: "none", padding: 0, margin: 0 }}>
-                    {filteredProducts.map((product) => (
-                      <li
-                        key={product.id}
-                        onClick={() => handleProductSelect(product)}
-                        style={{ padding: "5px 10px", cursor: "pointer" }}
-                      >
-                        {product.product_name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <div className="field-group full-width" style={{ position: "relative" }}>
-                <label>User Name</label>
-                <input
-                  type="text"
-                  placeholder="Search users..."
-                  value={profileSearch}
-                  onChange={(e) => {
-                    setProfileSearch(e.target.value);
-                    setShowProfileDropdown(true);
-                  }}
-                  onFocus={() => setShowProfileDropdown(true)}
-                  className="input-field"
-                  required
-                />
-                {showProfileDropdown && filteredProfiles.length > 0 && (
-                  <ul style={{ maxHeight: "150px", overflowY: "auto", border: "1px solid #ccc", position: "absolute", top: "100%", left: 0, right: 0, background: "#fff", zIndex: 10, listStyle: "none", padding: 0, margin: 0 }}>
-                    {filteredProfiles.map((profile) => (
-                      <li
-                        key={profile.id}
-                        onClick={() => handleProfileSelect(profile)}
-                        style={{ padding: "5px 10px", cursor: "pointer" }}
-                      >
-                        {profile.full_name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <div className="field-group full-width">
-                <label>Rating</label>
-                <input
-                  type="number"
-                  name="rating"
-                  placeholder="Rating (1-5)"
-                  value={formData.rating}
-                  onChange={handleInputChange}
-                  className="input-field"
-                  min="1"
-                  max="5"
-                  required
-                />
-              </div>
-              <div className="field-group full-width">
-                <label>Comment</label>
-                <textarea
-                  name="comment"
-                  placeholder="Comment"
-                  value={formData.comment}
-                  onChange={handleInputChange}
-                  className="input-field"
-                  required
-                />
-              </div>
-              <div className="button-group">
-                <button type="button" className="cancel-button" onClick={onClose}>
-                  Cancel
-                </button>
-                <button type="submit" className="save-button">
-                  {isEdit ? "Update" : "Save"}
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// NotificationModal (updated import handling)
+// NotificationModal handling
 const NotificationModal = NotificationModalModule && NotificationModalModule.default 
-    ? NotificationModalModule.default 
-    : NotificationModalModule;
+  ? NotificationModalModule.default 
+  : NotificationModalModule;
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -244,39 +58,35 @@ const ReviewsAndNotification = () => {
           axios.get("http://127.0.0.1:8000/api/profiles", config),
         ]);
 
-        console.log("Products Response:", productsRes.data);
-        console.log("Profiles Response:", profilesRes.data);
-        console.log("Reviews Active Response:", reviewActiveResponse.data);
-        console.log("Notifications Active Response:", notificationActiveResponse.data);
-
         const productsMap = productsRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.product_name }), {});
-        const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.full_name }), {});
+        const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.user_id]: p.full_name }), {}); // Changed to map user_id to full_name
 
         const activeReviews = reviewActiveResponse.data.map((review) => ({
           ...review,
           archived: false,
           product_name: productsMap[review.product_id] || `Unknown Product (ID: ${review.product_id})`,
-          user_name: profilesMap[review.profile_id] || `Unknown User (ID: ${review.profile_id})`,
+          user_name: profilesMap[review.user_id] || `Unknown User (ID: ${review.user_id})`, // Changed to use user_id
         }));
         const archivedReviews = reviewArchivedResponse.data.map((review) => ({
           ...review,
           archived: true,
           product_name: productsMap[review.product_id] || `Unknown Product (ID: ${review.product_id})`,
-          user_name: profilesMap[review.profile_id] || `Unknown User (ID: ${review.profile_id})`,
+          user_name: profilesMap[review.user_id] || `Unknown User (ID: ${review.user_id})`, // Changed to use user_id
         }));
         const activeNotifications = notificationActiveResponse.data.map((notification) => ({
           ...notification,
           archived: false,
-          user_name: profilesMap[notification.profile_id] || `Unknown User (ID: ${notification.profile_id})`,
+          user_name: profilesMap[notification.profile_id] || `Unknown User (ID: ${notification.profile_id})`, // Notifications still use profile_id
         }));
         const archivedNotifications = notificationArchivedResponse.data.map((notification) => ({
           ...notification,
           archived: true,
-          user_name: profilesMap[notification.profile_id] || `Unknown User (ID: ${notification.profile_id})`,
+          user_name: profilesMap[notification.profile_id] || `Unknown User (ID: ${notification.profile_id})`, // Notifications still use profile_id
         }));
 
         setReviews([...activeReviews, ...archivedReviews]);
         setNotifications([...activeNotifications, ...archivedNotifications]);
+        console.log("Notifications:", [...activeNotifications, ...archivedNotifications]); // Debug log
         setReviewPagination({
           currentPage: 1,
           totalPages: Math.ceil((activeReviews.length + archivedReviews.length) / 10),
@@ -300,15 +110,15 @@ const ReviewsAndNotification = () => {
   const filteredReviews = reviews.filter(
     (review) =>
       (review.comment?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        review.product_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        review.user_name?.toLowerCase().includes(searchTerm.toLowerCase())) &&
+       review.product_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       review.user_name?.toLowerCase().includes(searchTerm.toLowerCase())) &&
       review.archived === showArchived
   );
-  const filteredNotifications = reviews.filter(
+  const filteredNotifications = notifications.filter(
     (notification) =>
       (notification.message?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        notification.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        notification.user_name?.toLowerCase().includes(searchTerm.toLowerCase())) &&
+       notification.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       notification.user_name?.toLowerCase().includes(searchTerm.toLowerCase())) &&
       notification.archived === showArchived
   );
 
@@ -355,24 +165,29 @@ const ReviewsAndNotification = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const endpoint = activeTab === "reviews" ? "reviews" : "notifications";
+      console.log(`Sending archive request for ${endpoint}/${itemToArchive.id}`, { archived: true });
       const response = await axios.patch(
         `http://127.0.0.1:8000/api/${endpoint}/${itemToArchive.id}/archive`,
         { archived: true },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log('Archive response:', response.data);
       if (response.status === 200) {
+        const updatedArchived = response.data.review?.archived ?? true;
         if (activeTab === "reviews") {
           setReviews((prevReviews) =>
             prevReviews.map((review) =>
-              review.id === itemToArchive.id ? { ...review, archived: true } : review
+              review.id === itemToArchive.id ? { ...review, archived: updatedArchived } : review
             )
           );
+          setShowArchived(true); // Switch to archived view after archiving
         } else {
           setNotifications((prevNotifications) =>
             prevNotifications.map((notification) =>
-              notification.id === itemToArchive.id ? { ...notification, archived: true } : notification
+              notification.id === itemToArchive.id ? { ...notification, archived: updatedArchived } : notification
             )
           );
+          setShowArchived(true); // Switch to archived view after archiving
         }
         setIsConfirmModalOpen(false);
         setItemToArchive(null);
@@ -386,24 +201,29 @@ const ReviewsAndNotification = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const endpoint = activeTab === "reviews" ? "reviews" : "notifications";
+      console.log(`Sending restore request for ${endpoint}/${itemId}`, { archived: false });
       const response = await axios.patch(
         `http://127.0.0.1:8000/api/${endpoint}/${itemId}/archive`,
         { archived: false },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log('Restore response:', response.data);
       if (response.status === 200) {
+        const updatedArchived = response.data.review?.archived ?? false;
         if (activeTab === "reviews") {
           setReviews((prevReviews) =>
             prevReviews.map((review) =>
-              review.id === itemId ? { ...review, archived: false } : review
+              review.id === itemId ? { ...review, archived: updatedArchived } : review
             )
           );
+          setShowArchived(false); // Switch to active view after restoring
         } else {
           setNotifications((prevNotifications) =>
             prevNotifications.map((notification) =>
-              notification.id === itemId ? { ...notification, archived: false } : notification
+              notification.id === itemId ? { ...notification, archived: updatedArchived } : notification
             )
           );
+          setShowArchived(false); // Switch to active view after restoring
         }
       }
     } catch (error) {
@@ -416,6 +236,7 @@ const ReviewsAndNotification = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const endpoint = activeTab === "reviews" ? "reviews" : "notifications";
+      console.log(`Sending bulk ${action} request for ${endpoint}`, { items: selectedItems });
       const requests = selectedItems.map((itemId) =>
         axios.patch(
           `http://127.0.0.1:8000/api/${endpoint}/${itemId}/archive`,
@@ -423,25 +244,33 @@ const ReviewsAndNotification = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         )
       );
-      await Promise.all(requests);
+      const responses = await Promise.all(requests);
+      console.log('Bulk action responses:', responses);
       if (activeTab === "reviews") {
         setReviews((prevReviews) =>
-          prevReviews.map((review) =>
-            selectedItems.includes(review.id)
-              ? { ...review, archived: action === "archive" }
-              : review
-          )
+          prevReviews.map((review) => {
+            if (selectedItems.includes(review.id)) {
+              const response = responses.find((res) => res.data.review?.id === review.id);
+              const updatedArchived = response?.data.review?.archived ?? (action === "archive");
+              return { ...review, archived: updatedArchived };
+            }
+            return review;
+          })
         );
       } else {
         setNotifications((prevNotifications) =>
-          prevNotifications.map((notification) =>
-            selectedItems.includes(notification.id)
-              ? { ...notification, archived: action === "archive" }
-              : notification
-          )
+          prevNotifications.map((notification) => {
+            if (selectedItems.includes(notification.id)) {
+              const response = responses.find((res) => res.data.review?.id === notification.id);
+              const updatedArchived = response?.data.review?.archived ?? (action === "archive");
+              return { ...notification, archived: updatedArchived };
+            }
+            return notification;
+          })
         );
       }
       setSelectedItems([]);
+      setShowArchived(action === "archive"); // Switch view after bulk action
     } catch (error) {
       console.error(`Error ${action}ing items:`, error.response?.data || error.message);
     }
@@ -455,7 +284,10 @@ const ReviewsAndNotification = () => {
 
   const handleEditClick = (item) => {
     setIsEditMode(true);
-    setItemToEdit(item);
+    setItemToEdit({
+      ...item,
+      user_id: item.user_id || "",
+    });
     setIsModalOpen(true);
   };
 
@@ -467,91 +299,89 @@ const ReviewsAndNotification = () => {
   const handleItemAdd = async (newItem) => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
-      const endpoint = activeTab === "reviews" ? "reviews" : "notifications";
+      // Log the FormData contents
+      const formDataEntries = {};
+      for (let [key, value] of newItem.entries()) {
+        formDataEntries[key] = value;
+      }
+      console.log("Sending new review:", formDataEntries);
+  
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/${endpoint}`,
-        newItem.formData,
+        `http://127.0.0.1:8000/api/reviews`,
+        newItem,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
       if (response.status === 201) {
         const addedItem = { ...response.data, archived: false };
-        if (activeTab === "reviews") {
-          const productsRes = await axios.get("http://127.0.0.1:8000/api/products", { headers: { Authorization: `Bearer ${token}` } });
-          const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", { headers: { Authorization: `Bearer ${token}` } });
-          const productsMap = productsRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.product_name }), {});
-          const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.full_name }), {});
-          addedItem.product_name = productsMap[addedItem.product_id] || `Unknown Product (ID: ${addedItem.product_id})`;
-          addedItem.user_name = profilesMap[addedItem.profile_id] || `Unknown User (ID: ${addedItem.profile_id})`;
-          setReviews((prevReviews) => [addedItem, ...prevReviews]);
-          setReviewPagination({
-            currentPage: 1,
-            totalPages: Math.ceil((reviews.length + 1) / itemsPerPage),
-          });
-        } else {
-          const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", { headers: { Authorization: `Bearer ${token}` } });
-          const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.full_name }), {});
-          addedItem.user_name = profilesMap[addedItem.profile_id] || `Unknown User (ID: ${addedItem.profile_id})`;
-          setNotifications((prevNotifications) => [addedItem, ...prevNotifications]);
-          setNotificationPagination({
-            currentPage: 1,
-            totalPages: Math.ceil((notifications.length + 1) / itemsPerPage),
-          });
-        }
+        const productsRes = await axios.get("http://127.0.0.1:8000/api/products", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const productsMap = productsRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.product_name }), {});
+        const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.user_id]: p.full_name }), {});
+        addedItem.product_name = productsMap[addedItem.product_id] || `Unknown Product (ID: ${addedItem.product_id})`;
+        addedItem.user_name = profilesMap[addedItem.user_id] || `Unknown User (ID: ${addedItem.user_id})`;
+        setReviews((prevReviews) => [addedItem, ...prevReviews]);
+        setReviewPagination({
+          currentPage: 1,
+          totalPages: Math.ceil((reviews.length + 1) / itemsPerPage),
+        });
         setIsModalOpen(false);
       }
     } catch (error) {
-      console.error("Error adding item:", error.response?.data || error.message);
+      console.error("Error adding item:", JSON.stringify(error.response?.data, null, 2));
+      const errorMessage =
+        error.response?.data?.error || error.message || "Unknown error";
+      const validationErrors = error.response?.data?.messages
+        ? "\nValidation Errors: " + JSON.stringify(error.response.data.messages, null, 2)
+        : "";
+      alert(`Failed to add review: ${errorMessage}${validationErrors}`);
     }
   };
 
   const handleItemUpdate = async (updatedItem) => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
-      const endpoint = activeTab === "reviews" ? "reviews" : "notifications";
-      const response = await axios.patch(
-        `http://127.0.0.1:8000/api/${endpoint}/${itemToEdit.id}`,
-        updatedItem.formData,
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/reviews/${itemToEdit.id}`,
+        updatedItem,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
       if (response.status === 200) {
         const updatedData = response.data;
-        if (activeTab === "reviews") {
-          const productsRes = await axios.get("http://127.0.0.1:8000/api/products", { headers: { Authorization: `Bearer ${token}` } });
-          const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", { headers: { Authorization: `Bearer ${token}` } });
-          const productsMap = productsRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.product_name }), {});
-          const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.full_name }), {});
-          updatedData.product_name = productsMap[updatedData.product_id] || `Unknown Product (ID: ${updatedData.product_id})`;
-          updatedData.user_name = profilesMap[updatedData.profile_id] || `Unknown User (ID: ${updatedData.profile_id})`;
-          setReviews((prevReviews) =>
-            prevReviews.map((review) =>
-              review.id === updatedData.id ? { ...review, ...updatedData } : review
-            )
-          );
-        } else {
-          const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", { headers: { Authorization: `Bearer ${token}` } });
-          const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.full_name }), {});
-          updatedData.user_name = profilesMap[updatedData.profile_id] || `Unknown User (ID: ${updatedData.profile_id})`;
-          setNotifications((prevNotifications) =>
-            prevNotifications.map((notification) =>
-              notification.id === updatedData.id ? { ...notification, ...updatedData } : notification
-            )
-          );
-        }
+        const productsRes = await axios.get("http://127.0.0.1:8000/api/products", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const profilesRes = await axios.get("http://127.0.0.1:8000/api/profiles", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const productsMap = productsRes.data.reduce((acc, p) => ({ ...acc, [p.id]: p.product_name }), {});
+        const profilesMap = profilesRes.data.reduce((acc, p) => ({ ...acc, [p.user_id]: p.full_name }), {});
+        updatedData.product_name = productsMap[updatedData.product_id] || `Unknown Product (ID: ${updatedData.product_id})`;
+        updatedData.user_name = profilesMap[updatedData.user_id] || `Unknown User (ID: ${updatedData.user_id})`;
+        setReviews((prevReviews) =>
+          prevReviews.map((review) =>
+            review.id === updatedData.id ? { ...review, ...updatedData } : review
+          )
+        );
         setIsModalOpen(false);
         setItemToEdit(null);
       }
     } catch (error) {
       console.error("Error updating item:", error.response?.data || error.message);
+      alert("Failed to update review: " + (error.response?.data?.error || error.message));
     }
   };
 
@@ -642,6 +472,7 @@ const ReviewsAndNotification = () => {
                         <th>User Name</th>
                         <th>Rating</th>
                         <th>Comment</th>
+                        <th>Photo</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                       </tr>
@@ -649,7 +480,7 @@ const ReviewsAndNotification = () => {
                     <tbody>
                       {loading ? (
                         <tr>
-                          <td colSpan="8" className="loading-row">
+                          <td colSpan="9" className="loading-row">
                             Loading reviews...
                           </td>
                         </tr>
@@ -690,13 +521,20 @@ const ReviewsAndNotification = () => {
                             <td>{review.user_name}</td>
                             <td>{review.rating}</td>
                             <td>{review.comment || "N/A"}</td>
+                            <td className="photo-cell">
+                              {review.photo ? (
+                                <img src={review.photo} alt="Review" />
+                              ) : (
+                                "N/A"
+                              )}
+                            </td>
                             <td>{formatDate(review.created_at)}</td>
                             <td>{formatDate(review.updated_at)}</td>
                           </tr>
                         ))
                       ) : (
                         <tr>
-                          <td colSpan="8">No reviews found</td>
+                          <td colSpan="9">No reviews found</td>
                         </tr>
                       )}
                     </tbody>
@@ -818,11 +656,11 @@ const ReviewsAndNotification = () => {
                             </td>
                             <td>{notification.id}</td>
                             <td>{notification.user_name}</td>
-                            <td>{notification.message}</td>
+                            <td>{notification.message || "N/A"}</td>
                             <td>{notification.faqs_id || "N/A"}</td>
-                            <td>{notification.type}</td>
-                            <td>{notification.status}</td>
-                            <td>{formatDate(notification.created_at)}</td>
+                            <td>{notification.type || "N/A"}</td>
+                            <td>{notification.status || "N/A"}</td>
+                            <td>{formatDate(notification.created_at)}</td> {/* Fixed typo: formatDatebundlenotification.created_at) to formatDate(notification.created_at) */}
                             <td>{formatDate(notification.updated_at)}</td>
                           </tr>
                         ))

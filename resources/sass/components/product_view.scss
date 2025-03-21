@@ -232,6 +232,8 @@
           display: flex;
           align-items: center;
           margin-bottom: 20px;
+          flex-wrap: wrap;
+          gap: 10px;
 
           .overall-score {
             font-size: 24px;
@@ -286,6 +288,12 @@
             font-size: 14px;
             border-radius: 3px;
             font-family: 'Inter', sans-serif;
+
+            &.active {
+              background-color: #ff0000;
+              color: #fff;
+              border-color: #ff0000;
+            }
 
             &:hover {
               background-color: #f0f0f0;
@@ -361,19 +369,38 @@
               font-family: 'Inter', sans-serif;
             }
 
-            // Styling for review images (corrected scoping)
             .review-images {
               display: flex;
               gap: 10px;
               margin-top: 10px;
+              align-items: center;
 
               .review-img {
-                width: 80px; // Reduced from 100px to a more standard size
-                height: 80px; // Reduced from 100px to a more standard size
+                width: 80px;
+                height: 80px;
                 object-fit: cover;
                 border-radius: 5px;
                 border: 1px solid #ddd;
               }
+
+              .no-photo {
+                font-size: 14px;
+                color: #666;
+                font-style: italic;
+                font-family: 'Inter', sans-serif;
+              }
+            }
+          }
+
+          .no-reviews {
+            text-align: center;
+            padding: 20px 0;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+
+            p {
+              margin: 0;
+              font-size: 16px;
             }
           }
         }
@@ -429,30 +456,52 @@
 
         .reviews-container {
           .reviews-section {
+            .overall-rating {
+              flex-direction: column;
+              align-items: flex-start;
+
+              .filter-buttons {
+                margin-left: 0;
+                margin-top: 10px;
+                flex-wrap: wrap;
+              }
+
+              .media-btn {
+                margin-left: 0;
+                margin-top: 10px;
+              }
+            }
+
             .reviews-scroll {
               max-height: 300px;
-            }
 
-            .review .review-header {
-              flex-direction: column;
-              align-items: flex-start;
+              .review {
+                .review-header {
+                  flex-direction: column;
+                  align-items: flex-start;
 
-              .reviewer-info {
-                margin-bottom: 10px;
-              }
+                  .reviewer-info {
+                    margin-bottom: 10px;
+                  }
 
-              .rating {
-                margin-top: 5px;
-              }
-            }
+                  .rating {
+                    margin-top: 5px;
+                  }
+                }
 
-            .review .review-images {
-              flex-direction: column;
-              align-items: flex-start;
+                .review-images {
+                  flex-direction: column;
+                  align-items: flex-start;
 
-              .review-img {
-                width: 60px; // Adjusted for smaller screens
-                height: 60px; // Adjusted for smaller screens
+                  .review-img {
+                    width: 60px;
+                    height: 60px;
+                  }
+
+                  .no-photo {
+                    margin-top: 10px;
+                  }
+                }
               }
             }
           }
@@ -489,25 +538,31 @@
           .reviews-section {
             .reviews-scroll {
               max-height: 250px;
-            }
 
-            .review .review-header {
-              flex-direction: column;
-              align-items: flex-start;
+              .review {
+                .review-header {
+                  flex-direction: column;
+                  align-items: flex-start;
 
-              .reviewer-info {
-                margin-bottom: 10px;
-              }
+                  .reviewer-info {
+                    margin-bottom: 10px;
+                  }
 
-              .rating {
-                margin-top: 5px;
-              }
-            }
+                  .rating {
+                    margin-top: 5px;
+                  }
+                }
 
-            .review .review-images {
-              .review-img {
-                width: 50px; // Further reduced for very small screens
-                height: 50px; // Further reduced for very small screens
+                .review-images {
+                  .review-img {
+                    width: 50px;
+                    height: 50px;
+                  }
+
+                  .no-photo {
+                    font-size: 12px;
+                  }
+                }
               }
             }
           }

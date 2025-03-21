@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    protected $table = 'product_reviews'; // Use product_reviews table
-    protected $fillable = ['product_id', 'profile_id', 'rating', 'comment', 'archived'];
-    protected $casts = ['archived' => 'boolean'];
+    protected $table = 'product_reviews';
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
+    protected $fillable = [
+        'product_id',
+        'user_id', // Changed from profile_id to user_id
+        'rating',
+        'comment',
+        'photo',
+        'archived',
+    ];
 
-    public function profile()
+    public function user()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import './../../../../sass/components/product_view.scss';
-import pfpImage from '../../../../../resources/sass/img/pfp.svg';
-import reviewImage1 from "../../../../../resources/sass/img/ATKCOLOR.svg";
-import reviewImage2 from "../../../../../resources/sass/img/ATKCOLOR.svg";
 import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from '../footer/footer';
 import OrdersCart from '../CartModals/orders_cart';
@@ -17,9 +14,16 @@ const ProductView = () => {
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [profileId, setProfileId] = useState(null);
+  const [filterRating, setFilterRating] = useState(null);
+  const [showMediaOnly, setShowMediaOnly] = useState(false);
+
+  // Revert baseImageUrl to include trailing slash
+  const baseImageUrl = "http://127.0.0.1:8000/";
+  const defaultProfileImage = `${baseImageUrl}images/pfp/default.png`;
 
   const getAuthHeaders = () => ({
     'Content-Type': 'application/json',
@@ -27,86 +31,118 @@ const ProductView = () => {
   });
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchProfileAndProductData = async () => {
       try {
-        // Fetch profile ID
         const token = localStorage.getItem('LaravelPassportToken');
         if (token) {
-          const userResponse = await fetch('http://127.0.0.1:8000/api/user-profile', {
+          const userResponse = await fetch(`${baseImageUrl}api/user-profile`, {
             headers: getAuthHeaders(),
           });
           if (!userResponse.ok) {
             throw new Error(`Failed to fetch user profile: ${userResponse.status} ${userResponse.statusText}`);
           }
           const userData = await userResponse.json();
-          console.log('User Data:', userData); // Debug user data
+          console.log('User Data:', userData);
 
           if (!userData.user?.id) {
             throw new Error('User ID not found in user profile response');
           }
 
-          const profileResponse = await fetch(`http://127.0.0.1:8000/api/profiles/user/${userData.user.id}`, {
+          const profileResponse = await fetch(`${baseImageUrl}api/profiles/user/${userData.user.id}`, {
             headers: getAuthHeaders(),
           });
           if (!profileResponse.ok) {
-            throw new Error(`Failed to fetch profile ID: ${profileResponse.status} ${profileResponse.statusText}`);
+            throw new Error(`Failed to fetch profile ID: ${userResponse.status} ${userResponse.statusText}`);
           }
           const profileData = await profileResponse.json();
-          console.log('Profile Data:', profileData); // Debug profile data
-          setProfileId(profileData.id || null);
+          console.log('Profile Data:', profileData);
+          if (isMounted) {
+            setProfileId(profileData.id || null);
+          }
         } else {
           console.log('No token found, proceeding as guest');
         }
 
-        // Fetch product data
-        const response = await fetch(`http://127.0.0.1:8000/api/shop-products/${id}`, {
+        const productResponse = await fetch(`${baseImageUrl}api/shop-products/${id}`, {
           headers: getAuthHeaders(),
         });
-        if (!response.ok) {
-          throw new Error(`Failed to fetch product: ${response.status} ${response.statusText}`);
+        if (!productResponse.ok) {
+          throw new Error(`Failed to fetch product: ${productResponse.status} ${productResponse.statusText}`);
         }
-        const data = await response.json();
-        const productData = data.success && data.data ? data.data : data;
-        console.log('Product Data:', productData); // Debug product data
+        const productData = await productResponse.json();
+        const finalProductData = productData.success && productData.data ? productData.data : productData;
+        console.log('Product Data:', finalProductData);
 
-        if (productData.price && typeof productData.price === 'string') {
-          productData.price = parseFloat(productData.price.replace(/,/g, ''));
+        if (finalProductData.price && typeof finalProductData.price === 'string') {
+          finalProductData.price = parseFloat(finalProductData.price.replace(/,/g, ''));
         }
-        setProduct(productData);
+        if (isMounted) {
+          setProduct(finalProductData);
+        }
 
-        if (productData?.profile_id) {
+        const reviewsResponse = await fetch(`${baseImageUrl}api/reviews/product/${id}`, {
+          headers: getAuthHeaders(),
+        });
+        if (!reviewsResponse.ok) {
+          const errorData = await reviewsResponse.json();
+          throw new Error(`Failed to fetch reviews: ${reviewsResponse.status} ${reviewsResponse.statusText} - ${errorData.error || 'Unknown error'}`);
+        }
+        const reviewsData = await reviewsResponse.json();
+        console.log('Reviews Data:', reviewsData);
+        if (isMounted) {
+          setReviews(reviewsData.data || []);
+        }
+
+        if (finalProductData?.profile_id) {
           try {
-            const profileResponse = await fetch(`http://127.0.0.1:8000/api/profiles/${productData.profile_id}`, {
+            const profileResponse = await fetch(`${baseImageUrl}api/profiles/${finalProductData.profile_id}`, {
               headers: getAuthHeaders(),
             });
             if (!profileResponse.ok) {
-              console.warn(`Seller profile fetch failed: ${profileResponse.status} ${profileResponse.statusText}`);
-              setUserProfile(null);
-            } else {
-              const profileData = await profileResponse.json();
-              console.log('Seller Profile Data:', profileData); // Debug seller profile
+              throw new Error(`Seller profile fetch failed: ${profileResponse.status} ${profileResponse.statusText}`);
+            }
+            const profileData = await profileResponse.json();
+            console.log('Seller Profile Data:', profileData);
+            if (isMounted) {
               setUserProfile(profileData);
             }
           } catch (profileError) {
             console.warn('Seller profile fetch error:', profileError);
-            setUserProfile(null);
+            if (isMounted) {
+              setUserProfile(null);
+              message.warning({
+                content: 'Failed to load seller profile. Using default name.',
+                style: { marginTop: '20px' },
+              });
+            }
           }
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        setError(error.message);
-        setProduct(null);
-        setUserProfile(null);
-        message.error({
-          content: `Failed to load product details: ${error.message}`,
-          style: { marginTop: '20px' },
-        });
+        if (isMounted) {
+          setError(error.message);
+          setProduct(null);
+          setUserProfile(null);
+          setReviews([]);
+          message.error({
+            content: `Failed to load product details: ${error.message}`,
+            style: { marginTop: '20px' },
+          });
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchProfileAndProductData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [id, navigate]);
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);
@@ -116,7 +152,7 @@ const ProductView = () => {
   };
 
   const increaseQuantity = () => {
-    if (product && quantity < (product.quantity || Infinity)) {
+    if (product && quantity < (product.quantity_available || Infinity)) {
       setQuantity(quantity + 1);
     }
   };
@@ -132,7 +168,7 @@ const ProductView = () => {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/cart/add`, {
+      const response = await fetch(`${baseImageUrl}api/cart/add`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({ profile_id: profileId, product_id: id, quantity }),
@@ -159,19 +195,75 @@ const ProductView = () => {
 
   const renderStars = (rating) => {
     const totalStars = 5;
-    const filledStars = Math.min(Math.max(rating, 0), 5);
+    const parsedRating = parseFloat(rating) || 0;
+    const filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
     const emptyStars = totalStars - filledStars;
 
     return (
       <>
-        {Array(filledStars).fill().map((_, index) => (
+        {Array(Math.max(filledStars, 0)).fill().map((_, index) => (
           <IconStar key={`filled-${index}`} size={18} fill="#ff0000" color="#ff0000" />
         ))}
-        {Array(emptyStars).fill().map((_, index) => (
+        {Array(Math.max(emptyStars, 0)).fill().map((_, index) => (
           <IconStar key={`empty-${index}`} size={18} fill="none" color="#ccc" />
         ))}
       </>
     );
+  };
+
+  const calculateRatingStats = () => {
+    if (reviews.length === 0) {
+      return { averageRating: 0, ratingCounts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 } };
+    }
+
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const averageRating = parseFloat((totalRating / reviews.length).toFixed(1));
+    const ratingCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+
+    reviews.forEach((review) => {
+      if (review.rating >= 1 && review.rating <= 5) {
+        ratingCounts[review.rating] += 1;
+      }
+    });
+
+    return { averageRating, ratingCounts };
+  };
+
+  const { averageRating, ratingCounts } = calculateRatingStats();
+
+  const filteredReviews = reviews.filter((review) => {
+    const matchesRating = filterRating ? review.rating === filterRating : true;
+    const matchesMedia = showMediaOnly ? review.photo : true;
+    return matchesRating && matchesMedia;
+  });
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(new Date(dateString));
+  };
+
+  const getFullName = (user) => {
+    if (user?.profile) {
+      return [
+        user.profile.first_name || '',
+        user.profile.middlename !== 'N/A' ? user.profile.middlename : '',
+        user.profile.last_name || '',
+        user.profile.suffix !== 'N/A' ? user.profile.suffix : '',
+      ].filter(Boolean).join(' ');
+    }
+    if (user) {
+      return [
+        user.first_name || '',
+        user.middlename !== 'N/A' ? user.middlename : '',
+        user.last_name || '',
+        user.suffix !== 'N/A' ? user.suffix : '',
+      ].filter(Boolean).join(' ');
+    }
+    return 'Anonymous';
   };
 
   if (loading) return <div>Loading...</div>;
@@ -181,13 +273,13 @@ const ProductView = () => {
   const fullName = userProfile
     ? [
         userProfile.first_name || '',
-        userProfile.middle_name !== 'N/A' ? userProfile.middle_name : '',
+        userProfile.middlename !== 'N/A' ? userProfile.middlename : '',
         userProfile.last_name || '',
         userProfile.suffix !== 'N/A' ? userProfile.suffix : '',
       ].filter(Boolean).join(' ')
-    : product.profile_name || 'Jeff23 Ogabang';
+    : product.profile_name || 'Unknown Seller';
 
-  const imageUrl = product.product_img ? `http://127.0.0.1:8000/${product.product_img}` : '';
+  const imageUrl = product.product_img ? `${baseImageUrl}${product.product_img.replace(/^\//, '')}` : '';
 
   return (
     <div className="product-view-page">
@@ -208,14 +300,14 @@ const ProductView = () => {
               <p className="company">{fullName}</p>
               <div className="price-rating">
                 <span className="price">₱{product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
-                <div className="rating">{renderStars(5)}</div>
+                <div className="rating">{renderStars(averageRating)}</div>
               </div>
               <p className="description">{product.description || 'No description available'}</p>
               <p className="quantity-available">Available: {product.quantity_available || 'N/A'}</p>
               <div className="quantity-controls">
                 <button onClick={decreaseQuantity} disabled={quantity === 1}>-</button>
                 <span>{quantity}</span>
-                <button onClick={increaseQuantity} disabled={quantity >= (product.quantity || Infinity)}>+</button>
+                <button onClick={increaseQuantity} disabled={quantity >= (product.quantity_available || Infinity)}>+</button>
               </div>
               <div className="action-buttons">
                 <button className="add-to-cart" onClick={handleAddToCart}>
@@ -235,39 +327,87 @@ const ProductView = () => {
             <div className="reviews-section">
               <h2>Reviews</h2>
               <div className="overall-rating">
-                <div className="overall-score">4.9 out of 5</div>
-                <div className="rating">{renderStars(5)}</div>
+                <div className="overall-score">{averageRating} out of 5</div>
+                <div className="rating">{renderStars(averageRating)}</div>
                 <div className="filter-buttons">
-                  <button className="filter-btn active">All</button>
-                  <button className="filter-btn">5 star (10)</button>
-                  <button className="filter-btn">4 star (0)</button>
-                  <button className="filter-btn">3 star (0)</button>
-                  <button className="filter-btn">2 star (0)</button>
-                  <button className="filter-btn">1 star (0)</button>
+                  <button
+                    className={`filter-btn ${filterRating === null ? 'active' : ''}`}
+                    onClick={() => setFilterRating(null)}
+                  >
+                    All
+                  </button>
+                  {[5, 4, 3, 2, 1].map((star) => (
+                    <button
+                      key={star}
+                      className={`filter-btn ${filterRating === star ? 'active' : ''}`}
+                      onClick={() => setFilterRating(star)}
+                    >
+                      {star} star ({ratingCounts[star]})
+                    </button>
+                  ))}
                 </div>
-                <button className="media-btn">With Media</button>
+                <button
+                  className={`media-btn ${showMediaOnly ? 'active' : ''}`}
+                  onClick={() => setShowMediaOnly(!showMediaOnly)}
+                >
+                  With Media
+                </button>
               </div>
               <div className="reviews-scroll">
-                <div className="review">
-                  <div className="review-header">
-                    <div className="reviewer-info">
-                      <img src={pfpImage} alt="Profile" className="pfp" />
-                      <div>
-                        <p className="reviewer-name">Kean D.</p>
-                        <p className="review-date">December 12, 2024</p>
+                {filteredReviews.length > 0 ? (
+                  filteredReviews.map((review) => {
+                    const reviewerName = getFullName(review.user);
+
+                    return (
+                      <div className="review" key={review.id}>
+                        <div className="review-header">
+                          <div className="reviewer-info">
+                            <img
+                              src={
+                                review.user?.profile?.profile_img
+                                  ? `${baseImageUrl}${review.user.profile.profile_img.replace(/^\//, '')}`
+                                  : defaultProfileImage
+                              }
+                              alt="Profile"
+                              className="pfp"
+                              onError={(e) => {
+                                console.log("Image load failed for:", `${baseImageUrl}${review.user?.profile?.profile_img?.replace(/^\//, '')}`);
+                                e.target.src = defaultProfileImage;
+                              }}
+                            />
+                            <div>
+                              <p className="reviewer-name">{reviewerName}</p>
+                              <p className="review-date">{formatDate(review.created_at)}</p>
+                            </div>
+                          </div>
+                          <div className="rating">{renderStars(review.rating)}</div>
+                        </div>
+                        <p className="review-text">{review.comment || 'No comment provided.'}</p>
+                        <div className="review-images">
+                          {review.photo ? (
+                            <img
+                              src={`${baseImageUrl}${review.photo.replace(/^\//, '')}`}
+                              alt="Review Image"
+                              className="review-img"
+                              onError={(e) => {
+                                console.log("Review image load failed for:", `${baseImageUrl}${review.photo.replace(/^\//, '')}`);
+                                e.target.style.display = 'none';
+                                e.target.parentElement.querySelector('.no-photo').style.display = 'block';
+                              }}
+                            />
+                          ) : null}
+                          <span className="no-photo" style={{ display: review.photo ? 'none' : 'block' }}>
+                            No Photo
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="rating">{renderStars(5)}</div>
+                    );
+                  })
+                ) : (
+                  <div className="no-reviews">
+                    <p>No reviews found for this product.</p>
                   </div>
-                  <p className="best-feature">Best Feature: Light and Smooth</p>
-                  <p className="review-text">
-                    I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!
-                  </p>
-                  <div className="review-images">
-                    <img src={reviewImage1} alt="Review Image 1" className="review-img" />
-                    <img src={reviewImage2} alt="Review Image 2" className="review-img" />
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

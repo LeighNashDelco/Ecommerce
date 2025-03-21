@@ -195,8 +195,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/reviews/{id}', [ReviewController::class, 'show']);
     Route::post('/reviews', [ReviewController::class, 'store']);
     Route::patch('/reviews/{id}/archive', [ReviewController::class, 'archive']);
-    Route::patch('/reviews/{id}', [ReviewController::class, 'update']);
-
+    Route::match(['patch', 'put'], '/reviews/{id}', [ReviewController::class, 'update']);
+    Route::get('/reviews/product/{productId}', [ReviewController::class, 'getByProduct'])->middleware('auth:api');
+    
+    
     # Notification Management
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notifications/archived', [NotificationController::class, 'archived']);
