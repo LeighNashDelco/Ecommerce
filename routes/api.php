@@ -14,9 +14,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:api'); // Fixed redundancy
 
 # AUTHENTICATED USER INFO
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+{/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/}
 
 # PROFILE ROUTE (Requires Authentication)
 Route::post('/profiles', [ProfileController::class, 'store'])->middleware('auth:api');

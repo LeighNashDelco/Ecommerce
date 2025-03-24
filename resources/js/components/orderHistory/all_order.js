@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../../../sass/components/all_order.scss';
 import AttackSharkImage from '../../../../resources/sass/img/ATKX5.svg';
-import CancelOrder from '../orderHistory/cancel_order'; // Adjust the path to your cancel_order.js file
-import RateProduct from '../orderHistory/rate_product'; // Adjust the path to your rate_product.js file
+import CancelOrder from '../orderHistory/cancel_order';
+import RateProduct from '../orderHistory/rate_product';
 
 const AllOrder = () => {
   const [activeTab, setActiveTab] = useState('all');
   const navigate = useNavigate();
 
-  // State to manage the cancel modal
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [selectedOrderForCancel, setSelectedOrderForCancel] = useState(null);
 
-  // State to manage the rate modal
   const [isRateModalOpen, setIsRateModalOpen] = useState(false);
   const [selectedOrderForRate, setSelectedOrderForRate] = useState(null);
 
@@ -21,7 +19,8 @@ const AllOrder = () => {
     {
       id: 1,
       image: AttackSharkImage,
-      name: 'Attack Shark X3',
+      name: 'Attack Shark X3PRO Three Modes 8K Gaming Mouse',
+      price: 990,
       quantity: 1,
       status: 'Shipped',
       tab: 'to_ship',
@@ -40,8 +39,9 @@ const AllOrder = () => {
     {
       id: 2,
       image: AttackSharkImage,
-      name: 'Attack Shark X3',
-      quantity: 1,
+      name: 'Attack Shark X3PRO Three Modes 8K Gaming Mouse',
+      price: 990,
+      quantity: 2, // Changed quantity to 2 for testing
       status: 'Received',
       tab: 'to_receive',
       actions: ['Rate', 'Refund'],
@@ -64,13 +64,11 @@ const AllOrder = () => {
     navigate('/track_order', { state: { order } });
   };
 
-  // Open the cancel modal for the selected order
   const handleCancelOrder = (order) => {
     setSelectedOrderForCancel(order);
     setIsCancelModalOpen(true);
   };
 
-  // Handle confirmation from the cancel modal
   const handleConfirmCancel = (reason) => {
     if (selectedOrderForCancel) {
       console.log('Order cancelled:', selectedOrderForCancel.orderNumber, 'Reason:', reason);
@@ -78,28 +76,23 @@ const AllOrder = () => {
     }
   };
 
-  // Close the cancel modal
   const handleCloseCancelModal = () => {
     setIsCancelModalOpen(false);
     setSelectedOrderForCancel(null);
   };
 
-  // Open the rate modal for the selected order
   const handleRateOrder = (order) => {
     setSelectedOrderForRate(order);
     setIsRateModalOpen(true);
   };
 
-  // Handle submission from the rate modal
   const handleSubmitRating = ({ rating, review }) => {
     if (selectedOrderForRate) {
       console.log('Rating submitted for order:', selectedOrderForRate.orderNumber, { rating, review });
-      // Add your rating submission logic here (e.g., API call)
       setIsRateModalOpen(false);
     }
   };
 
-  // Close the rate modal
   const handleCloseRateModal = () => {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
@@ -108,48 +101,65 @@ const AllOrder = () => {
   return (
     <div className="all-order">
       <div className="order-tabs">
-        <button
-          className={`tab ${activeTab === 'all' ? 'active' : ''}`}
-          onClick={() => setActiveTab('all')}
-        >
-          All Order
-        </button>
-        <button
-          className={`tab ${activeTab === 'to_pay' ? 'active' : ''}`}
-          onClick={() => setActiveTab('to_pay')}
-        >
-          To Pay
-        </button>
-        <button
-          className={`tab ${activeTab === 'to_ship' ? 'active' : ''}`}
-          onClick={() => setActiveTab('to_ship')}
-        >
-          To Ship
-        </button>
-        <button
-          className={`tab ${activeTab === 'to_receive' ? 'active' : ''}`}
-          onClick={() => setActiveTab('to_receive')}
-        >
-          To Receive
-        </button>
-        <button
-          className={`tab ${activeTab === 'completed' ? 'active' : ''}`}
-          onClick={() => setActiveTab('completed')}
-        >
-          Completed
-        </button>
-        <button
-          className={`tab ${activeTab === 'cancelled' ? 'active' : ''}`}
-          onClick={() => setActiveTab('cancelled')}
-        >
-          Cancelled
-        </button>
-        <button
-          className={`tab ${activeTab === 'refunded' ? 'active' : ''}`}
-          onClick={() => setActiveTab('refunded')}
-        >
-          Refunded
-        </button>
+        <div className="tabs-desktop">
+          <button
+            className={`tab ${activeTab === 'all' ? 'active' : ''}`}
+            onClick={() => setActiveTab('all')}
+          >
+            All Order
+          </button>
+          <button
+            className={`tab ${activeTab === 'to_pay' ? 'active' : ''}`}
+            onClick={() => setActiveTab('to_pay')}
+          >
+            To Pay
+          </button>
+          <button
+            className={`tab ${activeTab === 'to_ship' ? 'active' : ''}`}
+            onClick={() => setActiveTab('to_ship')}
+          >
+            To Ship
+          </button>
+          <button
+            className={`tab ${activeTab === 'to_receive' ? 'active' : ''}`}
+            onClick={() => setActiveTab('to_receive')}
+          >
+            To Receive
+          </button>
+          <button
+            className={`tab ${activeTab === 'completed' ? 'active' : ''}`}
+            onClick={() => setActiveTab('completed')}
+          >
+            Completed
+          </button>
+          <button
+            className={`tab ${activeTab === 'cancelled' ? 'active' : ''}`}
+            onClick={() => setActiveTab('cancelled')}
+          >
+            Cancelled
+          </button>
+          <button
+            className={`tab ${activeTab === 'refunded' ? 'active' : ''}`}
+            onClick={() => setActiveTab('refunded')}
+          >
+            Refunded
+          </button>
+        </div>
+        <div className="tabs-mobile">
+          <select
+            value={activeTab}
+            onChange={(e) => setActiveTab(e.target.value)}
+            className="order-tab-dropdown"
+          >
+            <option value="all">ALL ORDER</option>
+            <option value="to_pay">TO PAY</option>
+            <option value="to_ship">TO SHIP</option>
+            <option value="to_receive">TO RECEIVE</option>
+            <option value="completed">COMPLETED</option>
+            <option value="cancelled">CANCELLED</option>
+            <option value="refunded">REFUNDED</option>
+          </select>
+        </div>
       </div>
 
       <div className="orders-list">
@@ -160,18 +170,20 @@ const AllOrder = () => {
                 <div className="order-details">
                   <img src={order.image} alt={order.name} className="order-image" />
                   <div className="order-info">
-                    <h4>{order.name}</h4>
-                    <p>x{order.quantity}</p>
-                    <p className={`status ${order.status.toLowerCase()}`}>
-                      Status: {order.status}
-                    </p>
+                    <div className="price-name">
+                      <h4>{order.name}</h4>
+                      <p className="order-price">₱{order.price * order.quantity}</p>
+                    </div>
+                    <div className="quantity-total">
+                      <p className="order-quantity">x{order.quantity}</p>
+                    </div>
                   </div>
                 </div>
                 <div className="order-actions">
                   {order.actions.map((action, index) => (
                     <button
                       key={index}
-                      className="action-btn"
+                      className={`action-btn ${action.toLowerCase().replace(' ', '-')}`}
                       onClick={
                         action === 'Track'
                           ? () => handleTrackOrder(order)
@@ -194,14 +206,12 @@ const AllOrder = () => {
         )}
       </div>
 
-      {/* Render the CancelOrder modal */}
       <CancelOrder
         isOpen={isCancelModalOpen}
         onClose={handleCloseCancelModal}
         onConfirm={handleConfirmCancel}
       />
 
-      {/* Render the RateProduct modal */}
       <RateProduct
         isOpen={isRateModalOpen}
         onClose={handleCloseRateModal}

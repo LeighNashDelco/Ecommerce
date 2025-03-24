@@ -12319,8 +12319,8 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // Adjust the path to your cancel_order.js file
- // Adjust the path to your rate_product.js file
+
+
 
 var AllOrder = function AllOrder() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
@@ -12328,8 +12328,6 @@ var AllOrder = function AllOrder() {
     activeTab = _useState2[0],
     setActiveTab = _useState2[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-
-  // State to manage the cancel modal
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
     isCancelModalOpen = _useState4[0],
@@ -12338,8 +12336,6 @@ var AllOrder = function AllOrder() {
     _useState6 = _slicedToArray(_useState5, 2),
     selectedOrderForCancel = _useState6[0],
     setSelectedOrderForCancel = _useState6[1];
-
-  // State to manage the rate modal
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
     isRateModalOpen = _useState8[0],
@@ -12351,7 +12347,8 @@ var AllOrder = function AllOrder() {
   var orders = [{
     id: 1,
     image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    name: 'Attack Shark X3',
+    name: 'Attack Shark X3PRO Three Modes 8K Gaming Mouse',
+    price: 990,
     quantity: 1,
     status: 'Shipped',
     tab: 'to_ship',
@@ -12369,8 +12366,10 @@ var AllOrder = function AllOrder() {
   }, {
     id: 2,
     image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    name: 'Attack Shark X3',
-    quantity: 1,
+    name: 'Attack Shark X3PRO Three Modes 8K Gaming Mouse',
+    price: 990,
+    quantity: 2,
+    // Changed quantity to 2 for testing
     status: 'Received',
     tab: 'to_receive',
     actions: ['Rate', 'Refund'],
@@ -12395,34 +12394,24 @@ var AllOrder = function AllOrder() {
       }
     });
   };
-
-  // Open the cancel modal for the selected order
   var handleCancelOrder = function handleCancelOrder(order) {
     setSelectedOrderForCancel(order);
     setIsCancelModalOpen(true);
   };
-
-  // Handle confirmation from the cancel modal
   var handleConfirmCancel = function handleConfirmCancel(reason) {
     if (selectedOrderForCancel) {
       console.log('Order cancelled:', selectedOrderForCancel.orderNumber, 'Reason:', reason);
       setIsCancelModalOpen(false);
     }
   };
-
-  // Close the cancel modal
   var handleCloseCancelModal = function handleCloseCancelModal() {
     setIsCancelModalOpen(false);
     setSelectedOrderForCancel(null);
   };
-
-  // Open the rate modal for the selected order
   var handleRateOrder = function handleRateOrder(order) {
     setSelectedOrderForRate(order);
     setIsRateModalOpen(true);
   };
-
-  // Handle submission from the rate modal
   var handleSubmitRating = function handleSubmitRating(_ref) {
     var rating = _ref.rating,
       review = _ref.review;
@@ -12431,12 +12420,9 @@ var AllOrder = function AllOrder() {
         rating: rating,
         review: review
       });
-      // Add your rating submission logic here (e.g., API call)
       setIsRateModalOpen(false);
     }
   };
-
-  // Close the rate modal
   var handleCloseRateModal = function handleCloseRateModal() {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
@@ -12445,48 +12431,82 @@ var AllOrder = function AllOrder() {
     className: "all-order",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "order-tabs",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'all' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('all');
-        },
-        children: "All Order"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('to_pay');
-        },
-        children: "To Pay"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('to_ship');
-        },
-        children: "To Ship"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('to_receive');
-        },
-        children: "To Receive"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('completed');
-        },
-        children: "Completed"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'cancelled' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('cancelled');
-        },
-        children: "Cancelled"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('refunded');
-        },
-        children: "Refunded"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "tabs-desktop",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'all' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('all');
+          },
+          children: "All Order"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('to_pay');
+          },
+          children: "To Pay"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('to_ship');
+          },
+          children: "To Ship"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('to_receive');
+          },
+          children: "To Receive"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('completed');
+          },
+          children: "Completed"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'cancelled' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('cancelled');
+          },
+          children: "Cancelled"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
+          onClick: function onClick() {
+            return setActiveTab('refunded');
+          },
+          children: "Refunded"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "tabs-mobile",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+          value: activeTab,
+          onChange: function onChange(e) {
+            return setActiveTab(e.target.value);
+          },
+          className: "order-tab-dropdown",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "all",
+            children: "ALL ORDER"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "to_pay",
+            children: "TO PAY"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "to_ship",
+            children: "TO SHIP"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "to_receive",
+            children: "TO RECEIVE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "completed",
+            children: "COMPLETED"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "cancelled",
+            children: "CANCELLED"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+            value: "refunded",
+            children: "REFUNDED"
+          })]
+        })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "orders-list",
@@ -12503,20 +12523,27 @@ var AllOrder = function AllOrder() {
                 className: "order-image"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "order-info",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
-                  children: order.name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                  children: ["x", order.quantity]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                  className: "status ".concat(order.status.toLowerCase()),
-                  children: ["Status: ", order.status]
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  className: "price-name",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+                    children: order.name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                    className: "order-price",
+                    children: ["\u20B1", order.price * order.quantity]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                  className: "quantity-total",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                    className: "order-quantity",
+                    children: ["x", order.quantity]
+                  })
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               className: "order-actions",
               children: order.actions.map(function (action, index) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                  className: "action-btn",
+                  className: "action-btn ".concat(action.toLowerCase().replace(' ', '-')),
                   onClick: action === 'Track' ? function () {
                     return handleTrackOrder(order);
                   } : action === 'Cancel Order' ? function () {
@@ -12801,7 +12828,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // Import the AllOrder component
+
 
 function Profile() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('personal'),
@@ -12816,8 +12843,6 @@ function Profile() {
     _useState6 = _slicedToArray(_useState5, 2),
     avatarImage = _useState6[0],
     setAvatarImage = _useState6[1];
-
-  // State for field values
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Alexander Otaza'),
     _useState8 = _slicedToArray(_useState7, 2),
     name = _useState8[0],
@@ -12840,8 +12865,6 @@ function Profile() {
     _useState14 = _slicedToArray(_useState13, 2),
     address = _useState14[0],
     setAddress = _useState14[1];
-
-  // State for edit modes
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       name: false,
       email: false,
@@ -12851,8 +12874,6 @@ function Profile() {
     _useState16 = _slicedToArray(_useState15, 2),
     editMode = _useState16[0],
     setEditMode = _useState16[1];
-
-  // Temporary state for editing values
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name),
     _useState18 = _slicedToArray(_useState17, 2),
     tempName = _useState18[0],
@@ -12861,8 +12882,6 @@ function Profile() {
     _useState20 = _slicedToArray(_useState19, 2),
     tempEmail = _useState20[0],
     setTempEmail = _useState20[1];
-
-  // State to control the modals
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState22 = _slicedToArray(_useState21, 2),
     isAddressModalOpen = _useState22[0],
@@ -12877,8 +12896,6 @@ function Profile() {
   var toggleCart = function toggleCart() {
     setIsCartOpen(!isCartOpen);
   };
-
-  // Handle file upload for avatar
   var handleFileChange = function handleFileChange(event) {
     var file = event.target.files[0];
     if (file) {
@@ -12890,18 +12907,12 @@ function Profile() {
     }
     event.target.value = null;
   };
-
-  // Trigger file input click for avatar
   var handleAvatarClick = function handleAvatarClick() {
     document.getElementById('avatar-upload').click();
   };
-
-  // Trigger file input click for upload icon
   var handleUploadIconClick = function handleUploadIconClick() {
     document.getElementById('avatar-upload').click();
   };
-
-  // Handle edit button click for each field
   var handleEditClick = function handleEditClick(field) {
     if (field === 'address') {
       setIsAddressModalOpen(true);
@@ -12920,8 +12931,6 @@ function Profile() {
     if (field === 'name') setTempName(name);
     if (field === 'email') setTempEmail(email);
   };
-
-  // Handle save button click for inline editing
   var handleSave = function handleSave(field) {
     if (field === 'name') setName(tempName);
     if (field === 'email') setEmail(tempEmail);
@@ -12932,8 +12941,6 @@ function Profile() {
       address: false
     });
   };
-
-  // Handle cancel button click for inline editing
   var handleCancel = function handleCancel() {
     setTempName(name);
     setTempEmail(email);
@@ -12944,14 +12951,10 @@ function Profile() {
       address: false
     });
   };
-
-  // Handle saving the address from the modal
   var handleSaveAddress = function handleSaveAddress(updatedAddress) {
     setAddress(updatedAddress);
     setIsAddressModalOpen(false);
   };
-
-  // Handle saving the password from the modal
   var handleSavePassword = function handleSavePassword(newPassword) {
     setPassword(newPassword || '************');
     setIsPasswordModalOpen(false);
@@ -12999,18 +13002,37 @@ function Profile() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "tabs-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          className: "tab ".concat(activeTab === 'personal' ? 'active' : ''),
-          onClick: function onClick() {
-            return handleTabChange('personal');
-          },
-          children: "Personal Information"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          className: "tab ".concat(activeTab === 'orders' ? 'active' : ''),
-          onClick: function onClick() {
-            return handleTabChange('orders');
-          },
-          children: "Order History"
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+          className: "tabs-desktop",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+            className: "tab ".concat(activeTab === 'personal' ? 'active' : ''),
+            onClick: function onClick() {
+              return handleTabChange('personal');
+            },
+            children: "Personal Information"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+            className: "tab ".concat(activeTab === 'orders' ? 'active' : ''),
+            onClick: function onClick() {
+              return handleTabChange('orders');
+            },
+            children: "Order History"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          className: "tabs-mobile",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("select", {
+            value: activeTab,
+            onChange: function onChange(e) {
+              return handleTabChange(e.target.value);
+            },
+            className: "tab-dropdown",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+              value: "personal",
+              children: "PERSONAL INFORMATION"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+              value: "orders",
+              children: "ORDER HISTORY"
+            })]
+          })
         })]
       }), activeTab === 'personal' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "info-grid",
@@ -13115,9 +13137,9 @@ function Profile() {
             })
           })]
         })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "order-history",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_orderHistory_all_order__WEBPACK_IMPORTED_MODULE_9__["default"], {}), " "]
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_orderHistory_all_order__WEBPACK_IMPORTED_MODULE_9__["default"], {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_profile_address_modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
         isOpen: isAddressModalOpen,
         onClose: function onClose() {
@@ -20594,7 +20616,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 10px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f0f4f8;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0 0 5px 0;\n}\n.all-order .orders-list .order-item .order-details .order-info p {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.shipped {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.received {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n}\n\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 8px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info p {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    justify-content: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  margin-bottom: 20px;\n}\n.all-order .order-tabs .tabs-desktop {\n  display: flex;\n  justify-content: flex-start;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tabs-mobile {\n  display: none;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  margin: 0;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .order-tabs .order-tab-dropdown {\n  width: 100%;\n  padding: 10px 12px;\n  background: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  font-size: 0.9rem;\n  font-weight: bold;\n  text-transform: uppercase;\n  cursor: pointer;\n  appearance: none;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg fill=\"black\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>');\n  background-repeat: no-repeat;\n  background-position: right 10px center;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 10px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f0f4f8;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details .order-info .price-name {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .price-name h4 {\n  font-size: 1rem;\n  margin: 0 0 5px 0;\n  font-weight: bold;\n}\n.all-order .orders-list .order-item .order-details .order-info .price-name .order-price {\n  font-size: 1rem;\n  color: #ff0000;\n  font-weight: bold;\n  margin: 0 0 5px 0;\n}\n.all-order .orders-list .order-item .order-details .order-info .quantity-total {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details .order-info .quantity-total .order-quantity {\n  font-size: 0.9rem;\n  color: #666;\n  margin: 0;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  gap: 15px;\n}\n.all-order .orders-list .order-item .order-actions .action-btn {\n  padding: 8px 20px;\n  font-size: 1rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.track {\n  border: none;\n  background-color: #333;\n  color: #fff;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.track:hover {\n  background-color: #555;\n  color: #fff;\n  border: none;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.cancel-order {\n  border: none;\n  background-color: #ff0000;\n  color: #fff;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.cancel-order:hover {\n  background-color: #e60000;\n  color: #fff;\n  border: none;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.rate, .all-order .orders-list .order-item .order-actions .action-btn.refund {\n  border: none;\n  background-color: #333;\n  color: #fff;\n}\n.all-order .orders-list .order-item .order-actions .action-btn.rate:hover, .all-order .orders-list .order-item .order-actions .action-btn.refund:hover {\n  background-color: #555;\n  color: #fff;\n  border: none;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n}\n\n@media (max-width: 768px) {\n  .all-order .order-tabs .tabs-desktop {\n    display: none;\n  }\n  .all-order .order-tabs .tabs-mobile {\n    display: block;\n    width: 100%;\n    padding: 0 10px;\n    box-sizing: border-box;\n    overflow: hidden;\n  }\n  .all-order .order-tabs .order-tab-dropdown {\n    width: 100%;\n    max-width: 100%;\n    padding: 10px 30px 10px 12px;\n    background: #fff;\n    color: #333;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    font-size: 0.9rem;\n    font-weight: bold;\n    text-transform: uppercase;\n    cursor: pointer;\n    appearance: none;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    background-image: url('data:image/svg+xml;utf8,<svg fill=\"black\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>');\n    background-repeat: no-repeat;\n    background-position: right 10px center;\n    box-sizing: border-box;\n  }\n  .all-order .order-tabs .order-tab-dropdown option {\n    background: #333;\n    color: #fff;\n    font-size: 0.9rem;\n    padding: 5px 10px;\n  }\n  .all-order .order-tabs .order-tab-dropdown:focus, .all-order .order-tabs .order-tab-dropdown:active,\n  .all-order .order-tabs .order-tab-dropdown option:checked {\n    background: #F0F8FF !important;\n    color: #333 !important;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 10px;\n    border: none;\n    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n    background-color: #fff;\n    padding: 15px;\n  }\n  .all-order .orders-list .order-item .order-details {\n    flex: 1;\n    flex-direction: row;\n    gap: 15px;\n    width: 100%;\n    align-items: flex-start;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 80px;\n    height: 80px;\n    margin-bottom: 0;\n  }\n  .all-order .orders-list .order-item .order-details .order-info {\n    flex: 1;\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: flex-end;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .price-name {\n    display: flex;\n    flex-direction: column;\n    align-items: flex-start;\n    text-align: left;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .price-name h4 {\n    font-size: 1rem;\n    margin: 0 0 8px 0;\n    font-weight: normal;\n    line-height: 1.2;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .price-name .order-price {\n    font-size: 1.1rem;\n    color: #ff0000;\n    font-weight: bold;\n    margin: 0;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .quantity-total {\n    display: flex;\n    flex-direction: column;\n    align-items: flex-end;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .quantity-total .order-quantity {\n    font-size: 0.9rem;\n    color: #666;\n    margin: 0;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    margin-top: 15px;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn {\n    flex: 1;\n    padding: 10px;\n    font-size: 0.9rem;\n    font-weight: bold;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.track {\n    background-color: #333;\n    color: #fff;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.track:hover {\n    background-color: #555;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.cancel-order {\n    background-color: #ff0000;\n    color: #fff;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.cancel-order:hover {\n    background-color: #e60000;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.rate {\n    background-color: #333;\n    color: #fff;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.rate:hover {\n    background-color: #555;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.refund {\n    background-color: #333;\n    color: #fff;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn.refund:hover {\n    background-color: #555;\n  }\n  /* Additional responsiveness for smaller screens */\n}\n@media (max-width: 768px) and (max-width: 480px) {\n  .orders-list {\n    gap: 10px;\n  }\n  .orders-list .order-item-container {\n    padding: 8px;\n  }\n  .orders-list .order-item {\n    padding: 10px;\n    gap: 8px;\n  }\n  .orders-list .order-item .order-details {\n    gap: 10px;\n  }\n  .orders-list .order-item .order-details .order-image {\n    width: 60px;\n    height: 60px;\n  }\n  .orders-list .order-item .order-details .order-info .price-name h4 {\n    font-size: 0.9rem;\n    margin-bottom: 6px;\n  }\n  .orders-list .order-item .order-details .order-info .price-name .order-price {\n    font-size: 1rem;\n  }\n  .orders-list .order-item .order-details .order-info .quantity-total .order-quantity {\n    font-size: 0.8rem;\n  }\n  .orders-list .order-item .order-actions {\n    margin-top: 10px;\n    gap: 8px;\n  }\n  .orders-list .order-item .order-actions .action-btn {\n    padding: 8px;\n    font-size: 0.8rem;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20762,7 +20784,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".footer {\n  background-color: #1E1E1E;\n  color: #FFFFFF;\n  padding: 20px 0;\n  width: 100%;\n  position: relative;\n  bottom: 0;\n  box-sizing: border-box;\n}\n.footer .footer-container {\n  width: 100%;\n  padding: 0 20px;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: relative;\n}\n.footer .footer-container .footer-columns-wrapper {\n  display: flex;\n  justify-content: flex-start;\n  gap: 40px;\n  flex-wrap: wrap;\n}\n.footer .footer-container .footer-column {\n  text-align: left;\n}\n.footer .footer-container .footer-column h3 {\n  font-size: 16px;\n  font-weight: bold;\n  margin-bottom: 10px;\n  color: #FFFFFF;\n  text-transform: uppercase;\n}\n.footer .footer-container .footer-column p {\n  font-size: 14px;\n  color: #FFFFFF;\n  margin-bottom: 8px;\n  line-height: 1.5;\n}\n.footer .footer-container .footer-column.socials .social-icons {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.footer .footer-container .footer-column.socials .social-icons .social-icon {\n  height: 40px;\n  width: 40px;\n  filter: invert(100%);\n  background-color: rgba(255, 255, 255, 0.1);\n  padding: 5px;\n  border-radius: 5px;\n  transition: background-color 0.3s;\n}\n.footer .footer-container .footer-column.socials .social-icons .social-icon:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.footer .footer-container .footer-column.logistics .logistics-logo {\n  height: 30px;\n  width: auto;\n  margin-top: 10px;\n}\n.footer .footer-container .footer-tagline {\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: bold;\n  text-transform: uppercase;\n  align-self: flex-start;\n}\n.footer .footer-bottom {\n  width: 100%;\n  padding: 10px 20px;\n  margin-top: 20px;\n  border-top: 1px solid rgba(255, 255, 255, 0.2);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.footer .footer-bottom .footer-bottom-left {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright {\n  display: flex;\n  align-items: center;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright span {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright .separator {\n  margin: 0 5px;\n  font-size: 12px;\n  color: #FFFFFF;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links a {\n  font-size: 12px;\n  color: #FFFFFF;\n  text-decoration: none;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links a:hover {\n  text-decoration: underline;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links .separator {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0 5px;\n}\n.footer .footer-bottom .footer-location {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-location p,\n.footer .footer-bottom .footer-location a {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0;\n}\n.footer .footer-bottom .footer-location a {\n  text-decoration: none;\n}\n.footer .footer-bottom .footer-location a:hover {\n  text-decoration: underline;\n}\n.footer .footer-bottom .footer-location .separator {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0 5px;\n}\n@media (max-width: 768px) {\n  .footer .footer-container {\n    flex-direction: column;\n    align-items: flex-start;\n    padding: 0 15px;\n  }\n  .footer .footer-container .footer-columns-wrapper {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .footer .footer-container .footer-column {\n    width: 100%;\n    margin-bottom: 20px;\n  }\n  .footer .footer-container .footer-column.socials .social-icons {\n    justify-content: flex-start;\n  }\n  .footer .footer-container .footer-tagline {\n    margin-top: 20px;\n    align-self: flex-start;\n  }\n  .footer .footer-bottom {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .footer .footer-bottom .footer-bottom-left {\n    flex-wrap: wrap;\n    justify-content: center;\n    text-align: center;\n  }\n  .footer .footer-bottom .footer-location {\n    align-self: flex-end;\n  }\n}\n@media (max-width: 480px) {\n  .footer {\n    padding: 15px 0;\n  }\n  .footer .footer-container {\n    padding: 0 15px;\n  }\n  .footer .footer-bottom {\n    padding: 10px;\n    align-items: center;\n  }\n  .footer .footer-bottom .footer-bottom-left {\n    justify-content: center;\n    text-align: center;\n  }\n  .footer .footer-bottom .footer-location {\n    align-self: center;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".footer {\n  background-color: #1E1E1E;\n  color: #FFFFFF;\n  padding: 20px 0;\n  width: 100%;\n  position: relative;\n  bottom: 0;\n  box-sizing: border-box;\n}\n.footer .footer-container {\n  width: 100%;\n  padding: 0 20px;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: relative;\n}\n.footer .footer-container .footer-columns-wrapper {\n  display: flex;\n  justify-content: flex-start;\n  gap: 40px;\n  flex-wrap: wrap;\n}\n.footer .footer-container .footer-column {\n  text-align: left;\n}\n.footer .footer-container .footer-column h3 {\n  font-size: 16px;\n  font-weight: bold;\n  margin-bottom: 10px;\n  color: #FFFFFF;\n  text-transform: uppercase;\n}\n.footer .footer-container .footer-column p {\n  font-size: 14px;\n  color: #FFFFFF;\n  margin-bottom: 8px;\n  line-height: 1.5;\n}\n.footer .footer-container .footer-column.socials .social-icons {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.footer .footer-container .footer-column.socials .social-icons .social-icon {\n  height: 40px;\n  width: 40px;\n  filter: invert(100%);\n  background-color: rgba(255, 255, 255, 0.1);\n  padding: 5px;\n  border-radius: 5px;\n  transition: background-color 0.3s;\n}\n.footer .footer-container .footer-column.socials .social-icons .social-icon:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.footer .footer-container .footer-column.logistics .logistics-logo {\n  height: 30px;\n  width: auto;\n  margin-top: 10px;\n}\n.footer .footer-container .footer-tagline {\n  color: #FFFFFF;\n  font-size: 14px;\n  font-weight: bold;\n  text-transform: uppercase;\n  align-self: flex-start;\n}\n.footer .footer-bottom {\n  width: 100%;\n  padding: 10px 20px;\n  margin-top: 20px;\n  border-top: 1px solid rgba(255, 255, 255, 0.2);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.footer .footer-bottom .footer-bottom-left {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright {\n  display: flex;\n  align-items: center;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright span {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0;\n}\n.footer .footer-bottom .footer-bottom-left .footer-copyright .separator {\n  margin: 0 5px;\n  font-size: 12px;\n  color: #FFFFFF;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links a {\n  font-size: 12px;\n  color: #FFFFFF;\n  text-decoration: none;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links a:hover {\n  text-decoration: underline;\n}\n.footer .footer-bottom .footer-bottom-left .footer-links .separator {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0 5px;\n}\n.footer .footer-bottom .footer-location {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.footer .footer-bottom .footer-location p,\n.footer .footer-bottom .footer-location a {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0;\n}\n.footer .footer-bottom .footer-location a {\n  text-decoration: none;\n}\n.footer .footer-bottom .footer-location a:hover {\n  text-decoration: underline;\n}\n.footer .footer-bottom .footer-location .separator {\n  font-size: 12px;\n  color: #FFFFFF;\n  margin: 0 5px;\n}\n@media (max-width: 768px) {\n  .footer .footer-container {\n    flex-direction: column;\n    align-items: flex-start;\n    padding: 0 15px;\n  }\n  .footer .footer-container .footer-columns-wrapper {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    gap: 20px;\n    width: 100%;\n  }\n  .footer .footer-container .footer-column {\n    width: 100%;\n    margin-bottom: 20px;\n  }\n  .footer .footer-container .footer-column.socials .social-icons {\n    justify-content: flex-start;\n  }\n  .footer .footer-container .footer-tagline {\n    margin-top: 20px;\n    align-self: flex-start;\n  }\n  .footer .footer-bottom {\n    flex-direction: column;\n    align-items: center;\n    gap: 10px;\n    padding: 10px 15px;\n  }\n  .footer .footer-bottom .footer-bottom-left {\n    flex-wrap: wrap;\n    justify-content: center;\n    text-align: center;\n  }\n  .footer .footer-bottom .footer-location {\n    align-self: center;\n    text-align: center;\n  }\n}\n@media (max-width: 480px) {\n  .footer {\n    padding: 15px 0;\n  }\n  .footer .footer-container {\n    padding: 0 10px;\n  }\n  .footer .footer-container .footer-columns-wrapper {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 15px;\n  }\n  .footer .footer-container .footer-column {\n    margin-bottom: 15px;\n  }\n  .footer .footer-container .footer-column h3 {\n    font-size: 14px;\n  }\n  .footer .footer-container .footer-column p {\n    font-size: 12px;\n  }\n  .footer .footer-container .footer-column.socials .social-icons .social-icon {\n    height: 32px;\n    width: 32px;\n    padding: 4px;\n  }\n  .footer .footer-container .footer-column.logistics .logistics-logo {\n    height: 25px;\n  }\n  .footer .footer-container .footer-tagline {\n    font-size: 12px;\n  }\n  .footer .footer-bottom {\n    padding: 10px;\n    align-items: center;\n  }\n  .footer .footer-bottom .footer-bottom-left {\n    justify-content: center;\n    text-align: center;\n  }\n  .footer .footer-bottom .footer-location {\n    align-self: center;\n    text-align: center;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20787,7 +20809,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".homepage-customer {\n  background-color: #000;\n  min-height: 100vh;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  padding: 0;\n  margin: 0;\n  padding-top: 60px;\n}\n.homepage-customer .navbar {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  position: fixed;\n  top: 0;\n  height: 60px;\n  background-color: #000000;\n  z-index: 1100;\n  padding: 0 20px;\n}\n.homepage-customer .navbar > * {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 100%;\n}\n.homepage-customer .content-wrapper {\n  width: 100%;\n  height: 100%;\n  max-width: none;\n  margin: 0;\n  overflow-y: auto;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  position: relative;\n  z-index: 0;\n  -ms-overflow-style: auto;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar {\n  width: 8px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-track {\n  background: transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb {\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 4px;\n  z-index: -1;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb:hover {\n  background: rgba(0, 0, 0, 0.5);\n}\n.homepage-customer .content-wrapper .hero-section,\n.homepage-customer .content-wrapper .logos,\n.homepage-customer .content-wrapper .video-section,\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section {\n  position: relative;\n  width: calc(100vw + 8px);\n  height: calc(100vh - 60px);\n  min-height: 600px;\n  background-color: #000000;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-image {\n  width: calc(100vw + 8px);\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text {\n  position: relative;\n  z-index: 2;\n  color: #ffffff;\n  text-align: center;\n  padding: 100px 40px 0 40px;\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n  font-family: \"Jost\", sans-serif;\n  font-size: 48px;\n  font-weight: 500;\n  margin: 0 0 20px 0;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  line-height: 1.2;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  margin-top: 20px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  position: relative;\n  color: #F0F8FF;\n  font-size: 18px;\n  padding: 0 0 4px 0;\n  border: none;\n  background: none;\n  cursor: pointer;\n  text-decoration: none;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::after,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::after {\n  content: \">\";\n  color: #FF1C1C;\n  margin-left: 4px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::before {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background: #FF1C1C;\n  transform: scaleY(0);\n  transform-origin: bottom;\n  transition: transform 0.3s ease-in-out;\n  z-index: 0;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover::before {\n  transform: scaleY(1);\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:active,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .logos {\n  margin-top: 0;\n  margin-bottom: 40px;\n  width: 100%;\n  background-color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .video-section {\n  width: 100vw;\n  height: 70vh;\n  min-height: 300px;\n  position: relative;\n  overflow: hidden;\n  background-color: #000;\n  margin-bottom: 40px;\n}\n.homepage-customer .content-wrapper .video-section .fullscreen-video {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 80px;\n  background-color: #000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n  width: 100%;\n  background-color: #000;\n  padding: 20px 0;\n  margin: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n  font-size: 24px;\n  margin-bottom: 20px;\n  color: #fff;\n  text-align: left;\n  padding-left: 95px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0 40px;\n  width: 100%;\n  max-width: 1400px;\n  margin: 0 auto;\n  justify-items: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card {\n  background-color: #4a4a4a;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 250px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  margin-top: 20px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card img {\n  width: 100%;\n  height: auto;\n  display: block;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info {\n  padding: 15px;\n  color: #fff;\n  text-align: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .stars {\n  color: #ffd700;\n  font-size: 18px;\n  margin-bottom: 10px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3 {\n  font-size: 16px;\n  margin: 10px 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info p {\n  font-size: 14px;\n  color: #ffd700;\n  margin: 10px 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n  background-color: #ff0000;\n  color: white;\n  border: none;\n  padding: 8px 20px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  width: 100%;\n  margin-top: 10px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 768px) {\n  .homepage-customer {\n    padding-top: 75px;\n  }\n  .homepage-customer .content-wrapper .hero-section {\n    height: calc(100vh - 75px);\n    min-height: 500px;\n    width: 100vw;\n    padding: 0;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-image {\n    width: 100vw;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text {\n    padding: 60px 20px 0 20px;\n    text-align: center;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n    font-size: 28px;\n    margin: 0 0 15px 0;\n    letter-spacing: 1px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n    flex-direction: row;\n    gap: 20px;\n    justify-content: center;\n    margin-top: 15px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n    font-size: 16px;\n    width: auto;\n    max-width: none;\n    margin: 0;\n  }\n  .homepage-customer .content-wrapper .logos,\n  .homepage-customer .content-wrapper .video-section,\n  .homepage-customer .content-wrapper .product-grid-wrapper {\n    width: 100vw;\n  }\n  .homepage-customer .content-wrapper .video-section {\n    height: 50vh;\n    min-height: 200px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n    grid-template-columns: repeat(2, 1fr);\n    padding: 0 20px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".homepage-customer {\n  background-color: #000;\n  min-height: 100vh;\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  padding: 0;\n  margin: 0;\n  padding-top: 60px;\n}\n.homepage-customer .navbar {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  position: fixed;\n  top: 0;\n  height: 60px;\n  background-color: #000000;\n  z-index: 1100;\n  padding: 0 20px;\n}\n.homepage-customer .navbar > * {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 100%;\n}\n.homepage-customer .content-wrapper {\n  width: 100%;\n  height: 100%;\n  max-width: none;\n  margin: 0;\n  overflow-y: auto;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  position: relative;\n  z-index: 0;\n  -ms-overflow-style: auto;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar {\n  width: 8px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-track {\n  background: transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb {\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 4px;\n  z-index: -1;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb:hover {\n  background: rgba(0, 0, 0, 0.5);\n}\n.homepage-customer .content-wrapper .hero-section,\n.homepage-customer .content-wrapper .logos,\n.homepage-customer .content-wrapper .video-section,\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section {\n  position: relative;\n  width: calc(100vw + 8px);\n  height: calc(100vh - 60px);\n  min-height: 600px;\n  background-color: #000000;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-image {\n  width: calc(100vw + 8px);\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text {\n  position: relative;\n  z-index: 2;\n  color: #ffffff;\n  text-align: center;\n  padding: 100px 40px 0 40px;\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n  font-family: \"Jost\", sans-serif;\n  font-size: 48px;\n  font-weight: 500;\n  margin: 0 0 20px 0;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  line-height: 1.2;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  margin-top: 20px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  position: relative;\n  color: #F0F8FF;\n  font-size: 18px;\n  padding: 0 0 4px 0;\n  border: none;\n  background: none;\n  cursor: pointer;\n  text-decoration: none;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::after,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::after {\n  content: \">\";\n  color: #FF1C1C;\n  margin-left: 4px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::before {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background: #FF1C1C;\n  transform: scaleY(0);\n  transform-origin: bottom;\n  transition: transform 0.3s ease-in-out;\n  z-index: 0;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover::before {\n  transform: scaleY(1);\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:active,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .logos {\n  margin-top: 0;\n  margin-bottom: 40px;\n  width: 100%;\n  background-color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .video-section {\n  width: 100vw;\n  height: 70vh;\n  min-height: 300px;\n  position: relative;\n  overflow: hidden;\n  background-color: #000;\n  margin-bottom: 40px;\n}\n.homepage-customer .content-wrapper .video-section .fullscreen-video {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 80px;\n  background-color: #000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n  width: 100%;\n  background-color: #000;\n  padding: 20px 0;\n  margin: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n  font-size: 24px;\n  margin-bottom: 20px;\n  color: #fff;\n  text-align: left;\n  padding-left: 95px;\n}\n\n@media (max-width: 768px) {\n  .homepage-customer {\n    padding-top: 75px;\n  }\n  .homepage-customer .content-wrapper .hero-section {\n    height: calc(100vh - 75px);\n    min-height: 500px;\n    width: 100vw;\n    padding: 0;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-image {\n    width: 100vw;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text {\n    padding: 60px 20px 0 20px;\n    text-align: center;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n    font-size: 28px;\n    margin: 0 0 15px 0;\n    letter-spacing: 1px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n    flex-direction: row;\n    gap: 20px;\n    justify-content: center;\n    margin-top: 15px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n    font-size: 16px;\n    width: auto;\n    max-width: none;\n    margin: 0;\n  }\n  .homepage-customer .content-wrapper .logos,\n  .homepage-customer .content-wrapper .video-section,\n  .homepage-customer .content-wrapper .product-grid-wrapper {\n    width: 100vw;\n  }\n  .homepage-customer .content-wrapper .video-section {\n    height: 50vh;\n    min-height: 200px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n    padding-left: 20px;\n  }\n}\n@media (max-width: 480px) {\n  .homepage-customer .content-wrapper .hero-section .hero-text {\n    padding: 40px 10px 0 10px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n    font-size: 24px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n    gap: 15px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n    font-size: 14px;\n  }\n  .homepage-customer .content-wrapper .video-section {\n    height: 40vh;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n    font-size: 20px;\n    padding-left: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20955,7 +20977,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-grid {\n  background-color: #f5f9ff;\n  padding: 20px 0;\n  width: 100vw;\n  margin: 0;\n}\n.product-grid h2 {\n  font-size: 24px;\n  margin-bottom: 20px;\n  color: #000;\n  text-align: left;\n  padding-left: 20px;\n}\n.product-grid .products-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 20px;\n  justify-content: center;\n  padding: 0 20px;\n  width: 100%;\n  margin: 0 auto;\n}\n.product-grid .product-card {\n  background-color: #4a4a4a;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 250px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  margin-top: 20px;\n}\n.product-grid .product-card .product-image-container {\n  position: relative;\n  cursor: pointer;\n}\n.product-grid .product-card .product-image-container img {\n  width: 100%;\n  height: auto;\n  display: block;\n  transition: transform 0.3s ease;\n}\n.product-grid .product-card .product-image-container img:hover {\n  transform: scale(1.1);\n}\n.product-grid .product-card .product-info {\n  padding: 15px;\n  color: #fff;\n  text-align: center;\n}\n.product-grid .product-card .product-info .stars {\n  color: #ffd700;\n  font-size: 18px;\n  margin-bottom: 10px;\n}\n.product-grid .product-card .product-info h3 {\n  font-size: 16px;\n  margin: 10px 0;\n}\n.product-grid .product-card .product-info p {\n  font-size: 14px;\n  color: #ffd700;\n  margin: 10px 0;\n}\n.product-grid .product-card .product-info .add-to-cart {\n  background-color: #ff0000;\n  color: white;\n  border: none;\n  padding: 8px 20px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  width: 100%;\n  margin-top: 10px;\n}\n.product-grid .product-card .product-info .add-to-cart:hover {\n  background-color: #cc0000;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-grid {\n  background-color: #000;\n  padding: 20px 0;\n  width: 100vw;\n  margin: 0;\n}\n.product-grid h2 {\n  font-size: 24px;\n  margin-bottom: 20px;\n  color: #fff;\n  text-align: left;\n  padding-left: 10px;\n}\n.product-grid .products-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n  max-width: 1400px;\n  margin: 0 auto;\n  justify-content: center;\n  justify-items: center;\n}\n.product-grid .product-card {\n  background-color: #4a4a4a;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 250px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  margin-top: 20px;\n}\n.product-grid .product-card .product-image-container {\n  position: relative;\n  cursor: pointer;\n}\n.product-grid .product-card .product-image-container img {\n  width: 100%;\n  height: auto;\n  display: block;\n  transition: transform 0.3s ease;\n}\n.product-grid .product-card .product-image-container img:hover {\n  transform: scale(1.1);\n}\n.product-grid .product-card .product-info {\n  padding: 15px;\n  color: #fff;\n  text-align: center;\n}\n.product-grid .product-card .product-info .stars {\n  color: #ffd700;\n  font-size: 18px;\n  margin-bottom: 10px;\n}\n.product-grid .product-card .product-info h3 {\n  font-size: 16px;\n  margin: 10px 0;\n}\n.product-grid .product-card .product-info p {\n  font-size: 14px;\n  color: #ffd700;\n  margin: 10px 0;\n}\n.product-grid .product-card .product-info .add-to-cart {\n  background-color: #fd4545;\n  color: white;\n  border: none;\n  padding: 8px 20px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  width: 100%;\n  margin-top: 10px;\n}\n.product-grid .product-card .product-info .add-to-cart:hover {\n  background-color: #cc0000;\n}\n@media (max-width: 1024px) {\n  .product-grid .products-container {\n    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n  }\n}\n@media (max-width: 768px) {\n  .product-grid h2 {\n    padding-left: 10px;\n    margin-left: 0;\n  }\n  .product-grid .products-container {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 10px;\n    padding: 0 10px;\n    justify-content: center;\n    justify-items: center;\n    margin: 0 auto;\n  }\n  .product-grid .products-container .product-card:nth-child(n+7) {\n    display: none;\n  }\n  .product-grid .product-card {\n    width: 100%;\n    max-width: none;\n    margin: 15px 0;\n  }\n  .product-grid .product-info {\n    padding: 12px;\n  }\n  .product-grid .product-info .stars {\n    font-size: 16px;\n  }\n  .product-grid .product-info h3 {\n    font-size: 14px;\n  }\n  .product-grid .product-info p {\n    font-size: 12px;\n  }\n  .product-grid .product-info .add-to-cart {\n    padding: 10px 20px;\n    font-size: 16px;\n  }\n}\n@media (max-width: 480px) {\n  .product-grid h2 {\n    font-size: 20px;\n    padding-left: 5px;\n    margin-left: 0;\n  }\n  .product-grid .products-container {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 8px;\n    padding: 0 5px;\n    justify-content: center;\n    justify-items: center;\n    margin: 0 auto;\n  }\n  .product-grid .products-container .product-card:nth-child(n+7) {\n    display: none;\n  }\n  .product-grid .product-card {\n    width: 100%;\n    max-width: none;\n  }\n  .product-grid .product-card .product-info {\n    padding: 10px;\n  }\n  .product-grid .product-card .product-info .stars {\n    font-size: 14px;\n  }\n  .product-grid .product-card .product-info h3 {\n    font-size: 13px;\n  }\n  .product-grid .product-card .product-info p {\n    font-size: 11px;\n  }\n  .product-grid .product-card .product-info .add-to-cart {\n    padding: 8px 16px;\n    font-size: 14px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21004,7 +21026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".profile-page {\n  background-color: #000000;\n  color: #fff;\n  min-height: 100vh;\n  font-family: Arial, sans-serif;\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper {\n  padding: 40px 20px 20px 20px;\n  flex: 1;\n}\n.profile-page .content-wrapper .background-section {\n  height: 150px;\n  width: 100%;\n  overflow: hidden;\n  margin-bottom: 0;\n}\n.profile-page .content-wrapper .background-section .background-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.profile-page .content-wrapper .profile-header {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  position: relative;\n  top: -50px;\n}\n.profile-page .content-wrapper .profile-header .avatar-container {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  background-color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image:hover {\n  transform: scale(1.05);\n  opacity: 0.8;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon {\n  position: absolute;\n  bottom: 0;\n  right: -23px;\n  width: 25px;\n  height: 25px;\n  background: transparent;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  background: transparent;\n  transition: border-color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon svg {\n  position: relative;\n  z-index: 1;\n  color: #fff;\n  width: 18px;\n  height: 18px;\n  stroke-width: 1.5;\n  transition: color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover:before {\n  border-color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover svg {\n  color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .upload-photo-icon-external {\n  display: none;\n}\n.profile-page .content-wrapper .profile-header .username {\n  margin-top: 10px;\n  font-size: 1.5rem;\n  font-weight: bold;\n  line-height: 1.2;\n}\n.profile-page .content-wrapper .tabs-section {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n}\n.profile-page .content-wrapper .tabs-section .tab {\n  background: none;\n  border: none;\n  color: #fff;\n  font-size: 1rem;\n  padding: 10px 20px;\n  cursor: pointer;\n  border-bottom: 2px solid transparent;\n}\n.profile-page .content-wrapper .tabs-section .tab.active {\n  border-bottom: 2px solid #ff0000;\n}\n.profile-page .content-wrapper .tabs-section .tab:hover {\n  color: #ccc;\n}\n.profile-page .content-wrapper .info-grid {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  gap: 20px;\n}\n.profile-page .content-wrapper .info-grid .info-box {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  position: relative;\n}\n.profile-page .content-wrapper .info-grid .info-box h3 {\n  color: #ff0000;\n  font-size: 1rem;\n  margin-bottom: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box p {\n  font-size: 0.9rem;\n  margin: 0;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input {\n  width: 100%;\n  padding: 5px;\n  font-size: 0.9rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input:focus {\n  outline: none;\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.weak {\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.medium {\n  border-color: #ffa500;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.strong {\n  border-color: #008000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 2px;\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn svg {\n  vertical-align: middle;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field {\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field label {\n  font-size: 0.9rem;\n  color: #333;\n  margin-bottom: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.weak {\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.medium {\n  color: #ffa500;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .strength-indicator.strong {\n  color: #008000;\n}\n.profile-page .content-wrapper .info-grid .info-box .password-edit .password-field .error-message {\n  font-size: 0.8rem;\n  color: #ff0000;\n  margin-top: 5px;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn, .profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  padding: 5px 10px;\n  font-size: 0.9rem;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn {\n  background-color: #ccc;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn:hover {\n  background-color: #bbb;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  background-color: #ff0000;\n  color: #fff;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:hover {\n  background-color: #e60000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:disabled {\n  background-color: #ff6666;\n  cursor: not-allowed;\n}\n.profile-page .content-wrapper .order-history {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  text-align: center;\n}\n.profile-page footer {\n  margin-top: 200px;\n  padding: 20px;\n  width: 100%;\n  color: #fff;\n}\n\n@media (max-width: 768px) {\n  .info-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-wrapper {\n    padding: 30px 15px 15px 15px;\n  }\n  .background-section {\n    margin-bottom: 0;\n  }\n  .profile-header {\n    top: -40px;\n  }\n  .profile-header .avatar-container .upload-photo-icon {\n    bottom: 0;\n    right: -8px;\n    width: 24px;\n    height: 24px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:before {\n    border-width: 1.5px;\n  }\n  .profile-header .avatar-container .upload-photo-icon svg {\n    width: 16px;\n    height: 16px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover:before {\n    border-color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover svg {\n    color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .username {\n    margin-top: 8px;\n    font-size: 1.2rem;\n  }\n  footer {\n    margin-top: 150px;\n  }\n  .info-grid .info-box .edit-actions {\n    justify-content: center;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".profile-page {\n  background-color: #000000;\n  color: #fff;\n  min-height: 100vh;\n  font-family: Arial, sans-serif;\n  display: flex;\n  flex-direction: column;\n}\n.profile-page .content-wrapper {\n  padding: 40px 20px 20px 20px;\n  flex: 1;\n}\n.profile-page .content-wrapper .background-section {\n  height: 150px;\n  width: 100%;\n  overflow: hidden;\n  margin-bottom: 0;\n}\n.profile-page .content-wrapper .background-section .background-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.profile-page .content-wrapper .profile-header {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  position: relative;\n  top: -50px;\n}\n.profile-page .content-wrapper .profile-header .avatar-container {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  background-color: #fff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image {\n  width: 90px;\n  height: 90px;\n  border-radius: 50%;\n  transition: transform 0.3s ease, opacity 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .avatar-image:hover {\n  transform: scale(1.05);\n  opacity: 0.8;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon {\n  position: absolute;\n  bottom: 0;\n  right: -23px;\n  width: 25px;\n  height: 25px;\n  background: transparent;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  background: transparent;\n  transition: border-color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon svg {\n  position: relative;\n  z-index: 1;\n  color: #fff;\n  width: 18px;\n  height: 18px;\n  stroke-width: 1.5;\n  transition: color 0.3s ease, transform 0.3s ease;\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover:before {\n  border-color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .avatar-container .upload-photo-icon:hover svg {\n  color: #ff0000;\n  transform: scale(1.1);\n}\n.profile-page .content-wrapper .profile-header .upload-photo-icon-external {\n  display: none;\n}\n.profile-page .content-wrapper .profile-header .username {\n  margin-top: 10px;\n  font-size: 1.5rem;\n  font-weight: bold;\n  line-height: 1.2;\n}\n.profile-page .content-wrapper .tabs-section {\n  margin-bottom: 20px;\n}\n.profile-page .content-wrapper .tabs-section .tabs-desktop {\n  display: flex;\n  justify-content: flex-start;\n}\n.profile-page .content-wrapper .tabs-section .tabs-mobile {\n  display: none;\n}\n.profile-page .content-wrapper .tabs-section .tab {\n  background: none;\n  border: none;\n  color: #fff;\n  font-size: 1rem;\n  padding: 10px 20px;\n  cursor: pointer;\n  border-bottom: 2px solid transparent;\n}\n.profile-page .content-wrapper .tabs-section .tab.active {\n  border-bottom: 2px solid #ff0000;\n}\n.profile-page .content-wrapper .tabs-section .tab:hover {\n  color: #ccc;\n}\n.profile-page .content-wrapper .tabs-section .tab-dropdown {\n  width: 100%;\n  padding: 10px;\n  background: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  font-size: 1rem;\n  font-weight: bold;\n  text-transform: uppercase;\n  cursor: pointer;\n  appearance: none;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg fill=\"black\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>');\n  background-repeat: no-repeat;\n  background-position: right 10px center;\n}\n.profile-page .content-wrapper .info-grid {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  gap: 20px;\n}\n.profile-page .content-wrapper .info-grid .info-box {\n  background-color: #f0f4f8;\n  border-radius: 10px;\n  padding: 20px;\n  color: #333;\n  position: relative;\n}\n.profile-page .content-wrapper .info-grid .info-box h3 {\n  color: #ff0000;\n  font-size: 1rem;\n  margin-bottom: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box p {\n  font-size: 0.9rem;\n  margin: 0;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input {\n  width: 100%;\n  padding: 5px;\n  font-size: 0.9rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-sizing: border-box;\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input:focus {\n  outline: none;\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.weak {\n  border-color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.medium {\n  border-color: #ffa500;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-input.password-input.strong {\n  border-color: #008000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: none;\n  border: none;\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 2px;\n  color: #ff0000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-btn svg {\n  vertical-align: middle;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n  margin-top: 10px;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn,\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  padding: 5px 10px;\n  font-size: 0.9rem;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn {\n  background-color: #ccc;\n  color: #333;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .cancel-btn:hover {\n  background-color: #bbb;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn {\n  background-color: #ff0000;\n  color: #fff;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:hover {\n  background-color: #e60000;\n}\n.profile-page .content-wrapper .info-grid .info-box .edit-actions .save-btn:disabled {\n  background-color: #ff6666;\n  cursor: not-allowed;\n}\n.profile-page .content-wrapper .order-history {\n  background-color: transparent;\n  padding: 0;\n  color: #333;\n  text-align: center;\n}\n.profile-page footer {\n  margin-top: 200px;\n  padding: 20px;\n  width: 100%;\n  color: #fff;\n}\n\n@media (max-width: 768px) {\n  .info-grid {\n    grid-template-columns: 1fr;\n  }\n  .content-wrapper {\n    padding: 30px 15px 15px 15px;\n  }\n  .background-section {\n    margin-bottom: 0;\n  }\n  .profile-header {\n    top: -40px;\n  }\n  .profile-header .avatar-container .upload-photo-icon {\n    bottom: 0;\n    right: -8px;\n    width: 24px;\n    height: 24px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:before {\n    border-width: 1.5px;\n  }\n  .profile-header .avatar-container .upload-photo-icon svg {\n    width: 16px;\n    height: 16px;\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover:before {\n    border-color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .avatar-container .upload-photo-icon:hover svg {\n    color: #ff0000;\n    transform: scale(1.1);\n  }\n  .profile-header .username {\n    margin-top: 8px;\n    font-size: 1.2rem;\n  }\n  .tabs-section .tabs-desktop {\n    display: none;\n  }\n  .tabs-section .tabs-mobile {\n    display: block;\n  }\n  .tabs-section .tab-dropdown {\n    font-size: 0.9rem;\n    padding: 8px 12px;\n    border-radius: 8px;\n  }\n  footer {\n    margin-top: 150px;\n  }\n  .info-grid .info-box .edit-actions {\n    justify-content: center;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

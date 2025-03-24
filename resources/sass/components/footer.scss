@@ -169,12 +169,14 @@
       padding: 0 15px;
 
       .footer-columns-wrapper {
-        flex-direction: column;
-        gap: 20px;
+        display: grid; // Use CSS Grid for two-column layout
+        grid-template-columns: repeat(2, 1fr); // Two columns per row
+        gap: 20px; // Gap between columns
+        width: 100%; // Full width to ensure proper grid layout
       }
 
       .footer-column {
-        width: 100%;
+        width: 100%; // Each column takes full width of its grid cell
         margin-bottom: 20px;
 
         &.socials .social-icons {
@@ -190,17 +192,19 @@
 
     .footer-bottom {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center; // Center the entire bottom section
       gap: 10px;
+      padding: 10px 15px;
 
       .footer-bottom-left {
         flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+        justify-content: center; // Center the copyright and links
+        text-align: center; // Center the text within
       }
 
       .footer-location {
-        align-self: flex-end;
+        align-self: center; // Center the location section
+        text-align: center; // Center the text within
       }
     }
   }
@@ -209,20 +213,58 @@
     padding: 15px 0;
 
     .footer-container {
-      padding: 0 15px;
+      padding: 0 10px;
+
+      .footer-columns-wrapper {
+        grid-template-columns: repeat(2, 1fr); // Keep two columns per row
+        gap: 15px; // Slightly smaller gap for smaller screens
+      }
+
+      .footer-column {
+        margin-bottom: 15px;
+
+        h3 {
+          font-size: 14px; // Slightly smaller heading
+        }
+
+        p {
+          font-size: 12px; // Slightly smaller text
+        }
+
+        &.socials {
+          .social-icons {
+            .social-icon {
+              height: 32px; // Smaller icons for small screens
+              width: 32px;
+              padding: 4px;
+            }
+          }
+        }
+
+        &.logistics {
+          .logistics-logo {
+            height: 25px; // Smaller logo
+          }
+        }
+      }
+
+      .footer-tagline {
+        font-size: 12px; // Smaller tagline
+      }
     }
 
     .footer-bottom {
       padding: 10px;
-      align-items: center;
+      align-items: center; // Keep centered
 
       .footer-bottom-left {
-        justify-content: center;
+        justify-content: center; // Keep centered
         text-align: center;
       }
 
       .footer-location {
-        align-self: center;
+        align-self: center; // Keep centered
+        text-align: center;
       }
     }
   }

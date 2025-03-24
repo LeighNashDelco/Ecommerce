@@ -8,14 +8,13 @@ import OrdersCart from "../CartModals/orders_cart";
 import { IconEdit, IconUpload } from '@tabler/icons-react';
 import AddressModal from '../profile/address_modal';
 import PasswordModal from '../profile/password_modal';
-import AllOrder from '../orderHistory/all_order'; // Import the AllOrder component
+import AllOrder from '../orderHistory/all_order';
 
 function Profile() {
   const [activeTab, setActiveTab] = useState('personal');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [avatarImage, setAvatarImage] = useState(Avatar);
-  
-  // State for field values
+
   const [name, setName] = useState('Alexander Otaza');
   const [email, setEmail] = useState('Alexander Otaza');
   const [password, setPassword] = useState('************');
@@ -27,7 +26,6 @@ function Profile() {
     country: 'Philippines',
   });
 
-  // State for edit modes
   const [editMode, setEditMode] = useState({
     name: false,
     email: false,
@@ -35,11 +33,9 @@ function Profile() {
     address: false,
   });
 
-  // Temporary state for editing values
   const [tempName, setTempName] = useState(name);
   const [tempEmail, setTempEmail] = useState(email);
 
-  // State to control the modals
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
@@ -51,7 +47,6 @@ function Profile() {
     setIsCartOpen(!isCartOpen);
   };
 
-  // Handle file upload for avatar
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -64,17 +59,14 @@ function Profile() {
     event.target.value = null;
   };
 
-  // Trigger file input click for avatar
   const handleAvatarClick = () => {
     document.getElementById('avatar-upload').click();
   };
 
-  // Trigger file input click for upload icon
   const handleUploadIconClick = () => {
     document.getElementById('avatar-upload').click();
   };
 
-  // Handle edit button click for each field
   const handleEditClick = (field) => {
     if (field === 'address') {
       setIsAddressModalOpen(true);
@@ -96,7 +88,6 @@ function Profile() {
     if (field === 'email') setTempEmail(email);
   };
 
-  // Handle save button click for inline editing
   const handleSave = (field) => {
     if (field === 'name') setName(tempName);
     if (field === 'email') setEmail(tempEmail);
@@ -109,7 +100,6 @@ function Profile() {
     });
   };
 
-  // Handle cancel button click for inline editing
   const handleCancel = () => {
     setTempName(name);
     setTempEmail(email);
@@ -121,13 +111,11 @@ function Profile() {
     });
   };
 
-  // Handle saving the address from the modal
   const handleSaveAddress = (updatedAddress) => {
     setAddress(updatedAddress);
     setIsAddressModalOpen(false);
   };
 
-  // Handle saving the password from the modal
   const handleSavePassword = (newPassword) => {
     setPassword(newPassword || '************');
     setIsPasswordModalOpen(false);
@@ -157,18 +145,32 @@ function Profile() {
           <h2 className="username">alexdooe02122</h2>
         </div>
         <div className="tabs-section">
-          <button
-            className={`tab ${activeTab === 'personal' ? 'active' : ''}`}
-            onClick={() => handleTabChange('personal')}
-          >
-            Personal Information
-          </button>
-          <button
-            className={`tab ${activeTab === 'orders' ? 'active' : ''}`}
-            onClick={() => handleTabChange('orders')}
-          >
-            Order History
-          </button>
+          {/* For Desktop: Show tabs */}
+          <div className="tabs-desktop">
+            <button
+              className={`tab ${activeTab === 'personal' ? 'active' : ''}`}
+              onClick={() => handleTabChange('personal')}
+            >
+              Personal Information
+            </button>
+            <button
+              className={`tab ${activeTab === 'orders' ? 'active' : ''}`}
+              onClick={() => handleTabChange('orders')}
+            >
+              Order History
+            </button>
+          </div>
+          {/* For Mobile: Show dropdown */}
+          <div className="tabs-mobile">
+            <select
+              value={activeTab}
+              onChange={(e) => handleTabChange(e.target.value)}
+              className="tab-dropdown"
+            >
+              <option value="personal">PERSONAL INFORMATION</option>
+              <option value="orders">ORDER HISTORY</option>
+            </select>
+          </div>
         </div>
         {activeTab === 'personal' ? (
           <div className="info-grid">
@@ -253,17 +255,15 @@ function Profile() {
           </div>
         ) : (
           <div className="order-history">
-            <AllOrder /> {/* Replace the placeholder with the AllOrder component */}
+            <AllOrder />
           </div>
         )}
-        {/* Render the Address Modal */}
         <AddressModal
           isOpen={isAddressModalOpen}
           onClose={() => setIsAddressModalOpen(false)}
           onSave={handleSaveAddress}
           initialAddress={address}
         />
-        {/* Render the Password Modal */}
         <PasswordModal
           isOpen={isPasswordModalOpen}
           onClose={() => setIsPasswordModalOpen(false)}
@@ -276,4 +276,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Profile;         
