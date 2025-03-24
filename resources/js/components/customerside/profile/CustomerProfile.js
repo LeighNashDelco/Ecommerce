@@ -489,9 +489,6 @@ const CustomerProfile = () => {
             />
           </div>
           <h2 className="username">{formatFullName()}</h2>
-          <button className="view-cart-btn" onClick={handleViewCart}>
-            View Cart
-          </button>
         </div>
         <div className="tabs-section">
           <button

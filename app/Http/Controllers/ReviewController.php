@@ -86,13 +86,13 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         try {
-            $validated = $request->validate([
-                'product_id' => 'required|integer|exists:products,id',
-                'user_id' => 'required|integer|exists:users,id',
-                'rating' => 'required|integer|min:1|max:5',
-                'comment' => 'nullable|string',
-                'photo' => 'nullable|image|max:2048',
-            ]);
+$validated = $request->validate([
+    'product_id' => 'required|integer|exists:products,id',
+    'user_id' => 'required|integer|exists:users,id',
+    'rating' => 'required|integer|min:1|max:5',
+    'comment' => 'nullable|string',
+    'photo' => 'nullable|image|max:2048',
+]);
 
             if ($request->hasFile('photo')) {
                 $path = $request->file('photo')->store('reviews', 'public');
@@ -186,31 +186,35 @@ class ReviewController extends Controller
     }
 
     /**
-     * Fetch reviews for a specific product (paginated).
+     * Fetch reviews for a specific product (non-paginated, matching /api/shop-products).
      *
      * @param int $productId
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getByProduct($productId, Request $request)
+    public function getByProduct($productId)
     {
         try {
-            $perPage = $request->query('per_page', 10);
             $reviews = Review::where('product_id', $productId)
                 ->where('archived', false)
                 ->with(['user.profile'])
-                ->paginate($perPage)
-                ->through(function ($review) {
+                ->get()
+                ->map(function ($review) {
                     return $this->formatReview($review);
                 });
 
-            return response()->json($reviews);
+            return response()->json([
+                'success' => true,
+                'data' => $reviews
+            ]);
         } catch (\Exception $e) {
             Log::error('Error fetching reviews for product ID ' . $productId . ': ' . $e->getMessage(), [
                 'exception' => get_class($e),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return response()->json(['error' => 'Failed to fetch reviews: ' . $e->getMessage()], 500);
+            return response()->json([
+                'success' => false,
+                'error' => 'Failed to fetch reviews: ' . $e->getMessage()
+            ], 500);
         }
     }
 

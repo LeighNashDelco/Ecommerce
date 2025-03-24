@@ -21,14 +21,51 @@ const ProductView = () => {
   const [filterRating, setFilterRating] = useState(null);
   const [showMediaOnly, setShowMediaOnly] = useState(false);
 
-  // Revert baseImageUrl to include trailing slash
   const baseImageUrl = "http://127.0.0.1:8000/";
   const defaultProfileImage = `${baseImageUrl}images/pfp/default.png`;
 
-  const getAuthHeaders = () => ({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('LaravelPassportToken')}`,
-  });
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    } : { 'Content-Type': 'application/json' };
+  };
+
+  const fetchWithRetry = async (url, options, retries = 3, baseDelay = 2000) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url, options);
+        if (response.status === 429) {
+          const delay = baseDelay * (i + 1);
+          console.warn(`429 Too Many Requests for ${url}, retrying (${i + 1}/${retries}) in ${delay}ms`);
+          await new Promise(resolve => setTimeout(resolve, delay));
+          continue;
+        }
+        if (response.status === 401) {
+          console.warn(`401 Unauthorized for ${url}, proceeding as guest`);
+          return null;
+        }
+        if (!response.ok) {
+          const text = await response.text();
+          if (text.startsWith('<!DOCTYPE')) {
+            throw new Error('Server returned HTML instead of JSON, likely a server error');
+          }
+          throw new Error(`HTTP ${response.status} - ${text}`);
+        }
+        const contentType = response.headers.get('Content-Type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Response is not JSON');
+        }
+        return response;
+      } catch (error) {
+        if (i === retries - 1) {
+          console.error(`Failed to fetch ${url} after ${retries} retries:`, error.message);
+          return null;
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -37,39 +74,26 @@ const ProductView = () => {
       try {
         const token = localStorage.getItem('LaravelPassportToken');
         if (token) {
-          const userResponse = await fetch(`${baseImageUrl}api/user-profile`, {
-            headers: getAuthHeaders(),
-          });
-          if (!userResponse.ok) {
-            throw new Error(`Failed to fetch user profile: ${userResponse.status} ${userResponse.statusText}`);
-          }
-          const userData = await userResponse.json();
-          console.log('User Data:', userData);
-
-          if (!userData.user?.id) {
-            throw new Error('User ID not found in user profile response');
-          }
-
-          const profileResponse = await fetch(`${baseImageUrl}api/profiles/user/${userData.user.id}`, {
-            headers: getAuthHeaders(),
-          });
-          if (!profileResponse.ok) {
-            throw new Error(`Failed to fetch profile ID: ${userResponse.status} ${userResponse.statusText}`);
-          }
-          const profileData = await profileResponse.json();
-          console.log('Profile Data:', profileData);
-          if (isMounted) {
-            setProfileId(profileData.id || null);
+          const userResponse = await fetchWithRetry(`${baseImageUrl}api/user-profile`, { headers: getAuthHeaders() });
+          if (userResponse) {
+            const userData = await userResponse.json();
+            console.log('User Data:', userData);
+            if (userData.user?.id) {
+              const profileResponse = await fetchWithRetry(`${baseImageUrl}api/profiles/user/${userData.user.id}`, { headers: getAuthHeaders() });
+              if (profileResponse) {
+                const profileData = await profileResponse.json();
+                console.log('Profile Data:', profileData);
+                if (isMounted) setProfileId(profileData.id || null);
+              }
+            }
           }
         } else {
           console.log('No token found, proceeding as guest');
         }
 
-        const productResponse = await fetch(`${baseImageUrl}api/shop-products/${id}`, {
-          headers: getAuthHeaders(),
-        });
-        if (!productResponse.ok) {
-          throw new Error(`Failed to fetch product: ${productResponse.status} ${productResponse.statusText}`);
+        const productResponse = await fetchWithRetry(`${baseImageUrl}api/shop-products/${id}`, { headers: getAuthHeaders() });
+        if (!productResponse) {
+          throw new Error('Failed to fetch product after retries');
         }
         const productData = await productResponse.json();
         const finalProductData = productData.success && productData.data ? productData.data : productData;
@@ -78,63 +102,44 @@ const ProductView = () => {
         if (finalProductData.price && typeof finalProductData.price === 'string') {
           finalProductData.price = parseFloat(finalProductData.price.replace(/,/g, ''));
         }
-        if (isMounted) {
-          setProduct(finalProductData);
+        if (isMounted) setProduct(finalProductData);
+
+        const reviewsResponse = await fetchWithRetry(`${baseImageUrl}api/reviews/product/${id}`, { headers: getAuthHeaders() });
+        if (!reviewsResponse) {
+          console.warn(`Reviews fetch failed for product ${id}, setting empty reviews`);
+          if (isMounted) setReviews([]);
+        } else {
+          const reviewsData = await reviewsResponse.json();
+          console.log('Reviews Data:', reviewsData);
+          if (isMounted) setReviews(reviewsData.success && reviewsData.data ? reviewsData.data : reviewsData);
         }
 
-        const reviewsResponse = await fetch(`${baseImageUrl}api/reviews/product/${id}`, {
-          headers: getAuthHeaders(),
-        });
-        if (!reviewsResponse.ok) {
-          const errorData = await reviewsResponse.json();
-          throw new Error(`Failed to fetch reviews: ${reviewsResponse.status} ${reviewsResponse.statusText} - ${errorData.error || 'Unknown error'}`);
-        }
-        const reviewsData = await reviewsResponse.json();
-        console.log('Reviews Data:', reviewsData);
-        if (isMounted) {
-          setReviews(reviewsData.data || []);
-        }
-
-        if (finalProductData?.profile_id) {
-          try {
-            const profileResponse = await fetch(`${baseImageUrl}api/profiles/${finalProductData.profile_id}`, {
-              headers: getAuthHeaders(),
-            });
-            if (!profileResponse.ok) {
-              throw new Error(`Seller profile fetch failed: ${profileResponse.status} ${profileResponse.statusText}`);
-            }
+        if (token && finalProductData?.profile_id) {
+          const profileResponse = await fetchWithRetry(`${baseImageUrl}api/profiles/${finalProductData.profile_id}`, { headers: getAuthHeaders() });
+          if (profileResponse) {
             const profileData = await profileResponse.json();
             console.log('Seller Profile Data:', profileData);
-            if (isMounted) {
-              setUserProfile(profileData);
-            }
-          } catch (profileError) {
-            console.warn('Seller profile fetch error:', profileError);
-            if (isMounted) {
-              setUserProfile(null);
-              message.warning({
-                content: 'Failed to load seller profile. Using default name.',
-                style: { marginTop: '20px' },
-              });
-            }
+            if (isMounted) setUserProfile(profileData);
+          } else {
+            console.log(`Seller profile fetch skipped or failed for profile_id ${finalProductData.profile_id}, using product.profile_name`);
           }
+        } else {
+          console.log('Guest mode or no profile_id, using product.profile_name');
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error.message);
         if (isMounted) {
           setError(error.message);
           setProduct(null);
           setUserProfile(null);
           setReviews([]);
           message.error({
-            content: `Failed to load product details: ${error.message}`,
+            content: `Oops! Couldn’t load product details: ${error.message}. Try refreshing.`,
             style: { marginTop: '20px' },
           });
         }
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        if (isMounted) setLoading(false);
       }
     };
 
@@ -159,7 +164,7 @@ const ProductView = () => {
 
   const handleAddToCart = async () => {
     if (!profileId) {
-      message.error({
+      message.warning({
         content: 'Please log in to add items to your cart.',
         style: { marginTop: '20px' },
       });
@@ -189,6 +194,19 @@ const ProductView = () => {
     }
   };
 
+  const handleBuyNow = () => {
+    if (!profileId) {
+      message.warning({
+        content: 'Please log in to buy items.',
+        style: { marginTop: '20px' },
+      });
+      navigate('/login');
+      return;
+    }
+    console.log('Buy Now clicked - implement checkout logic here');
+    message.info('Checkout functionality to be implemented.');
+  };
+
   const handleExpandClick = () => {
     console.log('Expand icon clicked - functionality to be added');
   };
@@ -201,10 +219,10 @@ const ProductView = () => {
 
     return (
       <>
-        {Array(Math.max(filledStars, 0)).fill().map((_, index) => (
+        {Array(filledStars).fill().map((_, index) => (
           <IconStar key={`filled-${index}`} size={18} fill="#ff0000" color="#ff0000" />
         ))}
-        {Array(Math.max(emptyStars, 0)).fill().map((_, index) => (
+        {Array(emptyStars).fill().map((_, index) => (
           <IconStar key={`empty-${index}`} size={18} fill="none" color="#ccc" />
         ))}
       </>
@@ -216,7 +234,7 @@ const ProductView = () => {
       return { averageRating: 0, ratingCounts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 } };
     }
 
-    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const totalRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0);
     const averageRating = parseFloat((totalRating / reviews.length).toFixed(1));
     const ratingCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
 
@@ -266,9 +284,10 @@ const ProductView = () => {
     return 'Anonymous';
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!product) return <div>Product not found</div>;
+  // Silent loading: render nothing until data is ready
+  if (loading) return null;
+  if (error) return <div className="error">Error: {error}</div>;
+  if (!product) return <div className="not-found">Product not found</div>;
 
   const fullName = userProfile
     ? [
@@ -310,10 +329,10 @@ const ProductView = () => {
                 <button onClick={increaseQuantity} disabled={quantity >= (product.quantity_available || Infinity)}>+</button>
               </div>
               <div className="action-buttons">
-                <button className="add-to-cart" onClick={handleAddToCart}>
+                <button className="add-to-cart" onClick={handleAddToCart} disabled={!profileId}>
                   Add to Cart: ₱{(product.price * quantity).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                 </button>
-                <button className="buy-now">
+                <button className="buy-now" onClick={handleBuyNow} disabled={!profileId}>
                   Buy Now: ₱{(product.price * quantity).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                 </button>
               </div>
@@ -371,7 +390,7 @@ const ProductView = () => {
                               alt="Profile"
                               className="pfp"
                               onError={(e) => {
-                                console.log("Image load failed for:", `${baseImageUrl}${review.user?.profile?.profile_img?.replace(/^\//, '')}`);
+                                console.log("Image load failed:", review.user?.profile?.profile_img);
                                 e.target.src = defaultProfileImage;
                               }}
                             />
@@ -390,7 +409,7 @@ const ProductView = () => {
                               alt="Review Image"
                               className="review-img"
                               onError={(e) => {
-                                console.log("Review image load failed for:", `${baseImageUrl}${review.photo.replace(/^\//, '')}`);
+                                console.log("Review image load failed:", review.photo);
                                 e.target.style.display = 'none';
                                 e.target.parentElement.querySelector('.no-photo').style.display = 'block';
                               }}

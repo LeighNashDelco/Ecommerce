@@ -25,7 +25,9 @@ use App\Http\Controllers\{
     ReviewController,
     NotificationController,
     ShopController,
-    CartController
+    CartController,
+    OrderController,
+    TrackController
 };
 use App\Models\Profile;
 
@@ -60,6 +62,7 @@ Route::get('/profiles/user/{userId}', function ($userId) {
 });
 Route::get('/shop-products', [ShopController::class, 'getActiveProducts']);
 Route::get('/shop-products/{id}', [ProductController::class, 'show']);
+Route::get('/reviews/product/{productId}', [ReviewController::class, 'getByProduct']);
 
 # ==============================
 # PROTECTED ROUTES (Require Authentication)
@@ -69,7 +72,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/profiles', [ProfileController::class, 'store']);
     Route::get('/user-profile', [UserController::class, 'getUserProfile']);
     Route::post('/update-profile', [UserController::class, 'updateUserProfile']);
-    Route::get('/profiles/{id}', [ProfileController::class, 'show']); // Added this line
+    Route::get('/profiles/{id}', [ProfileController::class, 'show']);
 
     # Product Management
     Route::post('/products', [ProductController::class, 'store']);
@@ -77,6 +80,11 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::post('/products/{id}/image', [ProductController::class, 'storeImage']);
 
+    # Order Management
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders/user', [OrderController::class, 'getUserOrders']);
+    Route::post('/orders/{orderId}/cancel', [OrderController::class, 'cancelOrder']);
+    
     # Admin Management
     Route::get('/admins', [AdminController::class, 'getAdmins']);
     Route::get('/admins/archived', [AdminController::class, 'getArchivedAdmins']);
@@ -196,9 +204,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/reviews', [ReviewController::class, 'store']);
     Route::patch('/reviews/{id}/archive', [ReviewController::class, 'archive']);
     Route::match(['patch', 'put'], '/reviews/{id}', [ReviewController::class, 'update']);
-    Route::get('/reviews/product/{productId}', [ReviewController::class, 'getByProduct'])->middleware('auth:api');
-    
-    
+
     # Notification Management
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notifications/archived', [NotificationController::class, 'archived']);
@@ -212,7 +218,9 @@ Route::middleware('auth:api')->group(function () {
 
     # Change Password
     Route::post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
+    # Track Orders
 
+    Route::get('/orders/track/{orderId}', [TrackController::class, 'trackOrder']);
     # Cart Management
     Route::get('/cart/{profileId}', [CartController::class, 'getCart']);
     Route::post('/cart/add', [CartController::class, 'addToCart']);

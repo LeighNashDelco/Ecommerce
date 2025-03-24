@@ -33165,6 +33165,10 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -33189,70 +33193,307 @@ function Cart() {
     _useState4 = _slicedToArray(_useState3, 2),
     selectedProducts = _useState4[0],
     setSelectedProducts = _useState4[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-      id: 1,
-      name: "Attack Shark X3",
-      price: 2000,
-      quantity: 1
-    }, {
-      id: 2,
-      name: "Attack Shark X4",
-      price: 2500,
-      quantity: 1
-    }]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
     cartItems = _useState6[0],
     setCartItems = _useState6[1];
-  var handleProductClick = function handleProductClick() {
-    console.log("Product image clicked - to be linked to product info/overview via backend");
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState10 = _slicedToArray(_useState9, 2),
+    errorMessage = _useState10[0],
+    setErrorMessage = _useState10[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+  var profileId = localStorage.getItem('profileId');
+  var getAuthHeaders = function getAuthHeaders() {
+    var token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer ".concat(token)
+    } : {
+      'Content-Type': 'application/json'
+    };
   };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var isMounted = true;
+    var fetchCartItems = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, data, items;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return fetch("http://127.0.0.1:8000/api/cart/".concat(profileId), {
+                headers: getAuthHeaders()
+              });
+            case 3:
+              response = _context.sent;
+              if (response.ok) {
+                _context.next = 6;
+                break;
+              }
+              throw new Error("HTTP error! status: ".concat(response.status));
+            case 6:
+              _context.next = 8;
+              return response.json();
+            case 8:
+              data = _context.sent;
+              if (isMounted) {
+                items = Array.isArray(data.data) ? data.data : [];
+                setCartItems(items.map(function (item) {
+                  return {
+                    id: item.product_id || item.id,
+                    name: item.product_name || item.name,
+                    price: item.price,
+                    quantity: item.quantity,
+                    quantityAvailable: item.quantity_available || item.quantityAvailable,
+                    product_img: item.product_img
+                  };
+                }));
+              }
+              _context.next = 16;
+              break;
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](0);
+              console.error('Error fetching cart items:', _context.t0);
+              if (isMounted) setCartItems([]);
+            case 16:
+              _context.prev = 16;
+              if (isMounted) setLoading(false);
+              return _context.finish(16);
+            case 19:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 12, 16, 19]]);
+      }));
+      return function fetchCartItems() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchCartItems();
+    return function () {
+      isMounted = false;
+    };
+  }, [profileId]);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsAllSelected(isChecked);
-    if (isChecked) {
-      var allProductIds = new Set(cartItems.map(function (item) {
-        return item.id;
-      }));
-      setSelectedProducts(allProductIds);
-    } else {
-      setSelectedProducts(new Set());
-    }
+    setSelectedProducts(isChecked ? new Set(cartItems.map(function (item) {
+      return item.id;
+    })) : new Set());
   };
   var handleRowSelect = function handleRowSelect(productId) {
     return function (e) {
-      var isChecked = e.target.checked;
-      var newSelectedProducts = new Set(selectedProducts);
-      if (isChecked) {
-        newSelectedProducts.add(productId);
-      } else {
-        newSelectedProducts["delete"](productId);
-      }
-      setSelectedProducts(newSelectedProducts);
-      setIsAllSelected(newSelectedProducts.size === cartItems.length);
+      var newSelected = new Set(selectedProducts);
+      if (e.target.checked) newSelected.add(productId);else newSelected["delete"](productId);
+      setSelectedProducts(newSelected);
+      setIsAllSelected(newSelected.size === cartItems.length);
     };
   };
-  var handleDeleteAll = function handleDeleteAll() {
-    console.log("Remove All clicked - to be linked to backend removal logic for products:", Array.from(selectedProducts));
-    setCartItems(cartItems.filter(function (item) {
-      return !selectedProducts.has(item.id);
+
+  // Copied and adapted from PaymentMethods for single item removal
+  var handleRemoveItem = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
+      var response, errorData;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return fetch("http://127.0.0.1:8000/api/cart/remove", {
+              method: 'DELETE',
+              headers: getAuthHeaders(),
+              body: JSON.stringify({
+                profile_id: profileId,
+                product_id: productId
+              })
+            });
+          case 3:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 10;
+              break;
+            }
+            _context2.next = 7;
+            return response.json();
+          case 7:
+            errorData = _context2.sent;
+            console.log('Server response:', errorData); // Debug
+            throw new Error(errorData.message || 'Failed to remove item');
+          case 10:
+            setCartItems(function (prevItems) {
+              return prevItems.filter(function (i) {
+                return i.id !== productId;
+              });
+            });
+            setSelectedProducts(function (prev) {
+              var newSelected = new Set(prev);
+              newSelected["delete"](productId);
+              return newSelected;
+            });
+            setIsAllSelected(false);
+            setErrorMessage('');
+            _context2.next = 20;
+            break;
+          case 16:
+            _context2.prev = 16;
+            _context2.t0 = _context2["catch"](0);
+            console.error('Error removing item:', _context2.t0);
+            setErrorMessage(_context2.t0.message || 'Failed to remove item. Please try again.');
+          case 20:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 16]]);
     }));
-    setSelectedProducts(new Set());
-    setIsAllSelected(false);
-  };
-  var handleQuantityChange = function handleQuantityChange(id, delta) {
-    setCartItems(cartItems.map(function (item) {
-      return item.id === id ? _objectSpread(_objectSpread({}, item), {}, {
-        quantity: Math.max(1, item.quantity + delta)
-      }) : item;
+    return function handleRemoveItem(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  // Handle multiple item removal by calling handleRemoveItem for each selected product
+  var handleDeleteSelected = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var _iterator, _step, productId;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            if (!(selectedProducts.size === 0)) {
+              _context3.next = 3;
+              break;
+            }
+            setErrorMessage('Please select items to remove.');
+            return _context3.abrupt("return");
+          case 3:
+            _context3.prev = 3;
+            // Loop through selected products and remove each one
+            _iterator = _createForOfIteratorHelper(selectedProducts);
+            _context3.prev = 5;
+            _iterator.s();
+          case 7:
+            if ((_step = _iterator.n()).done) {
+              _context3.next = 13;
+              break;
+            }
+            productId = _step.value;
+            _context3.next = 11;
+            return handleRemoveItem(productId);
+          case 11:
+            _context3.next = 7;
+            break;
+          case 13:
+            _context3.next = 18;
+            break;
+          case 15:
+            _context3.prev = 15;
+            _context3.t0 = _context3["catch"](5);
+            _iterator.e(_context3.t0);
+          case 18:
+            _context3.prev = 18;
+            _iterator.f();
+            return _context3.finish(18);
+          case 21:
+            _context3.next = 27;
+            break;
+          case 23:
+            _context3.prev = 23;
+            _context3.t1 = _context3["catch"](3);
+            console.error('Error removing selected items:', _context3.t1);
+            setErrorMessage('Some items could not be removed. Please try again.');
+          case 27:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[3, 23], [5, 15, 18, 21]]);
     }));
+    return function handleDeleteSelected() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleDeleteSingle = function handleDeleteSingle(productId) {
+    return function () {
+      handleRemoveItem(productId);
+    };
   };
+  var handleQuantityChange = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(id, delta) {
+      var item, newQuantity, response;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            item = cartItems.find(function (item) {
+              return item.id === id;
+            });
+            newQuantity = Math.max(1, Math.min(item.quantityAvailable, item.quantity + delta));
+            _context4.prev = 2;
+            _context4.next = 5;
+            return fetch('http://127.0.0.1:8000/api/cart/update', {
+              method: 'PUT',
+              headers: getAuthHeaders(),
+              body: JSON.stringify({
+                profile_id: profileId,
+                product_id: id,
+                quantity: newQuantity
+              })
+            });
+          case 5:
+            response = _context4.sent;
+            if (response.ok) {
+              _context4.next = 8;
+              break;
+            }
+            throw new Error('Failed to update quantity');
+          case 8:
+            setCartItems(cartItems.map(function (item) {
+              return item.id === id ? _objectSpread(_objectSpread({}, item), {}, {
+                quantity: newQuantity
+              }) : item;
+            }));
+            _context4.next = 14;
+            break;
+          case 11:
+            _context4.prev = 11;
+            _context4.t0 = _context4["catch"](2);
+            console.error('Error updating quantity:', _context4.t0);
+          case 14:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[2, 11]]);
+    }));
+    return function handleQuantityChange(_x2, _x3) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
   var handleCheckout = function handleCheckout() {
-    navigate('/checkout');
+    var itemsToCheckout = selectedProducts.size > 0 ? cartItems.filter(function (item) {
+      return selectedProducts.has(item.id);
+    }) : cartItems;
+    navigate('/payment_methods', {
+      state: {
+        items: itemsToCheckout
+      }
+    });
   };
-  var totalPrice = cartItems.reduce(function (sum, item) {
+  var totalPrice = cartItems.filter(function (item) {
+    return selectedProducts.size === 0 || selectedProducts.has(item.id);
+  }).reduce(function (sum, item) {
     return sum + item.price * item.quantity;
   }, 0);
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "cart-page-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "cart-content",
+        children: "Loading cart..."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
+    });
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "cart-page-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -33269,56 +33510,75 @@ function Cart() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
           children: "Shopping Cart"
         })]
+      }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        style: {
+          color: '#ff4444',
+          marginBottom: '20px',
+          textAlign: 'center',
+          fontSize: '16px'
+        },
+        children: errorMessage
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
         className: "cart-table",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("th", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
               className: "actions-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox-icon",
-                checked: isAllSelected,
-                onChange: handleSelectAll
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                children: "Actions"
-              })]
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                className: "select-all-container",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                  type: "checkbox",
+                  checked: isAllSelected,
+                  onChange: handleSelectAll
+                })
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              className: "product-cell",
               children: "Product"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-              children: "Product Price"
+              className: "price-cell",
+              children: "Price"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              className: "quantity-cell",
               children: "Quantity"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-              children: "Total Price"
+              className: "total-cell",
+              children: "Total"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
-          children: cartItems.map(function (item) {
+          children: cartItems.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+              colSpan: "5",
+              className: "empty-cart",
+              children: "Your cart is empty. Start shopping!"
+            })
+          }) : cartItems.map(function (item) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                 className: "actions-cell",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-                  type: "checkbox",
-                  className: "checkbox-icon",
-                  checked: selectedProducts.has(item.id),
-                  onChange: handleRowSelect(item.id)
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaTrash, {
-                  className: "trash-icon"
-                })]
+                "data-label": "Select",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                  className: "actions-container",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+                    type: "checkbox",
+                    className: "checkbox-icon",
+                    checked: selectedProducts.has(item.id),
+                    onChange: handleRowSelect(item.id)
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaTrash, {
+                    className: "trash-icon",
+                    onClick: handleDeleteSingle(item.id)
+                  })]
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
                 className: "product-cell",
+                "data-label": "Product",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                   className: "product-info",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                    href: "#",
-                    onClick: handleProductClick,
-                    className: "product-link",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                      src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                      alt: item.name,
-                      className: "product-image"
-                    })
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+                    src: item.product_img ? "http://127.0.0.1:8000/".concat(item.product_img) : _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+                    alt: item.name,
+                    className: "product-image"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                     className: "product-name",
                     children: item.name
@@ -33326,53 +33586,57 @@ function Cart() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
                 className: "price-cell",
-                children: ["\u20B1", item.price]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                "data-label": "Price",
+                children: ["\u20B1", item.price.toLocaleString()]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
                 className: "quantity-cell",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                "data-label": "Quantity",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                   className: "quantity-control",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-                    className: "quantity-btn",
                     onClick: function onClick() {
                       return handleQuantityChange(item.id, -1);
                     },
+                    disabled: item.quantity <= 1,
                     children: "-"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-                    className: "quantity-value",
                     children: item.quantity
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-                    className: "quantity-btn",
                     onClick: function onClick() {
                       return handleQuantityChange(item.id, 1);
                     },
+                    disabled: item.quantity >= item.quantityAvailable,
                     children: "+"
                   })]
-                })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+                  className: "quantity-available",
+                  children: ["Available: ", item.quantityAvailable]
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
                 className: "total-cell",
-                children: ["\u20B1", item.price * item.quantity]
+                "data-label": "Total",
+                children: ["\u20B1", (item.price * item.quantity).toLocaleString()]
               })]
             }, item.id);
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "cart-button-container",
+      }), cartItems.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "cart-footer",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "cart-summary",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "total-label",
-            children: "Total Price:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+          children: ["Total (", selectedProducts.size || cartItems.length, " items):", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
             className: "total-amount",
-            children: ["\u20B1", totalPrice]
+            children: [" \u20B1", totalPrice.toLocaleString()]
           })]
-        }), selectedProducts.size > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-          className: "cart-delete-all-btn",
-          onClick: handleDeleteAll,
-          children: "Remove All"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "remove-selected-btn",
+          onClick: handleDeleteSelected,
+          disabled: selectedProducts.size === 0,
+          children: "Remove Selected"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
           className: "checkout-btn",
           onClick: handleCheckout,
+          disabled: cartItems.length === 0,
           children: "Check Out"
         })]
       })]
@@ -34096,6 +34360,9 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -34142,9 +34409,120 @@ function PaymentMethods() {
     _useState12 = _slicedToArray(_useState11, 2),
     isPaypalSelected = _useState12[0],
     setIsPaypalSelected = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    cartItems = _useState14[0],
+    setCartItems = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    profile = _useState16[0],
+    setProfile = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState18 = _slicedToArray(_useState17, 2),
+    loading = _useState18[0],
+    setLoading = _useState18[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
+  var getAuthHeaders = function getAuthHeaders() {
+    var token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer ".concat(token)
+    } : {
+      'Content-Type': 'application/json'
+    };
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setSelectedPayment('creditCard');
+    var profileId = localStorage.getItem('profileId');
+    if (!profileId) {
+      setLoading(false);
+      return;
+    }
+    var fetchCartItems = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return fetch("http://127.0.0.1:8000/api/cart/".concat(profileId), {
+                headers: getAuthHeaders()
+              });
+            case 3:
+              response = _context.sent;
+              if (response.ok) {
+                _context.next = 6;
+                break;
+              }
+              throw new Error('Failed to fetch cart');
+            case 6:
+              _context.next = 8;
+              return response.json();
+            case 8:
+              data = _context.sent;
+              setCartItems(data.success && Array.isArray(data.data) ? data.data : []);
+              _context.next = 16;
+              break;
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](0);
+              console.error('Error fetching cart:', _context.t0);
+              setCartItems([]);
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 12]]);
+      }));
+      return function fetchCartItems() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    var fetchProfile = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var response, data;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return fetch("http://127.0.0.1:8000/api/profiles/".concat(profileId), {
+                headers: getAuthHeaders()
+              });
+            case 3:
+              response = _context2.sent;
+              if (response.ok) {
+                _context2.next = 6;
+                break;
+              }
+              throw new Error('Failed to fetch profile');
+            case 6:
+              _context2.next = 8;
+              return response.json();
+            case 8:
+              data = _context2.sent;
+              setProfile(data);
+              _context2.next = 16;
+              break;
+            case 12:
+              _context2.prev = 12;
+              _context2.t0 = _context2["catch"](0);
+              console.error('Error fetching profile:', _context2.t0);
+              setProfile(null);
+            case 16:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, null, [[0, 12]]);
+      }));
+      return function fetchProfile() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    Promise.all([fetchCartItems(), fetchProfile()])["finally"](function () {
+      return setLoading(false);
+    });
   }, []);
   var handleStepClick = function handleStepClick(step) {
     setActiveStep(step);
@@ -34202,17 +34580,152 @@ function PaymentMethods() {
       });
     });
   };
-
-  // Updated handlePlaceOrder to handle PayPal redirection
-  var handlePlaceOrder = function handlePlaceOrder() {
-    if (isPaypalSelected) {
-      // Redirect to PayPal login page
-      window.location.href = 'https://www.paypal.com/signin';
-    } else {
-      // Navigate to OrderComplete for other payment methods
-      navigate('/order_complete');
-    }
-  };
+  var handleRemoveItem = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productId) {
+      var profileId, response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            profileId = localStorage.getItem('profileId');
+            _context3.prev = 1;
+            _context3.next = 4;
+            return fetch("http://127.0.0.1:8000/api/cart/remove", {
+              method: 'DELETE',
+              headers: getAuthHeaders(),
+              body: JSON.stringify({
+                profile_id: profileId,
+                product_id: productId
+              })
+            });
+          case 4:
+            response = _context3.sent;
+            if (response.ok) {
+              _context3.next = 7;
+              break;
+            }
+            throw new Error('Failed to remove item');
+          case 7:
+            setCartItems(function (prevItems) {
+              return prevItems.filter(function (i) {
+                return i.product_id !== productId;
+              });
+            });
+            _context3.next = 13;
+            break;
+          case 10:
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](1);
+            console.error('Error removing item:', _context3.t0);
+          case 13:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[1, 10]]);
+    }));
+    return function handleRemoveItem(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handlePlaceOrder = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var profileId, totalPrice, shippingCost, grandTotal, orderData, response, responseText, responseData;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            profileId = localStorage.getItem('profileId');
+            if (profileId) {
+              _context4.next = 4;
+              break;
+            }
+            alert('Please log in to place an order.');
+            return _context4.abrupt("return");
+          case 4:
+            if (!(cartItems.length === 0)) {
+              _context4.next = 7;
+              break;
+            }
+            alert('Your cart is empty. Add items before placing an order.');
+            return _context4.abrupt("return");
+          case 7:
+            totalPrice = cartItems.reduce(function (total, item) {
+              return total + item.price * item.quantity;
+            }, 0);
+            shippingCost = selectedShipping === 'priority' ? 50 : 0;
+            grandTotal = totalPrice + shippingCost;
+            orderData = {
+              profile_id: parseInt(profileId, 10),
+              shipping_method: selectedShipping,
+              items: cartItems.map(function (item) {
+                return {
+                  product_id: parseInt(item.product_id, 10),
+                  quantity: parseInt(item.quantity, 10),
+                  price: Number(item.price)
+                };
+              }),
+              total_amount: grandTotal,
+              payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery'
+            };
+            console.log('Sending order data:', orderData);
+            if (!(selectedPayment === 'paypal')) {
+              _context4.next = 17;
+              break;
+            }
+            localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+            window.location.href = 'https://www.paypal.com/signin';
+            _context4.next = 38;
+            break;
+          case 17:
+            _context4.prev = 17;
+            _context4.next = 20;
+            return fetch('http://127.0.0.1:8000/api/orders', {
+              method: 'POST',
+              headers: getAuthHeaders(),
+              body: JSON.stringify(orderData)
+            });
+          case 20:
+            response = _context4.sent;
+            console.log('Response status:', response.status); // Debug status
+            _context4.next = 24;
+            return response.text();
+          case 24:
+            responseText = _context4.sent;
+            // Get raw text
+            console.log('Raw response:', responseText); // Log raw response
+            responseData = JSON.parse(responseText); // Attempt to parse as JSON
+            if (response.ok) {
+              _context4.next = 29;
+              break;
+            }
+            throw new Error(responseData.error || 'Failed to place order');
+          case 29:
+            console.log('Order placed successfully:', responseData);
+            setCartItems([]);
+            navigate('/order_complete');
+            _context4.next = 38;
+            break;
+          case 34:
+            _context4.prev = 34;
+            _context4.t0 = _context4["catch"](17);
+            console.error('Error placing order:', _context4.t0.message);
+            alert("Failed to place order: ".concat(_context4.t0.message));
+          case 38:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[17, 34]]);
+    }));
+    return function handlePlaceOrder() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var totalPrice = cartItems.reduce(function (total, item) {
+    return total + item.price * item.quantity;
+  }, 0);
+  var shippingCost = selectedShipping === 'priority' ? 50 : 0;
+  var grandTotal = totalPrice + shippingCost;
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    children: "Loading..."
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "payment-methods-page-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
@@ -34229,14 +34742,18 @@ function PaymentMethods() {
               className: "delivery-address",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
                 children: "Delivery Address"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                children: "John Doe"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                children: "1234 Sample Street, Barangay 123"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                children: "Manila, Metro Manila, 1000"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                children: "Philippines"
+              }), profile ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
+                  children: [profile.first_name, ' ', profile.middlename && profile.middlename !== 'N/A' ? "".concat(profile.middlename, " ") : '', profile.last_name, ' ', profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  children: profile.street
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  children: "".concat(profile.city, ", ").concat(profile.province, ", ").concat(profile.postal_code)
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  children: profile.country
+                })]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                children: "No profile data available"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                 className: "change-btn",
                 children: "Change"
@@ -34390,100 +34907,61 @@ function PaymentMethods() {
             className: "cart-details",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
               children: "Order Summary"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-              className: "cart-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                href: "#",
-                className: "product-link",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                  src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                  alt: "Attack Shark X3",
-                  className: "cart-item-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "cart-item-details",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Attack Shark X3"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Quantity: 1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "cart-item-price",
-                  children: "\u20B12,000"
+            }), cartItems.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+              className: "empty-cart",
+              children: "Your cart is empty"
+            }) : cartItems.map(function (item) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "cart-item",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "cart-item-image-wrapper",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                    src: item.product_img ? "http://127.0.0.1:8000/".concat(item.product_img) : _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+                    alt: item.product_name,
+                    className: "cart-item-image"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  className: "cart-item-details",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                    className: "cart-item-name",
+                    children: item.product_name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
+                    className: "cart-item-quantity",
+                    children: ["Quantity: ", item.quantity]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
+                    className: "cart-item-price",
+                    children: ["\u20B1", (item.price * item.quantity).toLocaleString()]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                  className: "remove-btn",
+                  onClick: function onClick() {
+                    return handleRemoveItem(item.product_id);
+                  },
+                  children: "Remove"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                className: "remove-btn",
-                children: "Remove"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-              className: "cart-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                href: "#",
-                className: "product-link",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                  src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                  alt: "Attack Shark X3",
-                  className: "cart-item-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "cart-item-details",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Attack Shark X3"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Quantity: 1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "cart-item-price",
-                  children: "\u20B12,000"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                className: "remove-btn",
-                children: "Remove"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-              className: "cart-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                href: "#",
-                className: "product-link",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                  src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                  alt: "Attack Shark X3",
-                  className: "cart-item-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "cart-item-details",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Attack Shark X3"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Quantity: 1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "cart-item-price",
-                  children: "\u20B12,000"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                className: "remove-btn",
-                children: "Remove"
-              })]
+              }, item.product_id);
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-summary",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-item",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Subtotal"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: "\u20B16,000"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                  children: ["\u20B1", totalPrice.toLocaleString()]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-item",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Shipping"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: "Free"
+                  children: shippingCost === 0 ? 'Free' : "\u20B1".concat(shippingCost.toLocaleString())
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-total",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Total"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: "\u20B16,000"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                  children: ["\u20B1", grandTotal.toLocaleString()]
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
@@ -34497,7 +34975,7 @@ function PaymentMethods() {
                   alt: "PayPal Logo",
                   className: "paypal-logo"
                 })]
-              }) : 'Place order'
+              }) : 'Place Order'
             })]
           })]
         })
@@ -35058,16 +35536,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var _sass_components_homepage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/homepage.scss */ "./resources/sass/components/homepage.scss");
 /* harmony import */ var _resources_sass_img_heroimg_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../resources/sass/img/heroimg.svg */ "./resources/sass/img/heroimg.svg");
 /* harmony import */ var _Customer_topnav_login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
 /* harmony import */ var _logos_logo_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../logos/logo_slider */ "./resources/js/components/customerside/logos/logo_slider.js");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -35077,7 +35568,6 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Import Ant Design message
 
 
 
@@ -35085,7 +35575,33 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
+
+
+var renderStars = function renderStars(rating) {
+  var totalStars = 5;
+  var parsedRating = parseFloat(rating) || 0;
+  var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
+  var emptyStars = totalStars - filledStars;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    className: "product-stars",
+    children: [Array(filledStars).fill().map(function (_, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        size: 18,
+        fill: "#ff0000",
+        color: "#ff0000"
+      }, "filled-".concat(index));
+    }), Array(emptyStars).fill().map(function (_, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        size: 18,
+        fill: "none",
+        color: "#ccc"
+      }, "empty-".concat(index));
+    })]
+  });
+};
 function Homepage() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isCartOpen = _useState2[0],
@@ -35094,19 +35610,26 @@ function Homepage() {
     _useState4 = _slicedToArray(_useState3, 2),
     products = _useState4[0],
     setProducts = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
-    loading = _useState6[0],
-    setLoading = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    sortedProducts = _useState6[0],
+    setSortedProducts = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState8 = _slicedToArray(_useState7, 2),
-    currentPage = _useState8[0],
-    setCurrentPage = _useState8[1];
+    loading = _useState8[0],
+    setLoading = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState10 = _slicedToArray(_useState9, 2),
     profileId = _useState10[0],
-    setProfileId = _useState10[1]; // Added for cart functionality
-  var productsPerPage = 15;
+    setProfileId = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
+    _useState12 = _slicedToArray(_useState11, 2),
+    visibleCount = _useState12[0],
+    setVisibleCount = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('newest'),
+    _useState14 = _slicedToArray(_useState13, 2),
+    sortBy = _useState14[0],
+    setSortBy = _useState14[1];
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
     return token ? {
@@ -35116,90 +35639,209 @@ function Homepage() {
       'Content-Type': 'application/json'
     };
   };
+  var delay = function delay(ms) {
+    return new Promise(function (resolve) {
+      return setTimeout(resolve, ms);
+    });
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var isMounted = true;
     var fetchProfileAndProducts = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, userResponse, userData, profileResponse, profileData, response, result;
+        var token, cachedProfileId, cachedProducts, cachedRatings, cachedUser, cachedShopProducts, cachedShopRatings, userData, cachedProfile, profileResponse, attempts, maxAttempts, profileData, productsArray, productsResponse, productsResult, productsWithRatings, _iterator, _step, product, averageRating, reviewsResponse, reviewsData, reviews, updatedRatings;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              // Fetch profile ID
               token = localStorage.getItem('LaravelPassportToken');
-              if (!token) {
-                _context.next = 20;
+              cachedProfileId = null;
+              cachedProducts = null;
+              cachedRatings = null;
+              cachedUser = localStorage.getItem('user');
+              cachedShopProducts = localStorage.getItem('shopProducts');
+              cachedShopRatings = localStorage.getItem('shopRatings');
+              if (!(token && cachedUser)) {
+                _context.next = 37;
                 break;
               }
-              _context.next = 5;
-              return fetch('http://127.0.0.1:8000/api/user-profile', {
-                headers: getAuthHeaders()
-              });
-            case 5:
-              userResponse = _context.sent;
-              if (userResponse.ok) {
-                _context.next = 8;
+              userData = JSON.parse(cachedUser);
+              cachedProfile = localStorage.getItem('profileId');
+              if (!cachedProfile) {
+                _context.next = 15;
                 break;
               }
-              throw new Error('Failed to fetch user profile');
-            case 8:
-              _context.next = 10;
-              return userResponse.json();
-            case 10:
-              userData = _context.sent;
-              _context.next = 13;
-              return fetch("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
+              cachedProfileId = cachedProfile;
+              _context.next = 36;
+              break;
+            case 15:
+              attempts = 0;
+              maxAttempts = 3;
+            case 17:
+              if (!(attempts < maxAttempts)) {
+                _context.next = 31;
+                break;
+              }
+              _context.next = 20;
+              return fetch("http://127.0.0.1:8000/api/profiles/user/".concat(userData.id), {
                 headers: getAuthHeaders()
               });
-            case 13:
+            case 20:
               profileResponse = _context.sent;
+              if (!(profileResponse.status === 429)) {
+                _context.next = 26;
+                break;
+              }
+              attempts++;
+              _context.next = 25;
+              return delay(1000 * attempts);
+            case 25:
+              return _context.abrupt("continue", 17);
+            case 26:
               if (profileResponse.ok) {
-                _context.next = 16;
+                _context.next = 28;
                 break;
               }
               throw new Error('Failed to fetch profile ID');
-            case 16:
-              _context.next = 18;
+            case 28:
+              return _context.abrupt("break", 31);
+            case 31:
+              _context.next = 33;
               return profileResponse.json();
-            case 18:
+            case 33:
               profileData = _context.sent;
-              if (isMounted) setProfileId(profileData.id);
-            case 20:
-              _context.next = 22;
+              cachedProfileId = profileData.id;
+              localStorage.setItem('profileId', cachedProfileId);
+            case 36:
+              if (isMounted) setProfileId(cachedProfileId);
+            case 37:
+              if (cachedShopProducts && cachedShopRatings) {
+                cachedProducts = JSON.parse(cachedShopProducts).data || [];
+                cachedRatings = JSON.parse(cachedShopRatings);
+              }
+              productsArray = [];
+              if (!cachedProducts) {
+                _context.next = 43;
+                break;
+              }
+              productsArray = cachedProducts;
+              _context.next = 51;
+              break;
+            case 43:
+              _context.next = 45;
               return fetch('http://127.0.0.1:8000/api/shop-products', {
                 headers: getAuthHeaders()
               });
-            case 22:
-              response = _context.sent;
-              _context.next = 25;
-              return response.json();
-            case 25:
-              result = _context.sent;
+            case 45:
+              productsResponse = _context.sent;
+              _context.next = 48;
+              return productsResponse.json();
+            case 48:
+              productsResult = _context.sent;
+              productsArray = Array.isArray(productsResult.data) ? productsResult.data : [];
+              localStorage.setItem('shopProducts', JSON.stringify(productsResult));
+            case 51:
+              productsWithRatings = [];
+              _iterator = _createForOfIteratorHelper(productsArray);
+              _context.prev = 53;
+              _iterator.s();
+            case 55:
+              if ((_step = _iterator.n()).done) {
+                _context.next = 89;
+                break;
+              }
+              product = _step.value;
+              averageRating = 0;
+              if (!(cachedRatings && cachedRatings[product.id] !== undefined)) {
+                _context.next = 62;
+                break;
+              }
+              averageRating = cachedRatings[product.id];
+              _context.next = 86;
+              break;
+            case 62:
+              _context.prev = 62;
+              _context.next = 65;
+              return fetch("http://127.0.0.1:8000/api/reviews/product/".concat(product.id), {
+                headers: getAuthHeaders()
+              });
+            case 65:
+              reviewsResponse = _context.sent;
+              if (!(reviewsResponse.status === 429)) {
+                _context.next = 70;
+                break;
+              }
+              _context.next = 69;
+              return delay(1000);
+            case 69:
+              return _context.abrupt("continue", 87);
+            case 70:
+              _context.next = 72;
+              return reviewsResponse.json();
+            case 72:
+              reviewsData = _context.sent;
+              reviews = Array.isArray(reviewsData) ? reviewsData : reviewsData.data || [];
+              averageRating = reviews.length > 0 ? reviews.reduce(function (sum, review) {
+                return sum + (review.rating || 0);
+              }, 0) / reviews.length : 0;
+              updatedRatings = cachedRatings ? _objectSpread({}, cachedRatings) : {};
+              updatedRatings[product.id] = averageRating;
+              localStorage.setItem('shopRatings', JSON.stringify(updatedRatings));
+              _context.next = 84;
+              break;
+            case 80:
+              _context.prev = 80;
+              _context.t0 = _context["catch"](62);
+              console.error("Error fetching reviews for product ".concat(product.id, ":"), _context.t0);
+              averageRating = 0;
+            case 84:
+              _context.next = 86;
+              return delay(100);
+            case 86:
+              if (averageRating >= 4) {
+                productsWithRatings.push(_objectSpread(_objectSpread({}, product), {}, {
+                  averageRating: averageRating
+                }));
+              }
+            case 87:
+              _context.next = 55;
+              break;
+            case 89:
+              _context.next = 94;
+              break;
+            case 91:
+              _context.prev = 91;
+              _context.t1 = _context["catch"](53);
+              _iterator.e(_context.t1);
+            case 94:
+              _context.prev = 94;
+              _iterator.f();
+              return _context.finish(94);
+            case 97:
               if (isMounted) {
-                setProducts(Array.isArray(result.data) ? result.data : []);
+                setProducts(productsWithRatings);
                 setLoading(false);
               }
-              _context.next = 33;
+              _context.next = 104;
               break;
-            case 29:
-              _context.prev = 29;
-              _context.t0 = _context["catch"](0);
-              console.error('Error fetching data:', _context.t0);
+            case 100:
+              _context.prev = 100;
+              _context.t2 = _context["catch"](0);
+              console.error('Error fetching data:', _context.t2);
               if (isMounted) {
                 setProducts([]);
                 setLoading(false);
-                antd__WEBPACK_IMPORTED_MODULE_8__["default"].error({
-                  content: 'Failed to load products. Please try again.',
+                antd__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+                  content: 'Failed to load products. Please try again later.',
                   style: {
                     marginTop: '20px'
                   }
                 });
               }
-            case 33:
+            case 104:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 29]]);
+        }, _callee, null, [[0, 100], [53, 91, 94, 97], [62, 80]]);
       }));
       return function fetchProfileAndProducts() {
         return _ref.apply(this, arguments);
@@ -35210,6 +35852,36 @@ function Homepage() {
       isMounted = false;
     };
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!Array.isArray(products)) {
+      setSortedProducts([]);
+      return;
+    }
+    var sorted = _toConsumableArray(products);
+    switch (sortBy) {
+      case 'price-low':
+        sorted.sort(function (a, b) {
+          return parseFloat(a.price) - parseFloat(b.price);
+        });
+        break;
+      case 'price-high':
+        sorted.sort(function (a, b) {
+          return parseFloat(b.price) - parseFloat(b.price);
+        });
+        break;
+      case 'newest':
+        sorted.sort(function (a, b) {
+          return b.id - a.id;
+        });
+        break;
+      default:
+        sorted.sort(function (a, b) {
+          return b.averageRating - a.averageRating;
+        });
+        break;
+    }
+    setSortedProducts(sorted);
+  }, [sortBy, products]);
   var toggleCart = function toggleCart() {
     return setIsCartOpen(!isCartOpen);
   };
@@ -35220,19 +35892,20 @@ function Homepage() {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             if (profileId) {
-              _context2.next = 3;
+              _context2.next = 4;
               break;
             }
-            antd__WEBPACK_IMPORTED_MODULE_8__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_10__["default"].error({
               content: 'Please log in to add items to your cart.',
               style: {
                 marginTop: '20px'
               }
             });
+            navigate('/login');
             return _context2.abrupt("return");
-          case 3:
-            _context2.prev = 3;
-            _context2.next = 6;
+          case 4:
+            _context2.prev = 4;
+            _context2.next = 7;
             return fetch('http://127.0.0.1:8000/api/cart/add', {
               method: 'POST',
               headers: getAuthHeaders(),
@@ -35242,83 +35915,106 @@ function Homepage() {
                 quantity: 1
               })
             });
-          case 6:
+          case 7:
             response = _context2.sent;
-            _context2.next = 9;
+            _context2.next = 10;
             return response.json();
-          case 9:
+          case 10:
             data = _context2.sent;
             if (response.ok) {
-              _context2.next = 12;
+              _context2.next = 13;
               break;
             }
             throw new Error(data.message || 'Failed to add to cart');
-          case 12:
+          case 13:
             setIsCartOpen(true);
-            antd__WEBPACK_IMPORTED_MODULE_8__["default"].success({
+            antd__WEBPACK_IMPORTED_MODULE_10__["default"].success({
               content: 'Item added to cart successfully!',
               style: {
                 marginTop: '20px'
               }
             });
-            _context2.next = 20;
+            _context2.next = 21;
             break;
-          case 16:
-            _context2.prev = 16;
-            _context2.t0 = _context2["catch"](3);
+          case 17:
+            _context2.prev = 17;
+            _context2.t0 = _context2["catch"](4);
             console.error('Error adding to cart:', _context2.t0);
-            antd__WEBPACK_IMPORTED_MODULE_8__["default"].error({
-              content: "Failed to add item to cart: ".concat(_context2.t0.message),
+            antd__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+              content: 'Failed to add item to cart. Please try again.',
               style: {
                 marginTop: '20px'
               }
             });
-          case 20:
+          case 21:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[3, 16]]);
+      }, _callee2, null, [[4, 17]]);
     }));
     return function handleAddToCart(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
-  var paginate = function paginate(pageNumber) {
-    return setCurrentPage(pageNumber);
+  var handleShowMore = function handleShowMore() {
+    setVisibleCount(function (prev) {
+      return prev + 5;
+    });
+  };
+  var handleBackToTop = function handleBackToTop() {
+    return window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  var handleSortChange = function handleSortChange(e) {
+    return setSortBy(e.target.value);
   };
   var ProductGrid = function ProductGrid() {
-    var indexOfLastProduct = currentPage * productsPerPage;
-    var indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    var currentProducts = Array.isArray(products) ? products.slice(indexOfFirstProduct, indexOfLastProduct) : [];
-    var totalPages = Math.ceil(products.length / productsPerPage) || 1;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "product-grid",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+        className: "product-grid-title",
         children: "Top Rated Products"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "product-grid-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          className: "available-products",
+          children: loading ? 'Available Products: Loading...' : "Available Products: ".concat(sortedProducts.length)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: "sort-view-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+            children: "Sort by"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+            value: sortBy,
+            onChange: handleSortChange,
+            disabled: loading,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+              value: "newest",
+              children: "Newest"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+              value: "price-high",
+              children: "High to Low"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+              value: "price-low",
+              children: "Low to High"
+            })]
+          })]
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "products-container",
         children: loading ? Array.from({
-          length: productsPerPage
+          length: 15
         }).map(function (_, index) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "product-card skeleton",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "skeleton-image",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("svg", {
-                viewBox: "0 0 16 20",
-                fill: "#e5e7eb",
-                xmlns: "http://www.w3.org/2000/svg",
-                "aria-hidden": "true",
-                className: "skeleton-icon",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
-                  d: "M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
-                  d: "M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"
-                })]
-              })
+              className: "skeleton-image"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "product-info",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                className: "skeleton-stars"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "skeleton-title"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "skeleton-price"
@@ -35327,24 +36023,31 @@ function Homepage() {
               })]
             })]
           }, index);
-        }) : currentProducts.length > 0 ? currentProducts.map(function (product) {
+        }) : sortedProducts.length > 0 ? sortedProducts.slice(0, visibleCount).map(function (product) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "product-card",
-            children: [product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-              src: "http://127.0.0.1:8000/".concat(product.product_img),
-              alt: product.product_name,
-              className: "product-img"
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-              className: "no-image",
-              children: "No Image"
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
+              to: "/shop/product/".concat(product.id),
+              className: "product-link",
+              children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+                src: "http://127.0.0.1:8000/".concat(product.product_img),
+                alt: product.product_name,
+                className: "product-img"
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                className: "no-image",
+                children: "No Image"
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
               className: "product-info",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
-                "data-long-name": product.product_name.length > 20 ? "true" : "false",
+              children: [renderStars(product.averageRating), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
+                className: "product-name",
                 children: product.product_name
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
-                children: ["\u20B1", parseFloat(product.price).toFixed(2)]
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                className: "product-price",
+                children: ["\u20B1", parseFloat(product.price).toLocaleString('en-US', {
+                  minimumFractionDigits: 2
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
                 className: "add-to-cart",
                 onClick: function onClick() {
                   return handleAddToCart(product.id);
@@ -35355,35 +36058,19 @@ function Homepage() {
           }, product.id);
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "no-products",
-          children: "No products available"
+          children: "No top-rated products available"
         })
-      }), !loading && totalPages > 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "pagination",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return paginate(currentPage - 1);
-          },
-          disabled: currentPage === 1,
-          className: "pagination-arrow",
-          children: "< "
-        }), Array.from({
-          length: totalPages
-        }, function (_, i) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            onClick: function onClick() {
-              return paginate(i + 1);
-            },
-            className: currentPage === i + 1 ? 'active' : '',
-            children: i + 1
-          }, i + 1);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return paginate(currentPage + 1);
-          },
-          disabled: currentPage === totalPages,
-          className: "pagination-arrow",
-          children: "> "
-        })]
+      }), visibleCount < sortedProducts.length && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        className: "show-more",
+        onClick: handleShowMore,
+        children: "Show More"
+      }), visibleCount > 15 && !loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("button", {
+        className: "back-to-top",
+        onClick: handleBackToTop,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          className: "arrow",
+          children: "\u2191"
+        }), " Top"]
       })]
     });
   };
@@ -35409,12 +36096,12 @@ function Homepage() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
               className: "learn-more-text",
               children: "Learn More"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
               className: "add-to-cart-text",
               onClick: function onClick() {
                 return handleAddToCart(1);
               },
-              children: [" ", "Add to Cart"]
+              children: "Add to Cart"
             })]
           })]
         })]
@@ -35625,199 +36312,298 @@ var ProductView = function ProductView() {
     _useState20 = _slicedToArray(_useState19, 2),
     showMediaOnly = _useState20[0],
     setShowMediaOnly = _useState20[1];
-
-  // Revert baseImageUrl to include trailing slash
   var baseImageUrl = "http://127.0.0.1:8000/";
   var defaultProfileImage = "".concat(baseImageUrl, "images/pfp/default.png");
   var getAuthHeaders = function getAuthHeaders() {
-    return {
+    var token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
       'Content-Type': 'application/json',
-      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
+      'Authorization': "Bearer ".concat(token)
+    } : {
+      'Content-Type': 'application/json'
     };
   };
+  var fetchWithRetry = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url, options) {
+      var retries,
+        baseDelay,
+        _loop,
+        _ret,
+        i,
+        _args2 = arguments;
+      return _regeneratorRuntime().wrap(function _callee$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            retries = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 3;
+            baseDelay = _args2.length > 3 && _args2[3] !== undefined ? _args2[3] : 2000;
+            _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop() {
+              var response, delay, text, contentType;
+              return _regeneratorRuntime().wrap(function _loop$(_context) {
+                while (1) switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.prev = 0;
+                    _context.next = 3;
+                    return fetch(url, options);
+                  case 3:
+                    response = _context.sent;
+                    if (!(response.status === 429)) {
+                      _context.next = 10;
+                      break;
+                    }
+                    delay = baseDelay * (i + 1);
+                    console.warn("429 Too Many Requests for ".concat(url, ", retrying (").concat(i + 1, "/").concat(retries, ") in ").concat(delay, "ms"));
+                    _context.next = 9;
+                    return new Promise(function (resolve) {
+                      return setTimeout(resolve, delay);
+                    });
+                  case 9:
+                    return _context.abrupt("return", 0);
+                  case 10:
+                    if (!(response.status === 401)) {
+                      _context.next = 13;
+                      break;
+                    }
+                    console.warn("401 Unauthorized for ".concat(url, ", proceeding as guest"));
+                    return _context.abrupt("return", {
+                      v: null
+                    });
+                  case 13:
+                    if (response.ok) {
+                      _context.next = 20;
+                      break;
+                    }
+                    _context.next = 16;
+                    return response.text();
+                  case 16:
+                    text = _context.sent;
+                    if (!text.startsWith('<!DOCTYPE')) {
+                      _context.next = 19;
+                      break;
+                    }
+                    throw new Error('Server returned HTML instead of JSON, likely a server error');
+                  case 19:
+                    throw new Error("HTTP ".concat(response.status, " - ").concat(text));
+                  case 20:
+                    contentType = response.headers.get('Content-Type');
+                    if (!(!contentType || !contentType.includes('application/json'))) {
+                      _context.next = 23;
+                      break;
+                    }
+                    throw new Error('Response is not JSON');
+                  case 23:
+                    return _context.abrupt("return", {
+                      v: response
+                    });
+                  case 26:
+                    _context.prev = 26;
+                    _context.t0 = _context["catch"](0);
+                    if (!(i === retries - 1)) {
+                      _context.next = 31;
+                      break;
+                    }
+                    console.error("Failed to fetch ".concat(url, " after ").concat(retries, " retries:"), _context.t0.message);
+                    return _context.abrupt("return", {
+                      v: null
+                    });
+                  case 31:
+                  case "end":
+                    return _context.stop();
+                }
+              }, _loop, null, [[0, 26]]);
+            });
+            i = 0;
+          case 4:
+            if (!(i < retries)) {
+              _context2.next = 14;
+              break;
+            }
+            return _context2.delegateYield(_loop(), "t0", 6);
+          case 6:
+            _ret = _context2.t0;
+            if (!(_ret === 0)) {
+              _context2.next = 9;
+              break;
+            }
+            return _context2.abrupt("continue", 11);
+          case 9:
+            if (!_ret) {
+              _context2.next = 11;
+              break;
+            }
+            return _context2.abrupt("return", _ret.v);
+          case 11:
+            i++;
+            _context2.next = 4;
+            break;
+          case 14:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee);
+    }));
+    return function fetchWithRetry(_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var isMounted = true;
     var fetchProfileAndProductData = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, _userData$user, userResponse, userData, profileResponse, profileData, productResponse, productData, finalProductData, reviewsResponse, errorData, reviewsData, _profileResponse, _profileData;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var token, userResponse, _userData$user, userData, profileResponse, profileData, productResponse, productData, finalProductData, reviewsResponse, reviewsData, _profileResponse, _profileData;
+        return _regeneratorRuntime().wrap(function _callee2$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context.prev = 0;
+              _context3.prev = 0;
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
-                _context.next = 26;
+                _context3.next = 23;
                 break;
               }
-              _context.next = 5;
-              return fetch("".concat(baseImageUrl, "api/user-profile"), {
+              _context3.next = 5;
+              return fetchWithRetry("".concat(baseImageUrl, "api/user-profile"), {
                 headers: getAuthHeaders()
               });
             case 5:
-              userResponse = _context.sent;
-              if (userResponse.ok) {
-                _context.next = 8;
+              userResponse = _context3.sent;
+              if (!userResponse) {
+                _context3.next = 21;
                 break;
               }
-              throw new Error("Failed to fetch user profile: ".concat(userResponse.status, " ").concat(userResponse.statusText));
-            case 8:
-              _context.next = 10;
+              _context3.next = 9;
               return userResponse.json();
-            case 10:
-              userData = _context.sent;
+            case 9:
+              userData = _context3.sent;
               console.log('User Data:', userData);
-              if ((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id) {
-                _context.next = 14;
+              if (!((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id)) {
+                _context3.next = 21;
                 break;
               }
-              throw new Error('User ID not found in user profile response');
+              _context3.next = 14;
+              return fetchWithRetry("".concat(baseImageUrl, "api/profiles/user/").concat(userData.user.id), {
+                headers: getAuthHeaders()
+              });
             case 14:
-              _context.next = 16;
-              return fetch("".concat(baseImageUrl, "api/profiles/user/").concat(userData.user.id), {
-                headers: getAuthHeaders()
-              });
-            case 16:
-              profileResponse = _context.sent;
-              if (profileResponse.ok) {
-                _context.next = 19;
+              profileResponse = _context3.sent;
+              if (!profileResponse) {
+                _context3.next = 21;
                 break;
               }
-              throw new Error("Failed to fetch profile ID: ".concat(userResponse.status, " ").concat(userResponse.statusText));
-            case 19:
-              _context.next = 21;
+              _context3.next = 18;
               return profileResponse.json();
-            case 21:
-              profileData = _context.sent;
+            case 18:
+              profileData = _context3.sent;
               console.log('Profile Data:', profileData);
-              if (isMounted) {
-                setProfileId(profileData.id || null);
-              }
-              _context.next = 27;
+              if (isMounted) setProfileId(profileData.id || null);
+            case 21:
+              _context3.next = 24;
               break;
-            case 26:
+            case 23:
               console.log('No token found, proceeding as guest');
-            case 27:
-              _context.next = 29;
-              return fetch("".concat(baseImageUrl, "api/shop-products/").concat(id), {
+            case 24:
+              _context3.next = 26;
+              return fetchWithRetry("".concat(baseImageUrl, "api/shop-products/").concat(id), {
                 headers: getAuthHeaders()
               });
-            case 29:
-              productResponse = _context.sent;
-              if (productResponse.ok) {
-                _context.next = 32;
+            case 26:
+              productResponse = _context3.sent;
+              if (productResponse) {
+                _context3.next = 29;
                 break;
               }
-              throw new Error("Failed to fetch product: ".concat(productResponse.status, " ").concat(productResponse.statusText));
-            case 32:
-              _context.next = 34;
+              throw new Error('Failed to fetch product after retries');
+            case 29:
+              _context3.next = 31;
               return productResponse.json();
-            case 34:
-              productData = _context.sent;
+            case 31:
+              productData = _context3.sent;
               finalProductData = productData.success && productData.data ? productData.data : productData;
               console.log('Product Data:', finalProductData);
               if (finalProductData.price && typeof finalProductData.price === 'string') {
                 finalProductData.price = parseFloat(finalProductData.price.replace(/,/g, ''));
               }
-              if (isMounted) {
-                setProduct(finalProductData);
-              }
-              _context.next = 41;
-              return fetch("".concat(baseImageUrl, "api/reviews/product/").concat(id), {
+              if (isMounted) setProduct(finalProductData);
+              _context3.next = 38;
+              return fetchWithRetry("".concat(baseImageUrl, "api/reviews/product/").concat(id), {
                 headers: getAuthHeaders()
               });
-            case 41:
-              reviewsResponse = _context.sent;
-              if (reviewsResponse.ok) {
-                _context.next = 47;
+            case 38:
+              reviewsResponse = _context3.sent;
+              if (reviewsResponse) {
+                _context3.next = 44;
                 break;
               }
-              _context.next = 45;
+              console.warn("Reviews fetch failed for product ".concat(id, ", setting empty reviews"));
+              if (isMounted) setReviews([]);
+              _context3.next = 49;
+              break;
+            case 44:
+              _context3.next = 46;
               return reviewsResponse.json();
-            case 45:
-              errorData = _context.sent;
-              throw new Error("Failed to fetch reviews: ".concat(reviewsResponse.status, " ").concat(reviewsResponse.statusText, " - ").concat(errorData.error || 'Unknown error'));
-            case 47:
-              _context.next = 49;
-              return reviewsResponse.json();
-            case 49:
-              reviewsData = _context.sent;
+            case 46:
+              reviewsData = _context3.sent;
               console.log('Reviews Data:', reviewsData);
-              if (isMounted) {
-                setReviews(reviewsData.data || []);
-              }
-              if (!(finalProductData !== null && finalProductData !== void 0 && finalProductData.profile_id)) {
-                _context.next = 70;
+              if (isMounted) setReviews(reviewsData.success && reviewsData.data ? reviewsData.data : reviewsData);
+            case 49:
+              if (!(token && finalProductData !== null && finalProductData !== void 0 && finalProductData.profile_id)) {
+                _context3.next = 64;
                 break;
               }
-              _context.prev = 53;
-              _context.next = 56;
-              return fetch("".concat(baseImageUrl, "api/profiles/").concat(finalProductData.profile_id), {
+              _context3.next = 52;
+              return fetchWithRetry("".concat(baseImageUrl, "api/profiles/").concat(finalProductData.profile_id), {
                 headers: getAuthHeaders()
               });
-            case 56:
-              _profileResponse = _context.sent;
-              if (_profileResponse.ok) {
-                _context.next = 59;
+            case 52:
+              _profileResponse = _context3.sent;
+              if (!_profileResponse) {
+                _context3.next = 61;
                 break;
               }
-              throw new Error("Seller profile fetch failed: ".concat(_profileResponse.status, " ").concat(_profileResponse.statusText));
-            case 59:
-              _context.next = 61;
+              _context3.next = 56;
               return _profileResponse.json();
-            case 61:
-              _profileData = _context.sent;
+            case 56:
+              _profileData = _context3.sent;
               console.log('Seller Profile Data:', _profileData);
-              if (isMounted) {
-                setUserProfile(_profileData);
-              }
-              _context.next = 70;
+              if (isMounted) setUserProfile(_profileData);
+              _context3.next = 62;
               break;
-            case 66:
-              _context.prev = 66;
-              _context.t0 = _context["catch"](53);
-              console.warn('Seller profile fetch error:', _context.t0);
-              if (isMounted) {
-                setUserProfile(null);
-                antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
-                  content: 'Failed to load seller profile. Using default name.',
-                  style: {
-                    marginTop: '20px'
-                  }
-                });
-              }
-            case 70:
-              _context.next = 76;
+            case 61:
+              console.log("Seller profile fetch skipped or failed for profile_id ".concat(finalProductData.profile_id, ", using product.profile_name"));
+            case 62:
+              _context3.next = 65;
               break;
-            case 72:
-              _context.prev = 72;
-              _context.t1 = _context["catch"](0);
-              console.error('Error fetching data:', _context.t1);
+            case 64:
+              console.log('Guest mode or no profile_id, using product.profile_name');
+            case 65:
+              _context3.next = 71;
+              break;
+            case 67:
+              _context3.prev = 67;
+              _context3.t0 = _context3["catch"](0);
+              console.error('Error fetching data:', _context3.t0.message);
               if (isMounted) {
-                setError(_context.t1.message);
+                setError(_context3.t0.message);
                 setProduct(null);
                 setUserProfile(null);
                 setReviews([]);
                 antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-                  content: "Failed to load product details: ".concat(_context.t1.message),
+                  content: "Oops! Couldn\u2019t load product details: ".concat(_context3.t0.message, ". Try refreshing."),
                   style: {
                     marginTop: '20px'
                   }
                 });
               }
-            case 76:
-              _context.prev = 76;
-              if (isMounted) {
-                setLoading(false);
-              }
-              return _context.finish(76);
-            case 79:
+            case 71:
+              _context3.prev = 71;
+              if (isMounted) setLoading(false);
+              return _context3.finish(71);
+            case 74:
             case "end":
-              return _context.stop();
+              return _context3.stop();
           }
-        }, _callee, null, [[0, 72, 76, 79], [53, 66]]);
+        }, _callee2, null, [[0, 67, 71, 74]]);
       }));
       return function fetchProfileAndProductData() {
-        return _ref.apply(this, arguments);
+        return _ref2.apply(this, arguments);
       };
     }();
     fetchProfileAndProductData();
@@ -35837,26 +36623,26 @@ var ProductView = function ProductView() {
     }
   };
   var handleAddToCart = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
       var response, data;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
             if (profileId) {
-              _context2.next = 4;
+              _context4.next = 4;
               break;
             }
-            antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
               content: 'Please log in to add items to your cart.',
               style: {
                 marginTop: '20px'
               }
             });
             navigate('/login');
-            return _context2.abrupt("return");
+            return _context4.abrupt("return");
           case 4:
-            _context2.prev = 4;
-            _context2.next = 7;
+            _context4.prev = 4;
+            _context4.next = 7;
             return fetch("".concat(baseImageUrl, "api/cart/add"), {
               method: 'POST',
               headers: getAuthHeaders(),
@@ -35867,13 +36653,13 @@ var ProductView = function ProductView() {
               })
             });
           case 7:
-            response = _context2.sent;
-            _context2.next = 10;
+            response = _context4.sent;
+            _context4.next = 10;
             return response.json();
           case 10:
-            data = _context2.sent;
+            data = _context4.sent;
             if (response.ok) {
-              _context2.next = 13;
+              _context4.next = 13;
               break;
             }
             throw new Error(data.message || 'Failed to add to cart');
@@ -35885,28 +36671,42 @@ var ProductView = function ProductView() {
                 marginTop: '20px'
               }
             });
-            _context2.next = 21;
+            _context4.next = 21;
             break;
           case 17:
-            _context2.prev = 17;
-            _context2.t0 = _context2["catch"](4);
-            console.error('Error adding to cart:', _context2.t0);
+            _context4.prev = 17;
+            _context4.t0 = _context4["catch"](4);
+            console.error('Error adding to cart:', _context4.t0);
             antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-              content: "Failed to add item to cart: ".concat(_context2.t0.message),
+              content: "Failed to add item to cart: ".concat(_context4.t0.message),
               style: {
                 marginTop: '20px'
               }
             });
           case 21:
           case "end":
-            return _context2.stop();
+            return _context4.stop();
         }
-      }, _callee2, null, [[4, 17]]);
+      }, _callee3, null, [[4, 17]]);
     }));
     return function handleAddToCart() {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
+  var handleBuyNow = function handleBuyNow() {
+    if (!profileId) {
+      antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
+        content: 'Please log in to buy items.',
+        style: {
+          marginTop: '20px'
+        }
+      });
+      navigate('/login');
+      return;
+    }
+    console.log('Buy Now clicked - implement checkout logic here');
+    antd__WEBPACK_IMPORTED_MODULE_7__["default"].info('Checkout functionality to be implemented.');
+  };
   var handleExpandClick = function handleExpandClick() {
     console.log('Expand icon clicked - functionality to be added');
   };
@@ -35916,13 +36716,13 @@ var ProductView = function ProductView() {
     var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
     var emptyStars = totalStars - filledStars;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-      children: [Array(Math.max(filledStars, 0)).fill().map(function (_, index) {
+      children: [Array(filledStars).fill().map(function (_, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
           size: 18,
           fill: "#ff0000",
           color: "#ff0000"
         }, "filled-".concat(index));
-      }), Array(Math.max(emptyStars, 0)).fill().map(function (_, index) {
+      }), Array(emptyStars).fill().map(function (_, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
           size: 18,
           fill: "none",
@@ -35945,7 +36745,7 @@ var ProductView = function ProductView() {
       };
     }
     var totalRating = reviews.reduce(function (sum, review) {
-      return sum + review.rating;
+      return sum + (review.rating || 0);
     }, 0);
     var averageRating = parseFloat((totalRating / reviews.length).toFixed(1));
     var ratingCounts = {
@@ -35990,13 +36790,15 @@ var ProductView = function ProductView() {
     }
     return 'Anonymous';
   };
-  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    children: "Loading..."
-  });
+
+  // Silent loading: render nothing until data is ready
+  if (loading) return null;
   if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "error",
     children: ["Error: ", error]
   });
   if (!product) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "not-found",
     children: "Product not found"
   });
   var fullName = userProfile ? [userProfile.first_name || '', userProfile.middlename !== 'N/A' ? userProfile.middlename : '', userProfile.last_name || '', userProfile.suffix !== 'N/A' ? userProfile.suffix : ''].filter(Boolean).join(' ') : product.profile_name || 'Unknown Seller';
@@ -36070,11 +36872,14 @@ var ProductView = function ProductView() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "add-to-cart",
                 onClick: handleAddToCart,
+                disabled: !profileId,
                 children: ["Add to Cart: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "buy-now",
+                onClick: handleBuyNow,
+                disabled: !profileId,
                 children: ["Buy Now: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
@@ -36145,7 +36950,7 @@ var ProductView = function ProductView() {
                         className: "pfp",
                         onError: function onError(e) {
                           var _review$user2;
-                          console.log("Image load failed for:", "".concat(baseImageUrl).concat((_review$user2 = review.user) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile_img) === null || _review$user2 === void 0 ? void 0 : _review$user2.replace(/^\//, '')));
+                          console.log("Image load failed:", (_review$user2 = review.user) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile) === null || _review$user2 === void 0 ? void 0 : _review$user2.profile_img);
                           e.target.src = defaultProfileImage;
                         }
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -36171,7 +36976,7 @@ var ProductView = function ProductView() {
                       alt: "Review Image",
                       className: "review-img",
                       onError: function onError(e) {
-                        console.log("Review image load failed for:", "".concat(baseImageUrl).concat(review.photo.replace(/^\//, '')));
+                        console.log("Review image load failed:", review.photo);
                         e.target.style.display = 'none';
                         e.target.parentElement.querySelector('.no-photo').style.display = 'block';
                       }
@@ -36219,11 +37024,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var _sass_components_shopgrid_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/shopgrid.scss */ "./resources/sass/components/shopgrid.scss");
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
@@ -36241,27 +37047,42 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
- // Import Ant Design message
 
 
 
-var StarRating = function StarRating(_ref) {
-  var rating = _ref.rating;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+
+
+var renderStars = function renderStars(rating) {
+  var totalStars = 5;
+  var parsedRating = parseFloat(rating) || 0;
+  var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
+  var emptyStars = totalStars - filledStars;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "shop-grid-stars",
-    children: [1, 2, 3, 4, 5].map(function (star) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-        className: "star ".concat(star <= rating ? 'filled' : ''),
-        children: "\u2605"
-      }, star);
-    })
+    children: [Array(Math.max(filledStars, 0)).fill().map(function (_, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        size: 18,
+        fill: "#ff0000",
+        color: "#ff0000"
+      }, "filled-".concat(index));
+    }), Array(Math.max(emptyStars, 0)).fill().map(function (_, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        size: 18,
+        fill: "none",
+        color: "#ccc"
+      }, "empty-".concat(index));
+    })]
   });
 };
-var ShopGrid = function ShopGrid(_ref2) {
-  var products = _ref2.products,
-    loading = _ref2.loading,
-    profileId = _ref2.profileId;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+var ShopGrid = function ShopGrid(_ref) {
+  var _ref$products = _ref.products,
+    products = _ref$products === void 0 ? [] : _ref$products,
+    _ref$ratings = _ref.ratings,
+    ratings = _ref$ratings === void 0 ? {} : _ref$ratings,
+    loading = _ref.loading,
+    profileId = _ref.profileId,
+    fetchReviews = _ref.fetchReviews;
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
     _useState2 = _slicedToArray(_useState, 2),
     visibleCount = _useState2[0],
@@ -36270,7 +37091,7 @@ var ShopGrid = function ShopGrid(_ref2) {
     _useState4 = _slicedToArray(_useState3, 2),
     sortBy = _useState4[0],
     setSortBy = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(products),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
     sortedProducts = _useState6[0],
     setSortedProducts = _useState6[1];
@@ -36288,7 +37109,11 @@ var ShopGrid = function ShopGrid(_ref2) {
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log('ShopGrid profileId:', profileId); // Debug profileId
+    console.log('Ratings in ShopGrid:', ratings);
+    if (!Array.isArray(products)) {
+      setSortedProducts([]);
+      return;
+    }
     var sorted = _toConsumableArray(products);
     switch (sortBy) {
       case 'price-low':
@@ -36298,7 +37123,7 @@ var ShopGrid = function ShopGrid(_ref2) {
         break;
       case 'price-high':
         sorted.sort(function (a, b) {
-          return parseFloat(b.price) - parseFloat(b.price);
+          return parseFloat(b.price) - parseFloat(a.price);
         });
         break;
       case 'newest':
@@ -36310,12 +37135,35 @@ var ShopGrid = function ShopGrid(_ref2) {
         break;
     }
     setSortedProducts(sorted);
-  }, [sortBy, products, profileId]);
-  var handleShowMore = function handleShowMore() {
-    return setVisibleCount(function (prev) {
-      return prev + 5;
-    });
-  };
+  }, [sortBy, products, ratings]);
+  var handleShowMore = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var newVisibleCount, newProductIds;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            newVisibleCount = visibleCount + 5;
+            newProductIds = sortedProducts.slice(visibleCount, newVisibleCount).map(function (p) {
+              return p.id;
+            });
+            if (!(newProductIds.length > 0)) {
+              _context.next = 5;
+              break;
+            }
+            _context.next = 5;
+            return fetchReviews(newProductIds);
+          case 5:
+            setVisibleCount(newVisibleCount);
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return function handleShowMore() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   var handleBackToTop = function handleBackToTop() {
     return window.scrollTo({
       top: 0,
@@ -36329,27 +37177,26 @@ var ShopGrid = function ShopGrid(_ref2) {
     return setIsCartOpen(!isCartOpen);
   };
   var handleAddToCart = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(productId) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
       var response, data;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            console.log('Adding to cart, profileId:', profileId); // Debug before adding
             if (profileId) {
-              _context.next = 5;
+              _context2.next = 4;
               break;
             }
-            antd__WEBPACK_IMPORTED_MODULE_5__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
               content: 'Please log in to add items to your cart.',
               style: {
                 marginTop: '20px'
-              } // Clean top positioning
+              }
             });
             navigate('/login');
-            return _context.abrupt("return");
-          case 5:
-            _context.prev = 5;
-            _context.next = 8;
+            return _context2.abrupt("return");
+          case 4:
+            _context2.prev = 4;
+            _context2.next = 7;
             return fetch("http://127.0.0.1:8000/api/cart/add", {
               method: 'POST',
               headers: getAuthHeaders(),
@@ -36359,49 +37206,48 @@ var ShopGrid = function ShopGrid(_ref2) {
                 quantity: 1
               })
             });
-          case 8:
-            response = _context.sent;
-            _context.next = 11;
+          case 7:
+            response = _context2.sent;
+            _context2.next = 10;
             return response.json();
-          case 11:
-            data = _context.sent;
+          case 10:
+            data = _context2.sent;
             if (response.ok) {
-              _context.next = 14;
+              _context2.next = 13;
               break;
             }
             throw new Error(data.message || 'Failed to add to cart');
-          case 14:
+          case 13:
             setIsCartOpen(true);
-            antd__WEBPACK_IMPORTED_MODULE_5__["default"].success({
+            antd__WEBPACK_IMPORTED_MODULE_6__["default"].success({
               content: 'Item added to cart successfully!',
               style: {
                 marginTop: '20px'
-              } // Clean top positioning
+              }
             });
-            _context.next = 22;
+            _context2.next = 21;
             break;
-          case 18:
-            _context.prev = 18;
-            _context.t0 = _context["catch"](5);
-            console.error('Error adding to cart:', _context.t0);
-            antd__WEBPACK_IMPORTED_MODULE_5__["default"].error({
-              content: "Failed to add item to cart: ".concat(_context.t0.message),
+          case 17:
+            _context2.prev = 17;
+            _context2.t0 = _context2["catch"](4);
+            console.error('Error adding to cart:', _context2.t0);
+            antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
+              content: "Failed to add item to cart: ".concat(_context2.t0.message),
               style: {
                 marginTop: '20px'
-              } // Clean top positioning
+              }
             });
-          case 22:
+          case 21:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
-      }, _callee, null, [[5, 18]]);
+      }, _callee2, null, [[4, 17]]);
     }));
     return function handleAddToCart(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
-  var displayedProductsCount = Math.min(sortedProducts.length, visibleCount);
-  if (loading) {
+  if (loading || !Array.isArray(products)) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "shop-grid-wrapper",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -36466,7 +37312,7 @@ var ShopGrid = function ShopGrid(_ref2) {
         className: "shop-grid-header",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
           className: "available-products",
-          children: ["Available Products: ", displayedProductsCount]
+          children: ["Available Products: ", sortedProducts.length]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "sort-view-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
@@ -36491,7 +37337,7 @@ var ShopGrid = function ShopGrid(_ref2) {
         children: sortedProducts.slice(0, visibleCount).map(function (product) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "shop-grid-card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
               to: "/shop/product/".concat(product.id),
               className: "product-link",
               children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
@@ -36506,14 +37352,12 @@ var ShopGrid = function ShopGrid(_ref2) {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "shop-grid-info",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(StarRating, {
-                rating: 5
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+              children: [renderStars(ratings[product.id] || 0), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
                 className: "product-name",
                 children: product.product_name
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
                 className: "product-price",
-                children: ["\u20B1", product.price.toLocaleString('en-US', {
+                children: ["\u20B1", parseFloat(product.price).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
@@ -36566,78 +37410,195 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_track_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/track_order.scss */ "./resources/sass/components/track_order.scss");
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconCheck.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruck.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruckDelivery.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconHome.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruck.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTruckDelivery.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconHome.mjs");
 /* harmony import */ var _customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../customerside/Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Import useLocation to access state
+
 
 
 
 
 
 var TrackOrder = function TrackOrder() {
-  var _location$state;
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)(); // Hook to access navigation state
-  var order = ((_location$state = location.state) === null || _location$state === void 0 ? void 0 : _location$state.order) || {
-    // Use passed order or fallback to default
-    orderNumber: '#2241',
-    status: 'In Transit',
-    total: '2365.00 USD',
-    shipTo: 'Alexander Otaza',
-    estimatedDeliveryDate: 'March 17, 2025',
-    orderPlacedDate: 'March 14, 2025',
-    orderReadyDate: 'March 13, 2025',
-    inTransitDate: 'March 14, 2025',
-    outForDeliveryDate: null,
-    deliveredDate: null,
-    productName: 'Attack Shark X3',
-    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    order = _useState2[0],
+    setOrder = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    error = _useState6[0],
+    setError = _useState6[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchOrderDetails = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var _location$state, token, orderId, response, errorData, data;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              token = localStorage.getItem('LaravelPassportToken');
+              if (token) {
+                _context.next = 4;
+                break;
+              }
+              throw new Error('Please login first - No token found');
+            case 4:
+              orderId = (_location$state = location.state) === null || _location$state === void 0 || (_location$state = _location$state.order) === null || _location$state === void 0 ? void 0 : _location$state.id;
+              if (orderId) {
+                _context.next = 7;
+                break;
+              }
+              throw new Error('No order ID provided');
+            case 7:
+              _context.next = 9;
+              return fetch("http://127.0.0.1:8000/api/orders/track/".concat(orderId), {
+                method: 'GET',
+                headers: {
+                  'Accept': 'application/json',
+                  'Authorization': "Bearer ".concat(token),
+                  'Content-Type': 'application/json'
+                }
+              });
+            case 9:
+              response = _context.sent;
+              if (response.ok) {
+                _context.next = 18;
+                break;
+              }
+              _context.next = 13;
+              return response.json();
+            case 13:
+              errorData = _context.sent;
+              if (!(response.status === 401)) {
+                _context.next = 17;
+                break;
+              }
+              localStorage.removeItem('LaravelPassportToken');
+              throw new Error('Session expired. Please login again.');
+            case 17:
+              throw new Error(errorData.message || 'Failed to fetch order details');
+            case 18:
+              _context.next = 20;
+              return response.json();
+            case 20:
+              data = _context.sent;
+              if (data.payment_method === 'credit_card') {
+                data.payment_method = 'Credit Card';
+              }
+              setOrder(data);
+              setError(null);
+              _context.next = 30;
+              break;
+            case 26:
+              _context.prev = 26;
+              _context.t0 = _context["catch"](0);
+              console.error('Fetch error:', _context.t0);
+              setError(_context.t0.message);
+            case 30:
+              _context.prev = 30;
+              setLoading(false);
+              return _context.finish(30);
+            case 33:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 26, 30, 33]]);
+      }));
+      return function fetchOrderDetails() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchOrderDetails();
+  }, [location]);
+  var getTimelineSteps = function getTimelineSteps(status) {
+    if (!order) return [];
+    var steps = [{
+      label: 'Order Placed',
+      date: order.order_placed_date,
+      icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"]
+    }, {
+      label: 'In Transit',
+      date: order.in_transit_date,
+      icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"]
+    }, {
+      label: 'Out for Delivery',
+      date: order.out_for_delivery_date,
+      icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"]
+    }, {
+      label: 'Delivered',
+      date: order.delivered_date,
+      icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"]
+    }];
+    var statusIndex = {
+      'Pending': 0,
+      'In Transit': 1,
+      'Out for Delivery': 2,
+      'Delivered': 3
+    }[status] || 0;
+    steps.forEach(function (step, index) {
+      step.active = index <= statusIndex;
+      step.current = index === statusIndex;
+      if (index < statusIndex) {
+        step.icon = _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"];
+      }
+    });
+    return {
+      steps: steps,
+      statusIndex: statusIndex
+    };
   };
-  var timelineSteps = [{
-    label: 'Order Placed',
-    date: order.orderPlacedDate,
-    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"],
-    active: true
-  }, {
-    label: 'Order Ready',
-    date: order.orderReadyDate,
-    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"],
-    active: true
-  }, {
-    label: 'In Transit',
-    date: order.inTransitDate,
-    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"],
-    active: true
-  }, {
-    label: 'Out for Delivery',
-    date: order.outForDeliveryDate,
-    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"],
-    active: false
-  }, {
-    label: 'Delivered',
-    date: order.deliveredDate,
-    icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"],
-    active: false
-  }];
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "track-order-page",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      children: "Loading..."
+    })
+  });
+  if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "track-order-page",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+      children: ["Error: ", error]
+    })
+  });
+  if (!order) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "track-order-page",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      children: "No order data available"
+    })
+  });
+  var _getTimelineSteps = getTimelineSteps(order.status),
+    timelineSteps = _getTimelineSteps.steps,
+    statusIndex = _getTimelineSteps.statusIndex;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "track-order-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "track-order",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "order-status",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
           children: ["Order Status: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "status-text",
             children: order.status
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-          children: ["Estimated Delivery Date: ", order.estimatedDeliveryDate]
-        })]
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "order-info",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -36645,35 +37606,36 @@ var TrackOrder = function TrackOrder() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             children: "ORDER PLACED"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: order.orderPlacedDate
+            children: order.order_placed_date
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "info-item",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             children: "TOTAL"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: order.total
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            children: ["\u20B1", order.total_amount]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "info-item",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             children: "SHIP TO"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: order.shipTo
+            children: order.ship_to
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "info-item",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "ORDER"
+            children: "PAYMENT METHOD"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: order.orderNumber
+            children: order.payment_method
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "timeline",
+        className: "timeline active-".concat(statusIndex),
         children: timelineSteps.map(function (step, index) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "timeline-step ".concat(step.active ? 'active' : ''),
+            className: "timeline-step ".concat(step.active ? 'active' : '', " ").concat(step.current ? 'current' : ''),
+            "data-index": index,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
               className: "timeline-icon",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(step.icon, {
@@ -36692,22 +37654,24 @@ var TrackOrder = function TrackOrder() {
         className: "order-details",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
           children: "Order Details"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: "Product Name:"
-          }), " ", order.name || order.productName]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: "Order number:"
-          }), " ", order.orderNumber]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: "Estimated Delivery Date:"
-          }), " ", order.estimatedDeliveryDate]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: "Shipping Address:"
-          }), " ", order.shippingAddress]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "details-content",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "details-text",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                children: "Product Name:"
+              }), " ", order.product_name]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                children: "Estimated Delivery Date:"
+              }), " ", order.estimated_delivery_date]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                children: "Shipping Address:"
+              }), " ", order.shipping_address]
+            })]
+          })
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
@@ -36954,12 +37918,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_all_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/all_order.scss */ "./resources/sass/components/all_order.scss");
-/* harmony import */ var _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../resources/sass/img/ATKX5.svg */ "./resources/sass/img/ATKX5.svg");
-/* harmony import */ var _orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../orderHistory/cancel_order */ "./resources/js/components/customerside/orderHistory/cancel_order.js");
-/* harmony import */ var _orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../orderHistory/rate_product */ "./resources/js/components/customerside/orderHistory/rate_product.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../orderHistory/cancel_order */ "./resources/js/components/customerside/orderHistory/cancel_order.js");
+/* harmony import */ var _orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../orderHistory/rate_product */ "./resources/js/components/customerside/orderHistory/rate_product.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -36970,72 +37942,169 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // Adjust the path to your cancel_order.js file
- // Adjust the path to your rate_product.js file
+
 
 var AllOrder = function AllOrder() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('all'),
     _useState2 = _slicedToArray(_useState, 2),
     activeTab = _useState2[0],
     setActiveTab = _useState2[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-
-  // State to manage the cancel modal
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    isCancelModalOpen = _useState4[0],
-    setIsCancelModalOpen = _useState4[1];
+    orders = _useState4[0],
+    setOrders = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState6 = _slicedToArray(_useState5, 2),
-    selectedOrderForCancel = _useState6[0],
-    setSelectedOrderForCancel = _useState6[1];
-
-  // State to manage the rate modal
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    error = _useState6[0],
+    setError = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState8 = _slicedToArray(_useState7, 2),
-    isRateModalOpen = _useState8[0],
-    setIsRateModalOpen = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    selectedOrderForRate = _useState10[0],
-    setSelectedOrderForRate = _useState10[1];
-  var orders = [{
-    id: 1,
-    image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    name: 'Attack Shark X3',
-    quantity: 1,
-    status: 'Shipped',
-    tab: 'to_ship',
-    actions: ['Track', 'Cancel Order'],
-    orderNumber: '#2241',
-    total: '2365.00 USD',
-    shipTo: 'Alexander Otaza',
-    estimatedDeliveryDate: 'March 17, 2025',
-    orderPlacedDate: 'March 14, 2025',
-    orderReadyDate: 'March 13, 2025',
-    inTransitDate: 'March 14, 2025',
-    outForDeliveryDate: null,
-    deliveredDate: null,
-    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
-  }, {
-    id: 2,
-    image: _resources_sass_img_ATKX5_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    name: 'Attack Shark X3',
-    quantity: 1,
-    status: 'Received',
-    tab: 'to_receive',
-    actions: ['Rate', 'Refund'],
-    orderNumber: '#2242',
-    total: '2365.00 USD',
-    shipTo: 'Alexander Otaza',
-    estimatedDeliveryDate: 'March 18, 2025',
-    orderPlacedDate: 'March 15, 2025',
-    orderReadyDate: 'March 16, 2025',
-    inTransitDate: 'March 17, 2025',
-    outForDeliveryDate: null,
-    deliveredDate: null,
-    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600'
-  }];
+    isCancelModalOpen = _useState10[0],
+    setIsCancelModalOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedOrderForCancel = _useState12[0],
+    setSelectedOrderForCancel = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState14 = _slicedToArray(_useState13, 2),
+    isRateModalOpen = _useState14[0],
+    setIsRateModalOpen = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedOrderForRate = _useState16[0],
+    setSelectedOrderForRate = _useState16[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchOrders = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var token, response, errorData, data, ordersWithTabs;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              setLoading(true);
+              token = localStorage.getItem('LaravelPassportToken');
+              if (token) {
+                _context.next = 5;
+                break;
+              }
+              throw new Error('Please login first - No token found');
+            case 5:
+              _context.next = 7;
+              return fetch('/api/orders/user', {
+                method: 'GET',
+                headers: {
+                  'Accept': 'application/json',
+                  'Authorization': "Bearer ".concat(token),
+                  'Content-Type': 'application/json'
+                }
+              });
+            case 7:
+              response = _context.sent;
+              if (response.ok) {
+                _context.next = 16;
+                break;
+              }
+              _context.next = 11;
+              return response.json();
+            case 11:
+              errorData = _context.sent;
+              if (!(response.status === 401)) {
+                _context.next = 15;
+                break;
+              }
+              localStorage.removeItem('LaravelPassportToken');
+              throw new Error('Session expired or invalid token. Please login again.');
+            case 15:
+              throw new Error(errorData.message || 'Failed to fetch orders');
+            case 16:
+              _context.next = 18;
+              return response.json();
+            case 18:
+              data = _context.sent;
+              ordersWithTabs = data.map(function (order) {
+                var statusMap = {
+                  1: 'Pending',
+                  2: 'In Transit',
+                  3: 'Received',
+                  4: 'Completed',
+                  5: 'Cancelled',
+                  6: 'Refund'
+                };
+                var statusName = statusMap[order.status_id] || order.status_name || 'Pending';
+                return _objectSpread(_objectSpread({}, order), {}, {
+                  tab: getTabFromStatus(statusName),
+                  image: order.product_img,
+                  name: order.product_name,
+                  quantity: order.quantity,
+                  status: statusName,
+                  price: order.total_amount.replace(' USD', ''),
+                  actions: getActionsFromStatus(statusName)
+                });
+              });
+              setOrders(ordersWithTabs);
+              setError(null);
+              _context.next = 28;
+              break;
+            case 24:
+              _context.prev = 24;
+              _context.t0 = _context["catch"](0);
+              setError(_context.t0.message);
+              if (_context.t0.message.includes('login')) {
+                navigate('/login');
+              }
+            case 28:
+              _context.prev = 28;
+              setLoading(false);
+              return _context.finish(28);
+            case 31:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 24, 28, 31]]);
+      }));
+      return function fetchOrders() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchOrders();
+  }, [navigate]);
+  var getTabFromStatus = function getTabFromStatus(status) {
+    switch (status.toLowerCase()) {
+      case 'in transit':
+        return 'to_ship';
+      case 'received':
+        return 'to_receive';
+      case 'completed':
+        return 'completed';
+      case 'cancelled':
+        return 'cancelled';
+      case 'refund':
+        return 'refunded';
+      case 'pending':
+        return 'to_pay';
+      default:
+        return 'all';
+    }
+  };
+  var getActionsFromStatus = function getActionsFromStatus(status) {
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return ['Cancel Order', 'Track Order'];
+      case 'in transit':
+        return ['Track Order'];
+      case 'received':
+        return ['Track Order'];
+      case 'completed':
+        return ['Rate', 'Refund'];
+      default:
+        return [];
+    }
+  };
   var filteredOrders = activeTab === 'all' ? orders : orders.filter(function (order) {
     return order.tab === activeTab;
   });
@@ -37046,152 +38115,170 @@ var AllOrder = function AllOrder() {
       }
     });
   };
-
-  // Open the cancel modal for the selected order
   var handleCancelOrder = function handleCancelOrder(order) {
     setSelectedOrderForCancel(order);
     setIsCancelModalOpen(true);
   };
-
-  // Handle confirmation from the cancel modal
   var handleConfirmCancel = function handleConfirmCancel(reason) {
     if (selectedOrderForCancel) {
-      console.log('Order cancelled:', selectedOrderForCancel.orderNumber, 'Reason:', reason);
+      console.log('Order cancelled:', selectedOrderForCancel.order_number, 'Reason:', reason);
+      setOrders(function (prevOrders) {
+        return prevOrders.map(function (order) {
+          return order.id === selectedOrderForCancel.id ? _objectSpread(_objectSpread({}, order), {}, {
+            status: 'Cancelled',
+            status_id: 5,
+            actions: []
+          }) : order;
+        });
+      });
       setIsCancelModalOpen(false);
+      setSelectedOrderForCancel(null);
     }
   };
-
-  // Close the cancel modal
   var handleCloseCancelModal = function handleCloseCancelModal() {
     setIsCancelModalOpen(false);
     setSelectedOrderForCancel(null);
   };
-
-  // Open the rate modal for the selected order
   var handleRateOrder = function handleRateOrder(order) {
     setSelectedOrderForRate(order);
     setIsRateModalOpen(true);
   };
-
-  // Handle submission from the rate modal
-  var handleSubmitRating = function handleSubmitRating(_ref) {
-    var rating = _ref.rating,
-      review = _ref.review;
+  var handleSubmitRating = function handleSubmitRating(_ref2) {
+    var rating = _ref2.rating,
+      review = _ref2.review,
+      image = _ref2.image;
     if (selectedOrderForRate) {
-      console.log('Rating submitted for order:', selectedOrderForRate.orderNumber, {
+      console.log('Rating submitted for order:', selectedOrderForRate.order_number, {
         rating: rating,
-        review: review
+        review: review,
+        image: image
       });
-      // Add your rating submission logic here (e.g., API call)
       setIsRateModalOpen(false);
+      setSelectedOrderForRate(null);
     }
   };
-
-  // Close the rate modal
   var handleCloseRateModal = function handleCloseRateModal() {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "all-order",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "order-tabs",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'all' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('all');
         },
-        children: "All Order"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        children: "All Orders"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_pay');
         },
-        children: "To Pay"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        children: "Pending"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_ship');
         },
         children: "To Ship"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_receive');
         },
         children: "To Receive"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('completed');
         },
         children: "Completed"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'cancelled' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('cancelled');
         },
         children: "Cancelled"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('refunded');
         },
         children: "Refunded"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "orders-list",
-      children: filteredOrders.length > 0 ? filteredOrders.map(function (order) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "loading",
+        children: "Loading orders..."
+      }) : error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "error-message",
+        children: error
+      }) : filteredOrders.length > 0 ? filteredOrders.map(function (order) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "order-item-container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "order-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "order-details",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                 src: order.image,
                 alt: order.name,
                 className: "order-image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "order-info",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
                   children: order.name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                  className: "quantity",
                   children: ["x", order.quantity]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
-                  className: "status ".concat(order.status.toLowerCase()),
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                  className: "status status-".concat(order.status.toLowerCase().replace(' ', '-')),
                   children: ["Status: ", order.status]
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "order-actions",
-              children: order.actions.map(function (action, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-                  className: "action-btn",
-                  onClick: action === 'Track' ? function () {
-                    return handleTrackOrder(order);
-                  } : action === 'Cancel Order' ? function () {
-                    return handleCancelOrder(order);
-                  } : action === 'Rate' ? function () {
-                    return handleRateOrder(order);
-                  } : undefined,
-                  children: action
-                }, index);
-              })
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                className: "order-price",
+                children: ["\u20B1", order.price]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "action-buttons",
+                children: order.actions.map(function (action, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                    className: "action-btn",
+                    onClick: action === 'Track Order' ? function () {
+                      return handleTrackOrder(order);
+                    } : action === 'Cancel Order' ? function () {
+                      return handleCancelOrder(order);
+                    } : action === 'Rate' ? function () {
+                      return handleRateOrder(order);
+                    } : action === 'Refund' ? function () {
+                      return console.log('Refund requested for order:', order.order_number);
+                    } : undefined,
+                    children: action
+                  }, index);
+                })
+              })]
             })]
           })
         }, order.id);
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         children: "No orders found for this tab."
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_2__["default"], {
       isOpen: isCancelModalOpen,
       onClose: handleCloseCancelModal,
-      onConfirm: handleConfirmCancel
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      onConfirm: handleConfirmCancel,
+      orderId: selectedOrderForCancel === null || selectedOrderForCancel === void 0 ? void 0 : selectedOrderForCancel.id
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isOpen: isRateModalOpen,
       onClose: handleCloseRateModal,
-      onSubmit: handleSubmitRating
+      onSubmit: handleSubmitRating,
+      orderId: selectedOrderForRate === null || selectedOrderForRate === void 0 ? void 0 : selectedOrderForRate.id,
+      productId: selectedOrderForRate === null || selectedOrderForRate === void 0 ? void 0 : selectedOrderForRate.product_id
     })]
   });
 };
@@ -37213,34 +38300,113 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _sass_components_cancel_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/cancel_order.scss */ "./resources/sass/components/cancel_order.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// resources/js/components/customerside/orderHistory/cancel_order.js
 
 
 
 var CancelOrder = function CancelOrder(_ref) {
   var isOpen = _ref.isOpen,
     onClose = _ref.onClose,
-    onConfirm = _ref.onConfirm;
+    onConfirm = _ref.onConfirm,
+    orderId = _ref.orderId;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
     selectedReason = _useState2[0],
     setSelectedReason = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isLoading = _useState4[0],
+    setIsLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    error = _useState6[0],
+    setError = _useState6[1];
   var cancellationReasons = ["I don't want to buy it anymore.", "I changed my mind.", "I ordered by mistake.", "I found a better price elsewhere."];
   var handleReasonChange = function handleReasonChange(event) {
     setSelectedReason(event.target.value);
+    setError(null);
   };
-  var handleSubmit = function handleSubmit(event) {
-    event.preventDefault();
-    if (selectedReason) {
-      onConfirm(selectedReason);
-      onClose();
-    }
-  };
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+      var passportToken, response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            event.preventDefault();
+            if (selectedReason) {
+              _context.next = 3;
+              break;
+            }
+            return _context.abrupt("return");
+          case 3:
+            setIsLoading(true);
+            setError(null);
+            _context.prev = 5;
+            passportToken = localStorage.getItem('LaravelPassportToken');
+            if (passportToken) {
+              _context.next = 9;
+              break;
+            }
+            throw new Error('No authentication token found');
+          case 9:
+            console.log('Cancelling order with ID:', orderId); // Debug log
+            _context.next = 12;
+            return fetch("/api/orders/".concat(orderId, "/cancel"), {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer ".concat(passportToken),
+                'Accept': 'application/json'
+              }
+            });
+          case 12:
+            response = _context.sent;
+            _context.next = 15;
+            return response.json();
+          case 15:
+            data = _context.sent;
+            console.log('Response:', data); // Debug log
+
+            if (response.ok) {
+              onConfirm(selectedReason);
+              onClose();
+            } else {
+              setError(data.error || 'Failed to cancel order');
+              if (data.debug) {
+                console.log('Debug info:', data.debug);
+              }
+            }
+            _context.next = 24;
+            break;
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context["catch"](5);
+            setError(_context.t0.message || 'An error occurred while cancelling the order');
+            console.error('Fetch error:', _context.t0);
+          case 24:
+            _context.prev = 24;
+            setIsLoading(false);
+            return _context.finish(24);
+          case 27:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[5, 20, 24, 27]]);
+    }));
+    return function handleSubmit(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "cancel-order-modal-overlay",
@@ -37249,7 +38415,10 @@ var CancelOrder = function CancelOrder(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
         children: "Cancel Order"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        children: "Please select a cancellation reason. Please take note that this will cancel the selected items and the action cannot be undone."
+        children: "Please select a cancellation reason."
+      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "error-message",
+        children: error
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
         onSubmit: handleSubmit,
         className: "radio-group",
@@ -37261,7 +38430,8 @@ var CancelOrder = function CancelOrder(_ref) {
               value: reason,
               checked: selectedReason === reason,
               onChange: handleReasonChange,
-              required: true
+              required: true,
+              disabled: isLoading
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               children: reason
             })]
@@ -37272,12 +38442,13 @@ var CancelOrder = function CancelOrder(_ref) {
             type: "button",
             className: "btn no-btn",
             onClick: onClose,
+            disabled: isLoading,
             children: "No"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "submit",
             className: "btn yes-btn",
-            disabled: !selectedReason,
-            children: "Yes"
+            disabled: !selectedReason || isLoading,
+            children: isLoading ? 'Cancelling...' : 'Yes'
           })]
         })]
       })]
@@ -37303,6 +38474,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
 /* harmony import */ var _sass_components_rate_product_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/rate_product.scss */ "./resources/sass/components/rate_product.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -37316,7 +38491,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var RateProduct = function RateProduct(_ref) {
   var isOpen = _ref.isOpen,
     onClose = _ref.onClose,
-    onSubmit = _ref.onSubmit;
+    onSubmit = _ref.onSubmit,
+    orderId = _ref.orderId,
+    productId = _ref.productId;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
     rating = _useState2[0],
@@ -37329,6 +38506,77 @@ var RateProduct = function RateProduct(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     review = _useState6[0],
     setReview = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    image = _useState8[0],
+    setImage = _useState8[1]; // Single image for simplicity
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    imagePreview = _useState10[0],
+    setImagePreview = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    userId = _useState12[0],
+    setUserId = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState14 = _slicedToArray(_useState13, 2),
+    error = _useState14[0],
+    setError = _useState14[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchUserProfile = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var token, response, userData;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              token = localStorage.getItem('LaravelPassportToken');
+              if (token) {
+                _context.next = 4;
+                break;
+              }
+              throw new Error('No token found. Please login.');
+            case 4:
+              _context.next = 6;
+              return fetch('/api/user', {
+                headers: {
+                  'Authorization': "Bearer ".concat(token),
+                  'Accept': 'application/json'
+                }
+              });
+            case 6:
+              response = _context.sent;
+              if (response.ok) {
+                _context.next = 9;
+                break;
+              }
+              throw new Error('Failed to fetch user profile');
+            case 9:
+              _context.next = 11;
+              return response.json();
+            case 11:
+              userData = _context.sent;
+              setUserId(userData.id);
+              _context.next = 18;
+              break;
+            case 15:
+              _context.prev = 15;
+              _context.t0 = _context["catch"](0);
+              setError(_context.t0.message);
+            case 18:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 15]]);
+      }));
+      return function fetchUserProfile() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    if (isOpen) {
+      fetchUserProfile();
+    }
+  }, [isOpen]);
   var handleRatingClick = function handleRatingClick(value) {
     setRating(value);
   };
@@ -37341,62 +38589,175 @@ var RateProduct = function RateProduct(_ref) {
   var handleReviewChange = function handleReviewChange(event) {
     setReview(event.target.value);
   };
-  var handleSubmit = function handleSubmit(event) {
-    event.preventDefault();
-    if (rating > 0) {
-      onSubmit({
-        rating: rating,
-        review: review
-      });
-      onClose();
+  var handleImageChange = function handleImageChange(event) {
+    var file = event.target.files[0]; // Only take the first file
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
     }
   };
+  var handleRemoveImage = function handleRemoveImage() {
+    setImage(null);
+    setImagePreview(null);
+  };
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
+      var formData, token, response, errorData, result;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            event.preventDefault();
+            if (!(rating === 0 || !userId)) {
+              _context2.next = 4;
+              break;
+            }
+            setError('Please provide a rating and ensure you are logged in.');
+            return _context2.abrupt("return");
+          case 4:
+            formData = new FormData();
+            formData.append('product_id', productId);
+            formData.append('user_id', userId);
+            formData.append('rating', rating);
+            formData.append('comment', review);
+            if (image) {
+              formData.append('photo', image); // Single photo field
+            }
+            _context2.prev = 10;
+            token = localStorage.getItem('LaravelPassportToken');
+            _context2.next = 14;
+            return fetch('/api/reviews', {
+              method: 'POST',
+              headers: {
+                'Authorization': "Bearer ".concat(token),
+                'Accept': 'application/json'
+              },
+              body: formData
+            });
+          case 14:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 20;
+              break;
+            }
+            _context2.next = 18;
+            return response.json();
+          case 18:
+            errorData = _context2.sent;
+            throw new Error(errorData.error || JSON.stringify(errorData.errors) || 'Failed to submit review');
+          case 20:
+            _context2.next = 22;
+            return response.json();
+          case 22:
+            result = _context2.sent;
+            onSubmit({
+              rating: rating,
+              review: review,
+              image: result.photo
+            });
+            setRating(0);
+            setReview('');
+            setImage(null);
+            setImagePreview(null);
+            setError(null);
+            onClose();
+            _context2.next = 35;
+            break;
+          case 32:
+            _context2.prev = 32;
+            _context2.t0 = _context2["catch"](10);
+            setError(_context2.t0.message);
+          case 35:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[10, 32]]);
+    }));
+    return function handleSubmit(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "rate-product-modal-overlay",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "rate-product-modal-content",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-        children: "Overall Rating"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "star-rating",
-        children: [1, 2, 3, 4, 5].map(function (star) {
-          var isFilled = star <= (hoverRating || rating);
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-            className: "star ".concat(isFilled ? 'filled' : ''),
-            onClick: function onClick() {
-              return handleRatingClick(star);
-            },
-            onMouseEnter: function onMouseEnter() {
-              return handleRatingHover(star);
-            },
-            onMouseLeave: handleMouseLeave,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
-              size: 24,
-              fill: isFilled ? '#FF0000' : 'none',
-              stroke: isFilled ? '#FF0000' : '#ccc'
-            })
-          }, star);
-        })
+        children: "Rate Product"
+      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "error-message",
+        children: error
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "rating-section",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          children: "Rating"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "star-rating",
+          children: [1, 2, 3, 4, 5].map(function (star) {
+            var isFilled = star <= (hoverRating || rating);
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "star ".concat(isFilled ? 'filled' : ''),
+              onClick: function onClick() {
+                return handleRatingClick(star);
+              },
+              onMouseEnter: function onMouseEnter() {
+                return handleRatingHover(star);
+              },
+              onMouseLeave: handleMouseLeave,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                size: 28,
+                fill: isFilled ? '#FF0000' : 'none',
+                stroke: isFilled ? '#FF0000' : '#ccc'
+              })
+            }, star);
+          })
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
         onSubmit: handleSubmit,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-          htmlFor: "review",
-          children: "Product Review"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
-          id: "review",
-          value: review,
-          onChange: handleReviewChange,
-          placeholder: "Write your review here...",
-          rows: "4",
-          required: true
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "review-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "review",
+            children: "Your Review"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+            id: "review",
+            value: review,
+            onChange: handleReviewChange,
+            placeholder: "Share your thoughts about the product...",
+            rows: "4",
+            required: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "photo-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+            htmlFor: "photo",
+            children: "Upload Photo (optional)"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "file",
+            id: "photo",
+            accept: "image/*",
+            onChange: handleImageChange,
+            className: "photo-input"
+          }), imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "photo-preview-container",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "photo-preview",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                src: imagePreview,
+                alt: "Preview"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                className: "remove-photo",
+                onClick: handleRemoveImage,
+                children: "\xD7"
+              })]
+            })
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "button-group",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "submit",
             className: "btn submit-btn",
-            disabled: rating === 0,
-            children: "Submit"
+            disabled: rating === 0 || !userId,
+            children: "Submit Review"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn cancel-btn",
@@ -38161,10 +39522,6 @@ var CustomerProfile = function CustomerProfile() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h2", {
           className: "username",
           children: formatFullName()
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
-          className: "view-cart-btn",
-          onClick: handleViewCart,
-          children: "View Cart"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
         className: "tabs-section",
@@ -38796,6 +40153,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -38807,7 +40169,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
- // Import Ant Design message
+
 
 
 
@@ -38840,18 +40202,22 @@ function Shop() {
     _useState10 = _slicedToArray(_useState9, 2),
     brands = _useState10[0],
     setBrands = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState12 = _slicedToArray(_useState11, 2),
-    loading = _useState12[0],
-    setLoading = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    ratings = _useState12[0],
+    setRatings = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState14 = _slicedToArray(_useState13, 2),
-    isCartOpen = _useState14[0],
-    setIsCartOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    loading = _useState14[0],
+    setLoading = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState16 = _slicedToArray(_useState15, 2),
-    profileId = _useState16[0],
-    setProfileId = _useState16[1];
+    isCartOpen = _useState16[0],
+    setIsCartOpen = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    profileId = _useState18[0],
+    setProfileId = _useState18[1];
   var isMounted = true;
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
@@ -38862,155 +40228,360 @@ function Shop() {
       'Content-Type': 'application/json'
     };
   };
+  var fetchFast = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url, options) {
+      var response, contentType;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return fetch(url, options);
+          case 3:
+            response = _context.sent;
+            if (response.ok) {
+              _context.next = 7;
+              break;
+            }
+            console.warn("Failed to fetch ".concat(url, ": ").concat(response.status));
+            return _context.abrupt("return", null);
+          case 7:
+            contentType = response.headers.get('Content-Type');
+            if (!(!contentType || !contentType.includes('application/json'))) {
+              _context.next = 11;
+              break;
+            }
+            console.warn("Non-JSON response from ".concat(url));
+            return _context.abrupt("return", null);
+          case 11:
+            return _context.abrupt("return", response);
+          case 14:
+            _context.prev = 14;
+            _context.t0 = _context["catch"](0);
+            console.warn("Error fetching ".concat(url, ": ").concat(_context.t0.message));
+            return _context.abrupt("return", null);
+          case 18:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 14]]);
+    }));
+    return function fetchFast(_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var fetchReviews = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productIds) {
+      var ratingsMap, cachedRatings, uncachedIds, promises;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            ratingsMap = {};
+            cachedRatings = JSON.parse(localStorage.getItem('shopRatings') || '{}'); // Use cached ratings if available
+            productIds.forEach(function (id) {
+              if (cachedRatings[id] !== undefined) {
+                ratingsMap[id] = cachedRatings[id];
+              }
+            });
+
+            // Fetch only uncached reviews in parallel
+            uncachedIds = productIds.filter(function (id) {
+              return cachedRatings[id] === undefined;
+            });
+            if (!(uncachedIds.length > 0)) {
+              _context3.next = 8;
+              break;
+            }
+            promises = uncachedIds.map(/*#__PURE__*/function () {
+              var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+                var response, data;
+                return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+                  while (1) switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return fetchFast("http://127.0.0.1:8000/api/reviews/product/".concat(id), {
+                        headers: getAuthHeaders()
+                      });
+                    case 2:
+                      response = _context2.sent;
+                      if (!response) {
+                        _context2.next = 11;
+                        break;
+                      }
+                      _context2.next = 6;
+                      return response.json();
+                    case 6:
+                      data = _context2.sent;
+                      console.log("Reviews for product ".concat(id, ":"), data);
+                      ratingsMap[id] = data.success && Array.isArray(data.data) && data.data.length > 0 ? data.data.reduce(function (sum, review) {
+                        return sum + (review.rating || 0);
+                      }, 0) / data.data.length : 0;
+                      _context2.next = 12;
+                      break;
+                    case 11:
+                      ratingsMap[id] = 0;
+                    case 12:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }, _callee2);
+              }));
+              return function (_x4) {
+                return _ref3.apply(this, arguments);
+              };
+            }());
+            _context3.next = 8;
+            return Promise.all(promises);
+          case 8:
+            console.log('Updated Ratings:', ratingsMap);
+            if (isMounted) {
+              setRatings(function (prev) {
+                return _objectSpread(_objectSpread({}, prev), ratingsMap);
+              });
+              localStorage.setItem('shopRatings', JSON.stringify(_objectSpread(_objectSpread({}, ratings), ratingsMap)));
+            }
+            return _context3.abrupt("return", ratingsMap);
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3);
+    }));
+    return function fetchReviews(_x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var fetchProfileAndData = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, userResponse, errorData, userData, profileResponse, profileData, _yield$Promise$all, _yield$Promise$all2, productsResponse, categoriesResponse, brandsResponse, productsData, categoriesData, brandsData;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
+    var fetchData = /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var profileIdTemp, token, userResponse, _userData$user, userData, profileResponse, cachedProducts, productsData, productsResponse, validProducts, activeProductIds, cachedCategories, cachedBrands, fetchSecondaryData;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              _context.prev = 0;
+              _context5.prev = 0;
+              profileIdTemp = null;
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
-                _context.next = 30;
+                _context5.next = 23;
                 break;
               }
-              _context.next = 5;
-              return fetch('http://127.0.0.1:8000/api/user-profile', {
+              _context5.next = 6;
+              return fetchFast('http://127.0.0.1:8000/api/user-profile', {
                 headers: getAuthHeaders()
               });
-            case 5:
-              userResponse = _context.sent;
-              if (userResponse.ok) {
-                _context.next = 12;
+            case 6:
+              userResponse = _context5.sent;
+              if (!userResponse) {
+                _context5.next = 21;
                 break;
               }
-              _context.next = 9;
+              _context5.next = 10;
               return userResponse.json();
-            case 9:
-              errorData = _context.sent;
-              console.error('User profile fetch failed:', userResponse.status, errorData);
-              throw new Error('Failed to fetch user profile');
-            case 12:
-              _context.next = 14;
-              return userResponse.json();
-            case 14:
-              userData = _context.sent;
-              if (!isMounted) {
-                _context.next = 28;
+            case 10:
+              userData = _context5.sent;
+              console.log('User Data:', userData);
+              if (!((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id)) {
+                _context5.next = 21;
                 break;
               }
-              console.log('User Profile Data:', userData);
-              _context.next = 19;
-              return fetch("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
+              _context5.next = 15;
+              return fetchFast("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
                 headers: getAuthHeaders()
               });
-            case 19:
-              profileResponse = _context.sent;
-              if (profileResponse.ok) {
-                _context.next = 22;
+            case 15:
+              profileResponse = _context5.sent;
+              if (!profileResponse) {
+                _context5.next = 21;
                 break;
               }
-              throw new Error('Failed to fetch profile ID');
-            case 22:
-              _context.next = 24;
+              _context5.next = 19;
               return profileResponse.json();
-            case 24:
-              profileData = _context.sent;
-              console.log('Profile Data:', profileData);
-              setProfileId(profileData.id);
-              if (!profileData.id) {
-                console.error('profile_id not found in profile response');
-              }
-            case 28:
-              _context.next = 31;
+            case 19:
+              profileIdTemp = _context5.sent.id;
+              console.log('Profile ID:', profileIdTemp);
+            case 21:
+              _context5.next = 24;
               break;
-            case 30:
+            case 23:
               console.log('No token found, proceeding as guest');
-            case 31:
-              _context.next = 33;
-              return Promise.all([fetch('http://127.0.0.1:8000/api/shop-products', {
-                headers: getAuthHeaders()
-              }), fetch('http://127.0.0.1:8000/api/categories/active', {
-                headers: getAuthHeaders()
-              }), fetch('http://127.0.0.1:8000/api/brands', {
-                headers: getAuthHeaders()
-              })]);
-            case 33:
-              _yield$Promise$all = _context.sent;
-              _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 3);
-              productsResponse = _yield$Promise$all2[0];
-              categoriesResponse = _yield$Promise$all2[1];
-              brandsResponse = _yield$Promise$all2[2];
-              if (productsResponse.ok) {
-                _context.next = 40;
+            case 24:
+              // Load cached data or fetch products first (critical path)
+              cachedProducts = localStorage.getItem('shopProducts');
+              productsData = cachedProducts ? JSON.parse(cachedProducts) : null;
+              if (productsData) {
+                _context5.next = 39;
                 break;
               }
-              throw new Error('Failed to fetch products');
-            case 40:
-              if (categoriesResponse.ok) {
-                _context.next = 42;
+              _context5.next = 29;
+              return fetchFast('http://127.0.0.1:8000/api/shop-products', {
+                headers: getAuthHeaders()
+              });
+            case 29:
+              productsResponse = _context5.sent;
+              if (!productsResponse) {
+                _context5.next = 36;
                 break;
               }
-              throw new Error('Failed to fetch categories');
-            case 42:
-              if (brandsResponse.ok) {
-                _context.next = 44;
-                break;
-              }
-              throw new Error('Failed to fetch brands');
-            case 44:
-              _context.next = 46;
+              _context5.next = 33;
               return productsResponse.json();
-            case 46:
-              productsData = _context.sent;
-              _context.next = 49;
-              return categoriesResponse.json();
-            case 49:
-              categoriesData = _context.sent;
-              _context.next = 52;
-              return brandsResponse.json();
-            case 52:
-              brandsData = _context.sent;
-              if (isMounted) {
-                setProducts(productsData.success && Array.isArray(productsData.data) ? productsData.data : []);
-                setFilteredProducts(productsData.success && Array.isArray(productsData.data) ? productsData.data : []);
-                setCategories(categoriesData.active && Array.isArray(categoriesData.active) ? categoriesData.active : []);
-                setBrands(Array.isArray(brandsData) ? brandsData : []);
-              }
-              _context.next = 60;
+            case 33:
+              _context5.t0 = _context5.sent;
+              _context5.next = 37;
               break;
-            case 56:
-              _context.prev = 56;
-              _context.t0 = _context["catch"](0);
-              console.error('Error fetching data:', _context.t0);
+            case 36:
+              _context5.t0 = {
+                success: false,
+                data: []
+              };
+            case 37:
+              productsData = _context5.t0;
+              if (isMounted) localStorage.setItem('shopProducts', JSON.stringify(productsData));
+            case 39:
+              validProducts = productsData.success && Array.isArray(productsData.data) ? productsData.data : [];
+              console.log('Active Products:', validProducts);
+              activeProductIds = validProducts.map(function (p) {
+                return p.id;
+              });
+              if (isMounted) {
+                setProfileId(profileIdTemp);
+                setProducts(validProducts);
+                setFilteredProducts(validProducts);
+              }
+
+              // Fetch categories, brands, and reviews in parallel after products
+              cachedCategories = localStorage.getItem('shopCategories');
+              cachedBrands = localStorage.getItem('shopBrands');
+              fetchSecondaryData = /*#__PURE__*/function () {
+                var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+                  var _yield$Promise$all, _yield$Promise$all2, categoriesResponse, brandsResponse, categoriesData, brandsData;
+                  return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+                    while (1) switch (_context4.prev = _context4.next) {
+                      case 0:
+                        _context4.next = 2;
+                        return Promise.all([cachedCategories ? null : fetchFast('http://127.0.0.1:8000/api/categories/active', {
+                          headers: getAuthHeaders()
+                        }), cachedBrands ? null : fetchFast('http://127.0.0.1:8000/api/brands', {
+                          headers: getAuthHeaders()
+                        })]);
+                      case 2:
+                        _yield$Promise$all = _context4.sent;
+                        _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
+                        categoriesResponse = _yield$Promise$all2[0];
+                        brandsResponse = _yield$Promise$all2[1];
+                        if (!cachedCategories) {
+                          _context4.next = 10;
+                          break;
+                        }
+                        _context4.t0 = JSON.parse(cachedCategories);
+                        _context4.next = 18;
+                        break;
+                      case 10:
+                        if (!categoriesResponse) {
+                          _context4.next = 16;
+                          break;
+                        }
+                        _context4.next = 13;
+                        return categoriesResponse.json();
+                      case 13:
+                        _context4.t1 = _context4.sent;
+                        _context4.next = 17;
+                        break;
+                      case 16:
+                        _context4.t1 = {
+                          active: []
+                        };
+                      case 17:
+                        _context4.t0 = _context4.t1;
+                      case 18:
+                        categoriesData = _context4.t0;
+                        if (!cachedBrands) {
+                          _context4.next = 23;
+                          break;
+                        }
+                        _context4.t2 = JSON.parse(cachedBrands);
+                        _context4.next = 31;
+                        break;
+                      case 23:
+                        if (!brandsResponse) {
+                          _context4.next = 29;
+                          break;
+                        }
+                        _context4.next = 26;
+                        return brandsResponse.json();
+                      case 26:
+                        _context4.t3 = _context4.sent;
+                        _context4.next = 30;
+                        break;
+                      case 29:
+                        _context4.t3 = [];
+                      case 30:
+                        _context4.t2 = _context4.t3;
+                      case 31:
+                        brandsData = _context4.t2;
+                        if (isMounted) {
+                          setCategories(categoriesData.active && Array.isArray(categoriesData.active) ? categoriesData.active : []);
+                          setBrands(Array.isArray(brandsData) ? brandsData : []);
+                          if (!cachedCategories) localStorage.setItem('shopCategories', JSON.stringify(categoriesData));
+                          if (!cachedBrands) localStorage.setItem('shopBrands', JSON.stringify(brandsData));
+                        }
+                        if (!(activeProductIds.length > 0)) {
+                          _context4.next = 38;
+                          break;
+                        }
+                        _context4.next = 36;
+                        return fetchReviews(activeProductIds);
+                      case 36:
+                        _context4.next = 39;
+                        break;
+                      case 38:
+                        if (validProducts.length === 0) {
+                          antd__WEBPACK_IMPORTED_MODULE_9__["default"].info('No products available to display.');
+                        }
+                      case 39:
+                      case "end":
+                        return _context4.stop();
+                    }
+                  }, _callee4);
+                }));
+                return function fetchSecondaryData() {
+                  return _ref5.apply(this, arguments);
+                };
+              }();
+              fetchSecondaryData(); // Run in background, doesn’t block loading
+              _context5.next = 53;
+              break;
+            case 49:
+              _context5.prev = 49;
+              _context5.t1 = _context5["catch"](0);
+              console.error('Error fetching shop data:', _context5.t1.message);
               if (isMounted) {
                 setProducts([]);
                 setFilteredProducts([]);
+                setRatings({});
                 setCategories([]);
                 setBrands([]);
                 antd__WEBPACK_IMPORTED_MODULE_9__["default"].error({
-                  content: 'Failed to load shop data. Please try again.',
+                  content: 'Oops! Something went wrong while loading the shop. Please try again.',
                   style: {
                     marginTop: '20px'
                   }
                 });
               }
-            case 60:
-              _context.prev = 60;
+            case 53:
+              _context5.prev = 53;
               if (isMounted) setLoading(false);
-              return _context.finish(60);
-            case 63:
+              return _context5.finish(53);
+            case 56:
             case "end":
-              return _context.stop();
+              return _context5.stop();
           }
-        }, _callee, null, [[0, 56, 60, 63]]);
+        }, _callee5, null, [[0, 49, 53, 56]]);
       }));
-      return function fetchProfileAndData() {
-        return _ref.apply(this, arguments);
+      return function fetchData() {
+        return _ref4.apply(this, arguments);
       };
     }();
-    fetchProfileAndData();
+    fetchData();
     return function () {
       isMounted = false;
     };
@@ -39036,8 +40607,10 @@ function Shop() {
         brands: brands
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ShopGrid_shopgrid__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: filteredProducts,
+        ratings: ratings,
         loading: loading,
-        profileId: profileId
+        profileId: profileId,
+        fetchReviews: fetchReviews
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       isOpen: isCartOpen,
@@ -46043,7 +47616,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  padding: 10px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f0f4f8;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0 0 5px 0;\n}\n.all-order .orders-list .order-item .order-details .order-info p {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin-top: 5px;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.shipped {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-details .order-info .status.received {\n  color: #008000;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n}\n\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 8px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info p {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    justify-content: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  text-align: center;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #e0e0e0;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  padding: 15px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f5f7fa;\n  border: none;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  flex: 1;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  flex-shrink: 0;\n}\n.all-order .orders-list .order-item .order-details .order-info {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0;\n  line-height: 1.2;\n  font-weight: 500;\n  color: #333;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .quantity {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n  line-height: 1.2;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin: 0;\n  line-height: 1.2;\n  text-align: left;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-weight: 500;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-pending {\n  background-color: #ffe7ba;\n  color: #d97706;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-in-transit {\n  background-color: #bfdbfe;\n  color: #1d4ed8;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-received {\n  background-color: #bbf7d0;\n  color: #15803d;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-completed {\n  background-color: #d1fae5;\n  color: #047857;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-cancelled {\n  background-color: #fecaca;\n  color: #b91c1c;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-refund {\n  background-color: #e9d5ff;\n  color: #6b21a8;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .order-price {\n  font-size: 1rem;\n  font-weight: bold;\n  color: #ff0000;\n  margin: 0;\n  text-align: right;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n  margin: 20px 0;\n}\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 10px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details {\n    width: 100%;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .quantity {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .order-price {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46091,7 +47664,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cart-page-container {\n  padding-top: 100px;\n  background-color: #F0F8FF;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.cart-page-container .cart-content {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 20px 0;\n}\n.cart-page-container .cart-header {\n  margin: 0 20px 20px 4px;\n  font-size: 20px;\n  color: #333;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n.cart-page-container .cart-header .logo {\n  width: 24px;\n  height: auto;\n}\n.cart-page-container .cart-header .header-separator {\n  color: #333;\n  font-size: 20px;\n  margin: 0 6px;\n}\n.cart-page-container .cart-table {\n  width: 100%;\n  border-collapse: collapse;\n  table-layout: auto;\n}\n.cart-page-container .cart-table thead {\n  background-color: #FF0000;\n  color: white;\n}\n.cart-page-container .cart-table thead th.actions-cell {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 18px 25px;\n}\n.cart-page-container .cart-table thead th.actions-cell .checkbox-icon {\n  margin: 0;\n  accent-color: white;\n  width: 25px;\n  height: 25px;\n}\n.cart-page-container .cart-table thead th.actions-cell span {\n  font-size: 16px;\n  line-height: 25px;\n}\n.cart-page-container .cart-table thead th {\n  padding: 18px 25px;\n  text-align: left;\n  font-size: 16px;\n  border: none;\n}\n.cart-page-container .cart-table thead th:nth-child(2), .cart-page-container .cart-table thead th:nth-child(3), .cart-page-container .cart-table thead th:nth-child(4), .cart-page-container .cart-table thead th:nth-child(5) {\n  text-align: center;\n}\n.cart-page-container .cart-table tbody {\n  background-color: #1E1E1E;\n  color: white;\n}\n.cart-page-container .cart-table tbody .actions-cell {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n  padding: 10px 30px;\n  min-height: 80px;\n}\n.cart-page-container .cart-table tbody .actions-cell .checkbox-icon {\n  accent-color: white;\n  width: 25px;\n  height: 25px;\n  margin: 0;\n  margin-top: 45px;\n}\n.cart-page-container .cart-table tbody .actions-cell .trash-icon {\n  color: #ccc;\n  width: 25px;\n  height: 25px;\n  margin-top: 45px;\n  cursor: pointer;\n}\n.cart-page-container .cart-table tbody .actions-cell .trash-icon:hover {\n  color: #ff4444;\n}\n.cart-page-container .cart-table tbody td {\n  padding: 25px 30px;\n  vertical-align: middle;\n  border-bottom: 1px solid #ddd;\n  font-size: 16px;\n  border: none;\n}\n.cart-page-container .cart-table tbody tr:last-child td {\n  border-bottom: none;\n}\n.cart-page-container .cart-table tbody .product-cell {\n  text-align: center;\n}\n.cart-page-container .cart-table tbody .product-cell .product-info {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 18px;\n}\n.cart-page-container .cart-table tbody .product-cell .product-info .product-link .product-image {\n  width: 80px;\n  height: auto;\n  transition: transform 0.3s ease;\n}\n.cart-page-container .cart-table tbody .product-cell .product-info .product-link .product-image:hover {\n  transform: scale(1.05);\n}\n.cart-page-container .cart-table tbody .product-cell .product-info .product-name {\n  font-weight: bold;\n  font-size: 16px;\n}\n.cart-page-container .cart-table tbody .price-cell, .cart-page-container .cart-table tbody .total-cell {\n  text-align: center;\n}\n.cart-page-container .cart-table tbody .quantity-cell {\n  text-align: center;\n}\n.cart-page-container .cart-table tbody .quantity-cell .quantity-control {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 18px;\n}\n.cart-page-container .cart-table tbody .quantity-cell .quantity-control .quantity-btn {\n  background: none;\n  border: 1px solid #ccc;\n  padding: 10px 15px;\n  cursor: pointer;\n  font-size: 16px;\n  color: white;\n  border-radius: 5px;\n}\n.cart-page-container .cart-table tbody .quantity-cell .quantity-control .quantity-btn:hover {\n  background-color: #333;\n}\n.cart-page-container .cart-table tbody .quantity-cell .quantity-control .quantity-value {\n  min-width: 30px;\n  text-align: center;\n  font-size: 16px;\n}\n.cart-page-container .cart-button-container {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 20px;\n  margin: 20px 0;\n  padding: 15px;\n  background-color: #fff;\n  border: 1px solid #FF0000;\n  border-radius: 5px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.cart-page-container .cart-summary {\n  font-size: 18px;\n  font-weight: bold;\n  color: #333;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.cart-page-container .cart-summary .total-label {\n  margin-right: 5px;\n}\n.cart-page-container .cart-summary .total-amount {\n  color: #FF0000;\n}\n.cart-page-container .cart-delete-all-btn {\n  background-color: #FF0000;\n  color: white;\n  border: none;\n  padding: 12px 25px;\n  cursor: pointer;\n  font-size: 18px;\n  border-radius: 5px;\n}\n.cart-page-container .cart-delete-all-btn:hover {\n  background-color: #cc0000;\n}\n.cart-page-container .checkout-btn {\n  background-color: #1E1E1E;\n  color: white;\n  border: none;\n  padding: 12px 25px;\n  cursor: pointer;\n  font-size: 18px;\n  border-radius: 5px;\n}\n.cart-page-container .checkout-btn:hover {\n  background-color: #333;\n}\n@media (max-width: 768px) {\n  .cart-page-container .cart-button-container {\n    flex-direction: column;\n    align-items: stretch;\n    gap: 10px;\n  }\n  .cart-page-container .cart-summary {\n    justify-content: center;\n    margin-bottom: 10px;\n  }\n  .cart-page-container .cart-delete-all-btn, .cart-page-container .checkout-btn {\n    width: 100%;\n    margin: 0;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cart-page-container {\n  padding-top: 100px;\n  background-color: #fff;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  max-width: 100vw;\n}\n.cart-page-container .cart-content {\n  max-width: 1400px;\n  width: 90%;\n  margin: 0 auto;\n  padding: 30px;\n  flex-grow: 1;\n}\n.cart-page-container .cart-header {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 30px;\n}\n.cart-page-container .cart-header .logo {\n  height: 40px;\n}\n.cart-page-container .cart-header .header-separator {\n  color: #ccc;\n  font-size: 20px;\n}\n.cart-page-container .cart-header span {\n  font-size: 20px;\n  color: #1e1e1e;\n  font-weight: 500;\n}\n.cart-page-container .cart-table {\n  width: 100%;\n  border-collapse: collapse;\n  border: 1px solid #e5e5e5;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.cart-page-container .cart-table thead {\n  background-color: #1e1e1e;\n  color: #fff;\n}\n.cart-page-container .cart-table thead th {\n  padding: 20px;\n  text-align: center;\n  font-size: 18px;\n  font-weight: 500;\n  border-bottom: 1px solid #e5e5e5;\n}\n.cart-page-container .cart-table thead th.actions-cell {\n  width: 150px;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container {\n  display: flex;\n  justify-content: center;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container input[type=checkbox] {\n  width: 20px;\n  height: 20px;\n  accent-color: #ff4444;\n  cursor: pointer;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container input[type=checkbox]:hover {\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table thead th.product-cell {\n  width: 45%;\n}\n.cart-page-container .cart-table thead th.price-cell, .cart-page-container .cart-table thead th.quantity-cell, .cart-page-container .cart-table thead th.total-cell {\n  width: 15%;\n}\n.cart-page-container .cart-table tbody {\n  background-color: #fff;\n  color: #1e1e1e;\n}\n.cart-page-container .cart-table tbody td {\n  padding: 20px;\n  vertical-align: middle;\n  text-align: center;\n  border-bottom: 1px solid #e5e5e5;\n  font-size: 16px;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .checkbox-icon {\n  width: 20px;\n  height: 20px;\n  accent-color: #ff4444;\n  cursor: pointer;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .checkbox-icon:hover {\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .trash-icon {\n  font-size: 20px;\n  color: #ff4444;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .trash-icon:hover {\n  color: #cc0000;\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table tbody td.product-cell {\n  text-align: left;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info {\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-image {\n  width: 100px;\n  height: 100px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  border: 1px solid #e5e5e5;\n  border-radius: 6px;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-image:hover {\n  transform: scale(1.05);\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-name {\n  font-size: 16px;\n  color: #1e1e1e;\n  line-height: 1.4;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control {\n  display: flex;\n  justify-content: center;\n  gap: 15px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button {\n  background: #fff;\n  border: 1px solid #ccc;\n  padding: 8px 16px;\n  cursor: pointer;\n  font-size: 16px;\n  border-radius: 4px;\n  transition: all 0.3s ease;\n  min-width: 40px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button:hover {\n  background-color: #f5f5f5;\n  transform: translateY(-1px);\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button:disabled {\n  background-color: #e5e5e5;\n  cursor: not-allowed;\n  opacity: 0.6;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control span {\n  min-width: 40px;\n  text-align: center;\n  font-size: 16px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-available {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  margin-top: 8px;\n}\n.cart-page-container .cart-table tbody td.empty-cart {\n  padding: 40px;\n  font-size: 18px;\n  color: #666;\n}\n.cart-page-container .cart-table tbody tr:hover {\n  background-color: #fafafa;\n}\n.cart-page-container .cart-table tbody tr:last-child td {\n  border-bottom: none;\n}\n.cart-page-container .cart-footer {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 25px;\n  margin-top: 30px;\n  padding: 20px;\n  background-color: #f9f9f9;\n  border: 1px solid #e5e5e5;\n  border-radius: 8px;\n  max-width: 600px;\n  margin-left: auto;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.cart-page-container .cart-footer .cart-summary {\n  font-size: 18px;\n  color: #1e1e1e;\n  font-weight: 500;\n}\n.cart-page-container .cart-footer .cart-summary .total-amount {\n  color: #ff4444;\n  font-weight: 600;\n  margin-left: 10px;\n}\n.cart-page-container .cart-footer button {\n  padding: 12px 25px;\n  font-size: 16px;\n  font-weight: 500;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  min-width: 150px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.cart-page-container .cart-footer button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n.cart-page-container .cart-footer button:disabled {\n  background-color: #e5e5e5;\n  cursor: not-allowed;\n  transform: none;\n  box-shadow: none;\n  opacity: 0.7;\n}\n.cart-page-container .cart-footer .remove-selected-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.cart-page-container .cart-footer .remove-selected-btn:hover {\n  background-color: #cc0000;\n}\n.cart-page-container .cart-footer .checkout-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.cart-page-container .cart-footer .checkout-btn:hover {\n  background-color: #cc0000;\n}\n@media (max-width: 768px) {\n  .cart-page-container {\n    padding-top: 80px;\n  }\n  .cart-page-container .cart-content {\n    padding: 15px;\n    width: 98%;\n  }\n  .cart-page-container .cart-header .logo {\n    height: 30px;\n  }\n  .cart-page-container .cart-header span {\n    font-size: 18px;\n  }\n  .cart-page-container .cart-table thead {\n    display: none;\n  }\n  .cart-page-container .cart-table tbody tr {\n    display: flex;\n    flex-direction: column;\n    padding: 15px;\n    margin-bottom: 15px;\n    border: 1px solid #e5e5e5;\n    border-radius: 6px;\n  }\n  .cart-page-container .cart-table tbody tr td {\n    border: none;\n    padding: 10px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell .product-info {\n    width: 100%;\n    flex-direction: column;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell .product-info .product-image {\n    width: 100%;\n    max-width: 150px;\n    height: auto;\n  }\n  .cart-page-container .cart-table tbody tr td:before {\n    content: attr(data-label);\n    font-weight: 600;\n    color: #1e1e1e;\n  }\n  .cart-page-container .cart-footer {\n    flex-direction: column;\n    max-width: 100%;\n    gap: 15px;\n    padding: 15px;\n  }\n  .cart-page-container .cart-footer button {\n    width: 100%;\n    padding: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46236,7 +47809,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".homepage-customer {\n  background-color: #000;\n  min-height: 100vh;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  padding: 60px 0 0 0;\n  margin: 0;\n}\n.homepage-customer .navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  max-width: 1200px;\n  height: 60px;\n  background-color: #000;\n  z-index: 1100;\n  padding: 0 20px;\n  margin: 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.homepage-customer .content-wrapper {\n  flex: 1;\n  width: 100%;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  position: relative;\n  z-index: 0;\n  -ms-overflow-style: auto;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar {\n  width: 8px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-track {\n  background: transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb {\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 4px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb:hover {\n  background: rgba(0, 0, 0, 0.5);\n}\n.homepage-customer .content-wrapper .hero-section {\n  position: relative;\n  width: calc(100vw + 8px);\n  height: calc(100vh - 60px);\n  min-height: 600px;\n  background-color: #000;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text {\n  position: relative;\n  z-index: 2;\n  color: #fff;\n  text-align: center;\n  padding: 100px 40px 0;\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n  font-family: \"Jost\", sans-serif;\n  font-size: 48px;\n  font-weight: 500;\n  margin: 0 0 20px;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  line-height: 1.2;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  margin-top: 20px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  position: relative;\n  color: #F0F8FF;\n  font-size: 18px;\n  padding: 0 0 4px;\n  border: none;\n  background: none;\n  cursor: pointer;\n  text-decoration: none;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::after,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::after {\n  content: \">\";\n  color: #FF1C1C;\n  margin-left: 4px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::before {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background: #FF1C1C;\n  transform: scaleY(0);\n  transform-origin: bottom;\n  transition: transform 0.3s ease-in-out;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover::before {\n  transform: scaleY(1);\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:active,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .logos {\n  width: 100%;\n  background-color: #F0F8FF;\n  margin: 0 0 40px;\n}\n.homepage-customer .content-wrapper .video-section {\n  width: 100vw;\n  height: 70vh;\n  min-height: 300px;\n  position: relative;\n  overflow: hidden;\n  background-color: #000;\n  margin: 0 0 40px;\n}\n.homepage-customer .content-wrapper .video-section .fullscreen-video {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0 0 80px;\n  background-color: #000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n  width: 100%;\n  max-width: 1400px;\n  padding: 40px 0;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n  gap: 30px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n  font-size: 32px;\n  color: #fff;\n  text-align: left;\n  padding: 0 40px;\n  margin: 0;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0 40px;\n  justify-items: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card {\n  background-color: #1a1a1a;\n  border-radius: 12px; /* Slightly larger border-radius for a modern look */\n  overflow: hidden;\n  width: 240px;\n  height: 360px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Softer shadow for depth */\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n  display: flex;\n  flex-direction: column;\n  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border for definition */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card.skeleton {\n  border: 1px solid #333;\n  animation: pulse 1.5s ease-in-out infinite;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-img {\n  width: 100%;\n  height: 240px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  background-color: #fff;\n  flex-shrink: 0;\n  transition: opacity 0.3s ease;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card:hover .product-img {\n  opacity: 0.95; /* Subtle dimming effect on hover */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .no-image {\n  width: 100%;\n  height: 240px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #333;\n  color: #fff;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image {\n  width: 100%;\n  height: 240px;\n  background-color: #2a2a2a;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image .skeleton-icon {\n  width: 40px;\n  height: 40px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info {\n  padding: 12px; /* Reduced padding for better space usage */\n  color: #fff;\n  text-align: center;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  min-height: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3 {\n  font-size: 16px; /* Default font size */\n  margin: 0 0 4px; /* Reduced margin for tighter spacing */\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  line-height: 1.3;\n  max-height: none;\n  overflow: visible;\n  text-overflow: initial;\n  display: block;\n  -webkit-line-clamp: initial;\n  -webkit-box-orient: initial;\n  flex-grow: 0;\n  flex-shrink: 1;\n  white-space: normal;\n  word-wrap: break-word;\n  -webkit-hyphens: auto;\n          hyphens: auto;\n  transition: color 0.3s ease; /* Smooth color transition on hover */\n  /* Dynamic font size for long names */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3[data-long-name=true] {\n  font-size: 14px; /* Smaller font size for long names */\n  line-height: 1.4; /* Adjusted for readability */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3:hover {\n  color: #ffd700; /* Subtle gold color on hover for interactivity */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info p {\n  font-size: 18px;\n  color: #ffd700;\n  margin: 0 0 8px; /* Slightly increased margin for balance */\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n  background: linear-gradient(135deg, #ff0000, #cc0000); /* Gradient for a modern look */\n  color: #fff;\n  border: none;\n  padding: 10px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  transition: background 0.3s ease, transform 0.2s ease;\n  flex-shrink: 0;\n  margin-top: auto;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart:hover {\n  background: linear-gradient(135deg, #e60000, #b30000);\n  transform: scale(1.02); /* Slight scale effect on hover */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart:active {\n  transform: scale(0.98); /* Subtle press effect */\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-title {\n  width: 80%;\n  height: 18px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin: 0 auto 6px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-price {\n  width: 60%;\n  height: 16px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin: 0 auto 6px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-button {\n  width: 100%;\n  height: 36px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin-top: auto;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .no-products {\n  color: #fff;\n  text-align: center;\n  font-size: 20px;\n  padding: 30px;\n  width: 100%;\n  font-family: \"Jost\", sans-serif;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 8px;\n  padding: 0 40px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button {\n  background-color: #1a1a1a;\n  color: #fff;\n  border: none;\n  padding: 8px 12px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  transition: background-color 0.3s ease;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button:hover {\n  background-color: #333;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button.active {\n  background-color: #ff0000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button.pagination-arrow {\n  padding: 8px 10px;\n  font-size: 16px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button.pagination-arrow:disabled {\n  background-color: #1a1a1a;\n  color: #666;\n  cursor: not-allowed;\n}\n@media (max-width: 768px) {\n  .homepage-customer {\n    padding-top: 75px;\n  }\n  .homepage-customer .navbar {\n    height: 75px;\n  }\n  .homepage-customer .content-wrapper .hero-section {\n    height: calc(100vh - 75px);\n    min-height: 500px;\n    width: 100vw;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-image {\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text {\n    padding: 60px 20px 0;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n    font-size: 28px;\n    margin: 0 0 15px;\n    letter-spacing: 1px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n    gap: 20px;\n    margin-top: 15px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n    font-size: 16px;\n  }\n  .homepage-customer .content-wrapper .logos {\n    margin: 0 0 40px;\n  }\n  .homepage-customer .content-wrapper .video-section {\n    height: 50vh;\n    min-height: 200px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper {\n    margin: 0 0 80px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n    padding: 20px 0;\n    gap: 20px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid h2 {\n    font-size: 24px;\n    padding: 0 20px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 15px;\n    padding: 0 20px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card {\n    width: 160px;\n    height: 280px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-img,\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .no-image,\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image {\n    height: 160px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info {\n    padding: 10px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3 {\n    font-size: 14px;\n    max-height: none;\n    overflow: visible;\n    margin: 0 0 4px;\n    display: block;\n    -webkit-line-clamp: initial;\n    -webkit-box-orient: initial;\n    white-space: normal;\n    word-wrap: break-word;\n    -webkit-hyphens: auto;\n            hyphens: auto;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info h3[data-long-name=true] {\n    font-size: 12px; /* Smaller font size for long names on mobile */\n    line-height: 1.4;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info p {\n    font-size: 16px;\n    margin: 0 0 6px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n    padding: 8px;\n    font-size: 12px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-title {\n    height: 16px;\n    margin: 0 auto 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-price {\n    height: 14px;\n    margin: 0 auto 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-button {\n    height: 32px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination {\n    gap: 6px;\n    padding: 0 20px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button {\n    padding: 6px 10px;\n    font-size: 12px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .pagination button.pagination-arrow {\n    padding: 6px 8px;\n  }\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.6;\n  }\n  100% {\n    opacity: 1;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".homepage-customer {\n  background-color: #000;\n  min-height: 100vh;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  padding: 60px 0 0 0;\n  margin: 0;\n}\n.homepage-customer .navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  max-width: 1200px;\n  height: 60px;\n  background-color: #000;\n  z-index: 1100;\n  padding: 0 20px;\n  margin: 0 auto;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.homepage-customer .content-wrapper {\n  flex: 1;\n  width: 100%;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  position: relative;\n  z-index: 0;\n  -ms-overflow-style: auto;\n  scrollbar-width: thin;\n  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar {\n  width: 8px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-track {\n  background: transparent;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb {\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 4px;\n}\n.homepage-customer .content-wrapper::-webkit-scrollbar-thumb:hover {\n  background: rgba(0, 0, 0, 0.5);\n}\n.homepage-customer .content-wrapper .hero-section {\n  position: relative;\n  width: calc(100vw + 8px);\n  height: calc(100vh - 60px);\n  min-height: 600px;\n  background-color: #000;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text {\n  position: relative;\n  z-index: 2;\n  color: #fff;\n  text-align: center;\n  padding: 100px 40px 0;\n  width: 100%;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n  font-family: \"Jost\", sans-serif;\n  font-size: 48px;\n  font-weight: 500;\n  margin: 0 0 20px;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n  line-height: 1.2;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  margin-top: 20px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n  position: relative;\n  color: #F0F8FF;\n  font-size: 18px;\n  padding: 0 0 4px;\n  border: none;\n  background: none;\n  cursor: pointer;\n  text-decoration: none;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::after,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::after {\n  content: \">\";\n  color: #FF1C1C;\n  margin-left: 4px;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text::before {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background: #FF1C1C;\n  transform: scaleY(0);\n  transform-origin: bottom;\n  transition: transform 0.3s ease-in-out;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover::before,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover::before {\n  transform: scaleY(1);\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:hover,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:hover {\n  color: #F0F8FF;\n}\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text:active,\n.homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text:active {\n  color: #d1e6ff;\n}\n.homepage-customer .content-wrapper .logos {\n  width: 100%;\n  background-color: #F0F8FF;\n  margin: 0 0 40px;\n}\n.homepage-customer .content-wrapper .video-section {\n  width: 100vw;\n  height: 70vh;\n  min-height: 300px;\n  position: relative;\n  overflow: hidden;\n  background-color: #000;\n  margin: 0 0 40px;\n}\n.homepage-customer .content-wrapper .video-section .fullscreen-video {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper {\n  width: 100vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: 0 0 80px;\n  background-color: #000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n  width: 100%;\n  max-width: 1200px;\n  padding: 30px 40px;\n  margin: 0 auto;\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-title {\n  font-size: 32px;\n  color: #fff;\n  text-align: left;\n  padding: 0;\n  margin: 0 0 20px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  padding: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .available-products {\n  font-size: 14px;\n  color: #fff;\n  font-weight: 500;\n  font-family: \"Jost\", sans-serif;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 4px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container label {\n  font-size: 12px;\n  color: #fff;\n  text-transform: uppercase;\n  font-family: \"Jost\", sans-serif;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container select {\n  width: 130px;\n  padding: 4px 8px;\n  border-radius: 4px;\n  border: 1px solid #FF0000;\n  font-size: 12px;\n  color: #FF0000;\n  background-color: #fff;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23FF0000\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>');\n  background-repeat: no-repeat;\n  background-position: right 8px center;\n  background-size: 10px;\n  cursor: pointer;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container select:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container select:focus {\n  outline: none;\n  border-color: #FF0000;\n  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0;\n  justify-items: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card {\n  background-color: #1a1a1a;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 180px;\n  height: 320px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card.skeleton {\n  border: 1px solid #333;\n  animation: pulse 1.5s ease-in-out infinite;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-link {\n  width: 100%;\n  text-decoration: none;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-img {\n  width: 180px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 4px 4px 0 0;\n  margin-bottom: 0;\n  background-color: #fff;\n  transition: transform 0.3s ease;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-img:hover {\n  transform: scale(1.03);\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .no-image {\n  width: 180px;\n  height: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #333;\n  color: #fff;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  text-align: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image {\n  width: 180px;\n  height: 180px;\n  background-color: #2a2a2a;\n  border-radius: 4px 4px 0 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image::before {\n  content: \"\";\n  display: block;\n  width: 40px;\n  height: 40px;\n  background: url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 20\" fill=\"%23e5e7eb\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z\"/><path d=\"M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z\"/></svg>');\n  background-size: contain;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info {\n  padding: 12px;\n  color: #fff;\n  text-align: center;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  min-height: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-stars {\n  margin-bottom: 6px;\n  flex-shrink: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-name {\n  font-size: 14px;\n  margin: 0 0 6px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  line-height: 1.2;\n  max-height: 34px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  flex-grow: 0;\n  flex-shrink: 1;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-price {\n  font-size: 16px;\n  color: #ffd700;\n  margin: 0 0 6px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 12px;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  transition: background-color 0.3s ease-in-out;\n  flex-shrink: 0;\n  margin-top: auto;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart:hover {\n  background-color: #CC0000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart:active {\n  background-color: #AA0000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-stars {\n  width: 80px;\n  height: 14px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-title {\n  width: 120px;\n  height: 18px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-price {\n  width: 80px;\n  height: 16px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-button {\n  width: 100%;\n  height: 32px;\n  background-color: #2a2a2a;\n  border-radius: 4px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .no-products {\n  color: #fff;\n  text-align: center;\n  font-size: 20px;\n  padding: 30px;\n  width: 100%;\n  font-family: \"Jost\", sans-serif;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .show-more {\n  display: block;\n  width: 160px;\n  padding: 8px;\n  margin: 30px auto;\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  cursor: pointer;\n  transition: background-color 0.3s ease-in-out;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .show-more:hover {\n  background-color: #CC0000;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .back-to-top {\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  width: 70px;\n  height: 28px;\n  padding: 4px 8px;\n  background-color: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  font-size: 11px;\n  font-family: \"Jost\", sans-serif;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  transition: all 0.3s ease-in-out;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .back-to-top .arrow {\n  margin-right: 4px;\n  font-size: 11px;\n}\n.homepage-customer .content-wrapper .product-grid-wrapper .product-grid .back-to-top:hover {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n@media (max-width: 1024px) {\n  .homepage-customer .product-grid-wrapper .product-grid {\n    padding: 20px 30px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-grid-title {\n    font-size: 28px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .products-container {\n    grid-template-columns: repeat(4, 1fr);\n    gap: 15px;\n  }\n}\n@media (max-width: 768px) {\n  .homepage-customer {\n    padding-top: 75px;\n  }\n  .homepage-customer .navbar {\n    height: 75px;\n  }\n  .homepage-customer .content-wrapper .hero-section {\n    height: calc(100vh - 75px);\n    min-height: 500px;\n    width: 100vw;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-image {\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center;\n       object-position: center;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text {\n    padding: 60px 20px 0;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-title {\n    font-size: 28px;\n    margin: 0 0 15px;\n    letter-spacing: 1px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons {\n    gap: 20px;\n    margin-top: 15px;\n  }\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .learn-more-text,\n  .homepage-customer .content-wrapper .hero-section .hero-text .hero-buttons .add-to-cart-text {\n    font-size: 16px;\n  }\n  .homepage-customer .content-wrapper .logos {\n    margin: 0 0 40px;\n  }\n  .homepage-customer .content-wrapper .video-section {\n    height: 50vh;\n    min-height: 200px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper {\n    margin: 0 0 80px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid {\n    padding: 15px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-title {\n    font-size: 24px;\n    margin-bottom: 15px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header {\n    flex-direction: column;\n    align-items: flex-end;\n    gap: 8px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .available-products {\n    align-self: flex-start;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-grid-header .sort-view-container {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .products-container {\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card {\n    width: 140px;\n    height: 260px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-img,\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .no-image,\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .skeleton-image {\n    width: 140px;\n    height: 140px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info {\n    padding: 10px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-stars {\n    margin-bottom: 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-name {\n    font-size: 12px;\n    max-height: 28px;\n    margin: 0 0 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .product-price {\n    font-size: 14px;\n    margin: 0 0 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n    padding: 6px 12px;\n    font-size: 11px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-stars {\n    height: 12px;\n    margin-bottom: 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-title {\n    width: 100px;\n    height: 16px;\n    margin: 0 auto 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-price {\n    width: 60px;\n    height: 14px;\n    margin: 0 auto 4px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .product-card .product-info .skeleton-button {\n    height: 28px;\n  }\n  .homepage-customer .content-wrapper .product-grid-wrapper .product-grid .show-more {\n    width: 140px;\n    padding: 6px;\n    font-size: 12px;\n  }\n}\n@media (max-width: 480px) {\n  .homepage-customer .product-grid-wrapper .product-grid {\n    padding: 10px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-grid-title {\n    font-size: 20px;\n    margin-bottom: 10px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .products-container {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 8px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card {\n    width: 120px;\n    height: 220px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-img,\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .no-image,\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .skeleton-image {\n    width: 120px;\n    height: 120px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info {\n    padding: 8px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .product-stars {\n    margin-bottom: 4px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .product-name {\n    font-size: 11px;\n    max-height: 26px;\n    margin: 0 0 4px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .product-price {\n    font-size: 13px;\n    margin: 0 0 4px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .add-to-cart {\n    padding: 5px 10px;\n    font-size: 10px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .skeleton-stars {\n    width: 60px;\n    height: 12px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .skeleton-title {\n    width: 80px;\n    height: 14px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .skeleton-price {\n    width: 50px;\n    height: 12px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .product-card .product-info .skeleton-button {\n    height: 24px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .show-more {\n    width: 120px;\n    padding: 5px;\n    font-size: 11px;\n  }\n  .homepage-customer .product-grid-wrapper .product-grid .back-to-top {\n    width: 60px;\n    height: 24px;\n    font-size: 10px;\n  }\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.6;\n  }\n  100% {\n    opacity: 1;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46380,7 +47953,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 28px;\n  color: #000000;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a {\n  color: #007bff;\n  text-decoration: none;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #333333;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0;\n  margin-top: 8px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  margin-bottom: 15px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  font-size: 14px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  white-space: nowrap;\n  transition: all 0.3s ease;\n  min-height: 40px;\n  flex: 1;\n  min-width: 120px;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(1).active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n  font-weight: normal;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(2).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3) {\n  background-color: #1E1E1E;\n  border-color: #1E1E1E;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3):hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos .card-logo {\n  width: 150px;\n  height: auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #000000;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #363333;\n  background-color: #ffffff;\n  box-sizing: border-box;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  outline: none;\n  border-color: #ff3333;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:invalid {\n  border-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  width: 100%;\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #000000;\n  font-size: 12px;\n  cursor: help;\n  color: #000000;\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  transform: translateY(-50%) scale(1.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n  transform: translate(-50%, -100%);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 10;\n  margin-bottom: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  height: auto;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-text {\n  font-size: 13px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .cash-on-delivery-text {\n  font-size: 14px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 12px;\n  border: 1px solid #cccccc;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-text {\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: bold;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n  box-shadow: 0 4px 8px rgba(255, 68, 68, 0.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 22px;\n  color: #000000;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 20px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link {\n  display: inline-block;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image {\n  width: 80px;\n  height: auto;\n  margin: 0 8px;\n  transition: transform 0.3s ease, border 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image:hover {\n  transform: scale(1.05);\n  border: 2px solid #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details p {\n  margin: 6px 0;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  color: #ff4444;\n  font-weight: bold;\n  font-size: 16px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 2px solid #cccccc;\n  padding: 6px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  position: relative;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  border-radius: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn::after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: -100%;\n  background: rgba(255, 68, 68, 0.2);\n  transition: all 0.4s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background: #ff4444;\n  color: #ffffff;\n  border-color: #ff4444;\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover::after {\n  left: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 12px;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: bold;\n  margin-top: 15px;\n  padding-top: 12px;\n  border-top: 1px solid #cccccc;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 8px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 15px;\n  min-height: 45px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #cc0000;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  background-color: #0070BA;\n  border-radius: 4px;\n  padding: 8px;\n  min-height: 45px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #005EA6;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n  max-height: 30px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn span {\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-information,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image {\n    width: 60px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .remove-btn {\n    width: 100%;\n    margin-top: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .shipping-option {\n    width: 100%;\n    min-height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: auto;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .expiry-input,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container {\n    max-width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n    right: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .place-order-btn {\n    margin-top: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    position: static;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 24px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  color: #555555;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  margin-bottom: 20px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #555555;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0;\n  margin-top: 8px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  margin-bottom: 20px;\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  margin-bottom: 15px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  font-size: 14px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  white-space: nowrap;\n  transition: all 0.3s ease;\n  min-height: 40px;\n  flex: 1;\n  min-width: 120px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos .card-logo {\n  width: 150px;\n  height: auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #e0e0e0;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #333333;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  outline: none;\n  border-color: #ff3333;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:invalid {\n  border-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  width: 100%;\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #000000;\n  font-size: 12px;\n  cursor: help;\n  color: #000000;\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  transform: translateY(-50%) scale(1.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n  transform: translate(-50%, -100%);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 10;\n  margin-bottom: 4px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  height: auto;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-text {\n  font-size: 13px;\n  color: #333333;\n  margin-bottom: 15px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .cash-on-delivery-text {\n  font-size: 14px;\n  color: #333333;\n  margin-bottom: 15px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  margin-bottom: 20px;\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 10px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-text {\n  font-size: 14px;\n  color: #333333;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n  box-shadow: 0 2px 4px rgba(255, 68, 68, 0.1);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  background-color: #fff;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  padding: 20px;\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 18px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .empty-cart {\n  font-size: 14px;\n  color: #555555;\n  text-align: center;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 20px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item:last-child {\n  border-bottom: none;\n  padding-bottom: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper {\n  flex: 0 0 60px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 4px;\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image:hover {\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-name {\n  font-size: 14px;\n  color: #333333;\n  font-weight: 500;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-quantity {\n  font-size: 12px;\n  color: #555555;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 1px solid #ff4444;\n  padding: 4px 8px;\n  cursor: pointer;\n  font-size: 12px;\n  color: #ff4444;\n  border-radius: 4px;\n  transition: all 0.3s ease;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary {\n  margin-top: 20px;\n  padding-top: 15px;\n  border-top: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 10px;\n  font-size: 14px;\n  color: #555555;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item span:last-child {\n  color: #333333;\n  font-weight: 500;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: 600;\n  margin-top: 15px;\n  color: #333333;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 12px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 6px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 20px;\n  min-height: 45px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background-color 0.3s ease;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  background-color: #ff3333;\n  border-radius: 6px;\n  padding: 12px;\n  min-height: 45px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n  max-height: 30px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn span {\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-information,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item {\n    flex-direction: row;\n    align-items: center;\n    gap: 10px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper {\n    flex: 0 0 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper .cart-item-image {\n    width: 50px;\n    height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-details {\n    flex: 1;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .remove-btn {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .shipping-option {\n    width: 100%;\n    min-height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: auto;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .expiry-input,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container {\n    max-width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n    right: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .place-order-btn {\n    margin-top: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    position: static;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46453,7 +48026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rate-product-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.rate-product-modal-content {\n  background-color: #fff;\n  padding: 25px;\n  border-radius: 8px;\n  width: 400px;\n  max-width: 90%;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  border: 1px solid #ccc;\n  text-align: left;\n}\n.rate-product-modal-content h2 {\n  font-size: 1.5rem;\n  color: #000;\n  margin-bottom: 14px;\n  text-align: left;\n  font-weight: 600;\n}\n.rate-product-modal-content .star-rating {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  margin-bottom: 20px;\n}\n.rate-product-modal-content .star-rating .star {\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n}\n.rate-product-modal-content .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.rate-product-modal-content .star-rating .star.filled svg {\n  fill: #FF0000;\n  stroke: #FF0000;\n}\n.rate-product-modal-content .star-rating .star svg {\n  fill: none;\n  stroke: #ccc;\n}\n.rate-product-modal-content label {\n  font-size: 1rem;\n  color: #333;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content textarea {\n  width: 100%;\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  font-size: 0.9rem;\n  resize: none;\n  background-color: #1E1E1E;\n  color: #fff;\n  margin-bottom: 20px;\n}\n.rate-product-modal-content textarea:focus {\n  outline: none;\n  border-color: #666;\n}\n.rate-product-modal-content .button-group {\n  display: flex;\n  justify-content: flex-start;\n  gap: 15px;\n}\n.rate-product-modal-content .button-group .btn {\n  padding: 10px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  width: 140px;\n  transition: background-color 0.3s ease;\n}\n.rate-product-modal-content .button-group .btn.submit-btn {\n  background-color: #000;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:hover {\n  background-color: #333;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn {\n  background-color: #FF0000;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 500px) {\n  .rate-product-modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .rate-product-modal-content h2 {\n    font-size: 1.3rem;\n  }\n  .rate-product-modal-content .star-rating .star svg {\n    width: 20px;\n    height: 20px;\n  }\n  .rate-product-modal-content label {\n    font-size: 0.9rem;\n  }\n  .rate-product-modal-content textarea {\n    font-size: 0.85rem;\n  }\n  .rate-product-modal-content .button-group {\n    gap: 10px;\n  }\n  .rate-product-modal-content .button-group .btn {\n    padding: 8px 0;\n    font-size: 0.9rem;\n    width: 120px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rate-product-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.rate-product-modal-content {\n  background-color: #fff;\n  padding: 30px;\n  border-radius: 12px;\n  width: 450px;\n  max-width: 95%;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);\n  text-align: left;\n}\n.rate-product-modal-content h2 {\n  font-size: 1.6rem;\n  color: #333;\n  margin-bottom: 20px;\n  font-weight: 700;\n}\n.rate-product-modal-content .error-message {\n  color: #ff4444;\n  font-size: 0.9rem;\n  margin-bottom: 15px;\n  text-align: center;\n}\n.rate-product-modal-content .rating-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .rating-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .rating-section .star-rating {\n  display: flex;\n  gap: 8px;\n}\n.rate-product-modal-content .rating-section .star-rating .star {\n  cursor: pointer;\n}\n.rate-product-modal-content .rating-section .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.rate-product-modal-content .review-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .review-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .review-section textarea {\n  width: 100%;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  resize: none;\n  background-color: #f9f9f9;\n  color: #333;\n  transition: border-color 0.2s ease;\n}\n.rate-product-modal-content .review-section textarea:focus {\n  outline: none;\n  border-color: #888;\n}\n.rate-product-modal-content .photo-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .photo-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .photo-section .photo-input {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  background-color: #f9f9f9;\n  cursor: pointer;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button {\n  background-color: #333;\n  color: #fff;\n  border: none;\n  padding: 6px 12px;\n  border-radius: 4px;\n  cursor: pointer;\n  -webkit-transition: background-color 0.2s ease;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button:hover {\n  background-color: #555;\n}\n.rate-product-modal-content .photo-section .photo-preview-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 15px;\n}\n.rate-product-modal-content .photo-section .photo-preview {\n  position: relative;\n  display: inline-block;\n}\n.rate-product-modal-content .photo-section .photo-preview img {\n  max-width: 100px;\n  max-height: 100px;\n  border-radius: 6px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ddd;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  width: 20px;\n  height: 20px;\n  background-color: rgba(255, 68, 68, 0.8);\n  color: #fff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.2rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo:hover {\n  background-color: #ff4444;\n}\n.rate-product-modal-content .button-group {\n  display: flex;\n  justify-content: flex-end;\n  gap: 15px;\n}\n.rate-product-modal-content .button-group .btn {\n  padding: 10px 20px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .button-group .btn.submit-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:hover {\n  background-color: #cc0000;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn {\n  background-color: #6c757d;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #5a6268;\n}\n\n@media (max-width: 500px) {\n  .rate-product-modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .rate-product-modal-content h2 {\n    font-size: 1.4rem;\n  }\n  .rate-product-modal-content .rating-section .star-rating {\n    gap: 6px;\n  }\n  .rate-product-modal-content .rating-section .star-rating svg {\n    width: 24px;\n    height: 24px;\n  }\n  .rate-product-modal-content .review-section label,\n  .rate-product-modal-content .photo-section label {\n    font-size: 1rem;\n  }\n  .rate-product-modal-content .review-section textarea,\n  .rate-product-modal-content .review-section .photo-input,\n  .rate-product-modal-content .photo-section textarea,\n  .rate-product-modal-content .photo-section .photo-input {\n    font-size: 0.9rem;\n  }\n  .rate-product-modal-content .button-group {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .rate-product-modal-content .button-group .btn {\n    width: 100%;\n    padding: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46550,7 +48123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  max-width: 100%;\n  min-height: 100vh;\n  margin: 0;\n  padding: 20px;\n  color: #333;\n  background-color: #F0F8FF;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 20px;\n}\n.track-order .order-status h2 {\n  font-size: 1.5rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  border: 2px solid #1E1E1E;\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 5px;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  right: 0;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  animation: growLine 1.5s ease-out forwards;\n  transform: translateY(-50%);\n  width: 60%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 20%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #F0F8FF;\n  border: 2px solid #FF1C1C;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #FF1C1C;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .order-details {\n  background-color: transparent;\n  border: 2px dashed #1E1E1E;\n  padding: 15px;\n  border-radius: 0;\n}\n.track-order .order-details h3 {\n  font-size: 1.2rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-details p {\n  font-size: 0.9rem;\n  margin: 5px 0;\n  color: #333;\n}\n.track-order .order-details p strong {\n  color: #333;\n  font-weight: bold;\n}\n\n/* Animation for the growing line */\n@keyframes growLine {\n  from {\n    width: 0;\n  }\n  to {\n    width: 60%;\n  }\n}\n@media (max-width: 600px) {\n  .track-order {\n    padding: 10px;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before {\n    display: none;\n  }\n  .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 10px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  max-width: 100%;\n  min-height: 100vh;\n  margin: 0;\n  padding: 20px;\n  color: #333;\n  background-color: #F0F8FF;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 20px;\n}\n.track-order .order-status h2 {\n  font-size: 1.5rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  border: 2px solid #1E1E1E;\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 5px;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 10%;\n  right: 10%;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 10%;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  transition: width 0.5s ease-in-out;\n  box-shadow: 0 0 5px rgba(255, 28, 28, 0.5);\n}\n.track-order .timeline.active-0::after {\n  width: 0;\n}\n.track-order .timeline.active-1::after {\n  width: 27%;\n}\n.track-order .timeline.active-2::after {\n  width: 53%;\n}\n.track-order .timeline.active-3::after {\n  width: 80%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 20%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #F0F8FF;\n  border: 2px solid #C5C5C5;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #C5C5C5;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .timeline .timeline-step.current .timeline-icon {\n  box-shadow: 0 0 10px rgba(255, 28, 28, 0.7);\n  transform: scale(1.1);\n}\n.track-order .timeline .timeline-step.active:not(.current) .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-label {\n  color: #FF1C1C;\n  font-weight: bold;\n}\n.track-order .timeline .timeline-step.active .timeline-date {\n  color: #FF1C1C;\n}\n.track-order .order-details {\n  background-color: transparent;\n  border: 2px dashed #1E1E1E;\n  padding: 15px;\n  border-radius: 0;\n}\n.track-order .order-details h3 {\n  font-size: 1.2rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-details .details-content {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.track-order .order-details .details-content .details-text {\n  flex: 1;\n}\n.track-order .order-details .details-content .details-text p {\n  font-size: 0.9rem;\n  margin: 5px 0;\n  color: #333;\n}\n.track-order .order-details .details-content .details-text p strong {\n  color: #333;\n  font-weight: bold;\n}\n.track-order .order-details .details-content .details-image {\n  margin-left: 20px;\n}\n.track-order .order-details .details-content .details-image .product-image {\n  max-width: 100px;\n  height: auto;\n  border-radius: 5px;\n}\n\n@media (max-width: 600px) {\n  .track-order {\n    padding: 10px;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before, .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 10px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 10px;\n  }\n  .track-order .order-details .details-content {\n    flex-direction: column;\n    align-items: center;\n  }\n  .track-order .order-details .details-content .details-image {\n    margin-left: 0;\n    margin-top: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46704,21 +48277,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ATKCOLOR.svg?c3de21bff57960187290d3e557478065");
-
-/***/ }),
-
-/***/ "./resources/sass/img/ATKX5.svg":
-/*!**************************************!*\
-  !*** ./resources/sass/img/ATKX5.svg ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ATKX5.svg?e7f89a1a2b41cb07479d9a8aa7acb0fd");
 
 /***/ }),
 
@@ -109589,35 +111147,6 @@ var IconArchive = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["def
 
 
 //# sourceMappingURL=IconArchive.mjs.map
-
-
-/***/ }),
-
-/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ IconBox)
-/* harmony export */ });
-/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
-/**
- * @license @tabler/icons-react v3.31.0 - MIT
- *
- * This source code is licensed under the MIT license.
- * See the LICENSE file in the root directory of this source tree.
- */
-
-
-
-var IconBox = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "box", "IconBox", [["path", { "d": "M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5", "key": "svg-0" }], ["path", { "d": "M12 12l8 -4.5", "key": "svg-1" }], ["path", { "d": "M12 12l0 9", "key": "svg-2" }], ["path", { "d": "M12 12l-8 -4.5", "key": "svg-3" }]]);
-
-
-//# sourceMappingURL=IconBox.mjs.map
 
 
 /***/ }),

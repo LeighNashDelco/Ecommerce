@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { message } from 'antd'; // Import Ant Design message
+import { message } from 'antd';
 import './../../../../sass/components/shopgrid.scss';
 import OrdersCart from "../CartModals/orders_cart";
+import { IconStar } from '@tabler/icons-react';
 
-const StarRating = ({ rating }) => {
+const renderStars = (rating) => {
+  const totalStars = 5;
+  const parsedRating = parseFloat(rating) || 0;
+  const filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
+  const emptyStars = totalStars - filledStars;
+
   return (
     <div className="shop-grid-stars">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <span key={star} className={`star ${star <= rating ? 'filled' : ''}`}>
-          ★
-        </span>
+      {Array(Math.max(filledStars, 0)).fill().map((_, index) => (
+        <IconStar key={`filled-${index}`} size={18} fill="#ff0000" color="#ff0000" />
+      ))}
+      {Array(Math.max(emptyStars, 0)).fill().map((_, index) => (
+        <IconStar key={`empty-${index}`} size={18} fill="none" color="#ccc" />
       ))}
     </div>
   );
 };
 
-const ShopGrid = ({ products, loading, profileId }) => {
+const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReviews }) => {
   const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(15);
   const [sortBy, setSortBy] = useState('newest');
-  const [sortedProducts, setSortedProducts] = useState(products);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const getAuthHeaders = () => {
@@ -32,14 +39,18 @@ const ShopGrid = ({ products, loading, profileId }) => {
   };
 
   useEffect(() => {
-    console.log('ShopGrid profileId:', profileId); // Debug profileId
+    console.log('Ratings in ShopGrid:', ratings);
+    if (!Array.isArray(products)) {
+      setSortedProducts([]);
+      return;
+    }
     const sorted = [...products];
     switch (sortBy) {
       case 'price-low':
         sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
         break;
       case 'price-high':
-        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(b.price));
+        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
         break;
       case 'newest':
         sorted.sort((a, b) => b.id - a.id);
@@ -48,24 +59,27 @@ const ShopGrid = ({ products, loading, profileId }) => {
         break;
     }
     setSortedProducts(sorted);
-  }, [sortBy, products, profileId]);
+  }, [sortBy, products, ratings]);
 
-  const handleShowMore = () => setVisibleCount((prev) => prev + 5);
+  const handleShowMore = async () => {
+    const newVisibleCount = visibleCount + 5;
+    const newProductIds = sortedProducts.slice(visibleCount, newVisibleCount).map(p => p.id);
+    if (newProductIds.length > 0) {
+      await fetchReviews(newProductIds);
+    }
+    setVisibleCount(newVisibleCount);
+  };
+
   const handleBackToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const handleSortChange = (e) => setSortBy(e.target.value);
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   const handleAddToCart = async (productId) => {
-    console.log('Adding to cart, profileId:', profileId); // Debug before adding
     if (!profileId) {
-      message.error({
-        content: 'Please log in to add items to your cart.',
-        style: { marginTop: '20px' }, // Clean top positioning
-      });
+      message.error({ content: 'Please log in to add items to your cart.', style: { marginTop: '20px' } });
       navigate('/login');
       return;
     }
-
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/cart/add`, {
         method: 'POST',
@@ -73,26 +87,16 @@ const ShopGrid = ({ products, loading, profileId }) => {
         body: JSON.stringify({ profile_id: profileId, product_id: productId, quantity: 1 }),
       });
       const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to add to cart');
-      }
+      if (!response.ok) throw new Error(data.message || 'Failed to add to cart');
       setIsCartOpen(true);
-      message.success({
-        content: 'Item added to cart successfully!',
-        style: { marginTop: '20px' }, // Clean top positioning
-      });
+      message.success({ content: 'Item added to cart successfully!', style: { marginTop: '20px' } });
     } catch (error) {
       console.error('Error adding to cart:', error);
-      message.error({
-        content: `Failed to add item to cart: ${error.message}`,
-        style: { marginTop: '20px' }, // Clean top positioning
-      });
+      message.error({ content: `Failed to add item to cart: ${error.message}`, style: { marginTop: '20px' } });
     }
   };
 
-  const displayedProductsCount = Math.min(sortedProducts.length, visibleCount);
-
-  if (loading) {
+  if (loading || !Array.isArray(products)) {
     return (
       <div className="shop-grid-wrapper">
         <div className="shop-grid-container">
@@ -129,7 +133,7 @@ const ShopGrid = ({ products, loading, profileId }) => {
     <div className="shop-grid-wrapper">
       <div className="shop-grid-container">
         <div className="shop-grid-header">
-          <span className="available-products">Available Products: {displayedProductsCount}</span>
+          <span className="available-products">Available Products: {sortedProducts.length}</span>
           <div className="sort-view-container">
             <label>Sort by</label>
             <select value={sortBy} onChange={handleSortChange}>
@@ -152,13 +156,10 @@ const ShopGrid = ({ products, loading, profileId }) => {
                 )}
               </Link>
               <div className="shop-grid-info">
-                <StarRating rating={5} />
+                {renderStars(ratings[product.id] || 0)}
                 <h3 className="product-name">{product.product_name}</h3>
-                <p className="product-price">₱{product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
-                <button
-                  className="shop-grid-add-to-cart"
-                  onClick={() => handleAddToCart(product.id)}
-                >
+                <p className="product-price">₱{parseFloat(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
+                <button className="shop-grid-add-to-cart" onClick={() => handleAddToCart(product.id)}>
                   Add to cart
                 </button>
               </div>

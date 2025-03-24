@@ -20,10 +20,58 @@ function PaymentMethods() {
   });
   const [showCvcTooltip, setShowCvcTooltip] = useState(false);
   const [isPaypalSelected, setIsPaypalSelected] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    } : { 'Content-Type': 'application/json' };
+  };
 
   useEffect(() => {
     setSelectedPayment('creditCard');
+
+    const profileId = localStorage.getItem('profileId');
+
+    if (!profileId) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/cart/${profileId}`, {
+          headers: getAuthHeaders(),
+        });
+        if (!response.ok) throw new Error('Failed to fetch cart');
+        const data = await response.json();
+        setCartItems(data.success && Array.isArray(data.data) ? data.data : []);
+      } catch (error) {
+        console.error('Error fetching cart:', error);
+        setCartItems([]);
+      }
+    };
+
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/profiles/${profileId}`, {
+          headers: getAuthHeaders(),
+        });
+        if (!response.ok) throw new Error('Failed to fetch profile');
+        const data = await response.json();
+        setProfile(data);
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+        setProfile(null);
+      }
+    };
+
+    Promise.all([fetchCartItems(), fetchProfile()]).finally(() => setLoading(false));
   }, []);
 
   const handleStepClick = (step) => {
@@ -74,16 +122,86 @@ function PaymentMethods() {
     setCardDetails(prev => ({ ...prev, expiry: cleanedValue }));
   };
 
-  // Updated handlePlaceOrder to handle PayPal redirection
-  const handlePlaceOrder = () => {
-    if (isPaypalSelected) {
-      // Redirect to PayPal login page
-      window.location.href = 'https://www.paypal.com/signin';
-    } else {
-      // Navigate to OrderComplete for other payment methods
-      navigate('/order_complete');
+  const handleRemoveItem = async (productId) => {
+    const profileId = localStorage.getItem('profileId');
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/cart/remove`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ profile_id: profileId, product_id: productId }),
+      });
+      if (!response.ok) throw new Error('Failed to remove item');
+      setCartItems((prevItems) => prevItems.filter((i) => i.product_id !== productId));
+    } catch (error) {
+      console.error('Error removing item:', error);
     }
   };
+
+  const handlePlaceOrder = async () => {
+    const profileId = localStorage.getItem('profileId');
+    if (!profileId) {
+      alert('Please log in to place an order.');
+      return;
+    }
+  
+    if (cartItems.length === 0) {
+      alert('Your cart is empty. Add items before placing an order.');
+      return;
+    }
+  
+    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    const shippingCost = selectedShipping === 'priority' ? 50 : 0;
+    const grandTotal = totalPrice + shippingCost;
+  
+    const orderData = {
+      profile_id: parseInt(profileId, 10),
+      shipping_method: selectedShipping,
+      items: cartItems.map(item => ({
+        product_id: parseInt(item.product_id, 10),
+        quantity: parseInt(item.quantity, 10),
+        price: Number(item.price),
+      })),
+      total_amount: grandTotal,
+      payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery',
+    };
+  
+    console.log('Sending order data:', orderData);
+  
+    if (selectedPayment === 'paypal') {
+      localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+      window.location.href = 'https://www.paypal.com/signin';
+    } else {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/orders', {
+          method: 'POST',
+          headers: getAuthHeaders(),
+          body: JSON.stringify(orderData),
+        });
+  
+        console.log('Response status:', response.status); // Debug status
+        const responseText = await response.text(); // Get raw text
+        console.log('Raw response:', responseText); // Log raw response
+  
+        const responseData = JSON.parse(responseText); // Attempt to parse as JSON
+        if (!response.ok) {
+          throw new Error(responseData.error || 'Failed to place order');
+        }
+  
+        console.log('Order placed successfully:', responseData);
+        setCartItems([]);
+        navigate('/order_complete');
+      } catch (error) {
+        console.error('Error placing order:', error.message);
+        alert(`Failed to place order: ${error.message}`);
+      }
+    }
+  };
+
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const shippingCost = selectedShipping === 'priority' ? 50 : 0;
+  const grandTotal = totalPrice + shippingCost;
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="payment-methods-page-container">
@@ -95,10 +213,21 @@ function PaymentMethods() {
               <h1>Checkout</h1>
               <div className="delivery-address">
                 <h3>Delivery Address</h3>
-                <p>John Doe</p>
-                <p>1234 Sample Street, Barangay 123</p>
-                <p>Manila, Metro Manila, 1000</p>
-                <p>Philippines</p>
+                {profile ? (
+                  <>
+                    <p>
+                      {profile.first_name}{' '}
+                      {profile.middlename && profile.middlename !== 'N/A' ? `${profile.middlename} ` : ''}
+                      {profile.last_name}{' '}
+                      {profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : ''}
+                    </p>
+                    <p>{profile.street}</p>
+                    <p>{`${profile.city}, ${profile.province}, ${profile.postal_code}`}</p>
+                    <p>{profile.country}</p>
+                  </>
+                ) : (
+                  <p>No profile data available</p>
+                )}
                 <button className="change-btn">Change</button>
               </div>
               <div className="payment-details">
@@ -227,51 +356,44 @@ function PaymentMethods() {
             </div>
             <div className="cart-details">
               <h2>Order Summary</h2>
-              <div className="cart-item">
-                <a href="#" className="product-link">
-                  <img src={attackShark} alt="Attack Shark X3" className="cart-item-image" />
-                </a>
-                <div className="cart-item-details">
-                  <p>Attack Shark X3</p>
-                  <p>Quantity: 1</p>
-                  <p className="cart-item-price">₱2,000</p>
-                </div>
-                <button className="remove-btn">Remove</button>
-              </div>
-              <div className="cart-item">
-                <a href="#" className="product-link">
-                  <img src={attackShark} alt="Attack Shark X3" className="cart-item-image" />
-                </a>
-                <div className="cart-item-details">
-                  <p>Attack Shark X3</p>
-                  <p>Quantity: 1</p>
-                  <p className="cart-item-price">₱2,000</p>
-                </div>
-                <button className="remove-btn">Remove</button>
-              </div>
-              <div className="cart-item">
-                <a href="#" className="product-link">
-                  <img src={attackShark} alt="Attack Shark X3" className="cart-item-image" />
-                </a>
-                <div className="cart-item-details">
-                  <p>Attack Shark X3</p>
-                  <p>Quantity: 1</p>
-                  <p className="cart-item-price">₱2,000</p>
-                </div>
-                <button className="remove-btn">Remove</button>
-              </div>
+              {cartItems.length === 0 ? (
+                <p className="empty-cart">Your cart is empty</p>
+              ) : (
+                cartItems.map((item) => (
+                  <div key={item.product_id} className="cart-item">
+                    <div className="cart-item-image-wrapper">
+                      <img 
+                        src={item.product_img ? `http://127.0.0.1:8000/${item.product_img}` : attackShark} 
+                        alt={item.product_name} 
+                        className="cart-item-image" 
+                      />
+                    </div>
+                    <div className="cart-item-details">
+                      <p className="cart-item-name">{item.product_name}</p>
+                      <p className="cart-item-quantity">Quantity: {item.quantity}</p>
+                      <p className="cart-item-price">₱{(item.price * item.quantity).toLocaleString()}</p>
+                    </div>
+                    <button 
+                      className="remove-btn" 
+                      onClick={() => handleRemoveItem(item.product_id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))
+              )}
               <div className="order-summary">
                 <div className="summary-item">
                   <span>Subtotal</span>
-                  <span>₱6,000</span>
+                  <span>₱{totalPrice.toLocaleString()}</span>
                 </div>
                 <div className="summary-item">
                   <span>Shipping</span>
-                  <span>Free</span>
+                  <span>{shippingCost === 0 ? 'Free' : `₱${shippingCost.toLocaleString()}`}</span>
                 </div>
                 <div className="summary-total">
                   <span>Total</span>
-                  <span>₱6,000</span>
+                  <span>₱{grandTotal.toLocaleString()}</span>
                 </div>
               </div>
               <button 
@@ -284,7 +406,7 @@ function PaymentMethods() {
                     <img src={paypalLogo} alt="PayPal Logo" className="paypal-logo" />
                   </>
                 ) : (
-                  'Place order'
+                  'Place Order'
                 )}
               </button>
             </div>

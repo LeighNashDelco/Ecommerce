@@ -1,225 +1,280 @@
 .track-order-page {
-    padding-top: 80px;
+  padding-top: 80px;
+}
+
+.track-order {
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  background-color: #F0F8FF;
+
+  .notice {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
   }
-  
-  .track-order {
-    font-family: Arial, sans-serif;
-    max-width: 100%;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    background-color: #F0F8FF;
-  
-    .notice {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 20px;
+
+  .order-status {
+    text-align: left;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #1E1E1E;
+      margin: 0 0 10px 0;
+    }
+
+    .status-text {
+      color: #008000;
+    }
+  }
+
+  .order-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 2px solid #1E1E1E;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+    .info-item {
       text-align: center;
-    }
-  
-    .order-status {
-      text-align: left;
-      margin-bottom: 20px;
-  
-      h2 {
-        font-size: 1.5rem;
-        color: #1E1E1E;
-        margin: 0 0 10px 0;
+      flex: 1;
+
+      span:first-child {
+        font-weight: bold;
+        color: #ff0000;
+        display: block;
       }
-  
-      .status-text {
-        color: #008000; // Green color for "In Transit"
-      }
-    }
-  
-    .order-info {
-      display: flex;
-      justify-content: space-between;
-      background-color: transparent; // Changed to transparent
-      border: 2px solid #1E1E1E; // Border color updated to #1E1E1E
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-  
-      .info-item {
-        text-align: center;
-        flex: 1;
-  
-        span:first-child {
-          font-weight: bold;
-          color: #ff0000;
-          display: block;
-        }
-  
-        span:last-child {
-          font-size: 0.9rem;
-          color: #333; // Kept as #333 since background is now transparent
-        }
-      }
-    }
-  
-    .timeline {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      margin-bottom: 20px;
-  
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background-color: #C5C5C5;
-        z-index: 0;
-      }
-  
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        height: 5px;
-        background-color: #FF1C1C; // Kept as #FF1C1C
-        z-index: 1;
-        animation: growLine 1.5s ease-out forwards;
-        transform: translateY(-50%);
-        width: 60%;
-      }
-  
-      .timeline-step {
-        position: relative;
-        text-align: center;
-        z-index: 2;
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-  
-        .timeline-icon {
-          background-color: #F0F8FF;
-          border: 2px solid #FF1C1C; // Kept as #FF1C1C
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          top: -50%;
-          margin-bottom: 10px;
-          transition: background-color 0.3s ease;
-  
-          svg {
-            color: #FF1C1C; // Kept as #FF1C1C
-          }
-        }
-  
-        .timeline-label {
-          font-size: 0.9rem;
-          color: #666;
-          display: block;
-        }
-  
-        .timeline-date {
-          font-size: 0.8rem;
-          color: #333;
-          display: block;
-        }
-  
-        &.active .timeline-icon {
-          background-color: #FF1C1C; // Kept as #FF1C1C
-  
-          svg {
-            color: #fff;
-          }
-        }
-      }
-    }
-  
-    .order-details {
-      background-color: transparent; // Changed to transparent
-      border: 2px dashed #1E1E1E; // Border color updated to #1E1E1E
-      padding: 15px;
-      border-radius: 0;
-  
-      h3 {
-        font-size: 1.2rem;
-        color: #1E1E1E; // Kept as #1E1E1E since background is transparent
-        margin: 0 0 10px 0;
-      }
-  
-      p {
+
+      span:last-child {
         font-size: 0.9rem;
-        margin: 5px 0;
-        color: #333; // Kept as #333 since background is transparent
-  
-        strong {
-          color: #333; // Kept as #333 since background is transparent
-          font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 20px; 
+      left: 10%; 
+      right: 10%; 
+      height: 5px;
+      background-color: #C5C5C5;
+      z-index: 0;
+    }
+
+    // Red active line
+    &::after {
+      content: '';
+      position: absolute;
+      top: 20px; 
+      left: 10%;
+      height: 5px;
+      background-color: #FF1C1C;
+      z-index: 1;
+      transition: width 0.5s ease-in-out;
+      box-shadow: 0 0 5px rgba(255, 28, 28, 0.5); // Add a subtle glow to make it "cool"
+    }
+
+    &.active-0::after {
+      width: 0; 
+    }
+    &.active-1::after {
+      width: 27%; 
+    }
+    &.active-2::after {
+      width: 53%; 
+    }
+    &.active-3::after {
+      width: 80%;
+    }
+
+
+    .timeline-step {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+
+      .timeline-icon {
+        background-color: #F0F8FF;
+        border: 2px solid #C5C5C5; // Gray border for inactive
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: -50%;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+        svg {
+          color: #C5C5C5; // Gray icon for inactive
+          transition: color 0.3s ease;
+        }
+      }
+
+      .timeline-label {
+        font-size: 0.9rem;
+        color: #666;
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      .timeline-date {
+        font-size: 0.8rem;
+        color: #333;
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      &.active .timeline-icon {
+        background-color: #FF1C1C;
+        border-color: #FF1C1C;
+        svg {
+          color: #fff;
+        }
+      }
+
+      &.current .timeline-icon {
+        box-shadow: 0 0 10px rgba(255, 28, 28, 0.7);
+        transform: scale(1.1);
+      }
+
+      &.active:not(.current) .timeline-icon {
+        background-color: #FF1C1C;
+        border-color: #FF1C1C;
+      }
+
+      &.active .timeline-label {
+        color: #FF1C1C;
+        font-weight: bold;
+      }
+
+      &.active .timeline-date {
+        color: #FF1C1C;
+      }
+    }
+  }
+
+  .order-details {
+    background-color: transparent;
+    border: 2px dashed #1E1E1E;
+    padding: 15px;
+    border-radius: 0;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #1E1E1E;
+      margin: 0 0 10px 0;
+    }
+
+    .details-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .details-text {
+        flex: 1;
+
+        p {
+          font-size: 0.9rem;
+          margin: 5px 0;
+          color: #333;
+
+          strong {
+            color: #333;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .details-image {
+        margin-left: 20px;
+
+        .product-image {
+          max-width: 100px;
+          height: auto;
+          border-radius: 5px;
         }
       }
     }
   }
-  
-  /* Animation for the growing line */
-  @keyframes growLine {
-    from {
-      width: 0;
+}
+
+@media (max-width: 600px) {
+  .track-order {
+    padding: 10px;
+
+    .order-info {
+      flex-direction: column;
+      gap: 10px;
+
+      .info-item {
+        text-align: left;
+      }
     }
-    to {
-      width: 60%; // Stops at "In Transit" (3rd step out of 5)
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .track-order {
-      padding: 10px;
-  
-      .order-info {
-        flex-direction: column;
+
+    .timeline {
+      flex-direction: column;
+      gap: 20px;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .timeline-step {
+        width: 100%;
+        display: flex;
+        align-items: center;
         gap: 10px;
-  
-        .info-item {
+
+        .timeline-icon {
+          margin: 0;
+          top: 0;
+        }
+
+        .timeline-label,
+        .timeline-date {
           text-align: left;
         }
       }
-  
-      .timeline {
+    }
+
+    .order-details {
+      padding: 10px;
+
+      .details-content {
         flex-direction: column;
-        gap: 20px;
-  
-        &::before {
-          display: none;
+        align-items: center;
+
+        .details-image {
+          margin-left: 0;
+          margin-top: 10px;
         }
-  
-        &::after {
-          display: none;
-        }
-  
-        .timeline-step {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-  
-          .timeline-icon {
-            margin: 0;
-            top: 0;
-          }
-  
-          .timeline-label,
-          .timeline-date {
-            text-align: left;
-          }
-        }
-      }
-  
-      .order-details {
-        padding: 10px;
       }
     }
   }
+}

@@ -1,34 +1,97 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom'; // Import useLocation to access state
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './../../../../sass/components/track_order.scss';
 import { IconCheck, IconBox, IconTruck, IconTruckDelivery, IconHome } from '@tabler/icons-react';
 import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 const TrackOrder = () => {
-  const location = useLocation(); // Hook to access navigation state
-  const order = location.state?.order || { // Use passed order or fallback to default
-    orderNumber: '#2241',
-    status: 'In Transit',
-    total: '2365.00 USD',
-    shipTo: 'Alexander Otaza',
-    estimatedDeliveryDate: 'March 17, 2025',
-    orderPlacedDate: 'March 14, 2025',
-    orderReadyDate: 'March 13, 2025',
-    inTransitDate: 'March 14, 2025',
-    outForDeliveryDate: null,
-    deliveredDate: null,
-    productName: 'Attack Shark X3',
-    shippingAddress: 'Purok 6 960-B RCES, Baan riverside (Bgy. 19), Butuan City, Mindanao, Agusan Del Norte 8600',
+  const location = useLocation();
+  const [order, setOrder] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchOrderDetails = async () => {
+      try {
+        const token = localStorage.getItem('LaravelPassportToken');
+        if (!token) {
+          throw new Error('Please login first - No token found');
+        }
+
+        const orderId = location.state?.order?.id;
+        if (!orderId) {
+          throw new Error('No order ID provided');
+        }
+
+        const response = await fetch(`http://127.0.0.1:8000/api/orders/track/${orderId}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          if (response.status === 401) {
+            localStorage.removeItem('LaravelPassportToken');
+            throw new Error('Session expired. Please login again.');
+          }
+          throw new Error(errorData.message || 'Failed to fetch order details');
+        }
+
+        const data = await response.json();
+        if (data.payment_method === 'credit_card') {
+          data.payment_method = 'Credit Card';
+        }
+        setOrder(data);
+        setError(null);
+      } catch (err) {
+        console.error('Fetch error:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrderDetails();
+  }, [location]);
+
+  const getTimelineSteps = (status) => {
+    if (!order) return [];
+    
+    const steps = [
+      { label: 'Order Placed', date: order.order_placed_date, icon: IconCheck },
+      { label: 'In Transit', date: order.in_transit_date, icon: IconTruck },
+      { label: 'Out for Delivery', date: order.out_for_delivery_date, icon: IconTruckDelivery },
+      { label: 'Delivered', date: order.delivered_date, icon: IconHome },
+    ];
+
+    const statusIndex = {
+      'Pending': 0,
+      'In Transit': 1,
+      'Out for Delivery': 2,
+      'Delivered': 3,
+    }[status] || 0;
+
+    steps.forEach((step, index) => {
+      step.active = index <= statusIndex;
+      step.current = index === statusIndex;
+      if (index < statusIndex) {
+        step.icon = IconCheck;
+      }
+    });
+
+    return { steps, statusIndex };
   };
 
-  const timelineSteps = [
-    { label: 'Order Placed', date: order.orderPlacedDate, icon: IconCheck, active: true },
-    { label: 'Order Ready', date: order.orderReadyDate, icon: IconBox, active: true },
-    { label: 'In Transit', date: order.inTransitDate, icon: IconTruck, active: true },
-    { label: 'Out for Delivery', date: order.outForDeliveryDate, icon: IconTruckDelivery, active: false },
-    { label: 'Delivered', date: order.deliveredDate, icon: IconHome, active: false },
-  ];
+  if (loading) return <div className="track-order-page"><p>Loading...</p></div>;
+  if (error) return <div className="track-order-page"><p>Error: {error}</p></div>;
+  if (!order) return <div className="track-order-page"><p>No order data available</p></div>;
+
+  const { steps: timelineSteps, statusIndex } = getTimelineSteps(order.status);
 
   return (
     <div className="track-order-page">
@@ -38,29 +101,32 @@ const TrackOrder = () => {
           <h2>
             Order Status: <span className="status-text">{order.status}</span>
           </h2>
-          <p>Estimated Delivery Date: {order.estimatedDeliveryDate}</p>
         </div>
         <div className="order-info">
           <div className="info-item">
             <span>ORDER PLACED</span>
-            <span>{order.orderPlacedDate}</span>
+            <span>{order.order_placed_date}</span>
           </div>
           <div className="info-item">
             <span>TOTAL</span>
-            <span>{order.total}</span>
+            <span>₱{order.total_amount}</span>
           </div>
           <div className="info-item">
             <span>SHIP TO</span>
-            <span>{order.shipTo}</span>
+            <span>{order.ship_to}</span>
           </div>
           <div className="info-item">
-            <span>ORDER</span>
-            <span>{order.orderNumber}</span>
+            <span>PAYMENT METHOD</span>
+            <span>{order.payment_method}</span>
           </div>
         </div>
-        <div className="timeline">
+        <div className={`timeline active-${statusIndex}`}>
           {timelineSteps.map((step, index) => (
-            <div key={index} className={`timeline-step ${step.active ? 'active' : ''}`}>
+            <div
+              key={index}
+              className={`timeline-step ${step.active ? 'active' : ''} ${step.current ? 'current' : ''}`}
+              data-index={index}
+            >
               <span className="timeline-icon">
                 <step.icon size={20} />
               </span>
@@ -71,10 +137,13 @@ const TrackOrder = () => {
         </div>
         <div className="order-details">
           <h3>Order Details</h3>
-          <p><strong>Product Name:</strong> {order.name || order.productName}</p>
-          <p><strong>Order number:</strong> {order.orderNumber}</p>
-          <p><strong>Estimated Delivery Date:</strong> {order.estimatedDeliveryDate}</p>
-          <p><strong>Shipping Address:</strong> {order.shippingAddress}</p>
+          <div className="details-content">
+            <div className="details-text">
+              <p><strong>Product Name:</strong> {order.product_name}</p>
+              <p><strong>Estimated Delivery Date:</strong> {order.estimated_delivery_date}</p>
+              <p><strong>Shipping Address:</strong> {order.shipping_address}</p>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
