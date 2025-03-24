@@ -38509,7 +38509,7 @@ var RateProduct = function RateProduct(_ref) {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState8 = _slicedToArray(_useState7, 2),
     image = _useState8[0],
-    setImage = _useState8[1]; // Single image for simplicity
+    setImage = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState10 = _slicedToArray(_useState9, 2),
     imagePreview = _useState10[0],
@@ -38590,7 +38590,7 @@ var RateProduct = function RateProduct(_ref) {
     setReview(event.target.value);
   };
   var handleImageChange = function handleImageChange(event) {
-    var file = event.target.files[0]; // Only take the first file
+    var file = event.target.files[0];
     if (file) {
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
@@ -38599,6 +38599,14 @@ var RateProduct = function RateProduct(_ref) {
   var handleRemoveImage = function handleRemoveImage() {
     setImage(null);
     setImagePreview(null);
+  };
+  var resetForm = function resetForm() {
+    setRating(0);
+    setHoverRating(0);
+    setReview('');
+    setImage(null);
+    setImagePreview(null);
+    setError(null);
   };
   var handleSubmit = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
@@ -38620,7 +38628,7 @@ var RateProduct = function RateProduct(_ref) {
             formData.append('rating', rating);
             formData.append('comment', review);
             if (image) {
-              formData.append('photo', image); // Single photo field
+              formData.append('photo', image);
             }
             _context2.prev = 10;
             token = localStorage.getItem('LaravelPassportToken');
@@ -38654,28 +38662,28 @@ var RateProduct = function RateProduct(_ref) {
               review: review,
               image: result.photo
             });
-            setRating(0);
-            setReview('');
-            setImage(null);
-            setImagePreview(null);
-            setError(null);
-            onClose();
-            _context2.next = 35;
+            resetForm(); // Reset all fields after successful submission
+            onClose(); // Close the modal
+            _context2.next = 31;
             break;
-          case 32:
-            _context2.prev = 32;
+          case 28:
+            _context2.prev = 28;
             _context2.t0 = _context2["catch"](10);
             setError(_context2.t0.message);
-          case 35:
+          case 31:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[10, 32]]);
+      }, _callee2, null, [[10, 28]]);
     }));
     return function handleSubmit(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
+  var handleCancel = function handleCancel() {
+    resetForm(); // Reset all fields when canceling
+    onClose(); // Close the modal
+  };
   if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: "rate-product-modal-overlay",
@@ -38761,7 +38769,7 @@ var RateProduct = function RateProduct(_ref) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
             className: "btn cancel-btn",
-            onClick: onClose,
+            onClick: handleCancel,
             children: "Cancel"
           })]
         })]

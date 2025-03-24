@@ -6,73 +6,119 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState('');
-  const [image, setImage] = useState(null); // Single image for simplicity
+  const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [userId, setUserId] = useState(null);
   const [error, setError] = useState(null);
+  const [hasRated, setHasRated] = useState(false);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
+    const fetchUserProfileAndReviews = async () => {
       try {
         const token = localStorage.getItem('LaravelPassportToken');
         if (!token) {
           throw new Error('No token found. Please login.');
         }
 
-        const response = await fetch('/api/user', {
+        // Fetch user profile
+        const userResponse = await fetch('/api/user', {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
           },
         });
 
-        if (!response.ok) {
+        if (!userResponse.ok) {
           throw new Error('Failed to fetch user profile');
         }
 
-        const userData = await response.json();
+        const userData = await userResponse.json();
         setUserId(userData.id);
+
+        // Fetch existing reviews for this product and user
+        const reviewsResponse = await fetch(`/api/reviews/product/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+          },
+        });
+
+        if (!reviewsResponse.ok) {
+          throw new Error('Failed to fetch reviews');
+        }
+
+        const reviewsData = await reviewsResponse.json();
+        const userReview = reviewsData.data.find(review => review.user_id === userData.id);
+        if (userReview) {
+          setHasRated(true);
+          setError('You have already rated this product.');
+        }
       } catch (err) {
         setError(err.message);
       }
     };
 
     if (isOpen) {
-      fetchUserProfile();
+      fetchUserProfileAndReviews();
     }
-  }, [isOpen]);
+  }, [isOpen, productId]);
 
   const handleRatingClick = (value) => {
-    setRating(value);
+    if (!hasRated) {
+      setRating(value);
+    }
   };
 
   const handleRatingHover = (value) => {
-    setHoverRating(value);
+    if (!hasRated) {
+      setHoverRating(value);
+    }
   };
 
   const handleMouseLeave = () => {
-    setHoverRating(0);
+    if (!hasRated) {
+      setHoverRating(0);
+    }
   };
 
   const handleReviewChange = (event) => {
-    setReview(event.target.value);
+    if (!hasRated) {
+      setReview(event.target.value);
+    }
   };
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Only take the first file
-    if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
+    if (!hasRated) {
+      const file = event.target.files[0];
+      if (file) {
+        setImage(file);
+        setImagePreview(URL.createObjectURL(file));
+      }
     }
   };
 
   const handleRemoveImage = () => {
+    if (!hasRated) {
+      setImage(null);
+      setImagePreview(null);
+    }
+  };
+
+  const resetForm = () => {
+    setRating(0);
+    setHoverRating(0);
+    setReview('');
     setImage(null);
     setImagePreview(null);
+    setError(null);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (hasRated) {
+      setError('You have already rated this product.');
+      return;
+    }
     if (rating === 0 || !userId) {
       setError('Please provide a rating and ensure you are logged in.');
       return;
@@ -84,7 +130,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
     formData.append('rating', rating);
     formData.append('comment', review);
     if (image) {
-      formData.append('photo', image); // Single photo field
+      formData.append('photo', image);
     }
 
     try {
@@ -105,15 +151,17 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
 
       const result = await response.json();
       onSubmit({ rating, review, image: result.photo });
-      setRating(0);
-      setReview('');
-      setImage(null);
-      setImagePreview(null);
-      setError(null);
+      setHasRated(true); // Mark as rated after successful submission
+      resetForm();
       onClose();
     } catch (err) {
       setError(err.message);
     }
+  };
+
+  const handleCancel = () => {
+    resetForm();
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -131,7 +179,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
               return (
                 <span
                   key={star}
-                  className={`star ${isFilled ? 'filled' : ''}`}
+                  className={`star ${isFilled ? 'filled' : ''} ${hasRated ? 'disabled' : ''}`}
                   onClick={() => handleRatingClick(star)}
                   onMouseEnter={() => handleRatingHover(star)}
                   onMouseLeave={handleMouseLeave}
@@ -156,6 +204,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
               placeholder="Share your thoughts about the product..."
               rows="4"
               required
+              disabled={hasRated}
             />
           </div>
           <div className="photo-section">
@@ -166,14 +215,17 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
               accept="image/*"
               onChange={handleImageChange}
               className="photo-input"
+              disabled={hasRated}
             />
             {imagePreview && (
               <div className="photo-preview-container">
                 <div className="photo-preview">
                   <img src={imagePreview} alt="Preview" />
-                  <span className="remove-photo" onClick={handleRemoveImage}>
-                    ×
-                  </span>
+                  {!hasRated && (
+                    <span className="remove-photo" onClick={handleRemoveImage}>
+                      ×
+                    </span>
+                  )}
                 </div>
               </div>
             )}
@@ -182,11 +234,15 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
             <button
               type="submit"
               className="btn submit-btn"
-              disabled={rating === 0 || !userId}
+              disabled={rating === 0 || !userId || hasRated}
             >
               Submit Review
             </button>
-            <button type="button" className="btn cancel-btn" onClick={onClose}>
+            <button
+              type="button"
+              className="btn cancel-btn"
+              onClick={handleCancel}
+            >
               Cancel
             </button>
           </div>
