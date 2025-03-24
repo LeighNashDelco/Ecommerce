@@ -38522,10 +38522,14 @@ var RateProduct = function RateProduct(_ref) {
     _useState14 = _slicedToArray(_useState13, 2),
     error = _useState14[0],
     setError = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    hasRated = _useState16[0],
+    setHasRated = _useState16[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var fetchUserProfile = /*#__PURE__*/function () {
+    var fetchUserProfileAndReviews = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, response, userData;
+        var token, userResponse, userData, reviewsResponse, reviewsData, userReview;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -38545,60 +38549,100 @@ var RateProduct = function RateProduct(_ref) {
                 }
               });
             case 6:
-              response = _context.sent;
-              if (response.ok) {
+              userResponse = _context.sent;
+              if (userResponse.ok) {
                 _context.next = 9;
                 break;
               }
               throw new Error('Failed to fetch user profile');
             case 9:
               _context.next = 11;
-              return response.json();
+              return userResponse.json();
             case 11:
               userData = _context.sent;
               setUserId(userData.id);
-              _context.next = 18;
-              break;
+
+              // Fetch existing reviews for this product and user
+              _context.next = 15;
+              return fetch("/api/reviews/product/".concat(productId), {
+                headers: {
+                  'Authorization': "Bearer ".concat(token),
+                  'Accept': 'application/json'
+                }
+              });
             case 15:
-              _context.prev = 15;
+              reviewsResponse = _context.sent;
+              if (reviewsResponse.ok) {
+                _context.next = 18;
+                break;
+              }
+              throw new Error('Failed to fetch reviews');
+            case 18:
+              _context.next = 20;
+              return reviewsResponse.json();
+            case 20:
+              reviewsData = _context.sent;
+              userReview = reviewsData.data.find(function (review) {
+                return review.user_id === userData.id;
+              });
+              if (userReview) {
+                setHasRated(true);
+                setError('You have already rated this product.');
+              }
+              _context.next = 28;
+              break;
+            case 25:
+              _context.prev = 25;
               _context.t0 = _context["catch"](0);
               setError(_context.t0.message);
-            case 18:
+            case 28:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 15]]);
+        }, _callee, null, [[0, 25]]);
       }));
-      return function fetchUserProfile() {
+      return function fetchUserProfileAndReviews() {
         return _ref2.apply(this, arguments);
       };
     }();
     if (isOpen) {
-      fetchUserProfile();
+      fetchUserProfileAndReviews();
     }
-  }, [isOpen]);
+  }, [isOpen, productId]);
   var handleRatingClick = function handleRatingClick(value) {
-    setRating(value);
+    if (!hasRated) {
+      setRating(value);
+    }
   };
   var handleRatingHover = function handleRatingHover(value) {
-    setHoverRating(value);
+    if (!hasRated) {
+      setHoverRating(value);
+    }
   };
   var handleMouseLeave = function handleMouseLeave() {
-    setHoverRating(0);
+    if (!hasRated) {
+      setHoverRating(0);
+    }
   };
   var handleReviewChange = function handleReviewChange(event) {
-    setReview(event.target.value);
+    if (!hasRated) {
+      setReview(event.target.value);
+    }
   };
   var handleImageChange = function handleImageChange(event) {
-    var file = event.target.files[0];
-    if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
+    if (!hasRated) {
+      var file = event.target.files[0];
+      if (file) {
+        setImage(file);
+        setImagePreview(URL.createObjectURL(file));
+      }
     }
   };
   var handleRemoveImage = function handleRemoveImage() {
-    setImage(null);
-    setImagePreview(null);
+    if (!hasRated) {
+      setImage(null);
+      setImagePreview(null);
+    }
   };
   var resetForm = function resetForm() {
     setRating(0);
@@ -38615,13 +38659,20 @@ var RateProduct = function RateProduct(_ref) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             event.preventDefault();
-            if (!(rating === 0 || !userId)) {
+            if (!hasRated) {
               _context2.next = 4;
+              break;
+            }
+            setError('You have already rated this product.');
+            return _context2.abrupt("return");
+          case 4:
+            if (!(rating === 0 || !userId)) {
+              _context2.next = 7;
               break;
             }
             setError('Please provide a rating and ensure you are logged in.');
             return _context2.abrupt("return");
-          case 4:
+          case 7:
             formData = new FormData();
             formData.append('product_id', productId);
             formData.append('user_id', userId);
@@ -38630,9 +38681,9 @@ var RateProduct = function RateProduct(_ref) {
             if (image) {
               formData.append('photo', image);
             }
-            _context2.prev = 10;
+            _context2.prev = 13;
             token = localStorage.getItem('LaravelPassportToken');
-            _context2.next = 14;
+            _context2.next = 17;
             return fetch('/api/reviews', {
               method: 'POST',
               headers: {
@@ -38641,48 +38692,49 @@ var RateProduct = function RateProduct(_ref) {
               },
               body: formData
             });
-          case 14:
+          case 17:
             response = _context2.sent;
             if (response.ok) {
-              _context2.next = 20;
+              _context2.next = 23;
               break;
             }
-            _context2.next = 18;
+            _context2.next = 21;
             return response.json();
-          case 18:
+          case 21:
             errorData = _context2.sent;
             throw new Error(errorData.error || JSON.stringify(errorData.errors) || 'Failed to submit review');
-          case 20:
-            _context2.next = 22;
+          case 23:
+            _context2.next = 25;
             return response.json();
-          case 22:
+          case 25:
             result = _context2.sent;
             onSubmit({
               rating: rating,
               review: review,
               image: result.photo
             });
-            resetForm(); // Reset all fields after successful submission
-            onClose(); // Close the modal
-            _context2.next = 31;
+            setHasRated(true); // Mark as rated after successful submission
+            resetForm();
+            onClose();
+            _context2.next = 35;
             break;
-          case 28:
-            _context2.prev = 28;
-            _context2.t0 = _context2["catch"](10);
+          case 32:
+            _context2.prev = 32;
+            _context2.t0 = _context2["catch"](13);
             setError(_context2.t0.message);
-          case 31:
+          case 35:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[10, 28]]);
+      }, _callee2, null, [[13, 32]]);
     }));
     return function handleSubmit(_x) {
       return _ref3.apply(this, arguments);
     };
   }();
   var handleCancel = function handleCancel() {
-    resetForm(); // Reset all fields when canceling
-    onClose(); // Close the modal
+    resetForm();
+    onClose();
   };
   if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -38703,7 +38755,7 @@ var RateProduct = function RateProduct(_ref) {
           children: [1, 2, 3, 4, 5].map(function (star) {
             var isFilled = star <= (hoverRating || rating);
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "star ".concat(isFilled ? 'filled' : ''),
+              className: "star ".concat(isFilled ? 'filled' : '', " ").concat(hasRated ? 'disabled' : ''),
               onClick: function onClick() {
                 return handleRatingClick(star);
               },
@@ -38732,7 +38784,8 @@ var RateProduct = function RateProduct(_ref) {
             onChange: handleReviewChange,
             placeholder: "Share your thoughts about the product...",
             rows: "4",
-            required: true
+            required: true,
+            disabled: hasRated
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "photo-section",
@@ -38744,7 +38797,8 @@ var RateProduct = function RateProduct(_ref) {
             id: "photo",
             accept: "image/*",
             onChange: handleImageChange,
-            className: "photo-input"
+            className: "photo-input",
+            disabled: hasRated
           }), imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "photo-preview-container",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -38752,7 +38806,7 @@ var RateProduct = function RateProduct(_ref) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                 src: imagePreview,
                 alt: "Preview"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              }), !hasRated && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                 className: "remove-photo",
                 onClick: handleRemoveImage,
                 children: "\xD7"
@@ -38764,7 +38818,7 @@ var RateProduct = function RateProduct(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "submit",
             className: "btn submit-btn",
-            disabled: rating === 0 || !userId,
+            disabled: rating === 0 || !userId || hasRated,
             children: "Submit Review"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             type: "button",
@@ -48034,7 +48088,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".rate-product-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.rate-product-modal-content {\n  background-color: #fff;\n  padding: 30px;\n  border-radius: 12px;\n  width: 450px;\n  max-width: 95%;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);\n  text-align: left;\n}\n.rate-product-modal-content h2 {\n  font-size: 1.6rem;\n  color: #333;\n  margin-bottom: 20px;\n  font-weight: 700;\n}\n.rate-product-modal-content .error-message {\n  color: #ff4444;\n  font-size: 0.9rem;\n  margin-bottom: 15px;\n  text-align: center;\n}\n.rate-product-modal-content .rating-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .rating-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .rating-section .star-rating {\n  display: flex;\n  gap: 8px;\n}\n.rate-product-modal-content .rating-section .star-rating .star {\n  cursor: pointer;\n}\n.rate-product-modal-content .rating-section .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.rate-product-modal-content .review-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .review-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .review-section textarea {\n  width: 100%;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  resize: none;\n  background-color: #f9f9f9;\n  color: #333;\n  transition: border-color 0.2s ease;\n}\n.rate-product-modal-content .review-section textarea:focus {\n  outline: none;\n  border-color: #888;\n}\n.rate-product-modal-content .photo-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .photo-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .photo-section .photo-input {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  background-color: #f9f9f9;\n  cursor: pointer;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button {\n  background-color: #333;\n  color: #fff;\n  border: none;\n  padding: 6px 12px;\n  border-radius: 4px;\n  cursor: pointer;\n  -webkit-transition: background-color 0.2s ease;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button:hover {\n  background-color: #555;\n}\n.rate-product-modal-content .photo-section .photo-preview-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 15px;\n}\n.rate-product-modal-content .photo-section .photo-preview {\n  position: relative;\n  display: inline-block;\n}\n.rate-product-modal-content .photo-section .photo-preview img {\n  max-width: 100px;\n  max-height: 100px;\n  border-radius: 6px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ddd;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  width: 20px;\n  height: 20px;\n  background-color: rgba(255, 68, 68, 0.8);\n  color: #fff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.2rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo:hover {\n  background-color: #ff4444;\n}\n.rate-product-modal-content .button-group {\n  display: flex;\n  justify-content: flex-end;\n  gap: 15px;\n}\n.rate-product-modal-content .button-group .btn {\n  padding: 10px 20px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .button-group .btn.submit-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:hover {\n  background-color: #cc0000;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn {\n  background-color: #6c757d;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #5a6268;\n}\n\n@media (max-width: 500px) {\n  .rate-product-modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .rate-product-modal-content h2 {\n    font-size: 1.4rem;\n  }\n  .rate-product-modal-content .rating-section .star-rating {\n    gap: 6px;\n  }\n  .rate-product-modal-content .rating-section .star-rating svg {\n    width: 24px;\n    height: 24px;\n  }\n  .rate-product-modal-content .review-section label,\n  .rate-product-modal-content .photo-section label {\n    font-size: 1rem;\n  }\n  .rate-product-modal-content .review-section textarea,\n  .rate-product-modal-content .review-section .photo-input,\n  .rate-product-modal-content .photo-section textarea,\n  .rate-product-modal-content .photo-section .photo-input {\n    font-size: 0.9rem;\n  }\n  .rate-product-modal-content .button-group {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .rate-product-modal-content .button-group .btn {\n    width: 100%;\n    padding: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".rate-product-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.rate-product-modal-content {\n  background-color: #fff;\n  padding: 30px;\n  border-radius: 12px;\n  width: 450px;\n  max-width: 95%;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);\n  text-align: left;\n}\n.rate-product-modal-content h2 {\n  font-size: 1.6rem;\n  color: #333;\n  margin-bottom: 20px;\n  font-weight: 700;\n}\n.rate-product-modal-content .error-message {\n  color: #ff4444;\n  font-size: 0.9rem;\n  margin-bottom: 15px;\n  text-align: center;\n}\n.rate-product-modal-content .rating-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .rating-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .rating-section .star-rating {\n  display: flex;\n  gap: 8px;\n}\n.rate-product-modal-content .rating-section .star-rating .star {\n  cursor: pointer;\n}\n.rate-product-modal-content .rating-section .star-rating .star.disabled {\n  cursor: not-allowed;\n  opacity: 0.6;\n}\n.rate-product-modal-content .rating-section .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.rate-product-modal-content .review-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .review-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .review-section textarea {\n  width: 100%;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  resize: none;\n  background-color: #f9f9f9;\n  color: #333;\n  transition: border-color 0.2s ease;\n}\n.rate-product-modal-content .review-section textarea:focus {\n  outline: none;\n  border-color: #888;\n}\n.rate-product-modal-content .review-section textarea:disabled {\n  background-color: #e9ecef;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .photo-section {\n  margin-bottom: 25px;\n}\n.rate-product-modal-content .photo-section label {\n  font-size: 1.1rem;\n  color: #444;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.rate-product-modal-content .photo-section .photo-input {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 0.95rem;\n  background-color: #f9f9f9;\n  cursor: pointer;\n}\n.rate-product-modal-content .photo-section .photo-input:disabled {\n  background-color: #e9ecef;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button {\n  background-color: #333;\n  color: #fff;\n  border: none;\n  padding: 6px 12px;\n  border-radius: 4px;\n  cursor: pointer;\n  -webkit-transition: background-color 0.2s ease;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-input::-webkit-file-upload-button:hover {\n  background-color: #555;\n}\n.rate-product-modal-content .photo-section .photo-preview-container {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 15px;\n}\n.rate-product-modal-content .photo-section .photo-preview {\n  position: relative;\n  display: inline-block;\n}\n.rate-product-modal-content .photo-section .photo-preview img {\n  max-width: 100px;\n  max-height: 100px;\n  border-radius: 6px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ddd;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  width: 20px;\n  height: 20px;\n  background-color: rgba(255, 68, 68, 0.8);\n  color: #fff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.2rem;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .photo-section .photo-preview .remove-photo:hover {\n  background-color: #ff4444;\n}\n.rate-product-modal-content .button-group {\n  display: flex;\n  justify-content: flex-end;\n  gap: 15px;\n}\n.rate-product-modal-content .button-group .btn {\n  padding: 10px 20px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  transition: background-color 0.2s ease;\n}\n.rate-product-modal-content .button-group .btn.submit-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:hover {\n  background-color: #cc0000;\n}\n.rate-product-modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn {\n  background-color: #6c757d;\n  color: #fff;\n}\n.rate-product-modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #5a6268;\n}\n\n@media (max-width: 500px) {\n  .rate-product-modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .rate-product-modal-content h2 {\n    font-size: 1.4rem;\n  }\n  .rate-product-modal-content .rating-section .star-rating {\n    gap: 6px;\n  }\n  .rate-product-modal-content .rating-section .star-rating svg {\n    width: 24px;\n    height: 24px;\n  }\n  .rate-product-modal-content .review-section label,\n  .rate-product-modal-content .photo-section label {\n    font-size: 1rem;\n  }\n  .rate-product-modal-content .review-section textarea,\n  .rate-product-modal-content .review-section .photo-input,\n  .rate-product-modal-content .photo-section textarea,\n  .rate-product-modal-content .photo-section .photo-input {\n    font-size: 0.9rem;\n  }\n  .rate-product-modal-content .button-group {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .rate-product-modal-content .button-group .btn {\n    width: 100%;\n    padding: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
