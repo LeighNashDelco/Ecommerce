@@ -25,34 +25,38 @@
     // Product Section
     .product-section {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start; // Align items to the start for better control
       align-items: flex-start;
       margin-bottom: 40px;
+      gap: 15px; // Reduced gap to match the screenshot's spacing
 
-      .product-image {
+      .product-image-container {
         flex: 0 0 auto;
         border: 1px solid #000000;
-        padding: 10px;
         box-sizing: border-box;
-        width: 380px;
-        height: 380px;
+        width: 450px; // Fixed width for the container
+        height: 450px; // Fixed height for the container
         background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; // Padding to give the image breathing room
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+        .product-image {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain; // Ensures the entire image is visible
           display: block;
+          // No hover effect
         }
       }
 
       .product-details {
         flex: 1;
-        padding-left: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
+        justify-content: flex-start; // Align content to the top
+        align-items: flex-start; // Ensure all text is left-aligned
         max-width: 600px;
 
         .product-title-container {
@@ -60,12 +64,13 @@
           justify-content: space-between;
           align-items: center;
           width: 100%;
-          margin-bottom: 5px;
+          margin-bottom: 8px; // Adjusted to match the screenshot's spacing
 
           h1 {
             font-size: 28px;
             margin: 0;
             font-family: 'Inter', sans-serif;
+            text-align: left; // Ensure left alignment
           }
 
           .expand-icon {
@@ -86,14 +91,15 @@
         .company {
           color: #666;
           font-size: 14px;
-          margin: 5px 0;
+          margin: 0 0 8px 0; // Adjusted to match the screenshot's spacing
           font-family: 'Inter', sans-serif;
+          text-align: left; // Ensure left alignment
         }
 
         .price-rating {
           display: flex;
           align-items: center;
-          margin: 10px 0;
+          margin: 8px 0; // Adjusted to match the screenshot's spacing
 
           .price {
             font-size: 24px;
@@ -102,29 +108,34 @@
             font-family: 'Inter', sans-serif;
           }
 
-          .rating {
+          .rating-stars {
             display: flex;
             align-items: center;
             gap: 2px;
-
-            svg {
-              margin: 0;
-            }
           }
         }
 
         .description {
           font-size: 16px;
           color: #333;
-          margin: 10px 0;
+          margin: 8px 0; // Adjusted to match the screenshot's spacing
           font-family: 'Inter', sans-serif;
+          text-align: left; // Ensure left alignment
+        }
+
+        .quantity-available {
+          font-size: 14px;
+          color: #333;
+          margin: 8px 0; // Adjusted to match the screenshot's spacing
+          font-family: 'Inter', sans-serif;
+          text-align: left; // Ensure left alignment
         }
 
         .quantity-controls {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin: 10px 0;
+          margin: 8px 0; // Adjusted to match the screenshot's spacing
 
           button {
             background: transparent;
@@ -174,7 +185,7 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
-          margin: 10px 0;
+          margin: 8px 0; // Adjusted to match the screenshot's spacing
           width: 100%;
 
           button {
@@ -185,6 +196,7 @@
             color: white;
             background-color: #ff3333;
             font-family: 'Inter', sans-serif;
+            text-align: center; // Center the text inside the buttons
 
             &:hover {
               background-color: #e60000;
@@ -193,7 +205,7 @@
         }
 
         .shipping-info {
-          margin-top: 10px;
+          margin-top: 8px; // Adjusted to match the screenshot's spacing
 
           .shipping-hover {
             display: block;
@@ -202,6 +214,7 @@
             cursor: pointer;
             transition: color 0.3s ease;
             font-family: 'Inter', sans-serif;
+            text-align: left; // Ensure left alignment
 
             &:hover {
               color: #0066cc;
@@ -243,14 +256,10 @@
             font-family: 'Inter', sans-serif;
           }
 
-          .rating {
+          .rating-stars {
             display: flex;
             align-items: center;
             gap: 2px;
-
-            svg {
-              margin: 0;
-            }
           }
 
           .filter-buttons {
@@ -343,23 +352,11 @@
                 }
               }
 
-              .rating {
+              .rating-stars {
                 display: flex;
                 align-items: center;
                 gap: 2px;
-
-                svg {
-                  margin: 0;
-                }
               }
-            }
-
-            .best-feature {
-              font-size: 14px;
-              color: #666;
-              margin: 5px 0;
-              font-family: 'Inter', sans-serif;
-              font-style: italic;
             }
 
             .review-text {
@@ -381,13 +378,6 @@
                 object-fit: cover;
                 border-radius: 5px;
                 border: 1px solid #ddd;
-              }
-
-              .no-photo {
-                font-size: 14px;
-                color: #666;
-                font-style: italic;
-                font-family: 'Inter', sans-serif;
               }
             }
           }
@@ -413,18 +403,19 @@
         .product-section {
           flex-direction: column;
           align-items: center;
+          gap: 15px; // Slightly closer spacing for smaller screens
 
-          .product-image {
+          .product-image-container {
             width: 100%;
             max-width: 400px;
             height: 400px;
-            margin-bottom: 20px;
+            margin-bottom: 0; // Adjusted to avoid extra space
           }
 
           .product-details {
-            padding-left: 0;
             max-width: 100%;
-            text-align: center;
+            align-items: center; // Center-align for smaller screens
+            text-align: center; // Center text for smaller screens
 
             .product-title-container {
               justify-content: center;
@@ -450,6 +441,13 @@
 
             .action-buttons {
               align-items: center;
+            }
+
+            .company,
+            .description,
+            .quantity-available,
+            .shipping-info .shipping-hover {
+              text-align: center; // Center text for smaller screens
             }
           }
         }
@@ -497,10 +495,6 @@
                     width: 60px;
                     height: 60px;
                   }
-
-                  .no-photo {
-                    margin-top: 10px;
-                  }
                 }
               }
             }
@@ -512,7 +506,9 @@
     @media (max-width: 480px) {
       .product-view-container {
         .product-section {
-          .product-image {
+          gap: 10px; // Even closer spacing for very small screens
+
+          .product-image-container {
             max-width: 300px;
             height: 300px;
           }
@@ -557,10 +553,6 @@
                   .review-img {
                     width: 50px;
                     height: 50px;
-                  }
-
-                  .no-photo {
-                    font-size: 12px;
                   }
                 }
               }

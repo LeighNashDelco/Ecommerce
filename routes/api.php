@@ -33,7 +33,7 @@ use App\Models\Profile;
 
 # ==============================
 # AUTHENTICATION ROUTES (Passport)
-# ==============================
+#==============================
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/forgot-password', [LoginController::class, 'forgotPassword']);
 Route::post('/reset-password', [LoginController::class, 'resetPassword']);
@@ -63,6 +63,7 @@ Route::get('/profiles/user/{userId}', function ($userId) {
 Route::get('/shop-products', [ShopController::class, 'getActiveProducts']);
 Route::get('/shop-products/{id}', [ProductController::class, 'show']);
 Route::get('/reviews/product/{productId}', [ReviewController::class, 'getByProduct']);
+Route::get('/reviews/order/{orderId}', [ReviewController::class, 'getByOrder']);
 
 # ==============================
 # PROTECTED ROUTES (Require Authentication)
@@ -218,12 +219,15 @@ Route::middleware('auth:api')->group(function () {
 
     # Change Password
     Route::post('/change-password', [ChangePasswordAdminController::class, 'changePassword']);
-    # Track Orders
 
+    # Track Orders
     Route::get('/orders/track/{orderId}', [TrackController::class, 'trackOrder']);
+
     # Cart Management
     Route::get('/cart/{profileId}', [CartController::class, 'getCart']);
     Route::post('/cart/add', [CartController::class, 'addToCart']);
     Route::put('/cart/update', [CartController::class, 'updateCart']);
     Route::delete('/cart/remove', [CartController::class, 'removeFromCart']);
+    Route::delete('/cart/clear/{profileId}', [CartController::class, 'clearCart']);
+    Route::get('/cart/count', [CartController::class, 'getCartCount']);
 });

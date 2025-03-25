@@ -19,7 +19,7 @@ class CartController extends Controller
         try {
             $cartItems = Cart::where('profile_id', $profileId)
                 ->with(['product' => function ($query) {
-                    $query->select('id', 'product_name', 'price', 'quantity', 'product_img'); // Updated to use 'quantity'
+                    $query->select('id', 'product_name', 'price', 'quantity', 'product_img');
                 }])
                 ->get()
                 ->map(function ($item) {
@@ -28,7 +28,7 @@ class CartController extends Controller
                         'product_name' => $item->product->product_name,
                         'price' => $item->product->price,
                         'quantity' => $item->quantity,
-                        'quantity_available' => $item->product->quantity, // Map 'quantity' to 'quantity_available' for frontend
+                        'quantity_available' => $item->product->quantity,
                         'product_img' => $item->product->product_img,
                     ];
                 });
@@ -41,6 +41,32 @@ class CartController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to fetch cart items: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function getCartCount(Request $request)
+    {
+        try {
+            $user = $request->user();
+            $profile = $user->profile; // Assuming a profile relationship exists
+            if (!$profile) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Profile not found for the authenticated user',
+                ], 404);
+            }
+
+            $count = Cart::where('profile_id', $profile->id)->count(); // Count unique items
+
+            return response()->json([
+                'success' => true,
+                'count' => $count,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to fetch cart count: ' . $e->getMessage(),
             ], 500);
         }
     }
@@ -63,7 +89,7 @@ class CartController extends Controller
 
         try {
             $product = Product::find($request->product_id);
-            if (!$product || $product->quantity < $request->quantity) { // Updated to use 'quantity'
+            if (!$product || $product->quantity < $request->quantity) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Product not available or insufficient stock',
@@ -117,7 +143,7 @@ class CartController extends Controller
             }
 
             $product = Product::find($request->product_id);
-            if ($request->quantity > $product->quantity) { // Updated to use 'quantity'
+            if ($request->quantity > $product->quantity) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Requested quantity exceeds available stock',
@@ -177,6 +203,30 @@ class CartController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to remove from cart: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function clearCart($profileId)
+    {
+        try {
+            $deleted = Cart::where('profile_id', $profileId)->delete();
+
+            if ($deleted === 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No cart items found for this profile',
+                ], 404);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Cart cleared successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to clear cart: ' . $e->getMessage(),
             ], 500);
         }
     }

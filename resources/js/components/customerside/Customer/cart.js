@@ -37,6 +37,7 @@ function Cart() {
           const items = Array.isArray(data.data) ? data.data : [];
           setCartItems(items.map(item => ({
             id: item.product_id || item.id,
+            product_id: item.product_id,
             name: item.product_name || item.name,
             price: item.price,
             quantity: item.quantity,
@@ -60,6 +61,7 @@ function Cart() {
     const isChecked = e.target.checked;
     setIsAllSelected(isChecked);
     setSelectedProducts(isChecked ? new Set(cartItems.map(item => item.id)) : new Set());
+    setErrorMessage('');
   };
 
   const handleRowSelect = (productId) => (e) => {
@@ -68,9 +70,9 @@ function Cart() {
     else newSelected.delete(productId);
     setSelectedProducts(newSelected);
     setIsAllSelected(newSelected.size === cartItems.length);
+    setErrorMessage('');
   };
 
-  // Copied and adapted from PaymentMethods for single item removal
   const handleRemoveItem = async (productId) => {
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/cart/remove`, {
@@ -80,7 +82,6 @@ function Cart() {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        console.log('Server response:', errorData); // Debug
         throw new Error(errorData.message || 'Failed to remove item');
       }
       setCartItems((prevItems) => prevItems.filter((i) => i.id !== productId));
@@ -97,7 +98,6 @@ function Cart() {
     }
   };
 
-  // Handle multiple item removal by calling handleRemoveItem for each selected product
   const handleDeleteSelected = async () => {
     if (selectedProducts.size === 0) {
       setErrorMessage('Please select items to remove.');
@@ -105,7 +105,6 @@ function Cart() {
     }
 
     try {
-      // Loop through selected products and remove each one
       for (const productId of selectedProducts) {
         await handleRemoveItem(productId);
       }
@@ -132,16 +131,21 @@ function Cart() {
       setCartItems(cartItems.map(item => 
         item.id === id ? { ...item, quantity: newQuantity } : item
       ));
+      setErrorMessage('');
     } catch (error) {
       console.error('Error updating quantity:', error);
+      setErrorMessage('Failed to update quantity. Please try again.');
     }
   };
 
   const handleCheckout = () => {
-    const itemsToCheckout = selectedProducts.size > 0 
-      ? cartItems.filter(item => selectedProducts.has(item.id)) 
-      : cartItems;
-    navigate('/payment_methods', { state: { items: itemsToCheckout } });
+    if (selectedProducts.size === 0) {
+      setErrorMessage('Please select at least one item to checkout.');
+      return;
+    }
+    const itemsToCheckout = cartItems.filter(item => selectedProducts.has(item.id));
+    console.log('Cart.js: Navigating to /payment_methods with:', { items: itemsToCheckout, profileId });
+    navigate('/payment_methods', { state: { items: itemsToCheckout, profileId } });
   };
 
   const totalPrice = cartItems
@@ -262,9 +266,9 @@ function Cart() {
             <button
               className="checkout-btn"
               onClick={handleCheckout}
-              disabled={cartItems.length === 0}
+              disabled={cartItems.length === 0 || selectedProducts.size === 0}
             >
-              Check Out
+              Check Out Selected ({selectedProducts.size})
             </button>
           </div>
         )}

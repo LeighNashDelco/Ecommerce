@@ -35,7 +35,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
         const userData = await userResponse.json();
         setUserId(userData.id);
 
-        // Fetch existing reviews for this product and user
+        // Fetch existing reviews for this product, user, and order
         const reviewsResponse = await fetch(`/api/reviews/product/${productId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -48,10 +48,14 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
         }
 
         const reviewsData = await reviewsResponse.json();
-        const userReview = reviewsData.data.find(review => review.user_id === userData.id);
-        if (userReview) {
+        const orderReview = reviewsData.data.find(
+          r => r.user_id === userData.id && r.order_id === orderId
+        );
+        if (orderReview) {
           setHasRated(true);
-          setError('You have already rated this product.');
+          setError('You have already rated this product for this order.');
+        } else {
+          setHasRated(false);
         }
       } catch (err) {
         setError(err.message);
@@ -61,30 +65,22 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
     if (isOpen) {
       fetchUserProfileAndReviews();
     }
-  }, [isOpen, productId]);
+  }, [isOpen, productId, orderId]);
 
   const handleRatingClick = (value) => {
-    if (!hasRated) {
-      setRating(value);
-    }
+    if (!hasRated) setRating(value);
   };
 
   const handleRatingHover = (value) => {
-    if (!hasRated) {
-      setHoverRating(value);
-    }
+    if (!hasRated) setHoverRating(value);
   };
 
   const handleMouseLeave = () => {
-    if (!hasRated) {
-      setHoverRating(0);
-    }
+    if (!hasRated) setHoverRating(0);
   };
 
   const handleReviewChange = (event) => {
-    if (!hasRated) {
-      setReview(event.target.value);
-    }
+    if (!hasRated) setReview(event.target.value);
   };
 
   const handleImageChange = (event) => {
@@ -116,7 +112,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (hasRated) {
-      setError('You have already rated this product.');
+      setError('You have already rated this product for this order.');
       return;
     }
     if (rating === 0 || !userId) {
@@ -127,11 +123,10 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
     const formData = new FormData();
     formData.append('product_id', productId);
     formData.append('user_id', userId);
+    formData.append('order_id', orderId); // Include order_id
     formData.append('rating', rating);
     formData.append('comment', review);
-    if (image) {
-      formData.append('photo', image);
-    }
+    if (image) formData.append('photo', image);
 
     try {
       const token = localStorage.getItem('LaravelPassportToken');
@@ -151,7 +146,7 @@ const RateProduct = ({ isOpen, onClose, onSubmit, orderId, productId }) => {
 
       const result = await response.json();
       onSubmit({ rating, review, image: result.photo });
-      setHasRated(true); // Mark as rated after successful submission
+      setHasRated(true);
       resetForm();
       onClose();
     } catch (err) {

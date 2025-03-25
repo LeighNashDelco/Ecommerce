@@ -19,6 +19,7 @@ export default function Shop() {
   const [loading, setLoading] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [profileId, setProfileId] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
   let isMounted = true;
 
   const getAuthHeaders = () => {
@@ -27,6 +28,29 @@ export default function Shop() {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     } : { 'Content-Type': 'application/json' };
+  };
+
+  const fetchCartCount = async () => {
+    try {
+      const token = localStorage.getItem('LaravelPassportToken');
+      if (!token || !profileId) {
+        setCartCount(0);
+        return;
+      }
+
+      const response = await fetch('http://127.0.0.1:8000/api/cart/count', {
+        headers: getAuthHeaders(),
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setCartCount(data.count || 0);
+      } else {
+        setCartCount(0);
+      }
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+      setCartCount(0);
+    }
   };
 
   const fetchFast = async (url, options) => {
@@ -50,37 +74,25 @@ export default function Shop() {
 
   const fetchReviews = async (productIds) => {
     const ratingsMap = {};
-    const cachedRatings = JSON.parse(localStorage.getItem('shopRatings') || '{}');
     
-    // Use cached ratings if available
-    productIds.forEach(id => {
-      if (cachedRatings[id] !== undefined) {
-        ratingsMap[id] = cachedRatings[id];
+    // Fetch reviews for all products in parallel
+    const promises = productIds.map(async (id) => {
+      const response = await fetchFast(`http://127.0.0.1:8000/api/reviews/product/${id}`, { headers: getAuthHeaders() });
+      if (response) {
+        const data = await response.json();
+        console.log(`Reviews for product ${id}:`, data);
+        ratingsMap[id] = data.success && Array.isArray(data.data) && data.data.length > 0
+          ? data.data.reduce((sum, review) => sum + (review.rating || 0), 0) / data.data.length
+          : 0;
+      } else {
+        ratingsMap[id] = 0;
       }
     });
-
-    // Fetch only uncached reviews in parallel
-    const uncachedIds = productIds.filter(id => cachedRatings[id] === undefined);
-    if (uncachedIds.length > 0) {
-      const promises = uncachedIds.map(async (id) => {
-        const response = await fetchFast(`http://127.0.0.1:8000/api/reviews/product/${id}`, { headers: getAuthHeaders() });
-        if (response) {
-          const data = await response.json();
-          console.log(`Reviews for product ${id}:`, data);
-          ratingsMap[id] = data.success && Array.isArray(data.data) && data.data.length > 0
-            ? data.data.reduce((sum, review) => sum + (review.rating || 0), 0) / data.data.length
-            : 0;
-        } else {
-          ratingsMap[id] = 0;
-        }
-      });
-      await Promise.all(promises);
-    }
+    await Promise.all(promises);
 
     console.log('Updated Ratings:', ratingsMap);
     if (isMounted) {
       setRatings(prev => ({ ...prev, ...ratingsMap }));
-      localStorage.setItem('shopRatings', JSON.stringify({ ...ratings, ...ratingsMap }));
     }
     return ratingsMap;
   };
@@ -125,6 +137,11 @@ export default function Shop() {
           setProfileId(profileIdTemp);
           setProducts(validProducts);
           setFilteredProducts(validProducts);
+        }
+
+        // Fetch cart count after setting profileId
+        if (profileIdTemp) {
+          await fetchCartCount();
         }
 
         // Fetch categories, brands, and reviews in parallel after products
@@ -180,12 +197,19 @@ export default function Shop() {
     };
   }, [navigate]);
 
+  // Re-fetch cart count whenever profileId changes or cart is opened/closed
+  useEffect(() => {
+    if (profileId) {
+      fetchCartCount();
+    }
+  }, [profileId, isCartOpen]);
+
   const toggleCart = () => setIsCartOpen(!isCartOpen);
   const closeCart = () => setIsCartOpen(false);
 
   return (
     <div className="shop-page-container">
-      <Navbar onCartClick={toggleCart} />
+      <Navbar onCartClick={toggleCart} cartCount={cartCount} />
       <div className="shop-content">
         <FilterSidebar
           filters={filters}
@@ -201,6 +225,9 @@ export default function Shop() {
           loading={loading}
           profileId={profileId}
           fetchReviews={fetchReviews}
+          cartCount={cartCount}
+          setCartCount={setCartCount}
+          fetchCartCount={fetchCartCount}
         />
       </div>
       <OrdersCart isOpen={isCartOpen} onClose={closeCart} profileId={profileId} />

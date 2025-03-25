@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaShoppingBag, FaCaretDown } from 'react-icons/fa';
+import { FaShoppingCart, FaCaretDown } from 'react-icons/fa'; // Changed to FaShoppingCart
 import { IconSearch, IconMenu2, IconX } from '@tabler/icons-react';
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -52,7 +52,6 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     setIsDropdownOpen(prev => !prev);
   };
 
-  // Modified to navigate to /customerprofile
   const handleProfileSettings = () => {
     navigate("/customerprofile");
     setIsDropdownOpen(false);
@@ -76,6 +75,13 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     setIsDropdownOpen(false);
   };
 
+  const handleCartKeyPress = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onCartClick();
+    }
+  };
+
   const navLinks = [
     { href: "#home", text: "Home", path: "/" },
     { href: "#shop", text: "Shop", path: "/shop" },
@@ -87,7 +93,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     ...navLinks,
     ...(isLoggedIn 
       ? [
-          { href: "#profile", text: "PROFILE", path: "/customerprofile" }, // Updated this too for consistency
+          { href: "#profile", text: "PROFILE", path: "/customerprofile" },
           { href: "#logout", text: "LOGOUT", onClick: handleLogout }
         ]
       : [{ href: "#login", text: "LOGIN", path: "/login" }])
@@ -126,8 +132,12 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
             href="#cart" 
             className="customer-cart-icon" 
             onClick={(e) => { e.preventDefault(); onCartClick(); }}
+            onKeyPress={handleCartKeyPress}
+            tabIndex={0}
+            role="button"
+            aria-label={`Open cart with ${cartCount} items`}
           >
-            <FaShoppingBag />
+            <FaShoppingCart />
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </a>
 

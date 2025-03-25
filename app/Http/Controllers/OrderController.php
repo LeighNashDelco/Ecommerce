@@ -6,6 +6,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -19,35 +21,45 @@ class OrderController extends Controller
         $request->headers->set('Accept', 'application/json');
 
         try {
-            $request->validate([
-                'profile_id' => 'required|exists:profiles,id',
-                'shipping_method' => 'required|in:standard,priority',
-                'items' => 'required|array',
-                'items.*.product_id' => 'required|exists:products,id',
+            // Validate incoming request data
+            $validatedData = $request->validate([
+                'profile_id' => 'required|integer|exists:profiles,id',
+                'shipping_method' => 'required|string|in:standard,priority',
+                'payment_method' => 'required|string|in:credit_card,cash_on_delivery,paypal',
+                'total_amount' => 'required|numeric|min:0',
+                'items' => 'required|array|min:1',
+                'items.*.product_id' => 'required|integer|exists:products,id',
                 'items.*.quantity' => 'required|integer|min:1',
                 'items.*.price' => 'required|numeric|min:0',
-                'total_amount' => 'required|numeric|min:0',
-                'payment_method' => 'required|in:credit_card,paypal,cash_on_delivery',
             ]);
 
-            $result = Order::createOrder($request->all());
+            // Ensure the authenticated user owns the profile
+            $user = Auth::user();
+            if ($user->profile->id !== $validatedData['profile_id']) {
+                return response()->json(['error' => 'Unauthorized: Profile does not belong to authenticated user'], 403);
+            }
 
+            // Delegate to Order model's createOrder method
+            $result = Order::createOrder($validatedData);
+
+            if (isset($result['error'])) {
+                return response()->json(['error' => $result['error']], $result['status'] ?? 500);
+            }
+
+            return response()->json($result, 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json([
-                'message' => $result['message'],
-                'total_amount' => $result['total_amount'],
-                'estimated_delivery_date' => $result['estimated_delivery_date'],
-                'payment_method' => $result['payment_method'],
-            ], 201);
+                'error' => 'Validation failed',
+                'details' => $e->errors(),
+            ], 422);
         } catch (\Exception $e) {
-            \Log::error('Order creation error', [
+            Log::error('Order creation failed in controller', [
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
-                'request' => $request->all(),
             ]);
-            return response()->json(['error' => 'Failed to place order: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Failed to create order: ' . $e->getMessage()], 500);
         }
     }
-
     public function getUserOrders(Request $request)
     {
         \Log::info('getUserOrders called', [

@@ -6,31 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateOrdersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade'); // Customer
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade'); // Product
-            $table->dateTime('order_date')->default(now()); // Order Date
-            $table->integer('quantity')->default(1); // Quantity
-            $table->decimal('total_amount', 10, 2); // Amount
-            $table->foreignId('status_id')->constrained('statuses')->onDelete('cascade');
+            $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('product_id');
+            $table->dateTime('order_date');
+            $table->integer('quantity');
+            $table->decimal('total_amount', 10, 2);
+            $table->unsignedBigInteger('status_id');
             $table->dateTime('estimated_delivery_date')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('shipping_method')->nullable();
             $table->timestamps();
+
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('orders');

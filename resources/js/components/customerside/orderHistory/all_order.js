@@ -105,7 +105,7 @@ const AllOrder = () => {
       case 'received':
         return ['Track Order'];
       case 'completed':
-        return ['Rate', 'Refund'];
+        return ['Rate', 'Refund']; // Always allow "Rate" for Completed
       default:
         return [];
     }

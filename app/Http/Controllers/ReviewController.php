@@ -89,6 +89,7 @@ class ReviewController extends Controller
 $validated = $request->validate([
     'product_id' => 'required|integer|exists:products,id',
     'user_id' => 'required|integer|exists:users,id',
+    'order_id' => 'required|integer|exists:orders,id',
     'rating' => 'required|integer|min:1|max:5',
     'comment' => 'nullable|string',
     'photo' => 'nullable|image|max:2048',
@@ -230,6 +231,7 @@ $validated = $request->validate([
             'id' => $review->id,
             'product_id' => $review->product_id,
             'user_id' => $review->user_id,
+            'order_id' => $review->order_id,
             'rating' => $review->rating,
             'comment' => $review->comment,
             'photo' => $review->photo,

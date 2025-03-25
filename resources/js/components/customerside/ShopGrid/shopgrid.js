@@ -23,7 +23,7 @@ const renderStars = (rating) => {
   );
 };
 
-const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReviews }) => {
+const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReviews, cartCount, setCartCount }) => {
   const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(15);
   const [sortBy, setSortBy] = useState('newest');
@@ -38,7 +38,28 @@ const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReview
     } : { 'Content-Type': 'application/json' };
   };
 
+  // Function to fetch cart count
+  const fetchCartCount = async () => {
+    try {
+      const token = localStorage.getItem('LaravelPassportToken');
+      if (!token) return;
+
+      const response = await fetch('http://127.0.0.1:8000/api/cart/count', {
+        headers: getAuthHeaders(),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setCartCount(data.count || 0);
+      }
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
+
   useEffect(() => {
+    // Fetch initial cart count
+    fetchCartCount();
+
     console.log('Ratings in ShopGrid:', ratings);
     if (!Array.isArray(products)) {
       setSortedProducts([]);
@@ -50,7 +71,7 @@ const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReview
         sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
         break;
       case 'price-high':
-        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(b.price));
         break;
       case 'newest':
         sorted.sort((a, b) => b.id - a.id);
@@ -88,7 +109,8 @@ const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReview
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Failed to add to cart');
-      setIsCartOpen(true);
+      // Update cart count instead of opening the modal
+      await fetchCartCount();
       message.success({ content: 'Item added to cart successfully!', style: { marginTop: '20px' } });
     } catch (error) {
       console.error('Error adding to cart:', error);
@@ -148,7 +170,9 @@ const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReview
             <div className="shop-grid-card" key={product.id}>
               <Link to={`/shop/product/${product.id}`} className="product-link">
                 {product.product_img ? (
-                  <img src={product.product_img} alt={product.product_name} className="product-image" />
+                  <div className="product-image-container">
+                    <img src={product.product_img} alt={product.product_name} className="product-image" />
+                  </div>
                 ) : (
                   <div className="no-image-placeholder">
                     <span>No Image</span>

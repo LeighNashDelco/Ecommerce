@@ -17,6 +17,8 @@ class Order extends Model
         'total_amount',
         'status_id',
         'estimated_delivery_date',
+        'payment_method',
+        'shipping_method',
     ];
 
     protected $casts = [
@@ -34,13 +36,18 @@ class Order extends Model
         try {
             Log::info('Starting order creation', ['data' => $data]);
 
+            // Validate required fields
+            if (!isset($data['profile_id']) || !isset($data['items']) || !isset($data['total_amount'])) {
+                throw new \Exception('Missing required fields: profile_id, items, or total_amount');
+            }
+
             DB::beginTransaction();
 
             $profileId = $data['profile_id'];
-            $shippingMethod = $data['shipping_method'];
+            $shippingMethod = $data['shipping_method'] ?? 'standard';
             $items = $data['items'];
             $totalAmount = $data['total_amount'];
-            $paymentMethod = $data['payment_method'];
+            $paymentMethod = $data['payment_method'] ?? 'cash_on_delivery';
 
             $orderDate = Carbon::now();
             $estimatedDeliveryDate = $shippingMethod === 'standard'
@@ -48,12 +55,17 @@ class Order extends Model
                 : $orderDate->copy()->addDays(2);
 
             $createdOrders = [];
+            $itemCount = count($items);
+            $subtotal = array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $items));
+            $shippingCost = $totalAmount - $subtotal;
+            $shippingPerItem = $itemCount > 0 ? $shippingCost / $itemCount : 0;
+
             foreach ($items as $item) {
                 $product = Product::find($item['product_id']);
                 if (!$product) {
                     throw new \Exception("Product ID {$item['product_id']} not found");
                 }
-                if ($product->quantity < $item['quantity']) {
+                if (!isset($item['quantity']) || $product->quantity < $item['quantity']) {
                     throw new \Exception("Insufficient stock for product ID {$item['product_id']}: Available {$product->quantity}, Requested {$item['quantity']}");
                 }
 
@@ -69,14 +81,17 @@ class Order extends Model
                     'sold' => $product->sold,
                 ]);
 
+                $itemTotal = ($item['price'] * $item['quantity']) + $shippingPerItem;
                 $order = self::create([
                     'profile_id' => $profileId,
                     'product_id' => $item['product_id'],
                     'order_date' => $orderDate,
                     'quantity' => $item['quantity'],
-                    'total_amount' => $item['price'] * $item['quantity'],
+                    'total_amount' => $itemTotal,
                     'status_id' => 1,
                     'estimated_delivery_date' => $estimatedDeliveryDate,
+                    'shipping_method' => $shippingMethod,
+                    'payment_method' => $paymentMethod,
                 ]);
 
                 DB::table('order_items')->insert([
@@ -106,6 +121,15 @@ class Order extends Model
                         'transaction_id' => 'COD-' . time(),
                         'payment_date' => null,
                     ]);
+                } elseif ($paymentMethod === 'paypal') {
+                    $order->payments()->create([
+                        'amount' => $order->total_amount,
+                        'payment_method' => 'paypal',
+                        'transaction_id' => 'PAYPAL-' . time(),
+                        'payment_date' => null, // Update later after PayPal confirmation
+                    ]);
+                } else {
+                    throw new \Exception("Unsupported payment method: {$paymentMethod}");
                 }
 
                 $createdOrders[] = $order;
@@ -128,7 +152,10 @@ class Order extends Model
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            throw $e;
+            return [
+                'error' => $e->getMessage(),
+                'status' => 500,
+            ];
         }
     }
 }

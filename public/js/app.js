@@ -32788,17 +32788,30 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function OrdersCart(_ref) {
   var isOpen = _ref.isOpen,
     onClose = _ref.onClose,
-    profileId = _ref.profileId;
+    profileId = _ref.profileId,
+    _ref$fetchCartCount = _ref.fetchCartCount,
+    fetchCartCount = _ref$fetchCartCount === void 0 ? function () {} : _ref$fetchCartCount;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     cartItems = _useState2[0],
     setCartItems = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
     loading = _useState4[0],
     setLoading = _useState4[1];
-  var isMounted = true;
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Set()),
+    _useState6 = _slicedToArray(_useState5, 2),
+    selectedItems = _useState6[0],
+    setSelectedItems = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectAll = _useState8[0],
+    setSelectAll = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState10 = _slicedToArray(_useState9, 2),
+    errorMessage = _useState10[0],
+    setErrorMessage = _useState10[1];
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
     return token ? {
@@ -32809,68 +32822,76 @@ function OrdersCart(_ref) {
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!profileId || !isOpen) {
-      setLoading(false);
-      return;
-    }
+    if (!profileId || !isOpen) return;
     var fetchCartItems = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response, data;
+        var response, data, items;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
+              setLoading(true);
+              _context.prev = 1;
+              _context.next = 4;
               return fetch("http://127.0.0.1:8000/api/cart/".concat(profileId), {
                 headers: getAuthHeaders()
               });
-            case 3:
+            case 4:
               response = _context.sent;
               if (response.ok) {
-                _context.next = 6;
+                _context.next = 7;
                 break;
               }
               throw new Error('Failed to fetch cart');
-            case 6:
-              _context.next = 8;
+            case 7:
+              _context.next = 9;
               return response.json();
-            case 8:
+            case 9:
               data = _context.sent;
-              if (isMounted) {
-                setCartItems(data.success && Array.isArray(data.data) ? data.data : []);
-              }
-              _context.next = 16;
+              items = data.success && Array.isArray(data.data) ? data.data : [];
+              setCartItems(items);
+              setSelectedItems(new Set());
+              setSelectAll(false);
+              _context.next = 21;
               break;
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](0);
-              console.error('Error fetching cart:', _context.t0);
-              if (isMounted) setCartItems([]);
             case 16:
               _context.prev = 16;
-              if (isMounted) setLoading(false);
-              return _context.finish(16);
-            case 19:
+              _context.t0 = _context["catch"](1);
+              console.error('Error fetching cart:', _context.t0);
+              setCartItems([]);
+              setErrorMessage('Failed to load cart items. Please try again.');
+            case 21:
+              _context.prev = 21;
+              setLoading(false);
+              return _context.finish(21);
+            case 24:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 12, 16, 19]]);
+        }, _callee, null, [[1, 16, 21, 24]]);
       }));
       return function fetchCartItems() {
         return _ref2.apply(this, arguments);
       };
     }();
     fetchCartItems();
-    return function () {
-      isMounted = false; // Cleanup to prevent state updates on unmounted component
-    };
   }, [profileId, isOpen]);
-  var totalPrice = cartItems.reduce(function (total, item) {
-    return total + item.price * item.quantity;
-  }, 0);
-  var totalItemCount = cartItems.reduce(function (total, item) {
-    return total + item.quantity;
-  }, 0);
+  var handleSelectAll = function handleSelectAll(e) {
+    var checked = e.target.checked;
+    setSelectAll(checked);
+    setSelectedItems(checked ? new Set(cartItems.map(function (item) {
+      return item.product_id;
+    })) : new Set());
+    setErrorMessage('');
+  };
+  var handleSelectItem = function handleSelectItem(productId) {
+    return function (e) {
+      var newSelected = new Set(selectedItems);
+      if (e.target.checked) newSelected.add(productId);else newSelected["delete"](productId);
+      setSelectedItems(newSelected);
+      setSelectAll(newSelected.size === cartItems.length);
+      setErrorMessage('');
+    };
+  };
   var handleDecreaseQuantity = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
       var item, response;
@@ -32905,26 +32926,27 @@ function OrdersCart(_ref) {
             }
             throw new Error('Failed to update quantity');
           case 9:
-            if (isMounted) {
-              setCartItems(function (prevItems) {
-                return prevItems.map(function (i) {
-                  return i.product_id === productId ? _objectSpread(_objectSpread({}, i), {}, {
-                    quantity: i.quantity - 1
-                  }) : i;
-                });
+            setCartItems(function (prevItems) {
+              return prevItems.map(function (i) {
+                return i.product_id === productId ? _objectSpread(_objectSpread({}, i), {}, {
+                  quantity: i.quantity - 1
+                }) : i;
               });
-            }
-            _context2.next = 15;
+            });
+            setErrorMessage('');
+            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            _context2.next = 18;
             break;
-          case 12:
-            _context2.prev = 12;
+          case 14:
+            _context2.prev = 14;
             _context2.t0 = _context2["catch"](3);
             console.error('Error decreasing quantity:', _context2.t0);
-          case 15:
+            setErrorMessage('Failed to update quantity. Please try again.');
+          case 18:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[3, 12]]);
+      }, _callee2, null, [[3, 14]]);
     }));
     return function handleDecreaseQuantity(_x) {
       return _ref3.apply(this, arguments);
@@ -32964,26 +32986,27 @@ function OrdersCart(_ref) {
             }
             throw new Error('Failed to update quantity');
           case 9:
-            if (isMounted) {
-              setCartItems(function (prevItems) {
-                return prevItems.map(function (i) {
-                  return i.product_id === productId ? _objectSpread(_objectSpread({}, i), {}, {
-                    quantity: i.quantity + 1
-                  }) : i;
-                });
+            setCartItems(function (prevItems) {
+              return prevItems.map(function (i) {
+                return i.product_id === productId ? _objectSpread(_objectSpread({}, i), {}, {
+                  quantity: i.quantity + 1
+                }) : i;
               });
-            }
-            _context3.next = 15;
+            });
+            setErrorMessage('');
+            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            _context3.next = 18;
             break;
-          case 12:
-            _context3.prev = 12;
+          case 14:
+            _context3.prev = 14;
             _context3.t0 = _context3["catch"](3);
             console.error('Error increasing quantity:', _context3.t0);
-          case 15:
+            setErrorMessage('Failed to update quantity. Please try again.');
+          case 18:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[3, 12]]);
+      }, _callee3, null, [[3, 14]]);
     }));
     return function handleIncreaseQuantity(_x2) {
       return _ref4.apply(this, arguments);
@@ -33013,36 +33036,66 @@ function OrdersCart(_ref) {
             }
             throw new Error('Failed to remove item');
           case 6:
-            if (isMounted) {
-              setCartItems(function (prevItems) {
-                return prevItems.filter(function (i) {
-                  return i.product_id !== productId;
-                });
+            setCartItems(function (prevItems) {
+              return prevItems.filter(function (i) {
+                return i.product_id !== productId;
               });
-            }
-            _context4.next = 12;
+            });
+            setSelectedItems(function (prev) {
+              var newSelected = new Set(prev);
+              newSelected["delete"](productId);
+              return newSelected;
+            });
+            setErrorMessage('');
+            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            _context4.next = 16;
             break;
-          case 9:
-            _context4.prev = 9;
+          case 12:
+            _context4.prev = 12;
             _context4.t0 = _context4["catch"](0);
             console.error('Error removing item:', _context4.t0);
-          case 12:
+            setErrorMessage('Failed to remove item. Please try again.');
+          case 16:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[0, 9]]);
+      }, _callee4, null, [[0, 12]]);
     }));
     return function handleRemoveItem(_x3) {
       return _ref5.apply(this, arguments);
     };
   }();
   var handleCheckout = function handleCheckout() {
-    navigate('/payment_methods');
+    if (selectedItems.size === 0) {
+      setErrorMessage('Please select at least one item to checkout.');
+      return;
+    }
+    var itemsToCheckout = cartItems.filter(function (item) {
+      return selectedItems.has(item.product_id);
+    });
+    console.log('Navigating to /payment_methods with:', {
+      items: itemsToCheckout,
+      profileId: profileId
+    });
+    navigate('/payment_methods', {
+      state: {
+        items: itemsToCheckout,
+        profileId: profileId
+      }
+    });
     onClose();
   };
-  if (loading && isOpen) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    children: "Loading cart..."
-  });
+  var handleViewCart = function handleViewCart() {
+    navigate('/cart');
+    onClose();
+  };
+  var totalPrice = cartItems.filter(function (item) {
+    return selectedItems.has(item.product_id);
+  }).reduce(function (total, item) {
+    return total + item.price * item.quantity;
+  }, 0);
+  var selectedItemCount = selectedItems.size;
+  if (!isOpen) return null;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "cart-modal ".concat(isOpen ? 'open' : ''),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -33055,21 +33108,45 @@ function OrdersCart(_ref) {
             children: "Cart"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "cart-count",
-            children: totalItemCount
+            children: cartItems.length
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           className: "close-button",
           onClick: onClose,
+          "aria-label": "Close cart",
           children: "\u2716"
         })]
+      }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "loading",
+        children: "Loading your cart..."
+      }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "error-message",
+        children: errorMessage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "select-all",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "checkbox",
+            checked: selectAll,
+            onChange: handleSelectAll,
+            disabled: cartItems.length === 0 || loading
+          }), "Select All"]
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "cart-items",
-        children: cartItems.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        children: cartItems.length === 0 && !loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          className: "empty-cart",
           children: "Your cart is empty"
         }) : cartItems.map(function (item) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             className: "cart-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "checkbox",
+              checked: selectedItems.has(item.product_id),
+              onChange: handleSelectItem(item.product_id),
+              className: "item-checkbox",
+              disabled: loading
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
               src: item.product_img ? "http://127.0.0.1:8000/".concat(item.product_img) : _resources_sass_img_ATKCOLOR_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
               alt: item.product_name,
               className: "cart-item-image"
@@ -33089,7 +33166,8 @@ function OrdersCart(_ref) {
                   onClick: function onClick() {
                     return handleDecreaseQuantity(item.product_id);
                   },
-                  disabled: item.quantity <= 1,
+                  disabled: item.quantity <= 1 || loading,
+                  "aria-label": "Decrease quantity",
                   children: "-"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                   children: item.quantity
@@ -33097,7 +33175,8 @@ function OrdersCart(_ref) {
                   onClick: function onClick() {
                     return handleIncreaseQuantity(item.product_id);
                   },
-                  disabled: item.quantity >= item.quantity_available,
+                  disabled: item.quantity >= item.quantity_available || loading,
+                  "aria-label": "Increase quantity",
                   children: "+"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
@@ -33105,6 +33184,7 @@ function OrdersCart(_ref) {
                 onClick: function onClick() {
                   return handleRemoveItem(item.product_id);
                 },
+                disabled: loading,
                 children: "Remove"
               })]
             })]
@@ -33117,18 +33197,21 @@ function OrdersCart(_ref) {
           children: "Shipping will be calculated at checkout"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
           className: "total-price",
-          children: ["Total Price: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-            children: ["\u20B1", totalPrice.toLocaleString(), " PHP"]
+          children: ["Total: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+            children: ["\u20B1", totalPrice.toLocaleString()]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "cart-actions",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-cart-button secondary",
-            children: "View cart"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            onClick: handleViewCart,
+            disabled: loading,
+            children: "View Cart"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
             className: "view-cart-button primary",
             onClick: handleCheckout,
-            children: "Checkout"
+            disabled: cartItems.length === 0 || loading || selectedItems.size === 0,
+            children: ["Checkout Selected (", selectedItems.size, ")"]
           })]
         })]
       })]
@@ -33246,6 +33329,7 @@ function Cart() {
                 setCartItems(items.map(function (item) {
                   return {
                     id: item.product_id || item.id,
+                    product_id: item.product_id,
                     name: item.product_name || item.name,
                     price: item.price,
                     quantity: item.quantity,
@@ -33286,6 +33370,7 @@ function Cart() {
     setSelectedProducts(isChecked ? new Set(cartItems.map(function (item) {
       return item.id;
     })) : new Set());
+    setErrorMessage('');
   };
   var handleRowSelect = function handleRowSelect(productId) {
     return function (e) {
@@ -33293,10 +33378,9 @@ function Cart() {
       if (e.target.checked) newSelected.add(productId);else newSelected["delete"](productId);
       setSelectedProducts(newSelected);
       setIsAllSelected(newSelected.size === cartItems.length);
+      setErrorMessage('');
     };
   };
-
-  // Copied and adapted from PaymentMethods for single item removal
   var handleRemoveItem = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
       var response, errorData;
@@ -33316,16 +33400,15 @@ function Cart() {
           case 3:
             response = _context2.sent;
             if (response.ok) {
-              _context2.next = 10;
+              _context2.next = 9;
               break;
             }
             _context2.next = 7;
             return response.json();
           case 7:
             errorData = _context2.sent;
-            console.log('Server response:', errorData); // Debug
             throw new Error(errorData.message || 'Failed to remove item');
-          case 10:
+          case 9:
             setCartItems(function (prevItems) {
               return prevItems.filter(function (i) {
                 return i.id !== productId;
@@ -33338,25 +33421,23 @@ function Cart() {
             });
             setIsAllSelected(false);
             setErrorMessage('');
-            _context2.next = 20;
+            _context2.next = 19;
             break;
-          case 16:
-            _context2.prev = 16;
+          case 15:
+            _context2.prev = 15;
             _context2.t0 = _context2["catch"](0);
             console.error('Error removing item:', _context2.t0);
             setErrorMessage(_context2.t0.message || 'Failed to remove item. Please try again.');
-          case 20:
+          case 19:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 16]]);
+      }, _callee2, null, [[0, 15]]);
     }));
     return function handleRemoveItem(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
-
-  // Handle multiple item removal by calling handleRemoveItem for each selected product
   var handleDeleteSelected = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
       var _iterator, _step, productId;
@@ -33371,7 +33452,6 @@ function Cart() {
             return _context3.abrupt("return");
           case 3:
             _context3.prev = 3;
-            // Loop through selected products and remove each one
             _iterator = _createForOfIteratorHelper(selectedProducts);
             _context3.prev = 5;
             _iterator.s();
@@ -33454,29 +33534,40 @@ function Cart() {
                 quantity: newQuantity
               }) : item;
             }));
-            _context4.next = 14;
+            setErrorMessage('');
+            _context4.next = 16;
             break;
-          case 11:
-            _context4.prev = 11;
+          case 12:
+            _context4.prev = 12;
             _context4.t0 = _context4["catch"](2);
             console.error('Error updating quantity:', _context4.t0);
-          case 14:
+            setErrorMessage('Failed to update quantity. Please try again.');
+          case 16:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[2, 11]]);
+      }, _callee4, null, [[2, 12]]);
     }));
     return function handleQuantityChange(_x2, _x3) {
       return _ref4.apply(this, arguments);
     };
   }();
   var handleCheckout = function handleCheckout() {
-    var itemsToCheckout = selectedProducts.size > 0 ? cartItems.filter(function (item) {
+    if (selectedProducts.size === 0) {
+      setErrorMessage('Please select at least one item to checkout.');
+      return;
+    }
+    var itemsToCheckout = cartItems.filter(function (item) {
       return selectedProducts.has(item.id);
-    }) : cartItems;
+    });
+    console.log('Cart.js: Navigating to /payment_methods with:', {
+      items: itemsToCheckout,
+      profileId: profileId
+    });
     navigate('/payment_methods', {
       state: {
-        items: itemsToCheckout
+        items: itemsToCheckout,
+        profileId: profileId
       }
     });
   };
@@ -33633,11 +33724,11 @@ function Cart() {
           onClick: handleDeleteSelected,
           disabled: selectedProducts.size === 0,
           children: "Remove Selected"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
           className: "checkout-btn",
           onClick: handleCheckout,
-          disabled: cartItems.length === 0,
-          children: "Check Out"
+          disabled: cartItems.length === 0 || selectedProducts.size === 0,
+          children: ["Check Out Selected (", selectedProducts.size, ")"]
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
@@ -34380,48 +34471,49 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 function PaymentMethods() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Payment'),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('creditCard'),
     _useState2 = _slicedToArray(_useState, 2),
-    activeStep = _useState2[0],
-    setActiveStep = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('creditCard'),
+    selectedPayment = _useState2[0],
+    setSelectedPayment = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('standard'),
     _useState4 = _slicedToArray(_useState3, 2),
-    selectedPayment = _useState4[0],
-    setSelectedPayment = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('standard'),
-    _useState6 = _slicedToArray(_useState5, 2),
-    selectedShipping = _useState6[0],
-    setSelectedShipping = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    selectedShipping = _useState4[0],
+    setSelectedShipping = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       cardholderName: '',
       cardNumber: '',
       expiry: '',
       cvc: ''
     }),
+    _useState6 = _slicedToArray(_useState5, 2),
+    cardDetails = _useState6[0],
+    setCardDetails = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    cardDetails = _useState8[0],
-    setCardDetails = _useState8[1];
+    showCvcTooltip = _useState8[0],
+    setShowCvcTooltip = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
-    showCvcTooltip = _useState10[0],
-    setShowCvcTooltip = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isPaypalSelected = _useState10[0],
+    setIsPaypalSelected = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState12 = _slicedToArray(_useState11, 2),
-    isPaypalSelected = _useState12[0],
-    setIsPaypalSelected = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    cartItems = _useState12[0],
+    setCartItems = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState14 = _slicedToArray(_useState13, 2),
-    cartItems = _useState14[0],
-    setCartItems = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    profile = _useState14[0],
+    setProfile = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState16 = _slicedToArray(_useState15, 2),
-    profile = _useState16[0],
-    setProfile = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    loading = _useState16[0],
+    setLoading = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState18 = _slicedToArray(_useState17, 2),
-    loading = _useState18[0],
-    setLoading = _useState18[1];
+    errorMessage = _useState18[0],
+    setErrorMessage = _useState18[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useLocation)();
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
     return token ? {
@@ -34432,13 +34524,15 @@ function PaymentMethods() {
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setSelectedPayment('creditCard');
+    var _location$state;
     var profileId = localStorage.getItem('profileId');
+    var itemsFromState = ((_location$state = location.state) === null || _location$state === void 0 ? void 0 : _location$state.items) || [];
     if (!profileId) {
-      setLoading(false);
+      navigate('/login');
       return;
     }
-    var fetchCartItems = /*#__PURE__*/function () {
+    setCartItems(itemsFromState);
+    var fetchProfile = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var response, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -34446,7 +34540,7 @@ function PaymentMethods() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return fetch("http://127.0.0.1:8000/api/cart/".concat(profileId), {
+              return fetch("http://127.0.0.1:8000/api/profiles/".concat(profileId), {
                 headers: getAuthHeaders()
               });
             case 3:
@@ -34455,79 +34549,36 @@ function PaymentMethods() {
                 _context.next = 6;
                 break;
               }
-              throw new Error('Failed to fetch cart');
+              throw new Error('Failed to fetch profile');
             case 6:
               _context.next = 8;
               return response.json();
             case 8:
               data = _context.sent;
-              setCartItems(data.success && Array.isArray(data.data) ? data.data : []);
+              setProfile(data);
               _context.next = 16;
               break;
             case 12:
               _context.prev = 12;
               _context.t0 = _context["catch"](0);
-              console.error('Error fetching cart:', _context.t0);
-              setCartItems([]);
+              console.error('Error fetching profile:', _context.t0);
+              setProfile(null);
             case 16:
+              _context.prev = 16;
+              setLoading(false);
+              return _context.finish(16);
+            case 19:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 12]]);
+        }, _callee, null, [[0, 12, 16, 19]]);
       }));
-      return function fetchCartItems() {
+      return function fetchProfile() {
         return _ref.apply(this, arguments);
       };
     }();
-    var fetchProfile = /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var response, data;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
-              return fetch("http://127.0.0.1:8000/api/profiles/".concat(profileId), {
-                headers: getAuthHeaders()
-              });
-            case 3:
-              response = _context2.sent;
-              if (response.ok) {
-                _context2.next = 6;
-                break;
-              }
-              throw new Error('Failed to fetch profile');
-            case 6:
-              _context2.next = 8;
-              return response.json();
-            case 8:
-              data = _context2.sent;
-              setProfile(data);
-              _context2.next = 16;
-              break;
-            case 12:
-              _context2.prev = 12;
-              _context2.t0 = _context2["catch"](0);
-              console.error('Error fetching profile:', _context2.t0);
-              setProfile(null);
-            case 16:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, null, [[0, 12]]);
-      }));
-      return function fetchProfile() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-    Promise.all([fetchCartItems(), fetchProfile()])["finally"](function () {
-      return setLoading(false);
-    });
-  }, []);
-  var handleStepClick = function handleStepClick(step) {
-    setActiveStep(step);
-    console.log("Navigating to ".concat(step, " step"));
-  };
+    fetchProfile();
+  }, [location.state, navigate]);
   var handlePaymentSelect = function handlePaymentSelect(method) {
     setSelectedPayment(method);
     setCardDetails({
@@ -34537,11 +34588,10 @@ function PaymentMethods() {
       cvc: ''
     });
     setIsPaypalSelected(method === 'paypal');
-    console.log("Selected payment method: ".concat(method));
+    setErrorMessage('');
   };
   var handleShippingSelect = function handleShippingSelect(method) {
     setSelectedShipping(method);
-    console.log("Selected shipping method: ".concat(method));
   };
   var handleCardChange = function handleCardChange(e) {
     var _e$target = e.target,
@@ -34560,19 +34610,10 @@ function PaymentMethods() {
     if (cleanedValue.length > 2 && !cleanedValue.includes('/')) {
       cleanedValue = cleanedValue.slice(0, 2) + '/' + cleanedValue.slice(2);
     }
-    if (cleanedValue.length > 7) {
-      cleanedValue = cleanedValue.slice(0, 7);
-    }
+    if (cleanedValue.length > 7) cleanedValue = cleanedValue.slice(0, 7);
     var monthMatch = cleanedValue.match(/^(\d{1,2})\/?/);
-    if (monthMatch) {
-      var month = parseInt(monthMatch[1], 10);
-      if (month > 12) {
-        cleanedValue = '12' + cleanedValue.slice(2);
-      }
-    }
-    var yearMatch = cleanedValue.match(/\/(\d{0,4})$/);
-    if (yearMatch && yearMatch[1].length > 4) {
-      cleanedValue = cleanedValue.slice(0, -1);
+    if (monthMatch && parseInt(monthMatch[1], 10) > 12) {
+      cleanedValue = '12' + cleanedValue.slice(2);
     }
     setCardDetails(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, {
@@ -34581,14 +34622,14 @@ function PaymentMethods() {
     });
   };
   var handleRemoveItem = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productId) {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
       var profileId, response;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
             profileId = localStorage.getItem('profileId');
-            _context3.prev = 1;
-            _context3.next = 4;
+            _context2.prev = 1;
+            _context2.next = 4;
             return fetch("http://127.0.0.1:8000/api/cart/remove", {
               method: 'DELETE',
               headers: getAuthHeaders(),
@@ -34598,9 +34639,9 @@ function PaymentMethods() {
               })
             });
           case 4:
-            response = _context3.sent;
+            response = _context2.sent;
             if (response.ok) {
-              _context3.next = 7;
+              _context2.next = 7;
               break;
             }
             throw new Error('Failed to remove item');
@@ -34610,54 +34651,77 @@ function PaymentMethods() {
                 return i.product_id !== productId;
               });
             });
-            _context3.next = 13;
+            _context2.next = 13;
             break;
           case 10:
-            _context3.prev = 10;
-            _context3.t0 = _context3["catch"](1);
-            console.error('Error removing item:', _context3.t0);
+            _context2.prev = 10;
+            _context2.t0 = _context2["catch"](1);
+            console.error('Error removing item:', _context2.t0);
           case 13:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
-      }, _callee3, null, [[1, 10]]);
+      }, _callee2, null, [[1, 10]]);
     }));
     return function handleRemoveItem(_x) {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
+  var hasValidAddress = function hasValidAddress() {
+    return profile && profile.street && profile.street.trim() !== '' && profile.city && profile.city.trim() !== '' && profile.province && profile.province.trim() !== '' && profile.postal_code && profile.postal_code.trim() !== '' && profile.country && profile.country.trim() !== '';
+  };
+  var getFullName = function getFullName() {
+    if (!profile) return '';
+    return "".concat(profile.first_name, " ").concat(profile.middlename && profile.middlename !== 'N/A' ? profile.middlename + ' ' : '').concat(profile.last_name, " ").concat(profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : '').trim();
+  };
+  var calculateTotals = function calculateTotals() {
+    var totalPrice = cartItems.reduce(function (total, item) {
+      return total + item.price * item.quantity;
+    }, 0);
+    var shippingCost = selectedShipping === 'priority' ? 50 : 0;
+    var grandTotal = totalPrice + shippingCost;
+    return {
+      totalPrice: totalPrice,
+      shippingCost: shippingCost,
+      grandTotal: grandTotal
+    };
+  };
   var handlePlaceOrder = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-      var profileId, totalPrice, shippingCost, grandTotal, orderData, response, responseText, responseData;
-      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var profileId, _calculateTotals, totalPrice, shippingCost, grandTotal, orderData, response, responseData;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
             profileId = localStorage.getItem('profileId');
+            setErrorMessage('');
             if (profileId) {
-              _context4.next = 4;
+              _context3.next = 5;
               break;
             }
-            alert('Please log in to place an order.');
-            return _context4.abrupt("return");
-          case 4:
+            navigate('/login');
+            return _context3.abrupt("return");
+          case 5:
             if (!(cartItems.length === 0)) {
-              _context4.next = 7;
+              _context3.next = 8;
               break;
             }
-            alert('Your cart is empty. Add items before placing an order.');
-            return _context4.abrupt("return");
-          case 7:
-            totalPrice = cartItems.reduce(function (total, item) {
-              return total + item.price * item.quantity;
-            }, 0);
-            shippingCost = selectedShipping === 'priority' ? 50 : 0;
-            grandTotal = totalPrice + shippingCost;
+            setErrorMessage('Your cart is empty. Add items before placing an order.');
+            return _context3.abrupt("return");
+          case 8:
+            if (hasValidAddress()) {
+              _context3.next = 11;
+              break;
+            }
+            setErrorMessage('Please provide a complete delivery address before placing an order.');
+            return _context3.abrupt("return");
+          case 11:
+            _calculateTotals = calculateTotals(), totalPrice = _calculateTotals.totalPrice, shippingCost = _calculateTotals.shippingCost, grandTotal = _calculateTotals.grandTotal;
             orderData = {
               profile_id: parseInt(profileId, 10),
               shipping_method: selectedShipping,
               items: cartItems.map(function (item) {
                 return {
-                  product_id: parseInt(item.product_id, 10),
+                  product_id: parseInt(item.product_id || item.id, 10),
                   quantity: parseInt(item.quantity, 10),
                   price: Number(item.price)
                 };
@@ -34665,64 +34729,64 @@ function PaymentMethods() {
               total_amount: grandTotal,
               payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery'
             };
-            console.log('Sending order data:', orderData);
+            console.log('Order Data being sent:', orderData);
             if (!(selectedPayment === 'paypal')) {
-              _context4.next = 17;
+              _context3.next = 19;
               break;
             }
             localStorage.setItem('pendingOrder', JSON.stringify(orderData));
             window.location.href = 'https://www.paypal.com/signin';
-            _context4.next = 38;
+            _context3.next = 36;
             break;
-          case 17:
-            _context4.prev = 17;
-            _context4.next = 20;
+          case 19:
+            _context3.prev = 19;
+            _context3.next = 22;
             return fetch('http://127.0.0.1:8000/api/orders', {
               method: 'POST',
               headers: getAuthHeaders(),
               body: JSON.stringify(orderData)
             });
-          case 20:
-            response = _context4.sent;
-            console.log('Response status:', response.status); // Debug status
-            _context4.next = 24;
-            return response.text();
-          case 24:
-            responseText = _context4.sent;
-            // Get raw text
-            console.log('Raw response:', responseText); // Log raw response
-            responseData = JSON.parse(responseText); // Attempt to parse as JSON
+          case 22:
+            response = _context3.sent;
+            _context3.next = 25;
+            return response.json();
+          case 25:
+            responseData = _context3.sent;
             if (response.ok) {
-              _context4.next = 29;
+              _context3.next = 28;
               break;
             }
             throw new Error(responseData.error || 'Failed to place order');
-          case 29:
-            console.log('Order placed successfully:', responseData);
-            setCartItems([]);
-            navigate('/order_complete');
-            _context4.next = 38;
+          case 28:
+            console.log('Order Response:', responseData);
+            navigate('/order_complete', {
+              state: {
+                order: responseData,
+                items: cartItems,
+                profileId: profileId
+              }
+            });
+            _context3.next = 36;
             break;
-          case 34:
-            _context4.prev = 34;
-            _context4.t0 = _context4["catch"](17);
-            console.error('Error placing order:', _context4.t0.message);
-            alert("Failed to place order: ".concat(_context4.t0.message));
-          case 38:
+          case 32:
+            _context3.prev = 32;
+            _context3.t0 = _context3["catch"](19);
+            console.error('Error placing order:', _context3.t0);
+            setErrorMessage("Failed to place order: ".concat(_context3.t0.message, ". Please try again."));
+          case 36:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
-      }, _callee4, null, [[17, 34]]);
+      }, _callee3, null, [[19, 32]]);
     }));
     return function handlePlaceOrder() {
-      return _ref4.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
-  var totalPrice = cartItems.reduce(function (total, item) {
-    return total + item.price * item.quantity;
-  }, 0);
-  var shippingCost = selectedShipping === 'priority' ? 50 : 0;
-  var grandTotal = totalPrice + shippingCost;
+  var _calculateTotals2 = calculateTotals(),
+    totalPrice = _calculateTotals2.totalPrice,
+    shippingCost = _calculateTotals2.shippingCost,
+    grandTotal = _calculateTotals2.grandTotal;
   if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     children: "Loading..."
   });
@@ -34738,13 +34802,16 @@ function PaymentMethods() {
             className: "payment-information",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
               children: "Checkout"
+            }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+              className: "error-message",
+              children: errorMessage
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "delivery-address",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
                 children: "Delivery Address"
-              }), profile ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
-                  children: [profile.first_name, ' ', profile.middlename && profile.middlename !== 'N/A' ? "".concat(profile.middlename, " ") : '', profile.last_name, ' ', profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : '']
+              }), profile ? hasValidAddress() ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  children: getFullName()
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   children: profile.street
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
@@ -34753,10 +34820,16 @@ function PaymentMethods() {
                   children: profile.country
                 })]
               }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                className: "no-address",
+                children: "No valid address provided. Please update your profile."
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                 children: "No profile data available"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                 className: "change-btn",
-                children: "Change"
+                onClick: function onClick() {
+                  return navigate('/customerprofile');
+                },
+                children: hasValidAddress() ? 'Update' : 'Add Address'
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "payment-details",
@@ -34769,7 +34842,7 @@ function PaymentMethods() {
                   onClick: function onClick() {
                     return handlePaymentSelect('creditCard');
                   },
-                  children: "Credit card"
+                  children: "Credit Card"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                   className: "payment-button ".concat(selectedPayment === 'paypal' ? 'active' : ''),
                   onClick: function onClick() {
@@ -34785,63 +34858,58 @@ function PaymentMethods() {
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h3", {
                 children: "Payment Details"
-              }), selectedPayment === 'creditCard' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                  className: "card-logos",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                    src: _resources_sass_img_cardz_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-                    alt: "Credit Card Logos",
-                    className: "card-logo"
-                  })
+              }), selectedPayment === 'creditCard' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "credit-debit-details",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+                  src: _resources_sass_img_cardz_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+                  alt: "Credit Card Logos",
+                  className: "card-logo"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
+                  type: "text",
+                  name: "cardNumber",
+                  value: cardDetails.cardNumber,
+                  onChange: handleCardChange,
+                  placeholder: "Card Number",
+                  className: "card-input"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                  className: "credit-debit-details",
+                  className: "expiry-cvc",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
                     type: "text",
-                    name: "cardNumber",
-                    value: cardDetails.cardNumber,
+                    name: "expiry",
+                    value: cardDetails.expiry,
                     onChange: handleCardChange,
-                    placeholder: "Card Number",
-                    className: "card-input"
+                    placeholder: "MM/YY",
+                    className: "card-input expiry-input"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                    className: "expiry-cvc",
+                    className: "cvc-container",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
                       type: "text",
-                      name: "expiry",
-                      value: cardDetails.expiry,
+                      name: "cvc",
+                      value: cardDetails.cvc,
                       onChange: handleCardChange,
-                      placeholder: "Expiration Date (MM / YY)",
-                      className: "card-input expiry-input"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                      className: "cvc-container",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
-                        type: "text",
-                        name: "cvc",
-                        value: cardDetails.cvc,
-                        onChange: handleCardChange,
-                        placeholder: "Security Code",
-                        className: "card-input cvc-input"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
-                        className: "cvc-help",
-                        onMouseEnter: function onMouseEnter() {
-                          return setShowCvcTooltip(true);
-                        },
-                        onMouseLeave: function onMouseLeave() {
-                          return setShowCvcTooltip(false);
-                        },
-                        children: ["?", showCvcTooltip && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                          className: "cvc-tooltip",
-                          children: "3-digit security code usually found on the back of your card."
-                        })]
+                      placeholder: "CVC",
+                      className: "card-input cvc-input"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                      className: "cvc-help",
+                      onMouseEnter: function onMouseEnter() {
+                        return setShowCvcTooltip(true);
+                      },
+                      onMouseLeave: function onMouseLeave() {
+                        return setShowCvcTooltip(false);
+                      },
+                      children: ["?", showCvcTooltip && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                        className: "cvc-tooltip",
+                        children: "3-digit security code on the back of your card."
                       })]
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
-                    type: "text",
-                    name: "cardholderName",
-                    value: cardDetails.cardholderName,
-                    onChange: handleCardChange,
-                    placeholder: "Name on card",
-                    className: "card-input"
                   })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
+                  type: "text",
+                  name: "cardholderName",
+                  value: cardDetails.cardholderName,
+                  onChange: handleCardChange,
+                  placeholder: "Name on card",
+                  className: "card-input"
                 })]
               }), selectedPayment === 'paypal' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "paypal-details",
@@ -34850,11 +34918,9 @@ function PaymentMethods() {
                   alt: "PayPal Illustration",
                   className: "paypal-illustration"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "paypal-text",
-                  children: "After clicking \"Pay with PayPal\", you will be redirected to PayPal to complete your purchase securely."
+                  children: "You will be redirected to PayPal to complete your purchase securely."
                 })]
               }), selectedPayment === 'cashOnDelivery' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                className: "cash-on-delivery-text",
                 children: "Pay with cash upon delivery. Please have exact change ready."
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -34874,11 +34940,9 @@ function PaymentMethods() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                   className: "shipping-content",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                    className: "shipping-text",
-                    children: "Standard Shipping - 5-7 Business Days"
+                    children: "Standard Shipping (5-7 Business Days)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                    className: "shipping-price",
-                    children: "Free"
+                    children: "\u20B10"
                   })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("label", {
@@ -34894,10 +34958,8 @@ function PaymentMethods() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                   className: "shipping-content",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                    className: "shipping-text",
-                    children: "Priority Shipping - 2-3 Business Days"
+                    children: "Priority Shipping (2-3 Business Days)"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                    className: "shipping-price",
                     children: "\u20B150"
                   })]
                 })]
@@ -34917,29 +34979,32 @@ function PaymentMethods() {
                   className: "cart-item-image-wrapper",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                     src: item.product_img ? "http://127.0.0.1:8000/".concat(item.product_img) : _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                    alt: item.product_name,
+                    alt: item.product_name || item.name,
                     className: "cart-item-image"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                   className: "cart-item-details",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                     className: "cart-item-name",
-                    children: item.product_name
+                    children: item.product_name || item.name
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
                     className: "cart-item-quantity",
                     children: ["Quantity: ", item.quantity]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
                     className: "cart-item-price",
-                    children: ["\u20B1", (item.price * item.quantity).toLocaleString()]
+                    children: ["\u20B1", (item.price * item.quantity).toLocaleString('en-PH', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    })]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                   className: "remove-btn",
                   onClick: function onClick() {
-                    return handleRemoveItem(item.product_id);
+                    return handleRemoveItem(item.product_id || item.id);
                   },
                   children: "Remove"
                 })]
-              }, item.product_id);
+              }, item.product_id || item.id);
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-summary",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -34947,26 +35012,36 @@ function PaymentMethods() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Subtotal"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
-                  children: ["\u20B1", totalPrice.toLocaleString()]
+                  children: ["\u20B1", totalPrice.toLocaleString('en-PH', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-item",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Shipping"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: shippingCost === 0 ? 'Free' : "\u20B1".concat(shippingCost.toLocaleString())
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                  children: ["\u20B1", shippingCost.toLocaleString('en-PH', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-total",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Total"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
-                  children: ["\u20B1", grandTotal.toLocaleString()]
+                  children: ["\u20B1", grandTotal.toLocaleString('en-PH', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })]
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
               className: "place-order-btn ".concat(isPaypalSelected ? 'paypal-btn' : ''),
               onClick: handlePlaceOrder,
+              disabled: cartItems.length === 0 || !hasValidAddress(),
               children: isPaypalSelected ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Pay with"
@@ -35026,7 +35101,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
-
+ // Changed to FaShoppingCart
 
 
 
@@ -35116,8 +35191,6 @@ function LoggedinCustomerTopNavBar(_ref) {
       return !prev;
     });
   };
-
-  // Modified to navigate to /customerprofile
   var handleProfileSettings = function handleProfileSettings() {
     navigate("/customerprofile");
     setIsDropdownOpen(false);
@@ -35142,6 +35215,12 @@ function LoggedinCustomerTopNavBar(_ref) {
       setIsDropdownOpen(false);
     };
   };
+  var handleCartKeyPress = function handleCartKeyPress(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onCartClick();
+    }
+  };
   var navLinks = [{
     href: "#home",
     text: "Home",
@@ -35163,9 +35242,7 @@ function LoggedinCustomerTopNavBar(_ref) {
     href: "#profile",
     text: "PROFILE",
     path: "/customerprofile"
-  },
-  // Updated this too for consistency
-  {
+  }, {
     href: "#logout",
     text: "LOGOUT",
     onClick: handleLogout
@@ -35220,7 +35297,11 @@ function LoggedinCustomerTopNavBar(_ref) {
             e.preventDefault();
             onCartClick();
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaShoppingBag, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          onKeyPress: handleCartKeyPress,
+          tabIndex: 0,
+          role: "button",
+          "aria-label": "Open cart with ".concat(cartCount, " items"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaShoppingCart, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
             className: "cart-count",
             children: cartCount
           })]
@@ -36147,11 +36228,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_order_complete_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/order_complete.scss */ "./resources/sass/components/order_complete.scss");
 /* harmony import */ var _resources_sass_img_thankyou_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../resources/sass/img/thankyou.svg */ "./resources/sass/img/thankyou.svg");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
 /* harmony import */ var _customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../customerside/Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -36159,22 +36252,111 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function OrderComplete() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)();
+  var _ref = location.state || {},
+    items = _ref.items,
+    profileId = _ref.profileId,
+    order = _ref.order;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    errorMessage = _useState2[0],
+    setErrorMessage = _useState2[1];
+  var getAuthHeaders = function getAuthHeaders() {
+    var token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer ".concat(token)
+    } : {
+      'Content-Type': 'application/json'
+    };
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var deleteSelectedCartItems = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              if (!(!items || items.length === 0)) {
+                _context.next = 3;
+                break;
+              }
+              setErrorMessage('No items provided. Unable to clear cart.');
+              return _context.abrupt("return");
+            case 3:
+              if (profileId) {
+                _context.next = 6;
+                break;
+              }
+              setErrorMessage('No profile ID provided. Unable to clear cart.');
+              return _context.abrupt("return");
+            case 6:
+              _context.prev = 6;
+              _context.next = 9;
+              return Promise.all(items.map(function (item) {
+                return fetch("http://127.0.0.1:8000/api/cart/remove", {
+                  method: 'DELETE',
+                  headers: getAuthHeaders(),
+                  body: JSON.stringify({
+                    profile_id: profileId,
+                    product_id: item.product_id
+                  })
+                }).then(function (res) {
+                  if (!res.ok) throw new Error("Failed to delete item ".concat(item.product_id));
+                  return res.json();
+                });
+              }));
+            case 9:
+              console.log('Successfully deleted selected cart items:', items);
+              _context.next = 16;
+              break;
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](6);
+              console.error('Error deleting selected cart items:', _context.t0);
+              setErrorMessage('Failed to remove ordered items from cart. Please check your cart manually.');
+            case 16:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[6, 12]]);
+      }));
+      return function deleteSelectedCartItems() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    deleteSelectedCartItems();
+  }, [items, profileId]);
+  var handleContinueShopping = function handleContinueShopping() {
+    navigate('/shop');
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "order-complete-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "order-complete-content",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+      children: [errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        style: {
+          color: '#ff4444',
+          marginBottom: '20px',
+          textAlign: 'center',
+          fontSize: '16px'
+        },
+        children: errorMessage
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
         src: _resources_sass_img_thankyou_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
         alt: "Order Complete Illustration",
         className: "order-illustration"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
         className: "order-title",
         children: "Thank You for Your Order!"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "order-message",
-        children: "Your order has been successfully placed. We've sent a confirmation email with your order details."
+        children: ["Your order has been successfully placed. We've sent a confirmation email with your order details.", order && order.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), "Order ID: ", order.id]
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "continue-shopping-btn",
+        onClick: handleContinueShopping,
         children: "Continue Shopping"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
@@ -36312,6 +36494,11 @@ var ProductView = function ProductView() {
     _useState20 = _slicedToArray(_useState19, 2),
     showMediaOnly = _useState20[0],
     setShowMediaOnly = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState22 = _slicedToArray(_useState21, 2),
+    cartCount = _useState22[0],
+    setCartCount = _useState22[1]; // Add cartCount state
+
   var baseImageUrl = "http://127.0.0.1:8000/";
   var defaultProfileImage = "".concat(baseImageUrl, "images/pfp/default.png");
   var getAuthHeaders = function getAuthHeaders() {
@@ -36323,125 +36510,48 @@ var ProductView = function ProductView() {
       'Content-Type': 'application/json'
     };
   };
-  var fetchWithRetry = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url, options) {
-      var retries,
-        baseDelay,
-        _loop,
-        _ret,
-        i,
-        _args2 = arguments;
-      return _regeneratorRuntime().wrap(function _callee$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+
+  // Function to fetch cart count
+  var fetchCartCount = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var token, response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
           case 0:
-            retries = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 3;
-            baseDelay = _args2.length > 3 && _args2[3] !== undefined ? _args2[3] : 2000;
-            _loop = /*#__PURE__*/_regeneratorRuntime().mark(function _loop() {
-              var response, delay, text, contentType;
-              return _regeneratorRuntime().wrap(function _loop$(_context) {
-                while (1) switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.prev = 0;
-                    _context.next = 3;
-                    return fetch(url, options);
-                  case 3:
-                    response = _context.sent;
-                    if (!(response.status === 429)) {
-                      _context.next = 10;
-                      break;
-                    }
-                    delay = baseDelay * (i + 1);
-                    console.warn("429 Too Many Requests for ".concat(url, ", retrying (").concat(i + 1, "/").concat(retries, ") in ").concat(delay, "ms"));
-                    _context.next = 9;
-                    return new Promise(function (resolve) {
-                      return setTimeout(resolve, delay);
-                    });
-                  case 9:
-                    return _context.abrupt("return", 0);
-                  case 10:
-                    if (!(response.status === 401)) {
-                      _context.next = 13;
-                      break;
-                    }
-                    console.warn("401 Unauthorized for ".concat(url, ", proceeding as guest"));
-                    return _context.abrupt("return", {
-                      v: null
-                    });
-                  case 13:
-                    if (response.ok) {
-                      _context.next = 20;
-                      break;
-                    }
-                    _context.next = 16;
-                    return response.text();
-                  case 16:
-                    text = _context.sent;
-                    if (!text.startsWith('<!DOCTYPE')) {
-                      _context.next = 19;
-                      break;
-                    }
-                    throw new Error('Server returned HTML instead of JSON, likely a server error');
-                  case 19:
-                    throw new Error("HTTP ".concat(response.status, " - ").concat(text));
-                  case 20:
-                    contentType = response.headers.get('Content-Type');
-                    if (!(!contentType || !contentType.includes('application/json'))) {
-                      _context.next = 23;
-                      break;
-                    }
-                    throw new Error('Response is not JSON');
-                  case 23:
-                    return _context.abrupt("return", {
-                      v: response
-                    });
-                  case 26:
-                    _context.prev = 26;
-                    _context.t0 = _context["catch"](0);
-                    if (!(i === retries - 1)) {
-                      _context.next = 31;
-                      break;
-                    }
-                    console.error("Failed to fetch ".concat(url, " after ").concat(retries, " retries:"), _context.t0.message);
-                    return _context.abrupt("return", {
-                      v: null
-                    });
-                  case 31:
-                  case "end":
-                    return _context.stop();
-                }
-              }, _loop, null, [[0, 26]]);
-            });
-            i = 0;
+            _context.prev = 0;
+            token = localStorage.getItem('LaravelPassportToken');
+            if (token) {
+              _context.next = 4;
+              break;
+            }
+            return _context.abrupt("return", 0);
           case 4:
-            if (!(i < retries)) {
-              _context2.next = 14;
-              break;
-            }
-            return _context2.delegateYield(_loop(), "t0", 6);
+            _context.next = 6;
+            return fetch('http://127.0.0.1:8000/api/cart/count', {
+              headers: getAuthHeaders()
+            });
           case 6:
-            _ret = _context2.t0;
-            if (!(_ret === 0)) {
-              _context2.next = 9;
-              break;
-            }
-            return _context2.abrupt("continue", 11);
+            response = _context.sent;
+            _context.next = 9;
+            return response.json();
           case 9:
-            if (!_ret) {
-              _context2.next = 11;
-              break;
+            data = _context.sent;
+            if (response.ok) {
+              setCartCount(data.count || 0);
             }
-            return _context2.abrupt("return", _ret.v);
-          case 11:
-            i++;
-            _context2.next = 4;
+            _context.next = 16;
             break;
-          case 14:
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](0);
+            console.error('Error fetching cart count:', _context.t0);
+          case 16:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
-      }, _callee);
+      }, _callee, null, [[0, 13]]);
     }));
-    return function fetchWithRetry(_x, _x2) {
+    return function fetchCartCount() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -36450,157 +36560,139 @@ var ProductView = function ProductView() {
     var fetchProfileAndProductData = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var token, userResponse, _userData$user, userData, profileResponse, profileData, productResponse, productData, finalProductData, reviewsResponse, reviewsData, _profileResponse, _profileData;
-        return _regeneratorRuntime().wrap(function _callee2$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _context3.prev = 0;
+              _context2.prev = 0;
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
-                _context3.next = 23;
+                _context2.next = 21;
                 break;
               }
-              _context3.next = 5;
-              return fetchWithRetry("".concat(baseImageUrl, "api/user-profile"), {
+              _context2.next = 5;
+              return fetch("".concat(baseImageUrl, "api/user-profile"), {
                 headers: getAuthHeaders()
               });
             case 5:
-              userResponse = _context3.sent;
-              if (!userResponse) {
-                _context3.next = 21;
+              userResponse = _context2.sent;
+              if (!userResponse.ok) {
+                _context2.next = 19;
                 break;
               }
-              _context3.next = 9;
+              _context2.next = 9;
               return userResponse.json();
             case 9:
-              userData = _context3.sent;
-              console.log('User Data:', userData);
+              userData = _context2.sent;
               if (!((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id)) {
-                _context3.next = 21;
+                _context2.next = 19;
                 break;
               }
-              _context3.next = 14;
-              return fetchWithRetry("".concat(baseImageUrl, "api/profiles/user/").concat(userData.user.id), {
+              _context2.next = 13;
+              return fetch("".concat(baseImageUrl, "api/profiles/user/").concat(userData.user.id), {
                 headers: getAuthHeaders()
               });
-            case 14:
-              profileResponse = _context3.sent;
-              if (!profileResponse) {
-                _context3.next = 21;
+            case 13:
+              profileResponse = _context2.sent;
+              if (!profileResponse.ok) {
+                _context2.next = 19;
                 break;
               }
-              _context3.next = 18;
+              _context2.next = 17;
               return profileResponse.json();
-            case 18:
-              profileData = _context3.sent;
-              console.log('Profile Data:', profileData);
+            case 17:
+              profileData = _context2.sent;
               if (isMounted) setProfileId(profileData.id || null);
+            case 19:
+              _context2.next = 21;
+              return fetchCartCount();
             case 21:
-              _context3.next = 24;
-              break;
-            case 23:
-              console.log('No token found, proceeding as guest');
-            case 24:
-              _context3.next = 26;
-              return fetchWithRetry("".concat(baseImageUrl, "api/shop-products/").concat(id), {
+              _context2.next = 23;
+              return fetch("".concat(baseImageUrl, "api/shop-products/").concat(id), {
                 headers: getAuthHeaders()
               });
-            case 26:
-              productResponse = _context3.sent;
-              if (productResponse) {
-                _context3.next = 29;
+            case 23:
+              productResponse = _context2.sent;
+              if (productResponse.ok) {
+                _context2.next = 26;
                 break;
               }
-              throw new Error('Failed to fetch product after retries');
-            case 29:
-              _context3.next = 31;
+              throw new Error('Failed to fetch product');
+            case 26:
+              _context2.next = 28;
               return productResponse.json();
-            case 31:
-              productData = _context3.sent;
+            case 28:
+              productData = _context2.sent;
               finalProductData = productData.success && productData.data ? productData.data : productData;
-              console.log('Product Data:', finalProductData);
               if (finalProductData.price && typeof finalProductData.price === 'string') {
                 finalProductData.price = parseFloat(finalProductData.price.replace(/,/g, ''));
               }
               if (isMounted) setProduct(finalProductData);
-              _context3.next = 38;
-              return fetchWithRetry("".concat(baseImageUrl, "api/reviews/product/").concat(id), {
+              _context2.next = 34;
+              return fetch("".concat(baseImageUrl, "api/reviews/product/").concat(id), {
                 headers: getAuthHeaders()
               });
-            case 38:
-              reviewsResponse = _context3.sent;
-              if (reviewsResponse) {
-                _context3.next = 44;
+            case 34:
+              reviewsResponse = _context2.sent;
+              if (reviewsResponse.ok) {
+                _context2.next = 39;
                 break;
               }
-              console.warn("Reviews fetch failed for product ".concat(id, ", setting empty reviews"));
               if (isMounted) setReviews([]);
-              _context3.next = 49;
+              _context2.next = 43;
               break;
-            case 44:
-              _context3.next = 46;
+            case 39:
+              _context2.next = 41;
               return reviewsResponse.json();
-            case 46:
-              reviewsData = _context3.sent;
-              console.log('Reviews Data:', reviewsData);
+            case 41:
+              reviewsData = _context2.sent;
               if (isMounted) setReviews(reviewsData.success && reviewsData.data ? reviewsData.data : reviewsData);
-            case 49:
+            case 43:
               if (!(token && finalProductData !== null && finalProductData !== void 0 && finalProductData.profile_id)) {
-                _context3.next = 64;
+                _context2.next = 52;
                 break;
               }
-              _context3.next = 52;
-              return fetchWithRetry("".concat(baseImageUrl, "api/profiles/").concat(finalProductData.profile_id), {
+              _context2.next = 46;
+              return fetch("".concat(baseImageUrl, "api/profiles/").concat(finalProductData.profile_id), {
                 headers: getAuthHeaders()
               });
-            case 52:
-              _profileResponse = _context3.sent;
-              if (!_profileResponse) {
-                _context3.next = 61;
+            case 46:
+              _profileResponse = _context2.sent;
+              if (!_profileResponse.ok) {
+                _context2.next = 52;
                 break;
               }
-              _context3.next = 56;
+              _context2.next = 50;
               return _profileResponse.json();
-            case 56:
-              _profileData = _context3.sent;
-              console.log('Seller Profile Data:', _profileData);
+            case 50:
+              _profileData = _context2.sent;
               if (isMounted) setUserProfile(_profileData);
-              _context3.next = 62;
+            case 52:
+              _context2.next = 57;
               break;
-            case 61:
-              console.log("Seller profile fetch skipped or failed for profile_id ".concat(finalProductData.profile_id, ", using product.profile_name"));
-            case 62:
-              _context3.next = 65;
-              break;
-            case 64:
-              console.log('Guest mode or no profile_id, using product.profile_name');
-            case 65:
-              _context3.next = 71;
-              break;
-            case 67:
-              _context3.prev = 67;
-              _context3.t0 = _context3["catch"](0);
-              console.error('Error fetching data:', _context3.t0.message);
+            case 54:
+              _context2.prev = 54;
+              _context2.t0 = _context2["catch"](0);
               if (isMounted) {
-                setError(_context3.t0.message);
+                setError(_context2.t0.message);
                 setProduct(null);
                 setUserProfile(null);
                 setReviews([]);
                 antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-                  content: "Oops! Couldn\u2019t load product details: ".concat(_context3.t0.message, ". Try refreshing."),
+                  content: "Oops! Couldn\u2019t load product details: ".concat(_context2.t0.message, ". Try refreshing."),
                   style: {
                     marginTop: '20px'
                   }
                 });
               }
-            case 71:
-              _context3.prev = 71;
+            case 57:
+              _context2.prev = 57;
               if (isMounted) setLoading(false);
-              return _context3.finish(71);
-            case 74:
+              return _context2.finish(57);
+            case 60:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
-        }, _callee2, null, [[0, 67, 71, 74]]);
+        }, _callee2, null, [[0, 54, 57, 60]]);
       }));
       return function fetchProfileAndProductData() {
         return _ref2.apply(this, arguments);
@@ -36625,11 +36717,11 @@ var ProductView = function ProductView() {
   var handleAddToCart = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
       var response, data;
-      return _regeneratorRuntime().wrap(function _callee3$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
             if (profileId) {
-              _context4.next = 4;
+              _context3.next = 4;
               break;
             }
             antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
@@ -36639,10 +36731,10 @@ var ProductView = function ProductView() {
               }
             });
             navigate('/login');
-            return _context4.abrupt("return");
+            return _context3.abrupt("return");
           case 4:
-            _context4.prev = 4;
-            _context4.next = 7;
+            _context3.prev = 4;
+            _context3.next = 7;
             return fetch("".concat(baseImageUrl, "api/cart/add"), {
               method: 'POST',
               headers: getAuthHeaders(),
@@ -36653,60 +36745,103 @@ var ProductView = function ProductView() {
               })
             });
           case 7:
-            response = _context4.sent;
-            _context4.next = 10;
+            response = _context3.sent;
+            _context3.next = 10;
             return response.json();
           case 10:
-            data = _context4.sent;
+            data = _context3.sent;
             if (response.ok) {
-              _context4.next = 13;
+              _context3.next = 13;
               break;
             }
             throw new Error(data.message || 'Failed to add to cart');
           case 13:
-            setIsCartOpen(true);
+            _context3.next = 15;
+            return fetchCartCount();
+          case 15:
             antd__WEBPACK_IMPORTED_MODULE_7__["default"].success({
               content: 'Item added to cart successfully!',
               style: {
                 marginTop: '20px'
               }
             });
-            _context4.next = 21;
+            _context3.next = 21;
             break;
-          case 17:
-            _context4.prev = 17;
-            _context4.t0 = _context4["catch"](4);
-            console.error('Error adding to cart:', _context4.t0);
+          case 18:
+            _context3.prev = 18;
+            _context3.t0 = _context3["catch"](4);
             antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-              content: "Failed to add item to cart: ".concat(_context4.t0.message),
+              content: "Failed to add item to cart: ".concat(_context3.t0.message),
               style: {
                 marginTop: '20px'
               }
             });
           case 21:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
-      }, _callee3, null, [[4, 17]]);
+      }, _callee3, null, [[4, 18]]);
     }));
     return function handleAddToCart() {
       return _ref3.apply(this, arguments);
     };
   }();
-  var handleBuyNow = function handleBuyNow() {
-    if (!profileId) {
-      antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
-        content: 'Please log in to buy items.',
-        style: {
-          marginTop: '20px'
+  var handleBuyNow = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var cartItem;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            if (profileId) {
+              _context4.next = 4;
+              break;
+            }
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].warning({
+              content: 'Please log in to buy items.',
+              style: {
+                marginTop: '20px'
+              }
+            });
+            navigate('/login');
+            return _context4.abrupt("return");
+          case 4:
+            try {
+              cartItem = {
+                product_id: id,
+                quantity: quantity,
+                price: product.price,
+                product_name: product.product_name,
+                product_img: product.product_img
+              };
+              antd__WEBPACK_IMPORTED_MODULE_7__["default"].success({
+                content: 'Proceeding to payment!',
+                style: {
+                  marginTop: '20px'
+                }
+              });
+              navigate('/payment_methods', {
+                state: {
+                  items: [cartItem]
+                }
+              });
+            } catch (error) {
+              antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+                content: "Failed to process Buy Now: ".concat(error.message),
+                style: {
+                  marginTop: '20px'
+                }
+              });
+            }
+          case 5:
+          case "end":
+            return _context4.stop();
         }
-      });
-      navigate('/login');
-      return;
-    }
-    console.log('Buy Now clicked - implement checkout logic here');
-    antd__WEBPACK_IMPORTED_MODULE_7__["default"].info('Checkout functionality to be implemented.');
-  };
+      }, _callee4);
+    }));
+    return function handleBuyNow() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
   var handleExpandClick = function handleExpandClick() {
     console.log('Expand icon clicked - functionality to be added');
   };
@@ -36715,7 +36850,8 @@ var ProductView = function ProductView() {
     var parsedRating = parseFloat(rating) || 0;
     var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
     var emptyStars = totalStars - filledStars;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "rating-stars",
       children: [Array(filledStars).fill().map(function (_, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
           size: 18,
@@ -36790,9 +36926,10 @@ var ProductView = function ProductView() {
     }
     return 'Anonymous';
   };
-
-  // Silent loading: render nothing until data is ready
-  if (loading) return null;
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "loading",
+    children: "Loading..."
+  });
   if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "error",
     children: ["Error: ", error]
@@ -36806,7 +36943,8 @@ var ProductView = function ProductView() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "product-view-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      onCartClick: toggleCart
+      onCartClick: toggleCart,
+      cartCount: cartCount
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "content-wrapper",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -36814,10 +36952,11 @@ var ProductView = function ProductView() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "product-section",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "product-image",
+            className: "product-image-container",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
               src: imageUrl,
-              alt: product.product_name
+              alt: product.product_name,
+              className: "product-image"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "product-details",
@@ -36872,14 +37011,12 @@ var ProductView = function ProductView() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "add-to-cart",
                 onClick: handleAddToCart,
-                disabled: !profileId,
                 children: ["Add to Cart: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("button", {
                 className: "buy-now",
                 onClick: handleBuyNow,
-                disabled: !profileId,
                 children: ["Buy Now: \u20B1", (product.price * quantity).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
@@ -36949,8 +37086,6 @@ var ProductView = function ProductView() {
                         alt: "Profile",
                         className: "pfp",
                         onError: function onError(e) {
-                          var _review$user2;
-                          console.log("Image load failed:", (_review$user2 = review.user) === null || _review$user2 === void 0 || (_review$user2 = _review$user2.profile) === null || _review$user2 === void 0 ? void 0 : _review$user2.profile_img);
                           e.target.src = defaultProfileImage;
                         }
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -36969,24 +37104,16 @@ var ProductView = function ProductView() {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
                     className: "review-text",
                     children: review.comment || 'No comment provided.'
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                  }), review.photo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                     className: "review-images",
-                    children: [review.photo ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                       src: "".concat(baseImageUrl).concat(review.photo.replace(/^\//, '')),
                       alt: "Review Image",
                       className: "review-img",
                       onError: function onError(e) {
-                        console.log("Review image load failed:", review.photo);
                         e.target.style.display = 'none';
-                        e.target.parentElement.querySelector('.no-photo').style.display = 'block';
                       }
-                    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                      className: "no-photo",
-                      style: {
-                        display: review.photo ? 'none' : 'block'
-                      },
-                      children: "No Photo"
-                    })]
+                    })
                   })]
                 }, review.id);
               }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -37032,13 +37159,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -37081,7 +37208,9 @@ var ShopGrid = function ShopGrid(_ref) {
     ratings = _ref$ratings === void 0 ? {} : _ref$ratings,
     loading = _ref.loading,
     profileId = _ref.profileId,
-    fetchReviews = _ref.fetchReviews;
+    fetchReviews = _ref.fetchReviews,
+    cartCount = _ref.cartCount,
+    setCartCount = _ref.setCartCount;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
     _useState2 = _slicedToArray(_useState, 2),
@@ -37108,7 +37237,54 @@ var ShopGrid = function ShopGrid(_ref) {
       'Content-Type': 'application/json'
     };
   };
+
+  // Function to fetch cart count
+  var fetchCartCount = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var token, response, data;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            token = localStorage.getItem('LaravelPassportToken');
+            if (token) {
+              _context.next = 4;
+              break;
+            }
+            return _context.abrupt("return");
+          case 4:
+            _context.next = 6;
+            return fetch('http://127.0.0.1:8000/api/cart/count', {
+              headers: getAuthHeaders()
+            });
+          case 6:
+            response = _context.sent;
+            _context.next = 9;
+            return response.json();
+          case 9:
+            data = _context.sent;
+            if (response.ok) {
+              setCartCount(data.count || 0);
+            }
+            _context.next = 16;
+            break;
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](0);
+            console.error('Error fetching cart count:', _context.t0);
+          case 16:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 13]]);
+    }));
+    return function fetchCartCount() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // Fetch initial cart count
+    fetchCartCount();
     console.log('Ratings in ShopGrid:', ratings);
     if (!Array.isArray(products)) {
       setSortedProducts([]);
@@ -37123,7 +37299,7 @@ var ShopGrid = function ShopGrid(_ref) {
         break;
       case 'price-high':
         sorted.sort(function (a, b) {
-          return parseFloat(b.price) - parseFloat(a.price);
+          return parseFloat(b.price) - parseFloat(b.price);
         });
         break;
       case 'newest':
@@ -37137,31 +37313,31 @@ var ShopGrid = function ShopGrid(_ref) {
     setSortedProducts(sorted);
   }, [sortBy, products, ratings]);
   var handleShowMore = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var newVisibleCount, newProductIds;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
             newVisibleCount = visibleCount + 5;
             newProductIds = sortedProducts.slice(visibleCount, newVisibleCount).map(function (p) {
               return p.id;
             });
             if (!(newProductIds.length > 0)) {
-              _context.next = 5;
+              _context2.next = 5;
               break;
             }
-            _context.next = 5;
+            _context2.next = 5;
             return fetchReviews(newProductIds);
           case 5:
             setVisibleCount(newVisibleCount);
           case 6:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
-      }, _callee);
+      }, _callee2);
     }));
     return function handleShowMore() {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
   var handleBackToTop = function handleBackToTop() {
@@ -37177,13 +37353,13 @@ var ShopGrid = function ShopGrid(_ref) {
     return setIsCartOpen(!isCartOpen);
   };
   var handleAddToCart = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(productId) {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productId) {
       var response, data;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
             if (profileId) {
-              _context2.next = 4;
+              _context3.next = 4;
               break;
             }
             antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
@@ -37193,10 +37369,10 @@ var ShopGrid = function ShopGrid(_ref) {
               }
             });
             navigate('/login');
-            return _context2.abrupt("return");
+            return _context3.abrupt("return");
           case 4:
-            _context2.prev = 4;
-            _context2.next = 7;
+            _context3.prev = 4;
+            _context3.next = 7;
             return fetch("http://127.0.0.1:8000/api/cart/add", {
               method: 'POST',
               headers: getAuthHeaders(),
@@ -37207,44 +37383,46 @@ var ShopGrid = function ShopGrid(_ref) {
               })
             });
           case 7:
-            response = _context2.sent;
-            _context2.next = 10;
+            response = _context3.sent;
+            _context3.next = 10;
             return response.json();
           case 10:
-            data = _context2.sent;
+            data = _context3.sent;
             if (response.ok) {
-              _context2.next = 13;
+              _context3.next = 13;
               break;
             }
             throw new Error(data.message || 'Failed to add to cart');
           case 13:
-            setIsCartOpen(true);
+            _context3.next = 15;
+            return fetchCartCount();
+          case 15:
             antd__WEBPACK_IMPORTED_MODULE_6__["default"].success({
               content: 'Item added to cart successfully!',
               style: {
                 marginTop: '20px'
               }
             });
-            _context2.next = 21;
+            _context3.next = 22;
             break;
-          case 17:
-            _context2.prev = 17;
-            _context2.t0 = _context2["catch"](4);
-            console.error('Error adding to cart:', _context2.t0);
+          case 18:
+            _context3.prev = 18;
+            _context3.t0 = _context3["catch"](4);
+            console.error('Error adding to cart:', _context3.t0);
             antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
-              content: "Failed to add item to cart: ".concat(_context2.t0.message),
+              content: "Failed to add item to cart: ".concat(_context3.t0.message),
               style: {
                 marginTop: '20px'
               }
             });
-          case 21:
+          case 22:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
-      }, _callee2, null, [[4, 17]]);
+      }, _callee3, null, [[4, 18]]);
     }));
     return function handleAddToCart(_x) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
   if (loading || !Array.isArray(products)) {
@@ -37340,10 +37518,13 @@ var ShopGrid = function ShopGrid(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
               to: "/shop/product/".concat(product.id),
               className: "product-link",
-              children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-                src: product.product_img,
-                alt: product.product_name,
-                className: "product-image"
+              children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "product-image-container",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: product.product_img,
+                  alt: product.product_name,
+                  className: "product-image"
+                })
               }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: "no-image-placeholder",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
@@ -38101,6 +38282,7 @@ var AllOrder = function AllOrder() {
         return ['Track Order'];
       case 'completed':
         return ['Rate', 'Refund'];
+      // Always allow "Rate" for Completed
       default:
         return [];
     }
@@ -38529,7 +38711,7 @@ var RateProduct = function RateProduct(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchUserProfileAndReviews = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, userResponse, userData, reviewsResponse, reviewsData, userReview;
+        var token, userResponse, userData, reviewsResponse, reviewsData, orderReview;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -38562,7 +38744,7 @@ var RateProduct = function RateProduct(_ref) {
               userData = _context.sent;
               setUserId(userData.id);
 
-              // Fetch existing reviews for this product and user
+              // Fetch existing reviews for this product, user, and order
               _context.next = 15;
               return fetch("/api/reviews/product/".concat(productId), {
                 headers: {
@@ -38582,12 +38764,14 @@ var RateProduct = function RateProduct(_ref) {
               return reviewsResponse.json();
             case 20:
               reviewsData = _context.sent;
-              userReview = reviewsData.data.find(function (review) {
-                return review.user_id === userData.id;
+              orderReview = reviewsData.data.find(function (r) {
+                return r.user_id === userData.id && r.order_id === orderId;
               });
-              if (userReview) {
+              if (orderReview) {
                 setHasRated(true);
-                setError('You have already rated this product.');
+                setError('You have already rated this product for this order.');
+              } else {
+                setHasRated(false);
               }
               _context.next = 28;
               break;
@@ -38608,26 +38792,18 @@ var RateProduct = function RateProduct(_ref) {
     if (isOpen) {
       fetchUserProfileAndReviews();
     }
-  }, [isOpen, productId]);
+  }, [isOpen, productId, orderId]);
   var handleRatingClick = function handleRatingClick(value) {
-    if (!hasRated) {
-      setRating(value);
-    }
+    if (!hasRated) setRating(value);
   };
   var handleRatingHover = function handleRatingHover(value) {
-    if (!hasRated) {
-      setHoverRating(value);
-    }
+    if (!hasRated) setHoverRating(value);
   };
   var handleMouseLeave = function handleMouseLeave() {
-    if (!hasRated) {
-      setHoverRating(0);
-    }
+    if (!hasRated) setHoverRating(0);
   };
   var handleReviewChange = function handleReviewChange(event) {
-    if (!hasRated) {
-      setReview(event.target.value);
-    }
+    if (!hasRated) setReview(event.target.value);
   };
   var handleImageChange = function handleImageChange(event) {
     if (!hasRated) {
@@ -38663,7 +38839,7 @@ var RateProduct = function RateProduct(_ref) {
               _context2.next = 4;
               break;
             }
-            setError('You have already rated this product.');
+            setError('You have already rated this product for this order.');
             return _context2.abrupt("return");
           case 4:
             if (!(rating === 0 || !userId)) {
@@ -38676,14 +38852,13 @@ var RateProduct = function RateProduct(_ref) {
             formData = new FormData();
             formData.append('product_id', productId);
             formData.append('user_id', userId);
+            formData.append('order_id', orderId); // Include order_id
             formData.append('rating', rating);
             formData.append('comment', review);
-            if (image) {
-              formData.append('photo', image);
-            }
-            _context2.prev = 13;
+            if (image) formData.append('photo', image);
+            _context2.prev = 14;
             token = localStorage.getItem('LaravelPassportToken');
-            _context2.next = 17;
+            _context2.next = 18;
             return fetch('/api/reviews', {
               method: 'POST',
               headers: {
@@ -38692,41 +38867,41 @@ var RateProduct = function RateProduct(_ref) {
               },
               body: formData
             });
-          case 17:
+          case 18:
             response = _context2.sent;
             if (response.ok) {
-              _context2.next = 23;
+              _context2.next = 24;
               break;
             }
-            _context2.next = 21;
+            _context2.next = 22;
             return response.json();
-          case 21:
+          case 22:
             errorData = _context2.sent;
             throw new Error(errorData.error || JSON.stringify(errorData.errors) || 'Failed to submit review');
-          case 23:
-            _context2.next = 25;
+          case 24:
+            _context2.next = 26;
             return response.json();
-          case 25:
+          case 26:
             result = _context2.sent;
             onSubmit({
               rating: rating,
               review: review,
               image: result.photo
             });
-            setHasRated(true); // Mark as rated after successful submission
+            setHasRated(true);
             resetForm();
             onClose();
-            _context2.next = 35;
+            _context2.next = 36;
             break;
-          case 32:
-            _context2.prev = 32;
-            _context2.t0 = _context2["catch"](13);
+          case 33:
+            _context2.prev = 33;
+            _context2.t0 = _context2["catch"](14);
             setError(_context2.t0.message);
-          case 35:
+          case 36:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[13, 32]]);
+      }, _callee2, null, [[14, 33]]);
     }));
     return function handleSubmit(_x) {
       return _ref3.apply(this, arguments);
@@ -40280,6 +40455,10 @@ function Shop() {
     _useState18 = _slicedToArray(_useState17, 2),
     profileId = _useState18[0],
     setProfileId = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState20 = _slicedToArray(_useState19, 2),
+    cartCount = _useState20[0],
+    setCartCount = _useState20[1];
   var isMounted = true;
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
@@ -40290,179 +40469,210 @@ function Shop() {
       'Content-Type': 'application/json'
     };
   };
-  var fetchFast = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url, options) {
-      var response, contentType;
+  var fetchCartCount = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var token, response, data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            _context.next = 3;
-            return fetch(url, options);
-          case 3:
-            response = _context.sent;
-            if (response.ok) {
-              _context.next = 7;
+            token = localStorage.getItem('LaravelPassportToken');
+            if (!(!token || !profileId)) {
+              _context.next = 5;
               break;
             }
-            console.warn("Failed to fetch ".concat(url, ": ").concat(response.status));
-            return _context.abrupt("return", null);
+            setCartCount(0);
+            return _context.abrupt("return");
+          case 5:
+            _context.next = 7;
+            return fetch('http://127.0.0.1:8000/api/cart/count', {
+              headers: getAuthHeaders()
+            });
           case 7:
-            contentType = response.headers.get('Content-Type');
-            if (!(!contentType || !contentType.includes('application/json'))) {
-              _context.next = 11;
-              break;
+            response = _context.sent;
+            _context.next = 10;
+            return response.json();
+          case 10:
+            data = _context.sent;
+            if (response.ok && data.success) {
+              setCartCount(data.count || 0);
+            } else {
+              setCartCount(0);
             }
-            console.warn("Non-JSON response from ".concat(url));
-            return _context.abrupt("return", null);
-          case 11:
-            return _context.abrupt("return", response);
+            _context.next = 18;
+            break;
           case 14:
             _context.prev = 14;
             _context.t0 = _context["catch"](0);
-            console.warn("Error fetching ".concat(url, ": ").concat(_context.t0.message));
-            return _context.abrupt("return", null);
+            console.error('Error fetching cart count:', _context.t0);
+            setCartCount(0);
           case 18:
           case "end":
             return _context.stop();
         }
       }, _callee, null, [[0, 14]]);
     }));
-    return function fetchFast(_x, _x2) {
+    return function fetchCartCount() {
       return _ref.apply(this, arguments);
     };
   }();
-  var fetchReviews = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productIds) {
-      var ratingsMap, cachedRatings, uncachedIds, promises;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+  var fetchFast = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(url, options) {
+      var response, contentType;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            ratingsMap = {};
-            cachedRatings = JSON.parse(localStorage.getItem('shopRatings') || '{}'); // Use cached ratings if available
-            productIds.forEach(function (id) {
-              if (cachedRatings[id] !== undefined) {
-                ratingsMap[id] = cachedRatings[id];
-              }
-            });
-
-            // Fetch only uncached reviews in parallel
-            uncachedIds = productIds.filter(function (id) {
-              return cachedRatings[id] === undefined;
-            });
-            if (!(uncachedIds.length > 0)) {
-              _context3.next = 8;
+            _context2.prev = 0;
+            _context2.next = 3;
+            return fetch(url, options);
+          case 3:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 7;
               break;
             }
-            promises = uncachedIds.map(/*#__PURE__*/function () {
-              var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+            console.warn("Failed to fetch ".concat(url, ": ").concat(response.status));
+            return _context2.abrupt("return", null);
+          case 7:
+            contentType = response.headers.get('Content-Type');
+            if (!(!contentType || !contentType.includes('application/json'))) {
+              _context2.next = 11;
+              break;
+            }
+            console.warn("Non-JSON response from ".concat(url));
+            return _context2.abrupt("return", null);
+          case 11:
+            return _context2.abrupt("return", response);
+          case 14:
+            _context2.prev = 14;
+            _context2.t0 = _context2["catch"](0);
+            console.warn("Error fetching ".concat(url, ": ").concat(_context2.t0.message));
+            return _context2.abrupt("return", null);
+          case 18:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 14]]);
+    }));
+    return function fetchFast(_x, _x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var fetchReviews = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(productIds) {
+      var ratingsMap, promises;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            ratingsMap = {}; // Fetch reviews for all products in parallel
+            promises = productIds.map(/*#__PURE__*/function () {
+              var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
                 var response, data;
-                return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-                  while (1) switch (_context2.prev = _context2.next) {
+                return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+                  while (1) switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context2.next = 2;
+                      _context3.next = 2;
                       return fetchFast("http://127.0.0.1:8000/api/reviews/product/".concat(id), {
                         headers: getAuthHeaders()
                       });
                     case 2:
-                      response = _context2.sent;
+                      response = _context3.sent;
                       if (!response) {
-                        _context2.next = 11;
+                        _context3.next = 11;
                         break;
                       }
-                      _context2.next = 6;
+                      _context3.next = 6;
                       return response.json();
                     case 6:
-                      data = _context2.sent;
+                      data = _context3.sent;
                       console.log("Reviews for product ".concat(id, ":"), data);
                       ratingsMap[id] = data.success && Array.isArray(data.data) && data.data.length > 0 ? data.data.reduce(function (sum, review) {
                         return sum + (review.rating || 0);
                       }, 0) / data.data.length : 0;
-                      _context2.next = 12;
+                      _context3.next = 12;
                       break;
                     case 11:
                       ratingsMap[id] = 0;
                     case 12:
                     case "end":
-                      return _context2.stop();
+                      return _context3.stop();
                   }
-                }, _callee2);
+                }, _callee3);
               }));
               return function (_x4) {
-                return _ref3.apply(this, arguments);
+                return _ref4.apply(this, arguments);
               };
             }());
-            _context3.next = 8;
+            _context4.next = 4;
             return Promise.all(promises);
-          case 8:
+          case 4:
             console.log('Updated Ratings:', ratingsMap);
             if (isMounted) {
               setRatings(function (prev) {
                 return _objectSpread(_objectSpread({}, prev), ratingsMap);
               });
-              localStorage.setItem('shopRatings', JSON.stringify(_objectSpread(_objectSpread({}, ratings), ratingsMap)));
             }
-            return _context3.abrupt("return", ratingsMap);
-          case 11:
+            return _context4.abrupt("return", ratingsMap);
+          case 7:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3);
+      }, _callee4);
     }));
     return function fetchReviews(_x3) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
         var profileIdTemp, token, userResponse, _userData$user, userData, profileResponse, cachedProducts, productsData, productsResponse, validProducts, activeProductIds, cachedCategories, cachedBrands, fetchSecondaryData;
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              _context5.prev = 0;
+              _context6.prev = 0;
               profileIdTemp = null;
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
-                _context5.next = 23;
+                _context6.next = 23;
                 break;
               }
-              _context5.next = 6;
+              _context6.next = 6;
               return fetchFast('http://127.0.0.1:8000/api/user-profile', {
                 headers: getAuthHeaders()
               });
             case 6:
-              userResponse = _context5.sent;
+              userResponse = _context6.sent;
               if (!userResponse) {
-                _context5.next = 21;
+                _context6.next = 21;
                 break;
               }
-              _context5.next = 10;
+              _context6.next = 10;
               return userResponse.json();
             case 10:
-              userData = _context5.sent;
+              userData = _context6.sent;
               console.log('User Data:', userData);
               if (!((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id)) {
-                _context5.next = 21;
+                _context6.next = 21;
                 break;
               }
-              _context5.next = 15;
+              _context6.next = 15;
               return fetchFast("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
                 headers: getAuthHeaders()
               });
             case 15:
-              profileResponse = _context5.sent;
+              profileResponse = _context6.sent;
               if (!profileResponse) {
-                _context5.next = 21;
+                _context6.next = 21;
                 break;
               }
-              _context5.next = 19;
+              _context6.next = 19;
               return profileResponse.json();
             case 19:
-              profileIdTemp = _context5.sent.id;
+              profileIdTemp = _context6.sent.id;
               console.log('Profile ID:', profileIdTemp);
             case 21:
-              _context5.next = 24;
+              _context6.next = 24;
               break;
             case 23:
               console.log('No token found, proceeding as guest');
@@ -40471,32 +40681,32 @@ function Shop() {
               cachedProducts = localStorage.getItem('shopProducts');
               productsData = cachedProducts ? JSON.parse(cachedProducts) : null;
               if (productsData) {
-                _context5.next = 39;
+                _context6.next = 39;
                 break;
               }
-              _context5.next = 29;
+              _context6.next = 29;
               return fetchFast('http://127.0.0.1:8000/api/shop-products', {
                 headers: getAuthHeaders()
               });
             case 29:
-              productsResponse = _context5.sent;
+              productsResponse = _context6.sent;
               if (!productsResponse) {
-                _context5.next = 36;
+                _context6.next = 36;
                 break;
               }
-              _context5.next = 33;
+              _context6.next = 33;
               return productsResponse.json();
             case 33:
-              _context5.t0 = _context5.sent;
-              _context5.next = 37;
+              _context6.t0 = _context6.sent;
+              _context6.next = 37;
               break;
             case 36:
-              _context5.t0 = {
+              _context6.t0 = {
                 success: false,
                 data: []
               };
             case 37:
-              productsData = _context5.t0;
+              productsData = _context6.t0;
               if (isMounted) localStorage.setItem('shopProducts', JSON.stringify(productsData));
             case 39:
               validProducts = productsData.success && Array.isArray(productsData.data) ? productsData.data : [];
@@ -40510,76 +40720,84 @@ function Shop() {
                 setFilteredProducts(validProducts);
               }
 
+              // Fetch cart count after setting profileId
+              if (!profileIdTemp) {
+                _context6.next = 46;
+                break;
+              }
+              _context6.next = 46;
+              return fetchCartCount();
+            case 46:
               // Fetch categories, brands, and reviews in parallel after products
               cachedCategories = localStorage.getItem('shopCategories');
               cachedBrands = localStorage.getItem('shopBrands');
               fetchSecondaryData = /*#__PURE__*/function () {
-                var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+                var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
                   var _yield$Promise$all, _yield$Promise$all2, categoriesResponse, brandsResponse, categoriesData, brandsData;
-                  return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-                    while (1) switch (_context4.prev = _context4.next) {
+                  return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+                    while (1) switch (_context5.prev = _context5.next) {
                       case 0:
-                        _context4.next = 2;
+                        _context5.next = 2;
                         return Promise.all([cachedCategories ? null : fetchFast('http://127.0.0.1:8000/api/categories/active', {
                           headers: getAuthHeaders()
                         }), cachedBrands ? null : fetchFast('http://127.0.0.1:8000/api/brands', {
                           headers: getAuthHeaders()
                         })]);
                       case 2:
-                        _yield$Promise$all = _context4.sent;
+                        _yield$Promise$all = _context5.sent;
                         _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
                         categoriesResponse = _yield$Promise$all2[0];
                         brandsResponse = _yield$Promise$all2[1];
                         if (!cachedCategories) {
-                          _context4.next = 10;
+                          _context5.next = 10;
                           break;
                         }
-                        _context4.t0 = JSON.parse(cachedCategories);
-                        _context4.next = 18;
+                        _context5.t0 = JSON.parse(cachedCategories);
+                        _context5.next = 18;
                         break;
                       case 10:
                         if (!categoriesResponse) {
-                          _context4.next = 16;
+                          _context5.next = 16;
                           break;
                         }
-                        _context4.next = 13;
+                        _context5.next = 13;
                         return categoriesResponse.json();
                       case 13:
-                        _context4.t1 = _context4.sent;
-                        _context4.next = 17;
+                        _context5.t1 = _context5.sent;
+                        _context5.next = 17;
                         break;
                       case 16:
-                        _context4.t1 = {
+                        _context5.t1 = {
                           active: []
                         };
                       case 17:
-                        _context4.t0 = _context4.t1;
+                        _context5.t0 = _context5.t1;
                       case 18:
-                        categoriesData = _context4.t0;
+                        categoriesData = _context5.t0;
                         if (!cachedBrands) {
-                          _context4.next = 23;
+                          _context5.next = 23;
                           break;
                         }
-                        _context4.t2 = JSON.parse(cachedBrands);
-                        _context4.next = 31;
+                        _context5.t2 = JSON.parse(cachedBrands);
+                        _context5.next = 31;
                         break;
                       case 23:
                         if (!brandsResponse) {
-                          _context4.next = 29;
+                          _context5.next = 29;
                           break;
                         }
-                        _context4.next = 26;
+                        _context5.next = 26;
                         return brandsResponse.json();
                       case 26:
-                        _context4.t3 = _context4.sent;
-                        _context4.next = 30;
+                        _context5.t3 = _context5.sent;
+                        _context5.next = 30;
                         break;
                       case 29:
-                        _context4.t3 = [];
+                        _context5.t3 = [];
                       case 30:
-                        _context4.t2 = _context4.t3;
+                        _context5.t2 = _context5.t3;
                       case 31:
-                        brandsData = _context4.t2;
+                        brandsData = _context5.t2;
                         if (isMounted) {
                           setCategories(categoriesData.active && Array.isArray(categoriesData.active) ? categoriesData.active : []);
                           setBrands(Array.isArray(brandsData) ? brandsData : []);
@@ -40587,13 +40805,13 @@ function Shop() {
                           if (!cachedBrands) localStorage.setItem('shopBrands', JSON.stringify(brandsData));
                         }
                         if (!(activeProductIds.length > 0)) {
-                          _context4.next = 38;
+                          _context5.next = 38;
                           break;
                         }
-                        _context4.next = 36;
+                        _context5.next = 36;
                         return fetchReviews(activeProductIds);
                       case 36:
-                        _context4.next = 39;
+                        _context5.next = 39;
                         break;
                       case 38:
                         if (validProducts.length === 0) {
@@ -40601,21 +40819,21 @@ function Shop() {
                         }
                       case 39:
                       case "end":
-                        return _context4.stop();
+                        return _context5.stop();
                     }
-                  }, _callee4);
+                  }, _callee5);
                 }));
                 return function fetchSecondaryData() {
-                  return _ref5.apply(this, arguments);
+                  return _ref6.apply(this, arguments);
                 };
               }();
               fetchSecondaryData(); // Run in background, doesn’t block loading
-              _context5.next = 53;
+              _context6.next = 56;
               break;
-            case 49:
-              _context5.prev = 49;
-              _context5.t1 = _context5["catch"](0);
-              console.error('Error fetching shop data:', _context5.t1.message);
+            case 52:
+              _context6.prev = 52;
+              _context6.t1 = _context6["catch"](0);
+              console.error('Error fetching shop data:', _context6.t1.message);
               if (isMounted) {
                 setProducts([]);
                 setFilteredProducts([]);
@@ -40629,18 +40847,18 @@ function Shop() {
                   }
                 });
               }
-            case 53:
-              _context5.prev = 53;
-              if (isMounted) setLoading(false);
-              return _context5.finish(53);
             case 56:
+              _context6.prev = 56;
+              if (isMounted) setLoading(false);
+              return _context6.finish(56);
+            case 59:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
-        }, _callee5, null, [[0, 49, 53, 56]]);
+        }, _callee6, null, [[0, 52, 56, 59]]);
       }));
       return function fetchData() {
-        return _ref4.apply(this, arguments);
+        return _ref5.apply(this, arguments);
       };
     }();
     fetchData();
@@ -40648,6 +40866,13 @@ function Shop() {
       isMounted = false;
     };
   }, [navigate]);
+
+  // Re-fetch cart count whenever profileId changes or cart is opened/closed
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (profileId) {
+      fetchCartCount();
+    }
+  }, [profileId, isCartOpen]);
   var toggleCart = function toggleCart() {
     return setIsCartOpen(!isCartOpen);
   };
@@ -40657,7 +40882,8 @@ function Shop() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "shop-page-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      onCartClick: toggleCart
+      onCartClick: toggleCart,
+      cartCount: cartCount
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "shop-content",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Filter_filter_sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -40672,7 +40898,10 @@ function Shop() {
         ratings: ratings,
         loading: loading,
         profileId: profileId,
-        fetchReviews: fetchReviews
+        fetchReviews: fetchReviews,
+        cartCount: cartCount,
+        setCartCount: setCartCount,
+        fetchCartCount: fetchCartCount
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_6__["default"], {
       isOpen: isCartOpen,
@@ -47967,7 +48196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cart-modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.5);\n  z-index: 1200;\n  display: flex;\n  justify-content: flex-end;\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open {\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s linear 0s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open .cart-modal-content {\n  transform: translateX(0);\n}\n.cart-modal .cart-modal-content {\n  background: #f0fff5;\n  width: 400px;\n  height: 100%;\n  padding: 20px;\n  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);\n  transform: translateX(100%);\n  transition: transform 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  font-family: \"Jost\", sans-serif;\n  z-index: 1201;\n}\n.cart-modal .cart-modal-content .cart-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #ddd;\n  padding-bottom: 10px;\n  margin-bottom: 15px;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title h2 {\n  font-size: 24px;\n  color: #000;\n  margin: 0;\n  line-height: 1;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title .cart-count {\n  background: #000;\n  color: #fff;\n  border-radius: 50%;\n  padding: 2px 8px;\n  font-size: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 20px;\n  width: 20px;\n}\n.cart-modal .cart-modal-content .cart-header .close-button {\n  background: none;\n  border: none;\n  font-size: 18px;\n  cursor: pointer;\n  color: #000;\n}\n.cart-modal .cart-modal-content .cart-items {\n  flex: 1;\n  overflow-y: auto;\n  margin-bottom: 20px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item {\n  display: flex;\n  gap: 15px;\n  padding: 15px 0;\n  border-bottom: 1px solid #ddd;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-image {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  padding-right: 60px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details h3 {\n  font-size: 16px;\n  color: #000;\n  margin: 0 0 5px 0;\n  font-weight: 500;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .price {\n  font-size: 16px;\n  color: #000;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .variant {\n  font-size: 14px;\n  color: #666;\n  margin: 0 0 10px 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 10px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button {\n  background: none;\n  border: none;\n  color: #000;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 14px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  padding: 0;\n  margin: 0;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button:hover {\n  color: #ff0000;\n}\n.cart-modal .cart-modal-content .cart-footer {\n  border-top: 1px solid #ddd;\n  padding-top: 20px;\n}\n.cart-modal .cart-modal-content .cart-footer .shipping-note {\n  font-size: 14px;\n  color: #666;\n  margin: 0 0 10px 0;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price {\n  font-size: 16px;\n  color: #000;\n  text-align: left;\n  margin: 0 0 20px 0;\n  font-weight: 500;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price span {\n  color: #ff0000;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions {\n  display: flex;\n  gap: 10px;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button {\n  flex: 1;\n  padding: 10px;\n  border: none;\n  cursor: pointer;\n  font-size: 16px;\n  border-radius: 4px;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary {\n  background: #333;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary:hover {\n  background: #444;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary {\n  background: #ff0000;\n  color: #fff;\n  font-weight: 700;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary:hover {\n  background: #e60000;\n  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cart-modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.4);\n  z-index: 1200;\n  display: flex;\n  justify-content: flex-end;\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open {\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s linear 0s, opacity 0.3s ease-in-out;\n}\n.cart-modal.open .cart-modal-content {\n  transform: translateX(0);\n}\n.cart-modal .cart-modal-content {\n  background: #ffffff;\n  width: 420px;\n  height: 100%;\n  padding: 24px;\n  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);\n  transform: translateX(100%);\n  transition: transform 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n  font-family: \"Jost\", sans-serif;\n  color: #333;\n}\n.cart-modal .cart-modal-content .cart-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-bottom: 16px;\n  border-bottom: 1px solid #eee;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title h2 {\n  font-size: 24px;\n  font-weight: 600;\n  margin: 0;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .cart-header .cart-title .cart-count {\n  background: #ff4d4d;\n  color: #fff;\n  border-radius: 12px;\n  padding: 2px 8px;\n  font-size: 14px;\n  font-weight: 500;\n  min-width: 24px;\n  text-align: center;\n}\n.cart-modal .cart-modal-content .cart-header .close-button {\n  background: none;\n  border: none;\n  font-size: 24px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s;\n}\n.cart-modal .cart-modal-content .cart-header .close-button:hover {\n  color: #ff4d4d;\n}\n.cart-modal .cart-modal-content .loading {\n  padding: 20px;\n  font-size: 16px;\n  color: #666;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .error-message {\n  padding: 12px;\n  background: #fff0f0;\n  color: #ff4d4d;\n  font-size: 14px;\n  border-radius: 4px;\n  margin: 12px 0;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .select-all {\n  padding: 12px 0;\n  border-bottom: 1px solid #eee;\n}\n.cart-modal .cart-modal-content .select-all label {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 16px;\n  font-weight: 500;\n  color: #333;\n  cursor: pointer;\n}\n.cart-modal .cart-modal-content .select-all label input {\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.cart-modal .cart-modal-content .select-all label input:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.cart-modal .cart-modal-content .cart-items {\n  flex: 1;\n  overflow-y: auto;\n  padding: 12px 0;\n}\n.cart-modal .cart-modal-content .cart-items .empty-cart {\n  padding: 24px 0;\n  font-size: 16px;\n  color: #666;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 16px;\n  padding: 16px 0;\n  border-bottom: 1px solid #eee;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .item-checkbox {\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .item-checkbox:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-image {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  border: 1px solid #eee;\n  border-radius: 6px;\n  background: #fafafa;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details {\n  flex: 1;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details h3 {\n  font-size: 16px;\n  font-weight: 500;\n  margin: 0 0 6px;\n  line-height: 1.2;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .price {\n  font-size: 15px;\n  font-weight: 600;\n  margin: 0 0 6px;\n  color: #ff4d4d; /* Price in red */\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .variant {\n  font-size: 13px;\n  color: #777;\n  margin: 0 0 12px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  margin-bottom: 12px;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button {\n  width: 32px;\n  height: 32px;\n  background: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  font-size: 16px;\n  color: #333;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:hover:not(:disabled) {\n  background: #f5f5f5;\n  border-color: #bbb;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .quantity-controls span {\n  width: 32px;\n  text-align: center;\n  font-size: 16px;\n  font-weight: 500;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button {\n  background: none;\n  border: none;\n  font-size: 14px;\n  color: #ff4d4d;\n  cursor: pointer;\n  padding: 0;\n  transition: color 0.2s;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button:hover:not(:disabled) {\n  color: #e63333;\n}\n.cart-modal .cart-modal-content .cart-items .cart-item .cart-item-details .remove-button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.cart-modal .cart-modal-content .cart-footer {\n  padding-top: 16px;\n  border-top: 1px solid #eee;\n}\n.cart-modal .cart-modal-content .cart-footer .shipping-note {\n  font-size: 13px;\n  color: #777;\n  margin: 0 0 12px;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price {\n  font-size: 18px;\n  font-weight: 600;\n  margin: 0 0 16px;\n  text-align: left;\n}\n.cart-modal .cart-modal-content .cart-footer .total-price span {\n  color: #ff4d4d;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions {\n  display: flex;\n  gap: 12px;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button {\n  flex: 1;\n  padding: 12px;\n  font-size: 16px;\n  font-weight: 500;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary {\n  background: #666;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.secondary:hover:not(:disabled) {\n  background: #555;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary {\n  background: #ff4d4d;\n  color: #fff;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button.primary:hover:not(:disabled) {\n  background: #e63333;\n}\n.cart-modal .cart-modal-content .cart-footer .cart-actions .view-cart-button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48015,7 +48244,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 24px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  color: #555555;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  margin-bottom: 20px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #555555;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0;\n  margin-top: 8px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  margin-bottom: 20px;\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  margin-bottom: 15px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  font-size: 14px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  white-space: nowrap;\n  transition: all 0.3s ease;\n  min-height: 40px;\n  flex: 1;\n  min-width: 120px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos .card-logo {\n  width: 150px;\n  height: auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #e0e0e0;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #333333;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  outline: none;\n  border-color: #ff3333;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:invalid {\n  border-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  width: 100%;\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #000000;\n  font-size: 12px;\n  cursor: help;\n  color: #000000;\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  transform: translateY(-50%) scale(1.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n  transform: translate(-50%, -100%);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 10;\n  margin-bottom: 4px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  height: auto;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-text {\n  font-size: 13px;\n  color: #333333;\n  margin-bottom: 15px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .cash-on-delivery-text {\n  font-size: 14px;\n  color: #333333;\n  margin-bottom: 15px;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  margin-bottom: 20px;\n  background-color: #fff;\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 10px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-text {\n  font-size: 14px;\n  color: #333333;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n  box-shadow: 0 2px 4px rgba(255, 68, 68, 0.1);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  background-color: #fff;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  padding: 20px;\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 18px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .empty-cart {\n  font-size: 14px;\n  color: #555555;\n  text-align: center;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 20px;\n  padding-bottom: 15px;\n  border-bottom: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item:last-child {\n  border-bottom: none;\n  padding-bottom: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper {\n  flex: 0 0 60px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 4px;\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image:hover {\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-name {\n  font-size: 14px;\n  color: #333333;\n  font-weight: 500;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-quantity {\n  font-size: 12px;\n  color: #555555;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 1px solid #ff4444;\n  padding: 4px 8px;\n  cursor: pointer;\n  font-size: 12px;\n  color: #ff4444;\n  border-radius: 4px;\n  transition: all 0.3s ease;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary {\n  margin-top: 20px;\n  padding-top: 15px;\n  border-top: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 10px;\n  font-size: 14px;\n  color: #555555;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item span:last-child {\n  color: #333333;\n  font-weight: 500;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: 600;\n  margin-top: 15px;\n  color: #333333;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 12px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 6px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 20px;\n  min-height: 45px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background-color 0.3s ease;\n  font-family: \"Arial\", sans-serif;\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  background-color: #ff3333;\n  border-radius: 6px;\n  padding: 12px;\n  min-height: 45px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n  max-height: 30px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn span {\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-information,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item {\n    flex-direction: row;\n    align-items: center;\n    gap: 10px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper {\n    flex: 0 0 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper .cart-item-image {\n    width: 50px;\n    height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-details {\n    flex: 1;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .remove-btn {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .shipping-option {\n    width: 100%;\n    min-height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: auto;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .expiry-input,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container {\n    max-width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n    right: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .place-order-btn {\n    margin-top: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    position: static;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n  font-family: \"Arial\", sans-serif;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n  background-color: #ffffff;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 24px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 10px;\n  color: #555555;\n  line-height: 1.4;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  margin-bottom: 20px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #555555;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .no-address {\n  color: #ff4444;\n  font-style: italic;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background-color: #ff4d4d;\n  border: none;\n  color: #ffffff;\n  font-size: 14px;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  margin-top: 8px;\n  transition: background-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  background-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n  margin-bottom: 20px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  padding: 10px 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  font-size: 14px;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  flex: 1;\n  min-width: 120px;\n  min-height: 40px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-logo {\n  width: 150px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #e0e0e0;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #333333;\n  background-color: #ffffff;\n  transition: border-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  border-color: #ff3333;\n  outline: none;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #1E1E1E;\n  color: #1E1E1E;\n  font-size: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: help;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  border-color: #ff4444;\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease;\n  margin-bottom: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details p {\n  font-size: 13px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  padding: 15px;\n  border: 1px solid #e0e0e0;\n  border-radius: 8px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 16px;\n  color: #333333;\n  margin-bottom: 10px;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  border: 1px solid #e0e0e0;\n  border-radius: 6px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  transition: border-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  accent-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content span:first-child {\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content span:last-child {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 18px;\n  color: #333333;\n  margin-bottom: 20px;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .empty-cart {\n  font-size: 14px;\n  color: #555555;\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  padding-bottom: 15px;\n  margin-bottom: 15px;\n  border-bottom: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item:last-child {\n  border-bottom: none;\n  padding-bottom: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper {\n  flex: 0 0 60px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 4px;\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-image-wrapper .cart-item-image:hover {\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-name {\n  font-size: 14px;\n  color: #333333;\n  font-weight: 500;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-quantity {\n  font-size: 12px;\n  color: #555555;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: 600;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 1px solid #ff4444;\n  padding: 4px 8px;\n  color: #ff4444;\n  font-size: 12px;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary {\n  padding-top: 15px;\n  border-top: 1px solid #e0e0e0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  font-size: 14px;\n  color: #555555;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item span:last-child {\n  color: #333333;\n  font-weight: 500;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333333;\n  margin-top: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 12px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 6px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 20px;\n  transition: background-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:disabled {\n  background-color: #cccccc;\n  cursor: not-allowed;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  background-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #e62e2e;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-information,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: auto;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item {\n    gap: 10px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper {\n    flex: 0 0 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image-wrapper .cart-item-image {\n    width: 50px;\n    height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    position: static;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48040,7 +48269,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n  align-items: center;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n  font-size: 14px;\n  color: #666;\n  font-style: italic;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews {\n  text-align: center;\n  padding: 20px 0;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews p {\n  margin: 0;\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n    margin-left: 0;\n    margin-top: 10px;\n    flex-wrap: wrap;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n    margin-left: 0;\n    margin-top: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n    margin-top: 10px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .no-photo {\n    font-size: 12px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: flex-start;\n  align-items: flex-start;\n  margin-bottom: 40px;\n  gap: 15px;\n}\n.product-view-page .product-view-container .product-section .product-image-container {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  box-sizing: border-box;\n  width: 450px;\n  height: 450px;\n  background-color: transparent;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 20px;\n}\n.product-view-page .product-view-container .product-section .product-image-container .product-image {\n  max-width: 100%;\n  max-height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 8px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n  text-align: left;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 0 0 8px 0;\n  font-family: \"Inter\", sans-serif;\n  text-align: left;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 8px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating-stars {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 8px 0;\n  font-family: \"Inter\", sans-serif;\n  text-align: left;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-available {\n  font-size: 14px;\n  color: #333;\n  margin: 8px 0;\n  font-family: \"Inter\", sans-serif;\n  text-align: left;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 8px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 8px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n  text-align: center;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 8px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n  text-align: left;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n  flex-wrap: wrap;\n  gap: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating-stars {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating-stars {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n  align-items: center;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews {\n  text-align: center;\n  padding: 20px 0;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .no-reviews p {\n  margin: 0;\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n    gap: 15px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image-container {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 0;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    max-width: 100%;\n    align-items: center;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .company,\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .description,\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .quantity-available,\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n    margin-left: 0;\n    margin-top: 10px;\n    flex-wrap: wrap;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n    margin-left: 0;\n    margin-top: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    gap: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image-container {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48137,7 +48366,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-grid-wrapper {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #F5F5F5;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 30px 40px;\n  margin-top: 60px;\n  background-color: transparent;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  padding: 0;\n}\n\n.available-products {\n  font-size: 14px;\n  color: #666;\n  font-weight: 500;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 4px;\n}\n\n.sort-view-container label {\n  font-size: 12px;\n  color: #333;\n  text-transform: uppercase;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container select {\n  width: 130px;\n  padding: 4px 8px;\n  border-radius: 4px;\n  border: 1px solid #FF0000;\n  font-size: 12px;\n  color: #FF0000;\n  background-color: #fff;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23FF0000\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>');\n  background-repeat: no-repeat;\n  background-position: right 8px center;\n  background-size: 10px;\n  cursor: pointer;\n}\n\n.sort-view-container select:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.sort-view-container select:focus {\n  outline: none;\n  border-color: #FF0000;\n  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0;\n  justify-items: center;\n}\n\n.shop-grid-card {\n  background-color: #fff;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 180px;\n  height: 320px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n}\n\n.shop-grid-card.skeleton {\n  border: 1px solid #e5e7eb; /* gray-200 */\n  animation: pulse 1.5s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.skeleton-image {\n  width: 180px;\n  height: 180px;\n  background-color: #d1d5db; /* gray-300 */\n  border-radius: 4px 4px 0 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.skeleton-image::before {\n  content: \"\";\n  display: block;\n  width: 40px;\n  height: 40px;\n  background: url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 20\" fill=\"%23e5e7eb\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z\"/><path d=\"M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z\"/></svg>');\n  background-size: contain;\n}\n\n.skeleton-stars {\n  width: 80px;\n  height: 14px;\n  background-color: #d1d5db; /* gray-300 */\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-name {\n  width: 120px;\n  height: 18px;\n  background-color: #d1d5db; /* gray-300 */\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-price {\n  width: 80px;\n  height: 16px;\n  background-color: #d1d5db; /* gray-300 */\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-button {\n  width: 100%;\n  height: 32px;\n  background-color: #d1d5db; /* gray-300 */\n  border-radius: 4px;\n}\n\n.shop-grid-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n\n.product-link {\n  width: 100%;\n  text-decoration: none;\n}\n\n.product-image {\n  width: 180px;\n  height: 180px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 4px 4px 0 0;\n  margin-bottom: 0;\n  background-color: #fff;\n  transition: transform 0.3s ease;\n}\n\n.product-image:hover {\n  transform: scale(1.03);\n}\n\n.no-image-placeholder {\n  width: 180px;\n  height: 180px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #e0e0e0;\n  color: #666;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  text-align: center;\n}\n\n.shop-grid-info {\n  padding: 12px;\n  color: #333;\n  text-align: center;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; /* Align items from the top */\n  min-height: 0; /* Prevents overflow */\n}\n\n.shop-grid-stars {\n  margin-bottom: 6px;\n  flex-shrink: 0; /* Prevents stars from shrinking */\n}\n\n.star {\n  font-size: 14px;\n  color: #ccc;\n}\n\n.star.filled {\n  color: #FF0000;\n}\n\n.product-name {\n  font-size: 14px;\n  margin: 0 0 6px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  line-height: 1.2;\n  max-height: 34px; /* 2 lines: 14px * 1.2 * 2 */\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  flex-grow: 0; /* Prevents name from growing beyond its space */\n  flex-shrink: 1; /* Allows name to shrink if needed */\n}\n\n.product-price {\n  font-size: 16px;\n  color: #333;\n  margin: 0 0 6px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0; /* Ensures price stays visible */\n}\n\n.shop-grid-add-to-cart {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 12px;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  transition: background-color 0.3s ease-in-out;\n  flex-shrink: 0;\n  margin-top: auto;\n}\n\n.shop-grid-add-to-cart:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-add-to-cart:active {\n  background-color: #AA0000;\n}\n\n.shop-grid-show-more {\n  display: block;\n  width: 160px;\n  padding: 8px;\n  margin: 30px auto;\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  cursor: pointer;\n  transition: background-color 0.3s ease-in-out;\n}\n\n.shop-grid-show-more:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-back-to-top {\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  width: 70px;\n  height: 28px;\n  padding: 4px 8px;\n  background-color: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  font-size: 11px;\n  font-family: \"Jost\", sans-serif;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  transition: all 0.3s ease-in-out;\n}\n\n.shop-grid-back-to-top .arrow {\n  margin-right: 4px;\n  font-size: 11px;\n}\n\n.shop-grid-back-to-top:hover {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n\n@media (max-width: 1024px) {\n  .shop-grid-container {\n    padding: 20px 30px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(4, 1fr);\n    gap: 15px;\n  }\n}\n@media (max-width: 768px) {\n  .shop-grid-container {\n    padding: 15px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n  }\n  .shop-grid-header {\n    flex-direction: column;\n    align-items: flex-end;\n    gap: 8px;\n  }\n  .available-products {\n    align-self: flex-start;\n  }\n  .sort-view-container {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .shop-grid-card {\n    width: 140px;\n    height: 260px;\n  }\n  .product-image,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 140px;\n    height: 140px;\n  }\n  .shop-grid-info {\n    padding: 10px;\n  }\n  .shop-grid-stars {\n    margin-bottom: 4px;\n  }\n  .product-name {\n    font-size: 12px;\n    max-height: 28px;\n    margin: 0 0 4px;\n  }\n  .product-price {\n    font-size: 14px;\n    margin: 0 0 4px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 6px 12px;\n    font-size: 11px;\n  }\n  .shop-grid-show-more {\n    width: 140px;\n    padding: 6px;\n    font-size: 12px;\n  }\n}\n@media (max-width: 480px) {\n  .shop-grid-container {\n    padding: 10px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 8px;\n  }\n  .shop-grid-card {\n    width: 120px;\n    height: 220px;\n  }\n  .product-image,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 120px;\n    height: 120px;\n  }\n  .shop-grid-info {\n    padding: 8px;\n  }\n  .shop-grid-stars {\n    margin-bottom: 4px;\n  }\n  .product-name {\n    font-size: 11px;\n    max-height: 26px;\n    margin: 0 0 4px;\n  }\n  .product-price {\n    font-size: 13px;\n    margin: 0 0 4px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 5px 10px;\n    font-size: 10px;\n  }\n  .shop-grid-show-more {\n    width: 120px;\n    padding: 5px;\n    font-size: 11px;\n  }\n  .shop-grid-back-to-top {\n    width: 60px;\n    height: 24px;\n    font-size: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".shop-grid-wrapper {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #F5F5F5;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 30px 40px;\n  margin-top: 60px;\n  background-color: transparent;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  padding: 0;\n}\n\n.available-products {\n  font-size: 14px;\n  color: #666;\n  font-weight: 500;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 4px;\n}\n\n.sort-view-container label {\n  font-size: 12px;\n  color: #333;\n  text-transform: uppercase;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container select {\n  width: 130px;\n  padding: 4px 8px;\n  border-radius: 4px;\n  border: 1px solid #FF0000;\n  font-size: 12px;\n  color: #FF0000;\n  background-color: #fff;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23FF0000\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>');\n  background-repeat: no-repeat;\n  background-position: right 8px center;\n  background-size: 10px;\n  cursor: pointer;\n}\n\n.sort-view-container select:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.sort-view-container select:focus {\n  outline: none;\n  border-color: #FF0000;\n  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0;\n  justify-items: center;\n}\n\n.shop-grid-card {\n  background-color: #fff;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 180px; /* Slightly reduced from 200px to fit smaller image */\n  height: 300px; /* Adjusted height for smaller image and clean layout */\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n}\n\n.shop-grid-card.skeleton {\n  border: 1px solid #e5e7eb;\n  animation: pulse 1.5s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.skeleton-image {\n  width: 160px; /* Match the new product image size */\n  height: 160px;\n  background-color: #d1d5db;\n  border-radius: 4px 4px 0 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.skeleton-image::before {\n  content: \"\";\n  display: block;\n  width: 40px;\n  height: 40px;\n  background: url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 20\" fill=\"%23e5e7eb\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z\"/><path d=\"M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z\"/></svg>');\n  background-size: contain;\n}\n\n.skeleton-stars {\n  width: 80px;\n  height: 14px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-name {\n  width: 120px;\n  height: 18px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-price {\n  width: 80px;\n  height: 16px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-button {\n  width: 100%;\n  height: 32px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n}\n\n.shop-grid-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n\n.product-link {\n  width: 100%;\n  text-decoration: none;\n  display: block;\n}\n\n.product-image-container {\n  width: 160px; /* Reduced from 200px for a cleaner, simpler look */\n  height: 160px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #fff;\n  border-radius: 4px 4px 0 0;\n  overflow: hidden;\n}\n\n.product-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain; /* Keeps image proportions intact */\n  border-radius: 4px 4px 0 0;\n  transition: transform 0.3s ease;\n}\n\n.product-image:hover {\n  transform: scale(1.05);\n}\n\n.no-image-placeholder {\n  width: 160px; /* Match new image size */\n  height: 160px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #e0e0e0;\n  color: #666;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  text-align: center;\n}\n\n.shop-grid-info {\n  padding: 12px;\n  color: #333;\n  text-align: center;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  gap: 6px;\n}\n\n.shop-grid-stars {\n  margin-bottom: 0;\n  flex-shrink: 0;\n}\n\n.product-name {\n  font-size: 14px;\n  margin: 0;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  line-height: 1.2;\n  max-height: 34px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n\n.product-price {\n  font-size: 16px;\n  color: #333;\n  margin: 0;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0;\n}\n\n.shop-grid-add-to-cart {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 12px;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  transition: background-color 0.3s ease-in-out;\n  flex-shrink: 0;\n}\n\n.shop-grid-add-to-cart:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-add-to-cart:active {\n  background-color: #AA0000;\n}\n\n.shop-grid-show-more {\n  display: block;\n  width: 160px;\n  padding: 8px;\n  margin: 30px auto;\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  cursor: pointer;\n  transition: background-color 0.3s ease-in-out;\n}\n\n.shop-grid-show-more:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-back-to-top {\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  width: 70px;\n  height: 28px;\n  padding: 4px 8px;\n  background-color: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  font-size: 11px;\n  font-family: \"Jost\", sans-serif;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  transition: all 0.3s ease-in-out;\n}\n\n.shop-grid-back-to-top .arrow {\n  margin-right: 4px;\n  font-size: 11px;\n}\n\n.shop-grid-back-to-top:hover {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n\n@media (max-width: 1024px) {\n  .shop-grid-container {\n    padding: 20px 30px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(4, 1fr);\n    gap: 15px;\n  }\n  .shop-grid-card {\n    width: 160px; /* Reduced from 180px */\n    height: 280px; /* Adjusted for smaller image */\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 160px;\n    height: 160px;\n  }\n}\n@media (max-width: 768px) {\n  .shop-grid-container {\n    padding: 15px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n  }\n  .shop-grid-header {\n    flex-direction: column;\n    align-items: flex-end;\n    gap: 8px;\n  }\n  .available-products {\n    align-self: flex-start;\n  }\n  .sort-view-container {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .shop-grid-card {\n    width: 140px;\n    height: 260px;\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 140px; /* Slightly smaller for this breakpoint */\n    height: 140px;\n  }\n  .shop-grid-info {\n    padding: 10px;\n    gap: 4px;\n  }\n  .product-name {\n    font-size: 12px;\n    max-height: 28px;\n  }\n  .product-price {\n    font-size: 14px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 6px 12px;\n    font-size: 11px;\n  }\n}\n@media (max-width: 480px) {\n  .shop-grid-container {\n    padding: 10px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 8px;\n  }\n  .shop-grid-card {\n    width: 120px;\n    height: 220px;\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 120px; /* Adjusted for smaller screens */\n    height: 120px;\n  }\n  .shop-grid-info {\n    padding: 8px;\n    gap: 4px;\n  }\n  .product-name {\n    font-size: 11px;\n    max-height: 26px;\n  }\n  .product-price {\n    font-size: 13px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 5px 10px;\n    font-size: 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48161,7 +48390,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle.open {\n  /* Optional: Visual feedback */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8; /* Light gray border for a clean look */\n  border-radius: 4px; /* Subtle rounded corners */\n  min-width: 180px; /* Slightly wider for better readability */\n  z-index: 1002;\n  display: block;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Modern shadow for elevation */\n  font-family: \"Arial\", sans-serif; /* Professional font */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px; /* Increased padding for a spacious feel */\n  color: #333333; /* Dark gray text for professionalism */\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5; /* Light gray hover effect */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px; /* Space between icon and text */\n  font-size: 16px;\n  color: #666666; /* Slightly lighter icon color */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1; /* Ensure text takes remaining space */\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -8px; /* Adjusted to match screenshot */\n  right: -8px; /* Adjusted to match screenshot */\n  background-color: #FF0000; /* Red background */\n  color: #FFFFFF; /* White text */\n  border: none; /* Remove border */\n  border-radius: 50%;\n  width: 18px; /* Adjusted size */\n  height: 18px; /* Adjusted size */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px; /* Adjusted font size */\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle.open {\n  /* Optional: Visual feedback */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8;\n  border-radius: 4px;\n  min-width: 180px;\n  z-index: 1002;\n  display: block;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  font-family: \"Arial\", sans-serif;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px;\n  color: #333333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px;\n  font-size: 16px;\n  color: #666666;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -6px; /* Adjusted for mobile */\n    right: -6px; /* Adjusted for mobile */\n    width: 16px; /* Smaller size for mobile */\n    height: 16px; /* Smaller size for mobile */\n    font-size: 9px; /* Smaller font for mobile */\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

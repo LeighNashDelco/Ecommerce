@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './../../../../sass/components/payment_methods.scss';
 import attackShark from '../../../../../resources/sass/img/cartmouse.svg';
 import creditCardLogos from '../../../../../resources/sass/img/cardz.svg';
@@ -9,7 +9,6 @@ import Navbar from "../../customerside/Customer/topnav_login";
 import Footer from "../footer/footer";
 
 function PaymentMethods() {
-  const [activeStep, setActiveStep] = useState('Payment');
   const [selectedPayment, setSelectedPayment] = useState('creditCard');
   const [selectedShipping, setSelectedShipping] = useState('standard');
   const [cardDetails, setCardDetails] = useState({
@@ -23,7 +22,9 @@ function PaymentMethods() {
   const [cartItems, setCartItems] = useState([]);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem('LaravelPassportToken');
@@ -34,28 +35,15 @@ function PaymentMethods() {
   };
 
   useEffect(() => {
-    setSelectedPayment('creditCard');
-
     const profileId = localStorage.getItem('profileId');
+    const itemsFromState = location.state?.items || [];
 
     if (!profileId) {
-      setLoading(false);
+      navigate('/login');
       return;
     }
 
-    const fetchCartItems = async () => {
-      try {
-        const response = await fetch(`http://127.0.0.1:8000/api/cart/${profileId}`, {
-          headers: getAuthHeaders(),
-        });
-        if (!response.ok) throw new Error('Failed to fetch cart');
-        const data = await response.json();
-        setCartItems(data.success && Array.isArray(data.data) ? data.data : []);
-      } catch (error) {
-        console.error('Error fetching cart:', error);
-        setCartItems([]);
-      }
-    };
+    setCartItems(itemsFromState);
 
     const fetchProfile = async () => {
       try {
@@ -68,27 +56,23 @@ function PaymentMethods() {
       } catch (error) {
         console.error('Error fetching profile:', error);
         setProfile(null);
+      } finally {
+        setLoading(false);
       }
     };
 
-    Promise.all([fetchCartItems(), fetchProfile()]).finally(() => setLoading(false));
-  }, []);
-
-  const handleStepClick = (step) => {
-    setActiveStep(step);
-    console.log(`Navigating to ${step} step`);
-  };
+    fetchProfile();
+  }, [location.state, navigate]);
 
   const handlePaymentSelect = (method) => {
     setSelectedPayment(method);
     setCardDetails({ cardholderName: '', cardNumber: '', expiry: '', cvc: '' });
     setIsPaypalSelected(method === 'paypal');
-    console.log(`Selected payment method: ${method}`);
+    setErrorMessage('');
   };
 
   const handleShippingSelect = (method) => {
     setSelectedShipping(method);
-    console.log(`Selected shipping method: ${method}`);
   };
 
   const handleCardChange = (e) => {
@@ -105,19 +89,10 @@ function PaymentMethods() {
     if (cleanedValue.length > 2 && !cleanedValue.includes('/')) {
       cleanedValue = cleanedValue.slice(0, 2) + '/' + cleanedValue.slice(2);
     }
-    if (cleanedValue.length > 7) {
-      cleanedValue = cleanedValue.slice(0, 7);
-    }
+    if (cleanedValue.length > 7) cleanedValue = cleanedValue.slice(0, 7);
     const monthMatch = cleanedValue.match(/^(\d{1,2})\/?/);
-    if (monthMatch) {
-      const month = parseInt(monthMatch[1], 10);
-      if (month > 12) {
-        cleanedValue = '12' + cleanedValue.slice(2);
-      }
-    }
-    const yearMatch = cleanedValue.match(/\/(\d{0,4})$/);
-    if (yearMatch && yearMatch[1].length > 4) {
-      cleanedValue = cleanedValue.slice(0, -1);
+    if (monthMatch && parseInt(monthMatch[1], 10) > 12) {
+      cleanedValue = '12' + cleanedValue.slice(2);
     }
     setCardDetails(prev => ({ ...prev, expiry: cleanedValue }));
   };
@@ -137,36 +112,62 @@ function PaymentMethods() {
     }
   };
 
-  const handlePlaceOrder = async () => {
-    const profileId = localStorage.getItem('profileId');
-    if (!profileId) {
-      alert('Please log in to place an order.');
-      return;
-    }
-  
-    if (cartItems.length === 0) {
-      alert('Your cart is empty. Add items before placing an order.');
-      return;
-    }
-  
-    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const hasValidAddress = () => {
+    return profile && 
+           profile.street && profile.street.trim() !== '' && 
+           profile.city && profile.city.trim() !== '' && 
+           profile.province && profile.province.trim() !== '' && 
+           profile.postal_code && profile.postal_code.trim() !== '' && 
+           profile.country && profile.country.trim() !== '';
+  };
+
+  const getFullName = () => {
+    if (!profile) return '';
+    return `${profile.first_name} ${profile.middlename && profile.middlename !== 'N/A' ? profile.middlename + ' ' : ''}${profile.last_name} ${profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : ''}`.trim();
+  };
+
+  const calculateTotals = () => {
+    const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     const shippingCost = selectedShipping === 'priority' ? 50 : 0;
     const grandTotal = totalPrice + shippingCost;
-  
+    return { totalPrice, shippingCost, grandTotal };
+  };
+
+  const handlePlaceOrder = async () => {
+    const profileId = localStorage.getItem('profileId');
+    setErrorMessage('');
+
+    if (!profileId) {
+      navigate('/login');
+      return;
+    }
+
+    if (cartItems.length === 0) {
+      setErrorMessage('Your cart is empty. Add items before placing an order.');
+      return;
+    }
+
+    if (!hasValidAddress()) {
+      setErrorMessage('Please provide a complete delivery address before placing an order.');
+      return;
+    }
+
+    const { totalPrice, shippingCost, grandTotal } = calculateTotals();
+
     const orderData = {
       profile_id: parseInt(profileId, 10),
       shipping_method: selectedShipping,
       items: cartItems.map(item => ({
-        product_id: parseInt(item.product_id, 10),
+        product_id: parseInt(item.product_id || item.id, 10),
         quantity: parseInt(item.quantity, 10),
         price: Number(item.price),
       })),
       total_amount: grandTotal,
       payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery',
     };
-  
-    console.log('Sending order data:', orderData);
-  
+
+    console.log('Order Data being sent:', orderData);
+
     if (selectedPayment === 'paypal') {
       localStorage.setItem('pendingOrder', JSON.stringify(orderData));
       window.location.href = 'https://www.paypal.com/signin';
@@ -177,29 +178,23 @@ function PaymentMethods() {
           headers: getAuthHeaders(),
           body: JSON.stringify(orderData),
         });
-  
-        console.log('Response status:', response.status); // Debug status
-        const responseText = await response.text(); // Get raw text
-        console.log('Raw response:', responseText); // Log raw response
-  
-        const responseData = JSON.parse(responseText); // Attempt to parse as JSON
+
+        const responseData = await response.json();
+
         if (!response.ok) {
           throw new Error(responseData.error || 'Failed to place order');
         }
-  
-        console.log('Order placed successfully:', responseData);
-        setCartItems([]);
-        navigate('/order_complete');
+
+        console.log('Order Response:', responseData);
+        navigate('/order_complete', { state: { order: responseData, items: cartItems, profileId } });
       } catch (error) {
-        console.error('Error placing order:', error.message);
-        alert(`Failed to place order: ${error.message}`);
+        console.error('Error placing order:', error);
+        setErrorMessage(`Failed to place order: ${error.message}. Please try again.`);
       }
     }
   };
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  const shippingCost = selectedShipping === 'priority' ? 50 : 0;
-  const grandTotal = totalPrice + shippingCost;
+  const { totalPrice, shippingCost, grandTotal } = calculateTotals();
 
   if (loading) return <div>Loading...</div>;
 
@@ -211,24 +206,29 @@ function PaymentMethods() {
           <div className="top-section">
             <div className="payment-information">
               <h1>Checkout</h1>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
               <div className="delivery-address">
                 <h3>Delivery Address</h3>
                 {profile ? (
-                  <>
-                    <p>
-                      {profile.first_name}{' '}
-                      {profile.middlename && profile.middlename !== 'N/A' ? `${profile.middlename} ` : ''}
-                      {profile.last_name}{' '}
-                      {profile.suffix && profile.suffix !== 'N/A' ? profile.suffix : ''}
-                    </p>
-                    <p>{profile.street}</p>
-                    <p>{`${profile.city}, ${profile.province}, ${profile.postal_code}`}</p>
-                    <p>{profile.country}</p>
-                  </>
+                  hasValidAddress() ? (
+                    <>
+                      <p>{getFullName()}</p>
+                      <p>{profile.street}</p>
+                      <p>{`${profile.city}, ${profile.province}, ${profile.postal_code}`}</p>
+                      <p>{profile.country}</p>
+                    </>
+                  ) : (
+                    <p className="no-address">No valid address provided. Please update your profile.</p>
+                  )
                 ) : (
                   <p>No profile data available</p>
                 )}
-                <button className="change-btn">Change</button>
+                <button
+                  className="change-btn"
+                  onClick={() => navigate('/customerprofile')}
+                >
+                  {hasValidAddress() ? 'Update' : 'Add Address'}
+                </button>
               </div>
               <div className="payment-details">
                 <h3>Payment Method</h3>
@@ -237,7 +237,7 @@ function PaymentMethods() {
                     className={`payment-button ${selectedPayment === 'creditCard' ? 'active' : ''}`}
                     onClick={() => handlePaymentSelect('creditCard')}
                   >
-                    Credit card
+                    Credit Card
                   </button>
                   <button 
                     className={`payment-button ${selectedPayment === 'paypal' ? 'active' : ''}`}
@@ -254,74 +254,66 @@ function PaymentMethods() {
                 </div>
                 <h3>Payment Details</h3>
                 {selectedPayment === 'creditCard' && (
-                  <>
-                    <div className="card-logos">
-                      <img src={creditCardLogos} alt="Credit Card Logos" className="card-logo" />
-                    </div>
-                    <div className="credit-debit-details">
+                  <div className="credit-debit-details">
+                    <img src={creditCardLogos} alt="Credit Card Logos" className="card-logo" />
+                    <input 
+                      type="text" 
+                      name="cardNumber" 
+                      value={cardDetails.cardNumber} 
+                      onChange={handleCardChange} 
+                      placeholder="Card Number" 
+                      className="card-input"
+                    />
+                    <div className="expiry-cvc">
                       <input 
                         type="text" 
-                        name="cardNumber" 
-                        value={cardDetails.cardNumber} 
+                        name="expiry" 
+                        value={cardDetails.expiry} 
                         onChange={handleCardChange} 
-                        placeholder="Card Number" 
-                        className="card-input"
+                        placeholder="MM/YY" 
+                        className="card-input expiry-input"
                       />
-                      <div className="expiry-cvc">
+                      <div className="cvc-container">
                         <input 
                           type="text" 
-                          name="expiry" 
-                          value={cardDetails.expiry} 
+                          name="cvc" 
+                          value={cardDetails.cvc} 
                           onChange={handleCardChange} 
-                          placeholder="Expiration Date (MM / YY)" 
-                          className="card-input expiry-input"
+                          placeholder="CVC" 
+                          className="card-input cvc-input"
                         />
-                        <div className="cvc-container">
-                          <input 
-                            type="text" 
-                            name="cvc" 
-                            value={cardDetails.cvc} 
-                            onChange={handleCardChange} 
-                            placeholder="Security Code" 
-                            className="card-input cvc-input"
-                          />
-                          <span 
-                            className="cvc-help"
-                            onMouseEnter={() => setShowCvcTooltip(true)}
-                            onMouseLeave={() => setShowCvcTooltip(false)}
-                          >
-                            ?
-                            {showCvcTooltip && (
-                              <div className="cvc-tooltip">
-                                3-digit security code usually found on the back of your card.
-                              </div>
-                            )}
-                          </span>
-                        </div>
+                        <span 
+                          className="cvc-help"
+                          onMouseEnter={() => setShowCvcTooltip(true)}
+                          onMouseLeave={() => setShowCvcTooltip(false)}
+                        >
+                          ?
+                          {showCvcTooltip && (
+                            <div className="cvc-tooltip">
+                              3-digit security code on the back of your card.
+                            </div>
+                          )}
+                        </span>
                       </div>
-                      <input 
-                        type="text" 
-                        name="cardholderName" 
-                        value={cardDetails.cardholderName} 
-                        onChange={handleCardChange} 
-                        placeholder="Name on card" 
-                        className="card-input"
-                      />
                     </div>
-                  </>
+                    <input 
+                      type="text" 
+                      name="cardholderName" 
+                      value={cardDetails.cardholderName} 
+                      onChange={handleCardChange} 
+                      placeholder="Name on card" 
+                      className="card-input"
+                    />
+                  </div>
                 )}
                 {selectedPayment === 'paypal' && (
                   <div className="paypal-details">
                     <img src={paypalIllustration} alt="PayPal Illustration" className="paypal-illustration" />
-                    <p className="paypal-text">
-                      After clicking "Pay with PayPal", you will be redirected to PayPal to complete your purchase securely.
-                    </p>
+                    <p>You will be redirected to PayPal to complete your purchase securely.</p>
                   </div>
                 )}
                 {selectedPayment === 'cashOnDelivery' && (
-                  <p className="cash-on-delivery-text">
-                    Pay with cash upon delivery. Please have exact change ready.
-                  </p>
+                  <p>Pay with cash upon delivery. Please have exact change ready.</p>
                 )}
               </div>
               <div className="shipping-method">
@@ -335,8 +327,8 @@ function PaymentMethods() {
                     onChange={() => handleShippingSelect('standard')}
                   />
                   <div className="shipping-content">
-                    <span className="shipping-text">Standard Shipping - 5-7 Business Days</span>
-                    <span className="shipping-price">Free</span>
+                    <span>Standard Shipping (5-7 Business Days)</span>
+                    <span>₱0</span>
                   </div>
                 </label>
                 <label className="shipping-option">
@@ -348,8 +340,8 @@ function PaymentMethods() {
                     onChange={() => handleShippingSelect('priority')}
                   />
                   <div className="shipping-content">
-                    <span className="shipping-text">Priority Shipping - 2-3 Business Days</span>
-                    <span className="shipping-price">₱50</span>
+                    <span>Priority Shipping (2-3 Business Days)</span>
+                    <span>₱50</span>
                   </div>
                 </label>
               </div>
@@ -360,22 +352,22 @@ function PaymentMethods() {
                 <p className="empty-cart">Your cart is empty</p>
               ) : (
                 cartItems.map((item) => (
-                  <div key={item.product_id} className="cart-item">
+                  <div key={item.product_id || item.id} className="cart-item">
                     <div className="cart-item-image-wrapper">
                       <img 
                         src={item.product_img ? `http://127.0.0.1:8000/${item.product_img}` : attackShark} 
-                        alt={item.product_name} 
+                        alt={item.product_name || item.name} 
                         className="cart-item-image" 
                       />
                     </div>
                     <div className="cart-item-details">
-                      <p className="cart-item-name">{item.product_name}</p>
+                      <p className="cart-item-name">{item.product_name || item.name}</p>
                       <p className="cart-item-quantity">Quantity: {item.quantity}</p>
-                      <p className="cart-item-price">₱{(item.price * item.quantity).toLocaleString()}</p>
+                      <p className="cart-item-price">₱{(item.price * item.quantity).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     </div>
                     <button 
                       className="remove-btn" 
-                      onClick={() => handleRemoveItem(item.product_id)}
+                      onClick={() => handleRemoveItem(item.product_id || item.id)}
                     >
                       Remove
                     </button>
@@ -385,20 +377,21 @@ function PaymentMethods() {
               <div className="order-summary">
                 <div className="summary-item">
                   <span>Subtotal</span>
-                  <span>₱{totalPrice.toLocaleString()}</span>
+                  <span>₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="summary-item">
                   <span>Shipping</span>
-                  <span>{shippingCost === 0 ? 'Free' : `₱${shippingCost.toLocaleString()}`}</span>
+                  <span>₱{shippingCost.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
                 <div className="summary-total">
                   <span>Total</span>
-                  <span>₱{grandTotal.toLocaleString()}</span>
+                  <span>₱{grandTotal.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                 </div>
               </div>
               <button 
                 className={`place-order-btn ${isPaypalSelected ? 'paypal-btn' : ''}`}
                 onClick={handlePlaceOrder}
+                disabled={cartItems.length === 0 || !hasValidAddress()}
               >
                 {isPaypalSelected ? (
                   <>
