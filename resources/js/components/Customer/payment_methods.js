@@ -74,13 +74,10 @@ function PaymentMethods() {
     setCardDetails(prev => ({ ...prev, expiry: cleanedValue }));
   };
 
-  // Updated handlePlaceOrder to handle PayPal redirection
   const handlePlaceOrder = () => {
     if (isPaypalSelected) {
-      // Redirect to PayPal login page
       window.location.href = 'https://www.paypal.com/signin';
     } else {
-      // Navigate to OrderComplete for other payment methods
       navigate('/order_complete');
     }
   };
@@ -238,32 +235,11 @@ function PaymentMethods() {
                 </div>
                 <button className="remove-btn">Remove</button>
               </div>
-              <div className="cart-item">
-                <a href="#" className="product-link">
-                  <img src={attackShark} alt="Attack Shark X3" className="cart-item-image" />
-                </a>
-                <div className="cart-item-details">
-                  <p>Attack Shark X3</p>
-                  <p>Quantity: 1</p>
-                  <p className="cart-item-price">₱2,000</p>
-                </div>
-                <button className="remove-btn">Remove</button>
-              </div>
-              <div className="cart-item">
-                <a href="#" className="product-link">
-                  <img src={attackShark} alt="Attack Shark X3" className="cart-item-image" />
-                </a>
-                <div className="cart-item-details">
-                  <p>Attack Shark X3</p>
-                  <p>Quantity: 1</p>
-                  <p className="cart-item-price">₱2,000</p>
-                </div>
-                <button className="remove-btn">Remove</button>
-              </div>
+              {/* Removed the duplicate cart-item entries */}
               <div className="order-summary">
                 <div className="summary-item">
                   <span>Subtotal</span>
-                  <span>₱6,000</span>
+                  <span>₱2,000</span> {/* Updated subtotal for 1 item */}
                 </div>
                 <div className="summary-item">
                   <span>Shipping</span>
@@ -271,7 +247,7 @@ function PaymentMethods() {
                 </div>
                 <div className="summary-total">
                   <span>Total</span>
-                  <span>₱6,000</span>
+                  <span>₱2,000</span> {/* Updated total for 1 item */}
                 </div>
               </div>
               <button 

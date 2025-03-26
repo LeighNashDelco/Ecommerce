@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import './../../../sass/components/product_view.scss';
 import mouseImage from '../../../../resources/sass/img/ATKG2.svg';
-import pfpImage from '../../../../resources/sass/img/pfp.svg'; // Placeholder for PFP SVG
-// Importing two placeholder images for the first review
-import reviewImage1 from "../../../../resources/sass/img/ATKCOLOR.svg"; // Replace with your actual SVG
-import reviewImage2 from "../../../../resources/sass/img/ATKCOLOR.svg"; // Replace with your actual SVG
+import pfpImage from '../../../../resources/sass/img/pfp.svg';
+import reviewImage1 from "../../../../resources/sass/img/ATKCOLOR.svg";
+import reviewImage2 from "../../../../resources/sass/img/ATKCOLOR.svg";
 import Navbar from '../Customer/topvar_notlogin';
 import Footer from '../footer/footer';
 import OrdersCart from '../CartModals/orders_cart';
-import { IconExternalLink, IconStar } from '@tabler/icons-react'; 
+import { IconArrowLeft, IconExternalLink, IconStar } from '@tabler/icons-react';
 
 const ProductView = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [quantity, setQuantity] = useState(1); 
+  const [quantity, setQuantity] = useState(1);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -28,11 +27,16 @@ const ProductView = () => {
     setQuantity(quantity + 1);
   };
 
-  const handleExpandClick = () => {
-    console.log('Expand icon clicked - functionality to be added');
+  const handleQuantityClick = () => {
+    // Toggle between increasing and decreasing on click
+    // For simplicity, let's make it increase on click; you can modify this behavior
+    setQuantity(quantity + 1);
   };
 
-  // Function to render stars based on rating
+  const handleExpandClick = () => {
+    console.log('Icon clicked - functionality to be added');
+  };
+
   const renderStars = (rating) => {
     const totalStars = 5;
     const filledStars = Math.min(Math.max(rating, 0), 5);
@@ -57,21 +61,23 @@ const ProductView = () => {
         <div className="product-view-container">
           {/* Product Section */}
           <div className="product-section">
+            <div className="expand-icon" onClick={handleExpandClick}>
+              <IconExternalLink className="icon-desktop" size={24} strokeWidth={1.5} color="#000" />
+              <IconArrowLeft className="icon-mobile" size={24} strokeWidth={1.5} color="#000" />
+            </div>
             <div className="product-image">
               <img src={mouseImage} alt="Attack Shark X3" />
             </div>
             <div className="product-details">
               <div className="product-title-container">
                 <h1>Attack Shark X3</h1>
-                <div className="expand-icon" onClick={handleExpandClick}>
-                  <IconExternalLink size={24} strokeWidth={1.5} color="#000" />
-                </div>
               </div>
               <p className="company">Delco. Company</p>
               <div className="price-rating">
                 <span className="price">${2000}</span>
                 <div className="rating">
                   {renderStars(5)}
+                  <span className="review-count">26 reviews</span>
                 </div>
               </div>
               <p className="description">
@@ -79,7 +85,7 @@ const ProductView = () => {
               </p>
               <div className="quantity-controls">
                 <button onClick={decreaseQuantity} disabled={quantity === 1}>-</button>
-                <span>{quantity}</span>
+                <span onClick={handleQuantityClick} style={{ cursor: 'pointer' }}>{quantity}</span>
                 <button onClick={increaseQuantity}>+</button>
               </div>
               <div className="action-buttons">
@@ -93,7 +99,7 @@ const ProductView = () => {
             </div>
           </div>
 
-          {/* Reviews Section */}
+          {/* Reviews Section (unchanged) */}
           <div className="reviews-container">
             <div className="reviews-section">
               <h2>Reviews</h2>
@@ -126,7 +132,6 @@ const ProductView = () => {
                   <p className="review-text">
                     I got it as a gift for a friend, and they absolutely loved it! They praised how smooth and precise it is, perfect for both work and gaming. It's lightweight and comfortable, making it ideal for long hours of use. Whether they're tackling a busy day at work or enjoying some downtime gaming, this mouse delivers every time. A versatile choice they now can't go without!
                   </p>
-                  {/* Adding two review images */}
                   <div className="review-images">
                     <img src={reviewImage1} alt="Review Image 1" className="review-img" />
                     <img src={reviewImage2} alt="Review Image 2" className="review-img" />

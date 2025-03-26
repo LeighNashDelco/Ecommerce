@@ -9646,14 +9646,10 @@ function PaymentMethods() {
       });
     });
   };
-
-  // Updated handlePlaceOrder to handle PayPal redirection
   var handlePlaceOrder = function handlePlaceOrder() {
     if (isPaypalSelected) {
-      // Redirect to PayPal login page
       window.location.href = 'https://www.paypal.com/signin';
     } else {
-      // Navigate to OrderComplete for other payment methods
       navigate('/order_complete');
     }
   };
@@ -9859,62 +9855,14 @@ function PaymentMethods() {
                 children: "Remove"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-              className: "cart-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                href: "#",
-                className: "product-link",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                  src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                  alt: "Attack Shark X3",
-                  className: "cart-item-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "cart-item-details",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Attack Shark X3"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Quantity: 1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "cart-item-price",
-                  children: "\u20B12,000"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                className: "remove-btn",
-                children: "Remove"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-              className: "cart-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                href: "#",
-                className: "product-link",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-                  src: _resources_sass_img_cartmouse_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-                  alt: "Attack Shark X3",
-                  className: "cart-item-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "cart-item-details",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Attack Shark X3"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  children: "Quantity: 1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "cart-item-price",
-                  children: "\u20B12,000"
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                className: "remove-btn",
-                children: "Remove"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "order-summary",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-item",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Subtotal"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: "\u20B16,000"
-                })]
+                  children: "\u20B12,000"
+                }), " "]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "summary-item",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
@@ -9927,8 +9875,8 @@ function PaymentMethods() {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   children: "Total"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-                  children: "\u20B16,000"
-                })]
+                  children: "\u20B12,000"
+                }), " "]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
               className: "place-order-btn ".concat(isPaypalSelected ? 'paypal-btn' : ''),
@@ -9965,14 +9913,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_topvar_notlogin_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/topvar_notlogin.scss */ "./resources/sass/components/topvar_notlogin.scss");
 /* harmony import */ var _resources_sass_img_mainlogo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/mainlogo.svg */ "./resources/sass/img/mainlogo.svg");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
+/* harmony import */ var _Search_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Search/search */ "./resources/js/components/Search/search.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -9985,124 +9935,215 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+ // Import the Search component
 
 function CustomerNavbar(_ref) {
   var onCartClick = _ref.onCartClick,
     _ref$cartCount = _ref.cartCount,
     cartCount = _ref$cartCount === void 0 ? 0 : _ref$cartCount;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isMenuOpen = _useState2[0],
     setIsMenuOpen = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isShopDropdownOpen = _useState4[0],
+    setIsShopDropdownOpen = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    isSupportDropdownOpen = _useState6[0],
+    setIsSupportDropdownOpen = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isSearchOpen = _useState8[0],
+    setIsSearchOpen = _useState8[1]; // State for search bar visibility
+
   var handleHomeClick = function handleHomeClick(e) {
     e.preventDefault();
-    navigate('/'); // Navigate to the Homepage (root route)
+    navigate('/');
+    setIsMenuOpen(false);
   };
   var handleLoginClick = function handleLoginClick(e) {
     e.preventDefault();
     navigate('/login');
+    setIsMenuOpen(false);
   };
   var handleShopClick = function handleShopClick(e) {
     e.preventDefault();
     navigate('/shop');
+    setIsMenuOpen(false);
   };
   var handleAboutClick = function handleAboutClick(e) {
     e.preventDefault();
     navigate('/about_us');
+    setIsMenuOpen(false);
   };
   var handleStartSellingClick = function handleStartSellingClick(e) {
     e.preventDefault();
-    navigate('/register'); // Navigate to the Register page
+    navigate('/register');
+    setIsMenuOpen(false);
+  };
+  var handleGamingMouseClick = function handleGamingMouseClick(e) {
+    e.preventDefault();
+    navigate('/shop/gaming-mouse');
+    setIsMenuOpen(false);
+    setIsShopDropdownOpen(false);
+  };
+  var handleWiredWirelessMouseClick = function handleWiredWirelessMouseClick(e) {
+    e.preventDefault();
+    navigate('/shop/wired-wireless-mouse');
+    setIsMenuOpen(false);
+    setIsShopDropdownOpen(false);
+  };
+  var handleOfficeMouseClick = function handleOfficeMouseClick(e) {
+    e.preventDefault();
+    navigate('/shop/office-mouse');
+    setIsMenuOpen(false);
+    setIsShopDropdownOpen(false);
+  };
+  var handleGetHelpClick = function handleGetHelpClick(e) {
+    e.preventDefault();
+    navigate('/support/get-help');
+    setIsMenuOpen(false);
+    setIsSupportDropdownOpen(false);
+  };
+  var handleVeroStoreSupportClick = function handleVeroStoreSupportClick(e) {
+    e.preventDefault();
+    navigate('/support/vero-store-support');
+    setIsMenuOpen(false);
+    setIsSupportDropdownOpen(false);
   };
   var toggleMenu = function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
+    setIsShopDropdownOpen(false);
+    setIsSupportDropdownOpen(false);
+    setIsSearchOpen(false); // Close search bar when opening mobile menu
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("header", {
+  var toggleShopDropdown = function toggleShopDropdown(e) {
+    e.preventDefault();
+    setIsShopDropdownOpen(!isShopDropdownOpen);
+    setIsSupportDropdownOpen(false);
+  };
+  var toggleSupportDropdown = function toggleSupportDropdown(e) {
+    e.preventDefault();
+    setIsSupportDropdownOpen(!isSupportDropdownOpen);
+    setIsShopDropdownOpen(false);
+  };
+  var toggleSearch = function toggleSearch() {
+    setIsSearchOpen(!isSearchOpen);
+    setIsMenuOpen(false); // Close mobile menu when opening search bar
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("header", {
     className: "customer-topbar",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "customer-topbar-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "customer-mobile-menu",
         onClick: toggleMenu,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
           size: 24,
           color: "#ffffff"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "customer-logo",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: _resources_sass_img_mainlogo_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
           alt: "Customer Logo",
           className: "customer-logo-img"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("nav", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
         className: "customer-nav-links ".concat(isMenuOpen ? 'open' : ''),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#home",
           className: "customer-nav-link",
           onClick: handleHomeClick,
           children: "Home"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#shop",
           className: "customer-nav-link",
           onClick: handleShopClick,
           children: "Shop"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#start-selling",
           className: "customer-nav-link",
           onClick: handleStartSellingClick,
           children: "Start Selling"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#about",
           className: "customer-nav-link",
           onClick: handleAboutClick,
           children: "About"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "dropdown",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+            href: "#support",
+            className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
+            onClick: toggleSupportDropdown,
+            children: ["Support", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              size: 16,
+              className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "dropdown-menu ".concat(isSupportDropdownOpen ? 'open' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#get-help",
+              className: "dropdown-item",
+              onClick: handleGetHelpClick,
+              children: "Get Help"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#vero-store-support",
+              className: "dropdown-item",
+              onClick: handleVeroStoreSupportClick,
+              children: "Vero Store Support"
+            })]
+          })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "customer-auth-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#search",
           className: "customer-search-icon",
           onClick: function onClick(e) {
-            return e.preventDefault();
+            e.preventDefault();
+            toggleSearch();
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
             size: 24
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
           href: "#cart",
           className: "customer-cart-icon",
           onClick: function onClick(e) {
             e.preventDefault();
             onCartClick();
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_7__.FaShoppingBag, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_9__.FaShoppingBag, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "cart-count",
             children: cartCount
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#login",
           className: "customer-login-button",
           onClick: handleLoginClick,
           children: "Login"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "customer-mobile-overlay ".concat(isMenuOpen ? 'open' : ''),
       onClick: function onClick(e) {
         return e.stopPropagation();
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "customer-mobile-exit",
         onClick: toggleMenu,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
           size: 24,
           color: "#ffffff"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("nav", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
         className: "customer-mobile-nav",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#home",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10110,15 +10151,45 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "HOME"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: "#shop",
-          className: "customer-nav-link",
-          onClick: function onClick(e) {
-            handleShopClick(e);
-            toggleMenu();
-          },
-          children: "SHOP"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "mobile-dropdown",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+            href: "#shop",
+            className: "customer-nav-link ".concat(isShopDropdownOpen ? 'active' : ''),
+            onClick: toggleShopDropdown,
+            children: ["SHOP", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              size: 18,
+              className: "dropdown-icon ".concat(isShopDropdownOpen ? 'open' : '')
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "mobile-dropdown-menu ".concat(isShopDropdownOpen ? 'open' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#gaming-mouse",
+              className: "mobile-dropdown-item",
+              onClick: function onClick(e) {
+                handleGamingMouseClick(e);
+                toggleMenu();
+              },
+              children: "Gaming Mouse"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#wired-wireless-mouse",
+              className: "mobile-dropdown-item",
+              onClick: function onClick(e) {
+                handleWiredWirelessMouseClick(e);
+                toggleMenu();
+              },
+              children: "Wired & Wireless Mouse"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#office-mouse",
+              className: "mobile-dropdown-item",
+              onClick: function onClick(e) {
+                handleOfficeMouseClick(e);
+                toggleMenu();
+              },
+              children: "Office Mouse"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#start-selling",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10126,7 +10197,7 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "START SELLING"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#about",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10134,7 +10205,37 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "ABOUT"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "mobile-dropdown",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+            href: "#support",
+            className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
+            onClick: toggleSupportDropdown,
+            children: ["SUPPORT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              size: 18,
+              className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "mobile-dropdown-menu ".concat(isSupportDropdownOpen ? 'open' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#get-help",
+              className: "mobile-dropdown-item",
+              onClick: function onClick(e) {
+                handleGetHelpClick(e);
+                toggleMenu();
+              },
+              children: "Get Help"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+              href: "#vero-store-support",
+              className: "mobile-dropdown-item",
+              onClick: function onClick(e) {
+                handleVeroStoreSupportClick(e);
+                toggleMenu();
+              },
+              children: "Vero Store Support"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
           href: "#login",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10144,6 +10245,9 @@ function CustomerNavbar(_ref) {
           children: "LOGIN"
         })]
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      isOpen: isSearchOpen,
+      onClose: toggleSearch
     })]
   });
 }
@@ -10878,6 +10982,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/CartModals/orders_cart.js");
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconExternalLink.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconArrowLeft.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10888,10 +10993,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // Placeholder for PFP SVG
-// Importing two placeholder images for the first review
- // Replace with your actual SVG
- // Replace with your actual SVG
+
+
+
 
 
 
@@ -10917,11 +11021,14 @@ var ProductView = function ProductView() {
   var increaseQuantity = function increaseQuantity() {
     setQuantity(quantity + 1);
   };
-  var handleExpandClick = function handleExpandClick() {
-    console.log('Expand icon clicked - functionality to be added');
+  var handleQuantityClick = function handleQuantityClick() {
+    // Toggle between increasing and decreasing on click
+    // For simplicity, let's make it increase on click; you can modify this behavior
+    setQuantity(quantity + 1);
   };
-
-  // Function to render stars based on rating
+  var handleExpandClick = function handleExpandClick() {
+    console.log('Icon clicked - functionality to be added');
+  };
   var renderStars = function renderStars(rating) {
     var totalStars = 5;
     var filledStars = Math.min(Math.max(rating, 0), 5);
@@ -10952,7 +11059,21 @@ var ProductView = function ProductView() {
         className: "product-view-container",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "product-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "expand-icon",
+            onClick: handleExpandClick,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              className: "icon-desktop",
+              size: 24,
+              strokeWidth: 1.5,
+              color: "#000"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              className: "icon-mobile",
+              size: 24,
+              strokeWidth: 1.5,
+              color: "#000"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "product-image",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
               src: _resources_sass_img_ATKG2_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -10960,19 +11081,11 @@ var ProductView = function ProductView() {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "product-details",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "product-title-container",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
                 children: "Attack Shark X3"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                className: "expand-icon",
-                onClick: handleExpandClick,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  size: 24,
-                  strokeWidth: 1.5,
-                  color: "#000"
-                })
-              })]
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
               className: "company",
               children: "Delco. Company"
@@ -10981,9 +11094,12 @@ var ProductView = function ProductView() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                 className: "price",
                 children: ["$", 2000]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "rating",
-                children: renderStars(5)
+                children: [renderStars(5), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                  className: "review-count",
+                  children: "26 reviews"
+                })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
               className: "description",
@@ -10995,6 +11111,10 @@ var ProductView = function ProductView() {
                 disabled: quantity === 1,
                 children: "-"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                onClick: handleQuantityClick,
+                style: {
+                  cursor: 'pointer'
+                },
                 children: quantity
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                 onClick: increaseQuantity,
@@ -11296,6 +11416,77 @@ var ProductView = function ProductView() {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductView);
+
+/***/ }),
+
+/***/ "./resources/js/components/Search/search.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Search/search.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
+/* harmony import */ var _sass_components_search_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/search.scss */ "./resources/sass/components/search.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Search(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose;
+  var handleSearchSubmit = function handleSearchSubmit(e) {
+    e.preventDefault();
+    var query = e.target.elements.search.value;
+    if (query) {
+      console.log('Search query:', query);
+      onClose();
+    }
+  };
+  if (!isOpen) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "search-overlay",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "search-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+        onSubmit: handleSearchSubmit,
+        className: "search-form",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "search-input-wrapper",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            size: 20,
+            className: "search-input-icon"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            name: "search",
+            placeholder: "Search products...",
+            className: "search-input",
+            autoFocus: true
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "submit",
+          className: "search-submit-button",
+          children: "Search"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "button",
+          className: "search-close-button",
+          onClick: onClose,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            size: 20
+          })
+        })]
+      })
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
 
 /***/ }),
 
@@ -20953,7 +21144,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 28px;\n  color: #000000;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a {\n  color: #007bff;\n  text-decoration: none;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #333333;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0;\n  margin-top: 8px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  margin-bottom: 15px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  font-size: 14px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  white-space: nowrap;\n  transition: all 0.3s ease;\n  min-height: 40px;\n  flex: 1;\n  min-width: 120px;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(1).active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n  font-weight: normal;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(2).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3) {\n  background-color: #1E1E1E;\n  border-color: #1E1E1E;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3):hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos .card-logo {\n  width: 150px;\n  height: auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #000000;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #363333;\n  background-color: #ffffff;\n  box-sizing: border-box;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  outline: none;\n  border-color: #ff3333;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:invalid {\n  border-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  width: 100%;\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #000000;\n  font-size: 12px;\n  cursor: help;\n  color: #000000;\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  transform: translateY(-50%) scale(1.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n  transform: translate(-50%, -100%);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 10;\n  margin-bottom: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  height: auto;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-text {\n  font-size: 13px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .cash-on-delivery-text {\n  font-size: 14px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 12px;\n  border: 1px solid #cccccc;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-text {\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: bold;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n  box-shadow: 0 4px 8px rgba(255, 68, 68, 0.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 22px;\n  color: #000000;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 20px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link {\n  display: inline-block;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image {\n  width: 80px;\n  height: auto;\n  margin: 0 8px;\n  transition: transform 0.3s ease, border 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image:hover {\n  transform: scale(1.05);\n  border: 2px solid #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details p {\n  margin: 6px 0;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  color: #ff4444;\n  font-weight: bold;\n  font-size: 16px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 2px solid #cccccc;\n  padding: 6px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  position: relative;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  border-radius: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn::after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: -100%;\n  background: rgba(255, 68, 68, 0.2);\n  transition: all 0.4s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background: #ff4444;\n  color: #ffffff;\n  border-color: #ff4444;\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover::after {\n  left: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 12px;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: bold;\n  margin-top: 15px;\n  padding-top: 12px;\n  border-top: 1px solid #cccccc;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 8px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 15px;\n  min-height: 45px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #cc0000;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  background-color: #0070BA;\n  border-radius: 4px;\n  padding: 8px;\n  min-height: 45px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #005EA6;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n  max-height: 30px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn span {\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-information,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .cart-item-image {\n    width: 60px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-item .remove-btn {\n    width: 100%;\n    margin-top: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .shipping-option {\n    width: 100%;\n    min-height: 50px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: auto;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .expiry-input,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container {\n    max-width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n    right: 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .place-order-btn {\n    margin-top: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body .cart-details {\n    position: static;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".payment-methods-page-container {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #F0F8FF;\n  padding-top: 70px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content {\n  flex: 1;\n  width: 100%;\n  padding: 20px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body {\n  display: flex;\n  justify-content: space-between;\n  gap: 20px;\n  padding: 0 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n  display: flex;\n  gap: 20px;\n  width: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information,\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  flex: 1;\n  padding: 20px;\n  min-width: 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information h1 {\n  font-size: 28px;\n  color: #000000;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p {\n  font-size: 14px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a {\n  color: #007bff;\n  text-decoration: none;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information p a:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address {\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address p {\n  font-size: 14px;\n  color: #333333;\n  margin: 4px 0;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0;\n  margin-top: 8px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .delivery-address .change-btn:hover {\n  text-decoration: underline;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods {\n  margin-bottom: 15px;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n  font-size: 14px;\n  cursor: pointer;\n  text-align: center;\n  background-color: #1E1E1E;\n  color: #ffffff;\n  white-space: nowrap;\n  transition: all 0.3s ease;\n  min-height: 40px;\n  flex: 1;\n  min-width: 120px;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button.active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(1).active {\n  background-color: #ff3333;\n  border-color: #ff3333;\n  color: #ffffff;\n  font-weight: normal;\n  letter-spacing: 0.5px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(2).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3) {\n  background-color: #1E1E1E;\n  border-color: #1E1E1E;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3).active {\n  background-color: #ff4444;\n  border-color: #ff4444;\n  color: #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .payment-methods .payment-button:nth-child(3):hover {\n  background-color: #ff4444;\n  border-color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos {\n  display: flex;\n  gap: 8px;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .card-logos .card-logo {\n  width: 150px;\n  height: auto;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input {\n  width: 100%;\n  padding: 10px;\n  margin-bottom: 12px;\n  border: 1px solid #000000;\n  border-radius: 4px;\n  font-size: 14px;\n  color: #363333;\n  background-color: #ffffff;\n  box-sizing: border-box;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:focus {\n  outline: none;\n  border-color: #ff3333;\n  box-shadow: 0 0 5px rgba(255, 51, 51, 0.3);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input:invalid {\n  border-color: #ff3333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::-moz-placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .card-input::placeholder {\n  color: #999999;\n  font-size: 14px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc {\n  display: flex;\n  gap: 8px;\n  align-items: center;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .expiry-input {\n  flex: 2;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container {\n  flex: 1;\n  position: relative;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-input {\n  width: 100%;\n  padding-right: 25px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  border-radius: 50%;\n  border: 1px solid #000000;\n  font-size: 12px;\n  cursor: help;\n  color: #000000;\n  position: absolute;\n  right: 8px;\n  top: 50%;\n  transform: translateY(-50%);\n  transition: transform 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover {\n  transform: translateY(-50%) scale(1.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help:hover .cvc-tooltip {\n  opacity: 1;\n  visibility: visible;\n  transform: translate(-50%, -100%);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: #1E1E1E;\n  color: #ffffff;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  white-space: nowrap;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s ease, transform 0.2s ease;\n  z-index: 10;\n  margin-bottom: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .credit-debit-details .expiry-cvc .cvc-container .cvc-help .cvc-tooltip:after {\n  content: \"\";\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  transform: translateX(-50%);\n  border-width: 4px;\n  border-style: solid;\n  border-color: #1E1E1E transparent transparent transparent;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details {\n  text-align: center;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-illustration {\n  width: 120px;\n  height: auto;\n  margin-bottom: 12px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .paypal-details .paypal-text {\n  font-size: 13px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .payment-details .cash-on-delivery-text {\n  font-size: 14px;\n  color: #333333;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method {\n  margin-bottom: 15px;\n  background-color: #fff;\n  padding: 15px;\n  border: 2px solid #1E1E1E;\n  border-radius: 6px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method h3 {\n  font-size: 18px;\n  color: #000000;\n  margin-bottom: 10px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option {\n  display: flex;\n  align-items: center;\n  margin-bottom: 12px;\n  padding: 12px;\n  border: 1px solid #cccccc;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option input[type=radio] {\n  margin-right: 12px;\n  width: 18px;\n  height: 18px;\n  cursor: pointer;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content {\n  display: flex;\n  justify-content: space-between;\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-text {\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option .shipping-content .shipping-price {\n  font-size: 14px;\n  color: #ff4444;\n  font-weight: bold;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information .shipping-method .shipping-option:hover {\n  border-color: #ff4444;\n  box-shadow: 0 4px 8px rgba(255, 68, 68, 0.2);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n  position: sticky;\n  top: 70px;\n  align-self: flex-start;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details h2 {\n  font-size: 22px;\n  color: #000000;\n  margin-bottom: 15px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 20px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link {\n  display: inline-block;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image {\n  width: 80px;\n  height: auto;\n  margin: 0 8px;\n  transition: transform 0.3s ease, border 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image:hover {\n  transform: scale(1.05);\n  border: 2px solid #ffffff;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n  flex: 1;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details p {\n  margin: 6px 0;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n  color: #ff4444;\n  font-weight: bold;\n  font-size: 16px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n  background: none;\n  border: 2px solid #cccccc;\n  padding: 6px 12px;\n  cursor: pointer;\n  font-size: 14px;\n  position: relative;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  border-radius: 4px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn::after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: -100%;\n  background: rgba(255, 68, 68, 0.2);\n  transition: all 0.4s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n  background: #ff4444;\n  color: #ffffff;\n  border-color: #ff4444;\n  transform: scale(1.05);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover::after {\n  left: 100%;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n  transform: scale(0.95);\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-item {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 12px;\n  font-size: 14px;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total {\n  display: flex;\n  justify-content: space-between;\n  font-size: 16px;\n  font-weight: bold;\n  margin-top: 15px;\n  padding-top: 12px;\n  border-top: 1px solid #cccccc;\n  color: #333333;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .order-summary .summary-total span:last-child {\n  color: #ff4444;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn {\n  width: 100%;\n  padding: 8px;\n  background-color: #ff3333;\n  color: #ffffff;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 15px;\n  min-height: 45px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background-color 0.3s ease;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn:hover {\n  background-color: #cc0000;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn {\n  background-color: #0070BA;\n  border-radius: 4px;\n  padding: 8px;\n  min-height: 45px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn:hover {\n  background-color: #005EA6;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn .paypal-logo {\n  width: 40px;\n  height: auto;\n  max-height: 30px;\n}\n.payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .place-order-btn.paypal-btn span {\n  font-size: 16px;\n}\n@media (max-width: 768px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-page-container {\n    padding-top: 60px;\n    width: 100vw;\n    margin: 0;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-content {\n    padding: 0;\n    width: 100vw;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods-body {\n    padding: 0;\n    width: 100vw;\n    margin: 0;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section {\n    flex-direction: column;\n    align-items: stretch;\n    width: 100vw;\n    gap: 15px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .payment-information {\n    order: 1;\n    width: 100%;\n    padding: 15px 10px;\n    margin: 0;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details {\n    order: 2;\n    width: 100%;\n    padding: 15px 10px;\n    position: static;\n    margin: 0;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item {\n    flex-direction: row;\n    align-items: center;\n    gap: 10px;\n    width: 100%;\n    background-color: #1E1E1E;\n    padding: 10px;\n    border-radius: 6px;\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .product-link .cart-item-image {\n    width: 80px;\n    height: auto;\n    margin: 0;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details {\n    flex: 1;\n    color: #ffffff;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details p {\n    margin: 4px 0;\n    font-size: 14px;\n    color: #ffffff;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .cart-item-details .cart-item-price {\n    color: #ff4444;\n    font-weight: bold;\n    font-size: 16px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn {\n    width: auto;\n    padding: 6px 12px;\n    background: none;\n    border: 2px solid #ff4444;\n    color: #ff4444;\n    font-size: 14px;\n    border-radius: 4px;\n    transition: all 0.3s ease;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn::after {\n    display: none;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:hover {\n    background: #ff4444;\n    color: #ffffff;\n    transform: none;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .top-section .cart-details .cart-item .remove-btn:active {\n    transform: scale(0.95);\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods {\n    flex-direction: column;\n    gap: 10px;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods .payment-button {\n    width: 100%;\n    min-width: unset;\n    padding: 12px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .credit-debit-details .expiry-cvc {\n    flex-direction: column;\n    gap: 10px;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .credit-debit-details .expiry-cvc .expiry-input,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .credit-debit-details .expiry-cvc .cvc-container {\n    flex: unset;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .shipping-option {\n    padding: 10px;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .shipping-option .shipping-content {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 5px;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .place-order-btn {\n    padding: 12px;\n    width: 100%;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .delivery-address,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-details,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .shipping-method,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .order-summary {\n    width: 100%;\n    margin-left: 0;\n    margin-right: 0;\n  }\n}\n@media (max-width: 480px) {\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-information h1 {\n    font-size: 24px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-information .delivery-address,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-information .payment-details,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-information .shipping-method {\n    padding: 10px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .cart-details h2 {\n    font-size: 20px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .cart-details .cart-item .cart-item-image {\n    width: 60px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .cart-details .cart-item .cart-item-details p {\n    font-size: 13px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .cart-details .cart-item .cart-item-details .cart-item-price {\n    font-size: 14px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .cart-details .cart-item .remove-btn {\n    font-size: 12px;\n    padding: 4px 8px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .payment-methods .payment-button {\n    font-size: 13px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .card-input {\n    font-size: 13px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .shipping-option .shipping-text,\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .shipping-option .shipping-price {\n    font-size: 13px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .order-summary .summary-item {\n    font-size: 13px;\n  }\n  .payment-methods-page-container .payment-methods-content .payment-methods-body .order-summary .summary-total {\n    font-size: 14px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21002,7 +21193,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container .product-view-container .product-section {\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 400px;\n    height: 400px;\n    margin-bottom: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details {\n    padding-left: 0;\n    max-width: 100%;\n    text-align: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container {\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container h1 {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 24px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating {\n    justify-content: center;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .action-buttons {\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container .product-view-container .product-section .product-image {\n    max-width: 300px;\n    height: 300px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details h1 {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .product-view-container .product-section .product-details .price-rating .rating {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 250px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .reviewer-info {\n    margin-bottom: 10px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-header .rating {\n    margin-top: 5px;\n  }\n  .product-view-page .product-view-container .product-view-container .reviews-container .reviews-section .review .review-images .review-img {\n    width: 50px;\n    height: 50px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-view-page {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  background-color: #f0f7ff;\n  padding-top: 80px;\n}\n.product-view-page .product-view-container {\n  max-width: 1200px;\n  width: 100%;\n  margin: 0 auto;\n  padding: 20px;\n  box-sizing: border-box;\n}\n.product-view-page .product-view-container .product-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  margin-bottom: 40px;\n}\n.product-view-page .product-view-container .product-section .expand-icon {\n  display: none;\n}\n.product-view-page .product-view-container .product-section .product-image {\n  flex: 0 0 auto;\n  border: 1px solid #000000;\n  padding: 10px;\n  box-sizing: border-box;\n  width: 380px;\n  height: 380px;\n  background-color: transparent;\n}\n.product-view-page .product-view-container .product-section .product-image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details {\n  flex: 1;\n  padding-left: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  max-width: 600px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  margin-bottom: 5px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n  font-size: 28px;\n  margin: 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n  display: block;\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon:hover {\n  color: #0066cc;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon svg {\n  width: 30px;\n  height: 30px;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon .icon-desktop {\n  display: block;\n}\n.product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon .icon-mobile {\n  display: none;\n}\n.product-view-page .product-view-container .product-section .product-details .company {\n  color: #666;\n  font-size: 14px;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating {\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .price {\n  font-size: 24px;\n  font-weight: bold;\n  margin-right: 83px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .product-section .product-details .price-rating .rating .review-count {\n  margin-left: 5px;\n  font-size: 14px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .description {\n  font-size: 16px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 10px 0;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n  background: transparent;\n  border: 2px solid #494949;\n  padding: 5px 10px;\n  cursor: pointer;\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  color: #494949;\n  border-radius: 4px;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:hover {\n  background: #494949;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:disabled {\n  border-color: #eee;\n  color: #eee;\n  cursor: not-allowed;\n  background: transparent;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n  border-color: #FF1C1C;\n  color: #FF1C1C;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n  background: #FF1C1C;\n  color: #fff;\n}\n.product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n  font-size: 16px;\n  width: 30px;\n  text-align: center;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  margin: 10px 0;\n  width: 100%;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button {\n  padding: 12px;\n  font-size: 16px;\n  border: none;\n  cursor: pointer;\n  color: white;\n  background-color: #ff3333;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .action-buttons button:hover {\n  background-color: #e60000;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info {\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.3s ease;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover:hover {\n  color: #0066cc;\n  text-decoration: underline;\n}\n.product-view-page .product-view-container .reviews-container {\n  margin-top: 40px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n  background-color: #F0F8FF;\n  padding: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section h2 {\n  font-size: 20px;\n  margin-bottom: 10px;\n  font-family: \"Inter\", sans-serif;\n  font-weight: 600;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n  font-size: 24px;\n  font-weight: bold;\n  color: #000;\n  margin-right: 10px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n  display: flex;\n  gap: 5px;\n  margin-left: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn.active {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n  margin-left: 20px;\n  padding: 5px 10px;\n  border: 1px solid #ddd;\n  background-color: #fff;\n  cursor: pointer;\n  font-size: 14px;\n  border-radius: 3px;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn:hover {\n  background-color: #f0f0f0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n  max-height: 400px;\n  overflow-y: auto;\n  padding-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n  border-bottom: 1px solid #ddd;\n  padding: 10px 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n  font-size: 14px;\n  font-weight: bold;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n  font-size: 12px;\n  color: #666;\n  font-family: \"Inter\", sans-serif;\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n  margin: 0;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n  font-size: 14px;\n  color: #666;\n  margin: 5px 0;\n  font-family: \"Inter\", sans-serif;\n  font-style: italic;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n  font-size: 14px;\n  color: #333;\n  margin: 10px 0;\n  font-family: \"Inter\", sans-serif;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n  display: flex;\n  gap: 10px;\n  margin-top: 10px;\n}\n.product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n  width: 80px;\n  height: 80px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  border: 1px solid #ddd;\n}\n@media (max-width: 768px) {\n  .product-view-page .product-view-container {\n    padding: 10px;\n  }\n  .product-view-page .product-view-container .product-section {\n    flex-direction: column;\n    align-items: flex-start;\n    margin-bottom: 20px;\n    position: relative;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon {\n    display: block;\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    cursor: pointer;\n    transition: color 0.3s ease;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon:hover {\n    color: #0066cc;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon svg {\n    width: 24px;\n    height: 24px;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon .icon-desktop {\n    display: none;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon .icon-mobile {\n    display: block;\n  }\n  .product-view-page .product-view-container .product-section .product-image {\n    width: 100%;\n    max-width: 300px;\n    height: auto;\n    border: none;\n    padding: 0;\n    margin: 40px auto 15px auto;\n  }\n  .product-view-page .product-view-container .product-section .product-image img {\n    width: 100%;\n    height: auto;\n    -o-object-fit: contain;\n       object-fit: contain;\n  }\n  .product-view-page .product-view-container .product-section .product-details {\n    padding: 0;\n    align-items: flex-start;\n    text-align: left;\n    max-width: 100%;\n  }\n  .product-view-page .product-view-container .product-section .product-details .product-title-container {\n    flex-direction: row;\n    justify-content: flex-start;\n    align-items: center;\n    width: 100%;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n    font-size: 20px;\n    line-height: 1.2;\n    font-weight: 600;\n  }\n  .product-view-page .product-view-container .product-section .product-details .product-title-container .expand-icon {\n    display: none;\n  }\n  .product-view-page .product-view-container .product-section .product-details .company {\n    font-size: 14px;\n    color: #666;\n    margin: 5px 0;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating {\n    flex-direction: column;\n    justify-content: flex-start;\n    gap: 5px;\n    margin: 10px 0;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 20px;\n    font-weight: bold;\n    color: #000;\n    margin-left: -5px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .rating {\n    display: flex;\n    align-items: center;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n    width: 16px;\n    height: 16px;\n    fill: #FFD700;\n    color: #FFD700;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .rating .review-count {\n    font-size: 14px;\n    color: #666;\n    margin-left: 5px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .description {\n    font-size: 14px;\n    color: #666;\n    line-height: 1.4;\n    margin: 10px 0;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    gap: 10px;\n    margin: 15px 0;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n    width: 40px;\n    height: 40px;\n    font-size: 18px;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    background: #fff;\n    color: #000;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button:first-child {\n    background: #ddd;\n    color: #000;\n    border-color: #ddd;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button:first-child:hover {\n    background: #ccc;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button:first-child:disabled {\n    background: #eee;\n    color: #ccc;\n    border-color: #eee;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3) {\n    background: #ff3333;\n    color: #fff;\n    border-color: #ff3333;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button:nth-child(3):hover {\n    background: #e60000;\n    color: #fff;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n    font-size: 16px;\n    width: 40px;\n    text-align: center;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    padding: 8px 0;\n    background: #fff;\n    cursor: pointer;\n    transition: background-color 0.3s ease;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls span:hover {\n    background: #f0f0f0;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons {\n    flex-direction: row;\n    justify-content: flex-start;\n    gap: 10px;\n    width: 100%;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button {\n    flex: 1;\n    padding: 12px;\n    font-size: 14px;\n    border-radius: 4px;\n    font-weight: 500;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button.add-to-cart {\n    background-color: #000;\n    color: #fff;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button.add-to-cart:hover {\n    background-color: #333;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button.buy-now {\n    background-color: #ff3333;\n    color: #fff;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button.buy-now:hover {\n    background-color: #e60000;\n  }\n  .product-view-page .product-view-container .product-section .product-details .shipping-info {\n    display: flex;\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 5px;\n    margin-top: 15px;\n    padding: 0 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n    font-size: 12px;\n    color: #666;\n  }\n  .product-view-page .product-view-container .reviews-container {\n    margin-top: 20px;\n    padding: 15px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section h2 {\n    font-size: 18px;\n    text-align: left;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n    font-size: 20px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons {\n    flex-wrap: wrap;\n    justify-content: flex-start;\n    margin-left: 0;\n    gap: 8px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .filter-buttons .filter-btn {\n    font-size: 12px;\n    padding: 4px 8px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .media-btn {\n    margin-left: 0;\n    font-size: 12px;\n    padding: 4px 8px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 350px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review {\n    padding: 8px 0;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 8px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n    width: 25px;\n    height: 25px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n    font-size: 13px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n    font-size: 11px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n    width: 16px;\n    height: 16px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n    font-size: 12px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n    font-size: 13px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images {\n    flex-wrap: wrap;\n    gap: 8px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 70px;\n    height: 70px;\n  }\n}\n@media (max-width: 480px) {\n  .product-view-page .product-view-container {\n    padding: 8px;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon {\n    top: 8px;\n    right: 8px;\n  }\n  .product-view-page .product-view-container .product-section .expand-icon svg {\n    width: 20px;\n    height: 20px;\n  }\n  .product-view-page .product-view-container .product-section .product-image {\n    max-width: 250px;\n    margin-top: 35px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .product-title-container h1 {\n    font-size: 18px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .price {\n    font-size: 18px;\n    margin-left: -4px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .rating svg {\n    width: 14px;\n    height: 14px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .price-rating .rating .review-count {\n    font-size: 12px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .description {\n    font-size: 13px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls button {\n    width: 35px;\n    height: 35px;\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .quantity-controls span {\n    font-size: 14px;\n    width: 35px;\n    padding: 6px 0;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons {\n    gap: 8px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .action-buttons button {\n    font-size: 13px;\n    padding: 10px;\n  }\n  .product-view-page .product-view-container .product-section .product-details .shipping-info .shipping-hover {\n    font-size: 11px;\n  }\n  .product-view-page .product-view-container .reviews-container {\n    padding: 10px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section h2 {\n    font-size: 16px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .overall-rating .overall-score {\n    font-size: 18px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll {\n    max-height: 300px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .pfp {\n    width: 20px;\n    height: 20px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .reviewer-name {\n    font-size: 12px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .reviewer-info .review-date {\n    font-size: 10px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-header .rating svg {\n    width: 14px;\n    height: 14px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .best-feature {\n    font-size: 11px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-text {\n    font-size: 12px;\n  }\n  .product-view-page .product-view-container .reviews-container .reviews-section .reviews-scroll .review .review-images .review-img {\n    width: 60px;\n    height: 60px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21051,6 +21242,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n\n.modal-content {\n  background-color: #fff;\n  padding: 25px;\n  border-radius: 8px;\n  width: 400px;\n  max-width: 90%;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  border: 1px solid #ccc;\n  text-align: left;\n}\n.modal-content h2 {\n  font-size: 1.5rem;\n  color: #000;\n  margin-bottom: 15px;\n  text-align: left;\n  font-weight: 600;\n}\n.modal-content .star-rating {\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  margin-bottom: 20px;\n}\n.modal-content .star-rating .star {\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n}\n.modal-content .star-rating .star svg {\n  transition: fill 0.2s ease, stroke 0.2s ease;\n}\n.modal-content label {\n  font-size: 1rem;\n  color: #333;\n  font-weight: 500;\n  display: block;\n  margin-bottom: 10px;\n}\n.modal-content textarea {\n  width: 100%;\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  font-size: 0.9rem;\n  resize: none;\n  background-color: #1E1E1E;\n  color: #fff;\n  margin-bottom: 20px;\n}\n.modal-content textarea:focus {\n  outline: none;\n  border-color: #666;\n}\n.modal-content .button-group {\n  display: flex;\n  justify-content: flex-start;\n  gap: 15px;\n}\n.modal-content .button-group .btn {\n  padding: 10px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1rem;\n  font-weight: 500;\n  width: 140px;\n  transition: background-color 0.3s ease;\n}\n.modal-content .button-group .btn.submit-btn {\n  background-color: #000;\n  color: #fff;\n}\n.modal-content .button-group .btn.submit-btn:hover {\n  background-color: #333;\n}\n.modal-content .button-group .btn.submit-btn:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\n.modal-content .button-group .btn.cancel-btn {\n  background-color: #FF0000;\n  color: #fff;\n}\n.modal-content .button-group .btn.cancel-btn:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 500px) {\n  .modal-content {\n    padding: 20px;\n    width: 90%;\n  }\n  .modal-content h2 {\n    font-size: 1.3rem;\n  }\n  .modal-content .star-rating .star svg {\n    width: 20px;\n    height: 20px;\n  }\n  .modal-content label {\n    font-size: 0.9rem;\n  }\n  .modal-content textarea {\n    font-size: 0.85rem;\n  }\n  .modal-content .button-group {\n    gap: 10px;\n  }\n  .modal-content .button-group .btn {\n    padding: 8px 0;\n    font-size: 0.9rem;\n    width: 120px;\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/search.scss":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/search.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".search-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 1001;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  padding-top: 80px;\n}\n.search-overlay .search-container {\n  background: rgba(255, 255, 255, 0.1);\n  backdrop-filter: blur(10px);\n  -webkit-backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  width: 90%;\n  max-width: 600px;\n  padding: 20px;\n  border-radius: 12px;\n  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.search-overlay .search-container .search-form {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n}\n.search-overlay .search-container .search-form .search-input-wrapper {\n  position: relative;\n  flex-grow: 1;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-77%);\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input {\n  width: 100%;\n  padding: 10px 10px 10px 40px;\n  background-color: #333333;\n  border: none;\n  border-radius: 4px;\n  color: #ffffff;\n  font-size: 16px;\n  outline: none;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::-moz-placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input:focus {\n  border: 1px solid #ff4444;\n}\n.search-overlay .search-container .search-form .search-submit-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 10px 20px;\n  margin-bottom: 15px;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.search-overlay .search-container .search-form .search-submit-button:hover {\n  background-color: #cc0000;\n}\n.search-overlay .search-container .search-form .search-close-button {\n  background: none;\n  border: none;\n  cursor: pointer;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  padding: 10px;\n}\n.search-overlay .search-container .search-form .search-close-button svg {\n  transition: color 0.3s ease;\n  margin-bottom: 15px;\n}\n.search-overlay .search-container .search-form .search-close-button svg:hover {\n  color: #ff4444;\n}\n\n@media (max-width: 768px) {\n  .search-overlay {\n    padding-top: 100px;\n  }\n  .search-overlay .search-container {\n    width: 50%;\n    padding: 5px;\n  }\n  .search-overlay .search-container .search-form {\n    flex-direction: row;\n    gap: 8px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input {\n    font-size: 14px;\n    padding: 8px 8px 8px 36px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n    left: 8px;\n    top: 90%;\n    transform: translateY(-50%);\n  }\n  .search-overlay .search-container .search-form .search-submit-button {\n    padding: 8px 16px;\n    font-size: 14px;\n  }\n  .search-overlay .search-container .search-form .search-close-button {\n    padding: 8px;\n  }\n  .search-overlay .search-container .search-form .search-close-button svg {\n    font-size: 18px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21122,7 +21337,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown {\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #1a1a1a;\n  padding: 10px 0;\n  min-width: 200px;\n  z-index: 1001;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item {\n  display: block;\n  padding: 10px 20px;\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item:hover {\n  background-color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  opacity: 0;\n  visibility: hidden;\n  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  transform: translateX(0);\n  opacity: 1;\n  visibility: visible;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n  opacity: 0;\n  transform: translateX(-20px);\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(1) {\n  transition-delay: 0.1s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(2) {\n  transition-delay: 0.2s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(3) {\n  transition-delay: 0.3s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(4) {\n  transition-delay: 0.4s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(5) {\n  transition-delay: 0.5s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(6) {\n  transition-delay: 0.6s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.3s ease-in-out;\n  padding-left: 20px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu.open {\n  max-height: 200px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item {\n  display: block;\n  padding: 8px 0;\n  color: #cccccc;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay.open .customer-mobile-nav .customer-nav-link {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74333,6 +74548,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/sass/components/search.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/components/search.scss ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_search_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./search.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/search.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_search_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_search_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./resources/sass/components/shop.scss":
 /*!*********************************************!*\
   !*** ./resources/sass/components/shop.scss ***!
@@ -78571,6 +78816,35 @@ var defaultAttributes = {
 
 /***/ }),
 
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconArrowLeft.mjs":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconArrowLeft.mjs ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconArrowLeft)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconArrowLeft = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "arrow-left", "IconArrowLeft", [["path", { "d": "M5 12l14 0", "key": "svg-0" }], ["path", { "d": "M5 12l6 6", "key": "svg-1" }], ["path", { "d": "M5 12l6 -6", "key": "svg-2" }]]);
+
+
+//# sourceMappingURL=IconArrowLeft.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs":
 /*!*********************************************************************!*\
   !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs ***!
@@ -78625,6 +78899,35 @@ var IconCheck = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["defau
 
 
 //# sourceMappingURL=IconCheck.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconChevronDown)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconChevronDown = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "chevron-down", "IconChevronDown", [["path", { "d": "M6 9l6 6l6 -6", "key": "svg-0" }]]);
+
+
+//# sourceMappingURL=IconChevronDown.mjs.map
 
 
 /***/ }),

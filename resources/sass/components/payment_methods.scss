@@ -526,67 +526,226 @@
         }
       }
 
+      // Mobile responsiveness (up to 768px) with full-screen adjustments
       @media (max-width: 768px) {
+        .payment-methods-page-container {
+          padding-top: 60px;
+          width: 100vw;
+          margin: 0;
+        }
+
+        .payment-methods-content {
+          padding: 0;
+          width: 100vw;
+        }
+
         .payment-methods-body {
+          padding: 0;
+          width: 100vw;
+          margin: 0;
+        }
+
+        .top-section {
           flex-direction: column;
           align-items: stretch;
+          width: 100vw;
+          gap: 15px;
 
-          .payment-information,
-          .cart-details {
+          .payment-information {
+            order: 1;
             width: 100%;
+            padding: 15px 10px;
+            margin: 0;
+          }
+
+          .cart-details {
+            order: 2;
+            width: 100%;
+            padding: 15px 10px;
+            position: static;
+            margin: 0;
+
+            .cart-item {
+              flex-direction: row; // Align items in a row to match the image
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+              background-color: #1E1E1E; // Black background
+              padding: 10px; // Add padding inside the cart item
+              border-radius: 6px; // Rounded corners
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+
+              .product-link {
+                .cart-item-image {
+                  width: 80px; // Slightly larger image to match the image
+                  height: auto;
+                  margin: 0;
+                }
+              }
+
+              .cart-item-details {
+                flex: 1;
+                color: #ffffff; // White text
+
+                p {
+                  margin: 4px 0;
+                  font-size: 14px;
+                  color: #ffffff; // White text for product name and quantity
+                }
+
+                .cart-item-price {
+                  color: #ff4444; // Red price
+                  font-weight: bold;
+                  font-size: 16px;
+                }
+              }
+
+              .remove-btn {
+                width: auto; // Not full width, to match the image
+                padding: 6px 12px;
+                background: none;
+                border: 2px solid #ff4444; // Red border
+                color: #ff4444; // Red text
+                font-size: 14px;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+
+                &::after {
+                  display: none; // Remove the hover effect animation
+                }
+
+                &:hover {
+                  background: #ff4444;
+                  color: #ffffff;
+                  transform: none; // Remove scale effect
+                }
+
+                &:active {
+                  transform: scale(0.95);
+                }
+              }
+            }
+          }
+        }
+
+        .payment-methods {
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+
+          .payment-button {
+            width: 100%;
+            min-width: unset;
+            padding: 12px;
+          }
+        }
+
+        .credit-debit-details {
+          .expiry-cvc {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            .expiry-input,
+            .cvc-container {
+              flex: unset;
+              width: 100%;
+            }
+          }
+        }
+
+        .shipping-option {
+          padding: 10px;
+          width: 100%;
+
+          .shipping-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            width: 100%;
+          }
+        }
+
+        .place-order-btn {
+          padding: 12px;
+          width: 100%;
+        }
+
+        .delivery-address,
+        .payment-details,
+        .shipping-method,
+        .order-summary {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+
+      // Extra small screens (below 480px)
+      @media (max-width: 480px) {
+        .payment-information {
+          h1 {
+            font-size: 24px;
+          }
+
+          .delivery-address,
+          .payment-details,
+          .shipping-method {
+            padding: 10px;
+          }
+        }
+
+        .cart-details {
+          h2 {
+            font-size: 20px;
           }
 
           .cart-item {
-            flex-direction: column;
-            align-items: flex-start;
-
             .cart-item-image {
-              width: 60px;
+              width: 60px; // Smaller image for very small screens
+            }
+
+            .cart-item-details {
+              p {
+                font-size: 13px;
+              }
+
+              .cart-item-price {
+                font-size: 14px;
+              }
             }
 
             .remove-btn {
-              width: 100%;
-              margin-top: 8px;
+              font-size: 12px;
+              padding: 4px 8px;
             }
           }
+        }
 
-          .shipping-option {
-            width: 100%;
-            min-height: 50px;
+        .payment-methods {
+          .payment-button {
+            font-size: 13px;
+          }
+        }
+
+        .card-input {
+          font-size: 13px;
+        }
+
+        .shipping-option {
+          .shipping-text,
+          .shipping-price {
+            font-size: 13px;
+          }
+        }
+
+        .order-summary {
+          .summary-item {
+            font-size: 13px;
           }
 
-          .payment-methods {
-            flex-direction: column;
-            gap: 8px;
-
-            .payment-button {
-              width: 100%;
-              min-width: auto;
-            }
-          }
-
-          .credit-debit-details {
-            .expiry-cvc {
-              flex-direction: column;
-              gap: 8px;
-
-              .expiry-input,
-              .cvc-container {
-                max-width: 100%;
-              }
-
-              .cvc-container .cvc-help {
-                right: 8px;
-              }
-            }
-          }
-
-          .place-order-btn {
-            margin-top: 12px;
-          }
-
-          .cart-details {
-            position: static;
+          .summary-total {
+            font-size: 14px;
           }
         }
       }
