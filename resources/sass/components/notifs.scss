@@ -1,0 +1,149 @@
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutSlideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.notifs-modal {
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  z-index: 1001;
+  color: #ffffff;
+  animation: fadeInSlideDown 0.3s ease-out forwards;
+
+  &.closing {
+    animation: fadeOutSlideUp 0.3s ease-in forwards;
+  }
+
+  .notifs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .notifs-close {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ff4444;
+      }
+    }
+  }
+
+  .notifs-body {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px 15px;
+
+    .notif-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      // Default state
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      span {
+        font-size: 12px;
+        color: #cccccc;
+      }
+
+      // Hover state with glassy effect, full width
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        margin-left: -15px; // Negate the parent padding
+        margin-right: -15px; // Negate the parent padding
+        padding-left: 15px; // Restore padding for content
+        padding-right: 15px; // Restore padding for content
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #cccccc;
+      text-align: center;
+    }
+  }
+
+  .notifs-footer {
+    border-top: 1px solid #333;
+    padding: 0;
+
+    .notifs-view-all {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4444;
+      color: #ffffff;
+      border: none;
+      border-radius: 0 0 4px 4px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .notifs-modal {
+    right: 10px;
+    width: 250px;
+
+    .notifs-footer {
+      .notifs-view-all {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./../../../sass/components/topvar_notlogin.scss";
 import logoImage from "../../../../resources/sass/img/mainlogo.svg";
-import { FaShoppingBag } from 'react-icons/fa';
+import { FaShoppingBag, FaBell } from 'react-icons/fa';
 import { IconSearch, IconMenu2, IconX, IconChevronDown } from '@tabler/icons-react';
-import Search from '../Search/search'; // Import the Search component
+import Search from '../Search/search';
+import Notifs from '../Customer/notifis';
 
 function CustomerNavbar({ onCartClick, cartCount = 0 }) {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
   const [isSupportDropdownOpen, setIsSupportDropdownOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // State for search bar visibility
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isNotifsOpen, setIsNotifsOpen] = useState(false);
 
   const handleHomeClick = (e) => {
     e.preventDefault();
@@ -82,7 +84,8 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
     setIsMenuOpen(!isMenuOpen);
     setIsShopDropdownOpen(false);
     setIsSupportDropdownOpen(false);
-    setIsSearchOpen(false); // Close search bar when opening mobile menu
+    setIsSearchOpen(false);
+    setIsNotifsOpen(false);
   };
 
   const toggleShopDropdown = (e) => {
@@ -99,7 +102,20 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
-    setIsMenuOpen(false); // Close mobile menu when opening search bar
+    setIsMenuOpen(false);
+    setIsNotifsOpen(false);
+  };
+
+  const toggleNotifs = () => {
+    if (isNotifsOpen) {
+      // If the modal is open, trigger the closing animation by setting isNotifsOpen to false
+      setIsNotifsOpen(false);
+    } else {
+      // If the modal is closed, open it
+      setIsNotifsOpen(true);
+    }
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
   };
 
   return (
@@ -138,6 +154,10 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
           <a href="#cart" className="customer-cart-icon" onClick={(e) => { e.preventDefault(); onCartClick(); }}>
             <FaShoppingBag />
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </a>
+          <a href="#notifs" className="customer-notifs-icon" onClick={(e) => { e.preventDefault(); toggleNotifs(); }}>
+            <FaBell size={24} />
+            {/* {notifsCount > 0 && <span className="notifs-count">{notifsCount}</span>} */}
           </a>
           <a href="#login" className="customer-login-button" onClick={handleLoginClick}>
             Login
@@ -186,8 +206,8 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
         </nav>
       </div>
 
-      {/* Render the Search component */}
       <Search isOpen={isSearchOpen} onClose={toggleSearch} />
+      <Notifs isOpen={isNotifsOpen} onClose={toggleNotifs} />
     </header>
   );
 }

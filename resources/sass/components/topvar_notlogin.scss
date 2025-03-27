@@ -26,7 +26,7 @@
     position: relative;
 
     .customer-mobile-menu {
-      display: none; // Hidden on desktop
+      display: none;
       cursor: pointer;
 
       svg {
@@ -35,7 +35,7 @@
     }
 
     .customer-logo {
-      margin-right: 20px; // Add some space between logo and nav
+      margin-right: 20px;
       padding-left: 0;
 
       .customer-logo-img {
@@ -47,7 +47,7 @@
     .customer-nav-links {
       display: flex;
       gap: 30px;
-      flex-grow: 1; // Allows nav to take available space on the left
+      flex-grow: 1;
 
       .customer-nav-link {
         color: #ffffff;
@@ -56,21 +56,21 @@
         transition: color 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 5px; // Space between text and icon (for Support dropdown)
+        gap: 5px;
 
         &:hover {
           color: #ff4444;
         }
 
         &.active {
-          color: #ff4444; // Highlight when dropdown is open (for Support)
+          color: #ff4444;
         }
 
         .dropdown-icon {
-          transition: transform 0.3s ease; // Smooth rotation animation
+          transition: transform 0.3s ease;
 
           &.open {
-            transform: rotate(180deg); // Rotate icon when dropdown is open
+            transform: rotate(180deg);
           }
         }
       }
@@ -111,7 +111,7 @@
     }
 
     .customer-auth-section {
-      margin-left: auto; // Pushes auth section to the right
+      margin-left: auto;
       padding-right: 0;
       display: flex;
       align-items: center;
@@ -148,6 +148,37 @@
         }
 
         .cart-count {
+          position: absolute;
+          top: -5px;
+          right: -10px;
+          background: #FF1C1C;
+          color: #ffffff;
+          border-radius: 50%;
+          padding: 2px 6px;
+          font-size: 12px;
+          min-width: 18px;
+          text-align: center;
+        }
+      }
+
+      .customer-notifs-icon {
+        color: #F0F8FF;
+        font-size: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+
+        svg {
+          font-size: 24px;
+        }
+
+        &:hover {
+          color: #ff4444;
+        }
+
+        .notifs-count {
           position: absolute;
           top: -5px;
           right: -10px;
@@ -231,17 +262,17 @@
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         display: flex;
         align-items: center;
-        gap: 5px; // Space between text and icon
+        gap: 5px;
 
         &.active {
-          color: #ff4444; // Highlight when dropdown is open
+          color: #ff4444;
         }
 
         .dropdown-icon {
-          transition: transform 0.3s ease; // Smooth rotation animation
+          transition: transform 0.3s ease;
 
           &.open {
-            transform: rotate(180deg); // Rotate icon when dropdown is open
+            transform: rotate(180deg);
           }
         }
 
@@ -264,7 +295,7 @@
           padding-left: 20px;
 
           &.open {
-            max-height: 200px; // Adjust based on content height
+            max-height: 200px;
           }
 
           .mobile-dropdown-item {
@@ -298,7 +329,6 @@
   padding-top: 70px;
 }
 
-// Responsive design for mobile (≤768px)
 @media (max-width: 768px) {
   .customer-topbar {
     padding: 30px 20px;
@@ -354,6 +384,21 @@
           }
 
           .cart-count {
+            top: -3px;
+            right: -8px;
+            font-size: 10px;
+            padding: 1px 4px;
+          }
+        }
+
+        .customer-notifs-icon {
+          color: #F0F8FF;
+
+          svg {
+            font-size: 24px;
+          }
+
+          .notifs-count {
             top: -3px;
             right: -8px;
             font-size: 10px;

@@ -9513,6 +9513,114 @@ function CheckoutAddress() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Customer/notifis.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/Customer/notifis.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sass_components_notifs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/notifs.scss */ "./resources/sass/components/notifs.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+function Notifs(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose;
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isClosing = _useState2[0],
+    setIsClosing = _useState2[1];
+  var notifications = [{
+    id: 1,
+    message: 'Your order #1234 has been shipped!',
+    time: '2 hours ago'
+  }, {
+    id: 2,
+    message: 'New product added to the store.',
+    time: '5 hours ago'
+  }, {
+    id: 3,
+    message: 'Your payment was successful.',
+    time: '1 day ago'
+  }];
+  var handleViewAll = function handleViewAll() {
+    navigate('/notifications');
+    setIsClosing(true); // Trigger closing animation
+  };
+  var handleClose = function handleClose() {
+    setIsClosing(true); // Trigger closing animation
+  };
+
+  // Handle the closing animation and call onClose when done
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isClosing) {
+      var timer = setTimeout(function () {
+        onClose(); // Call the onClose prop after the animation completes
+        setIsClosing(false); // Reset the closing state
+      }, 300); // Match the animation duration (0.3s)
+      return function () {
+        return clearTimeout(timer);
+      };
+    }
+  }, [isClosing, onClose]);
+
+  // Render the modal only if it's open or in the process of closing
+  if (!isOpen && !isClosing) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "notifs-modal ".concat(isClosing ? 'closing' : ''),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "notifs-header",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+        children: "Notifications"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "notifs-close",
+        onClick: handleClose,
+        children: "\u2715"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "notifs-body",
+      children: notifications.length > 0 ? notifications.map(function (notif) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "notif-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: notif.message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            children: notif.time
+          })]
+        }, notif.id);
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "No new notifications."
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "notifs-footer",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "notifs-view-all",
+        onClick: handleViewAll,
+        children: "View All"
+      })
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Notifs);
+
+/***/ }),
+
 /***/ "./resources/js/components/Customer/payment_methods.js":
 /*!*************************************************************!*\
   !*** ./resources/js/components/Customer/payment_methods.js ***!
@@ -9913,16 +10021,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_topvar_notlogin_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/topvar_notlogin.scss */ "./resources/sass/components/topvar_notlogin.scss");
 /* harmony import */ var _resources_sass_img_mainlogo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/mainlogo.svg */ "./resources/sass/img/mainlogo.svg");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
 /* harmony import */ var _Search_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Search/search */ "./resources/js/components/Search/search.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Customer_notifis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Customer/notifis */ "./resources/js/components/Customer/notifis.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -9935,13 +10044,14 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
- // Import the Search component
+
+
 
 function CustomerNavbar(_ref) {
   var onCartClick = _ref.onCartClick,
     _ref$cartCount = _ref.cartCount,
     cartCount = _ref$cartCount === void 0 ? 0 : _ref$cartCount;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isMenuOpen = _useState2[0],
@@ -9957,8 +10067,11 @@ function CustomerNavbar(_ref) {
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
     isSearchOpen = _useState8[0],
-    setIsSearchOpen = _useState8[1]; // State for search bar visibility
-
+    setIsSearchOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    isNotifsOpen = _useState10[0],
+    setIsNotifsOpen = _useState10[1];
   var handleHomeClick = function handleHomeClick(e) {
     e.preventDefault();
     navigate('/');
@@ -10018,7 +10131,8 @@ function CustomerNavbar(_ref) {
     setIsMenuOpen(!isMenuOpen);
     setIsShopDropdownOpen(false);
     setIsSupportDropdownOpen(false);
-    setIsSearchOpen(false); // Close search bar when opening mobile menu
+    setIsSearchOpen(false);
+    setIsNotifsOpen(false);
   };
   var toggleShopDropdown = function toggleShopDropdown(e) {
     e.preventDefault();
@@ -10032,66 +10146,78 @@ function CustomerNavbar(_ref) {
   };
   var toggleSearch = function toggleSearch() {
     setIsSearchOpen(!isSearchOpen);
-    setIsMenuOpen(false); // Close mobile menu when opening search bar
+    setIsMenuOpen(false);
+    setIsNotifsOpen(false);
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("header", {
+  var toggleNotifs = function toggleNotifs() {
+    if (isNotifsOpen) {
+      // If the modal is open, trigger the closing animation by setting isNotifsOpen to false
+      setIsNotifsOpen(false);
+    } else {
+      // If the modal is closed, open it
+      setIsNotifsOpen(true);
+    }
+    setIsMenuOpen(false);
+    setIsSearchOpen(false);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("header", {
     className: "customer-topbar",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "customer-topbar-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "customer-mobile-menu",
         onClick: toggleMenu,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
           size: 24,
           color: "#ffffff"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "customer-logo",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
           src: _resources_sass_img_mainlogo_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
           alt: "Customer Logo",
           className: "customer-logo-img"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("nav", {
         className: "customer-nav-links ".concat(isMenuOpen ? 'open' : ''),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#home",
           className: "customer-nav-link",
           onClick: handleHomeClick,
           children: "Home"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#shop",
           className: "customer-nav-link",
           onClick: handleShopClick,
           children: "Shop"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#start-selling",
           className: "customer-nav-link",
           onClick: handleStartSellingClick,
           children: "Start Selling"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#about",
           className: "customer-nav-link",
           onClick: handleAboutClick,
           children: "About"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "dropdown",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
             href: "#support",
             className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
             onClick: toggleSupportDropdown,
-            children: ["Support", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            children: ["Support", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
               size: 16,
               className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "dropdown-menu ".concat(isSupportDropdownOpen ? 'open' : ''),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#get-help",
               className: "dropdown-item",
               onClick: handleGetHelpClick,
               children: "Get Help"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#vero-store-support",
               className: "dropdown-item",
               onClick: handleVeroStoreSupportClick,
@@ -10099,51 +10225,61 @@ function CustomerNavbar(_ref) {
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "customer-auth-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#search",
           className: "customer-search-icon",
           onClick: function onClick(e) {
             e.preventDefault();
             toggleSearch();
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
             size: 24
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
           href: "#cart",
           className: "customer-cart-icon",
           onClick: function onClick(e) {
             e.preventDefault();
             onCartClick();
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_9__.FaShoppingBag, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaShoppingBag, {}), cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
             className: "cart-count",
             children: cartCount
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+          href: "#notifs",
+          className: "customer-notifs-icon",
+          onClick: function onClick(e) {
+            e.preventDefault();
+            toggleNotifs();
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaBell, {
+            size: 24
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#login",
           className: "customer-login-button",
           onClick: handleLoginClick,
           children: "Login"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "customer-mobile-overlay ".concat(isMenuOpen ? 'open' : ''),
       onClick: function onClick(e) {
         return e.stopPropagation();
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "customer-mobile-exit",
         onClick: toggleMenu,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
           size: 24,
           color: "#ffffff"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("nav", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("nav", {
         className: "customer-mobile-nav",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#home",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10151,19 +10287,19 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "HOME"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "mobile-dropdown",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
             href: "#shop",
             className: "customer-nav-link ".concat(isShopDropdownOpen ? 'active' : ''),
             onClick: toggleShopDropdown,
-            children: ["SHOP", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            children: ["SHOP", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
               size: 18,
               className: "dropdown-icon ".concat(isShopDropdownOpen ? 'open' : '')
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mobile-dropdown-menu ".concat(isShopDropdownOpen ? 'open' : ''),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#gaming-mouse",
               className: "mobile-dropdown-item",
               onClick: function onClick(e) {
@@ -10171,7 +10307,7 @@ function CustomerNavbar(_ref) {
                 toggleMenu();
               },
               children: "Gaming Mouse"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#wired-wireless-mouse",
               className: "mobile-dropdown-item",
               onClick: function onClick(e) {
@@ -10179,7 +10315,7 @@ function CustomerNavbar(_ref) {
                 toggleMenu();
               },
               children: "Wired & Wireless Mouse"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#office-mouse",
               className: "mobile-dropdown-item",
               onClick: function onClick(e) {
@@ -10189,7 +10325,7 @@ function CustomerNavbar(_ref) {
               children: "Office Mouse"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#start-selling",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10197,7 +10333,7 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "START SELLING"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#about",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10205,19 +10341,19 @@ function CustomerNavbar(_ref) {
             toggleMenu();
           },
           children: "ABOUT"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "mobile-dropdown",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("a", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
             href: "#support",
             className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
             onClick: toggleSupportDropdown,
-            children: ["SUPPORT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            children: ["SUPPORT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
               size: 18,
               className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "mobile-dropdown-menu ".concat(isSupportDropdownOpen ? 'open' : ''),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#get-help",
               className: "mobile-dropdown-item",
               onClick: function onClick(e) {
@@ -10225,7 +10361,7 @@ function CustomerNavbar(_ref) {
                 toggleMenu();
               },
               children: "Get Help"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
               href: "#vero-store-support",
               className: "mobile-dropdown-item",
               onClick: function onClick(e) {
@@ -10235,7 +10371,7 @@ function CustomerNavbar(_ref) {
               children: "Vero Store Support"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#login",
           className: "customer-nav-link",
           onClick: function onClick(e) {
@@ -10245,9 +10381,12 @@ function CustomerNavbar(_ref) {
           children: "LOGIN"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Search_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Search_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isOpen: isSearchOpen,
       onClose: toggleSearch
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Customer_notifis__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      isOpen: isNotifsOpen,
+      onClose: toggleNotifs
     })]
   });
 }
@@ -21055,6 +21194,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".not-found-page {\n  background-color:
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifs.scss":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifs.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@keyframes fadeInSlideDown {\n  0% {\n    opacity: 0;\n    transform: translateY(-10px);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n@keyframes fadeOutSlideUp {\n  0% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(-10px);\n  }\n}\n.notifs-modal {\n  position: absolute;\n  top: 60px;\n  right: 100px;\n  background-color: #1a1a1a;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  width: 300px;\n  z-index: 1001;\n  color: #ffffff;\n  animation: fadeInSlideDown 0.3s ease-out forwards;\n}\n.notifs-modal.closing {\n  animation: fadeOutSlideUp 0.3s ease-in forwards;\n}\n.notifs-modal .notifs-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 15px;\n  border-bottom: 1px solid #333;\n}\n.notifs-modal .notifs-header h3 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 500;\n}\n.notifs-modal .notifs-header .notifs-close {\n  background: none;\n  border: none;\n  color: #ffffff;\n  font-size: 14px;\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.notifs-modal .notifs-header .notifs-close:hover {\n  color: #ff4444;\n}\n.notifs-modal .notifs-body {\n  max-height: 200px;\n  overflow-y: auto;\n  padding: 10px 15px;\n}\n.notifs-modal .notifs-body .notif-item {\n  padding: 10px 0;\n  border-bottom: 1px solid #333;\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\n}\n.notifs-modal .notifs-body .notif-item:last-child {\n  border-bottom: none;\n}\n.notifs-modal .notifs-body .notif-item p {\n  margin: 0;\n  font-size: 14px;\n  color: #ffffff;\n}\n.notifs-modal .notifs-body .notif-item span {\n  font-size: 12px;\n  color: #cccccc;\n}\n.notifs-modal .notifs-body .notif-item:hover {\n  background-color: rgba(255, 255, 255, 0.05);\n  backdrop-filter: blur(5px);\n  -webkit-backdrop-filter: blur(5px);\n  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);\n  border-radius: 4px;\n  margin-left: -15px;\n  margin-right: -15px;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.notifs-modal .notifs-body p {\n  margin: 0;\n  font-size: 14px;\n  color: #cccccc;\n  text-align: center;\n}\n.notifs-modal .notifs-footer {\n  border-top: 1px solid #333;\n  padding: 0;\n}\n.notifs-modal .notifs-footer .notifs-view-all {\n  width: 100%;\n  padding: 10px;\n  background-color: #ff4444;\n  color: #ffffff;\n  border: none;\n  border-radius: 0 0 4px 4px;\n  font-size: 12px;\n  font-weight: 500;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.notifs-modal .notifs-footer .notifs-view-all:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 768px) {\n  .notifs-modal {\n    right: 10px;\n    width: 250px;\n  }\n  .notifs-modal .notifs-footer .notifs-view-all {\n    font-size: 14px;\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/order_complete.scss":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/order_complete.scss ***!
@@ -21337,7 +21500,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown {\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #1a1a1a;\n  padding: 10px 0;\n  min-width: 200px;\n  z-index: 1001;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item {\n  display: block;\n  padding: 10px 20px;\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item:hover {\n  background-color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  opacity: 0;\n  visibility: hidden;\n  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  transform: translateX(0);\n  opacity: 1;\n  visibility: visible;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n  opacity: 0;\n  transform: translateX(-20px);\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(1) {\n  transition-delay: 0.1s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(2) {\n  transition-delay: 0.2s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(3) {\n  transition-delay: 0.3s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(4) {\n  transition-delay: 0.4s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(5) {\n  transition-delay: 0.5s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(6) {\n  transition-delay: 0.6s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.3s ease-in-out;\n  padding-left: 20px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu.open {\n  max-height: 200px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item {\n  display: block;\n  padding: 8px 0;\n  color: #cccccc;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay.open .customer-mobile-nav .customer-nav-link {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown {\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #1a1a1a;\n  padding: 10px 0;\n  min-width: 200px;\n  z-index: 1001;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item {\n  display: block;\n  padding: 10px 20px;\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item:hover {\n  background-color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n  color: #F0F8FF;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  opacity: 0;\n  visibility: hidden;\n  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  transform: translateX(0);\n  opacity: 1;\n  visibility: visible;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n  opacity: 0;\n  transform: translateX(-20px);\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(1) {\n  transition-delay: 0.1s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(2) {\n  transition-delay: 0.2s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(3) {\n  transition-delay: 0.3s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(4) {\n  transition-delay: 0.4s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(5) {\n  transition-delay: 0.5s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(6) {\n  transition-delay: 0.6s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.3s ease-in-out;\n  padding-left: 20px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu.open {\n  max-height: 200px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item {\n  display: block;\n  padding: 8px 0;\n  color: #cccccc;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay.open .customer-mobile-nav .customer-nav-link {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n    color: #F0F8FF;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n    font-size: 24px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74305,6 +74468,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notfound_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/sass/components/notifs.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/components/notifs.scss ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./notifs.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifs.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifs_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifs_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
