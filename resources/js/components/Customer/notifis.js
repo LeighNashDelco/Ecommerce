@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import "./../../../sass/components/notifs.scss";
+import './../../../sass/components/notifs.scss';
 import { useNavigate } from 'react-router-dom';
+import { IconBellFilled } from '@tabler/icons-react'; // Using IconBellFilled
 
 function Notifs({ isOpen, onClose }) {
   const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
 
+  // Sample notifications data (replace with your actual data source, e.g., an API)
   const notifications = [
     { id: 1, message: 'Your order #1234 has been shipped!', time: '2 hours ago' },
     { id: 2, message: 'New product added to the store.', time: '5 hours ago' },
@@ -13,7 +15,7 @@ function Notifs({ isOpen, onClose }) {
   ];
 
   const handleViewAll = () => {
-    navigate('/notifications');
+    navigate('/viewall_notifs'); // Navigate to the ViewAllNotifs page
     setIsClosing(true); // Trigger closing animation
   };
 
@@ -47,8 +49,11 @@ function Notifs({ isOpen, onClose }) {
         {notifications.length > 0 ? (
           notifications.map((notif) => (
             <div key={notif.id} className="notif-item">
-              <p>{notif.message}</p>
-              <span>{notif.time}</span>
+              <IconBellFilled className="notif-icon" />
+              <div className="notif-content">
+                <p>{notif.message}</p>
+                <span>{notif.time}</span>
+              </div>
             </div>
           ))
         ) : (
@@ -57,7 +62,7 @@ function Notifs({ isOpen, onClose }) {
       </div>
       <div className="notifs-footer">
         <button className="notifs-view-all" onClick={handleViewAll}>
-          View All
+          VIEW ALL
         </button>
       </div>
     </div>

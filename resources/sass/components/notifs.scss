@@ -1,148 +1,119 @@
-@keyframes fadeInSlideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOutSlideUp {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
-
+// notifs.scss
 .notifs-modal {
-  position: absolute;
-  top: 60px;
-  right: 100px;
-  background-color: #1a1a1a;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 60px; // Adjust based on your Navbar height
+  right: 20px;
   width: 300px;
-  z-index: 1001;
-  color: #ffffff;
-  animation: fadeInSlideDown 0.3s ease-out forwards;
+  background-color: #1a1a1a; // Dark background
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  z-index: 1000;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
   &.closing {
-    animation: fadeOutSlideUp 0.3s ease-in forwards;
+    opacity: 0;
+    transform: translateY(-10px); // Slide up effect when closing
   }
 
   .notifs-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 15px;
     border-bottom: 1px solid #333;
 
     h3 {
       margin: 0;
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .notifs-close {
       background: none;
       border: none;
-      color: #ffffff;
-      font-size: 14px;
+      color: #999;
+      font-size: 16px;
       cursor: pointer;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
 
       &:hover {
-        color: #ff4444;
+        color: #fff;
       }
     }
   }
 
   .notifs-body {
-    max-height: 200px;
+    padding: 15px;
+    max-height: 300px; // Limit height and allow scrolling if needed
     overflow-y: auto;
-    padding: 10px 15px;
 
     .notif-item {
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: flex-start; // Align the icon and text at the top
+      background-color: #2a2a2a; // Slightly lighter background for each item
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
 
-      &:last-child {
-        border-bottom: none;
+      .notif-icon {
+        color: #F0F8FF; // Updated to light blue (AliceBlue)
+        width: 16px; // Size for the modal
+        height: 16px;
+        margin-right: 10px;
+        margin-top: 2px; // Fine-tune vertical alignment with the text
       }
 
-      // Default state
-      p {
-        margin: 0;
-        font-size: 14px;
-        color: #ffffff;
-      }
+      .notif-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column; // Stack the message and timestamp vertically
+        align-items: flex-start; // Left-align the content
 
-      span {
-        font-size: 12px;
-        color: #cccccc;
-      }
+        p {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.4; // Ensure the text aligns nicely with the icon
+          text-align: left; // Explicitly left-align the text
+        }
 
-      // Hover state with glassy effect, full width
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        margin-left: -15px; // Negate the parent padding
-        margin-right: -15px; // Negate the parent padding
-        padding-left: 15px; // Restore padding for content
-        padding-right: 15px; // Restore padding for content
+        span {
+          font-size: 12px;
+          color: #999;
+          align-self: flex-end; // Align the timestamp to the right
+          margin-top: 4px; // Add a small gap between the message and timestamp
+        }
       }
     }
 
     p {
-      margin: 0;
-      font-size: 14px;
-      color: #cccccc;
       text-align: center;
+      color: #999;
+      font-size: 14px;
     }
   }
 
   .notifs-footer {
-    border-top: 1px solid #333;
-    padding: 0;
+    padding: 0 15px 15px;
 
     .notifs-view-all {
       width: 100%;
       padding: 10px;
-      background-color: #ff4444;
-      color: #ffffff;
+      background-color: #ff4d4d; // Red background like in the screenshot
+      color: #fff;
       border: none;
-      border-radius: 0 0 4px 4px;
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s;
+      text-transform: uppercase; // Match the "VIEW ALL" text style in the screenshot
 
       &:hover {
-        background-color: #cc0000;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .notifs-modal {
-    right: 10px;
-    width: 250px;
-
-    .notifs-footer {
-      .notifs-view-all {
-        font-size: 14px;
+        background-color: #ff6666; // Lighter red on hover
       }
     }
   }

@@ -108,10 +108,8 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
 
   const toggleNotifs = () => {
     if (isNotifsOpen) {
-      // If the modal is open, trigger the closing animation by setting isNotifsOpen to false
       setIsNotifsOpen(false);
     } else {
-      // If the modal is closed, open it
       setIsNotifsOpen(true);
     }
     setIsMenuOpen(false);
@@ -121,8 +119,15 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
   return (
     <header className="customer-topbar">
       <div className="customer-topbar-container">
-        <div className="customer-mobile-menu" onClick={toggleMenu}>
-          <IconMenu2 size={24} color="#ffffff" />
+        <div className="customer-mobile-menu-section">
+          <div className="customer-mobile-menu" onClick={toggleMenu}>
+            <IconMenu2 size={24} color="#ffffff" />
+          </div>
+          <div className="customer-mobile-search">
+            <a href="#search" className="customer-search-icon" onClick={(e) => { e.preventDefault(); toggleSearch(); }}>
+              <IconSearch size={24} />
+            </a>
+          </div>
         </div>
         <div className="customer-logo">
           <img src={logoImage} alt="Customer Logo" className="customer-logo-img" />
@@ -148,7 +153,7 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
           </div>
         </nav>
         <div className="customer-auth-section">
-          <a href="#search" className="customer-search-icon" onClick={(e) => { e.preventDefault(); toggleSearch(); }}>
+          <a href="#search" className="customer-search-icon desktop-only" onClick={(e) => { e.preventDefault(); toggleSearch(); }}>
             <IconSearch size={24} />
           </a>
           <a href="#cart" className="customer-cart-icon" onClick={(e) => { e.preventDefault(); onCartClick(); }}>
@@ -157,7 +162,6 @@ function CustomerNavbar({ onCartClick, cartCount = 0 }) {
           </a>
           <a href="#notifs" className="customer-notifs-icon" onClick={(e) => { e.preventDefault(); toggleNotifs(); }}>
             <FaBell size={24} />
-            {/* {notifsCount > 0 && <span className="notifs-count">{notifsCount}</span>} */}
           </a>
           <a href="#login" className="customer-login-button" onClick={handleLoginClick}>
             Login

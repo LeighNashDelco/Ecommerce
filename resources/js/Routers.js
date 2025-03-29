@@ -18,6 +18,8 @@ import Notfound from "./components/Pagenotfound/notfound";
 import Product_view from "./components/ProductView/product_view";
 import TrackOrder from "./components/TrackOrder/track_order";
 import About_us from "./components/AboutUs/about_us";
+import Viewall_notifs from "./components/Customer/viewall_notifs";
+
 
 
 
@@ -41,6 +43,7 @@ export default function Routers() {
         <Route path="profile" element={<Profile />} />
         <Route path="track_order" element={<TrackOrder />} />
         <Route path="about_us" element={<About_us />} />
+        <Route path="viewall_notifs" element={<Viewall_notifs />} />
       </Routes>
     </Router>
   );

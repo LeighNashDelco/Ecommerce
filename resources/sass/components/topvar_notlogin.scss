@@ -25,12 +25,38 @@
     padding: 0;
     position: relative;
 
+    .customer-mobile-menu-section {
+      display: none; // Hidden by default, shown in mobile view
+      align-items: center;
+      gap: 15px;
+    }
+
     .customer-mobile-menu {
-      display: none;
       cursor: pointer;
 
       svg {
         color: #ffffff;
+      }
+    }
+
+    .customer-mobile-search {
+      display: none; // Hidden by default, shown in mobile view
+
+      .customer-search-icon {
+        color: #ffffff;
+        font-size: 20px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+          font-size: 24px;
+        }
+
+        &:hover {
+          color: #ff4444;
+        }
       }
     }
 
@@ -131,6 +157,10 @@
 
         &:hover {
           color: #ff4444;
+        }
+
+        &.desktop-only {
+          display: flex; // Visible on desktop
         }
       }
 
@@ -343,14 +373,20 @@
       justify-content: space-between;
       position: relative;
 
-      .customer-mobile-menu {
-        display: flex;
+      .customer-mobile-menu-section {
+        display: flex; // Show the menu section in mobile view
         position: absolute;
         left: 10px;
+      }
 
+      .customer-mobile-menu {
         svg {
           font-size: 20px;
         }
+      }
+
+      .customer-mobile-search {
+        display: flex; // Show the search icon in mobile view
       }
 
       .customer-logo {
@@ -369,12 +405,13 @@
 
       .customer-auth-section {
         position: absolute;
+        left: auto;
         right: 10px;
         gap: 10px;
 
         .customer-search-icon {
-          svg {
-            font-size: 20px;
+          &.desktop-only {
+            display: none; // Hide the search icon in the auth section on mobile
           }
         }
 

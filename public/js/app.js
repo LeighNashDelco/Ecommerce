@@ -8115,8 +8115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _components_login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/login/Login */ "./resources/js/components/login/Login.js");
 /* harmony import */ var _components_profile_Profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile/Profile */ "./resources/js/components/profile/Profile.js");
 /* harmony import */ var _components_register_Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/register/Register */ "./resources/js/components/register/Register.js");
@@ -8132,7 +8132,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/ProductView/product_view */ "./resources/js/components/ProductView/product_view.js");
 /* harmony import */ var _components_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/TrackOrder/track_order */ "./resources/js/components/TrackOrder/track_order.js");
 /* harmony import */ var _components_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/AboutUs/about_us */ "./resources/js/components/AboutUs/about_us.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Customer_viewall_notifs__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Customer/viewall_notifs */ "./resources/js/components/Customer/viewall_notifs.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -8154,65 +8155,69 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function Routers() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Navigate, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Navigate, {
           to: "homepage"
         })
-      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_register_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_register_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "homepage",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Homepage_homepage__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "shop",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_shop_shop__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_shop_shop__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "cart",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Customer_cart__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Customer_cart__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "checkout",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Customer_checkout__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Customer_checkout__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "checkout_address",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_9__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "payment_methods",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_10__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "developer",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Developers_developer__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Developers_developer__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "order_complete",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "notfound",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_13__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "product_view",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_ProductView_product_view__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "profile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_profile_Profile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_profile_Profile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "track_order",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_15__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
         path: "about_us",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_components_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_16__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_16__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
+        path: "viewall_notifs",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_components_Customer_viewall_notifs__WEBPACK_IMPORTED_MODULE_17__["default"], {})
       })]
     })
   });
 }
 if (document.getElementById("root")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(Routers, {}), document.getElementById("root"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(Routers, {}), document.getElementById("root"));
 }
 
 /***/ }),
@@ -9527,6 +9532,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _sass_components_notifs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/notifs.scss */ "./resources/sass/components/notifs.scss");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBellFilled.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -9537,6 +9543,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+ // Using IconBellFilled
 
 function Notifs(_ref) {
   var isOpen = _ref.isOpen,
@@ -9546,6 +9553,8 @@ function Notifs(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     isClosing = _useState2[0],
     setIsClosing = _useState2[1];
+
+  // Sample notifications data (replace with your actual data source, e.g., an API)
   var notifications = [{
     id: 1,
     message: 'Your order #1234 has been shipped!',
@@ -9560,7 +9569,7 @@ function Notifs(_ref) {
     time: '1 day ago'
   }];
   var handleViewAll = function handleViewAll() {
-    navigate('/notifications');
+    navigate('/viewall_notifs'); // Navigate to the ViewAllNotifs page
     setIsClosing(true); // Trigger closing animation
   };
   var handleClose = function handleClose() {
@@ -9598,10 +9607,15 @@ function Notifs(_ref) {
       children: notifications.length > 0 ? notifications.map(function (notif) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "notif-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            children: notif.message
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-            children: notif.time
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            className: "notif-icon"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "notif-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+              children: notif.message
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              children: notif.time
+            })]
           })]
         }, notif.id);
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
@@ -9612,7 +9626,7 @@ function Notifs(_ref) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
         className: "notifs-view-all",
         onClick: handleViewAll,
-        children: "View All"
+        children: "VIEW ALL"
       })
     })]
   });
@@ -10026,8 +10040,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_sass_img_mainlogo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../resources/sass/img/mainlogo.svg */ "./resources/sass/img/mainlogo.svg");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconChevronDown.mjs");
 /* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconX.mjs");
 /* harmony import */ var _Search_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Search/search */ "./resources/js/components/Search/search.js");
 /* harmony import */ var _Customer_notifis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Customer/notifis */ "./resources/js/components/Customer/notifis.js");
@@ -10151,10 +10165,8 @@ function CustomerNavbar(_ref) {
   };
   var toggleNotifs = function toggleNotifs() {
     if (isNotifsOpen) {
-      // If the modal is open, trigger the closing animation by setting isNotifsOpen to false
       setIsNotifsOpen(false);
     } else {
-      // If the modal is closed, open it
       setIsNotifsOpen(true);
     }
     setIsMenuOpen(false);
@@ -10164,13 +10176,29 @@ function CustomerNavbar(_ref) {
     className: "customer-topbar",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "customer-topbar-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "customer-mobile-menu",
-        onClick: toggleMenu,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          size: 24,
-          color: "#ffffff"
-        })
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "customer-mobile-menu-section",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "customer-mobile-menu",
+          onClick: toggleMenu,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            size: 24,
+            color: "#ffffff"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "customer-mobile-search",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+            href: "#search",
+            className: "customer-search-icon",
+            onClick: function onClick(e) {
+              e.preventDefault();
+              toggleSearch();
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              size: 24
+            })
+          })
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "customer-logo",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
@@ -10206,7 +10234,7 @@ function CustomerNavbar(_ref) {
             href: "#support",
             className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
             onClick: toggleSupportDropdown,
-            children: ["Support", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: ["Support", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
               size: 16,
               className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
             })]
@@ -10229,12 +10257,12 @@ function CustomerNavbar(_ref) {
         className: "customer-auth-section",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
           href: "#search",
-          className: "customer-search-icon",
+          className: "customer-search-icon desktop-only",
           onClick: function onClick(e) {
             e.preventDefault();
             toggleSearch();
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
             size: 24
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("a", {
@@ -10293,7 +10321,7 @@ function CustomerNavbar(_ref) {
             href: "#shop",
             className: "customer-nav-link ".concat(isShopDropdownOpen ? 'active' : ''),
             onClick: toggleShopDropdown,
-            children: ["SHOP", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: ["SHOP", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
               size: 18,
               className: "dropdown-icon ".concat(isShopDropdownOpen ? 'open' : '')
             })]
@@ -10347,7 +10375,7 @@ function CustomerNavbar(_ref) {
             href: "#support",
             className: "customer-nav-link ".concat(isSupportDropdownOpen ? 'active' : ''),
             onClick: toggleSupportDropdown,
-            children: ["SUPPORT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: ["SUPPORT", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
               size: 18,
               className: "dropdown-icon ".concat(isSupportDropdownOpen ? 'open' : '')
             })]
@@ -10391,6 +10419,222 @@ function CustomerNavbar(_ref) {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomerNavbar);
+
+/***/ }),
+
+/***/ "./resources/js/components/Customer/viewall_notifs.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Customer/viewall_notifs.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _sass_components_viewall_notifs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/viewall_notifs.scss */ "./resources/sass/components/viewall_notifs.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Customer/topvar_notlogin */ "./resources/js/components/Customer/topvar_notlogin.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/footer/footer.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconArrowLeft.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconLayersIntersect.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBellFilled.mjs");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+ // Importing your Navbar
+ // Importing your Footer
+ // Added IconLayersIntersect
+
+// Sample notifications data (replace with your actual data source, e.g., an API)
+
+var initialNotifications = [{
+  id: 1,
+  message: 'Your order #1234 has been shipped!',
+  time: '2 hours ago'
+}, {
+  id: 2,
+  message: 'New product added to the store.',
+  time: '5 hours ago'
+}, {
+  id: 3,
+  message: 'Your payment was successful.',
+  time: '1 day ago'
+}, {
+  id: 4,
+  message: 'Your order #1233 is out for delivery.',
+  time: '2 days ago'
+}, {
+  id: 5,
+  message: 'Welcome to our store!',
+  time: '3 days ago'
+}];
+var ViewAllNotifs = function ViewAllNotifs() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)(); // For navigating back
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialNotifications),
+    _useState2 = _slicedToArray(_useState, 2),
+    notifications = _useState2[0],
+    setNotifications = _useState2[1]; // State for notifications
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Set()),
+    _useState4 = _slicedToArray(_useState3, 2),
+    selectedNotifs = _useState4[0],
+    setSelectedNotifs = _useState4[1]; // State for selected notifications
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    isAllSelected = _useState6[0],
+    setIsAllSelected = _useState6[1]; // State for "Select All" checkbox
+
+  // Handle "Select All" (used for both checkbox on desktop and button on mobile)
+  var handleSelectAll = function handleSelectAll() {
+    var newIsAllSelected = !isAllSelected; // Toggle the state
+    setIsAllSelected(newIsAllSelected);
+    if (newIsAllSelected) {
+      var allNotifIds = new Set(notifications.map(function (notif) {
+        return notif.id;
+      }));
+      setSelectedNotifs(allNotifIds);
+    } else {
+      setSelectedNotifs(new Set());
+    }
+  };
+
+  // Handle individual notification selection
+  var handleNotifSelect = function handleNotifSelect(notifId) {
+    return function (e) {
+      var isChecked = e.target.checked;
+      var newSelectedNotifs = new Set(selectedNotifs);
+      if (isChecked) {
+        newSelectedNotifs.add(notifId);
+      } else {
+        newSelectedNotifs["delete"](notifId);
+      }
+      setSelectedNotifs(newSelectedNotifs);
+      setIsAllSelected(newSelectedNotifs.size === notifications.length);
+    };
+  };
+
+  // Handle removal of selected notifications
+  var handleRemoveSelected = function handleRemoveSelected() {
+    if (selectedNotifs.size === 0) return; // Do nothing if no notifications are selected
+    var remainingNotifs = notifications.filter(function (notif) {
+      return !selectedNotifs.has(notif.id);
+    });
+    setNotifications(remainingNotifs);
+    setSelectedNotifs(new Set()); // Clear selection
+    setIsAllSelected(false); // Uncheck "Select All"
+    console.log('Removed notifications:', Array.from(selectedNotifs));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "view-all-notifs-wrapper",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Customer_topvar_notlogin__WEBPACK_IMPORTED_MODULE_2__["default"], {}), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "view-all-notifs",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "notifs-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+          className: "back-btn",
+          onClick: function onClick() {
+            return navigate(-1);
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            className: "back-icon"
+          }), " Back"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+          children: "Notifications"
+        }), notifications.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "notifs-actions notifs-actions-desktop",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "select-all",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+              className: "select-all-desktop",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "checkbox",
+                checked: isAllSelected,
+                onChange: handleSelectAll
+              }), "Select All"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+              className: "select-all-mobile",
+              onClick: handleSelectAll,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                className: "select-icon"
+              }), isAllSelected ? 'Deselect All' : 'Select All']
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+            className: "remove-selected-btn",
+            onClick: handleRemoveSelected,
+            disabled: selectedNotifs.size === 0,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              className: "trash-icon"
+            }), " Remove Selected"]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "notifs-list",
+        children: notifications.length > 0 ? notifications.map(function (notif) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "notif-item",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "checkbox",
+              className: "notif-checkbox",
+              checked: selectedNotifs.has(notif.id),
+              onChange: handleNotifSelect(notif.id)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              className: "notif-icon"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "notif-content",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                className: "notif-message",
+                children: notif.message
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "notif-time",
+                children: notif.time
+              })]
+            })]
+          }, notif.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          className: "no-notifs",
+          children: "No notifications available."
+        })
+      }), notifications.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "notifs-actions notifs-actions-mobile",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "select-all",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+            className: "select-all-desktop",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "checkbox",
+              checked: isAllSelected,
+              onChange: handleSelectAll
+            }), "Select All"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+            className: "select-all-mobile",
+            onClick: handleSelectAll,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              className: "select-icon"
+            }), isAllSelected ? 'Deselect All' : 'Select All']
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+          className: "remove-selected-btn",
+          onClick: handleRemoveSelected,
+          disabled: selectedNotifs.size === 0,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            className: "trash-icon"
+          }), " Remove Selected"]
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {}), " "]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ViewAllNotifs);
 
 /***/ }),
 
@@ -21211,7 +21455,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@keyframes fadeInSlideDown {\n  0% {\n    opacity: 0;\n    transform: translateY(-10px);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n@keyframes fadeOutSlideUp {\n  0% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(-10px);\n  }\n}\n.notifs-modal {\n  position: absolute;\n  top: 60px;\n  right: 100px;\n  background-color: #1a1a1a;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  width: 300px;\n  z-index: 1001;\n  color: #ffffff;\n  animation: fadeInSlideDown 0.3s ease-out forwards;\n}\n.notifs-modal.closing {\n  animation: fadeOutSlideUp 0.3s ease-in forwards;\n}\n.notifs-modal .notifs-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 15px;\n  border-bottom: 1px solid #333;\n}\n.notifs-modal .notifs-header h3 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 500;\n}\n.notifs-modal .notifs-header .notifs-close {\n  background: none;\n  border: none;\n  color: #ffffff;\n  font-size: 14px;\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.notifs-modal .notifs-header .notifs-close:hover {\n  color: #ff4444;\n}\n.notifs-modal .notifs-body {\n  max-height: 200px;\n  overflow-y: auto;\n  padding: 10px 15px;\n}\n.notifs-modal .notifs-body .notif-item {\n  padding: 10px 0;\n  border-bottom: 1px solid #333;\n  transition: background-color 0.3s ease, box-shadow 0.3s ease;\n}\n.notifs-modal .notifs-body .notif-item:last-child {\n  border-bottom: none;\n}\n.notifs-modal .notifs-body .notif-item p {\n  margin: 0;\n  font-size: 14px;\n  color: #ffffff;\n}\n.notifs-modal .notifs-body .notif-item span {\n  font-size: 12px;\n  color: #cccccc;\n}\n.notifs-modal .notifs-body .notif-item:hover {\n  background-color: rgba(255, 255, 255, 0.05);\n  backdrop-filter: blur(5px);\n  -webkit-backdrop-filter: blur(5px);\n  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);\n  border-radius: 4px;\n  margin-left: -15px;\n  margin-right: -15px;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.notifs-modal .notifs-body p {\n  margin: 0;\n  font-size: 14px;\n  color: #cccccc;\n  text-align: center;\n}\n.notifs-modal .notifs-footer {\n  border-top: 1px solid #333;\n  padding: 0;\n}\n.notifs-modal .notifs-footer .notifs-view-all {\n  width: 100%;\n  padding: 10px;\n  background-color: #ff4444;\n  color: #ffffff;\n  border: none;\n  border-radius: 0 0 4px 4px;\n  font-size: 12px;\n  font-weight: 500;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.notifs-modal .notifs-footer .notifs-view-all:hover {\n  background-color: #cc0000;\n}\n\n@media (max-width: 768px) {\n  .notifs-modal {\n    right: 10px;\n    width: 250px;\n  }\n  .notifs-modal .notifs-footer .notifs-view-all {\n    font-size: 14px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".notifs-modal {\n  position: fixed;\n  top: 60px;\n  right: 20px;\n  width: 300px;\n  background-color: #1a1a1a;\n  border-radius: 8px;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n  color: #fff;\n  font-family: \"Arial\", sans-serif;\n  z-index: 1000;\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 0.3s ease, transform 0.3s ease;\n}\n.notifs-modal.closing {\n  opacity: 0;\n  transform: translateY(-10px);\n}\n.notifs-modal .notifs-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 15px;\n  border-bottom: 1px solid #333;\n}\n.notifs-modal .notifs-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: bold;\n}\n.notifs-modal .notifs-header .notifs-close {\n  background: none;\n  border: none;\n  color: #999;\n  font-size: 16px;\n  cursor: pointer;\n  transition: color 0.3s;\n}\n.notifs-modal .notifs-header .notifs-close:hover {\n  color: #fff;\n}\n.notifs-modal .notifs-body {\n  padding: 15px;\n  max-height: 300px;\n  overflow-y: auto;\n}\n.notifs-modal .notifs-body .notif-item {\n  display: flex;\n  align-items: flex-start;\n  background-color: #2a2a2a;\n  padding: 10px;\n  border-radius: 5px;\n  margin-bottom: 10px;\n}\n.notifs-modal .notifs-body .notif-item .notif-icon {\n  color: #F0F8FF;\n  width: 16px;\n  height: 16px;\n  margin-right: 10px;\n  margin-top: 2px;\n}\n.notifs-modal .notifs-body .notif-item .notif-content {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n.notifs-modal .notifs-body .notif-item .notif-content p {\n  margin: 0;\n  font-size: 14px;\n  line-height: 1.4;\n  text-align: left;\n}\n.notifs-modal .notifs-body .notif-item .notif-content span {\n  font-size: 12px;\n  color: #999;\n  align-self: flex-end;\n  margin-top: 4px;\n}\n.notifs-modal .notifs-body p {\n  text-align: center;\n  color: #999;\n  font-size: 14px;\n}\n.notifs-modal .notifs-footer {\n  padding: 0 15px 15px;\n}\n.notifs-modal .notifs-footer .notifs-view-all {\n  width: 100%;\n  padding: 10px;\n  background-color: #ff4d4d;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-size: 14px;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background-color 0.3s;\n  text-transform: uppercase;\n}\n.notifs-modal .notifs-footer .notifs-view-all:hover {\n  background-color: #ff6666;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21428,7 +21672,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".search-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 1001;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  padding-top: 80px;\n}\n.search-overlay .search-container {\n  background: rgba(255, 255, 255, 0.1);\n  backdrop-filter: blur(10px);\n  -webkit-backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  width: 90%;\n  max-width: 600px;\n  padding: 20px;\n  border-radius: 12px;\n  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.search-overlay .search-container .search-form {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n}\n.search-overlay .search-container .search-form .search-input-wrapper {\n  position: relative;\n  flex-grow: 1;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-77%);\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input {\n  width: 100%;\n  padding: 10px 10px 10px 40px;\n  background-color: #333333;\n  border: none;\n  border-radius: 4px;\n  color: #ffffff;\n  font-size: 16px;\n  outline: none;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::-moz-placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input:focus {\n  border: 1px solid #ff4444;\n}\n.search-overlay .search-container .search-form .search-submit-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 10px 20px;\n  margin-bottom: 15px;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.search-overlay .search-container .search-form .search-submit-button:hover {\n  background-color: #cc0000;\n}\n.search-overlay .search-container .search-form .search-close-button {\n  background: none;\n  border: none;\n  cursor: pointer;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  padding: 10px;\n}\n.search-overlay .search-container .search-form .search-close-button svg {\n  transition: color 0.3s ease;\n  margin-bottom: 15px;\n}\n.search-overlay .search-container .search-form .search-close-button svg:hover {\n  color: #ff4444;\n}\n\n@media (max-width: 768px) {\n  .search-overlay {\n    padding-top: 100px;\n  }\n  .search-overlay .search-container {\n    width: 50%;\n    padding: 5px;\n  }\n  .search-overlay .search-container .search-form {\n    flex-direction: row;\n    gap: 8px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input {\n    font-size: 14px;\n    padding: 8px 8px 8px 36px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n    left: 8px;\n    top: 90%;\n    transform: translateY(-50%);\n  }\n  .search-overlay .search-container .search-form .search-submit-button {\n    padding: 8px 16px;\n    font-size: 14px;\n  }\n  .search-overlay .search-container .search-form .search-close-button {\n    padding: 8px;\n  }\n  .search-overlay .search-container .search-form .search-close-button svg {\n    font-size: 18px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".search-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  z-index: 1001;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  padding-top: 80px;\n}\n.search-overlay .search-container {\n  background: rgba(255, 255, 255, 0.1);\n  backdrop-filter: blur(10px);\n  -webkit-backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  width: 90%;\n  max-width: 600px;\n  padding: 20px;\n  border-radius: 12px;\n  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.search-overlay .search-container .search-form {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  width: 100%;\n}\n.search-overlay .search-container .search-form .search-input-wrapper {\n  position: relative;\n  flex-grow: 1;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-80%);\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input {\n  width: 100%;\n  padding: 10px 10px 10px 40px;\n  background-color: #333333;\n  border: none;\n  border-radius: 4px;\n  color: #ffffff;\n  font-size: 16px;\n  outline: none;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::-moz-placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input::placeholder {\n  color: #cccccc;\n}\n.search-overlay .search-container .search-form .search-input-wrapper .search-input:focus {\n  border: 1px solid #ff4444;\n}\n.search-overlay .search-container .search-form .search-submit-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 10px 20px;\n  margin-top: -13px;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.search-overlay .search-container .search-form .search-submit-button:hover {\n  background-color: #cc0000;\n}\n.search-overlay .search-container .search-form .search-close-button {\n  background: none;\n  border: none;\n  cursor: pointer;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  padding: 10px;\n  margin-top: -10px;\n}\n.search-overlay .search-container .search-form .search-close-button svg {\n  transition: color 0.3s ease;\n}\n.search-overlay .search-container .search-form .search-close-button svg:hover {\n  color: #ff4444;\n}\n\n@media (max-width: 768px) {\n  .search-overlay {\n    padding-top: 100px;\n  }\n  .search-overlay .search-container {\n    width: 90%;\n    max-width: 400px;\n    padding: 15px;\n    flex-direction: column;\n  }\n  .search-overlay .search-container .search-form {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper {\n    width: 100%;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input {\n    font-size: 14px;\n    padding: 8px 8px 8px 36px;\n  }\n  .search-overlay .search-container .search-form .search-input-wrapper .search-input-icon {\n    left: 8px;\n    top: 50%;\n    transform: translateY(-80%);\n  }\n  .search-overlay .search-container .search-form .search-submit-button {\n    width: 100%;\n    padding: 10px;\n    font-size: 14px;\n  }\n  .search-overlay .search-container .search-form .search-close-button {\n    display: none;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21500,7 +21744,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown {\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #1a1a1a;\n  padding: 10px 0;\n  min-width: 200px;\n  z-index: 1001;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item {\n  display: block;\n  padding: 10px 20px;\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item:hover {\n  background-color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n  color: #F0F8FF;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  opacity: 0;\n  visibility: hidden;\n  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  transform: translateX(0);\n  opacity: 1;\n  visibility: visible;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n  opacity: 0;\n  transform: translateX(-20px);\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(1) {\n  transition-delay: 0.1s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(2) {\n  transition-delay: 0.2s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(3) {\n  transition-delay: 0.3s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(4) {\n  transition-delay: 0.4s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(5) {\n  transition-delay: 0.5s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(6) {\n  transition-delay: 0.6s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.3s ease-in-out;\n  padding-left: 20px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu.open {\n  max-height: 200px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item {\n  display: block;\n  padding: 8px 0;\n  color: #cccccc;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay.open .customer-mobile-nav .customer-nav-link {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n    color: #F0F8FF;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n    font-size: 24px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu-section {\n  display: none;\n  align-items: center;\n  gap: 15px;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-search {\n  display: none;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-search .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-search .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-search .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown {\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu {\n  display: none;\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background-color: #1a1a1a;\n  padding: 10px 0;\n  min-width: 200px;\n  z-index: 1001;\n  border-radius: 4px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item {\n  display: block;\n  padding: 10px 20px;\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 14px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .dropdown .dropdown-menu .dropdown-item:hover {\n  background-color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon.desktop-only {\n  display: flex;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n  color: #F0F8FF;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n  position: absolute;\n  top: -5px;\n  right: -10px;\n  background: #FF1C1C;\n  color: #ffffff;\n  border-radius: 50%;\n  padding: 2px 6px;\n  font-size: 12px;\n  min-width: 18px;\n  text-align: center;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-mobile-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  opacity: 0;\n  visibility: hidden;\n  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  transform: translateX(0);\n  opacity: 1;\n  visibility: visible;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n  opacity: 0;\n  transform: translateX(-20px);\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link.active {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon {\n  transition: transform 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link .dropdown-icon.open {\n  transform: rotate(180deg);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(1) {\n  transition-delay: 0.1s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(2) {\n  transition-delay: 0.2s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(3) {\n  transition-delay: 0.3s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(4) {\n  transition-delay: 0.4s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(5) {\n  transition-delay: 0.5s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:nth-child(6) {\n  transition-delay: 0.6s;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu {\n  max-height: 0;\n  overflow: hidden;\n  transition: max-height 0.3s ease-in-out;\n  padding-left: 20px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu.open {\n  max-height: 200px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item {\n  display: block;\n  padding: 8px 0;\n  color: #cccccc;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .mobile-dropdown .mobile-dropdown-menu .mobile-dropdown-item:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay.open .customer-mobile-nav .customer-nav-link {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu-section {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-search {\n    display: flex;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    left: auto;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon.desktop-only {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon {\n    color: #F0F8FF;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon svg {\n    font-size: 24px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-notifs-icon .notifs-count {\n    top: -3px;\n    right: -8px;\n    font-size: 10px;\n    padding: 1px 4px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21525,6 +21769,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  max-width: 100%;\n  min-height: 100vh;\n  margin: 0;\n  padding: 20px;\n  color: #333;\n  background-color: #F0F8FF;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 20px;\n}\n.track-order .order-status h2 {\n  font-size: 1.5rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  border: 2px solid #1E1E1E;\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 5px;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  right: 0;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 0;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  animation: growLine 1.5s ease-out forwards;\n  transform: translateY(-50%);\n  width: 60%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 20%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #F0F8FF;\n  border: 2px solid #FF1C1C;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #FF1C1C;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .order-details {\n  background-color: transparent;\n  border: 2px dashed #1E1E1E;\n  padding: 15px;\n  border-radius: 0;\n}\n.track-order .order-details h3 {\n  font-size: 1.2rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-details p {\n  font-size: 0.9rem;\n  margin: 5px 0;\n  color: #333;\n}\n.track-order .order-details p strong {\n  color: #333;\n  font-weight: bold;\n}\n\n/* Animation for the growing line */\n@keyframes growLine {\n  from {\n    width: 0;\n  }\n  to {\n    width: 60%;\n  }\n}\n@media (max-width: 600px) {\n  .track-order {\n    padding: 10px;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before {\n    display: none;\n  }\n  .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 10px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 10px;\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/viewall_notifs.scss":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/viewall_notifs.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".view-all-notifs-wrapper {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n  background-color: #1a1a1a;\n  color: #fff;\n  font-family: \"Arial\", sans-serif;\n}\n.view-all-notifs-wrapper .view-all-notifs {\n  flex: 1;\n  padding: 20px;\n  margin-top: 60px;\n  margin-bottom: 60px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .back-btn {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: none;\n  color: #ff4d4d;\n  font-size: 16px;\n  cursor: pointer;\n  margin-right: 20px;\n  transition: color 0.3s;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .back-btn .back-icon {\n  width: 16px;\n  height: 16px;\n  margin-right: 8px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .back-btn:hover {\n  color: #ff6666;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header h1 {\n  font-size: 24px;\n  font-weight: bold;\n  margin: 0;\n  flex: 1;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .select-all {\n  display: flex;\n  align-items: center;\n  font-size: 14px;\n  color: #fff;\n  cursor: pointer;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .select-all .select-all-desktop {\n  display: flex;\n  align-items: center;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .select-all .select-all-desktop input[type=checkbox] {\n  margin-right: 8px;\n  margin-bottom: 3px;\n  accent-color: #ff4d4d;\n  width: 16px;\n  height: 16px;\n  cursor: pointer;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .select-all .select-all-mobile {\n  display: none;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn {\n  display: flex;\n  align-items: center;\n  background: none;\n  border: 1px solid #F0F8FF;\n  color: #F0F8FF;\n  padding: 5px 10px;\n  border-radius: 5px;\n  font-size: 14px;\n  cursor: pointer;\n  transition: all 0.3s;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn .trash-icon {\n  width: 16px;\n  height: 16px;\n  margin-right: 8px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn:hover {\n  background-color: #ff4d4d;\n  color: #fff;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn:disabled {\n  border-color: #666;\n  color: #666;\n  cursor: not-allowed;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn:disabled .trash-icon {\n  color: #666;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop .remove-selected-btn:disabled:hover {\n  background: none;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item {\n  display: flex;\n  align-items: flex-start;\n  background-color: #2a2a2a;\n  padding: 15px;\n  border-radius: 8px;\n  transition: background-color 0.3s;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item:hover {\n  background-color: #333333;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-checkbox {\n  margin-right: 10px;\n  accent-color: #ff4d4d;\n  width: 16px;\n  height: 16px;\n  margin-top: 2px;\n  cursor: pointer;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-icon {\n  color: #F0F8FF;\n  width: 18px;\n  height: 18px;\n  margin-right: 15px;\n  margin-top: 2px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-content {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-content .notif-message {\n  margin: 0;\n  font-size: 16px;\n  line-height: 1.4;\n  text-align: left;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-content .notif-time {\n  font-size: 12px;\n  color: #999;\n  align-self: flex-end;\n  margin-top: 4px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-list .no-notifs {\n  text-align: center;\n  color: #999;\n  font-size: 16px;\n  margin-top: 20px;\n}\n.view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile {\n  display: none;\n}\n@media (max-width: 768px) {\n  .view-all-notifs-wrapper .view-all-notifs {\n    padding: 15px;\n    margin-top: 50px;\n    margin-bottom: 50px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-header {\n    flex-direction: column;\n    align-items: flex-start;\n    position: static;\n    padding: 10px 0;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-header .back-btn {\n    font-size: 14px;\n    margin-bottom: 10px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-header .back-btn .back-icon {\n    width: 14px;\n    height: 14px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-header h1 {\n    font-size: 20px;\n    margin-bottom: 15px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-header .notifs-actions-desktop {\n    display: none;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list {\n    gap: 8px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item {\n    padding: 12px;\n    align-items: center;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-checkbox {\n    width: 18px;\n    height: 18px;\n    margin-top: 0;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-icon {\n    width: 20px;\n    height: 20px;\n    margin-right: 12px;\n    margin-bottom: 15px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-content .notif-message {\n    font-size: 14px;\n    line-height: 1.3;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .notif-item .notif-content .notif-time {\n    font-size: 11px;\n    color: #ff8282;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-list .no-notifs {\n    font-size: 14px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile {\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    width: 100%;\n    margin-top: 20px;\n    position: sticky;\n    bottom: 0;\n    background-color: #1a1a1a;\n    padding: 10px 0;\n    z-index: 10;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .select-all {\n    width: 100%;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .select-all .select-all-desktop {\n    display: none;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .select-all .select-all-mobile {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: none;\n    border: 1px solid #F0F8FF;\n    color: #F0F8FF;\n    padding: 8px 0;\n    border-radius: 5px;\n    font-size: 14px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.3s;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .select-all .select-all-mobile .select-icon {\n    width: 18px;\n    height: 18px;\n    margin-right: 8px;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .select-all .select-all-mobile:hover {\n    background-color: #ff4d4d;\n    color: #fff;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .remove-selected-btn {\n    width: 100%;\n    padding: 8px 0;\n    font-size: 14px;\n    justify-content: center;\n  }\n  .view-all-notifs-wrapper .view-all-notifs .notifs-actions-mobile .remove-selected-btn .trash-icon {\n    width: 18px;\n    height: 18px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74891,6 +75159,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/sass/components/viewall_notifs.scss":
+/*!*******************************************************!*\
+  !*** ./resources/sass/components/viewall_notifs.scss ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_viewall_notifs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./viewall_notifs.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/viewall_notifs.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_viewall_notifs_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_viewall_notifs_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -79038,6 +79336,35 @@ var IconArrowLeft = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["d
 
 /***/ }),
 
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBellFilled.mjs":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconBellFilled.mjs ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconBellFilled)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconBellFilled = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("filled", "bell-filled", "IconBellFilled", [["path", { "d": "M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z", "key": "svg-0" }], ["path", { "d": "M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z", "key": "svg-1" }]]);
+
+
+//# sourceMappingURL=IconBellFilled.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs":
 /*!*********************************************************************!*\
   !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconBox.mjs ***!
@@ -79270,6 +79597,35 @@ var IconHome = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["defaul
 
 /***/ }),
 
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconLayersIntersect.mjs":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconLayersIntersect.mjs ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconLayersIntersect)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconLayersIntersect = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "layers-intersect", "IconLayersIntersect", [["path", { "d": "M8 4m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z", "key": "svg-0" }], ["path", { "d": "M4 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z", "key": "svg-1" }]]);
+
+
+//# sourceMappingURL=IconLayersIntersect.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs":
 /*!***********************************************************************!*\
   !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconMenu2.mjs ***!
@@ -79353,6 +79709,35 @@ var IconStar = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["defaul
 
 
 //# sourceMappingURL=IconStar.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ IconTrash)
+/* harmony export */ });
+/* harmony import */ var _createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createReactComponent.mjs */ "./node_modules/@tabler/icons-react/dist/esm/createReactComponent.mjs");
+/**
+ * @license @tabler/icons-react v3.30.0 - MIT
+ *
+ * This source code is licensed under the MIT license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var IconTrash = (0,_createReactComponent_mjs__WEBPACK_IMPORTED_MODULE_0__["default"])("outline", "trash", "IconTrash", [["path", { "d": "M4 7l16 0", "key": "svg-0" }], ["path", { "d": "M10 11l0 6", "key": "svg-1" }], ["path", { "d": "M14 11l0 6", "key": "svg-2" }], ["path", { "d": "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12", "key": "svg-3" }], ["path", { "d": "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3", "key": "svg-4" }]]);
+
+
+//# sourceMappingURL=IconTrash.mjs.map
 
 
 /***/ }),
