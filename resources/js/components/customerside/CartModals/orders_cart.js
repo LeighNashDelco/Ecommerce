@@ -77,7 +77,7 @@ function OrdersCart({ isOpen, onClose, profileId, fetchCartCount = () => {} }) {
         prevItems.map((i) => (i.product_id === productId ? { ...i, quantity: i.quantity - 1 } : i))
       );
       setErrorMessage('');
-      if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+      if (typeof fetchCartCount === 'function') fetchCartCount();
     } catch (error) {
       console.error('Error decreasing quantity:', error);
       setErrorMessage('Failed to update quantity. Please try again.');
@@ -99,7 +99,7 @@ function OrdersCart({ isOpen, onClose, profileId, fetchCartCount = () => {} }) {
         prevItems.map((i) => (i.product_id === productId ? { ...i, quantity: i.quantity + 1 } : i))
       );
       setErrorMessage('');
-      if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+      if (typeof fetchCartCount === 'function') fetchCartCount();
     } catch (error) {
       console.error('Error increasing quantity:', error);
       setErrorMessage('Failed to update quantity. Please try again.');
@@ -121,7 +121,7 @@ function OrdersCart({ isOpen, onClose, profileId, fetchCartCount = () => {} }) {
         return newSelected;
       });
       setErrorMessage('');
-      if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+      if (typeof fetchCartCount === 'function') fetchCartCount();
     } catch (error) {
       console.error('Error removing item:', error);
       setErrorMessage('Failed to remove item. Please try again.');

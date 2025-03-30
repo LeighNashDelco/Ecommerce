@@ -45,12 +45,13 @@ const Login = () => {
 
             localStorage.setItem("LaravelPassportToken", token);
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("userRole", user.role_id === 1 ? "admin" : "customer"); // Store role
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
             setSuccessMessage("Login successful! Redirecting...");
 
             setTimeout(() => {
-                if (user?.role_id === 1) {
+                if (user.role_id === 1) {
                     navigate("/admindashboard");
                 } else {
                     navigate("/homepage");

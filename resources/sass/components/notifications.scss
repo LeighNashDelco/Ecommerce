@@ -1,0 +1,125 @@
+// resources/sass/components/notifications.scss
+.notifications-page {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.notifications-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .loading {
+      color: #888;
+      text-align: center;
+      font-size: 16px;
+  }
+
+  .notifications-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
+
+      h1 {
+          font-size: 24px;
+          margin: 0;
+          color: #fff;
+          flex-grow: 1;
+      }
+  }
+
+  .error-message {
+      color: #ff4444;
+      margin-bottom: 15px;
+      text-align: center;
+  }
+
+  .no-notifications {
+      font-size: 16px;
+      color: #888;
+      text-align: center;
+  }
+
+  .notifications-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      .back-btn {
+          background: none;
+          border: none;
+          color: #ff4444;
+          font-size: 16px;
+          cursor: pointer;
+          padding: 8px 16px; // Match padding with other buttons
+          margin-right: 10px;
+
+          &:hover {
+              color: #ff6666;
+          }
+      }
+
+      .select-all-btn, .remove-selected-btn {
+          background-color: #333;
+          color: #fff;
+          padding: 8px 16px;
+          border: 1px solid #555;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background-color 0.3s;
+
+          &:hover {
+              background-color: #444;
+          }
+
+          &:disabled {
+              background-color: #222;
+              color: #666;
+              cursor: not-allowed;
+          }
+      }
+  }
+
+  .notifications-list {
+      list-style: none;
+      padding: 0;
+
+      .notification-item {
+          display: flex;
+          align-items: center;
+          padding: 15px;
+          margin-bottom: 5px;
+          border-radius: 4px;
+          background-color: #2a2a2a;
+          transition: background-color 0.3s;
+
+          &.unread {
+              background-color: #333;
+          }
+
+          input[type="checkbox"] {
+              margin-right: 15px;
+              accent-color: #ff4444;
+              width: 16px;
+              height: 16px;
+          }
+
+          .notification-text {
+              flex-grow: 1;
+              font-size: 16px;
+          }
+
+          .notification-timestamp {
+              font-size: 12px;
+              color: #888;
+              min-width: 100px;
+              text-align: right;
+          }
+      }
+  }
+}

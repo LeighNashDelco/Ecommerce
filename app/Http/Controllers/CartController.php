@@ -11,7 +11,7 @@ class CartController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api'); // Ensure all methods require authentication
+        $this->middleware('auth:api');
     }
 
     public function getCart($profileId)
@@ -49,7 +49,7 @@ class CartController extends Controller
     {
         try {
             $user = $request->user();
-            $profile = $user->profile; // Assuming a profile relationship exists
+            $profile = $user->profile;
             if (!$profile) {
                 return response()->json([
                     'success' => false,
@@ -57,7 +57,7 @@ class CartController extends Controller
                 ], 404);
             }
 
-            $count = Cart::where('profile_id', $profile->id)->count(); // Count unique items
+            $count = Cart::where('profile_id', $profile->id)->count();
 
             return response()->json([
                 'success' => true,

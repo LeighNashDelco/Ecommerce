@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaCaretDown } from 'react-icons/fa'; // Changed to FaShoppingCart
+import { FaShoppingCart, FaCaretDown, FaBell } from 'react-icons/fa';
 import { IconSearch, IconMenu2, IconX } from '@tabler/icons-react';
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -10,9 +10,13 @@ import logoImage from "../../../../../resources/sass/img/mainlogo.svg";
 function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileImg, setProfileImg] = useState("default-profile.png");
+  const [notifications, setNotifications] = useState([]);
+  const [notificationCount, setNotificationCount] = useState(0);
   const dropdownRef = useRef(null);
+  const notificationRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,14 +24,19 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     if (token) {
       setIsLoggedIn(true);
       fetchProfileImage(token);
+      fetchNotifications(token);
+      const interval = setInterval(() => fetchNotifications(token), 30000);
+      return () => clearInterval(interval);
     }
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        console.log("Click outside, closing dropdown");
         setIsDropdownOpen(false);
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setIsNotificationOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -45,11 +54,42 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     }
   };
 
+  const fetchNotifications = async (token) => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/notifications", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const unreadNotifications = response.data.filter(notif => notif.status === 'unread');
+      setNotifications(response.data);
+      setNotificationCount(unreadNotifications.length);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
+
+  const markNotificationAsRead = async (notificationId) => {
+    const token = localStorage.getItem("LaravelPassportToken");
+    try {
+      await axios.post(`http://127.0.0.1:8000/api/notifications/${notificationId}/read`, {}, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setNotifications(prev => prev.map(notif =>
+        notif.id === notificationId ? { ...notif, status: 'read' } : notif
+      ));
+      setNotificationCount(prev => Math.max(prev - 1, 0));
+    } catch (error) {
+      console.error("Error marking notification as read:", error);
+    }
+  };
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleDropdown = (e) => {
     e.stopPropagation();
-    console.log("Clicked dropdown icon, toggling to:", !isDropdownOpen);
     setIsDropdownOpen(prev => !prev);
+  };
+  const toggleNotificationDropdown = (e) => {
+    e.stopPropagation();
+    setIsNotificationOpen(prev => !prev);
   };
 
   const handleProfileSettings = () => {
@@ -57,15 +97,18 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     setIsDropdownOpen(false);
   };
 
+  const handleViewAllNotifications = () => {
+    navigate("/notifications");
+    setIsDropdownOpen(false);
+    setIsNotificationOpen(false);
+  };
+
   const handleLogout = () => {
-    console.log("🔹 Logging out...");
     localStorage.clear();
     sessionStorage.clear();
     setIsLoggedIn(false);
     setIsDropdownOpen(false);
-    setTimeout(() => {
-      navigate("/login", { replace: true });
-    }, 200);
+    setTimeout(() => navigate("/login", { replace: true }), 200);
   };
 
   const navigateAndClose = (path) => (e) => {
@@ -73,6 +116,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     navigate(path);
     setIsMenuOpen(false);
     setIsDropdownOpen(false);
+    setIsNotificationOpen(false);
   };
 
   const handleCartKeyPress = (e) => {
@@ -94,6 +138,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     ...(isLoggedIn 
       ? [
           { href: "#profile", text: "PROFILE", path: "/customerprofile" },
+          { href: "#notifications", text: "NOTIFICATIONS", path: "/notifications" },
           { href: "#logout", text: "LOGOUT", onClick: handleLogout }
         ]
       : [{ href: "#login", text: "LOGIN", path: "/login" }])
@@ -141,6 +186,44 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </a>
 
+          {isLoggedIn && (
+            <div className="notification-circle" ref={notificationRef}>
+              <FaBell 
+                className="notification-icon"
+                onClick={toggleNotificationDropdown}
+                tabIndex={0}
+                onKeyPress={(e) => e.key === "Enter" && toggleNotificationDropdown(e)}
+                aria-label={`Notifications (${notificationCount} unread)`}
+              />
+              {notificationCount > 0 && (
+                <span className="notification-count">{notificationCount}</span>
+              )}
+              {isNotificationOpen && (
+                <div className={`notification-dropdown ${isNotificationOpen ? "open" : ""}`}>
+                  <ul>
+                    {notifications.length > 0 ? (
+                      notifications.slice(0, 5).map(notif => ( // Limit to 5 in dropdown
+                        <li 
+                          key={notif.id} 
+                          className={notif.status === 'unread' ? 'unread' : 'read'}
+                          onClick={() => notif.status === 'unread' && markNotificationAsRead(notif.id)}
+                        >
+                          <span>{notif.message}</span>
+                          <small>{new Date(notif.created_at).toLocaleTimeString()}</small>
+                        </li>
+                      ))
+                    ) : (
+                      <li>No new notifications</li>
+                    )}
+                    <li className="view-all" onClick={handleViewAllNotifications}>
+                      View All Notifications
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
           {isLoggedIn ? (
             <div className="profile-circle" ref={dropdownRef}>
               <img
@@ -155,7 +238,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
                   onClick={toggleDropdown}
                   aria-label="Toggle profile menu"
                   tabIndex={0}
-                  onKeyPress={(e) => e.key === "Enter" && toggleDropdown()}
+                  onKeyPress={(e) => e.key === "Enter" && toggleDropdown(e)}
                 />
                 {isDropdownOpen && (
                   <div className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}>
@@ -163,6 +246,10 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
                       <li onClick={handleProfileSettings} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleProfileSettings()}>
                         <UserOutlined className="dropdown-icon-item" />
                         <span>Profile Settings</span>
+                      </li>
+                      <li onClick={handleViewAllNotifications} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleViewAllNotifications()}>
+                        <FaBell className="dropdown-icon-item" />
+                        <span>Notifications</span>
                       </li>
                       <li onClick={handleLogout} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleLogout()}>
                         <LogoutOutlined className="dropdown-icon-item" />

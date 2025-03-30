@@ -1,0 +1,120 @@
+// resources/sass/components/chatbot.scss
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    .chat-icon {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .chat-window {
+        width: 300px;
+        height: 400px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    .chat-body {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+
+        .faq-list {
+            margin-bottom: 10px;
+            .faq-item {
+                padding: 8px;
+                margin: 5px 0;
+                background-color: #f1f1f1;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #e0e0e0;
+                }
+            }
+        }
+
+        .messages {
+            flex: 1;
+            .message {
+                margin: 5px 0;
+                padding: 10px;
+                border-radius: 5px;
+                max-width: 80%;
+
+                &.sent {
+                    background-color: #007bff;
+                    color: white;
+                    align-self: flex-end;
+                    margin-left: auto;
+                }
+
+                &.received {
+                    background-color: #e0e0e0;
+                    align-self: flex-start;
+                }
+
+                small {
+                    display: block;
+                    font-size: 10px;
+                    color: #666;
+                }
+            }
+        }
+    }
+
+    .chat-footer {
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        display: flex;
+
+        input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+}

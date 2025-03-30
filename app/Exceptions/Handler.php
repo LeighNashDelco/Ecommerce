@@ -47,4 +47,23 @@ class Handler extends ExceptionHandler
     {
         return response()->json(['message' => 'Unauthenticated.'], 401);
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function render($request, Throwable $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'status' => 500,
+            ], 500);
+        }
+
+        return parent::render($request, $exception);
+    }
 }

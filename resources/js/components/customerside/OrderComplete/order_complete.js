@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import "./../../../../sass/components/order_complete.scss";
 import orderIllustration from '../../../../../resources/sass/img/thankyou.svg'; 
@@ -10,48 +10,6 @@ function OrderComplete() {
   const location = useLocation();
   const { items, profileId, order } = location.state || {};
   const [errorMessage, setErrorMessage] = useState('');
-
-  const getAuthHeaders = () => {
-    const token = localStorage.getItem('LaravelPassportToken');
-    return token ? {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    } : { 'Content-Type': 'application/json' };
-  };
-
-  useEffect(() => {
-    const deleteSelectedCartItems = async () => {
-      if (!items || items.length === 0) {
-        setErrorMessage('No items provided. Unable to clear cart.');
-        return;
-      }
-      if (!profileId) {
-        setErrorMessage('No profile ID provided. Unable to clear cart.');
-        return;
-      }
-
-      try {
-        await Promise.all(
-          items.map(item =>
-            fetch(`http://127.0.0.1:8000/api/cart/remove`, {
-              method: 'DELETE',
-              headers: getAuthHeaders(),
-              body: JSON.stringify({ profile_id: profileId, product_id: item.product_id }),
-            }).then(res => {
-              if (!res.ok) throw new Error(`Failed to delete item ${item.product_id}`);
-              return res.json();
-            })
-          )
-        );
-        console.log('Successfully deleted selected cart items:', items);
-      } catch (error) {
-        console.error('Error deleting selected cart items:', error);
-        setErrorMessage('Failed to remove ordered items from cart. Please check your cart manually.');
-      }
-    };
-
-    deleteSelectedCartItems();
-  }, [items, profileId]);
 
   const handleContinueShopping = () => {
     navigate('/shop');

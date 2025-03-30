@@ -21,6 +21,8 @@ import Notfound from "./components/customerside/Pagenotfound/notfound";
 import ProductView from "./components/customerside/ProductView/product_view";
 import TrackOrder from "./components/customerside/TrackOrder/track_order";
 import AboutUs from "./components/customerside/AboutUs/about_us";
+import Notifications from './components/customerside/Customer/Notifications';
+import Chatbot from './components/customerside/Customer/Chatbot';
 
 // Admin components
 import AdminDashboard from "./components/adminside/admindashboard/admindashboard";
@@ -39,51 +41,131 @@ import Shipment from "./components/adminside/shipment/Shipment";
 import StatusAndCategory from "./components/adminside/statusandcategory/StatusAndCategory";
 import Users from "./components/adminside/users/Users";
 import Brands from "./components/adminside/brands/Brands";
+import AdminChat from './components/adminside/AdminChat';
 import PrivateRoute from "./components/adminside/routes/PrivateRoute.js";
 
+// Customer Layout
+function CustomerLayout({ children }) {
+    const token = localStorage.getItem('LaravelPassportToken');
+    const userRole = localStorage.getItem('userRole'); // Ensure this is set on login
+    return (
+        <>
+            {children}
+            {token && (!userRole || userRole === 'customer') && <Chatbot />}
+        </>
+    );
+}
+
+// Admin Layout
+function AdminLayout({ children }) {
+    const token = localStorage.getItem('LaravelPassportToken');
+    const userRole = localStorage.getItem('userRole');
+    console.log('AdminLayout - token:', token, 'userRole:', userRole); // Debug
+    return (
+        <>
+            {children}
+            {token && userRole === 'admin' && <AdminChat />}
+        </>
+    );
+}
+
 export default function Routers() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/homepage" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/shop/product/:id" element={<ProductView />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/checkout_address" element={<CheckoutAddress />} />
-        <Route path="/payment_methods" element={<PaymentMethods />} />
-        <Route path="/developer" element={<Developer />} />
-        <Route path="/order_complete" element={<OrderComplete />} />
-        <Route path="/notfound" element={<Notfound />} />
-        <Route path="/product_view" element={<ProductView />} />
-        <Route path="/customerprofile" element={<CustomerProfile />} />
-        <Route path="/track_order" element={<TrackOrder />} />
-        <Route path="/about_us" element={<AboutUs />} />
-        <Route path="/admindashboard" element={<PrivateRoute element={<AdminDashboard />} />} />
-        <Route path="/brands" element={<PrivateRoute element={<Brands />} />} />
-        <Route path="/profile" element={<PrivateRoute element={<AdminProfile />} />} />
-        <Route path="/changepassadmin" element={<PrivateRoute element={<ChangePassAdmin />} />} />
-        <Route path="/adminlist" element={<PrivateRoute element={<AdminList />} />} />
-        <Route path="/customerlist" element={<PrivateRoute element={<CustomerList />} />} />
-        <Route path="/helpandsupport" element={<PrivateRoute element={<HelpAndSupport />} />} />
-        <Route path="/inventory" element={<PrivateRoute element={<Inventory />} />} />
-        <Route path="/orders" element={<PrivateRoute element={<Orders />} />} />
-        <Route path="/paymentmanagement" element={<PrivateRoute element={<PaymentManagement />} />} />
-        <Route path="/products" element={<PrivateRoute element={<Products />} />} />
-        <Route path="/reviewsandnotifications" element={<PrivateRoute element={<ReviewsAndNotifications />} />} />
-        <Route path="/roles" element={<PrivateRoute element={<Roles />} />} />
-        <Route path="/shipment" element={<PrivateRoute element={<Shipment />} />} />
-        <Route path="/statusandcategory" element={<PrivateRoute element={<StatusAndCategory />} />} />
-        <Route path="/users" element={<PrivateRoute element={<Users />} />} />
-      </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                {/* Public Routes */}
+                <Route path="/" element={<Navigate to="/homepage" />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                
+                {/* Customer Routes */}
+                <Route path="/homepage" element={<CustomerLayout><Homepage /></CustomerLayout>} />
+                <Route path="/notifications" element={<CustomerLayout><Notifications /></CustomerLayout>} />
+                <Route path="/shop" element={<CustomerLayout><Shop /></CustomerLayout>} />
+                <Route path="/shop/product/:id" element={<CustomerLayout><ProductView /></CustomerLayout>} />
+                <Route path="/cart" element={<CustomerLayout><Cart /></CustomerLayout>} />
+                <Route path="/checkout" element={<CustomerLayout><Checkout /></CustomerLayout>} />
+                <Route path="/checkout_address" element={<CustomerLayout><CheckoutAddress /></CustomerLayout>} />
+                <Route path="/payment_methods" element={<CustomerLayout><PaymentMethods /></CustomerLayout>} />
+                <Route path="/developer" element={<CustomerLayout><Developer /></CustomerLayout>} />
+                <Route path="/order_complete" element={<CustomerLayout><OrderComplete /></CustomerLayout>} />
+                <Route path="/notfound" element={<CustomerLayout><Notfound /></CustomerLayout>} />
+                <Route path="/product_view" element={<CustomerLayout><ProductView /></CustomerLayout>} />
+                <Route path="/customerprofile" element={<CustomerLayout><CustomerProfile /></CustomerLayout>} />
+                <Route path="/track_order" element={<CustomerLayout><TrackOrder /></CustomerLayout>} />
+                <Route path="/about_us" element={<CustomerLayout><AboutUs /></CustomerLayout>} />
+
+                {/* Admin Routes */}
+                <Route 
+                    path="/admindashboard" 
+                    element={<AdminLayout><PrivateRoute element={<AdminDashboard />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/brands" 
+                    element={<AdminLayout><PrivateRoute element={<Brands />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/profile" 
+                    element={<AdminLayout><PrivateRoute element={<AdminProfile />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/changepassadmin" 
+                    element={<AdminLayout><PrivateRoute element={<ChangePassAdmin />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/adminlist" 
+                    element={<AdminLayout><PrivateRoute element={<AdminList />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/customerlist" 
+                    element={<AdminLayout><PrivateRoute element={<CustomerList />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/helpandsupport" 
+                    element={<AdminLayout><PrivateRoute element={<HelpAndSupport />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/inventory" 
+                    element={<AdminLayout><PrivateRoute element={<Inventory />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/orders" 
+                    element={<AdminLayout><PrivateRoute element={<Orders />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/paymentmanagement" 
+                    element={<AdminLayout><PrivateRoute element={<PaymentManagement />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/products" 
+                    element={<AdminLayout><PrivateRoute element={<Products />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/reviewsandnotifications" 
+                    element={<AdminLayout><PrivateRoute element={<ReviewsAndNotifications />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/roles" 
+                    element={<AdminLayout><PrivateRoute element={<Roles />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/shipment" 
+                    element={<AdminLayout><PrivateRoute element={<Shipment />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/statusandcategory" 
+                    element={<AdminLayout><PrivateRoute element={<StatusAndCategory />} /></AdminLayout>} 
+                />
+                <Route 
+                    path="/users" 
+                    element={<AdminLayout><PrivateRoute element={<Users />} /></AdminLayout>} 
+                />
+            </Routes>
+        </Router>
+    );
 }
 
 if (document.getElementById("root")) {
-  ReactDOM.render(<Routers />, document.getElementById("root"));
+    ReactDOM.render(<Routers />, document.getElementById("root"));
 }

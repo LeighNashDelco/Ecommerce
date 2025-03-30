@@ -18681,8 +18681,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/adminside/login/Login */ "./resources/js/components/adminside/login/Login.js");
 /* harmony import */ var _components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/adminside/register/Register */ "./resources/js/components/adminside/register/Register.js");
 /* harmony import */ var _components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/adminside/login/ResetPassword */ "./resources/js/components/adminside/login/ResetPassword.js");
@@ -18699,24 +18699,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/customerside/ProductView/product_view */ "./resources/js/components/customerside/ProductView/product_view.js");
 /* harmony import */ var _components_customerside_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/customerside/TrackOrder/track_order */ "./resources/js/components/customerside/TrackOrder/track_order.js");
 /* harmony import */ var _components_customerside_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/customerside/AboutUs/about_us */ "./resources/js/components/customerside/AboutUs/about_us.js");
-/* harmony import */ var _components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/adminside/admindashboard/admindashboard */ "./resources/js/components/adminside/admindashboard/admindashboard.js");
-/* harmony import */ var _components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/adminside/profile/Profile */ "./resources/js/components/adminside/profile/Profile.js");
-/* harmony import */ var _components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/adminside/profile/ChangePassAdmin.js */ "./resources/js/components/adminside/profile/ChangePassAdmin.js");
-/* harmony import */ var _components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/adminside/adminlist/AdminList */ "./resources/js/components/adminside/adminlist/AdminList.js");
-/* harmony import */ var _components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/adminside/customerlist/CustomerList */ "./resources/js/components/adminside/customerlist/CustomerList.js");
-/* harmony import */ var _components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/adminside/helpandsupport/HelpAndSupport */ "./resources/js/components/adminside/helpandsupport/HelpAndSupport.js");
-/* harmony import */ var _components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/adminside/inventory/Inventory */ "./resources/js/components/adminside/inventory/Inventory.js");
-/* harmony import */ var _components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/adminside/orders/Orders */ "./resources/js/components/adminside/orders/Orders.js");
-/* harmony import */ var _components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/adminside/paymentmanagement/PaymentManagement */ "./resources/js/components/adminside/paymentmanagement/PaymentManagement.js");
-/* harmony import */ var _components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/adminside/products/Products */ "./resources/js/components/adminside/products/Products.js");
-/* harmony import */ var _components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/adminside/reviewsandnotification/ReviewsAndNotifications */ "./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js");
-/* harmony import */ var _components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/adminside/roles/Roles */ "./resources/js/components/adminside/roles/Roles.js");
-/* harmony import */ var _components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/adminside/shipment/Shipment */ "./resources/js/components/adminside/shipment/Shipment.js");
-/* harmony import */ var _components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/adminside/statusandcategory/StatusAndCategory */ "./resources/js/components/adminside/statusandcategory/StatusAndCategory.js");
-/* harmony import */ var _components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/adminside/users/Users */ "./resources/js/components/adminside/users/Users.js");
-/* harmony import */ var _components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/adminside/brands/Brands */ "./resources/js/components/adminside/brands/Brands.js");
-/* harmony import */ var _components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/adminside/routes/PrivateRoute.js */ "./resources/js/components/adminside/routes/PrivateRoute.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_customerside_Customer_Notifications__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/customerside/Customer/Notifications */ "./resources/js/components/customerside/Customer/Notifications.js");
+/* harmony import */ var _components_customerside_Customer_Chatbot__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/customerside/Customer/Chatbot */ "./resources/js/components/customerside/Customer/Chatbot.js");
+/* harmony import */ var _components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/adminside/admindashboard/admindashboard */ "./resources/js/components/adminside/admindashboard/admindashboard.js");
+/* harmony import */ var _components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/adminside/profile/Profile */ "./resources/js/components/adminside/profile/Profile.js");
+/* harmony import */ var _components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/adminside/profile/ChangePassAdmin.js */ "./resources/js/components/adminside/profile/ChangePassAdmin.js");
+/* harmony import */ var _components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/adminside/adminlist/AdminList */ "./resources/js/components/adminside/adminlist/AdminList.js");
+/* harmony import */ var _components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/adminside/customerlist/CustomerList */ "./resources/js/components/adminside/customerlist/CustomerList.js");
+/* harmony import */ var _components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/adminside/helpandsupport/HelpAndSupport */ "./resources/js/components/adminside/helpandsupport/HelpAndSupport.js");
+/* harmony import */ var _components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/adminside/inventory/Inventory */ "./resources/js/components/adminside/inventory/Inventory.js");
+/* harmony import */ var _components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/adminside/orders/Orders */ "./resources/js/components/adminside/orders/Orders.js");
+/* harmony import */ var _components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/adminside/paymentmanagement/PaymentManagement */ "./resources/js/components/adminside/paymentmanagement/PaymentManagement.js");
+/* harmony import */ var _components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/adminside/products/Products */ "./resources/js/components/adminside/products/Products.js");
+/* harmony import */ var _components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/adminside/reviewsandnotification/ReviewsAndNotifications */ "./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js");
+/* harmony import */ var _components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/adminside/roles/Roles */ "./resources/js/components/adminside/roles/Roles.js");
+/* harmony import */ var _components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/adminside/shipment/Shipment */ "./resources/js/components/adminside/shipment/Shipment.js");
+/* harmony import */ var _components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/adminside/statusandcategory/StatusAndCategory */ "./resources/js/components/adminside/statusandcategory/StatusAndCategory.js");
+/* harmony import */ var _components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/adminside/users/Users */ "./resources/js/components/adminside/users/Users.js");
+/* harmony import */ var _components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/adminside/brands/Brands */ "./resources/js/components/adminside/brands/Brands.js");
+/* harmony import */ var _components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/adminside/AdminChat */ "./resources/js/components/adminside/AdminChat.js");
+/* harmony import */ var _components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/adminside/routes/PrivateRoute.js */ "./resources/js/components/adminside/routes/PrivateRoute.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -18727,6 +18730,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Customer components
+
+
 
 
 
@@ -18760,151 +18765,238 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// Customer Layout
+
+function CustomerLayout(_ref) {
+  var children = _ref.children;
+  var token = localStorage.getItem('LaravelPassportToken');
+  var userRole = localStorage.getItem('userRole'); // Ensure this is set on login
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.Fragment, {
+    children: [children, token && (!userRole || userRole === 'customer') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_Chatbot__WEBPACK_IMPORTED_MODULE_19__["default"], {})]
+  });
+}
+
+// Admin Layout
+function AdminLayout(_ref2) {
+  var children = _ref2.children;
+  var token = localStorage.getItem('LaravelPassportToken');
+  var userRole = localStorage.getItem('userRole');
+  console.log('AdminLayout - token:', token, 'userRole:', userRole); // Debug
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.Fragment, {
+    children: [children, token && userRole === 'admin' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_36__["default"], {})]
+  });
+}
 function Routers() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_36__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Navigate, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Navigate, {
           to: "/homepage"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/reset-password",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/homepage",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Homepage_homepage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Homepage_homepage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+        path: "/notifications",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_Notifications__WEBPACK_IMPORTED_MODULE_18__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/shop",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_shop_shop__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_shop_shop__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/shop/product/:id",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/cart",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Customer_cart__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_cart__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/checkout",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Customer_checkout__WEBPACK_IMPORTED_MODULE_9__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_checkout__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/checkout_address",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_10__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/payment_methods",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/developer",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Developers_developer__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Developers_developer__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/order_complete",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_13__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/notfound",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/product_view",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/customerprofile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_profile_CustomerProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_profile_CustomerProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/track_order",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_16__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_16__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/about_us",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_customerside_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_17__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_17__["default"], {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/admindashboard",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_18__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_20__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/brands",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_33__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_35__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/profile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_19__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_21__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/changepassadmin",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_20__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_22__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/adminlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_21__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_23__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/customerlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_22__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_24__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/helpandsupport",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_23__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_25__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/inventory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_24__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_26__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/orders",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_25__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_27__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/paymentmanagement",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_26__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_28__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/products",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_27__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_29__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/reviewsandnotifications",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_28__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_30__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/roles",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_29__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_31__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/shipment",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_30__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_32__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/statusandcategory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_31__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_33__["default"], {})
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_37__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
         path: "/users",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_34__["default"], {
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(_components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_32__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_34__["default"], {})
+          })
         })
       })]
     })
   });
 }
 if (document.getElementById("root")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_35__.jsx)(Routers, {}), document.getElementById("root"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(Routers, {}), document.getElementById("root"));
 }
 
 /***/ }),
@@ -19011,6 +19103,229 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/adminside/AdminChat.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/adminside/AdminChat.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _sass_components_adminchat_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/adminchat.scss */ "./resources/sass/components/adminchat.scss");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// resources/js/components/adminside/AdminChat.js
+
+
+
+function AdminChat() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    messages = _useState2[0],
+    setMessages = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    selectedUserId = _useState4[0],
+    setSelectedUserId = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    reply = _useState6[0],
+    setReply = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    error = _useState10[0],
+    setError = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    isOpen = _useState12[0],
+    setIsOpen = _useState12[1]; // Add toggle state
+
+  var getAuthHeaders = function getAuthHeaders() {
+    return {
+      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
+      'Content-Type': 'application/json'
+    };
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isOpen) {
+      fetchMessages();
+    }
+  }, [isOpen]);
+  var fetchMessages = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            setLoading(true);
+            setError(null);
+            _context.prev = 2;
+            _context.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/chat/admin', {
+              headers: getAuthHeaders()
+            });
+          case 5:
+            response = _context.sent;
+            console.log('Fetched messages:', response.data);
+            setMessages(response.data);
+            _context.next = 14;
+            break;
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](2);
+            console.error('Error fetching messages:', _context.t0);
+            setError('Failed to load messages. Please try again.');
+          case 14:
+            _context.prev = 14;
+            setLoading(false);
+            return _context.finish(14);
+          case 17:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[2, 10, 14, 17]]);
+    }));
+    return function fetchMessages() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleReply = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (!(!reply.trim() || !selectedUserId)) {
+              _context2.next = 2;
+              break;
+            }
+            return _context2.abrupt("return");
+          case 2:
+            _context2.prev = 2;
+            _context2.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://127.0.0.1:8000/api/chat/reply', {
+              user_id: selectedUserId,
+              message: reply
+            }, {
+              headers: getAuthHeaders()
+            });
+          case 5:
+            response = _context2.sent;
+            setMessages(function (prev) {
+              return [].concat(_toConsumableArray(prev), [response.data.data]);
+            });
+            setReply('');
+            fetchMessages(); // Refresh messages after reply
+            _context2.next = 14;
+            break;
+          case 11:
+            _context2.prev = 11;
+            _context2.t0 = _context2["catch"](2);
+            console.error('Error sending reply:', _context2.t0);
+          case 14:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[2, 11]]);
+    }));
+    return function handleReply() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  // Group messages by user and get user details
+  var usersWithMessages = messages.reduce(function (acc, msg) {
+    if (!acc.some(function (u) {
+      return u.id === msg.user_id;
+    }) && !msg.is_admin_reply) {
+      var _msg$user;
+      // Only include users who sent messages
+      acc.push({
+        id: msg.user_id,
+        name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.username) || "User #".concat(msg.user_id) // Use username
+      });
+    }
+    return acc;
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'admin-chat-container'
+  }, !isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    className: 'chat-toggle-button',
+    onClick: function onClick() {
+      return setIsOpen(true);
+    }
+  }, 'Open Customer Chat'), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'admin-chat'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-header'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h1', null, 'Customer Chat'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    className: 'close-button',
+    onClick: function onClick() {
+      return setIsOpen(false);
+    }
+  }, 'Close')), loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', null, 'Loading messages...'), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', {
+    className: 'error'
+  }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-container'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'user-list'
+  }, usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+      key: user.id,
+      className: "user-item ".concat(selectedUserId === user.id ? 'selected' : ''),
+      onClick: function onClick() {
+        return setSelectedUserId(user.id);
+      }
+    }, user.name);
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', null, 'No customer messages yet.')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-area'
+  }, selectedUserId && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'messages'
+  }, messages.filter(function (m) {
+    return m.user_id === selectedUserId;
+  }).map(function (msg, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+      key: index,
+      className: "message ".concat(msg.is_admin_reply ? 'sent' : 'received')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, msg.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('small', null, new Date(msg.created_at).toLocaleTimeString()));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'reply-area'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    type: 'text',
+    value: reply,
+    onChange: function onChange(e) {
+      return setReply(e.target.value);
+    },
+    placeholder: 'Type your reply...'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    onClick: handleReply
+  }, 'Send')))))));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminChat);
 
 /***/ }),
 
@@ -23858,19 +24173,20 @@ var Login = function Login() {
             _response$data = response.data, token = _response$data.token, user = _response$data.user;
             localStorage.setItem("LaravelPassportToken", token);
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("userRole", user.role_id === 1 ? "admin" : "customer"); // Store role
             axios__WEBPACK_IMPORTED_MODULE_4__["default"].defaults.headers.common["Authorization"] = "Bearer ".concat(token);
             setSuccessMessage("Login successful! Redirecting...");
             setTimeout(function () {
-              if ((user === null || user === void 0 ? void 0 : user.role_id) === 1) {
+              if (user.role_id === 1) {
                 navigate("/admindashboard");
               } else {
                 navigate("/homepage");
               }
             }, 2000);
-            _context.next = 18;
+            _context.next = 19;
             break;
-          case 15:
-            _context.prev = 15;
+          case 16:
+            _context.prev = 16;
             _context.t0 = _context["catch"](3);
             if (_context.t0.response) {
               if (_context.t0.response.status === 401) {
@@ -23883,15 +24199,15 @@ var Login = function Login() {
             } else {
               setError("Server error. Please try again later.");
             }
-          case 18:
-            _context.prev = 18;
+          case 19:
+            _context.prev = 19;
             setLoading(false);
-            return _context.finish(18);
-          case 21:
+            return _context.finish(19);
+          case 22:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[3, 15, 18, 21]]);
+      }, _callee, null, [[3, 16, 19, 22]]);
     }));
     return function handleLogin(_x) {
       return _ref.apply(this, arguments);
@@ -24251,77 +24567,402 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sidebar/Sidebar */ "./resources/js/components/adminside/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/adminside/topnavbar/TopNavbar.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
-/* harmony import */ var _sass_components_orders_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../sass/components/_orders.scss */ "./resources/sass/components/_orders.scss");
+/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../topnavbar/TopNavbar */ "./resources/js/components/adminside/topnavbar/TopNavbar.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconSearch.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconArchive.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconPlus.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEye.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconRefresh.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconTrash.mjs");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconEdit.mjs");
+/* harmony import */ var _sass_components_ordersdashboard_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../sass/components/_ordersdashboard.scss */ "./resources/sass/components/_ordersdashboard.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// Orders.js
 
 
 
 
 
 
+ // Updated SCSS import
 
-
+var formatDate = function formatDate(dateString) {
+  if (!dateString) return "N/A";
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit"
+  }).format(new Date(dateString));
+};
 var Orders = function Orders() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
-    searchTerm = _useState2[0],
-    setSearchTerm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
+    orders = _useState2[0],
+    setOrders = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    filterValue = _useState4[0],
-    setFilterValue = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    searchTerm = _useState4[0],
+    setSearchTerm = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("all"),
     _useState6 = _slicedToArray(_useState5, 2),
-    filterOpen = _useState6[0],
-    setFilterOpen = _useState6[1];
-  var filterOptions = [{
+    filterValue = _useState6[0],
+    setFilterValue = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("All Orders"),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectedFilterLabel = _useState8[0],
+    setSelectedFilterLabel = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    filterOpen = _useState10[0],
+    setFilterOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    showArchived = _useState12[0],
+    setShowArchived = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    selectedOrders = _useState14[0],
+    setSelectedOrders = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    isConfirmModalOpen = _useState16[0],
+    setIsConfirmModalOpen = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    orderToArchive = _useState18[0],
+    setOrderToArchive = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState20 = _slicedToArray(_useState19, 2),
+    loading = _useState20[0],
+    setLoading = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      currentPage: 1,
+      totalPages: 1
+    }),
+    _useState22 = _slicedToArray(_useState21, 2),
+    pagination = _useState22[0],
+    setPagination = _useState22[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchOrders = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var token, config, response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              setLoading(true);
+              token = localStorage.getItem("LaravelPassportToken");
+              console.log("Token used:", token);
+              if (token) {
+                _context.next = 6;
+                break;
+              }
+              throw new Error("No authentication token found");
+            case 6:
+              config = {
+                headers: {
+                  Authorization: "Bearer ".concat(token)
+                }
+              };
+              _context.next = 9;
+              return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/orders", config);
+            case 9:
+              response = _context.sent;
+              console.log("Orders response:", response.data);
+              setOrders(response.data.map(function (order) {
+                return _objectSpread(_objectSpread({}, order), {}, {
+                  archived: order.status_id === 5 // Assuming status_id 5 is "Cancelled" and treated as archived
+                });
+              }));
+              _context.next = 19;
+              break;
+            case 14:
+              _context.prev = 14;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching orders:", _context.t0);
+              if (_context.t0.response) {
+                console.error("Response data:", _context.t0.response.data);
+                console.error("Response status:", _context.t0.response.status);
+              }
+              setOrders([]);
+            case 19:
+              _context.prev = 19;
+              setLoading(false);
+              return _context.finish(19);
+            case 22:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 14, 19, 22]]);
+      }));
+      return function fetchOrders() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchOrders();
+  }, []);
+  var filteredOrders = orders.filter(function (order) {
+    var _order$user, _order$product;
+    var matchesSearch = ((_order$user = order.user) === null || _order$user === void 0 || (_order$user = _order$user.name) === null || _order$user === void 0 ? void 0 : _order$user.toLowerCase().includes(searchTerm.toLowerCase())) || ((_order$product = order.product) === null || _order$product === void 0 || (_order$product = _order$product.name) === null || _order$product === void 0 ? void 0 : _order$product.toLowerCase().includes(searchTerm.toLowerCase())) || order.id.toString().includes(searchTerm);
+    var matchesFilter = filterValue === "all" || order.status_id === parseInt(filterValue);
+    var matchesArchived = order.archived === showArchived;
+    return matchesSearch && matchesFilter && matchesArchived;
+  });
+  var toggleSelectOrder = function toggleSelectOrder(orderId) {
+    setSelectedOrders(function (prev) {
+      return prev.includes(orderId) ? prev.filter(function (id) {
+        return id !== orderId;
+      }) : [].concat(_toConsumableArray(prev), [orderId]);
+    });
+  };
+  var toggleSelectAll = function toggleSelectAll() {
+    if (selectedOrders.length === filteredOrders.length) {
+      setSelectedOrders([]);
+    } else {
+      setSelectedOrders(filteredOrders.map(function (order) {
+        return order.id;
+      }));
+    }
+  };
+  var handleToggleArchived = function handleToggleArchived() {
+    setShowArchived(function (prev) {
+      return !prev;
+    });
+    setPagination(_objectSpread(_objectSpread({}, pagination), {}, {
+      currentPage: 1
+    }));
+    setSelectedOrders([]);
+  };
+  var handleArchiveClick = function handleArchiveClick(order) {
+    setOrderToArchive(order);
+    setIsConfirmModalOpen(true);
+  };
+  var handleArchiveConfirm = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var token, response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (orderToArchive) {
+              _context2.next = 2;
+              break;
+            }
+            return _context2.abrupt("return");
+          case 2:
+            _context2.prev = 2;
+            token = localStorage.getItem("LaravelPassportToken");
+            _context2.next = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].post("http://127.0.0.1:8000/api/orders/".concat(orderToArchive.id, "/cancel"), {}, {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 6:
+            response = _context2.sent;
+            if (response.status === 200) {
+              setOrders(function (prevOrders) {
+                return prevOrders.map(function (order) {
+                  return order.id === orderToArchive.id ? _objectSpread(_objectSpread({}, order), {}, {
+                    archived: true,
+                    status_id: 5
+                  }) : order;
+                });
+              });
+              setIsConfirmModalOpen(false);
+              setOrderToArchive(null);
+            }
+            _context2.next = 13;
+            break;
+          case 10:
+            _context2.prev = 10;
+            _context2.t0 = _context2["catch"](2);
+            console.error("Error archiving order:", _context2.t0);
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[2, 10]]);
+    }));
+    return function handleArchiveConfirm() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleRestoreOrder = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(orderId) {
+      var token, response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            token = localStorage.getItem("LaravelPassportToken");
+            _context3.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].patch("http://127.0.0.1:8000/api/orders/".concat(orderId, "/restore"),
+            // Hypothetical endpoint
+            {
+              status_id: 1
+            },
+            // Restore to "Pending"
+            {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 4:
+            response = _context3.sent;
+            if (response.status === 200) {
+              setOrders(function (prevOrders) {
+                return prevOrders.map(function (order) {
+                  return order.id === orderId ? _objectSpread(_objectSpread({}, order), {}, {
+                    archived: false,
+                    status_id: 1
+                  }) : order;
+                });
+              });
+            }
+            _context3.next = 11;
+            break;
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](0);
+            console.error("Error restoring order:", _context3.t0);
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 8]]);
+    }));
+    return function handleRestoreOrder(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleBulkAction = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(action) {
+      var token, requests;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            if (!(selectedOrders.length === 0)) {
+              _context4.next = 2;
+              break;
+            }
+            return _context4.abrupt("return");
+          case 2:
+            _context4.prev = 2;
+            token = localStorage.getItem("LaravelPassportToken");
+            requests = selectedOrders.map(function (orderId) {
+              return axios__WEBPACK_IMPORTED_MODULE_5__["default"][action === "archive" ? "post" : "patch"]("http://127.0.0.1:8000/api/orders/".concat(orderId, "/").concat(action === "archive" ? "cancel" : "restore"), action === "archive" ? {} : {
+                status_id: 1
+              }, {
+                headers: {
+                  Authorization: "Bearer ".concat(token)
+                }
+              });
+            });
+            _context4.next = 7;
+            return Promise.all(requests);
+          case 7:
+            setOrders(function (prevOrders) {
+              return prevOrders.map(function (order) {
+                return selectedOrders.includes(order.id) ? _objectSpread(_objectSpread({}, order), {}, {
+                  archived: action === "archive",
+                  status_id: action === "archive" ? 5 : 1
+                }) : order;
+              });
+            });
+            setSelectedOrders([]);
+            _context4.next = 14;
+            break;
+          case 11:
+            _context4.prev = 11;
+            _context4.t0 = _context4["catch"](2);
+            console.error("Error ".concat(action, "ing orders:"), _context4.t0);
+          case 14:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[2, 11]]);
+    }));
+    return function handleBulkAction(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var statusOptions = [{
     value: "all",
-    label: "All"
+    label: "All Orders"
   }, {
-    value: "pending",
+    value: "1",
     label: "Pending"
   }, {
-    value: "shipped",
+    value: "2",
+    label: "Processing"
+  },
+  // Adjusted to match your statuses
+  {
+    value: "3",
     label: "Shipped"
   }, {
-    value: "delivered",
+    value: "4",
     label: "Delivered"
-  }];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
-  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
+  }, {
+    value: "5",
+    label: "Cancelled"
+  } // Added Cancelled
+  ];
+  var ordersPerPage = 10;
+  var totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+  var currentOrders = filteredOrders.slice((pagination.currentPage - 1) * ordersPerPage, pagination.currentPage * ordersPerPage);
+  var handlePageChange = function handlePageChange(page) {
+    setPagination(_objectSpread(_objectSpread({}, pagination), {}, {
+      currentPage: page
+    }));
+  };
+  var handleFilterSelect = function handleFilterSelect(value, label) {
+    setFilterValue(value);
+    setSelectedFilterLabel(label);
+    setFilterOpen(false);
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "app",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
       activeItem: "Orders"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "main-content-wrapper",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "order-dashboard",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "order-orders",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-            children: "Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "order-orders-header",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "left-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "ordersdashboard-dashboard",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "ordersdashboard-content",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+          children: showArchived ? "Archived Orders" : "Order Management"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "ordersdashboard-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "left-actions",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "search-container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                size: 20,
+                className: "search-icon"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
                 type: "text",
                 className: "search-input",
                 placeholder: "Search Orders",
@@ -24329,109 +24970,228 @@ var Orders = function Orders() {
                 onChange: function onChange(e) {
                   return setSearchTerm(e.target.value);
                 }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "Orders"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "Returns"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "right-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                className: "header-button",
-                children: "View Archived"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "filter-container",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  className: "filter-button",
-                  onClick: function onClick() {
-                    return setFilterOpen(!filterOpen);
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    children: "Filter"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {})]
-                }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                  className: "filter-dropdown",
-                  children: filterOptions.map(function (option) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-                      onClick: function onClick() {
-                        setFilterValue(option.value);
-                        setFilterOpen(false);
-                      },
-                      children: option.label
-                    }, option.value);
-                  })
-                })]
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "order-order-table",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "header-actions-icon",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                        className: "checkbox-icon"
-                      }), "Actions"]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Order ID"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "User"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Total Amount"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Status"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Created at"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                    children: "Updated at"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                children: _toConsumableArray(Array(5)).map(function (_, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "action-icons",
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaSquare, {
-                          className: "checkbox-icon",
-                          size: 16
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                          size: 16,
-                          className: "delete-icon"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                          size: 16,
-                          className: "edit-icon"
-                        })]
-                      })
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {})]
-                  }, index);
-                })
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "order-pagination",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              children: "Page 1 of 1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "<"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              className: "active",
-              children: "1"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "2"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: "3"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              children: ">"
+            className: "right-actions",
+            children: [selectedOrders.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+              className: "header-button archive-all-button",
+              onClick: function onClick() {
+                return handleBulkAction(showArchived ? "restore" : "archive");
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                size: 20,
+                className: "button-icon"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "button-text",
+                children: showArchived ? "Restore All" : "Archive All"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+              className: "header-button",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                size: 20,
+                className: "button-icon"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "button-text",
+                children: "Add New"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+              className: "header-button",
+              onClick: handleToggleArchived,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                size: 20,
+                className: "button-icon"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                className: "button-text",
+                children: showArchived ? "View Active" : "View Archived"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              className: "filter-container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+                className: "filter-button",
+                onClick: function onClick() {
+                  return setFilterOpen(!filterOpen);
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  children: selectedFilterLabel
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaChevronDown, {})]
+              }), filterOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+                className: "filter-dropdown",
+                children: statusOptions.map(function (status) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+                    onClick: function onClick() {
+                      return handleFilterSelect(status.value, status.label);
+                    },
+                    children: status.label
+                  }, status.value);
+                })
+              })]
             })]
           })]
-        })
-      })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "ordersdashboard-table",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "header-actions-icon",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                      onClick: toggleSelectAll,
+                      style: {
+                        cursor: "pointer"
+                      },
+                      children: selectedOrders.length === filteredOrders.length && filteredOrders.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaCheckSquare, {
+                        className: "checkbox-icon"
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaSquare, {
+                        className: "checkbox-icon"
+                      })
+                    }), "Actions"]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "User Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Product Name"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Quantity"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Total Amount"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Status"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Order Date"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Est. Delivery"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Payment Method"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  children: "Shipping Method"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
+              children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  colSpan: "10",
+                  className: "loading-row",
+                  children: "Loading orders..."
+                })
+              }) : currentOrders.length > 0 ? currentOrders.map(function (order) {
+                var _order$user2, _order$product2, _statusOptions$find;
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "action-icons",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                        onClick: function onClick() {
+                          return toggleSelectOrder(order.id);
+                        },
+                        style: {
+                          cursor: "pointer"
+                        },
+                        children: selectedOrders.includes(order.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaCheckSquare, {
+                          className: "checkbox-icon",
+                          size: 16
+                        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_10__.FaSquare, {
+                          className: "checkbox-icon",
+                          size: 16
+                        })
+                      }), showArchived ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                        size: 16,
+                        className: "restore-icon",
+                        onClick: function onClick() {
+                          return handleRestoreOrder(order.id);
+                        }
+                      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                        size: 16,
+                        className: "delete-icon",
+                        onClick: function onClick() {
+                          return handleArchiveClick(order);
+                        }
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                        size: 16,
+                        className: "edit-icon"
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: ((_order$user2 = order.user) === null || _order$user2 === void 0 ? void 0 : _order$user2.name) || "N/A"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: ((_order$product2 = order.product) === null || _order$product2 === void 0 ? void 0 : _order$product2.name) || "N/A"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: order.quantity
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                    children: ["$", parseFloat(order.total_amount).toFixed(2)]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: ((_statusOptions$find = statusOptions.find(function (s) {
+                      return s.value === order.status_id.toString();
+                    })) === null || _statusOptions$find === void 0 ? void 0 : _statusOptions$find.label) || "N/A"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: formatDate(order.order_date)
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: formatDate(order.estimated_delivery_date)
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: order.payment_method || "N/A"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                    children: order.shipping_method || "N/A"
+                  })]
+                }, order.id);
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tr", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                  colSpan: "10",
+                  children: ["No ", showArchived ? "archived" : "active", " orders found"]
+                })
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "ordersdashboard-pagination",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            children: ["Page ", pagination.currentPage, " of ", totalPages]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              return handlePageChange(pagination.currentPage - 1);
+            },
+            disabled: pagination.currentPage <= 1,
+            children: "<"
+          }), _toConsumableArray(Array(totalPages)).map(function (_, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              className: pagination.currentPage === index + 1 ? "active" : "",
+              onClick: function onClick() {
+                return handlePageChange(index + 1);
+              },
+              children: index + 1
+            }, index);
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            onClick: function onClick() {
+              return handlePageChange(pagination.currentPage + 1);
+            },
+            disabled: pagination.currentPage >= totalPages,
+            children: ">"
+          })]
+        })]
+      })
+    }), isConfirmModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "confirm-modal-overlay",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "confirm-modal",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          children: "Are you sure?"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          children: ["Do you want to archive Order #", orderToArchive === null || orderToArchive === void 0 ? void 0 : orderToArchive.id, "?"]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "confirm-modal-buttons",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            className: "confirm-button",
+            onClick: handleArchiveConfirm,
+            children: "Yes, Archive"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            className: "cancel-button",
+            onClick: function onClick() {
+              return setIsConfirmModalOpen(false);
+            },
+            children: "Cancel"
+          })]
+        })]
+      })
     })]
   });
 };
@@ -32934,7 +33694,7 @@ function OrdersCart(_ref) {
               });
             });
             setErrorMessage('');
-            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            if (typeof fetchCartCount === 'function') fetchCartCount();
             _context2.next = 18;
             break;
           case 14:
@@ -32994,7 +33754,7 @@ function OrdersCart(_ref) {
               });
             });
             setErrorMessage('');
-            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            if (typeof fetchCartCount === 'function') fetchCartCount();
             _context3.next = 18;
             break;
           case 14:
@@ -33047,7 +33807,7 @@ function OrdersCart(_ref) {
               return newSelected;
             });
             setErrorMessage('');
-            if (typeof fetchCartCount === 'function') fetchCartCount(); // Check if it's a function
+            if (typeof fetchCartCount === 'function') fetchCartCount();
             _context4.next = 16;
             break;
           case 12:
@@ -33219,6 +33979,590 @@ function OrdersCart(_ref) {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrdersCart);
+
+/***/ }),
+
+/***/ "./resources/js/components/customerside/Customer/Chatbot.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/customerside/Customer/Chatbot.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _sass_components_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/chatbot.scss */ "./resources/sass/components/chatbot.scss");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// resources/js/components/customerside/Customer/Chatbot.js
+
+
+
+
+function Chatbot() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    faqs = _useState4[0],
+    setFaqs = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    messages = _useState6[0],
+    setMessages = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState8 = _slicedToArray(_useState7, 2),
+    input = _useState8[0],
+    setInput = _useState8[1];
+  var getAuthHeaders = function getAuthHeaders() {
+    return {
+      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
+      'Content-Type': 'application/json'
+    };
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isOpen) {
+      fetchFaqs();
+      fetchMessages();
+    }
+  }, [isOpen]);
+  var fetchFaqs = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            response = _context.sent;
+            setFaqs(response.data);
+            _context.next = 10;
+            break;
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            console.error('Error fetching FAQs:', _context.t0);
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+    return function fetchFaqs() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var fetchMessages = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            response = _context2.sent;
+            setMessages(response.data);
+            _context2.next = 10;
+            break;
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+            console.error('Error fetching messages:', _context2.t0);
+          case 10:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+    return function fetchMessages() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleFaqClick = function handleFaqClick(faq) {
+    setMessages(function (prev) {
+      return [].concat(_toConsumableArray(prev), [{
+        message: faq.question,
+        is_admin_reply: false,
+        created_at: new Date()
+      }, {
+        message: faq.answer,
+        is_admin_reply: true,
+        created_at: new Date()
+      }]);
+    });
+  };
+  var handleSendMessage = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            if (input.trim()) {
+              _context3.next = 2;
+              break;
+            }
+            return _context3.abrupt("return");
+          case 2:
+            _context3.prev = 2;
+            _context3.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://127.0.0.1:8000/api/chat/send', {
+              message: input
+            }, {
+              headers: getAuthHeaders()
+            });
+          case 5:
+            response = _context3.sent;
+            setMessages(function (prev) {
+              return [].concat(_toConsumableArray(prev), [response.data.data]);
+            });
+            setInput('');
+            _context3.next = 13;
+            break;
+          case 10:
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](2);
+            console.error('Error sending message:', _context3.t0);
+          case 13:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[2, 10]]);
+    }));
+    return function handleSendMessage() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chatbot'
+  }, !isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-icon',
+    onClick: function onClick() {
+      return setIsOpen(true);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaCommentAlt, {
+    size: 30
+  })), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-window'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-header'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, 'Chat Support'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    onClick: function onClick() {
+      return setIsOpen(false);
+    }
+  }, 'X')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-body'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'faq-list'
+  }, faqs.map(function (faq) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+      key: faq.id,
+      className: 'faq-item',
+      onClick: function onClick() {
+        return handleFaqClick(faq);
+      }
+    }, faq.question);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'messages'
+  }, messages.map(function (msg, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+      key: index,
+      className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, msg.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('small', null, new Date(msg.created_at).toLocaleTimeString()));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
+    className: 'chat-footer'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
+    type: 'text',
+    value: input,
+    onChange: function onChange(e) {
+      return setInput(e.target.value);
+    },
+    placeholder: 'Type your question...'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
+    onClick: handleSendMessage
+  }, 'Send'))));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Chatbot);
+
+/***/ }),
+
+/***/ "./resources/js/components/customerside/Customer/Notifications.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/customerside/Customer/Notifications.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _sass_components_notifications_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/notifications.scss */ "./resources/sass/components/notifications.scss");
+/* harmony import */ var _topnav_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// resources/js/components/Notifications.js
+
+
+
+
+
+
+
+function Notifications() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    notifications = _useState2[0],
+    setNotifications = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    errorMessage = _useState6[0],
+    setErrorMessage = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectedNotifications = _useState8[0],
+    setSelectedNotifications = _useState8[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var getAuthHeaders = function getAuthHeaders() {
+    var token = localStorage.getItem('LaravelPassportToken');
+    return token ? {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer ".concat(token)
+    } : {
+      'Content-Type': 'application/json'
+    };
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchNotifications = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get('http://127.0.0.1:8000/api/notifications', {
+                headers: getAuthHeaders()
+              });
+            case 3:
+              response = _context.sent;
+              setNotifications(response.data);
+              _context.next = 11;
+              break;
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.error('Error fetching notifications:', _context.t0);
+              setErrorMessage('Failed to load notifications. Please try again.');
+            case 11:
+              _context.prev = 11;
+              setLoading(false);
+              return _context.finish(11);
+            case 14:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 7, 11, 14]]);
+      }));
+      return function fetchNotifications() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchNotifications();
+  }, []);
+  var markNotificationAsRead = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(notificationId) {
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].post("http://127.0.0.1:8000/api/notifications/".concat(notificationId, "/read"), {}, {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            setNotifications(function (prev) {
+              return prev.map(function (notif) {
+                return notif.id === notificationId ? _objectSpread(_objectSpread({}, notif), {}, {
+                  status: 'read'
+                }) : notif;
+              });
+            });
+            _context2.next = 10;
+            break;
+          case 6:
+            _context2.prev = 6;
+            _context2.t0 = _context2["catch"](0);
+            console.error('Error marking notification as read:', _context2.t0);
+            setErrorMessage('Failed to mark notification as read.');
+          case 10:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 6]]);
+    }));
+    return function markNotificationAsRead(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var deleteNotification = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(notificationId) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("http://127.0.0.1:8000/api/notifications/".concat(notificationId), {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            setNotifications(function (prev) {
+              return prev.filter(function (notif) {
+                return notif.id !== notificationId;
+              });
+            });
+            setSelectedNotifications(function (prev) {
+              return prev.filter(function (id) {
+                return id !== notificationId;
+              });
+            });
+            _context3.next = 11;
+            break;
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            console.error('Error deleting notification:', _context3.t0);
+            setErrorMessage('Failed to delete notification.');
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 7]]);
+    }));
+    return function deleteNotification(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var markAllAsRead = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.prev = 0;
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_6__["default"].post('http://127.0.0.1:8000/api/notifications/mark-all-read', {}, {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            setNotifications(function (prev) {
+              return prev.map(function (notif) {
+                return _objectSpread(_objectSpread({}, notif), {}, {
+                  status: 'read'
+                });
+              });
+            });
+            _context4.next = 10;
+            break;
+          case 6:
+            _context4.prev = 6;
+            _context4.t0 = _context4["catch"](0);
+            console.error('Error marking all as read:', _context4.t0);
+            setErrorMessage('Failed to mark all notifications as read.');
+          case 10:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[0, 6]]);
+    }));
+    return function markAllAsRead() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var handleSelectNotification = function handleSelectNotification(notificationId) {
+    setSelectedNotifications(function (prev) {
+      return prev.includes(notificationId) ? prev.filter(function (id) {
+        return id !== notificationId;
+      }) : [].concat(_toConsumableArray(prev), [notificationId]);
+    });
+  };
+  var handleSelectAll = function handleSelectAll() {
+    if (selectedNotifications.length === notifications.length) {
+      setSelectedNotifications([]);
+    } else {
+      setSelectedNotifications(notifications.map(function (notif) {
+        return notif.id;
+      }));
+    }
+  };
+  var handleRemoveSelected = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.prev = 0;
+            _context5.next = 3;
+            return Promise.all(selectedNotifications.map(function (id) {
+              return axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("http://127.0.0.1:8000/api/notifications/".concat(id), {
+                headers: getAuthHeaders()
+              });
+            }));
+          case 3:
+            setNotifications(function (prev) {
+              return prev.filter(function (notif) {
+                return !selectedNotifications.includes(notif.id);
+              });
+            });
+            setSelectedNotifications([]);
+            _context5.next = 11;
+            break;
+          case 7:
+            _context5.prev = 7;
+            _context5.t0 = _context5["catch"](0);
+            console.error('Error removing selected notifications:', _context5.t0);
+            setErrorMessage('Failed to remove selected notifications.');
+          case 11:
+          case "end":
+            return _context5.stop();
+        }
+      }, _callee5, null, [[0, 7]]);
+    }));
+    return function handleRemoveSelected() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+  var handleBackToShop = function handleBackToShop() {
+    navigate('/shop');
+  };
+  var getRelativeTime = function getRelativeTime(date) {
+    var now = new Date();
+    var notificationDate = new Date(date);
+    var diffInSeconds = Math.floor((now - notificationDate) / 1000);
+    if (diffInSeconds < 60) return "".concat(diffInSeconds, " seconds ago");
+    var diffInMinutes = Math.floor(diffInSeconds / 60);
+    if (diffInMinutes < 60) return "".concat(diffInMinutes, " ").concat(diffInMinutes === 1 ? 'minute' : 'minutes', " ago");
+    var diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) return "".concat(diffInHours, " ").concat(diffInHours === 1 ? 'hour' : 'hours', " ago");
+    var diffInDays = Math.floor(diffInHours / 24);
+    return "".concat(diffInDays, " ").concat(diffInDays === 1 ? 'day' : 'days', " ago");
+  };
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "loading",
+    children: "Loading notifications..."
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "notifications-page",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "notifications-content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "notifications-header",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+          children: "Notifications"
+        })
+      }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "error-message",
+        children: errorMessage
+      }), notifications.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "no-notifications",
+        children: "No notifications available."
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "notifications-actions",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            className: "back-btn",
+            onClick: handleBackToShop,
+            children: "\u2190 Back"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            className: "select-all-btn",
+            onClick: handleSelectAll,
+            children: selectedNotifications.length === notifications.length ? 'Deselect All' : 'Select All'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+            className: "remove-selected-btn",
+            onClick: handleRemoveSelected,
+            disabled: selectedNotifications.length === 0,
+            children: "Remove Selected"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+          className: "notifications-list",
+          children: notifications.map(function (notif) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+              className: "notification-item ".concat(notif.status === 'unread' ? 'unread' : 'read'),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "checkbox",
+                checked: selectedNotifications.includes(notif.id),
+                onChange: function onChange() {
+                  return handleSelectNotification(notif.id);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "notification-text",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  children: notif.message
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "notification-timestamp",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
+                  children: getRelativeTime(notif.created_at)
+                })
+              })]
+            }, notif.id);
+          })
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Notifications);
 
 /***/ }),
 
@@ -34651,13 +35995,14 @@ function PaymentMethods() {
                 return i.product_id !== productId;
               });
             });
-            _context2.next = 13;
+            _context2.next = 14;
             break;
           case 10:
             _context2.prev = 10;
             _context2.t0 = _context2["catch"](1);
             console.error('Error removing item:', _context2.t0);
-          case 13:
+            setErrorMessage('Failed to remove item from cart. Please try again.');
+          case 14:
           case "end":
             return _context2.stop();
         }
@@ -34665,6 +36010,51 @@ function PaymentMethods() {
     }));
     return function handleRemoveItem(_x) {
       return _ref2.apply(this, arguments);
+    };
+  }();
+  var deleteSelectedCartItems = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(selectedItems, profileId) {
+      var responses;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return Promise.all(selectedItems.map(function (item) {
+              return fetch('http://127.0.0.1:8000/api/cart/remove', {
+                method: 'DELETE',
+                headers: getAuthHeaders(),
+                body: JSON.stringify({
+                  profile_id: profileId,
+                  product_id: item.product_id
+                })
+              }).then(function (res) {
+                if (!res.ok && res.status !== 404) {
+                  // Ignore 404s since item might already be deleted
+                  throw new Error("Failed to delete item ".concat(item.product_id, ": ").concat(res.statusText));
+                }
+                return res.status === 204 ? {} : res.json(); // Handle no-content response
+              });
+            }));
+          case 3:
+            responses = _context3.sent;
+            console.log('Cart items deleted:', responses);
+            setCartItems([]); // Clear local state
+            _context3.next = 12;
+            break;
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](0);
+            console.error('Error deleting selected cart items:', _context3.t0);
+            setErrorMessage("Failed to clear cart: ".concat(_context3.t0.message, ". Order still placed successfully."));
+          case 12:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 8]]);
+    }));
+    return function deleteSelectedCartItems(_x2, _x3) {
+      return _ref3.apply(this, arguments);
     };
   }();
   var hasValidAddress = function hasValidAddress() {
@@ -34687,33 +36077,33 @@ function PaymentMethods() {
     };
   };
   var handlePlaceOrder = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
       var profileId, _calculateTotals, totalPrice, shippingCost, grandTotal, orderData, response, responseData;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
             profileId = localStorage.getItem('profileId');
             setErrorMessage('');
             if (profileId) {
-              _context3.next = 5;
+              _context4.next = 5;
               break;
             }
             navigate('/login');
-            return _context3.abrupt("return");
+            return _context4.abrupt("return");
           case 5:
             if (!(cartItems.length === 0)) {
-              _context3.next = 8;
+              _context4.next = 8;
               break;
             }
             setErrorMessage('Your cart is empty. Add items before placing an order.');
-            return _context3.abrupt("return");
+            return _context4.abrupt("return");
           case 8:
             if (hasValidAddress()) {
-              _context3.next = 11;
+              _context4.next = 11;
               break;
             }
             setErrorMessage('Please provide a complete delivery address before placing an order.');
-            return _context3.abrupt("return");
+            return _context4.abrupt("return");
           case 11:
             _calculateTotals = calculateTotals(), totalPrice = _calculateTotals.totalPrice, shippingCost = _calculateTotals.shippingCost, grandTotal = _calculateTotals.grandTotal;
             orderData = {
@@ -34729,36 +36119,41 @@ function PaymentMethods() {
               total_amount: grandTotal,
               payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery'
             };
-            console.log('Order Data being sent:', orderData);
+            console.log('Order Data being sent (full):', JSON.stringify(orderData, null, 2));
             if (!(selectedPayment === 'paypal')) {
-              _context3.next = 19;
+              _context4.next = 19;
               break;
             }
             localStorage.setItem('pendingOrder', JSON.stringify(orderData));
             window.location.href = 'https://www.paypal.com/signin';
-            _context3.next = 36;
+            _context4.next = 38;
             break;
           case 19:
-            _context3.prev = 19;
-            _context3.next = 22;
+            _context4.prev = 19;
+            _context4.next = 22;
             return fetch('http://127.0.0.1:8000/api/orders', {
               method: 'POST',
               headers: getAuthHeaders(),
               body: JSON.stringify(orderData)
             });
           case 22:
-            response = _context3.sent;
-            _context3.next = 25;
+            response = _context4.sent;
+            _context4.next = 25;
             return response.json();
           case 25:
-            responseData = _context3.sent;
+            responseData = _context4.sent;
             if (response.ok) {
-              _context3.next = 28;
+              _context4.next = 28;
               break;
             }
             throw new Error(responseData.error || 'Failed to place order');
           case 28:
             console.log('Order Response:', responseData);
+
+            // Delete cart items after successful order
+            _context4.next = 31;
+            return deleteSelectedCartItems(cartItems, profileId);
+          case 31:
             navigate('/order_complete', {
               state: {
                 order: responseData,
@@ -34766,21 +36161,21 @@ function PaymentMethods() {
                 profileId: profileId
               }
             });
-            _context3.next = 36;
+            _context4.next = 38;
             break;
-          case 32:
-            _context3.prev = 32;
-            _context3.t0 = _context3["catch"](19);
-            console.error('Error placing order:', _context3.t0);
-            setErrorMessage("Failed to place order: ".concat(_context3.t0.message, ". Please try again."));
-          case 36:
+          case 34:
+            _context4.prev = 34;
+            _context4.t0 = _context4["catch"](19);
+            console.error('Error placing order:', _context4.t0);
+            setErrorMessage("Failed to place order: ".concat(_context4.t0.message, ". Please try again."));
+          case 38:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, null, [[19, 32]]);
+      }, _callee4, null, [[19, 34]]);
     }));
     return function handlePlaceOrder() {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
   var _calculateTotals2 = calculateTotals(),
@@ -35090,6 +36485,11 @@ function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArra
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -35101,7 +36501,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
- // Changed to FaShoppingCart
+
 
 
 
@@ -35122,26 +36522,48 @@ function LoggedinCustomerTopNavBar(_ref) {
     setIsDropdownOpen = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    isLoggedIn = _useState6[0],
-    setIsLoggedIn = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("default-profile.png"),
+    isNotificationOpen = _useState6[0],
+    setIsNotificationOpen = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    profileImg = _useState8[0],
-    setProfileImg = _useState8[1];
+    isLoggedIn = _useState8[0],
+    setIsLoggedIn = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("default-profile.png"),
+    _useState10 = _slicedToArray(_useState9, 2),
+    profileImg = _useState10[0],
+    setProfileImg = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState12 = _slicedToArray(_useState11, 2),
+    notifications = _useState12[0],
+    setNotifications = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState14 = _slicedToArray(_useState13, 2),
+    notificationCount = _useState14[0],
+    setNotificationCount = _useState14[1];
   var dropdownRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var notificationRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var token = localStorage.getItem("LaravelPassportToken");
     if (token) {
       setIsLoggedIn(true);
       fetchProfileImage(token);
+      fetchNotifications(token);
+      var interval = setInterval(function () {
+        return fetchNotifications(token);
+      }, 30000);
+      return function () {
+        return clearInterval(interval);
+      };
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var handleClickOutside = function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        console.log("Click outside, closing dropdown");
         setIsDropdownOpen(false);
+      }
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setIsNotificationOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -35181,13 +36603,95 @@ function LoggedinCustomerTopNavBar(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
+  var fetchNotifications = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(token) {
+      var response, unreadNotifications;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/notifications", {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 3:
+            response = _context2.sent;
+            unreadNotifications = response.data.filter(function (notif) {
+              return notif.status === 'unread';
+            });
+            setNotifications(response.data);
+            setNotificationCount(unreadNotifications.length);
+            _context2.next = 12;
+            break;
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](0);
+            console.error("Error fetching notifications:", _context2.t0);
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 9]]);
+    }));
+    return function fetchNotifications(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var markNotificationAsRead = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(notificationId) {
+      var token;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            token = localStorage.getItem("LaravelPassportToken");
+            _context3.prev = 1;
+            _context3.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].post("http://127.0.0.1:8000/api/notifications/".concat(notificationId, "/read"), {}, {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 4:
+            setNotifications(function (prev) {
+              return prev.map(function (notif) {
+                return notif.id === notificationId ? _objectSpread(_objectSpread({}, notif), {}, {
+                  status: 'read'
+                }) : notif;
+              });
+            });
+            setNotificationCount(function (prev) {
+              return Math.max(prev - 1, 0);
+            });
+            _context3.next = 11;
+            break;
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](1);
+            console.error("Error marking notification as read:", _context3.t0);
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[1, 8]]);
+    }));
+    return function markNotificationAsRead(_x3) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
   var toggleMenu = function toggleMenu() {
     return setIsMenuOpen(!isMenuOpen);
   };
   var toggleDropdown = function toggleDropdown(e) {
     e.stopPropagation();
-    console.log("Clicked dropdown icon, toggling to:", !isDropdownOpen);
     setIsDropdownOpen(function (prev) {
+      return !prev;
+    });
+  };
+  var toggleNotificationDropdown = function toggleNotificationDropdown(e) {
+    e.stopPropagation();
+    setIsNotificationOpen(function (prev) {
       return !prev;
     });
   };
@@ -35195,14 +36699,18 @@ function LoggedinCustomerTopNavBar(_ref) {
     navigate("/customerprofile");
     setIsDropdownOpen(false);
   };
+  var handleViewAllNotifications = function handleViewAllNotifications() {
+    navigate("/notifications");
+    setIsDropdownOpen(false);
+    setIsNotificationOpen(false);
+  };
   var handleLogout = function handleLogout() {
-    console.log("🔹 Logging out...");
     localStorage.clear();
     sessionStorage.clear();
     setIsLoggedIn(false);
     setIsDropdownOpen(false);
     setTimeout(function () {
-      navigate("/login", {
+      return navigate("/login", {
         replace: true
       });
     }, 200);
@@ -35213,6 +36721,7 @@ function LoggedinCustomerTopNavBar(_ref) {
       navigate(path);
       setIsMenuOpen(false);
       setIsDropdownOpen(false);
+      setIsNotificationOpen(false);
     };
   };
   var handleCartKeyPress = function handleCartKeyPress(e) {
@@ -35242,6 +36751,10 @@ function LoggedinCustomerTopNavBar(_ref) {
     href: "#profile",
     text: "PROFILE",
     path: "/customerprofile"
+  }, {
+    href: "#notifications",
+    text: "NOTIFICATIONS",
+    path: "/notifications"
   }, {
     href: "#logout",
     text: "LOGOUT",
@@ -35305,6 +36818,48 @@ function LoggedinCustomerTopNavBar(_ref) {
             className: "cart-count",
             children: cartCount
           })]
+        }), isLoggedIn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "notification-circle",
+          ref: notificationRef,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaBell, {
+            className: "notification-icon",
+            onClick: toggleNotificationDropdown,
+            tabIndex: 0,
+            onKeyPress: function onKeyPress(e) {
+              return e.key === "Enter" && toggleNotificationDropdown(e);
+            },
+            "aria-label": "Notifications (".concat(notificationCount, " unread)")
+          }), notificationCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            className: "notification-count",
+            children: notificationCount
+          }), isNotificationOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "notification-dropdown ".concat(isNotificationOpen ? "open" : ""),
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
+              children: [notifications.length > 0 ? notifications.slice(0, 5).map(function (notif) {
+                return (
+                  /*#__PURE__*/
+                  // Limit to 5 in dropdown
+                  (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+                    className: notif.status === 'unread' ? 'unread' : 'read',
+                    onClick: function onClick() {
+                      return notif.status === 'unread' && markNotificationAsRead(notif.id);
+                    },
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                      children: notif.message
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
+                      children: new Date(notif.created_at).toLocaleTimeString()
+                    })]
+                  }, notif.id)
+                );
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+                children: "No new notifications"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+                className: "view-all",
+                onClick: handleViewAllNotifications,
+                children: "View All Notifications"
+              })]
+            })
+          })]
         }), isLoggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "profile-circle",
           ref: dropdownRef,
@@ -35323,7 +36878,7 @@ function LoggedinCustomerTopNavBar(_ref) {
               "aria-label": "Toggle profile menu",
               tabIndex: 0,
               onKeyPress: function onKeyPress(e) {
-                return e.key === "Enter" && toggleDropdown();
+                return e.key === "Enter" && toggleDropdown(e);
               }
             }), isDropdownOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               className: "dropdown-menu ".concat(isDropdownOpen ? "open" : ""),
@@ -35338,6 +36893,17 @@ function LoggedinCustomerTopNavBar(_ref) {
                     className: "dropdown-icon-item"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                     children: "Profile Settings"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+                  onClick: handleViewAllNotifications,
+                  tabIndex: 0,
+                  onKeyPress: function onKeyPress(e) {
+                    return e.key === "Enter" && handleViewAllNotifications();
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_8__.FaBell, {
+                    className: "dropdown-icon-item"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    children: "Notifications"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
                   onClick: handleLogout,
@@ -36234,10 +37800,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../footer/footer */ "./resources/js/components/customerside/footer/footer.js");
 /* harmony import */ var _customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../customerside/Customer/topnav_login */ "./resources/js/components/customerside/Customer/topnav_login.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -36262,71 +37824,6 @@ function OrderComplete() {
     _useState2 = _slicedToArray(_useState, 2),
     errorMessage = _useState2[0],
     setErrorMessage = _useState2[1];
-  var getAuthHeaders = function getAuthHeaders() {
-    var token = localStorage.getItem('LaravelPassportToken');
-    return token ? {
-      'Content-Type': 'application/json',
-      'Authorization': "Bearer ".concat(token)
-    } : {
-      'Content-Type': 'application/json'
-    };
-  };
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var deleteSelectedCartItems = /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              if (!(!items || items.length === 0)) {
-                _context.next = 3;
-                break;
-              }
-              setErrorMessage('No items provided. Unable to clear cart.');
-              return _context.abrupt("return");
-            case 3:
-              if (profileId) {
-                _context.next = 6;
-                break;
-              }
-              setErrorMessage('No profile ID provided. Unable to clear cart.');
-              return _context.abrupt("return");
-            case 6:
-              _context.prev = 6;
-              _context.next = 9;
-              return Promise.all(items.map(function (item) {
-                return fetch("http://127.0.0.1:8000/api/cart/remove", {
-                  method: 'DELETE',
-                  headers: getAuthHeaders(),
-                  body: JSON.stringify({
-                    profile_id: profileId,
-                    product_id: item.product_id
-                  })
-                }).then(function (res) {
-                  if (!res.ok) throw new Error("Failed to delete item ".concat(item.product_id));
-                  return res.json();
-                });
-              }));
-            case 9:
-              console.log('Successfully deleted selected cart items:', items);
-              _context.next = 16;
-              break;
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](6);
-              console.error('Error deleting selected cart items:', _context.t0);
-              setErrorMessage('Failed to remove ordered items from cart. Please check your cart manually.');
-            case 16:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, null, [[6, 12]]);
-      }));
-      return function deleteSelectedCartItems() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-    deleteSelectedCartItems();
-  }, [items, profileId]);
   var handleContinueShopping = function handleContinueShopping() {
     navigate('/shop');
   };
@@ -47571,10 +49068,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".login-wrapper {\n  display: flex;\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_orders.scss":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_orders.scss ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_ordersdashboard.scss":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_ordersdashboard.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -47588,7 +49085,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".app {\n  display: flex;\n  width: 100%;\n  height: 100vh;\n}\n\n.main-content-wrapper {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  background: #f4f4f4;\n}\n\n.order-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.order-dashboard .order-orders {\n  width: 100%;\n  background: #f4f4f4;\n}\n.order-dashboard .order-orders h2 {\n  margin-bottom: 20px;\n  font-size: 24px;\n  color: #333;\n}\n.order-dashboard .order-orders .order-orders-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.order-dashboard .order-orders .order-orders-header .left-actions {\n  display: flex;\n  gap: 10px;\n}\n.order-dashboard .order-orders .order-orders-header .search-input {\n  width: 200px;\n  padding: 8px 12px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n}\n.order-dashboard .order-orders .order-orders-header .search-input:focus {\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .header-button {\n  padding: 12px 20px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  text-align: center;\n}\n.order-dashboard .order-orders .order-orders-header .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container {\n  position: relative;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-button {\n  padding: 12px 20px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 5px;\n  transition: 0.3s;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown {\n  position: absolute;\n  top: 50px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  list-style: none;\n  padding: 5px 0;\n  z-index: 10;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  font-size: 14px;\n  cursor: pointer;\n}\n.order-dashboard .order-orders .order-orders-header .filter-container .filter-dropdown li:hover {\n  background: #ff0000;\n  color: white;\n}\n.order-dashboard .order-orders .order-order-table {\n  width: 100%;\n}\n.order-dashboard .order-orders .order-order-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.order-dashboard .order-orders .order-order-table table th, .order-dashboard .order-orders .order-order-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  font-size: 14px;\n}\n.order-dashboard .order-orders .order-order-table table th {\n  background: #ff0000;\n  color: #fff;\n  font-weight: 600;\n}\n.order-dashboard .order-orders .order-order-table table td {\n  background: #333;\n  color: #fff;\n}\n.order-dashboard .order-orders .order-order-table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.order-dashboard .order-orders .order-order-table .action-icons .checkbox-icon,\n.order-dashboard .order-orders .order-order-table .action-icons .delete-icon,\n.order-dashboard .order-orders .order-order-table .action-icons .edit-icon {\n  cursor: pointer;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.order-dashboard .order-orders .order-order-table .action-icons .checkbox-icon:hover,\n.order-dashboard .order-orders .order-order-table .action-icons .delete-icon:hover,\n.order-dashboard .order-orders .order-order-table .action-icons .edit-icon:hover {\n  color: #ff0000;\n}\n.order-dashboard .order-orders .order-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n}\n.order-dashboard .order-orders .order-pagination span {\n  font-size: 14px;\n  color: #333;\n}\n.order-dashboard .order-orders .order-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.order-dashboard .order-orders .order-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.order-dashboard .order-orders .order-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".ordersdashboard-dashboard {\n  flex: 1;\n  padding: 40px;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  background: #f4f4f4;\n  margin-top: 50px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content {\n  width: 100%;\n  background: #f4f4f4;\n}\n.ordersdashboard-dashboard .ordersdashboard-content h2 {\n  margin: 0 0 20px 0;\n  font-size: 24px;\n  color: #333;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  gap: 10px;\n  min-height: 48px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .left-actions {\n  display: flex;\n  align-items: center;\n  margin: 0;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .left-actions .search-container {\n  position: relative;\n  width: 100%;\n  max-width: 200px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .left-actions .search-container .search-icon {\n  position: absolute;\n  left: 10px;\n  top: 50%;\n  transform: translateY(-50%);\n  color: #666;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .left-actions .search-container .search-input {\n  width: 100%;\n  padding: 8px 12px 8px 35px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  outline: none;\n  height: 48px;\n  box-sizing: border-box;\n  margin: 0;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .left-actions .search-container .search-input:focus {\n  border-color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n  align-items: center;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .header-button {\n  height: 48px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0 20px;\n  min-width: 120px;\n  margin: 0;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .header-button .button-icon {\n  margin-right: 8px;\n  display: inline-block;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .header-button .button-text {\n  display: inline-block;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .header-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .header-button:hover .button-icon {\n  color: white;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .archive-all-button {\n  background: #ff4444;\n  color: white;\n  border-color: #ff4444;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .archive-all-button .button-icon {\n  color: white;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .archive-all-button:hover {\n  background: #ff1111;\n  border-color: #ff1111;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container {\n  position: relative;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-button {\n  height: 48px;\n  padding: 12px 20px;\n  width: 120px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 5px;\n  margin: 0;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-button span {\n  flex: 1;\n  text-align: left;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-dropdown {\n  position: absolute;\n  top: 53px;\n  right: 0;\n  width: 120px;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  list-style: none;\n  padding: 5px 0;\n  margin: 0;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-dropdown li {\n  padding: 8px 15px;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-header .right-actions .filter-container .filter-dropdown li:hover {\n  background: #ff0000;\n  color: white;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table {\n  width: 100%;\n  margin-top: 20px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table th {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #ff0000;\n  font-weight: 600;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table th .header-actions-icon {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table th .header-actions-icon .checkbox-icon {\n  color: #fff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table th .header-actions-icon .checkbox-icon:hover {\n  color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table td {\n  padding: 12px 20px;\n  text-align: left;\n  border: 1px solid #555;\n  color: #fff;\n  font-size: 14px;\n  background: #333;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table td.loading-row {\n  text-align: center;\n  color: #666;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table tr {\n  border-bottom: 1px solid #555;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table tr:last-child {\n  border-bottom: none;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons {\n  display: flex;\n  gap: 10px;\n  align-items: center;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .checkbox-icon,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .delete-icon,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .edit-icon,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .restore-icon {\n  color: #fff;\n  cursor: pointer !important;\n  font-size: 16px;\n  transition: color 0.3s;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .checkbox-icon:hover,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .delete-icon:hover,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .edit-icon:hover,\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-table table .action-icons .restore-icon:hover {\n  color: #ff0000 !important;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 10px;\n  margin-top: 20px;\n  background: #f4f4f4;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination span {\n  color: #333;\n  font-size: 14px;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination button {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background: #fff;\n  color: #333;\n  font-size: 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination button:hover {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination button.active {\n  background: #ff0000;\n  color: white;\n  border-color: #ff0000;\n}\n.ordersdashboard-dashboard .ordersdashboard-content .ordersdashboard-pagination button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.confirm-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 1000;\n}\n.confirm-modal-overlay .confirm-modal {\n  background: #fff;\n  padding: 20px;\n  border-radius: 8px;\n  width: 400px;\n  text-align: center;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n}\n.confirm-modal-overlay .confirm-modal h3 {\n  margin: 0 0 10px;\n  color: #333;\n}\n.confirm-modal-overlay .confirm-modal p {\n  margin: 0 0 20px;\n  color: #666;\n}\n.confirm-modal-overlay .confirm-modal .confirm-modal-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n}\n.confirm-modal-overlay .confirm-modal .confirm-modal-buttons .confirm-button {\n  padding: 10px 20px;\n  background: #ff0000;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal-overlay .confirm-modal .confirm-modal-buttons .confirm-button:hover {\n  background: #cc0000;\n}\n.confirm-modal-overlay .confirm-modal .confirm-modal-buttons .cancel-button {\n  padding: 10px 20px;\n  background: #ccc;\n  color: #333;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.3s;\n}\n.confirm-modal-overlay .confirm-modal .confirm-modal-buttons .cancel-button:hover {\n  background: rgb(178.5, 178.5, 178.5);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47890,6 +49387,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".address-modal-overlay {\n  position: 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/adminchat.scss":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/adminchat.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n\n.chat-toggle-button {\n  padding: 10px 20px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1em;\n}\n.chat-toggle-button:hover {\n  background-color: #0056b3;\n}\n\n.admin-chat {\n  width: 350px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  padding: 15px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n}\n.admin-chat .chat-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n}\n.admin-chat .chat-header h1 {\n  margin: 0;\n  font-size: 1.2em;\n  color: #333;\n}\n.admin-chat .chat-header .close-button {\n  padding: 5px 10px;\n  background-color: #dc3545;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n}\n.admin-chat .chat-header .close-button:hover {\n  background-color: #c82333;\n}\n.admin-chat .error {\n  color: red;\n  text-align: center;\n  margin-bottom: 10px;\n}\n.admin-chat .chat-container {\n  display: flex;\n  height: 300px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n}\n.admin-chat .user-list {\n  width: 40%;\n  border-right: 1px solid #ccc;\n  overflow-y: auto;\n  padding: 5px;\n}\n.admin-chat .user-list .user-item {\n  padding: 8px;\n  margin: 3px 0;\n  background-color: #f1f1f1;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.admin-chat .user-list .user-item.selected {\n  background-color: #007bff;\n  color: white;\n}\n.admin-chat .user-list .user-item:hover {\n  background-color: #e0e0e0;\n}\n.admin-chat .user-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area {\n  width: 60%;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .chat-area .messages {\n  flex: 1;\n  overflow-y: auto;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .chat-area .messages .message {\n  margin: 5px 0;\n  padding: 8px;\n  border-radius: 5px;\n  max-width: 80%;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.admin-chat .chat-area .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.admin-chat .chat-area .messages .message small {\n  display: block;\n  font-size: 0.7em;\n  color: #666;\n}\n.admin-chat .chat-area .reply-area {\n  padding: 5px;\n  border-top: 1px solid #ccc;\n  display: flex;\n  align-items: center;\n}\n.admin-chat .chat-area .reply-area input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .reply-area button {\n  margin-left: 5px;\n  padding: 5px 10px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .reply-area button:hover {\n  background-color: #0056b3;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/all_order.scss":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/all_order.scss ***!
@@ -47956,6 +49477,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".cart-page-container {\n  padding-top: 100px;\n  background-color: #fff;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  max-width: 100vw;\n}\n.cart-page-container .cart-content {\n  max-width: 1400px;\n  width: 90%;\n  margin: 0 auto;\n  padding: 30px;\n  flex-grow: 1;\n}\n.cart-page-container .cart-header {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  margin-bottom: 30px;\n}\n.cart-page-container .cart-header .logo {\n  height: 40px;\n}\n.cart-page-container .cart-header .header-separator {\n  color: #ccc;\n  font-size: 20px;\n}\n.cart-page-container .cart-header span {\n  font-size: 20px;\n  color: #1e1e1e;\n  font-weight: 500;\n}\n.cart-page-container .cart-table {\n  width: 100%;\n  border-collapse: collapse;\n  border: 1px solid #e5e5e5;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.cart-page-container .cart-table thead {\n  background-color: #1e1e1e;\n  color: #fff;\n}\n.cart-page-container .cart-table thead th {\n  padding: 20px;\n  text-align: center;\n  font-size: 18px;\n  font-weight: 500;\n  border-bottom: 1px solid #e5e5e5;\n}\n.cart-page-container .cart-table thead th.actions-cell {\n  width: 150px;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container {\n  display: flex;\n  justify-content: center;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container input[type=checkbox] {\n  width: 20px;\n  height: 20px;\n  accent-color: #ff4444;\n  cursor: pointer;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table thead th.actions-cell .select-all-container input[type=checkbox]:hover {\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table thead th.product-cell {\n  width: 45%;\n}\n.cart-page-container .cart-table thead th.price-cell, .cart-page-container .cart-table thead th.quantity-cell, .cart-page-container .cart-table thead th.total-cell {\n  width: 15%;\n}\n.cart-page-container .cart-table tbody {\n  background-color: #fff;\n  color: #1e1e1e;\n}\n.cart-page-container .cart-table tbody td {\n  padding: 20px;\n  vertical-align: middle;\n  text-align: center;\n  border-bottom: 1px solid #e5e5e5;\n  font-size: 16px;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .checkbox-icon {\n  width: 20px;\n  height: 20px;\n  accent-color: #ff4444;\n  cursor: pointer;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .checkbox-icon:hover {\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .trash-icon {\n  font-size: 20px;\n  color: #ff4444;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.cart-page-container .cart-table tbody td.actions-cell .actions-container .trash-icon:hover {\n  color: #cc0000;\n  transform: scale(1.1);\n}\n.cart-page-container .cart-table tbody td.product-cell {\n  text-align: left;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info {\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-image {\n  width: 100px;\n  height: 100px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  border: 1px solid #e5e5e5;\n  border-radius: 6px;\n  transition: transform 0.2s ease;\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-image:hover {\n  transform: scale(1.05);\n}\n.cart-page-container .cart-table tbody td.product-cell .product-info .product-name {\n  font-size: 16px;\n  color: #1e1e1e;\n  line-height: 1.4;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control {\n  display: flex;\n  justify-content: center;\n  gap: 15px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button {\n  background: #fff;\n  border: 1px solid #ccc;\n  padding: 8px 16px;\n  cursor: pointer;\n  font-size: 16px;\n  border-radius: 4px;\n  transition: all 0.3s ease;\n  min-width: 40px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button:hover {\n  background-color: #f5f5f5;\n  transform: translateY(-1px);\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control button:disabled {\n  background-color: #e5e5e5;\n  cursor: not-allowed;\n  opacity: 0.6;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-control span {\n  min-width: 40px;\n  text-align: center;\n  font-size: 16px;\n}\n.cart-page-container .cart-table tbody td.quantity-cell .quantity-available {\n  display: block;\n  font-size: 14px;\n  color: #666;\n  margin-top: 8px;\n}\n.cart-page-container .cart-table tbody td.empty-cart {\n  padding: 40px;\n  font-size: 18px;\n  color: #666;\n}\n.cart-page-container .cart-table tbody tr:hover {\n  background-color: #fafafa;\n}\n.cart-page-container .cart-table tbody tr:last-child td {\n  border-bottom: none;\n}\n.cart-page-container .cart-footer {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 25px;\n  margin-top: 30px;\n  padding: 20px;\n  background-color: #f9f9f9;\n  border: 1px solid #e5e5e5;\n  border-radius: 8px;\n  max-width: 600px;\n  margin-left: auto;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n}\n.cart-page-container .cart-footer .cart-summary {\n  font-size: 18px;\n  color: #1e1e1e;\n  font-weight: 500;\n}\n.cart-page-container .cart-footer .cart-summary .total-amount {\n  color: #ff4444;\n  font-weight: 600;\n  margin-left: 10px;\n}\n.cart-page-container .cart-footer button {\n  padding: 12px 25px;\n  font-size: 16px;\n  font-weight: 500;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  min-width: 150px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n}\n.cart-page-container .cart-footer button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n.cart-page-container .cart-footer button:disabled {\n  background-color: #e5e5e5;\n  cursor: not-allowed;\n  transform: none;\n  box-shadow: none;\n  opacity: 0.7;\n}\n.cart-page-container .cart-footer .remove-selected-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.cart-page-container .cart-footer .remove-selected-btn:hover {\n  background-color: #cc0000;\n}\n.cart-page-container .cart-footer .checkout-btn {\n  background-color: #ff4444;\n  color: #fff;\n}\n.cart-page-container .cart-footer .checkout-btn:hover {\n  background-color: #cc0000;\n}\n@media (max-width: 768px) {\n  .cart-page-container {\n    padding-top: 80px;\n  }\n  .cart-page-container .cart-content {\n    padding: 15px;\n    width: 98%;\n  }\n  .cart-page-container .cart-header .logo {\n    height: 30px;\n  }\n  .cart-page-container .cart-header span {\n    font-size: 18px;\n  }\n  .cart-page-container .cart-table thead {\n    display: none;\n  }\n  .cart-page-container .cart-table tbody tr {\n    display: flex;\n    flex-direction: column;\n    padding: 15px;\n    margin-bottom: 15px;\n    border: 1px solid #e5e5e5;\n    border-radius: 6px;\n  }\n  .cart-page-container .cart-table tbody tr td {\n    border: none;\n    padding: 10px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell .product-info {\n    width: 100%;\n    flex-direction: column;\n  }\n  .cart-page-container .cart-table tbody tr td.product-cell .product-info .product-image {\n    width: 100%;\n    max-width: 150px;\n    height: auto;\n  }\n  .cart-page-container .cart-table tbody tr td:before {\n    content: attr(data-label);\n    font-weight: 600;\n    color: #1e1e1e;\n  }\n  .cart-page-container .cart-footer {\n    flex-direction: column;\n    max-width: 100%;\n    gap: 15px;\n    padding: 15px;\n  }\n  .cart-page-container .cart-footer button {\n    width: 100%;\n    padding: 10px;\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/chatbot.scss":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/chatbot.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n}\n.chatbot .chat-body {\n  flex: 1;\n  padding: 10px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-body .faq-list {\n  margin-bottom: 10px;\n}\n.chatbot .chat-body .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .chat-body .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-body .messages {\n  flex: 1;\n}\n.chatbot .chat-body .messages .message {\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-body .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-body .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-body .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-footer {\n  padding: 10px;\n  border-top: 1px solid #ccc;\n  display: flex;\n}\n.chatbot .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n}\n.chatbot .chat-footer button {\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n}\n.chatbot .chat-footer button:hover {\n  background-color: #0056b3;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48149,6 +49694,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".not-found-page {\n  background-color: #000;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n  margin: 0;\n  padding: 0;\n  padding-top: 60px;\n  box-sizing: border-box;\n  width: 100%;\n  overflow-x: hidden;\n}\n\n.navbar {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n  position: fixed;\n  top: 0;\n  height: 60px;\n  background-color: #000000;\n  z-index: 1100;\n  padding: 0 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  box-sizing: border-box;\n}\n.navbar > * {\n  display: flex;\n  align-items: center;\n  height: 100%;\n}\n.navbar .nav-icon {\n  width: 30px;\n  height: 30px;\n  background: url(\"/path/to/shopping-bag-icon.svg\") no-repeat center;\n  background-size: contain;\n  margin-right: 20px;\n}\n.navbar .login-btn {\n  background-color: #ff0000;\n  color: #ffffff;\n  border: none;\n  padding: 8px 20px;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 16px;\n  font-weight: 500;\n  transition: background-color 0.3s ease;\n}\n.navbar .login-btn:hover {\n  background-color: #cc0000;\n}\n\n.not-found-content {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  min-height: calc(100vh - 60px);\n  background-color: #ffffff;\n  padding: 20px;\n  box-sizing: border-box;\n  position: relative;\n}\n\n.not-found-illustration {\n  max-width: 100%;\n  height: auto;\n  max-height: 80vh;\n  width: auto;\n}\n\n.error-message {\n  font-size: 18px;\n  font-weight: 400;\n  color: #7f8c8d;\n  margin: 0;\n  max-width: 600px;\n  padding: 0 20px;\n  font-family: \"Arial\", sans-serif;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifications.scss":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifications.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".notifications-page {\n  font-family: Arial, sans-serif;\n  background-color: #1a1a1a;\n  color: #fff;\n  min-height: 100vh;\n}\n\n.notifications-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 20px;\n}\n.notifications-content .loading {\n  color: #888;\n  text-align: center;\n  font-size: 16px;\n}\n.notifications-content .notifications-header {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n  width: 100%;\n}\n.notifications-content .notifications-header h1 {\n  font-size: 24px;\n  margin: 0;\n  color: #fff;\n  flex-grow: 1;\n}\n.notifications-content .error-message {\n  color: #ff4444;\n  margin-bottom: 15px;\n  text-align: center;\n}\n.notifications-content .no-notifications {\n  font-size: 16px;\n  color: #888;\n  text-align: center;\n}\n.notifications-content .notifications-actions {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin-bottom: 20px;\n}\n.notifications-content .notifications-actions .back-btn {\n  background: none;\n  border: none;\n  color: #ff4444;\n  font-size: 16px;\n  cursor: pointer;\n  padding: 8px 16px;\n  margin-right: 10px;\n}\n.notifications-content .notifications-actions .back-btn:hover {\n  color: #ff6666;\n}\n.notifications-content .notifications-actions .select-all-btn, .notifications-content .notifications-actions .remove-selected-btn {\n  background-color: #333;\n  color: #fff;\n  padding: 8px 16px;\n  border: 1px solid #555;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  transition: background-color 0.3s;\n}\n.notifications-content .notifications-actions .select-all-btn:hover, .notifications-content .notifications-actions .remove-selected-btn:hover {\n  background-color: #444;\n}\n.notifications-content .notifications-actions .select-all-btn:disabled, .notifications-content .notifications-actions .remove-selected-btn:disabled {\n  background-color: #222;\n  color: #666;\n  cursor: not-allowed;\n}\n.notifications-content .notifications-list {\n  list-style: none;\n  padding: 0;\n}\n.notifications-content .notifications-list .notification-item {\n  display: flex;\n  align-items: center;\n  padding: 15px;\n  margin-bottom: 5px;\n  border-radius: 4px;\n  background-color: #2a2a2a;\n  transition: background-color 0.3s;\n}\n.notifications-content .notifications-list .notification-item.unread {\n  background-color: #333;\n}\n.notifications-content .notifications-list .notification-item input[type=checkbox] {\n  margin-right: 15px;\n  accent-color: #ff4444;\n  width: 16px;\n  height: 16px;\n}\n.notifications-content .notifications-list .notification-item .notification-text {\n  flex-grow: 1;\n  font-size: 16px;\n}\n.notifications-content .notifications-list .notification-item .notification-timestamp {\n  font-size: 12px;\n  color: #888;\n  min-width: 100px;\n  text-align: right;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48390,7 +49959,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -8px; /* Adjusted to match screenshot */\n  right: -8px; /* Adjusted to match screenshot */\n  background-color: #FF0000; /* Red background */\n  color: #FFFFFF; /* White text */\n  border: none; /* Remove border */\n  border-radius: 50%;\n  width: 18px; /* Adjusted size */\n  height: 18px; /* Adjusted size */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px; /* Adjusted font size */\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle.open {\n  /* Optional: Visual feedback */\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8;\n  border-radius: 4px;\n  min-width: 180px;\n  z-index: 1002;\n  display: block;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  font-family: \"Arial\", sans-serif;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px;\n  color: #333333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px;\n  font-size: 16px;\n  color: #666666;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -6px; /* Adjusted for mobile */\n    right: -6px; /* Adjusted for mobile */\n    width: 16px; /* Smaller size for mobile */\n    height: 16px; /* Smaller size for mobile */\n    font-size: 9px; /* Smaller font for mobile */\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border: none;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle {\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n  font-size: 24px;\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  background-color: #1a1a1a;\n  border: 1px solid #ff4444;\n  border-radius: 4px;\n  min-width: 200px;\n  z-index: 1002;\n  padding: 10px;\n  color: #ffffff;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n  padding: 8px 12px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n  background-color: #333333;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n  color: #aaaaaa;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li:hover {\n  background-color: #444444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li span {\n  font-size: 14px;\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li small {\n  font-size: 12px;\n  color: #cccccc;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8;\n  border-radius: 4px;\n  min-width: 180px;\n  z-index: 1002;\n  display: none;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  font-family: \"Arial\", sans-serif;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px;\n  color: #333333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px;\n  font-size: 16px;\n  color: #666666;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n    min-width: 180px;\n    margin-top: 6px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n    padding: 6px 10px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n    background-color: #333333;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n    color: #aaaaaa;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -105107,10 +106676,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/sass/components/_orders.scss":
-/*!************************************************!*\
-  !*** ./resources/sass/components/_orders.scss ***!
-  \************************************************/
+/***/ "./resources/sass/components/_ordersdashboard.scss":
+/*!*********************************************************!*\
+  !*** ./resources/sass/components/_ordersdashboard.scss ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -105120,7 +106689,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_orders.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_orders.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_ordersdashboard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./_ordersdashboard.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/_ordersdashboard.scss");
 
             
 
@@ -105129,11 +106698,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_ordersdashboard_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_orders_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_ordersdashboard_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -105497,6 +107066,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/sass/components/adminchat.scss":
+/*!**************************************************!*\
+  !*** ./resources/sass/components/adminchat.scss ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_adminchat_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./adminchat.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/adminchat.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_adminchat_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_adminchat_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./resources/sass/components/all_order.scss":
 /*!**************************************************!*\
   !*** ./resources/sass/components/all_order.scss ***!
@@ -105584,6 +107183,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_cart_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/sass/components/chatbot.scss":
+/*!************************************************!*\
+  !*** ./resources/sass/components/chatbot.scss ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./chatbot.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/chatbot.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -105824,6 +107453,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notfound_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/sass/components/notifications.scss":
+/*!******************************************************!*\
+  !*** ./resources/sass/components/notifications.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifications_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./notifications.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/sass/components/notifications.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifications_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_notifications_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 

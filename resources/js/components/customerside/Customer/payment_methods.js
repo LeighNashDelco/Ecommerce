@@ -109,6 +109,32 @@ function PaymentMethods() {
       setCartItems((prevItems) => prevItems.filter((i) => i.product_id !== productId));
     } catch (error) {
       console.error('Error removing item:', error);
+      setErrorMessage('Failed to remove item from cart. Please try again.');
+    }
+  };
+
+  const deleteSelectedCartItems = async (selectedItems, profileId) => {
+    try {
+      const responses = await Promise.all(selectedItems.map(item =>
+        fetch('http://127.0.0.1:8000/api/cart/remove', {
+          method: 'DELETE',
+          headers: getAuthHeaders(),
+          body: JSON.stringify({
+            profile_id: profileId,
+            product_id: item.product_id,
+          }),
+        }).then(res => {
+          if (!res.ok && res.status !== 404) { // Ignore 404s since item might already be deleted
+            throw new Error(`Failed to delete item ${item.product_id}: ${res.statusText}`);
+          }
+          return res.status === 204 ? {} : res.json(); // Handle no-content response
+        })
+      ));
+      console.log('Cart items deleted:', responses);
+      setCartItems([]); // Clear local state
+    } catch (error) {
+      console.error('Error deleting selected cart items:', error);
+      setErrorMessage(`Failed to clear cart: ${error.message}. Order still placed successfully.`);
     }
   };
 
@@ -166,7 +192,7 @@ function PaymentMethods() {
       payment_method: selectedPayment === 'creditCard' ? 'credit_card' : selectedPayment === 'paypal' ? 'paypal' : 'cash_on_delivery',
     };
 
-    console.log('Order Data being sent:', orderData);
+    console.log('Order Data being sent (full):', JSON.stringify(orderData, null, 2));
 
     if (selectedPayment === 'paypal') {
       localStorage.setItem('pendingOrder', JSON.stringify(orderData));
@@ -186,6 +212,10 @@ function PaymentMethods() {
         }
 
         console.log('Order Response:', responseData);
+
+        // Delete cart items after successful order
+        await deleteSelectedCartItems(cartItems, profileId);
+
         navigate('/order_complete', { state: { order: responseData, items: cartItems, profileId } });
       } catch (error) {
         console.error('Error placing order:', error);

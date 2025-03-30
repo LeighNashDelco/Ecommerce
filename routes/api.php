@@ -27,7 +27,8 @@ use App\Http\Controllers\{
     ShopController,
     CartController,
     OrderController,
-    TrackController
+    TrackController,
+    ChatController
 };
 use App\Models\Profile;
 
@@ -82,6 +83,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/products/{id}/image', [ProductController::class, 'storeImage']);
 
     # Order Management
+    Route::get('/orders', [OrderController::class, 'index']);
     Route::post('/orders', [OrderController::class, 'store']);
     Route::get('/orders/user', [OrderController::class, 'getUserOrders']);
     Route::post('/orders/{orderId}/cancel', [OrderController::class, 'cancelOrder']);
@@ -198,6 +200,12 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/helpandsupport/{id}/archive', [HelpAndSupportController::class, 'archive']);
     Route::patch('/helpandsupport/{id}', [HelpAndSupportController::class, 'update']);
 
+    # Chat Management
+    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+    Route::get('/chat/customer', [ChatController::class, 'getCustomerMessages']);
+    Route::get('/chat/admin', [ChatController::class, 'getAllMessages'])->middleware('role:admin');
+    Route::post('/chat/reply', [ChatController::class, 'replyMessage'])->middleware('role:admin');
+
     # Review Management
     Route::get('/reviews', [ReviewController::class, 'index']);
     Route::get('/reviews/archived', [ReviewController::class, 'archived']);
@@ -208,11 +216,14 @@ Route::middleware('auth:api')->group(function () {
 
     # Notification Management
     Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
     Route::get('/notifications/archived', [NotificationController::class, 'archived']);
     Route::get('/notifications/{id}', [NotificationController::class, 'show']);
     Route::post('/notifications', [NotificationController::class, 'store']);
     Route::patch('/notifications/{id}/archive', [NotificationController::class, 'archive']);
     Route::patch('/notifications/{id}', [NotificationController::class, 'update']);
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
+    Route::delete('/notifications/{id}', [NotificationController::class, 'delete']);
 
     # FAQ Category Management
     Route::get('/faq_categories', [FaqCategoryController::class, 'index']);
