@@ -202,7 +202,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
                 <div className={`notification-dropdown ${isNotificationOpen ? "open" : ""}`}>
                   <ul>
                     {notifications.length > 0 ? (
-                      notifications.slice(0, 5).map(notif => ( // Limit to 5 in dropdown
+                      notifications.slice(0, 5).map(notif => (
                         <li 
                           key={notif.id} 
                           className={notif.status === 'unread' ? 'unread' : 'read'}
@@ -246,10 +246,6 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
                       <li onClick={handleProfileSettings} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleProfileSettings()}>
                         <UserOutlined className="dropdown-icon-item" />
                         <span>Profile Settings</span>
-                      </li>
-                      <li onClick={handleViewAllNotifications} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleViewAllNotifications()}>
-                        <FaBell className="dropdown-icon-item" />
-                        <span>Notifications</span>
                       </li>
                       <li onClick={handleLogout} tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleLogout()}>
                         <LogoutOutlined className="dropdown-icon-item" />

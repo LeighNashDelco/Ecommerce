@@ -16,58 +16,105 @@ class OrderController extends Controller
     }
 
     public function index(Request $request)
+{
+    try {
+        Log::info('Fetching all orders for admin', [
+            'user' => Auth::user() ? Auth::user()->toArray() : null,
+            'token' => $request->bearerToken(),
+        ]);
+
+        $orders = Order::with(['profile.user', 'product', 'status'])->get();
+
+        Log::info('Raw orders fetched', ['orders' => $orders->toArray()]);
+
+        $formattedOrders = $orders->map(function ($order) {
+            $userName = $order->profile && $order->profile->user 
+                ? ($order->profile->user->username ?? 'N/A') 
+                : 'N/A';
+
+            Log::debug('Processing order', [
+                'order_id' => $order->id,
+                'profile' => $order->profile ? $order->profile->toArray() : null,
+                'user' => $order->profile && $order->profile->user ? $order->profile->user->toArray() : null,
+                'user_name' => $userName, // Debug username specifically
+                'product' => $order->product ? $order->product->toArray() : null,
+                'status' => $order->status ? $order->status->toArray() : null,
+            ]);
+
+            return [
+                'id' => $order->id,
+                'user' => [
+                    'name' => $userName, // Use username from User model
+                ],
+                'product' => [
+                    'name' => $order->product ? ($order->product->product_name ?? 'N/A') : 'N/A',
+                ],
+                'quantity' => $order->quantity,
+                'total_amount' => $order->total_amount,
+                'status_id' => $order->status_id,
+                'order_date' => $order->order_date ? $order->order_date->toDateString() : 'N/A',
+                'estimated_delivery_date' => $order->estimated_delivery_date ? $order->estimated_delivery_date->toDateString() : null,
+                'payment_method' => $order->payment_method ?? 'N/A',
+                'shipping_method' => $order->shipping_method ?? 'N/A',
+                'archived' => $order->archived,
+            ];
+        });
+
+        Log::info('All orders fetched and formatted', ['count' => $formattedOrders->count()]);
+        return response()->json($formattedOrders, 200);
+    } catch (\Exception $e) {
+        Log::error('Failed to fetch all orders', [
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ]);
+        return response()->json(['error' => 'Failed to fetch orders: ' . $e->getMessage()], 500);
+    }
+}
+
+    public function updateStatus(Request $request, $orderId)
     {
         try {
-            Log::info('Fetching all orders for admin', [
-                'user' => Auth::user() ? Auth::user()->toArray() : null,
-                'token' => $request->bearerToken(),
+            $validatedData = $request->validate([
+                'status_id' => 'required|integer|in:1,2,3,4,5',
             ]);
 
-            $orders = Order::with(['profile.user', 'product', 'status'])->get();
+            $order = Order::findOrFail($orderId);
+            $order->status_id = $validatedData['status_id'];
+            $order->save();
 
-            Log::info('Raw orders fetched', ['orders' => $orders->toArray()]);
+            DB::table('order_histories')->insert([
+                'order_id' => $order->id,
+                'status_id' => $order->status_id,
+                'updated_at' => now(),
+            ]);
 
-            $formattedOrders = $orders->map(function ($order) {
-                Log::debug('Processing order', [
-                    'order_id' => $order->id,
-                    'profile' => $order->profile ? $order->profile->toArray() : null,
-                    'user' => $order->profile && $order->profile->user ? $order->profile->user->toArray() : null,
-                    'product' => $order->product ? $order->product->toArray() : null,
-                    'status' => $order->status ? $order->status->toArray() : null,
-                ]);
+            Log::info('Order status updated', [
+                'order_id' => $order->id,
+                'new_status_id' => $order->status_id,
+                'user_id' => Auth::id(),
+            ]);
 
-                return [
+            return response()->json([
+                'success' => true,
+                'message' => 'Order status updated successfully',
+                'order' => [
                     'id' => $order->id,
-                    'user' => [
-                        'name' => $order->profile && $order->profile->user ? ($order->profile->user->name ?? 'N/A') : 'N/A',
-                    ],
-                    'product' => [
-                        'name' => $order->product ? ($order->product->product_name ?? 'N/A') : 'N/A',
-                    ],
-                    'quantity' => $order->quantity,
-                    'total_amount' => $order->total_amount,
                     'status_id' => $order->status_id,
-                    'order_date' => $order->order_date ? $order->order_date->toDateString() : 'N/A',
-                    'estimated_delivery_date' => $order->estimated_delivery_date ? $order->estimated_delivery_date->toDateString() : null,
-                    'payment_method' => $order->payment_method ?? 'N/A',
-                    'shipping_method' => $order->shipping_method ?? 'N/A',
-                ];
-            });
-
-            Log::info('All orders fetched and formatted', ['count' => $formattedOrders->count()]);
-            return response()->json($formattedOrders, 200);
+                    'archived' => $order->archived,
+                ],
+            ], 200);
         } catch (\Exception $e) {
-            Log::error('Failed to fetch all orders', [
+            Log::error('Failed to update order status', [
+                'order_id' => $orderId,
                 'message' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
             ]);
-            return response()->json(['error' => 'Failed to fetch orders: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Failed to update status: ' . $e->getMessage()], 500);
         }
     }
 
-    // ... (rest of the methods remain unchanged: store, getUserOrders, cancelOrder)
     public function store(Request $request)
     {
         Log::info('Order request received', ['data' => $request->all()]);
@@ -150,6 +197,7 @@ class OrderController extends Controller
                         'product_name' => $order->product ? $order->product->product_name : 'Unknown Product',
                         'product_img' => $order->product ? $order->product->product_img : '/default-image.jpg',
                         'quantity' => $order->quantity,
+                        'archived' => $order->archived, // Include archived field
                     ];
                 });
 
@@ -200,7 +248,7 @@ class OrderController extends Controller
                 ], 404);
             }
 
-            $order->status_id = 5;
+            $order->status_id = 5; // Set to Cancelled, archived remains unchanged
             $order->save();
 
             DB::table('order_histories')->insert([
@@ -220,7 +268,8 @@ class OrderController extends Controller
                 'message' => 'Order cancelled successfully',
                 'order' => [
                     'id' => $order->id,
-                    'status_id' => $order->status_id
+                    'status_id' => $order->status_id,
+                    'archived' => $order->archived,
                 ]
             ], 200);
         } catch (\Exception $e) {
@@ -232,6 +281,68 @@ class OrderController extends Controller
             return response()->json([
                 'error' => 'Failed to cancel order: ' . $e->getMessage()
             ], 500);
+        }
+    }
+
+    public function archiveOrder(Request $request, $orderId)
+    {
+        try {
+            $order = Order::findOrFail($orderId);
+            $order->archived = true;
+            $order->save();
+
+            Log::info('Order archived', [
+                'order_id' => $order->id,
+                'user_id' => Auth::id(),
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order archived successfully',
+                'order' => [
+                    'id' => $order->id,
+                    'status_id' => $order->status_id,
+                    'archived' => $order->archived,
+                ],
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Failed to archive order', [
+                'order_id' => $orderId,
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return response()->json(['error' => 'Failed to archive order: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function restoreOrder(Request $request, $orderId)
+    {
+        try {
+            $order = Order::findOrFail($orderId);
+            $order->archived = false;
+            $order->save();
+
+            Log::info('Order restored', [
+                'order_id' => $order->id,
+                'user_id' => Auth::id(),
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order restored successfully',
+                'order' => [
+                    'id' => $order->id,
+                    'status_id' => $order->status_id,
+                    'archived' => $order->archived,
+                ],
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Failed to restore order', [
+                'order_id' => $orderId,
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return response()->json(['error' => 'Failed to restore order: ' . $e->getMessage()], 500);
         }
     }
 }

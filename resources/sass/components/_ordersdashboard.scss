@@ -181,6 +181,18 @@
           }
         }
       }
+      .status-dropdown {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #202020;
+        cursor: pointer;
+        
+        &:disabled {
+          background-color: #202020;
+          cursor: not-allowed;
+        }
+      }
   
       .ordersdashboard-table {
         width: 100%;

@@ -11,7 +11,7 @@ class Order extends Model
 {
     protected $fillable = [
         'profile_id', 'product_id', 'order_date', 'quantity', 'total_amount',
-        'status_id', 'estimated_delivery_date', 'payment_method', 'shipping_method',
+        'status_id', 'estimated_delivery_date', 'payment_method', 'shipping_method', 'archived',
     ];
 
     protected $casts = [

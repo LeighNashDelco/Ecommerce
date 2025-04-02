@@ -87,6 +87,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/orders', [OrderController::class, 'store']);
     Route::get('/orders/user', [OrderController::class, 'getUserOrders']);
     Route::post('/orders/{orderId}/cancel', [OrderController::class, 'cancelOrder']);
+    Route::patch('/orders/{orderId}/update-status', [OrderController::class, 'updateStatus'])->middleware('auth:api');
+    Route::post('/orders/{orderId}/archive', [OrderController::class, 'archiveOrder'])->middleware('auth:api');
+    Route::post('/orders/{orderId}/restore', [OrderController::class, 'restoreOrder'])->middleware('auth:api');
     
     # Admin Management
     Route::get('/admins', [AdminController::class, 'getAdmins']);

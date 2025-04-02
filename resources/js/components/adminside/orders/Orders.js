@@ -1,11 +1,10 @@
-// Orders.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../sidebar/Sidebar";
 import TopNavbar from "../topnavbar/TopNavbar";
 import { FaSquare, FaChevronDown, FaCheckSquare } from "react-icons/fa";
 import { IconTrash, IconEdit, IconSearch, IconPlus, IconEye, IconRefresh, IconArchive } from "@tabler/icons-react";
-import "./../../../../sass/components/_ordersdashboard.scss"; // Updated SCSS import
+import "./../../../../sass/components/_ordersdashboard.scss";
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -29,29 +28,27 @@ const Orders = () => {
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({ currentPage: 1, totalPages: 1 });
 
+  const statusOptions = [
+    { value: "1", label: "Pending" },
+    { value: "2", label: "Processing" },
+    { value: "3", label: "Shipped" },
+    { value: "4", label: "Delivered" },
+    { value: "5", label: "Cancelled" },
+  ];
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         setLoading(true);
         const token = localStorage.getItem("LaravelPassportToken");
-        console.log("Token used:", token);
-        if (!token) {
-          throw new Error("No authentication token found");
-        }
+        if (!token) throw new Error("No authentication token found");
         const config = { headers: { Authorization: `Bearer ${token}` } };
 
         const response = await axios.get("http://127.0.0.1:8000/api/orders", config);
-        console.log("Orders response:", response.data);
-        setOrders(response.data.map(order => ({
-          ...order,
-          archived: order.status_id === 5 // Assuming status_id 5 is "Cancelled" and treated as archived
-        })));
+        console.log("Fetched orders:", response.data);
+        setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
-        if (error.response) {
-          console.error("Response data:", error.response.data);
-          console.error("Response status:", error.response.status);
-        }
         setOrders([]);
       } finally {
         setLoading(false);
@@ -60,6 +57,27 @@ const Orders = () => {
     fetchOrders();
   }, []);
 
+  const handleStatusChange = async (orderId, newStatusId) => {
+    try {
+      const token = localStorage.getItem("LaravelPassportToken");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      
+      const response = await axios.patch(
+        `http://127.0.0.1:8000/api/orders/${orderId}/update-status`,
+        { status_id: newStatusId },
+        config
+      );
+
+      setOrders(prevOrders =>
+        prevOrders.map(order =>
+          order.id === orderId ? { ...order, status_id: parseInt(newStatusId), archived: response.data.order.archived } : order
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
       order.user?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,7 +85,10 @@ const Orders = () => {
       order.id.toString().includes(searchTerm);
     
     const matchesFilter = filterValue === "all" || order.status_id === parseInt(filterValue);
-    const matchesArchived = order.archived === showArchived;
+    const matchesArchived = !!order.archived === showArchived;
+
+    console.log(`Order ${order.id}:`, { matchesSearch, matchesFilter, matchesArchived, archived: order.archived, showArchived });
+
     return matchesSearch && matchesFilter && matchesArchived;
   });
 
@@ -100,20 +121,18 @@ const Orders = () => {
     if (!orderToArchive) return;
     try {
       const token = localStorage.getItem("LaravelPassportToken");
-      const response = await axios.post(
-        `http://127.0.0.1:8000/api/orders/${orderToArchive.id}/cancel`,
+      await axios.post(
+        `http://127.0.0.1:8000/api/orders/${orderToArchive.id}/archive`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      if (response.status === 200) {
-        setOrders((prevOrders) =>
-          prevOrders.map((order) =>
-            order.id === orderToArchive.id ? { ...order, archived: true, status_id: 5 } : order
-          )
-        );
-        setIsConfirmModalOpen(false);
-        setOrderToArchive(null);
-      }
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === orderToArchive.id ? { ...order, archived: true } : order
+        )
+      );
+      setIsConfirmModalOpen(false);
+      setOrderToArchive(null);
     } catch (error) {
       console.error("Error archiving order:", error);
     }
@@ -122,18 +141,16 @@ const Orders = () => {
   const handleRestoreOrder = async (orderId) => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
-      const response = await axios.patch(
-        `http://127.0.0.1:8000/api/orders/${orderId}/restore`, // Hypothetical endpoint
-        { status_id: 1 }, // Restore to "Pending"
+      await axios.post(
+        `http://127.0.0.1:8000/api/orders/${orderId}/restore`,
+        {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      if (response.status === 200) {
-        setOrders((prevOrders) =>
-          prevOrders.map((order) =>
-            order.id === orderId ? { ...order, archived: false, status_id: 1 } : order
-          )
-        );
-      }
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === orderId ? { ...order, archived: false } : order
+        )
+      );
     } catch (error) {
       console.error("Error restoring order:", error);
     }
@@ -144,9 +161,9 @@ const Orders = () => {
     try {
       const token = localStorage.getItem("LaravelPassportToken");
       const requests = selectedOrders.map((orderId) =>
-        axios[action === "archive" ? "post" : "patch"](
-          `http://127.0.0.1:8000/api/orders/${orderId}/${action === "archive" ? "cancel" : "restore"}`,
-          action === "archive" ? {} : { status_id: 1 },
+        axios.post(
+          `http://127.0.0.1:8000/api/orders/${orderId}/${action === "archive" ? "archive" : "restore"}`,
+          {},
           { headers: { Authorization: `Bearer ${token}` } }
         )
       );
@@ -154,7 +171,7 @@ const Orders = () => {
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           selectedOrders.includes(order.id)
-            ? { ...order, archived: action === "archive", status_id: action === "archive" ? 5 : 1 }
+            ? { ...order, archived: action === "archive" }
             : order
         )
       );
@@ -163,15 +180,6 @@ const Orders = () => {
       console.error(`Error ${action}ing orders:`, error);
     }
   };
-
-  const statusOptions = [
-    { value: "all", label: "All Orders" },
-    { value: "1", label: "Pending" },
-    { value: "2", label: "Processing" }, // Adjusted to match your statuses
-    { value: "3", label: "Shipped" },
-    { value: "4", label: "Delivered" },
-    { value: "5", label: "Cancelled" }, // Added Cancelled
-  ];
 
   const ordersPerPage = 10;
   const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
@@ -235,7 +243,7 @@ const Orders = () => {
                 </button>
                 {filterOpen && (
                   <ul className="filter-dropdown">
-                    {statusOptions.map((status) => (
+                    {[{ value: "all", label: "All Orders" }, ...statusOptions].map((status) => (
                       <li
                         key={status.value}
                         onClick={() => handleFilterSelect(status.value, status.label)}
@@ -315,7 +323,20 @@ const Orders = () => {
                       <td>{order.product?.name || "N/A"}</td>
                       <td>{order.quantity}</td>
                       <td>${parseFloat(order.total_amount).toFixed(2)}</td>
-                      <td>{statusOptions.find(s => s.value === order.status_id.toString())?.label || "N/A"}</td>
+                      <td>
+                        <select
+                          value={order.status_id}
+                          onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                          disabled={order.archived}
+                          className="status-dropdown"
+                        >
+                          {statusOptions.map((status) => (
+                            <option key={status.value} value={status.value}>
+                              {status.label}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
                       <td>{formatDate(order.order_date)}</td>
                       <td>{formatDate(order.estimated_delivery_date)}</td>
                       <td>{order.payment_method || "N/A"}</td>
