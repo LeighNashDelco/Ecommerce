@@ -34025,115 +34025,255 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _sass_components_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/chatbot.scss */ "./resources/sass/components/chatbot.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// resources/js/components/customerside/Customer/Chatbot.js
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
 
 
 
-function Chatbot() {
+var fetchFast = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url) {
+    var options,
+      defaultHeaders,
+      response,
+      _args = arguments;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          options = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
+          defaultHeaders = {
+            'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
+            'Content-Type': 'application/json'
+          };
+          _context.next = 4;
+          return fetch(url, _objectSpread(_objectSpread({}, options), {}, {
+            headers: _objectSpread(_objectSpread({}, defaultHeaders), options.headers)
+          }));
+        case 4:
+          response = _context.sent;
+          if (response.ok) {
+            _context.next = 7;
+            break;
+          }
+          throw new Error("HTTP error! status: ".concat(response.status));
+        case 7:
+          return _context.abrupt("return", response.json());
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function fetchFast(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+function Chatbot(_ref2) {
+  var controlledIsOpen = _ref2.isOpen,
+    controlledSetIsOpen = _ref2.setIsOpen,
+    chatData = _ref2.chatData;
+  // Internal state for isOpen if not controlled by props
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    isOpen = _useState2[0],
-    setIsOpen = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    internalIsOpen = _useState2[0],
+    setInternalIsOpen = _useState2[1];
+  // Determine if the component is controlled by external props
+  var isControlled = controlledIsOpen !== undefined && controlledSetIsOpen !== undefined;
+  var isOpen = isControlled ? controlledIsOpen : internalIsOpen;
+  var setIsOpen = isControlled ? controlledSetIsOpen : setInternalIsOpen;
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    faqs = _useState4[0],
-    setFaqs = _useState4[1];
+    showChat = _useState4[0],
+    setShowChat = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
-    messages = _useState6[0],
-    setMessages = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    conversations = _useState6[0],
+    setConversations = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    input = _useState8[0],
-    setInput = _useState8[1];
-  var getAuthHeaders = function getAuthHeaders() {
-    return {
-      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
-      'Content-Type': 'application/json'
-    };
-  };
+    filteredConversations = _useState8[0],
+    setFilteredConversations = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState10 = _slicedToArray(_useState9, 2),
+    searchQuery = _useState10[0],
+    setSearchQuery = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState12 = _slicedToArray(_useState11, 2),
+    faqs = _useState12[0],
+    setFaqs = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    messages = _useState14[0],
+    setMessages = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState16 = _slicedToArray(_useState15, 2),
+    input = _useState16[0],
+    setInput = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    file = _useState18[0],
+    setFile = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    filePreview = _useState20[0],
+    setFilePreview = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState22 = _slicedToArray(_useState21, 2),
+    error = _useState22[0],
+    setError = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    selectedSeller = _useState24[0],
+    setSelectedSeller = _useState24[1];
+  var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isOpen) {
+      fetchConversations();
       fetchFaqs();
-      fetchMessages();
+      if (chatData) {
+        setSelectedSeller(chatData.seller);
+        setShowChat(true);
+        setInput("Hello ".concat(chatData.seller.name, ", I\u2019d like to discuss my order: ").concat(chatData.order.name, " (Order #").concat(chatData.order.order_number, ")."));
+      } else if (showChat && selectedSeller) {
+        fetchMessages(selectedSeller.id);
+      } else if (showChat) {
+        fetchMessages();
+      }
     }
-  }, [isOpen]);
-  var fetchFaqs = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var response;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
-              headers: getAuthHeaders()
-            });
-          case 3:
-            response = _context.sent;
-            setFaqs(response.data);
-            _context.next = 10;
-            break;
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            console.error('Error fetching FAQs:', _context.t0);
-          case 10:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee, null, [[0, 7]]);
-    }));
-    return function fetchFaqs() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  var fetchMessages = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var response;
+  }, [isOpen, showChat, chatData]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var filtered = conversations.filter(function (conversation) {
+      return conversation.name.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setFilteredConversations(filtered);
+  }, [searchQuery, conversations]);
+  var fetchConversations = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var response, userMessages, conversation;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
-              headers: getAuthHeaders()
-            });
+            return fetchFast('http://127.0.0.1:8000/api/chat/customer');
           case 3:
             response = _context2.sent;
-            setMessages(response.data);
-            _context2.next = 10;
+            userMessages = response.filter(function (msg) {
+              return !msg.deleted_for;
+            });
+            conversation = {
+              id: 1,
+              name: (chatData === null || chatData === void 0 ? void 0 : chatData.seller.name) || 'Vero Support Team',
+              lastMessage: userMessages.length > 0 ? userMessages[userMessages.length - 1].message : 'Start a conversation',
+              timestamp: userMessages.length > 0 ? new Date(userMessages[userMessages.length - 1].created_at).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              }) : '',
+              unread: 0
+            };
+            setConversations([conversation]);
+            setFilteredConversations([conversation]);
+            setError(null);
+            _context2.next = 15;
             break;
-          case 7:
-            _context2.prev = 7;
+          case 11:
+            _context2.prev = 11;
             _context2.t0 = _context2["catch"](0);
-            console.error('Error fetching messages:', _context2.t0);
-          case 10:
+            console.error('Error fetching conversations:', _context2.t0);
+            setError('Failed to load conversations. Please try again later.');
+          case 15:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 7]]);
+      }, _callee2, null, [[0, 11]]);
+    }));
+    return function fetchConversations() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var fetchFaqs = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return fetchFast('http://127.0.0.1:8000/api/helpandsupport');
+          case 3:
+            response = _context3.sent;
+            setFaqs(response);
+            setError(null);
+            _context3.next = 12;
+            break;
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](0);
+            console.error('Error fetching FAQs:', _context3.t0);
+            setError('Failed to load FAQs. Please try again later.');
+          case 12:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 8]]);
+    }));
+    return function fetchFaqs() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  var fetchMessages = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var sellerId,
+        url,
+        response,
+        _args4 = arguments;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            sellerId = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : null;
+            _context4.prev = 1;
+            url = sellerId ? "http://127.0.0.1:8000/api/chat/seller/".concat(sellerId) : 'http://127.0.0.1:8000/api/chat/customer';
+            _context4.next = 5;
+            return fetchFast(url);
+          case 5:
+            response = _context4.sent;
+            setMessages(response);
+            setError(null);
+            _context4.next = 14;
+            break;
+          case 10:
+            _context4.prev = 10;
+            _context4.t0 = _context4["catch"](1);
+            console.error('Error fetching messages:', _context4.t0);
+            setError('Failed to load messages. Please try again later.');
+          case 14:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[1, 10]]);
     }));
     return function fetchMessages() {
-      return _ref2.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
   var handleFaqClick = function handleFaqClick(faq) {
@@ -34149,95 +34289,306 @@ function Chatbot() {
       }]);
     });
   };
+  var handleFileChange = function handleFileChange(e) {
+    var selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      var previewUrl = URL.createObjectURL(selectedFile);
+      setFilePreview(previewUrl);
+    }
+  };
+  var handleRemoveFile = function handleRemoveFile() {
+    setFile(null);
+    setFilePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
   var handleSendMessage = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var response;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      var formData, response, result, newMessage;
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
           case 0:
-            if (input.trim()) {
-              _context3.next = 2;
+            if (!(!input.trim() && !file || input.trim() === '' && !file)) {
+              _context5.next = 3;
               break;
             }
-            return _context3.abrupt("return");
-          case 2:
-            _context3.prev = 2;
-            _context3.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://127.0.0.1:8000/api/chat/send', {
-              message: input
-            }, {
-              headers: getAuthHeaders()
+            setError('Please enter a message or attach a file.');
+            return _context5.abrupt("return");
+          case 3:
+            _context5.prev = 3;
+            formData = new FormData();
+            formData.append('message', input || '');
+            if (file) {
+              formData.append('image', file);
+            }
+            if (selectedSeller !== null && selectedSeller !== void 0 && selectedSeller.id) {
+              formData.append('seller_id', selectedSeller.id);
+            }
+            _context5.next = 10;
+            return fetch('http://127.0.0.1:8000/api/chat/send', {
+              method: 'POST',
+              headers: {
+                'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
+              },
+              body: formData
             });
-          case 5:
-            response = _context3.sent;
+          case 10:
+            response = _context5.sent;
+            if (response.ok) {
+              _context5.next = 13;
+              break;
+            }
+            throw new Error("HTTP error! status: ".concat(response.status));
+          case 13:
+            _context5.next = 15;
+            return response.json();
+          case 15:
+            result = _context5.sent;
+            newMessage = _objectSpread(_objectSpread({}, result.data), {}, {
+              attachmentUrl: result.data.attachment_path ? "http://127.0.0.1:8000/storage/".concat(result.data.attachment_path.replace('public/', '')) : null
+            });
             setMessages(function (prev) {
-              return [].concat(_toConsumableArray(prev), [response.data.data]);
+              return [].concat(_toConsumableArray(prev), [newMessage]);
             });
             setInput('');
-            _context3.next = 13;
+            setFile(null);
+            setFilePreview(null);
+            if (fileInputRef.current) {
+              fileInputRef.current.value = '';
+            }
+            setError(null);
+            fetchConversations();
+            _context5.next = 30;
             break;
-          case 10:
-            _context3.prev = 10;
-            _context3.t0 = _context3["catch"](2);
-            console.error('Error sending message:', _context3.t0);
-          case 13:
+          case 26:
+            _context5.prev = 26;
+            _context5.t0 = _context5["catch"](3);
+            console.error('Error sending message:', _context5.t0);
+            setError('Failed to send message. Please try again later.');
+          case 30:
           case "end":
-            return _context3.stop();
+            return _context5.stop();
         }
-      }, _callee3, null, [[2, 10]]);
+      }, _callee5, null, [[3, 26]]);
     }));
     return function handleSendMessage() {
-      return _ref3.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chatbot'
-  }, !isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-icon',
-    onClick: function onClick() {
-      return setIsOpen(true);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaCommentAlt, {
-    size: 30
-  })), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-window'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-header'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, 'Chat Support'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: function onClick() {
-      return setIsOpen(false);
-    }
-  }, 'X')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-body'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'faq-list'
-  }, faqs.map(function (faq) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: faq.id,
-      className: 'faq-item',
+  var handleCloseChat = function handleCloseChat() {
+    setIsOpen(false);
+    setShowChat(false);
+    setSearchQuery('');
+    setFile(null);
+    setFilePreview(null);
+    setInput('');
+    setSelectedSeller(null);
+  };
+  var isImageAttachment = function isImageAttachment(attachmentPath) {
+    if (!attachmentPath) return false;
+    var imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    var extension = attachmentPath.split('.').pop().toLowerCase();
+    return imageExtensions.includes(extension);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "chatbot",
+    children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "chat-icon",
       onClick: function onClick() {
-        return handleFaqClick(faq);
-      }
-    }, faq.question);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'messages'
-  }, messages.map(function (msg, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: index,
-      className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent')
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, msg.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('small', null, new Date(msg.created_at).toLocaleTimeString()));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-footer'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-    type: 'text',
-    value: input,
-    onChange: function onChange(e) {
-      return setInput(e.target.value);
-    },
-    placeholder: 'Type your question...'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: handleSendMessage
-  }, 'Send'))));
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaCommentAlt, {
+        size: 30
+      })
+    }), isOpen && !showChat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "conversations-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "Chats"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: handleCloseChat,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTimes, {
+            size: 20
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "search-bar",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSearch, {
+          size: 16
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          placeholder: "Search...",
+          value: searchQuery,
+          onChange: function onChange(e) {
+            return setSearchQuery(e.target.value);
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-list",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), filteredConversations.length > 0 ? filteredConversations.map(function (conversation) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-item",
+            onClick: function onClick() {
+              setShowChat(true);
+              setSelectedSeller((chatData === null || chatData === void 0 ? void 0 : chatData.seller) || {
+                name: 'Vero Support Team',
+                id: null
+              });
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "user-avatar support-team-avatar"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "conversation-info",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "conversation-name",
+                children: conversation.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "last-message",
+                children: conversation.lastMessage
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "timestamp",
+              children: conversation.timestamp
+            })]
+          }, conversation.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No conversations found."
+          })
+        })]
+      })]
+    }), isOpen && showChat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setShowChat(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaArrowLeft, {
+            size: 20
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "chat-header-info",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: (selectedSeller === null || selectedSeller === void 0 ? void 0 : selectedSeller.name) || 'Vero Support Team'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "status online",
+            children: "Online"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-body",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "faq-list",
+          children: faqs.map(function (faq) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "faq-item",
+              onClick: function onClick() {
+                return handleFaqClick(faq);
+              },
+              children: faq.question
+            }, faq.id);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "messages",
+          children: messages.map(function (msg, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message-wrapper ".concat(msg.is_admin_reply ? 'received' : 'sent'),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "message-content",
+                  children: isImageAttachment(msg.attachment_path) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                    className: "image-attachment",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: "http://127.0.0.1:8000/storage/".concat(msg.attachment_path.replace('public/', '')),
+                      alt: "Attachment"
+                    }), msg.message && msg.message !== '' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                      children: msg.message
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+                    children: [msg.message, msg.attachment_path && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                      href: "http://127.0.0.1:8000/storage/".concat(msg.attachment_path.replace('public/', '')),
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      className: "attachment-link",
+                      children: "(View Attachment)"
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
+                  children: new Date(msg.created_at).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })
+                })]
+              })
+            }, msg.id || index);
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-footer",
+        children: [filePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "file-preview",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "preview-image-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: filePreview,
+              alt: "Preview"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "remove-file",
+              onClick: handleRemoveFile,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTimes, {
+                size: 14
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+            className: "file-upload",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaPaperclip, {
+              size: 20
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "file",
+              ref: fileInputRef,
+              onChange: handleFileChange,
+              style: {
+                display: 'none'
+              },
+              accept: "image/*"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: input,
+            onChange: function onChange(e) {
+              return setInput(e.target.value);
+            },
+            placeholder: "Type something..."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleSendMessage,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaPaperPlane, {
+              size: 20
+            })
+          })]
+        })]
+      })]
+    })]
+  });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Chatbot);
 
@@ -39612,11 +39963,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _sass_components_all_order_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/all_order.scss */ "./resources/sass/components/all_order.scss");
 /* harmony import */ var _orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../orderHistory/cancel_order */ "./resources/js/components/customerside/orderHistory/cancel_order.js");
 /* harmony import */ var _orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../orderHistory/rate_product */ "./resources/js/components/customerside/orderHistory/rate_product.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Customer_Chatbot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Customer/Chatbot */ "./resources/js/components/customerside/Customer/Chatbot.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -39632,6 +39984,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -39655,7 +40008,7 @@ var AllOrder = function AllOrder() {
     _useState8 = _slicedToArray(_useState7, 2),
     loading = _useState8[0],
     setLoading = _useState8[1];
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
     isCancelModalOpen = _useState10[0],
@@ -39672,6 +40025,14 @@ var AllOrder = function AllOrder() {
     _useState16 = _slicedToArray(_useState15, 2),
     selectedOrderForRate = _useState16[0],
     setSelectedOrderForRate = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState18 = _slicedToArray(_useState17, 2),
+    isChatOpen = _useState18[0],
+    setIsChatOpen = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    chatData = _useState20[0],
+    setChatData = _useState20[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchOrders = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -39729,15 +40090,20 @@ var AllOrder = function AllOrder() {
                   5: 'Cancelled',
                   6: 'Refund'
                 };
-                var statusName = statusMap[order.status_id] || order.status_name || 'Pending';
+                var statusName = statusMap[order.status_id] || 'Pending';
                 return _objectSpread(_objectSpread({}, order), {}, {
                   tab: getTabFromStatus(statusName),
                   image: order.product_img,
+                  // From products table via join
                   name: order.product_name,
+                  // From products table via join
                   quantity: order.quantity,
                   status: statusName,
-                  price: order.total_amount.replace(' USD', ''),
-                  actions: getActionsFromStatus(statusName)
+                  price: order.total_amount,
+                  actions: getActionsFromStatus(statusName),
+                  seller_name: order.seller_name || 'Unknown Seller',
+                  // From profiles table via join
+                  seller_id: order.seller_id // From products.profile_id via join
                 });
               });
               setOrders(ordersWithTabs);
@@ -39788,14 +40154,13 @@ var AllOrder = function AllOrder() {
   var getActionsFromStatus = function getActionsFromStatus(status) {
     switch (status.toLowerCase()) {
       case 'pending':
-        return ['Cancel Order', 'Track Order'];
+        return ['Cancel Order', 'Track Order', 'Contact Seller'];
       case 'in transit':
-        return ['Track Order'];
+        return ['Track Order', 'Contact Seller'];
       case 'received':
         return ['Track Order'];
       case 'completed':
         return ['Rate', 'Refund'];
-      // Always allow "Rate" for Completed
       default:
         return [];
     }
@@ -39816,7 +40181,7 @@ var AllOrder = function AllOrder() {
   };
   var handleConfirmCancel = function handleConfirmCancel(reason) {
     if (selectedOrderForCancel) {
-      console.log('Order cancelled:', selectedOrderForCancel.order_number, 'Reason:', reason);
+      console.log('Order cancelled:', selectedOrderForCancel.id, 'Reason:', reason);
       setOrders(function (prevOrders) {
         return prevOrders.map(function (order) {
           return order.id === selectedOrderForCancel.id ? _objectSpread(_objectSpread({}, order), {}, {
@@ -39843,7 +40208,7 @@ var AllOrder = function AllOrder() {
       review = _ref2.review,
       image = _ref2.image;
     if (selectedOrderForRate) {
-      console.log('Rating submitted for order:', selectedOrderForRate.order_number, {
+      console.log('Rating submitted for order:', selectedOrderForRate.id, {
         rating: rating,
         review: review,
         image: image
@@ -39856,93 +40221,106 @@ var AllOrder = function AllOrder() {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  var handleContactSeller = function handleContactSeller(order) {
+    setChatData({
+      order: {
+        name: order.name,
+        order_number: order.id // Using order.id as order_number
+      },
+      seller: {
+        name: order.seller_name,
+        id: order.seller_id
+      }
+    });
+    setIsChatOpen(true);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "all-order",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "order-tabs",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'all' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('all');
         },
         children: "All Orders"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_pay');
         },
         children: "Pending"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_ship');
         },
         children: "To Ship"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('to_receive');
         },
         children: "To Receive"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('completed');
         },
         children: "Completed"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'cancelled' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('cancelled');
         },
         children: "Cancelled"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
         onClick: function onClick() {
           return setActiveTab('refunded');
         },
         children: "Refunded"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "orders-list",
-      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         className: "loading",
         children: "Loading orders..."
-      }) : error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }) : error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         className: "error-message",
         children: error
       }) : filteredOrders.length > 0 ? filteredOrders.map(function (order) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "order-item-container",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "order-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-details",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 src: order.image,
                 alt: order.name,
                 className: "order-image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "order-info",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
                   children: order.name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
                   className: "quantity",
                   children: ["x", order.quantity]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
                   className: "status status-".concat(order.status.toLowerCase().replace(' ', '-')),
                   children: ["Status: ", order.status]
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "order-actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
                 className: "order-price",
                 children: ["\u20B1", order.price]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                 className: "action-buttons",
                 children: order.actions.map(function (action, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                     className: "action-btn",
                     onClick: action === 'Track Order' ? function () {
                       return handleTrackOrder(order);
@@ -39951,7 +40329,9 @@ var AllOrder = function AllOrder() {
                     } : action === 'Rate' ? function () {
                       return handleRateOrder(order);
                     } : action === 'Refund' ? function () {
-                      return console.log('Refund requested for order:', order.order_number);
+                      return console.log('Refund requested for order:', order.id);
+                    } : action === 'Contact Seller' ? function () {
+                      return handleContactSeller(order);
                     } : undefined,
                     children: action
                   }, index);
@@ -39960,20 +40340,24 @@ var AllOrder = function AllOrder() {
             })]
           })
         }, order.id);
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         children: "No orders found for this tab."
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_cancel_order__WEBPACK_IMPORTED_MODULE_2__["default"], {
       isOpen: isCancelModalOpen,
       onClose: handleCloseCancelModal,
       onConfirm: handleConfirmCancel,
       orderId: selectedOrderForCancel === null || selectedOrderForCancel === void 0 ? void 0 : selectedOrderForCancel.id
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_orderHistory_rate_product__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isOpen: isRateModalOpen,
       onClose: handleCloseRateModal,
       onSubmit: handleSubmitRating,
       orderId: selectedOrderForRate === null || selectedOrderForRate === void 0 ? void 0 : selectedOrderForRate.id,
       productId: selectedOrderForRate === null || selectedOrderForRate === void 0 ? void 0 : selectedOrderForRate.product_id
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Customer_Chatbot__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      isOpen: isChatOpen,
+      setIsOpen: setIsChatOpen,
+      chatData: chatData
     })]
   });
 };
@@ -49516,7 +49900,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n}\n.chatbot .chat-body {\n  flex: 1;\n  padding: 10px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-body .faq-list {\n  margin-bottom: 10px;\n}\n.chatbot .chat-body .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .chat-body .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-body .messages {\n  flex: 1;\n}\n.chatbot .chat-body .messages .message {\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-body .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-body .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-body .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-footer {\n  padding: 10px;\n  border-top: 1px solid #ccc;\n  display: flex;\n}\n.chatbot .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n}\n.chatbot .chat-footer button {\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n}\n.chatbot .chat-footer button:hover {\n  background-color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n  font-family: \"Arial\", sans-serif;\n}\n.chatbot .chat-icon {\n  background-color: #ff4949;\n  color: white;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  transition: transform 0.2s ease-in-out;\n}\n.chatbot .chat-icon:hover {\n  transform: scale(1.1);\n}\n.chatbot .conversations-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .conversations-window .conversations-header {\n  padding: 15px 20px;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .conversations-window .conversations-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 600;\n  color: #333;\n}\n.chatbot .conversations-window .conversations-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.chatbot .conversations-window .conversations-header button:hover {\n  color: #ff4949;\n}\n.chatbot .conversations-window .search-bar {\n  padding: 10px 20px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background-color: white;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .conversations-window .search-bar svg {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: #333;\n  transition: background-color 0.2s ease;\n}\n.chatbot .conversations-window .search-bar input::-moz-placeholder {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input::placeholder {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input:focus {\n  background-color: #e0e0e0;\n}\n.chatbot .conversations-window .conversations-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 0 20px;\n  background-color: white;\n}\n.chatbot .conversations-window .conversations-list .error-message,\n.chatbot .conversations-window .conversations-list .no-conversations {\n  padding: 20px;\n  text-align: center;\n}\n.chatbot .conversations-window .conversations-list .error-message p,\n.chatbot .conversations-window .conversations-list .no-conversations p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chatbot .conversations-window .conversations-list .conversation-item {\n  display: flex;\n  align-items: center;\n  padding: 12px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #e0e0e0;\n  transition: background-color 0.2s ease;\n}\n.chatbot .conversations-window .conversations-list .conversation-item:hover {\n  background-color: #f9f9f9;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .user-avatar {\n  width: 40px;\n  height: 40px;\n  background-color: #ccc;\n  border-radius: 50%;\n  margin-right: 12px;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .support-team-avatar {\n  background-image: url(\"/images/Register_Logo copy.svg\");\n  background-size: cover;\n  background-position: center;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info {\n  flex: 1;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info .conversation-name {\n  font-size: 16px;\n  font-weight: 500;\n  color: #333;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info .last-message {\n  font-size: 14px;\n  color: #666;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .timestamp {\n  font-size: 12px;\n  color: #999;\n}\n.chatbot .chat-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-window .chat-header {\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .chat-window .chat-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  margin-right: 15px;\n  transition: color 0.2s ease;\n}\n.chatbot .chat-window .chat-header button:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-header .chat-header-info {\n  flex: 1;\n  text-align: left;\n}\n.chatbot .chat-window .chat-header .chat-header-info h3 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333;\n}\n.chatbot .chat-window .chat-header .chat-header-info .status {\n  font-size: 12px;\n  color: #666;\n}\n.chatbot .chat-window .chat-header .chat-header-info .status.online {\n  color: #00cc00;\n}\n.chatbot .chat-window .chat-body {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.chatbot .chat-window .chat-body .order-ticket {\n  background-color: #fff5f5;\n  border: 1px solid #ffe4e4;\n  border-radius: 10px;\n  padding: 10px;\n  margin-bottom: 10px;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-header {\n  font-size: 14px;\n  font-weight: 600;\n  color: #ff4949;\n  margin-bottom: 8px;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-content {\n  display: flex;\n  gap: 10px;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-content .ticket-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-content .ticket-details {\n  flex: 1;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-content .ticket-details p {\n  margin: 0;\n  font-size: 13px;\n  color: #333;\n}\n.chatbot .chat-window .chat-body .order-ticket .ticket-content .ticket-details p strong {\n  font-weight: 600;\n}\n.chatbot .chat-window .chat-body .error-message {\n  padding: 20px;\n  text-align: center;\n}\n.chatbot .chat-window .chat-body .error-message p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chatbot .chat-window .chat-body .faq-list {\n  margin-bottom: 20px;\n}\n.chatbot .chat-window .chat-body .faq-list .faq-item {\n  background-color: #f0f0f0;\n  color: #333;\n  padding: 10px 15px;\n  margin-bottom: 10px;\n  border-radius: 15px;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n  font-size: 14px;\n  text-align: center;\n}\n.chatbot .chat-window .chat-body .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-window .chat-body .messages {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper {\n  display: flex;\n  align-items: flex-end;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent {\n  justify-content: flex-end;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent .message {\n  background-color: #ff4949;\n  color: white;\n  align-self: flex-end;\n  border-bottom-right-radius: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent small {\n  color: #999;\n  align-self: flex-end;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received {\n  justify-content: flex-start;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received .message {\n  background-color: #f0f0f0;\n  color: #333;\n  align-self: flex-start;\n  border-bottom-left-radius: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received small {\n  color: #999;\n  align-self: flex-start;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message {\n  max-width: 70%;\n  padding: 10px 15px;\n  border-radius: 20px;\n  font-size: 14px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link {\n  text-decoration: underline;\n  margin-top: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.sent {\n  color: #ffffff;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.sent:hover {\n  color: #d0d0d0;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.received {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.received:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment img {\n  max-width: 200px;\n  max-height: 200px;\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span {\n  font-size: 14px;\n  word-break: break-word;\n  padding: 5px 10px;\n  border-radius: 15px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.sent {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.received {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message small {\n  font-size: 10px;\n  margin-top: 2px;\n}\n.chatbot .chat-window .chat-footer {\n  padding: 10px 20px;\n  background-color: white;\n  border-radius: 0 0 20px 20px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.chatbot .chat-window .chat-footer .file-preview {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  background-color: #f0f0f0;\n  padding: 5px 10px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container {\n  position: relative;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container img {\n  width: 40px;\n  height: 40px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container .remove-file {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #666;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container .remove-file:hover {\n  background-color: #555;\n}\n.chatbot .chat-window .chat-footer .input-container {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.chatbot .chat-window .chat-footer input {\n  flex: 1;\n  padding: 10px 15px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer input:focus {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-window .chat-footer .file-upload {\n  cursor: pointer;\n  color: #666;\n  transition: color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer .file-upload:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-footer button {\n  background-color: #ff4949;\n  color: white;\n  border: none;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer button:hover {\n  background-color: #ff4949;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

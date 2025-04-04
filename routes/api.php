@@ -90,7 +90,7 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/orders/{orderId}/update-status', [OrderController::class, 'updateStatus'])->middleware('auth:api');
     Route::post('/orders/{orderId}/archive', [OrderController::class, 'archiveOrder'])->middleware('auth:api');
     Route::post('/orders/{orderId}/restore', [OrderController::class, 'restoreOrder'])->middleware('auth:api');
-    
+
     # Admin Management
     Route::get('/admins', [AdminController::class, 'getAdmins']);
     Route::get('/admins/archived', [AdminController::class, 'getArchivedAdmins']);
@@ -203,11 +203,13 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/helpandsupport/{id}/archive', [HelpAndSupportController::class, 'archive']);
     Route::patch('/helpandsupport/{id}', [HelpAndSupportController::class, 'update']);
 
-    # Chat Management
-    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+    Route::post('/chat/send', [ChatController::class, 'store']);
     Route::get('/chat/customer', [ChatController::class, 'getCustomerMessages']);
+    Route::get('/chat/seller/{sellerId}', [ChatController::class, 'getSellerMessages']);
     Route::get('/chat/admin', [ChatController::class, 'getAllMessages'])->middleware('role:admin');
     Route::post('/chat/reply', [ChatController::class, 'replyMessage'])->middleware('role:admin');
+    Route::patch('/chat/edit/{id}', [ChatController::class, 'editMessage']);
+    Route::post('/chat/delete/{id}', [ChatController::class, 'deleteMessage']);
 
     # Review Management
     Route::get('/reviews', [ReviewController::class, 'index']);

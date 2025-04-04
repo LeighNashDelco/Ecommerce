@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './../../../../sass/components/all_order.scss';
 import CancelOrder from '../orderHistory/cancel_order';
 import RateProduct from '../orderHistory/rate_product';
+import Chatbot from './../Customer/Chatbot';
 
 const AllOrder = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -14,6 +15,8 @@ const AllOrder = () => {
   const [selectedOrderForCancel, setSelectedOrderForCancel] = useState(null);
   const [isRateModalOpen, setIsRateModalOpen] = useState(false);
   const [selectedOrderForRate, setSelectedOrderForRate] = useState(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatData, setChatData] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -55,17 +58,19 @@ const AllOrder = () => {
             6: 'Refund'
           };
 
-          const statusName = statusMap[order.status_id] || order.status_name || 'Pending';
+          const statusName = statusMap[order.status_id] || 'Pending';
           
           return {
             ...order,
             tab: getTabFromStatus(statusName),
-            image: order.product_img,
-            name: order.product_name,
+            image: order.product_img, // From products table via join
+            name: order.product_name, // From products table via join
             quantity: order.quantity,
             status: statusName,
-            price: order.total_amount.replace(' USD', ''),
+            price: order.total_amount,
             actions: getActionsFromStatus(statusName),
+            seller_name: order.seller_name || 'Unknown Seller', // From profiles table via join
+            seller_id: order.seller_id, // From products.profile_id via join
           };
         });
 
@@ -99,13 +104,13 @@ const AllOrder = () => {
   const getActionsFromStatus = (status) => {
     switch (status.toLowerCase()) {
       case 'pending':
-        return ['Cancel Order', 'Track Order'];
+        return ['Cancel Order', 'Track Order', 'Contact Seller'];
       case 'in transit':
-        return ['Track Order'];
+        return ['Track Order', 'Contact Seller'];
       case 'received':
         return ['Track Order'];
       case 'completed':
-        return ['Rate', 'Refund']; // Always allow "Rate" for Completed
+        return ['Rate', 'Refund'];
       default:
         return [];
     }
@@ -126,7 +131,7 @@ const AllOrder = () => {
 
   const handleConfirmCancel = (reason) => {
     if (selectedOrderForCancel) {
-      console.log('Order cancelled:', selectedOrderForCancel.order_number, 'Reason:', reason);
+      console.log('Order cancelled:', selectedOrderForCancel.id, 'Reason:', reason);
       setOrders(prevOrders => 
         prevOrders.map(order => 
           order.id === selectedOrderForCancel.id 
@@ -151,7 +156,7 @@ const AllOrder = () => {
 
   const handleSubmitRating = ({ rating, review, image }) => {
     if (selectedOrderForRate) {
-      console.log('Rating submitted for order:', selectedOrderForRate.order_number, { rating, review, image });
+      console.log('Rating submitted for order:', selectedOrderForRate.id, { rating, review, image });
       setIsRateModalOpen(false);
       setSelectedOrderForRate(null);
     }
@@ -160,6 +165,20 @@ const AllOrder = () => {
   const handleCloseRateModal = () => {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
+  };
+
+  const handleContactSeller = (order) => {
+    setChatData({
+      order: {
+        name: order.name,
+        order_number: order.id, // Using order.id as order_number
+      },
+      seller: {
+        name: order.seller_name,
+        id: order.seller_id,
+      },
+    });
+    setIsChatOpen(true);
   };
 
   return (
@@ -218,7 +237,8 @@ const AllOrder = () => {
                           action === 'Track Order' ? () => handleTrackOrder(order) :
                           action === 'Cancel Order' ? () => handleCancelOrder(order) :
                           action === 'Rate' ? () => handleRateOrder(order) :
-                          action === 'Refund' ? () => console.log('Refund requested for order:', order.order_number) :
+                          action === 'Refund' ? () => console.log('Refund requested for order:', order.id) :
+                          action === 'Contact Seller' ? () => handleContactSeller(order) :
                           undefined
                         }
                       >
@@ -247,6 +267,11 @@ const AllOrder = () => {
         onSubmit={handleSubmitRating}
         orderId={selectedOrderForRate?.id}
         productId={selectedOrderForRate?.product_id} 
+      />
+      <Chatbot
+        isOpen={isChatOpen}
+        setIsOpen={setIsChatOpen}
+        chatData={chatData}
       />
     </div>
   );
