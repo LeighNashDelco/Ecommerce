@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChatMessage extends Model
 {
     protected $fillable = [
-        'user_id', 'message', 'is_admin_reply', 'read_at',
+        'user_id', 'message', 'is_admin_reply', 'read_at', 'image', // Added image
     ];
 
     protected $casts = [

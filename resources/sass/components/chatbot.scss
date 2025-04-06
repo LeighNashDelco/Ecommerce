@@ -1,4 +1,3 @@
-// resources/sass/components/chatbot.scss
 .chatbot {
     position: fixed;
     bottom: 20px;
@@ -31,24 +30,53 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-shrink: 0;
+
+        h3 {
+            margin: 0;
+            font-size: 16px;
+        }
 
         button {
             background: none;
             border: none;
             color: white;
             cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
         }
     }
 
     .chat-body {
         flex: 1;
-        padding: 10px;
-        overflow-y: auto;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+    }
+
+    .options-list {
+        flex: 1;
+        overflow-y: auto;
+
+        .option-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+
+            &:hover {
+                background-color: #e0e0e0;
+            }
+        }
+    }
+
+    .faq-section {
+        flex: 1;
+        overflow-y: auto;
 
         .faq-list {
-            margin-bottom: 10px;
             .faq-item {
                 padding: 8px;
                 margin: 5px 0;
@@ -62,9 +90,44 @@
             }
         }
 
+        .faq-content {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+
+            .faq-question {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .faq-answer {
+                color: #333;
+            }
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+            margin: 10px 0;
+        }
+    }
+
+    .chat-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
         .messages {
             flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            padding-right: 15px;
+            box-sizing: border-box;
+            min-height: 0;
+
             .message {
+                position: relative;
                 margin: 5px 0;
                 padding: 10px;
                 border-radius: 5px;
@@ -82,38 +145,140 @@
                     align-self: flex-start;
                 }
 
+                .chat-image {
+                    max-width: 100%;
+                    max-height: 200px;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                }
+
                 small {
                     display: block;
                     font-size: 10px;
                     color: #666;
                 }
+
+                .message-menu {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    display: none;
+
+                    .menu-icon {
+                        color: #fff;
+                        cursor: pointer;
+                    }
+
+                    .menu-dropdown {
+                        position: absolute;
+                        top: 20px;
+                        right: 0;
+                        background: #fff;
+                        border: 1px solid #ccc;
+                        border-radius: 3px;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                        z-index: 10;
+
+                        .delete-option {
+                            background: none;
+                            border: none;
+                            padding: 5px 10px;
+                            color: #ff4444;
+                            cursor: pointer;
+                            font-size: 12px;
+
+                            &:hover {
+                                background: #f0f0f0;
+                            }
+                        }
+                    }
+                }
+
+                &:hover .message-menu {
+                    display: block;
+                }
+
+                &.received .message-menu .menu-icon {
+                    color: #666;
+                }
             }
         }
-    }
 
-    .chat-footer {
-        padding: 10px;
-        border-top: 1px solid #ccc;
-        display: flex;
-
-        input {
-            flex: 1;
+        .chat-footer {
             padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #ccc;
+            flex-shrink: 0;
+            background: white;
+            box-sizing: border-box;
 
-        button {
-            margin-left: 10px;
-            padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
+            .image-preview {
+                position: relative;
+                margin-right: 5px;
+                width: 30px;
+                height: 30px;
 
-            &:hover {
-                background-color: #0056b3;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 3px;
+                    object-fit: cover;
+                }
+
+                .remove-image {
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    color: #ff4444;
+                    cursor: pointer;
+                    font-size: 10px;
+                    background: white;
+                    border-radius: 50%;
+                    padding: 1px;
+
+                    &:hover {
+                        color: #cc0000;
+                    }
+                }
+            }
+
+            .input-row {
+                display: flex;
+                align-items: center;
+                flex: 1;
+            }
+
+            .add-image-icon {
+                color: #007bff;
+                cursor: pointer;
+                margin-right: 5px;
+                font-size: 16px;
+
+                &:hover {
+                    color: #0056b3;
+                }
+            }
+
+            input {
+                flex: 1;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                font-size: 14px;
+                margin-right: 5px;
+            }
+
+            button {
+                background: none;
+                border: none;
+                color: #007bff;
+                cursor: pointer;
+                font-size: 16px;
+
+                &:hover {
+                    color: #0056b3;
+                }
             }
         }
     }

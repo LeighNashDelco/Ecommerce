@@ -19118,13 +19118,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _sass_components_adminchat_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../sass/components/adminchat.scss */ "./resources/sass/components/adminchat.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -19134,7 +19141,8 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// resources/js/components/adminside/AdminChat.js
+
+
 
 
 
@@ -19151,179 +19159,342 @@ function AdminChat() {
     _useState6 = _slicedToArray(_useState5, 2),
     reply = _useState6[0],
     setReply = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState8 = _slicedToArray(_useState7, 2),
-    loading = _useState8[0],
-    setLoading = _useState8[1];
+    image = _useState8[0],
+    setImage = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState10 = _slicedToArray(_useState9, 2),
-    error = _useState10[0],
-    setError = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    imagePreview = _useState10[0],
+    setImagePreview = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    isOpen = _useState12[0],
-    setIsOpen = _useState12[1]; // Add toggle state
-
+    error = _useState12[0],
+    setError = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState14 = _slicedToArray(_useState13, 2),
+    isOpen = _useState14[0],
+    setIsOpen = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    menuVisible = _useState16[0],
+    setMenuVisible = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState18 = _slicedToArray(_useState17, 2),
+    initialLoading = _useState18[0],
+    setInitialLoading = _useState18[1]; // New state for initial loading
+  var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getAuthHeaders = function getAuthHeaders() {
     return {
-      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
-      'Content-Type': 'application/json'
+      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
     };
   };
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (isOpen) {
-      fetchMessages();
-    }
-  }, [isOpen]);
   var fetchMessages = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var response;
+      var isInitialFetch,
+        headers,
+        response,
+        _error$response,
+        _args = arguments;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            setLoading(true);
+            isInitialFetch = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
+            if (isInitialFetch) {
+              setInitialLoading(true); // Show loading only on initial fetch
+            }
             setError(null);
-            _context.prev = 2;
-            _context.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/chat/admin', {
-              headers: getAuthHeaders()
+            _context.prev = 3;
+            headers = getAuthHeaders();
+            _context.next = 7;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/chat/admin', {
+              headers: headers
             });
-          case 5:
+          case 7:
             response = _context.sent;
-            console.log('Fetched messages:', response.data);
             setMessages(response.data);
-            _context.next = 14;
+            _context.next = 15;
             break;
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](2);
-            console.error('Error fetching messages:', _context.t0);
-            setError('Failed to load messages. Please try again.');
-          case 14:
-            _context.prev = 14;
-            setLoading(false);
-            return _context.finish(14);
-          case 17:
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context["catch"](3);
+            console.error('Error fetching messages:', _context.t0.response ? _context.t0.response.data : _context.t0.message);
+            setError('Failed to load messages: ' + (((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.message) || _context.t0.message));
+          case 15:
+            _context.prev = 15;
+            if (isInitialFetch) {
+              setInitialLoading(false);
+            }
+            return _context.finish(15);
+          case 18:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[2, 10, 14, 17]]);
+      }, _callee, null, [[3, 11, 15, 18]]);
     }));
     return function fetchMessages() {
       return _ref.apply(this, arguments);
     };
   }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var intervalId;
+    if (isOpen) {
+      fetchMessages(true); // Initial fetch with loading
+      intervalId = setInterval(function () {
+        fetchMessages(false); // Polling without loading
+      }, 5000);
+    }
+    return function () {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [isOpen]);
   var handleReply = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var response;
+      var formData, response, _error$response2;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            if (!(!reply.trim() || !selectedUserId)) {
+            if (!(!selectedUserId || !reply.trim() && !image)) {
               _context2.next = 2;
               break;
             }
             return _context2.abrupt("return");
           case 2:
             _context2.prev = 2;
-            _context2.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://127.0.0.1:8000/api/chat/reply', {
-              user_id: selectedUserId,
-              message: reply
-            }, {
-              headers: getAuthHeaders()
+            formData = new FormData();
+            formData.append('user_id', selectedUserId);
+            if (reply.trim()) formData.append('message', reply);
+            if (image) formData.append('image', image);
+            _context2.next = 9;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/api/chat/reply', formData, {
+              headers: _objectSpread(_objectSpread({}, getAuthHeaders()), {}, {
+                'Content-Type': 'multipart/form-data'
+              })
             });
-          case 5:
+          case 9:
             response = _context2.sent;
             setMessages(function (prev) {
               return [].concat(_toConsumableArray(prev), [response.data.data]);
             });
             setReply('');
-            fetchMessages(); // Refresh messages after reply
-            _context2.next = 14;
+            setImage(null);
+            setImagePreview(null);
+            _context2.next = 20;
             break;
-          case 11:
-            _context2.prev = 11;
+          case 16:
+            _context2.prev = 16;
             _context2.t0 = _context2["catch"](2);
-            console.error('Error sending reply:', _context2.t0);
-          case 14:
+            console.error('Error sending reply:', _context2.t0.response ? _context2.t0.response.data : _context2.t0.message);
+            alert('Failed to send reply: ' + (((_error$response2 = _context2.t0.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.error) || _context2.t0.message));
+          case 20:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[2, 11]]);
+      }, _callee2, null, [[2, 16]]);
     }));
     return function handleReply() {
       return _ref2.apply(this, arguments);
     };
   }();
-
-  // Group messages by user and get user details
+  var handleDelete = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(messageId) {
+      var _error$response3;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"]("http://127.0.0.1:8000/api/chat/message/".concat(messageId), {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            setMessages(function (prev) {
+              return prev.filter(function (msg) {
+                return msg.id !== messageId;
+              });
+            });
+            setMenuVisible(null);
+            _context3.next = 11;
+            break;
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            console.error('Error deleting message:', _context3.t0.response ? _context3.t0.response.data : _context3.t0.message);
+            alert('Failed to delete message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 7]]);
+    }));
+    return function handleDelete(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var handleImageClick = function handleImageClick() {
+    fileInputRef.current.click();
+  };
+  var handleImageChange = function handleImageChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+  var removeImage = function removeImage() {
+    setImage(null);
+    setImagePreview(null);
+    fileInputRef.current.value = '';
+  };
   var usersWithMessages = messages.reduce(function (acc, msg) {
     if (!acc.some(function (u) {
       return u.id === msg.user_id;
     }) && !msg.is_admin_reply) {
-      var _msg$user;
-      // Only include users who sent messages
+      var _msg$user, _msg$user2;
       acc.push({
         id: msg.user_id,
-        name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.username) || "User #".concat(msg.user_id) // Use username
+        name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.username) || "User #".concat(msg.user_id),
+        profile_img: ((_msg$user2 = msg.user) === null || _msg$user2 === void 0 || (_msg$user2 = _msg$user2.profile) === null || _msg$user2 === void 0 ? void 0 : _msg$user2.profile_img) || null
       });
     }
     return acc;
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'admin-chat-container'
-  }, !isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    className: 'chat-toggle-button',
-    onClick: function onClick() {
-      return setIsOpen(true);
-    }
-  }, 'Open Customer Chat'), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'admin-chat'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-header'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h1', null, 'Customer Chat'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    className: 'close-button',
-    onClick: function onClick() {
-      return setIsOpen(false);
-    }
-  }, 'Close')), loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', null, 'Loading messages...'), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', {
-    className: 'error'
-  }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-container'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'user-list'
-  }, usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: user.id,
-      className: "user-item ".concat(selectedUserId === user.id ? 'selected' : ''),
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "admin-chat-container",
+    children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "chat-icon",
       onClick: function onClick() {
-        return setSelectedUserId(user.id);
-      }
-    }, user.name);
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('p', null, 'No customer messages yet.')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-area'
-  }, selectedUserId && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'messages'
-  }, messages.filter(function (m) {
-    return m.user_id === selectedUserId;
-  }).map(function (msg, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: index,
-      className: "message ".concat(msg.is_admin_reply ? 'sent' : 'received')
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, msg.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('small', null, new Date(msg.created_at).toLocaleTimeString()));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'reply-area'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-    type: 'text',
-    value: reply,
-    onChange: function onChange(e) {
-      return setReply(e.target.value);
-    },
-    placeholder: 'Type your reply...'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: handleReply
-  }, 'Send')))))));
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
+        size: 30
+      })
+    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "admin-chat",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: selectedUserId ? 'Chat' : 'Customers'
+        }), selectedUserId && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setSelectedUserId(null);
+          },
+          children: "\u2190"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            setIsOpen(false);
+            setSelectedUserId(null);
+          },
+          children: "X"
+        })]
+      }), initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Loading..."
+      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "error",
+        children: error
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "chat-body",
+        children: !selectedUserId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "user-list",
+          children: usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "user-item",
+              onClick: function onClick() {
+                return setSelectedUserId(user.id);
+              },
+              children: [user.profile_img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                src: "/storage/".concat(user.profile_img),
+                alt: "Profile",
+                className: "profile-pic"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                children: user.name
+              })]
+            }, user.id);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No customer messages yet."
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "chat-area",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "messages",
+            children: messages.filter(function (m) {
+              return m.user_id === selectedUserId;
+            }).map(function (msg, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message ".concat(msg.is_admin_reply ? 'sent' : 'received'),
+                onMouseLeave: function onMouseLeave() {
+                  return setMenuVisible(null);
+                },
+                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                  src: "/storage/".concat(msg.image),
+                  alt: "Chat Image",
+                  className: "chat-image"
+                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  children: msg.message
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
+                  children: new Date(msg.created_at).toLocaleTimeString()
+                }), msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "message-menu",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
+                    className: "menu-icon",
+                    onClick: function onClick() {
+                      return setMenuVisible(msg.id === menuVisible ? null : msg.id);
+                    }
+                  }), menuVisible === msg.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "menu-dropdown",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                      className: "delete-option",
+                      onClick: function onClick() {
+                        return handleDelete(msg.id);
+                      },
+                      children: "Delete Message"
+                    })
+                  })]
+                })]
+              }, index);
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "chat-footer",
+            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "image-preview",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                src: imagePreview,
+                alt: "Preview"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+                className: "remove-image",
+                onClick: removeImage
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "input-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
+                className: "add-image-icon",
+                onClick: handleImageClick,
+                title: "Add Image"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "file",
+                accept: "image/*",
+                ref: fileInputRef,
+                onChange: handleImageChange,
+                style: {
+                  display: 'none'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "text",
+                value: reply,
+                onChange: function onChange(e) {
+                  return setReply(e.target.value);
+                },
+                placeholder: "Type your reply..."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                onClick: handleReply,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
+              })]
+            })]
+          })]
+        })
+      })]
+    })]
+  });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminChat);
 
@@ -34025,14 +34196,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _sass_components_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/chatbot.scss */ "./resources/sass/components/chatbot.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -34042,7 +34219,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// resources/js/components/customerside/Customer/Chatbot.js
+
 
 
 
@@ -34064,18 +34241,50 @@ function Chatbot() {
     _useState8 = _slicedToArray(_useState7, 2),
     input = _useState8[0],
     setInput = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    image = _useState10[0],
+    setImage = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    imagePreview = _useState12[0],
+    setImagePreview = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState14 = _slicedToArray(_useState13, 2),
+    view = _useState14[0],
+    setView = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedFaq = _useState16[0],
+    setSelectedFaq = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    menuVisible = _useState18[0],
+    setMenuVisible = _useState18[1];
+  var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getAuthHeaders = function getAuthHeaders() {
+    var token = localStorage.getItem('LaravelPassportToken');
+    if (!token) {
+      throw new Error('No authentication token found. Please log in.');
+    }
     return {
-      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
-      'Content-Type': 'application/json'
+      'Authorization': "Bearer ".concat(token)
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isOpen) {
       fetchFaqs();
-      fetchMessages();
+      if (view === 'chat') {
+        fetchMessages();
+        var intervalId = setInterval(function () {
+          fetchMessages();
+        }, 5000);
+        return function () {
+          return clearInterval(intervalId);
+        };
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, view]);
   var fetchFaqs = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var response;
@@ -34084,7 +34293,7 @@ function Chatbot() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
               headers: getAuthHeaders()
             });
           case 3:
@@ -34114,7 +34323,7 @@ function Chatbot() {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
               headers: getAuthHeaders()
             });
           case 3:
@@ -34137,107 +34346,267 @@ function Chatbot() {
     };
   }();
   var handleFaqClick = function handleFaqClick(faq) {
-    setMessages(function (prev) {
-      return [].concat(_toConsumableArray(prev), [{
-        message: faq.question,
-        is_admin_reply: false,
-        created_at: new Date()
-      }, {
-        message: faq.answer,
-        is_admin_reply: true,
-        created_at: new Date()
-      }]);
-    });
+    setSelectedFaq(faq);
+  };
+  var handleImageClick = function handleImageClick() {
+    fileInputRef.current.click();
+  };
+  var handleImageChange = function handleImageChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+  var removeImage = function removeImage() {
+    setImage(null);
+    setImagePreview(null);
+    fileInputRef.current.value = '';
   };
   var handleSendMessage = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var response;
+      var formData, response, _error$response, _error$response2, details, errorMessage, _error$response3;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            if (input.trim()) {
+            if (!(!input.trim() && !image)) {
               _context3.next = 2;
               break;
             }
             return _context3.abrupt("return");
           case 2:
             _context3.prev = 2;
-            _context3.next = 5;
-            return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://127.0.0.1:8000/api/chat/send', {
-              message: input
-            }, {
-              headers: getAuthHeaders()
+            formData = new FormData();
+            if (input.trim()) formData.append('message', input);
+            if (image) formData.append('image', image);
+            console.log('Sending FormData:', {
+              message: input,
+              image: image
             });
-          case 5:
+            _context3.next = 9;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/api/chat/send', formData, {
+              headers: _objectSpread(_objectSpread({}, getAuthHeaders()), {}, {
+                'Content-Type': 'multipart/form-data'
+              })
+            });
+          case 9:
             response = _context3.sent;
             setMessages(function (prev) {
               return [].concat(_toConsumableArray(prev), [response.data.data]);
             });
             setInput('');
-            _context3.next = 13;
+            setImage(null);
+            setImagePreview(null);
+            _context3.next = 20;
             break;
-          case 10:
-            _context3.prev = 10;
+          case 16:
+            _context3.prev = 16;
             _context3.t0 = _context3["catch"](2);
-            console.error('Error sending message:', _context3.t0);
-          case 13:
+            console.error('Error sending message:', ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
+            if (((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status) === 422) {
+              details = _context3.t0.response.data.details;
+              errorMessage = Object.values(details).flat().join(' ');
+              alert('Validation failed: ' + errorMessage);
+            } else {
+              alert('Failed to send message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
+            }
+          case 20:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[2, 10]]);
+      }, _callee3, null, [[2, 16]]);
     }));
     return function handleSendMessage() {
       return _ref3.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chatbot'
-  }, !isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-icon',
-    onClick: function onClick() {
-      return setIsOpen(true);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaCommentAlt, {
-    size: 30
-  })), isOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-window'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-header'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('h3', null, 'Chat Support'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: function onClick() {
-      return setIsOpen(false);
-    }
-  }, 'X')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-body'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'faq-list'
-  }, faqs.map(function (faq) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: faq.id,
-      className: 'faq-item',
+  var handleDelete = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(messageId) {
+      var _error$response4, _error$response5;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.prev = 0;
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"]("http://127.0.0.1:8000/api/chat/message/".concat(messageId), {
+              headers: getAuthHeaders()
+            });
+          case 3:
+            setMessages(function (prev) {
+              return prev.filter(function (msg) {
+                return msg.id !== messageId;
+              });
+            });
+            setMenuVisible(null);
+            _context4.next = 11;
+            break;
+          case 7:
+            _context4.prev = 7;
+            _context4.t0 = _context4["catch"](0);
+            console.error('Error deleting message:', ((_error$response4 = _context4.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context4.t0.message);
+            alert('Failed to delete message: ' + (((_error$response5 = _context4.t0.response) === null || _error$response5 === void 0 || (_error$response5 = _error$response5.data) === null || _error$response5 === void 0 ? void 0 : _error$response5.error) || _context4.t0.message));
+          case 11:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4, null, [[0, 7]]);
+    }));
+    return function handleDelete(_x) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "chatbot",
+    children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "chat-icon",
       onClick: function onClick() {
-        return handleFaqClick(faq);
-      }
-    }, faq.question);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'messages'
-  }, messages.map(function (msg, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-      key: index,
-      className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent')
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('span', null, msg.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('small', null, new Date(msg.created_at).toLocaleTimeString()));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('div', {
-    className: 'chat-footer'
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('input', {
-    type: 'text',
-    value: input,
-    onChange: function onChange(e) {
-      return setInput(e.target.value);
-    },
-    placeholder: 'Type your question...'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement('button', {
-    onClick: handleSendMessage
-  }, 'Send'))));
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
+        size: 30
+      })
+    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: view ? view === 'faqs' ? 'FAQs' : 'Contact Support' : 'Support Options'
+        }), view && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            setView(null);
+            setSelectedFaq(null);
+          },
+          children: "\u2190"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            setIsOpen(false);
+            setView(null);
+            setSelectedFaq(null);
+          },
+          children: "X"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "chat-body",
+        children: !view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "options-list",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "option-item",
+            onClick: function onClick() {
+              return setView('faqs');
+            },
+            children: "FAQs"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "option-item",
+            onClick: function onClick() {
+              return setView('chat');
+            },
+            children: "Contact Support"
+          })]
+        }) : view === 'faqs' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "faq-section",
+          children: selectedFaq ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "faq-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "faq-question",
+              children: selectedFaq.question
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "faq-answer",
+              children: selectedFaq.answer
+            })]
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "faq-list",
+            children: faqs.length > 0 ? faqs.map(function (faq) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "faq-item",
+                onClick: function onClick() {
+                  return handleFaqClick(faq);
+                },
+                children: faq.question
+              }, faq.id);
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+              children: "No FAQs available."
+            })
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "chat-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "messages",
+            children: messages.map(function (msg, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent'),
+                onMouseLeave: function onMouseLeave() {
+                  return setMenuVisible(null);
+                },
+                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                  src: "/storage/".concat(msg.image),
+                  alt: "Chat Image",
+                  className: "chat-image"
+                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  children: msg.message
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
+                  children: new Date(msg.created_at).toLocaleTimeString()
+                }), !msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "message-menu",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
+                    className: "menu-icon",
+                    onClick: function onClick() {
+                      return setMenuVisible(msg.id === menuVisible ? null : msg.id);
+                    }
+                  }), menuVisible === msg.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "menu-dropdown",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                      className: "delete-option",
+                      onClick: function onClick() {
+                        return handleDelete(msg.id);
+                      },
+                      children: "Delete Message"
+                    })
+                  })]
+                })]
+              }, index);
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "chat-footer",
+            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "image-preview",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                src: imagePreview,
+                alt: "Preview"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+                className: "remove-image",
+                onClick: removeImage
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "input-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
+                className: "add-image-icon",
+                onClick: handleImageClick,
+                title: "Add Image"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "file",
+                accept: "image/*",
+                ref: fileInputRef,
+                onChange: handleImageChange,
+                style: {
+                  display: 'none'
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "text",
+                value: input,
+                onChange: function onChange(e) {
+                  return setInput(e.target.value);
+                },
+                placeholder: "Type your question..."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                onClick: handleSendMessage,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
+              })]
+            })]
+          })]
+        })
+      })]
+    })]
+  });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Chatbot);
 
@@ -49420,7 +49789,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n\n.chat-toggle-button {\n  padding: 10px 20px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1em;\n}\n.chat-toggle-button:hover {\n  background-color: #0056b3;\n}\n\n.admin-chat {\n  width: 350px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  padding: 15px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n}\n.admin-chat .chat-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n}\n.admin-chat .chat-header h1 {\n  margin: 0;\n  font-size: 1.2em;\n  color: #333;\n}\n.admin-chat .chat-header .close-button {\n  padding: 5px 10px;\n  background-color: #dc3545;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n}\n.admin-chat .chat-header .close-button:hover {\n  background-color: #c82333;\n}\n.admin-chat .error {\n  color: red;\n  text-align: center;\n  margin-bottom: 10px;\n}\n.admin-chat .chat-container {\n  display: flex;\n  height: 300px;\n  border: 1px solid #ddd;\n  border-radius: 5px;\n}\n.admin-chat .user-list {\n  width: 40%;\n  border-right: 1px solid #ccc;\n  overflow-y: auto;\n  padding: 5px;\n}\n.admin-chat .user-list .user-item {\n  padding: 8px;\n  margin: 3px 0;\n  background-color: #f1f1f1;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.admin-chat .user-list .user-item.selected {\n  background-color: #007bff;\n  color: white;\n}\n.admin-chat .user-list .user-item:hover {\n  background-color: #e0e0e0;\n}\n.admin-chat .user-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area {\n  width: 60%;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .chat-area .messages {\n  flex: 1;\n  overflow-y: auto;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .chat-area .messages .message {\n  margin: 5px 0;\n  padding: 8px;\n  border-radius: 5px;\n  max-width: 80%;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.admin-chat .chat-area .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.admin-chat .chat-area .messages .message small {\n  display: block;\n  font-size: 0.7em;\n  color: #666;\n}\n.admin-chat .chat-area .reply-area {\n  padding: 5px;\n  border-top: 1px solid #ccc;\n  display: flex;\n  align-items: center;\n}\n.admin-chat .chat-area .reply-area input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .reply-area button {\n  margin-left: 5px;\n  padding: 5px 10px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 0.9em;\n}\n.admin-chat .chat-area .reply-area button:hover {\n  background-color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n\n.chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.admin-chat {\n  width: 350px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n\n.chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n\n.error {\n  color: red;\n  text-align: center;\n  margin: 5px 0;\n  font-size: 12px;\n}\n\n.chat-body {\n  flex: 1;\n  display: flex;\n  overflow: hidden;\n}\n\n.user-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 5px;\n  background-color: #f9f9f9;\n}\n.user-list .user-item {\n  display: flex;\n  align-items: center;\n  padding: 8px;\n  margin: 3px 0;\n  background-color: #f1f1f1;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 14px;\n}\n.user-list .user-item .profile-pic {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.user-list .user-item span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.user-list .user-item:hover {\n  background-color: #e0e0e0;\n}\n.user-list p {\n  text-align: center;\n  color: #666;\n  font-size: 12px;\n  margin: 10px 0;\n}\n\n.chat-area {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 5px;\n}\n.chat-area .messages {\n  flex: 1;\n  max-height: 340px;\n  overflow-y: auto;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.chat-area .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 8px 12px;\n  border-radius: 5px;\n  max-width: 80%;\n  font-size: 14px;\n}\n.chat-area .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n}\n.chat-area .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chat-area .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chat-area .messages .message span {\n  word-wrap: break-word;\n}\n.chat-area .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n  margin-top: 2px;\n}\n.chat-area .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chat-area .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chat-area .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chat-area .messages .message:hover .message-menu {\n  display: block;\n}\n.chat-area .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chat-area .chat-footer {\n  padding: 5px 0;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n}\n.chat-area .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chat-area .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chat-area .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chat-area .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chat-area .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chat-area .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chat-area .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chat-area .chat-footer input[type=text] {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chat-area .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chat-area .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49516,7 +49885,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n}\n.chatbot .chat-body {\n  flex: 1;\n  padding: 10px;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-body .faq-list {\n  margin-bottom: 10px;\n}\n.chatbot .chat-body .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .chat-body .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-body .messages {\n  flex: 1;\n}\n.chatbot .chat-body .messages .message {\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-body .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-body .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-body .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-footer {\n  padding: 10px;\n  border-top: 1px solid #ccc;\n  display: flex;\n}\n.chatbot .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n}\n.chatbot .chat-footer button {\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 3px;\n  cursor: pointer;\n}\n.chatbot .chat-footer button:hover {\n  background-color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-shrink: 0;\n}\n.chatbot .chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n.chatbot .chat-body {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .options-list {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .options-list .option-item {\n  padding: 10px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n  text-align: center;\n}\n.chatbot .options-list .option-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .faq-section .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .faq-section .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section .faq-content {\n  padding: 10px;\n  background-color: #f9f9f9;\n  border-radius: 5px;\n}\n.chatbot .faq-section .faq-content .faq-question {\n  font-weight: bold;\n  margin-bottom: 5px;\n}\n.chatbot .faq-section .faq-content .faq-answer {\n  color: #333;\n}\n.chatbot .faq-section p {\n  text-align: center;\n  color: #666;\n  margin: 10px 0;\n}\n.chatbot .chat-section {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .chat-section .messages {\n  flex: 1;\n  overflow-y: auto;\n  padding: 10px;\n  padding-right: 15px;\n  box-sizing: border-box;\n  min-height: 0;\n}\n.chatbot .chat-section .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-section .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-section .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-section .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chatbot .chat-section .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-section .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chatbot .chat-section .messages .message:hover .message-menu {\n  display: block;\n}\n.chatbot .chat-section .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chatbot .chat-section .chat-footer {\n  padding: 5px;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n  flex-shrink: 0;\n  background: white;\n  box-sizing: border-box;\n}\n.chatbot .chat-section .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chatbot .chat-section .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chatbot .chat-section .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chatbot .chat-section .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chatbot .chat-section .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chatbot .chat-section .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

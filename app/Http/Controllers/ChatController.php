@@ -6,6 +6,7 @@ use App\Models\ChatMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ChatController extends Controller
 {
@@ -18,7 +19,6 @@ class ChatController extends Controller
     {
         try {
             Log::info('sendMessage called', ['input' => $request->all()]);
-            
             $user = Auth::user();
             if (!$user) {
                 Log::error('User not authenticated');
@@ -27,21 +27,33 @@ class ChatController extends Controller
 
             Log::info('User authenticated', ['user_id' => $user->id]);
 
+            // Validate the request
             $validated = $request->validate([
-                'message' => 'required|string|max:1000',
+                'message' => 'string|max:1000|nullable', // Make message nullable
+                'image' => 'nullable|image|max:2048', // Add image support
             ]);
 
-            Log::info('Validation passed', ['message' => $validated['message']]);
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('chat_images', 'public');
+            }
+
+            // Ensure message is never null; use a default if not provided
+            $messageContent = $validated['message'] ?? ($imagePath ? '[Image]' : '');
 
             $message = ChatMessage::create([
                 'user_id' => $user->id,
-                'message' => $validated['message'],
+                'message' => $messageContent,
+                'image' => $imagePath,
                 'is_admin_reply' => false,
             ]);
 
             Log::info('Message created', ['message_id' => $message->id]);
 
             return response()->json(['message' => 'Question sent', 'data' => $message], 201);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Return validation errors with a 422 status
+            return response()->json(['error' => 'Validation failed', 'details' => $e->errors()], 422);
         } catch (\Exception $e) {
             Log::error('Error in sendMessage', [
                 'error' => $e->getMessage(),
@@ -57,17 +69,15 @@ class ChatController extends Controller
     {
         try {
             Log::info('getCustomerMessages called');
-            
             $user = Auth::user();
             if (!$user) {
                 Log::error('User not authenticated');
                 return response()->json(['error' => 'User not authenticated'], 401);
             }
 
-            Log::info('User authenticated', ['user_id' => $user->id]);
-
             $messages = ChatMessage::where('user_id', $user->id)
                 ->orderBy('created_at', 'asc')
+                ->with('user.profile')
                 ->get();
 
             Log::info('Messages fetched', ['count' => $messages->count()]);
@@ -84,60 +94,48 @@ class ChatController extends Controller
         }
     }
 
-    // app/Http/Controllers/ChatController.php
-// app/Http/Controllers/ChatController.php
-public function getAllMessages(Request $request)
-{
-    try {
-        Log::info('getAllMessages called');
-        
-        $user = Auth::user();
-        if (!$user) {
-            Log::error('User not authenticated');
-            return response()->json(['error' => 'User not authenticated'], 401);
+    public function getAllMessages(Request $request)
+    {
+        try {
+            Log::info('getAllMessages called');
+            $user = Auth::user();
+            if (!$user) {
+                Log::error('User not authenticated');
+                return response()->json(['error' => 'User not authenticated'], 401);
+            }
+
+            Log::info('User authenticated', [
+                'user_id' => $user->id,
+                'role' => $user->role ?? 'Not set'
+            ]);
+
+            $messages = ChatMessage::orderBy('created_at', 'asc')
+                ->with(['user' => function ($query) {
+                    $query->select('id', 'username')
+                          ->with(['profile' => function ($query) {
+                              $query->select('id', 'user_id', 'profile_img');
+                          }]);
+                }])
+                ->get();
+
+            Log::info('Messages fetched with user and profile', ['count' => $messages->count()]);
+
+            return response()->json($messages);
+        } catch (\Exception $e) {
+            Log::error('Error in getAllMessages', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile()
+            ]);
+            return response()->json(['error' => 'Failed to fetch messages: ' . $e->getMessage()], 500);
         }
-
-        Log::info('User authenticated', ['user_id' => $user->id]);
-
-        // Fetch messages without relationship
-        $messages = ChatMessage::orderBy('created_at', 'asc')->get();
-        Log::info('Messages fetched without user relationship', ['count' => $messages->count()]);
-
-        // Fetch users separately, without loading any relationships
-        $userIds = $messages->pluck('user_id')->unique()->toArray();
-        $users = \App\Models\User::without(['role', 'profile'])
-            ->whereIn('id', $userIds)
-            ->select('id', 'username')
-            ->get()
-            ->keyBy('id');
-
-        Log::info('Users fetched', ['count' => $users->count()]);
-
-        // Attach user data to messages
-        $messages = $messages->map(function ($message) use ($users) {
-            $message->user = $users->get($message->user_id, ['id' => null, 'username' => 'Unknown User']);
-            return $message;
-        });
-
-        Log::info('Messages with user data attached', ['count' => $messages->count()]);
-
-        return response()->json($messages);
-    } catch (\Exception $e) {
-        Log::error('Error in getAllMessages', [
-            'error' => $e->getMessage(),
-            'trace' => $e->getTraceAsString(),
-            'line' => $e->getLine(),
-            'file' => $e->getFile()
-        ]);
-        return response()->json(['error' => 'Failed to fetch messages: ' . $e->getMessage()], 500);
     }
-}
 
     public function replyMessage(Request $request)
     {
         try {
             Log::info('replyMessage called', ['input' => $request->all()]);
-            
             $user = Auth::user();
             if (!$user) {
                 Log::error('User not authenticated');
@@ -148,12 +146,21 @@ public function getAllMessages(Request $request)
 
             $validated = $request->validate([
                 'user_id' => 'required|integer|exists:users,id',
-                'message' => 'required|string|max:1000',
+                'message' => 'string|max:1000|nullable',
+                'image' => 'nullable|image|max:2048',
             ]);
+
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('chat_images', 'public');
+            }
+
+            $messageContent = $validated['message'] ?? ($imagePath ? '[Image]' : '');
 
             $message = ChatMessage::create([
                 'user_id' => $validated['user_id'],
-                'message' => $validated['message'],
+                'message' => $messageContent,
+                'image' => $imagePath,
                 'is_admin_reply' => true,
             ]);
 
@@ -166,6 +173,42 @@ public function getAllMessages(Request $request)
                 'trace' => $e->getTraceAsString(),
             ]);
             return response()->json(['error' => 'Failed to send reply: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function deleteMessage(Request $request, $id)
+    {
+        try {
+            Log::info('deleteMessage called', ['message_id' => $id]);
+            $user = Auth::user();
+            if (!$user) {
+                Log::error('User not authenticated');
+                return response()->json(['error' => 'User not authenticated'], 401);
+            }
+
+            $message = ChatMessage::findOrFail($id);
+
+            // Allow customers to delete their own messages, admins to delete their replies
+            if ($message->is_admin_reply && !$user->is_admin) {
+                return response()->json(['error' => 'You can only delete your own admin replies'], 403);
+            }
+            if (!$message->is_admin_reply && $message->user_id !== $user->id) {
+                return response()->json(['error' => 'You can only delete your own messages'], 403);
+            }
+
+            if ($message->image) {
+                Storage::disk('public')->delete($message->image);
+            }
+            $message->delete();
+
+            Log::info('Message deleted', ['message_id' => $id]);
+            return response()->json(['message' => 'Message deleted']);
+        } catch (\Exception $e) {
+            Log::error('Error in deleteMessage', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return response()->json(['error' => 'Failed to delete message: ' . $e->getMessage()], 500);
         }
     }
 }
