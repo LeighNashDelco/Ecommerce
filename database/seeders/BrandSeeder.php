@@ -20,9 +20,41 @@ class BrandSeeder extends Seeder
 
         // Insert brand data
         DB::table('brands')->insert([
-            ['brand_name' => 'Attack Shark'],
-            ['brand_name' => 'Logitech'],
-            ['brand_name' => 'Razer'],
+            [
+                'id' => 1,
+                'brand_name' => 'Razer',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'brand_name' => 'Logitech',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'brand_name' => 'SteelSeries',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'brand_name' => 'Corsair',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 5,
+                'brand_name' => 'HyperX',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

@@ -206,9 +206,9 @@ Route::middleware('auth:api')->group(function () {
     # Chat Management
     Route::post('/chat/send', [ChatController::class, 'sendMessage']);
     Route::get('/chat/customer', [ChatController::class, 'getCustomerMessages']);
-    Route::get('/chat/admin', [ChatController::class, 'getAllMessages'])->middleware('role:Admin');
-    Route::post('/chat/reply', [ChatController::class, 'replyMessage'])->middleware('role:Admin');
-    Route::delete('/chat/message/{id}', [ChatController::class, 'deleteMessage'])->middleware('role:Admin');
+    Route::get('/chat/admin', [ChatController::class, 'getAllMessages']);
+    Route::post('/chat/reply', [ChatController::class, 'replyMessage']);
+    Route::delete('/chat/message/{id}', [ChatController::class, 'deleteMessage']);
 
     # Review Management
     Route::get('/reviews', [ReviewController::class, 'index']);

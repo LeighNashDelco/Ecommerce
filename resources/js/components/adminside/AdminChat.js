@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { FaCommentAlt, FaEllipsisH, FaPlus, FaTimes, FaPaperPlane } from 'react-icons/fa';
+import { FaCommentAlt, FaEllipsisH, FaPaperclip, FaTimes, FaPaperPlane, FaArrowLeft, FaSearch } from 'react-icons/fa';
 import './../../../sass/components/adminchat.scss';
 
 function AdminChat() {
@@ -12,17 +12,18 @@ function AdminChat() {
     const [error, setError] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [menuVisible, setMenuVisible] = useState(null);
-    const [initialLoading, setInitialLoading] = useState(false); // New state for initial loading
+    const [initialLoading, setInitialLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
     const fileInputRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     const getAuthHeaders = () => ({
         'Authorization': `Bearer ${localStorage.getItem('LaravelPassportToken')}`,
     });
 
     const fetchMessages = async (isInitialFetch = false) => {
-        if (isInitialFetch) {
-            setInitialLoading(true); // Show loading only on initial fetch
-        }
+        if (isInitialFetch) setInitialLoading(true);
         setError(null);
         try {
             const headers = getAuthHeaders();
@@ -32,24 +33,26 @@ function AdminChat() {
             console.error('Error fetching messages:', error.response ? error.response.data : error.message);
             setError('Failed to load messages: ' + (error.response?.data?.message || error.message));
         } finally {
-            if (isInitialFetch) {
-                setInitialLoading(false);
-            }
+            if (isInitialFetch) setInitialLoading(false);
         }
     };
 
     useEffect(() => {
         let intervalId;
         if (isOpen) {
-            fetchMessages(true); // Initial fetch with loading
-            intervalId = setInterval(() => {
-                fetchMessages(false); // Polling without loading
-            }, 5000);
+            fetchMessages(true);
+            intervalId = setInterval(() => fetchMessages(false), 5000);
         }
         return () => {
             if (intervalId) clearInterval(intervalId);
         };
     }, [isOpen]);
+
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages, selectedUserId]);
 
     const handleReply = async () => {
         if (!selectedUserId || (!reply.trim() && !image)) return;
@@ -103,16 +106,28 @@ function AdminChat() {
         fileInputRef.current.value = '';
     };
 
+    const openImageModal = (imageUrl) => {
+        setSelectedImage(imageUrl);
+    };
+
+    const closeImageModal = () => {
+        setSelectedImage(null);
+    };
+
     const usersWithMessages = messages.reduce((acc, msg) => {
         if (!acc.some(u => u.id === msg.user_id) && !msg.is_admin_reply) {
             acc.push({
                 id: msg.user_id,
                 name: msg.user?.username || `User #${msg.user_id}`,
                 profile_img: msg.user?.profile?.profile_img || null,
+                last_message: msg.message,
+                timestamp: msg.created_at,
             });
         }
         return acc;
-    }, []);
+    }, []).filter(user =>
+        user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="admin-chat-container">
@@ -121,115 +136,180 @@ function AdminChat() {
                     <FaCommentAlt size={30} />
                 </div>
             )}
-            {isOpen && (
-                <div className="admin-chat">
-                    <div className="chat-header">
-                        <h3>{selectedUserId ? 'Chat' : 'Customers'}</h3>
-                        {selectedUserId && <button onClick={() => setSelectedUserId(null)}>←</button>}
-                        <button onClick={() => { setIsOpen(false); setSelectedUserId(null); }}>X</button>
+            {isOpen && !selectedUserId && (
+                <div className="conversations-window">
+                    <div className="conversations-header">
+                        <h3>Chats</h3>
+                        <button onClick={() => setIsOpen(false)}>
+                            <FaTimes size={20} />
+                        </button>
                     </div>
-                    {initialLoading && <p>Loading...</p>}
-                    {error && <p className="error">{error}</p>}
-                    <div className="chat-body">
-                        {!selectedUserId ? (
-                            <div className="user-list">
-                                {usersWithMessages.length > 0 ? (
-                                    usersWithMessages.map(user => (
-                                        <div
-                                            key={user.id}
-                                            className="user-item"
-                                            onClick={() => setSelectedUserId(user.id)}
-                                        >
-                                            {user.profile_img && (
-                                                <img
-                                                    src={`/storage/${user.profile_img}`}
-                                                    alt="Profile"
-                                                    className="profile-pic"
-                                                />
-                                            )}
-                                            <span>{user.name}</span>
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p>No customer messages yet.</p>
-                                )}
+                    <div className="search-bar">
+                        <FaSearch />
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+                    <div className="conversations-list">
+                        {initialLoading && (
+                            <div className="no-conversations">
+                                <p>Loading...</p>
                             </div>
+                        )}
+                        {error && (
+                            <div className="error-message">
+                                <p>{error}</p>
+                            </div>
+                        )}
+                        {usersWithMessages.length > 0 ? (
+                            usersWithMessages.map(user => (
+                                <div
+                                    key={user.id}
+                                    className="conversation-item"
+                                    onClick={() => setSelectedUserId(user.id)}
+                                >
+                                    {user.profile_img ? (
+                                        <img
+                                            src={`/storage/${user.profile_img}`}
+                                            alt="Profile"
+                                            className="user-avatar"
+                                        />
+                                    ) : (
+                                        <div className="user-avatar"></div>
+                                    )}
+                                    <div className="conversation-info">
+                                        <div className="conversation-name">{user.name}</div>
+                                        <div className="last-message">{user.last_message}</div>
+                                    </div>
+                                    <span className="timestamp">
+                                        {new Date(user.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                    </span>
+                                </div>
+                            ))
                         ) : (
-                            <div className="chat-area">
-                                <div className="messages">
-                                    {messages
-                                        .filter(m => m.user_id === selectedUserId)
-                                        .map((msg, index) => (
-                                            <div
-                                                key={index}
-                                                className={`message ${msg.is_admin_reply ? 'sent' : 'received'}`}
-                                                onMouseLeave={() => setMenuVisible(null)}
-                                            >
+                            !initialLoading && !error && (
+                                <div className="no-conversations">
+                                    <p>No customer messages yet.</p>
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            )}
+            {isOpen && selectedUserId && (
+                <div className="chat-window">
+                    <div className="chat-header">
+                        <button onClick={() => setSelectedUserId(null)}>
+                            <FaArrowLeft size={20} />
+                        </button>
+                        <div className="chat-header-info">
+                            <h3>{usersWithMessages.find(u => u.id === selectedUserId)?.name}</h3>
+                            <div className="status online">Online</div>
+                        </div>
+                    </div>
+                    <div className="chat-body">
+                        {error && (
+                            <div className="error-message">
+                                <p>{error}</p>
+                            </div>
+                        )}
+                        <div className="messages">
+                            {messages
+                                .filter(m => m.user_id === selectedUserId)
+                                .map((msg, index) => (
+                                    <div
+                                        key={index}
+                                        className={`message-wrapper ${msg.is_admin_reply ? 'sent' : 'received'}`}
+                                        onMouseLeave={() => setMenuVisible(null)}
+                                    >
+                                        <div className="message">
+                                            <div className="message-content">
                                                 {msg.image && (
-                                                    <img
-                                                        src={`/storage/${msg.image}`}
-                                                        alt="Chat Image"
-                                                        className="chat-image"
-                                                    />
+                                                    <div className={`image-attachment ${msg.is_admin_reply ? 'sent' : 'received'}`}>
+                                                        <img
+                                                            src={`/storage/${msg.image}`}
+                                                            alt="Chat Image"
+                                                            onClick={() => openImageModal(`/storage/${msg.image}`)}
+                                                        />
+                                                    </div>
                                                 )}
                                                 {msg.message && msg.message !== '[Image]' && (
                                                     <span>{msg.message}</span>
                                                 )}
-                                                <small>{new Date(msg.created_at).toLocaleTimeString()}</small>
-                                                {msg.is_admin_reply && (
-                                                    <div className="message-menu">
-                                                        <FaEllipsisH
-                                                            className="menu-icon"
-                                                            onClick={() => setMenuVisible(msg.id === menuVisible ? null : msg.id)}
-                                                        />
-                                                        {menuVisible === msg.id && (
-                                                            <div className="menu-dropdown">
-                                                                <button
-                                                                    className="delete-option"
-                                                                    onClick={() => handleDelete(msg.id)}
-                                                                >
-                                                                    Delete Message
-                                                                </button>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                )}
                                             </div>
-                                        ))}
-                                </div>
-                                <div className="chat-footer">
-                                    {imagePreview && (
-                                        <div className="image-preview">
-                                            <img src={imagePreview} alt="Preview" />
-                                            <FaTimes className="remove-image" onClick={removeImage} />
+                                            <small>
+                                                {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                            </small>
+                                            {msg.is_admin_reply && (
+                                                <div className="message-menu">
+                                                    <FaEllipsisH
+                                                        className="menu-icon"
+                                                        onClick={() => setMenuVisible(msg.id === menuVisible ? null : msg.id)}
+                                                    />
+                                                    {menuVisible === msg.id && (
+                                                        <div className="menu-dropdown">
+                                                            <button
+                                                                className="delete-option"
+                                                                onClick={() => handleDelete(msg.id)}
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                    <div className="input-row">
-                                        <FaPlus
-                                            className="add-image-icon"
-                                            onClick={handleImageClick}
-                                            title="Add Image"
-                                        />
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={fileInputRef}
-                                            onChange={handleImageChange}
-                                            style={{ display: 'none' }}
-                                        />
-                                        <input
-                                            type="text"
-                                            value={reply}
-                                            onChange={e => setReply(e.target.value)}
-                                            placeholder="Type your reply..."
-                                        />
-                                        <button onClick={handleReply}>
-                                            <FaPaperPlane />
-                                        </button>
                                     </div>
+                                ))}
+                            <div ref={messagesEndRef} />
+                        </div>
+                    </div>
+                    <div className="chat-footer">
+                        {imagePreview && (
+                            <div className="file-preview">
+                                <div className="preview-image-container">
+                                    <img src={imagePreview} alt="Preview" />
+                                    <button className="remove-file" onClick={removeImage}>
+                                        <FaTimes size={12} />
+                                    </button>
                                 </div>
                             </div>
                         )}
+                        <div className="input-container">
+                            <input
+                                type="text"
+                                value={reply}
+                                onChange={e => setReply(e.target.value)}
+                                placeholder="Type something..."
+                                onKeyPress={e => e.key === 'Enter' && handleReply()}
+                            />
+                            <FaPaperclip
+                                className="file-upload"
+                                onClick={handleImageClick}
+                                size={20}
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                ref={fileInputRef}
+                                onChange={handleImageChange}
+                                style={{ display: 'none' }}
+                            />
+                            <button onClick={handleReply}>
+                                <FaPaperPlane size={20} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {selectedImage && (
+                <div className="image-modal" onClick={closeImageModal}>
+                    <div className="modal-content">
+                        <img src={selectedImage} alt="Full Size" />
+                        <FaTimes className="close-modal" onClick={closeImageModal} />
                     </div>
                 </div>
             )}

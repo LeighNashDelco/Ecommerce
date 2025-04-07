@@ -19147,6 +19147,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 function AdminChat() {
+  var _usersWithMessages$fi;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     messages = _useState2[0],
@@ -19182,8 +19183,17 @@ function AdminChat() {
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState18 = _slicedToArray(_useState17, 2),
     initialLoading = _useState18[0],
-    setInitialLoading = _useState18[1]; // New state for initial loading
+    setInitialLoading = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    selectedImage = _useState20[0],
+    setSelectedImage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState22 = _slicedToArray(_useState21, 2),
+    searchQuery = _useState22[0],
+    setSearchQuery = _useState22[1];
   var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var messagesEndRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getAuthHeaders = function getAuthHeaders() {
     return {
       'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
@@ -19200,9 +19210,7 @@ function AdminChat() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             isInitialFetch = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
-            if (isInitialFetch) {
-              setInitialLoading(true); // Show loading only on initial fetch
-            }
+            if (isInitialFetch) setInitialLoading(true);
             setError(null);
             _context.prev = 3;
             headers = getAuthHeaders();
@@ -19222,9 +19230,7 @@ function AdminChat() {
             setError('Failed to load messages: ' + (((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.message) || _context.t0.message));
           case 15:
             _context.prev = 15;
-            if (isInitialFetch) {
-              setInitialLoading(false);
-            }
+            if (isInitialFetch) setInitialLoading(false);
             return _context.finish(15);
           case 18:
           case "end":
@@ -19239,15 +19245,22 @@ function AdminChat() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var intervalId;
     if (isOpen) {
-      fetchMessages(true); // Initial fetch with loading
+      fetchMessages(true);
       intervalId = setInterval(function () {
-        fetchMessages(false); // Polling without loading
+        return fetchMessages(false);
       }, 5000);
     }
     return function () {
       if (intervalId) clearInterval(intervalId);
     };
   }, [isOpen]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  }, [messages, selectedUserId]);
   var handleReply = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var formData, response, _error$response2;
@@ -19346,6 +19359,12 @@ function AdminChat() {
     setImagePreview(null);
     fileInputRef.current.value = '';
   };
+  var openImageModal = function openImageModal(imageUrl) {
+    setSelectedImage(imageUrl);
+  };
+  var closeImageModal = function closeImageModal() {
+    setSelectedImage(null);
+  };
   var usersWithMessages = messages.reduce(function (acc, msg) {
     if (!acc.some(function (u) {
       return u.id === msg.user_id;
@@ -19354,11 +19373,15 @@ function AdminChat() {
       acc.push({
         id: msg.user_id,
         name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.username) || "User #".concat(msg.user_id),
-        profile_img: ((_msg$user2 = msg.user) === null || _msg$user2 === void 0 || (_msg$user2 = _msg$user2.profile) === null || _msg$user2 === void 0 ? void 0 : _msg$user2.profile_img) || null
+        profile_img: ((_msg$user2 = msg.user) === null || _msg$user2 === void 0 || (_msg$user2 = _msg$user2.profile) === null || _msg$user2 === void 0 ? void 0 : _msg$user2.profile_img) || null,
+        last_message: msg.message,
+        timestamp: msg.created_at
       });
     }
     return acc;
-  }, []);
+  }, []).filter(function (user) {
+    return user.name.toLowerCase().includes(searchQuery.toLowerCase());
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "admin-chat-container",
     children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -19369,70 +19392,138 @@ function AdminChat() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
         size: 30
       })
-    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "admin-chat",
+    }), isOpen && !selectedUserId && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "conversations-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "Chats"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setIsOpen(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+            size: 20
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "search-bar",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaSearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          placeholder: "Search...",
+          value: searchQuery,
+          onChange: function onChange(e) {
+            return setSearchQuery(e.target.value);
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-list",
+        children: [initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "Loading..."
+          })
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-item",
+            onClick: function onClick() {
+              return setSelectedUserId(user.id);
+            },
+            children: [user.profile_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: "/storage/".concat(user.profile_img),
+              alt: "Profile",
+              className: "user-avatar"
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "user-avatar"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "conversation-info",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "conversation-name",
+                children: user.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "last-message",
+                children: user.last_message
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "timestamp",
+              children: new Date(user.timestamp).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              })
+            })]
+          }, user.id);
+        }) : !initialLoading && !error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No customer messages yet."
+          })
+        })]
+      })]
+    }), isOpen && selectedUserId && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "chat-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-          children: selectedUserId ? 'Chat' : 'Customers'
-        }), selectedUserId && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: function onClick() {
             return setSelectedUserId(null);
           },
-          children: "\u2190"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          onClick: function onClick() {
-            setIsOpen(false);
-            setSelectedUserId(null);
-          },
-          children: "X"
-        })]
-      }), initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        children: "Loading..."
-      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        className: "error",
-        children: error
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "chat-body",
-        children: !selectedUserId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "user-list",
-          children: usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "user-item",
-              onClick: function onClick() {
-                return setSelectedUserId(user.id);
-              },
-              children: [user.profile_img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: "/storage/".concat(user.profile_img),
-                alt: "Profile",
-                className: "profile-pic"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: user.name
-              })]
-            }, user.id);
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-            children: "No customer messages yet."
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaArrowLeft, {
+            size: 20
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "chat-area",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "messages",
-            children: messages.filter(function (m) {
-              return m.user_id === selectedUserId;
-            }).map(function (msg, index) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                className: "message ".concat(msg.is_admin_reply ? 'sent' : 'received'),
-                onMouseLeave: function onMouseLeave() {
-                  return setMenuVisible(null);
-                },
-                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                  src: "/storage/".concat(msg.image),
-                  alt: "Chat Image",
-                  className: "chat-image"
-                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                  children: msg.message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "chat-header-info",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: (_usersWithMessages$fi = usersWithMessages.find(function (u) {
+              return u.id === selectedUserId;
+            })) === null || _usersWithMessages$fi === void 0 ? void 0 : _usersWithMessages$fi.name
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "status online",
+            children: "Online"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-body",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "messages",
+          children: [messages.filter(function (m) {
+            return m.user_id === selectedUserId;
+          }).map(function (msg, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message-wrapper ".concat(msg.is_admin_reply ? 'sent' : 'received'),
+              onMouseLeave: function onMouseLeave() {
+                return setMenuVisible(null);
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "message-content",
+                  children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "image-attachment ".concat(msg.is_admin_reply ? 'sent' : 'received'),
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: "/storage/".concat(msg.image),
+                      alt: "Chat Image",
+                      onClick: function onClick() {
+                        return openImageModal("/storage/".concat(msg.image));
+                      }
+                    })
+                  }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: msg.message
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
-                  children: new Date(msg.created_at).toLocaleTimeString()
+                  children: new Date(msg.created_at).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })
                 }), msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                   className: "message-menu",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
@@ -19447,52 +19538,78 @@ function AdminChat() {
                       onClick: function onClick() {
                         return handleDelete(msg.id);
                       },
-                      children: "Delete Message"
+                      children: "Delete"
                     })
                   })]
                 })]
-              }, index);
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "chat-footer",
-            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "image-preview",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: imagePreview,
-                alt: "Preview"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
-                className: "remove-image",
-                onClick: removeImage
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "input-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
-                className: "add-image-icon",
-                onClick: handleImageClick,
-                title: "Add Image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "file",
-                accept: "image/*",
-                ref: fileInputRef,
-                onChange: handleImageChange,
-                style: {
-                  display: 'none'
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "text",
-                value: reply,
-                onChange: function onChange(e) {
-                  return setReply(e.target.value);
-                },
-                placeholder: "Type your reply..."
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                onClick: handleReply,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
-              })]
-            })]
+              })
+            }, index);
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            ref: messagesEndRef
           })]
-        })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-footer",
+        children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "file-preview",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "preview-image-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: imagePreview,
+              alt: "Preview"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "remove-file",
+              onClick: removeImage,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+                size: 12
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: reply,
+            onChange: function onChange(e) {
+              return setReply(e.target.value);
+            },
+            placeholder: "Type something...",
+            onKeyPress: function onKeyPress(e) {
+              return e.key === 'Enter' && handleReply();
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperclip, {
+            className: "file-upload",
+            onClick: handleImageClick,
+            size: 20
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "file",
+            accept: "image/*",
+            ref: fileInputRef,
+            onChange: handleImageChange,
+            style: {
+              display: 'none'
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleReply,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {
+              size: 20
+            })
+          })]
+        })]
       })]
+    }), selectedImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "image-modal",
+      onClick: closeImageModal,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-content",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+          src: selectedImage,
+          alt: "Full Size"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+          className: "close-modal",
+          onClick: closeImageModal
+        })]
+      })
     })]
   });
 }
@@ -34219,6 +34336,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// Chatbot.js
 
 
 
@@ -34229,93 +34347,123 @@ function Chatbot() {
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
     setIsOpen = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState4 = _slicedToArray(_useState3, 2),
-    faqs = _useState4[0],
-    setFaqs = _useState4[1];
+    view = _useState4[0],
+    setView = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
     messages = _useState6[0],
     setMessages = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    input = _useState8[0],
-    setInput = _useState8[1];
+    faqs = _useState8[0],
+    setFaqs = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState10 = _slicedToArray(_useState9, 2),
-    image = _useState10[0],
-    setImage = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    selectedFaq = _useState10[0],
+    setSelectedFaq = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState12 = _slicedToArray(_useState11, 2),
-    imagePreview = _useState12[0],
-    setImagePreview = _useState12[1];
+    input = _useState12[0],
+    setInput = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState14 = _slicedToArray(_useState13, 2),
-    view = _useState14[0],
-    setView = _useState14[1];
+    image = _useState14[0],
+    setImage = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState16 = _slicedToArray(_useState15, 2),
-    selectedFaq = _useState16[0],
-    setSelectedFaq = _useState16[1];
+    imagePreview = _useState16[0],
+    setImagePreview = _useState16[1];
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState18 = _slicedToArray(_useState17, 2),
     menuVisible = _useState18[0],
     setMenuVisible = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    error = _useState20[0],
+    setError = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState22 = _slicedToArray(_useState21, 2),
+    initialLoading = _useState22[0],
+    setInitialLoading = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    selectedImage = _useState24[0],
+    setSelectedImage = _useState24[1];
   var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var messagesEndRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getAuthHeaders = function getAuthHeaders() {
-    var token = localStorage.getItem('LaravelPassportToken');
-    if (!token) {
-      throw new Error('No authentication token found. Please log in.');
-    }
     return {
-      'Authorization': "Bearer ".concat(token)
+      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
     };
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isOpen) {
-      fetchFaqs();
       if (view === 'chat') {
-        fetchMessages();
+        fetchMessages(true);
         var intervalId = setInterval(function () {
-          fetchMessages();
+          return fetchMessages(false);
         }, 5000);
         return function () {
           return clearInterval(intervalId);
         };
+      } else if (view === 'faqs') {
+        fetchFaqs();
       }
     }
   }, [isOpen, view]);
-  var fetchFaqs = /*#__PURE__*/function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (messagesEndRef.current && view === 'chat') {
+      messagesEndRef.current.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  }, [messages, view]);
+  var fetchMessages = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var response;
+      var isInitialFetch,
+        headers,
+        response,
+        _error$response,
+        _args = arguments;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
-              headers: getAuthHeaders()
+            isInitialFetch = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
+            if (isInitialFetch) setInitialLoading(true);
+            setError(null);
+            _context.prev = 3;
+            headers = getAuthHeaders();
+            _context.next = 7;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
+              headers: headers
             });
-          case 3:
-            response = _context.sent;
-            setFaqs(response.data);
-            _context.next = 10;
-            break;
           case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            console.error('Error fetching FAQs:', _context.t0);
-          case 10:
+            response = _context.sent;
+            setMessages(response.data);
+            _context.next = 15;
+            break;
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context["catch"](3);
+            console.error('Error fetching messages:', _context.t0);
+            setError('Failed to load messages: ' + (((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.message) || _context.t0.message));
+          case 15:
+            _context.prev = 15;
+            if (isInitialFetch) setInitialLoading(false);
+            return _context.finish(15);
+          case 18:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee, null, [[3, 11, 15, 18]]);
     }));
-    return function fetchFaqs() {
+    return function fetchMessages() {
       return _ref.apply(this, arguments);
     };
   }();
-  var fetchMessages = /*#__PURE__*/function () {
+  var fetchFaqs = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
@@ -34323,49 +34471,31 @@ function Chatbot() {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
               headers: getAuthHeaders()
             });
           case 3:
             response = _context2.sent;
-            setMessages(response.data);
+            setFaqs(response.data);
             _context2.next = 10;
             break;
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
-            console.error('Error fetching messages:', _context2.t0);
+            console.error('Error fetching FAQs:', _context2.t0);
           case 10:
           case "end":
             return _context2.stop();
         }
       }, _callee2, null, [[0, 7]]);
     }));
-    return function fetchMessages() {
+    return function fetchFaqs() {
       return _ref2.apply(this, arguments);
     };
   }();
-  var handleFaqClick = function handleFaqClick(faq) {
-    setSelectedFaq(faq);
-  };
-  var handleImageClick = function handleImageClick() {
-    fileInputRef.current.click();
-  };
-  var handleImageChange = function handleImageChange(e) {
-    var file = e.target.files[0];
-    if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
-  var removeImage = function removeImage() {
-    setImage(null);
-    setImagePreview(null);
-    fileInputRef.current.value = '';
-  };
   var handleSendMessage = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var formData, response, _error$response, _error$response2, details, errorMessage, _error$response3;
+      var formData, response, _error$response2;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
@@ -34379,17 +34509,13 @@ function Chatbot() {
             formData = new FormData();
             if (input.trim()) formData.append('message', input);
             if (image) formData.append('image', image);
-            console.log('Sending FormData:', {
-              message: input,
-              image: image
-            });
-            _context3.next = 9;
+            _context3.next = 8;
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/api/chat/send', formData, {
               headers: _objectSpread(_objectSpread({}, getAuthHeaders()), {}, {
                 'Content-Type': 'multipart/form-data'
               })
             });
-          case 9:
+          case 8:
             response = _context3.sent;
             setMessages(function (prev) {
               return [].concat(_toConsumableArray(prev), [response.data.data]);
@@ -34397,24 +34523,18 @@ function Chatbot() {
             setInput('');
             setImage(null);
             setImagePreview(null);
-            _context3.next = 20;
+            _context3.next = 19;
             break;
-          case 16:
-            _context3.prev = 16;
+          case 15:
+            _context3.prev = 15;
             _context3.t0 = _context3["catch"](2);
-            console.error('Error sending message:', ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
-            if (((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status) === 422) {
-              details = _context3.t0.response.data.details;
-              errorMessage = Object.values(details).flat().join(' ');
-              alert('Validation failed: ' + errorMessage);
-            } else {
-              alert('Failed to send message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
-            }
-          case 20:
+            console.error('Error sending message:', _context3.t0);
+            alert('Failed to send message: ' + (((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.error) || _context3.t0.message));
+          case 19:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[2, 16]]);
+      }, _callee3, null, [[2, 15]]);
     }));
     return function handleSendMessage() {
       return _ref3.apply(this, arguments);
@@ -34422,7 +34542,7 @@ function Chatbot() {
   }();
   var handleDelete = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(messageId) {
-      var _error$response4, _error$response5;
+      var _error$response3;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
@@ -34443,8 +34563,8 @@ function Chatbot() {
           case 7:
             _context4.prev = 7;
             _context4.t0 = _context4["catch"](0);
-            console.error('Error deleting message:', ((_error$response4 = _context4.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context4.t0.message);
-            alert('Failed to delete message: ' + (((_error$response5 = _context4.t0.response) === null || _error$response5 === void 0 || (_error$response5 = _error$response5.data) === null || _error$response5 === void 0 ? void 0 : _error$response5.error) || _context4.t0.message));
+            console.error('Error deleting message:', _context4.t0);
+            alert('Failed to delete message: ' + (((_error$response3 = _context4.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context4.t0.message));
           case 11:
           case "end":
             return _context4.stop();
@@ -34455,8 +34575,32 @@ function Chatbot() {
       return _ref4.apply(this, arguments);
     };
   }();
+  var handleImageClick = function handleImageClick() {
+    fileInputRef.current.click();
+  };
+  var handleImageChange = function handleImageChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+  var removeImage = function removeImage() {
+    setImage(null);
+    setImagePreview(null);
+    fileInputRef.current.value = '';
+  };
+  var openImageModal = function openImageModal(imageUrl) {
+    setSelectedImage(imageUrl);
+  };
+  var closeImageModal = function closeImageModal() {
+    setSelectedImage(null);
+  };
+  var handleFaqClick = function handleFaqClick(faq) {
+    setSelectedFaq(faq);
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "chatbot",
+    className: "chat-container",
     children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "chat-icon",
       onClick: function onClick() {
@@ -34465,86 +34609,188 @@ function Chatbot() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
         size: 30
       })
-    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    }), isOpen && !view && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "conversations-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "Chat"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setIsOpen(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+            size: 20
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-list",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "conversation-item",
+          onClick: function onClick() {
+            return setView('faqs');
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-info",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "conversation-name",
+              children: "FAQs"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "last-message",
+              children: "View frequently asked questions"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "conversation-item",
+          onClick: function onClick() {
+            return setView('chat');
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-info",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "conversation-name",
+              children: "Contact Support"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "last-message",
+              children: "Chat with our support team"
+            })]
+          })
+        })]
+      })]
+    }), isOpen && view === 'faqs' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "chat-window",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "chat-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-          children: view ? view === 'faqs' ? 'FAQs' : 'Contact Support' : 'Support Options'
-        }), view && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: function onClick() {
-            setView(null);
-            setSelectedFaq(null);
+            return setView(null);
           },
-          children: "\u2190"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          onClick: function onClick() {
-            setIsOpen(false);
-            setView(null);
-            setSelectedFaq(null);
-          },
-          children: "X"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaArrowLeft, {
+            size: 20
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "chat-header-info",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: "FAQs"
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "chat-body",
-        children: !view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "options-list",
+        children: selectedFaq ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "messages",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "option-item",
-            onClick: function onClick() {
-              return setView('faqs');
-            },
-            children: "FAQs"
+            className: "message-wrapper received",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "message-content",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  children: selectedFaq.question
+                })
+              })
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "option-item",
-            onClick: function onClick() {
-              return setView('chat');
-            },
-            children: "Contact Support"
+            className: "message-wrapper sent",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "message-content",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                  children: selectedFaq.answer
+                })
+              })
+            })
           })]
-        }) : view === 'faqs' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "faq-section",
-          children: selectedFaq ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "faq-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "faq-question",
-              children: selectedFaq.question
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "faq-answer",
-              children: selectedFaq.answer
-            })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "conversations-list",
+          children: faqs.length > 0 ? faqs.map(function (faq) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "conversation-item",
+              onClick: function onClick() {
+                return handleFaqClick(faq);
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "conversation-info",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "conversation-name",
+                  children: faq.question
+                })
+              })
+            }, faq.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "faq-list",
-            children: faqs.length > 0 ? faqs.map(function (faq) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "faq-item",
-                onClick: function onClick() {
-                  return handleFaqClick(faq);
-                },
-                children: faq.question
-              }, faq.id);
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "no-conversations",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
               children: "No FAQs available."
             })
           })
+        })
+      })]
+    }), isOpen && view === 'chat' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setView(null);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaArrowLeft, {
+            size: 20
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "chat-header-info",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: "Vero Help Support"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "status",
+            children: "Support Team"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "chat-body",
+        children: initialLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "Loading..."
+          })
+        }) : error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }) : messages.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No messages yet. Start a conversation!"
+          })
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "chat-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "messages",
-            children: messages.map(function (msg, index) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent'),
-                onMouseLeave: function onMouseLeave() {
-                  return setMenuVisible(null);
-                },
-                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                  src: "/storage/".concat(msg.image),
-                  alt: "Chat Image",
-                  className: "chat-image"
-                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                  children: msg.message
+          className: "messages",
+          children: [messages.map(function (msg, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message-wrapper ".concat(msg.is_admin_reply ? 'received' : 'sent'),
+              onMouseLeave: function onMouseLeave() {
+                return setMenuVisible(null);
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "message-content",
+                  children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "image-attachment ".concat(msg.is_admin_reply ? 'received' : 'sent'),
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: "/storage/".concat(msg.image),
+                      alt: "Chat Image",
+                      onClick: function onClick() {
+                        return openImageModal("/storage/".concat(msg.image));
+                      }
+                    })
+                  }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: msg.message
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
-                  children: new Date(msg.created_at).toLocaleTimeString()
+                  children: new Date(msg.created_at).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })
                 }), !msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                   className: "message-menu",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
@@ -34559,52 +34805,78 @@ function Chatbot() {
                       onClick: function onClick() {
                         return handleDelete(msg.id);
                       },
-                      children: "Delete Message"
+                      children: "Delete"
                     })
                   })]
                 })]
-              }, index);
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "chat-footer",
-            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "image-preview",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: imagePreview,
-                alt: "Preview"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
-                className: "remove-image",
-                onClick: removeImage
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "input-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
-                className: "add-image-icon",
-                onClick: handleImageClick,
-                title: "Add Image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "file",
-                accept: "image/*",
-                ref: fileInputRef,
-                onChange: handleImageChange,
-                style: {
-                  display: 'none'
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "text",
-                value: input,
-                onChange: function onChange(e) {
-                  return setInput(e.target.value);
-                },
-                placeholder: "Type your question..."
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                onClick: handleSendMessage,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
-              })]
-            })]
+              })
+            }, index);
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            ref: messagesEndRef
           })]
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-footer",
+        children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "file-preview",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "preview-image-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: imagePreview,
+              alt: "Preview"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "remove-file",
+              onClick: removeImage,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+                size: 12
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: input,
+            onChange: function onChange(e) {
+              return setInput(e.target.value);
+            },
+            placeholder: "Type something...",
+            onKeyPress: function onKeyPress(e) {
+              return e.key === 'Enter' && handleSendMessage();
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperclip, {
+            className: "file-upload",
+            onClick: handleImageClick,
+            size: 20
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "file",
+            accept: "image/*",
+            ref: fileInputRef,
+            onChange: handleImageChange,
+            style: {
+              display: 'none'
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleSendMessage,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {
+              size: 20
+            })
+          })]
+        })]
       })]
+    }), selectedImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "image-modal",
+      onClick: closeImageModal,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "modal-content",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+          src: selectedImage,
+          alt: "Full Size"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+          className: "close-modal",
+          onClick: closeImageModal
+        })]
+      })
     })]
   });
 }
@@ -49789,7 +50061,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n\n.chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.admin-chat {\n  width: 350px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n\n.chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n\n.error {\n  color: red;\n  text-align: center;\n  margin: 5px 0;\n  font-size: 12px;\n}\n\n.chat-body {\n  flex: 1;\n  display: flex;\n  overflow: hidden;\n}\n\n.user-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 5px;\n  background-color: #f9f9f9;\n}\n.user-list .user-item {\n  display: flex;\n  align-items: center;\n  padding: 8px;\n  margin: 3px 0;\n  background-color: #f1f1f1;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 14px;\n}\n.user-list .user-item .profile-pic {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.user-list .user-item span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.user-list .user-item:hover {\n  background-color: #e0e0e0;\n}\n.user-list p {\n  text-align: center;\n  color: #666;\n  font-size: 12px;\n  margin: 10px 0;\n}\n\n.chat-area {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 5px;\n}\n.chat-area .messages {\n  flex: 1;\n  max-height: 340px;\n  overflow-y: auto;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.chat-area .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 8px 12px;\n  border-radius: 5px;\n  max-width: 80%;\n  font-size: 14px;\n}\n.chat-area .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n}\n.chat-area .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chat-area .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chat-area .messages .message span {\n  word-wrap: break-word;\n}\n.chat-area .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n  margin-top: 2px;\n}\n.chat-area .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chat-area .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chat-area .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chat-area .messages .message:hover .message-menu {\n  display: block;\n}\n.chat-area .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chat-area .chat-footer {\n  padding: 5px 0;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n}\n.chat-area .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chat-area .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chat-area .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chat-area .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chat-area .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chat-area .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chat-area .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chat-area .chat-footer input[type=text] {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chat-area .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chat-area .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n  font-family: \"Arial\", sans-serif;\n}\n.admin-chat-container .chat-icon {\n  background-color: #ff0000; /* Red */\n  color: white;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  transition: transform 0.2s ease-in-out;\n}\n.admin-chat-container .chat-icon:hover {\n  transform: scale(1.1);\n}\n.admin-chat-container .conversations-window,\n.admin-chat-container .chat-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n@media (max-width: 400px) {\n  .admin-chat-container .conversations-window,\n  .admin-chat-container .chat-window {\n    width: 300px;\n    height: 450px;\n  }\n}\n@media (max-width: 320px) {\n  .admin-chat-container .conversations-window,\n  .admin-chat-container .chat-window {\n    width: 280px;\n    height: 400px;\n  }\n}\n.admin-chat-container .conversations-header,\n.admin-chat-container .chat-header {\n  padding: 15px 20px;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #e0e0e0;\n}\n.admin-chat-container .conversations-header h3,\n.admin-chat-container .chat-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 600;\n  color: black;\n}\n.admin-chat-container .conversations-header button,\n.admin-chat-container .chat-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.admin-chat-container .conversations-header button:hover,\n.admin-chat-container .chat-header button:hover {\n  color: #ff0000; /* Red */\n}\n.admin-chat-container .chat-header {\n  justify-content: flex-start;\n}\n.admin-chat-container .chat-header button {\n  margin-right: 15px;\n}\n.admin-chat-container .chat-header .chat-header-info {\n  flex: 1;\n  text-align: left;\n}\n.admin-chat-container .chat-header .chat-header-info h3 {\n  font-size: 16px;\n}\n.admin-chat-container .chat-header .chat-header-info .status {\n  font-size: 12px;\n  color: #666;\n}\n.admin-chat-container .chat-header .chat-header-info .status.online {\n  color: #ff0000; /* Red for online status */\n}\n.admin-chat-container .search-bar {\n  padding: 10px 20px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background-color: white;\n  border-bottom: 1px solid #e0e0e0;\n}\n.admin-chat-container .search-bar svg {\n  color: #999;\n}\n.admin-chat-container .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: black;\n}\n.admin-chat-container .search-bar input::-moz-placeholder {\n  color: #999;\n}\n.admin-chat-container .search-bar input::placeholder {\n  color: #999;\n}\n.admin-chat-container .search-bar input:focus {\n  background-color: #e0e0e0;\n}\n.admin-chat-container .conversations-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 0 20px;\n  background-color: white;\n}\n.admin-chat-container .conversations-list .error-message,\n.admin-chat-container .conversations-list .no-conversations {\n  padding: 20px;\n  text-align: center;\n}\n.admin-chat-container .conversations-list .error-message p,\n.admin-chat-container .conversations-list .no-conversations p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.admin-chat-container .conversations-list .conversation-item {\n  display: flex;\n  align-items: center;\n  padding: 12px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #e0e0e0;\n  transition: background-color 0.2s ease;\n}\n.admin-chat-container .conversations-list .conversation-item:hover {\n  background-color: #f9f9f9;\n}\n.admin-chat-container .conversations-list .conversation-item .user-avatar {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  margin-right: 12px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 2px solid #ff0000; /* Red border */\n}\n.admin-chat-container .conversations-list .conversation-item .conversation-info {\n  flex: 1;\n}\n.admin-chat-container .conversations-list .conversation-item .conversation-info .conversation-name {\n  font-size: 16px;\n  font-weight: 500;\n  color: black;\n}\n.admin-chat-container .conversations-list .conversation-item .conversation-info .last-message {\n  font-size: 14px;\n  color: #666;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.admin-chat-container .conversations-list .conversation-item .timestamp {\n  font-size: 12px;\n  color: #999;\n}\n.admin-chat-container .chat-body {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.admin-chat-container .chat-body .error-message {\n  padding: 20px;\n  text-align: center;\n}\n.admin-chat-container .chat-body .error-message p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.admin-chat-container .chat-body .messages {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper {\n  display: flex;\n  align-items: flex-end;\n  gap: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.sent {\n  justify-content: flex-end;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.sent .message {\n  background-color: #ff0000; /* Red */\n  color: white;\n  align-self: flex-end;\n  border-bottom-right-radius: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.sent small {\n  color: #999;\n  align-self: flex-end;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.sent .message-menu .menu-icon {\n  color: white;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.received {\n  justify-content: flex-start;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.received .message {\n  background-color: #f0f0f0;\n  color: black;\n  align-self: flex-start;\n  border-bottom-left-radius: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.received small {\n  color: #999;\n  align-self: flex-start;\n}\n.admin-chat-container .chat-body .messages .message-wrapper.received .message-menu .menu-icon {\n  color: #666;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message {\n  max-width: 70%;\n  padding: 10px 15px;\n  border-radius: 20px;\n  font-size: 14px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment img {\n  max-width: 200px;\n  max-height: 200px;\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  cursor: pointer;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span {\n  font-size: 14px;\n  word-break: break-word;\n  padding: 5px 10px;\n  border-radius: 15px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span.sent {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span.received {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message small {\n  font-size: 10px;\n  margin-top: 2px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-icon {\n  cursor: pointer;\n  font-size: 14px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: white;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 8px 15px;\n  color: #ff0000; /* Red */\n  cursor: pointer;\n  font-size: 12px;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.admin-chat-container .chat-body .messages .message-wrapper .message:hover .message-menu {\n  display: block;\n}\n.admin-chat-container .chat-footer {\n  padding: 10px 20px;\n  background-color: white;\n  border-radius: 0 0 20px 20px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.admin-chat-container .chat-footer .file-preview {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  background-color: #f0f0f0;\n  padding: 5px 10px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.admin-chat-container .chat-footer .file-preview .preview-image-container {\n  position: relative;\n}\n.admin-chat-container .chat-footer .file-preview .preview-image-container img {\n  width: 40px;\n  height: 40px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.admin-chat-container .chat-footer .file-preview .preview-image-container .remove-file {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #666;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.admin-chat-container .chat-footer .file-preview .preview-image-container .remove-file:hover {\n  background-color: #555;\n}\n.admin-chat-container .chat-footer .input-container {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-chat-container .chat-footer input[type=text] {\n  flex: 1;\n  padding: 10px 15px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: black;\n}\n.admin-chat-container .chat-footer input[type=text]:focus {\n  background-color: #e0e0e0;\n}\n.admin-chat-container .chat-footer input[type=file] {\n  display: none;\n}\n.admin-chat-container .chat-footer .file-upload {\n  cursor: pointer;\n  color: #666;\n  transition: color 0.2s ease;\n}\n.admin-chat-container .chat-footer .file-upload:hover {\n  color: #ff0000; /* Red */\n}\n.admin-chat-container .chat-footer button {\n  background-color: #ff0000; /* Red */\n  color: white;\n  border: none;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: background-color 0.2s ease;\n}\n.admin-chat-container .chat-footer button:hover {\n  background-color: #cc0000;\n}\n\n/* Modal for image preview */\n.image-modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.8);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 2000;\n}\n.image-modal .modal-content {\n  position: relative;\n  max-width: 90%;\n  max-height: 90%;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.image-modal .modal-content img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.image-modal .modal-content .close-modal {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  color: white;\n  font-size: 24px;\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.5);\n  border-radius: 50%;\n  padding: 5px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49885,7 +50157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-shrink: 0;\n}\n.chatbot .chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n.chatbot .chat-body {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .options-list {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .options-list .option-item {\n  padding: 10px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n  text-align: center;\n}\n.chatbot .options-list .option-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .faq-section .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .faq-section .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section .faq-content {\n  padding: 10px;\n  background-color: #f9f9f9;\n  border-radius: 5px;\n}\n.chatbot .faq-section .faq-content .faq-question {\n  font-weight: bold;\n  margin-bottom: 5px;\n}\n.chatbot .faq-section .faq-content .faq-answer {\n  color: #333;\n}\n.chatbot .faq-section p {\n  text-align: center;\n  color: #666;\n  margin: 10px 0;\n}\n.chatbot .chat-section {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .chat-section .messages {\n  flex: 1;\n  overflow-y: auto;\n  padding: 10px;\n  padding-right: 15px;\n  box-sizing: border-box;\n  min-height: 0;\n}\n.chatbot .chat-section .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-section .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-section .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-section .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chatbot .chat-section .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-section .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chatbot .chat-section .messages .message:hover .message-menu {\n  display: block;\n}\n.chatbot .chat-section .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chatbot .chat-section .chat-footer {\n  padding: 5px;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n  flex-shrink: 0;\n  background: white;\n  box-sizing: border-box;\n}\n.chatbot .chat-section .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chatbot .chat-section .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chatbot .chat-section .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chatbot .chat-section .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chatbot .chat-section .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chatbot .chat-section .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n  font-family: \"Arial\", sans-serif;\n}\n.chat-container .chat-icon {\n  background-color: #ff0000; /* Red */\n  color: white;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  transition: transform 0.2s ease-in-out;\n}\n.chat-container .chat-icon:hover {\n  transform: scale(1.1);\n}\n.chat-container .conversations-window,\n.chat-container .chat-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n@media (max-width: 400px) {\n  .chat-container .conversations-window,\n  .chat-container .chat-window {\n    width: 300px;\n    height: 450px;\n  }\n}\n@media (max-width: 320px) {\n  .chat-container .conversations-window,\n  .chat-container .chat-window {\n    width: 280px;\n    height: 400px;\n  }\n}\n.chat-container .conversations-header,\n.chat-container .chat-header {\n  padding: 15px 20px;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chat-container .conversations-header h3,\n.chat-container .chat-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 600;\n  color: black;\n}\n.chat-container .conversations-header button,\n.chat-container .chat-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.chat-container .conversations-header button:hover,\n.chat-container .chat-header button:hover {\n  color: #ff0000; /* Red */\n}\n.chat-container .chat-header {\n  justify-content: flex-start;\n}\n.chat-container .chat-header button {\n  margin-right: 15px;\n}\n.chat-container .chat-header .chat-header-info {\n  flex: 1;\n  text-align: left;\n}\n.chat-container .chat-header .chat-header-info h3 {\n  font-size: 16px;\n}\n.chat-container .chat-header .chat-header-info .status {\n  font-size: 12px;\n  color: #666;\n}\n.chat-container .search-bar {\n  padding: 10px 20px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background-color: white;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chat-container .search-bar svg {\n  color: #999;\n}\n.chat-container .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: black;\n}\n.chat-container .search-bar input::-moz-placeholder {\n  color: #999;\n}\n.chat-container .search-bar input::placeholder {\n  color: #999;\n}\n.chat-container .search-bar input:focus {\n  background-color: #e0e0e0;\n}\n.chat-container .conversations-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 0 20px;\n  background-color: white;\n}\n.chat-container .conversations-list .error-message,\n.chat-container .conversations-list .no-conversations {\n  padding: 20px;\n  text-align: center;\n}\n.chat-container .conversations-list .error-message p,\n.chat-container .conversations-list .no-conversations p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chat-container .conversations-list .conversation-item {\n  display: flex;\n  align-items: center;\n  padding: 12px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #e0e0e0;\n  transition: background-color 0.2s ease;\n}\n.chat-container .conversations-list .conversation-item:hover {\n  background-color: #f9f9f9;\n}\n.chat-container .conversations-list .conversation-item .user-avatar {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  margin-right: 12px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 2px solid #ff0000; /* Red border */\n}\n.chat-container .conversations-list .conversation-item .conversation-info {\n  flex: 1;\n}\n.chat-container .conversations-list .conversation-item .conversation-info .conversation-name {\n  font-size: 16px;\n  font-weight: 500;\n  color: black;\n}\n.chat-container .conversations-list .conversation-item .conversation-info .last-message {\n  font-size: 14px;\n  color: #666;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.chat-container .conversations-list .conversation-item .timestamp {\n  font-size: 12px;\n  color: #999;\n}\n.chat-container .chat-body {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.chat-container .chat-body .error-message {\n  padding: 20px;\n  text-align: center;\n}\n.chat-container .chat-body .error-message p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chat-container .chat-body .messages {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.chat-container .chat-body .messages .message-wrapper {\n  display: flex;\n  align-items: flex-end;\n  gap: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper.sent {\n  justify-content: flex-end;\n}\n.chat-container .chat-body .messages .message-wrapper.sent .message {\n  background-color: #ff0000; /* Red */\n  color: white;\n  align-self: flex-end;\n  border-bottom-right-radius: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper.sent small {\n  color: #999;\n  align-self: flex-end;\n}\n.chat-container .chat-body .messages .message-wrapper.sent .message-menu .menu-icon {\n  color: white;\n}\n.chat-container .chat-body .messages .message-wrapper.received {\n  justify-content: flex-start;\n}\n.chat-container .chat-body .messages .message-wrapper.received .message {\n  background-color: #f0f0f0;\n  color: black;\n  align-self: flex-start;\n  border-bottom-left-radius: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper.received small {\n  color: #999;\n  align-self: flex-start;\n}\n.chat-container .chat-body .messages .message-wrapper.received .message-menu .menu-icon {\n  color: #666;\n}\n.chat-container .chat-body .messages .message-wrapper .message {\n  max-width: 70%;\n  padding: 10px 15px;\n  border-radius: 20px;\n  font-size: 14px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment img {\n  max-width: 200px;\n  max-height: 200px;\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  cursor: pointer;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span {\n  font-size: 14px;\n  word-break: break-word;\n  padding: 5px 10px;\n  border-radius: 15px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span.sent {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-content .image-attachment span.received {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.chat-container .chat-body .messages .message-wrapper .message small {\n  font-size: 10px;\n  margin-top: 2px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-icon {\n  cursor: pointer;\n  font-size: 14px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: white;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 8px 15px;\n  color: #ff0000; /* Red */\n  cursor: pointer;\n  font-size: 12px;\n}\n.chat-container .chat-body .messages .message-wrapper .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chat-container .chat-body .messages .message-wrapper .message:hover .message-menu {\n  display: block;\n}\n.chat-container .chat-footer {\n  padding: 10px 20px;\n  background-color: white;\n  border-radius: 0 0 20px 20px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.chat-container .chat-footer .file-preview {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  background-color: #f0f0f0;\n  padding: 5px 10px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.chat-container .chat-footer .file-preview .preview-image-container {\n  position: relative;\n}\n.chat-container .chat-footer .file-preview .preview-image-container img {\n  width: 40px;\n  height: 40px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.chat-container .chat-footer .file-preview .preview-image-container .remove-file {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #666;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.chat-container .chat-footer .file-preview .preview-image-container .remove-file:hover {\n  background-color: #555;\n}\n.chat-container .chat-footer .input-container {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.chat-container .chat-footer input[type=text] {\n  flex: 1;\n  padding: 10px 15px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: black;\n}\n.chat-container .chat-footer input[type=text]:focus {\n  background-color: #e0e0e0;\n}\n.chat-container .chat-footer input[type=file] {\n  display: none;\n}\n.chat-container .chat-footer .file-upload {\n  cursor: pointer;\n  color: #666;\n  transition: color 0.2s ease;\n}\n.chat-container .chat-footer .file-upload:hover {\n  color: #ff0000; /* Red */\n}\n.chat-container .chat-footer button {\n  background-color: #ff0000; /* Red */\n  color: white;\n  border: none;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: background-color 0.2s ease;\n}\n.chat-container .chat-footer button:hover {\n  background-color: #cc0000;\n}\n\n/* Modal for image preview */\n.image-modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.8);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 2000;\n}\n.image-modal .modal-content {\n  position: relative;\n  max-width: 90%;\n  max-height: 90%;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.image-modal .modal-content img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.image-modal .modal-content .close-modal {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  color: white;\n  font-size: 24px;\n  cursor: pointer;\n  background: rgba(0, 0, 0, 0.5);\n  border-radius: 50%;\n  padding: 5px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
