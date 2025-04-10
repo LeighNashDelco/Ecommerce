@@ -92,13 +92,6 @@ const Sidebar = ({ children }) => {
               <span>Inventory</span>
             </li>
             <li
-              className={isActive("/shipment")}
-              onClick={() => navigate("/shipment")}
-            >
-              <FaTruck />
-              <span>Shipment</span>
-            </li>
-            <li
               className={isActive("/users")}
               onClick={() => navigate("/users")}
             >

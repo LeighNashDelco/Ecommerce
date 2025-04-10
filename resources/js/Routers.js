@@ -37,7 +37,6 @@ import PaymentManagement from "./components/adminside/paymentmanagement/PaymentM
 import Products from "./components/adminside/products/Products";
 import ReviewsAndNotifications from "./components/adminside/reviewsandnotification/ReviewsAndNotifications";
 import Roles from "./components/adminside/roles/Roles";
-import Shipment from "./components/adminside/shipment/Shipment";
 import StatusAndCategory from "./components/adminside/statusandcategory/StatusAndCategory";
 import Users from "./components/adminside/users/Users";
 import Brands from "./components/adminside/brands/Brands";
@@ -148,10 +147,6 @@ export default function Routers() {
                 <Route 
                     path="/roles" 
                     element={<AdminLayout><PrivateRoute element={<Roles />} /></AdminLayout>} 
-                />
-                <Route 
-                    path="/shipment" 
-                    element={<AdminLayout><PrivateRoute element={<Shipment />} /></AdminLayout>} 
                 />
                 <Route 
                     path="/statusandcategory" 

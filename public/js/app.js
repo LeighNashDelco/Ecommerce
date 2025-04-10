@@ -18681,8 +18681,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/adminside/login/Login */ "./resources/js/components/adminside/login/Login.js");
 /* harmony import */ var _components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/adminside/register/Register */ "./resources/js/components/adminside/register/Register.js");
 /* harmony import */ var _components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/adminside/login/ResetPassword */ "./resources/js/components/adminside/login/ResetPassword.js");
@@ -18713,13 +18713,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/adminside/products/Products */ "./resources/js/components/adminside/products/Products.js");
 /* harmony import */ var _components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/adminside/reviewsandnotification/ReviewsAndNotifications */ "./resources/js/components/adminside/reviewsandnotification/ReviewsAndNotifications.js");
 /* harmony import */ var _components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/adminside/roles/Roles */ "./resources/js/components/adminside/roles/Roles.js");
-/* harmony import */ var _components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/adminside/shipment/Shipment */ "./resources/js/components/adminside/shipment/Shipment.js");
-/* harmony import */ var _components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/adminside/statusandcategory/StatusAndCategory */ "./resources/js/components/adminside/statusandcategory/StatusAndCategory.js");
-/* harmony import */ var _components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/adminside/users/Users */ "./resources/js/components/adminside/users/Users.js");
-/* harmony import */ var _components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/adminside/brands/Brands */ "./resources/js/components/adminside/brands/Brands.js");
-/* harmony import */ var _components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/adminside/AdminChat */ "./resources/js/components/adminside/AdminChat.js");
-/* harmony import */ var _components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/adminside/routes/PrivateRoute.js */ "./resources/js/components/adminside/routes/PrivateRoute.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/adminside/statusandcategory/StatusAndCategory */ "./resources/js/components/adminside/statusandcategory/StatusAndCategory.js");
+/* harmony import */ var _components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/adminside/users/Users */ "./resources/js/components/adminside/users/Users.js");
+/* harmony import */ var _components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/adminside/brands/Brands */ "./resources/js/components/adminside/brands/Brands.js");
+/* harmony import */ var _components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/adminside/AdminChat */ "./resources/js/components/adminside/AdminChat.js");
+/* harmony import */ var _components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/adminside/routes/PrivateRoute.js */ "./resources/js/components/adminside/routes/PrivateRoute.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -18765,15 +18764,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 // Customer Layout
 
 function CustomerLayout(_ref) {
   var children = _ref.children;
   var token = localStorage.getItem('LaravelPassportToken');
   var userRole = localStorage.getItem('userRole'); // Ensure this is set on login
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.Fragment, {
-    children: [children, token && (!userRole || userRole === 'customer') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_Chatbot__WEBPACK_IMPORTED_MODULE_19__["default"], {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.Fragment, {
+    children: [children, token && (!userRole || userRole === 'customer') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_Chatbot__WEBPACK_IMPORTED_MODULE_19__["default"], {})]
   });
 }
 
@@ -18783,212 +18781,205 @@ function AdminLayout(_ref2) {
   var token = localStorage.getItem('LaravelPassportToken');
   var userRole = localStorage.getItem('userRole');
   console.log('AdminLayout - token:', token, 'userRole:', userRole); // Debug
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.Fragment, {
-    children: [children, token && userRole === 'admin' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_36__["default"], {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.Fragment, {
+    children: [children, token && userRole === 'admin' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_AdminChat__WEBPACK_IMPORTED_MODULE_35__["default"], {})]
   });
 }
 function Routers() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Navigate, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Navigate, {
           to: "/homepage"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/login",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_register_Register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/reset-password",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_login_ResetPassword__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/homepage",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Homepage_homepage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Homepage_homepage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/notifications",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_Notifications__WEBPACK_IMPORTED_MODULE_18__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_Notifications__WEBPACK_IMPORTED_MODULE_18__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/shop",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_shop_shop__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_shop_shop__WEBPACK_IMPORTED_MODULE_7__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/shop/product/:id",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/cart",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_cart__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_cart__WEBPACK_IMPORTED_MODULE_8__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/checkout",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_checkout__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_checkout__WEBPACK_IMPORTED_MODULE_9__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/checkout_address",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_checkout_address__WEBPACK_IMPORTED_MODULE_10__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/payment_methods",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Customer_payment_methods__WEBPACK_IMPORTED_MODULE_11__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/developer",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Developers_developer__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Developers_developer__WEBPACK_IMPORTED_MODULE_12__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/order_complete",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_13__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/notfound",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/product_view",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/customerprofile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_profile_CustomerProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_profile_CustomerProfile__WEBPACK_IMPORTED_MODULE_5__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/track_order",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_16__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_TrackOrder_track_order__WEBPACK_IMPORTED_MODULE_16__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/about_us",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_customerside_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_17__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_AboutUs_about_us__WEBPACK_IMPORTED_MODULE_17__["default"], {})
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/admindashboard",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_20__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_admindashboard_admindashboard__WEBPACK_IMPORTED_MODULE_20__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/brands",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_35__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_brands_Brands__WEBPACK_IMPORTED_MODULE_34__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/profile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_21__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_profile_Profile__WEBPACK_IMPORTED_MODULE_21__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/changepassadmin",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_22__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_profile_ChangePassAdmin_js__WEBPACK_IMPORTED_MODULE_22__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/adminlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_23__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_adminlist_AdminList__WEBPACK_IMPORTED_MODULE_23__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/customerlist",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_24__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_customerlist_CustomerList__WEBPACK_IMPORTED_MODULE_24__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/helpandsupport",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_25__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_helpandsupport_HelpAndSupport__WEBPACK_IMPORTED_MODULE_25__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/inventory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_26__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_inventory_Inventory__WEBPACK_IMPORTED_MODULE_26__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/orders",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_27__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_orders_Orders__WEBPACK_IMPORTED_MODULE_27__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/paymentmanagement",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_28__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_paymentmanagement_PaymentManagement__WEBPACK_IMPORTED_MODULE_28__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/products",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_29__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_products_Products__WEBPACK_IMPORTED_MODULE_29__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/reviewsandnotifications",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_30__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_reviewsandnotification_ReviewsAndNotifications__WEBPACK_IMPORTED_MODULE_30__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/roles",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_31__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_roles_Roles__WEBPACK_IMPORTED_MODULE_31__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
-        path: "/shipment",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_shipment_Shipment__WEBPACK_IMPORTED_MODULE_32__["default"], {})
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/statusandcategory",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_33__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_statusandcategory_StatusAndCategory__WEBPACK_IMPORTED_MODULE_32__["default"], {})
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/users",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(AdminLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_37__["default"], {
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_34__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(AdminLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_33__["default"], {})
           })
         })
       })]
@@ -18996,7 +18987,7 @@ function Routers() {
   });
 }
 if (document.getElementById("root")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(Routers, {}), document.getElementById("root"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(Routers, {}), document.getElementById("root"));
 }
 
 /***/ }),
@@ -30771,42 +30762,6 @@ var PrivateRoute = function PrivateRoute(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/adminside/shipment/Shipment.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/adminside/shipment/Shipment.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Shipment)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../sidebar/Sidebar */ "./resources/js/components/adminside/sidebar/Sidebar.js");
-/* harmony import */ var _topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../topnavbar/TopNavbar */ "./resources/js/components/adminside/topnavbar/TopNavbar.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-//import "./../../../sass/components/_shipment.scss";
-
-function Shipment() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "app",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeItem: "Shipment List"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "shipment-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_topnavbar_TopNavbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-        children: "Shipment List Page"
-      })]
-    })]
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/adminside/sidebar/Sidebar.js":
 /*!**************************************************************!*\
   !*** ./resources/js/components/adminside/sidebar/Sidebar.js ***!
@@ -30913,14 +30868,6 @@ var Sidebar = function Sidebar(_ref) {
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaWarehouse, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Inventory"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
-            className: isActive("/shipment"),
-            onClick: function onClick() {
-              return navigate("/shipment");
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTruck, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Shipment"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
             className: isActive("/users"),
