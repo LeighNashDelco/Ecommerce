@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaTachometerAlt,
@@ -19,16 +19,38 @@ import {
   FaUserShield,
   FaBars,
   FaTimes,
-  FaTag, // Added for Brands icon
+  FaTag,
+  FaHome,
 } from "react-icons/fa";
 import adminPhoto from "./../../../../sass/img/aadmin.svg";
 import "./../../../../sass/components/_sidebar.scss";
+import axios from "axios";
 
 const Sidebar = ({ children }) => {
   const [adminDropdown, setAdminDropdown] = useState(false);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
+  const [userRole, setUserRole] = useState(null); // null as initial state
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("LaravelPassportToken");
+    if (token) {
+      fetchUserRole(token);
+    }
+  }, []);
+
+  const fetchUserRole = async (token) => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUserRole(response.data.role_id);
+    } catch (error) {
+      console.error("Error fetching user role:", error);
+      setUserRole(null);
+    }
+  };
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
 
@@ -63,6 +85,15 @@ const Sidebar = ({ children }) => {
           </div>
 
           <ul>
+            {userRole === 1 && ( // Only check userRole, no isRoleFetched
+              <li
+                className={isActive("/")}
+                onClick={() => navigate("/")}
+              >
+                <FaHome />
+                <span>Go to Shop</span>
+              </li>
+            )}
             <li
               className={isActive("/admindashboard")}
               onClick={() => navigate("/admindashboard")}
@@ -162,7 +193,7 @@ const Sidebar = ({ children }) => {
                   <span>Roles</span>
                 </li>
                 <li
-                  className={isActive("/brands")} // New Brands item
+                  className={isActive("/brands")}
                   onClick={() => navigate("/brands")}
                 >
                   <FaTag />

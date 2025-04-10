@@ -131,6 +131,25 @@
         }
       }
 
+      .customer-admin-button {
+        color: #ffffff;
+        font-size: 16px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        svg {
+          font-size: 20px;
+          margin-right: 5px;
+        }
+
+        &:hover {
+          color: #ff4444;
+        }
+      }
+
       .notification-circle {
         position: relative;
         cursor: pointer;

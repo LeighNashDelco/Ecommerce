@@ -18853,11 +18853,6 @@ function Routers() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_OrderComplete_order_complete__WEBPACK_IMPORTED_MODULE_13__["default"], {})
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
-        path: "/notfound",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
         path: "/product_view",
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_ProductView_product_view__WEBPACK_IMPORTED_MODULE_15__["default"], {})
@@ -18981,6 +18976,11 @@ function Routers() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_routes_PrivateRoute_js__WEBPACK_IMPORTED_MODULE_36__["default"], {
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_adminside_users_Users__WEBPACK_IMPORTED_MODULE_33__["default"], {})
           })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+        path: "*",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(CustomerLayout, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(_components_customerside_Pagenotfound_notfound__WEBPACK_IMPORTED_MODULE_14__["default"], {})
         })
       })]
     })
@@ -30775,16 +30775,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _sass_img_aadmin_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/img/aadmin.svg */ "./resources/sass/img/aadmin.svg");
 /* harmony import */ var _sass_components_sidebar_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../../sass/components/_sidebar.scss */ "./resources/sass/components/_sidebar.scss");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 
@@ -30801,8 +30807,51 @@ var Sidebar = function Sidebar(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     isSidebarExpanded = _useState4[0],
     setIsSidebarExpanded = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    userRole = _useState6[0],
+    setUserRole = _useState6[1]; // null as initial state
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var token = localStorage.getItem("LaravelPassportToken");
+    if (token) {
+      fetchUserRole(token);
+    }
+  }, []);
+  var fetchUserRole = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(token) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/user", {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 3:
+            response = _context.sent;
+            setUserRole(response.data.role_id);
+            _context.next = 11;
+            break;
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            console.error("Error fetching user role:", _context.t0);
+            setUserRole(null);
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+    return function fetchUserRole(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   var isActive = function isActive(path) {
     return location.pathname === path ? "active" : "";
   };
@@ -30830,19 +30879,30 @@ var Sidebar = function Sidebar(_ref) {
           }), isSidebarExpanded && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "sidebar-toggle inside",
             onClick: toggleSidebar,
-            children: isSidebarExpanded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTimes, {
+            children: isSidebarExpanded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTimes, {
               className: "toggle-icon"
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBars, {
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBars, {
               className: "toggle-icon"
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+          children: [userRole === 1 &&
+          /*#__PURE__*/
+          // Only check userRole, no isRoleFetched
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+            className: isActive("/"),
+            onClick: function onClick() {
+              return navigate("/");
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaHome, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: "Go to Shop"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
             className: isActive("/admindashboard"),
             onClick: function onClick() {
               return navigate("/admindashboard");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTachometerAlt, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTachometerAlt, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Dashboard"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30850,7 +30910,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/products");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBoxOpen, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBoxOpen, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Products"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30858,7 +30918,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/orders");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaShoppingCart, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaShoppingCart, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Orders"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30866,7 +30926,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/inventory");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaWarehouse, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaWarehouse, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Inventory"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30874,7 +30934,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/users");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUsers, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUsers, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Users"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30882,7 +30942,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/customerlist");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUser, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Customer List"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30890,7 +30950,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/adminlist");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUser, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUser, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Admin List"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30898,7 +30958,7 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return navigate("/reviewsandnotifications");
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaStar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaStar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Reviews & Notifications"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {
@@ -30908,9 +30968,9 @@ var Sidebar = function Sidebar(_ref) {
             onClick: function onClick() {
               return setAdminDropdown(!adminDropdown);
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaCog, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaCog, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
               children: "Admin Settings"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaChevronDown, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChevronDown, {
               className: adminDropdown ? "rotate-icon" : ""
             })]
           }), adminDropdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
@@ -30920,7 +30980,7 @@ var Sidebar = function Sidebar(_ref) {
               onClick: function onClick() {
                 return navigate("/paymentmanagement");
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaMoneyBill, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaMoneyBill, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 children: "Payment Management"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30928,7 +30988,7 @@ var Sidebar = function Sidebar(_ref) {
               onClick: function onClick() {
                 return navigate("/statusandcategory");
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaChartBar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaChartBar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 children: "Status & Category"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30936,7 +30996,7 @@ var Sidebar = function Sidebar(_ref) {
               onClick: function onClick() {
                 return navigate("/helpandsupport");
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBell, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBell, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 children: "Help & Support"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
@@ -30944,16 +31004,15 @@ var Sidebar = function Sidebar(_ref) {
               onClick: function onClick() {
                 return navigate("/roles");
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaUserShield, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaUserShield, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 children: "Roles"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
-              className: isActive("/brands") // New Brands item
-              ,
+              className: isActive("/brands"),
               onClick: function onClick() {
                 return navigate("/brands");
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTag, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTag, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                 children: "Brands"
               })]
             })]
@@ -30962,9 +31021,9 @@ var Sidebar = function Sidebar(_ref) {
       }), !isSidebarExpanded && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "sidebar-toggle outside",
         onClick: toggleSidebar,
-        children: isSidebarExpanded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaTimes, {
+        children: isSidebarExpanded ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaTimes, {
           className: "toggle-icon"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_5__.FaBars, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_6__.FaBars, {
           className: "toggle-icon"
         })
       })]
@@ -36887,6 +36946,10 @@ function LoggedinCustomerTopNavBar(_ref) {
     _useState14 = _slicedToArray(_useState13, 2),
     notificationCount = _useState14[0],
     setNotificationCount = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    userRole = _useState16[0],
+    setUserRole = _useState16[1];
   var dropdownRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var notificationRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
@@ -36896,6 +36959,7 @@ function LoggedinCustomerTopNavBar(_ref) {
       setIsLoggedIn(true);
       fetchProfileImage(token);
       fetchNotifications(token);
+      fetchUserRole(token);
       var interval = setInterval(function () {
         return fetchNotifications(token);
       }, 30000);
@@ -36950,51 +37014,83 @@ function LoggedinCustomerTopNavBar(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
-  var fetchNotifications = /*#__PURE__*/function () {
+  var fetchUserRole = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(token) {
-      var response, unreadNotifications;
+      var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/notifications", {
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/user", {
               headers: {
                 Authorization: "Bearer ".concat(token)
               }
             });
           case 3:
             response = _context2.sent;
+            setUserRole(response.data.role_id);
+            _context2.next = 10;
+            break;
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+            console.error("Error fetching user role:", _context2.t0);
+          case 10:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+    return function fetchUserRole(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var fetchNotifications = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(token) {
+      var response, unreadNotifications;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://127.0.0.1:8000/api/notifications", {
+              headers: {
+                Authorization: "Bearer ".concat(token)
+              }
+            });
+          case 3:
+            response = _context3.sent;
             unreadNotifications = response.data.filter(function (notif) {
               return notif.status === 'unread';
             });
             setNotifications(response.data);
             setNotificationCount(unreadNotifications.length);
-            _context2.next = 12;
+            _context3.next = 12;
             break;
           case 9:
-            _context2.prev = 9;
-            _context2.t0 = _context2["catch"](0);
-            console.error("Error fetching notifications:", _context2.t0);
+            _context3.prev = 9;
+            _context3.t0 = _context3["catch"](0);
+            console.error("Error fetching notifications:", _context3.t0);
           case 12:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
-      }, _callee2, null, [[0, 9]]);
+      }, _callee3, null, [[0, 9]]);
     }));
-    return function fetchNotifications(_x2) {
-      return _ref3.apply(this, arguments);
+    return function fetchNotifications(_x3) {
+      return _ref4.apply(this, arguments);
     };
   }();
   var markNotificationAsRead = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(notificationId) {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(notificationId) {
       var token;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
           case 0:
             token = localStorage.getItem("LaravelPassportToken");
-            _context3.prev = 1;
-            _context3.next = 4;
+            _context4.prev = 1;
+            _context4.next = 4;
             return axios__WEBPACK_IMPORTED_MODULE_5__["default"].post("http://127.0.0.1:8000/api/notifications/".concat(notificationId, "/read"), {}, {
               headers: {
                 Authorization: "Bearer ".concat(token)
@@ -37011,20 +37107,20 @@ function LoggedinCustomerTopNavBar(_ref) {
             setNotificationCount(function (prev) {
               return Math.max(prev - 1, 0);
             });
-            _context3.next = 11;
+            _context4.next = 11;
             break;
           case 8:
-            _context3.prev = 8;
-            _context3.t0 = _context3["catch"](1);
-            console.error("Error marking notification as read:", _context3.t0);
+            _context4.prev = 8;
+            _context4.t0 = _context4["catch"](1);
+            console.error("Error marking notification as read:", _context4.t0);
           case 11:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
-      }, _callee3, null, [[1, 8]]);
+      }, _callee4, null, [[1, 8]]);
     }));
-    return function markNotificationAsRead(_x3) {
-      return _ref4.apply(this, arguments);
+    return function markNotificationAsRead(_x4) {
+      return _ref5.apply(this, arguments);
     };
   }();
   var toggleMenu = function toggleMenu() {
@@ -37045,6 +37141,9 @@ function LoggedinCustomerTopNavBar(_ref) {
   var handleProfileSettings = function handleProfileSettings() {
     navigate("/customerprofile");
     setIsDropdownOpen(false);
+  };
+  var handleAdminDashboard = function handleAdminDashboard() {
+    navigate("/admindashboard");
   };
   var handleViewAllNotifications = function handleViewAllNotifications() {
     navigate("/notifications");
@@ -37093,12 +37192,20 @@ function LoggedinCustomerTopNavBar(_ref) {
     href: "#about",
     text: "About",
     path: "/about_us"
-  }];
-  var mobileNavLinks = [].concat(navLinks, _toConsumableArray(isLoggedIn ? [{
+  }].concat(_toConsumableArray(isLoggedIn && userRole === 1 ? [{
+    href: "#dashboard",
+    text: "Dashboard",
+    path: "/admindashboard"
+  }] : []));
+  var mobileNavLinks = [].concat(_toConsumableArray(navLinks), _toConsumableArray(isLoggedIn ? [{
     href: "#profile",
     text: "PROFILE",
     path: "/customerprofile"
-  }, {
+  }].concat(_toConsumableArray(userRole === 1 ? [{
+    href: "#dashboard",
+    text: "DASHBOARD",
+    path: "/admindashboard"
+  }] : []), [{
     href: "#notifications",
     text: "NOTIFICATIONS",
     path: "/notifications"
@@ -37106,7 +37213,7 @@ function LoggedinCustomerTopNavBar(_ref) {
     href: "#logout",
     text: "LOGOUT",
     onClick: handleLogout
-  }] : [{
+  }]) : [{
     href: "#login",
     text: "LOGIN",
     path: "/login"
@@ -37135,7 +37242,10 @@ function LoggedinCustomerTopNavBar(_ref) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
             href: link.href,
             className: "customer-nav-link",
-            onClick: navigateAndClose(link.path),
+            onClick: link.text === "Dashboard" ? function (e) {
+              e.preventDefault();
+              handleAdminDashboard();
+            } : navigateAndClose(link.path),
             children: link.text
           }, link.href);
         })
@@ -50291,7 +50401,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border: none;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle {\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n  font-size: 24px;\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  background-color: #1a1a1a;\n  border: 1px solid #ff4444;\n  border-radius: 4px;\n  min-width: 200px;\n  z-index: 1002;\n  padding: 10px;\n  color: #ffffff;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n  padding: 8px 12px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n  background-color: #333333;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n  color: #aaaaaa;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li:hover {\n  background-color: #444444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li span {\n  font-size: 14px;\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li small {\n  font-size: 12px;\n  color: #cccccc;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8;\n  border-radius: 4px;\n  min-width: 180px;\n  z-index: 1002;\n  display: none;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  font-family: \"Arial\", sans-serif;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px;\n  color: #333333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px;\n  font-size: 16px;\n  color: #666666;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n    min-width: 180px;\n    margin-top: 6px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n    padding: 6px 10px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n    background-color: #333333;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n    color: #aaaaaa;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".customer-topbar {\n  background-color: #1a1a1a;\n  padding: 10px 20px;\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1000;\n  box-sizing: border-box;\n}\n.customer-topbar::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  background-color: #FF1C1C;\n  z-index: 1;\n}\n.customer-topbar .customer-topbar-container {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  padding: 0;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu {\n  display: none;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n  color: #ffffff;\n}\n.customer-topbar .customer-topbar-container .customer-logo {\n  margin-right: 20px;\n  padding-left: 0;\n}\n.customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n  height: 40px;\n  width: auto;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links {\n  display: flex;\n  gap: 30px;\n  flex-grow: 1;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 16px;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-nav-links .customer-nav-link:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section {\n  margin-left: auto;\n  padding-right: 0;\n  display: flex;\n  align-items: center;\n  gap: 20px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon {\n  color: #ffffff;\n  font-size: 20px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n  font-size: 24px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border: none;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n  background-color: #ff4444;\n  color: #ffffff;\n  padding: 8px 20px;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  font-size: 16px;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button:hover {\n  background-color: #cc0000;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-admin-button {\n  color: #ffffff;\n  font-size: 16px;\n  text-decoration: none;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-admin-button svg {\n  font-size: 20px;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .customer-admin-button:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle {\n  position: relative;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n  font-size: 24px;\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #FF0000;\n  color: #FFFFFF;\n  border-radius: 50%;\n  width: 18px;\n  height: 18px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  background-color: #1a1a1a;\n  border: 1px solid #ff4444;\n  border-radius: 4px;\n  min-width: 200px;\n  z-index: 1002;\n  padding: 10px;\n  color: #ffffff;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n  padding: 8px 12px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n  background-color: #333333;\n  font-weight: bold;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n  color: #aaaaaa;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li:hover {\n  background-color: #444444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li span {\n  font-size: 14px;\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li small {\n  font-size: 12px;\n  color: #cccccc;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle {\n  display: flex;\n  align-items: center;\n  position: relative;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 1px solid #ffffff;\n  margin-right: 5px;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n  display: flex;\n  align-items: center;\n  padding: 5px;\n  z-index: 1001;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n  color: #ffffff;\n  font-size: 14px;\n  transition: color 0.3s ease;\n  cursor: pointer;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n  position: absolute;\n  right: 0;\n  top: 100%;\n  margin-top: 8px;\n  background-color: #ffffff;\n  border: 1px solid #e8e8e8;\n  border-radius: 4px;\n  min-width: 180px;\n  z-index: 1002;\n  display: none;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  font-family: \"Arial\", sans-serif;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu.open {\n  display: block;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n  display: flex;\n  align-items: center;\n  padding: 12px 16px;\n  color: #333333;\n  font-size: 14px;\n  font-weight: 400;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li:hover {\n  background-color: #f5f5f5;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n  margin-right: 10px;\n  font-size: 16px;\n  color: #666666;\n}\n.customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li span {\n  flex: 1;\n}\n.customer-topbar .customer-mobile-overlay {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: #1a1a1a;\n  z-index: 999;\n  padding: 60px 20px;\n  transform: translateX(-100%);\n  transition: transform 0.3s ease-in-out;\n}\n.customer-topbar .customer-mobile-overlay.open {\n  display: block;\n  transform: translateX(0);\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  cursor: pointer;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg {\n  color: #ffffff;\n  transition: color 0.3s ease;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-exit svg:hover {\n  color: #ff4444;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n  margin-top: 40px;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link {\n  color: #ffffff;\n  text-decoration: none;\n  font-size: 18px;\n  padding: 10px 0;\n  text-transform: uppercase;\n}\n.customer-topbar .customer-mobile-overlay .customer-mobile-nav .customer-nav-link:hover {\n  color: #ff4444;\n}\n\n.payment-methods-page-container {\n  padding-top: 70px;\n}\n\n@media (max-width: 768px) {\n  .customer-topbar {\n    padding: 30px 20px;\n  }\n  .customer-topbar::after {\n    height: 2px;\n  }\n  .customer-topbar .customer-topbar-container {\n    flex-direction: row;\n    align-items: center;\n    justify-content: space-between;\n    position: relative;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu {\n    display: flex;\n    position: absolute;\n    left: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-mobile-menu svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo {\n    flex-grow: 1;\n    display: flex;\n    justify-content: center;\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    margin-right: 0;\n  }\n  .customer-topbar .customer-topbar-container .customer-logo .customer-logo-img {\n    height: 30px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section {\n    position: absolute;\n    right: 10px;\n    gap: 10px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-search-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon svg {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-cart-icon .cart-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-icon {\n    font-size: 20px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-count {\n    top: -6px;\n    right: -6px;\n    width: 16px;\n    height: 16px;\n    font-size: 9px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown {\n    min-width: 180px;\n    margin-top: 6px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li {\n    padding: 6px 10px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.unread {\n    background-color: #333333;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .notification-circle .notification-dropdown ul li.read {\n    color: #aaaaaa;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .customer-login-button {\n    display: none;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .profile-icon {\n    width: 25px;\n    height: 25px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle {\n    padding: 3px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-icon {\n    font-size: 12px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu {\n    margin-top: 6px;\n    min-width: 160px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li {\n    padding: 10px 14px;\n    font-size: 13px;\n  }\n  .customer-topbar .customer-topbar-container .customer-auth-section .profile-circle .dropdown-toggle .dropdown-menu ul li .dropdown-icon-item {\n    margin-right: 8px;\n    font-size: 14px;\n  }\n  .customer-topbar .customer-topbar-container .customer-nav-links {\n    display: none;\n  }\n  .payment-methods-page-container {\n    padding-top: 100px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

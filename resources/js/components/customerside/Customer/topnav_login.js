@@ -15,6 +15,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
   const [profileImg, setProfileImg] = useState("default-profile.png");
   const [notifications, setNotifications] = useState([]);
   const [notificationCount, setNotificationCount] = useState(0);
+  const [userRole, setUserRole] = useState(null);
   const dropdownRef = useRef(null);
   const notificationRef = useRef(null);
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
       setIsLoggedIn(true);
       fetchProfileImage(token);
       fetchNotifications(token);
+      fetchUserRole(token);
       const interval = setInterval(() => fetchNotifications(token), 30000);
       return () => clearInterval(interval);
     }
@@ -51,6 +53,17 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
       setProfileImg(response.data.profile?.profile_img || "default-profile.png");
     } catch (error) {
       console.error("Error fetching profile:", error);
+    }
+  };
+
+  const fetchUserRole = async (token) => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUserRole(response.data.role_id);
+    } catch (error) {
+      console.error("Error fetching user role:", error);
     }
   };
 
@@ -97,6 +110,10 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     setIsDropdownOpen(false);
   };
 
+  const handleAdminDashboard = () => {
+    navigate("/admindashboard");
+  };
+
   const handleViewAllNotifications = () => {
     navigate("/notifications");
     setIsDropdownOpen(false);
@@ -131,6 +148,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     { href: "#shop", text: "Shop", path: "/shop" },
     { href: "#start-selling", text: "Start Selling", path: "/register" },
     { href: "#about", text: "About", path: "/about_us" },
+    ...(isLoggedIn && userRole === 1 ? [{ href: "#dashboard", text: "Dashboard", path: "/admindashboard" }] : []),
   ];
 
   const mobileNavLinks = [
@@ -138,6 +156,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
     ...(isLoggedIn 
       ? [
           { href: "#profile", text: "PROFILE", path: "/customerprofile" },
+          ...(userRole === 1 ? [{ href: "#dashboard", text: "DASHBOARD", path: "/admindashboard" }] : []),
           { href: "#notifications", text: "NOTIFICATIONS", path: "/notifications" },
           { href: "#logout", text: "LOGOUT", onClick: handleLogout }
         ]
@@ -161,7 +180,7 @@ function LoggedinCustomerTopNavBar({ onCartClick, cartCount = 0 }) {
               key={link.href}
               href={link.href} 
               className="customer-nav-link" 
-              onClick={navigateAndClose(link.path)}
+              onClick={link.text === "Dashboard" ? (e) => { e.preventDefault(); handleAdminDashboard(); } : navigateAndClose(link.path)}
             >
               {link.text}
             </a>

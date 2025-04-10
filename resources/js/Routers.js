@@ -89,7 +89,6 @@ export default function Routers() {
                 <Route path="/payment_methods" element={<CustomerLayout><PaymentMethods /></CustomerLayout>} />
                 <Route path="/developer" element={<CustomerLayout><Developer /></CustomerLayout>} />
                 <Route path="/order_complete" element={<CustomerLayout><OrderComplete /></CustomerLayout>} />
-                <Route path="/notfound" element={<CustomerLayout><Notfound /></CustomerLayout>} />
                 <Route path="/product_view" element={<CustomerLayout><ProductView /></CustomerLayout>} />
                 <Route path="/customerprofile" element={<CustomerLayout><CustomerProfile /></CustomerLayout>} />
                 <Route path="/track_order" element={<CustomerLayout><TrackOrder /></CustomerLayout>} />
@@ -156,6 +155,9 @@ export default function Routers() {
                     path="/users" 
                     element={<AdminLayout><PrivateRoute element={<Users />} /></AdminLayout>} 
                 />
+
+                {/* Catch-All Route for 404 */}
+                <Route path="*" element={<CustomerLayout><Notfound /></CustomerLayout>} />
             </Routes>
         </Router>
     );
