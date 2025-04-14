@@ -1,256 +1,394 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import { FaCommentAlt, FaPlus, FaPaperPlane, FaTimes, FaEllipsisH } from 'react-icons/fa';
+import { FaCommentAlt, FaPaperclip, FaPaperPlane, FaArrowLeft, FaSearch, FaTimes } from 'react-icons/fa';
 import './../../../../sass/components/chatbot.scss';
 
+const fetchFast = async (url, options = {}) => {
+  const defaultHeaders = {
+    'Authorization': `Bearer ${localStorage.getItem('LaravelPassportToken')}`,
+    'Content-Type': 'application/json',
+  };
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      ...defaultHeaders,
+      ...options.headers,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+};
+
 function Chatbot() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [faqs, setFaqs] = useState([]);
-    const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState('');
-    const [image, setImage] = useState(null);
-    const [imagePreview, setImagePreview] = useState(null);
-    const [view, setView] = useState(null);
-    const [selectedFaq, setSelectedFaq] = useState(null);
-    const [menuVisible, setMenuVisible] = useState(null);
-    const fileInputRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [showFaqs, setShowFaqs] = useState(false);
+  const [conversations, setConversations] = useState([]);
+  const [filteredConversations, setFilteredConversations] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [faqs, setFaqs] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [file, setFile] = useState(null);
+  const [filePreview, setFilePreview] = useState(null);
+  const [error, setError] = useState(null);
+  const fileInputRef = useRef(null);
 
-    const getAuthHeaders = () => {
-        const token = localStorage.getItem('LaravelPassportToken');
-        if (!token) {
-            throw new Error('No authentication token found. Please log in.');
-        }
-        return {
-            'Authorization': `Bearer ${token}`,
-        };
-    };
+  useEffect(() => {
+    if (isOpen) {
+      fetchConversations();
+      fetchFaqs();
+      if (showChat) {
+        fetchMessages();
+        const intervalId = setInterval(fetchMessages, 5000);
+        return () => clearInterval(intervalId);
+      }
+    }
+  }, [isOpen, showChat]);
 
-    useEffect(() => {
-        if (isOpen) {
-            fetchFaqs();
-            if (view === 'chat') {
-                fetchMessages();
-                const intervalId = setInterval(() => {
-                    fetchMessages();
-                }, 5000);
-                return () => clearInterval(intervalId);
-            }
-        }
-    }, [isOpen, view]);
-
-    const fetchFaqs = async () => {
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/helpandsupport', {
-                headers: getAuthHeaders(),
-            });
-            setFaqs(response.data);
-        } catch (error) {
-            console.error('Error fetching FAQs:', error);
-        }
-    };
-
-    const fetchMessages = async () => {
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/chat/customer', {
-                headers: getAuthHeaders(),
-            });
-            setMessages(response.data);
-        } catch (error) {
-            console.error('Error fetching messages:', error);
-        }
-    };
-
-    const handleFaqClick = faq => {
-        setSelectedFaq(faq);
-    };
-
-    const handleImageClick = () => {
-        fileInputRef.current.click();
-    };
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-            setImagePreview(URL.createObjectURL(file));
-        }
-    };
-
-    const removeImage = () => {
-        setImage(null);
-        setImagePreview(null);
-        fileInputRef.current.value = '';
-    };
-
-    const handleSendMessage = async () => {
-        if (!input.trim() && !image) return;
-        try {
-            const formData = new FormData();
-            if (input.trim()) formData.append('message', input);
-            if (image) formData.append('image', image);
-
-            console.log('Sending FormData:', { message: input, image });
-
-            const response = await axios.post('http://127.0.0.1:8000/api/chat/send', formData, {
-                headers: { ...getAuthHeaders(), 'Content-Type': 'multipart/form-data' },
-            });
-            setMessages(prev => [...prev, response.data.data]);
-            setInput('');
-            setImage(null);
-            setImagePreview(null);
-        } catch (error) {
-            console.error('Error sending message:', error.response?.data || error.message);
-            if (error.response?.status === 422) {
-                const details = error.response.data.details;
-                const errorMessage = Object.values(details).flat().join(' ');
-                alert('Validation failed: ' + errorMessage);
-            } else {
-                alert('Failed to send message: ' + (error.response?.data?.error || error.message));
-            }
-        }
-    };
-
-    const handleDelete = async (messageId) => {
-        try {
-            await axios.delete(`http://127.0.0.1:8000/api/chat/message/${messageId}`, {
-                headers: getAuthHeaders(),
-            });
-            setMessages(prev => prev.filter(msg => msg.id !== messageId));
-            setMenuVisible(null);
-        } catch (error) {
-            console.error('Error deleting message:', error.response?.data || error.message);
-            alert('Failed to delete message: ' + (error.response?.data?.error || error.message));
-        }
-    };
-
-    return (
-        <div className="chatbot">
-            {!isOpen && (
-                <div className="chat-icon" onClick={() => setIsOpen(true)}>
-                    <FaCommentAlt size={30} />
-                </div>
-            )}
-            {isOpen && (
-                <div className="chat-window">
-                    <div className="chat-header">
-                        <h3>{view ? (view === 'faqs' ? 'FAQs' : 'Contact Support') : 'Support Options'}</h3>
-                        {view && <button onClick={() => { setView(null); setSelectedFaq(null); }}>←</button>}
-                        <button onClick={() => { setIsOpen(false); setView(null); setSelectedFaq(null); }}>X</button>
-                    </div>
-                    <div className="chat-body">
-                        {!view ? (
-                            <div className="options-list">
-                                <div className="option-item" onClick={() => setView('faqs')}>
-                                    FAQs
-                                </div>
-                                <div className="option-item" onClick={() => setView('chat')}>
-                                    Contact Support
-                                </div>
-                            </div>
-                        ) : view === 'faqs' ? (
-                            <div className="faq-section">
-                                {selectedFaq ? (
-                                    <div className="faq-content">
-                                        <div className="faq-question">{selectedFaq.question}</div>
-                                        <div className="faq-answer">{selectedFaq.answer}</div>
-                                    </div>
-                                ) : (
-                                    <div className="faq-list">
-                                        {faqs.length > 0 ? (
-                                            faqs.map(faq => (
-                                                <div
-                                                    key={faq.id}
-                                                    className="faq-item"
-                                                    onClick={() => handleFaqClick(faq)}
-                                                >
-                                                    {faq.question}
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <p>No FAQs available.</p>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <div className="chat-section">
-                                <div className="messages">
-                                    {messages.map((msg, index) => (
-                                        <div
-                                            key={index}
-                                            className={`message ${msg.is_admin_reply ? 'received' : 'sent'}`}
-                                            onMouseLeave={() => setMenuVisible(null)}
-                                        >
-                                            {msg.image && (
-                                                <img
-                                                    src={`/storage/${msg.image}`}
-                                                    alt="Chat Image"
-                                                    className="chat-image"
-                                                />
-                                            )}
-                                            {msg.message && msg.message !== '[Image]' && (
-                                                <span>{msg.message}</span>
-                                            )}
-                                            <small>{new Date(msg.created_at).toLocaleTimeString()}</small>
-                                            {!msg.is_admin_reply && (
-                                                <div className="message-menu">
-                                                    <FaEllipsisH
-                                                        className="menu-icon"
-                                                        onClick={() => setMenuVisible(msg.id === menuVisible ? null : msg.id)}
-                                                    />
-                                                    {menuVisible === msg.id && (
-                                                        <div className="menu-dropdown">
-                                                            <button
-                                                                className="delete-option"
-                                                                onClick={() => handleDelete(msg.id)}
-                                                            >
-                                                                Delete Message
-                                                            </button>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="chat-footer">
-                                    {imagePreview && (
-                                        <div className="image-preview">
-                                            <img src={imagePreview} alt="Preview" />
-                                            <FaTimes className="remove-image" onClick={removeImage} />
-                                        </div>
-                                    )}
-                                    <div className="input-row">
-                                        <FaPlus
-                                            className="add-image-icon"
-                                            onClick={handleImageClick}
-                                            title="Add Image"
-                                        />
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={fileInputRef}
-                                            onChange={handleImageChange}
-                                            style={{ display: 'none' }}
-                                        />
-                                        <input
-                                            type="text"
-                                            value={input}
-                                            onChange={e => setInput(e.target.value)}
-                                            placeholder="Type your question..."
-                                        />
-                                        <button onClick={handleSendMessage}>
-                                            <FaPaperPlane />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
-        </div>
+  useEffect(() => {
+    const filtered = conversations.filter(conversation =>
+      conversation.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    setFilteredConversations(filtered);
+  }, [searchQuery, conversations]);
+
+  const fetchConversations = async () => {
+    try {
+      const response = await fetchFast('http://127.0.0.1:8000/api/chat/customer');
+      const userMessages = response.filter(msg => !msg.deleted_for);
+
+      const supportConversation = {
+        id: 1,
+        name: 'Vero Help Support',
+        lastMessage: userMessages.length > 0 ? userMessages[userMessages.length - 1].message : 'Start a conversation',
+        timestamp: userMessages.length > 0 ? new Date(userMessages[userMessages.length - 1].created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '',
+        unread: 0,
+        type: 'chat',
+      };
+
+      const faqConversation = {
+        id: 2,
+        name: 'FAQs',
+        lastMessage: 'View frequently asked questions',
+        timestamp: '',
+        unread: 0,
+        type: 'faq',
+      };
+
+      const conversationList = [supportConversation, faqConversation];
+      setConversations(conversationList);
+      setFilteredConversations(conversationList);
+      setError(null);
+    } catch (error) {
+      console.error('Error fetching conversations:', error);
+      setError('Failed to load conversations. Please try again later.');
+    }
+  };
+
+  const fetchFaqs = async () => {
+    try {
+      const response = await fetchFast('http://127.0.0.1:8000/api/helpandsupport');
+      if (Array.isArray(response)) {
+        setFaqs(response);
+      } else {
+        console.warn('FAQs response is not an array:', response);
+        setFaqs([]);
+      }
+      setError(null);
+    } catch (error) {
+      console.error('Error fetching FAQs:', error);
+      setError('Failed to load FAQs. Please try again later.');
+    }
+  };
+
+  const fetchMessages = async () => {
+    try {
+      const response = await fetchFast('http://127.0.0.1:8000/api/chat/customer');
+      setMessages(response);
+      setError(null);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      setError('Failed to load messages. Please try again later.');
+    }
+  };
+
+  const handleFaqClick = faq => {
+    setShowFaqs(false);
+    setShowChat(true);
+    setMessages(prev => [
+      ...prev,
+      { message: faq.question, is_admin_reply: false, created_at: new Date() },
+      { message: faq.answer, is_admin_reply: true, created_at: new Date() },
+    ]);
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      const previewUrl = URL.createObjectURL(selectedFile);
+      setFilePreview(previewUrl);
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setFile(null);
+    setFilePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!input.trim() && !file) {
+      setError('Please enter a message or attach a file.');
+      return;
+    }
+    try {
+      const formData = new FormData();
+      formData.append('message', input || '');
+      if (file) {
+        formData.append('image', file);
+      }
+
+      const response = await fetch('http://127.0.0.1:8000/api/chat/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('LaravelPassportToken')}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const newMessage = {
+        ...result.data,
+        attachmentUrl: result.data.attachment_path ? `http://127.0.0.1:8000/storage/${result.data.attachment_path.replace('public/', '')}` : null,
+      };
+
+      setMessages(prev => [...prev, newMessage]);
+      setInput('');
+      setFile(null);
+      setFilePreview(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+      setError(null);
+      fetchConversations();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setError('Failed to send message. Please try again later.');
+    }
+  };
+
+  const handleCloseChat = () => {
+    setIsOpen(false);
+    setShowChat(false);
+    setShowFaqs(false);
+    setSearchQuery('');
+    setFile(null);
+    setFilePreview(null);
+    setInput('');
+  };
+
+  const isImageAttachment = (attachmentPath) => {
+    if (!attachmentPath) return false;
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    const extension = attachmentPath.split('.').pop().toLowerCase();
+    return imageExtensions.includes(extension);
+  };
+
+  return (
+    <div className="chatbot">
+      {!isOpen && (
+        <div className="chat-icon" onClick={() => setIsOpen(true)}>
+          <FaCommentAlt size={30} />
+        </div>
+      )}
+      {isOpen && !showChat && !showFaqs && (
+        <div className="conversations-window">
+          <div className="conversations-header">
+            <h3>Chats</h3>
+            <button onClick={handleCloseChat}>
+              <FaTimes size={20} />
+            </button>
+          </div>
+          <div className="search-bar">
+            <FaSearch size={16} />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="conversations-list">
+            {error && (
+              <div className="error-message">
+                <p>{error}</p>
+              </div>
+            )}
+            {filteredConversations.length > 0 ? (
+              filteredConversations.map(conversation => (
+                <div
+                  key={conversation.id}
+                  className="conversation-item"
+                  onClick={() => {
+                    if (conversation.type === 'chat') {
+                      setShowChat(true);
+                    } else {
+                      setShowFaqs(true);
+                    }
+                  }}
+                >
+                  <div className={`user-avatar ${conversation.type === 'chat' ? 'support-team-avatar' : 'faq-avatar'}`}></div>
+                  <div className="conversation-info">
+                    <div className="conversation-name">{conversation.name}</div>
+                    <div className="last-message">{conversation.lastMessage}</div>
+                  </div>
+                  <div className="timestamp">{conversation.timestamp}</div>
+                </div>
+              ))
+            ) : (
+              <div className="no-conversations">
+                <p>No conversations found.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      {isOpen && showFaqs && (
+        <div className="chat-window">
+          <div className="chat-header">
+            <button onClick={() => setShowFaqs(false)}>
+              <FaArrowLeft size={20} />
+            </button>
+            <div className="chat-header-info">
+              <h3>FAQs</h3>
+            </div>
+          </div>
+          <div className="chat-body">
+            {error && (
+              <div className="error-message">
+                <p>{error}</p>
+              </div>
+            )}
+            <div className="faq-list">
+              {faqs.length > 0 ? (
+                faqs.map(faq => (
+                  <div
+                    key={faq.id}
+                    className="faq-item"
+                    onClick={() => handleFaqClick(faq)}
+                  >
+                    {faq.question}
+                  </div>
+                ))
+              ) : (
+                <p>No FAQs available.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+      {isOpen && showChat && (
+        <div className="chat-window">
+          <div className="chat-header">
+            <button onClick={() => setShowChat(false)}>
+              <FaArrowLeft size={20} />
+            </button>
+            <div className="chat-header-info">
+              <h3>Vero Help Support</h3>
+            </div>
+          </div>
+          <div className="chat-body">
+            {error && (
+              <div className="error-message">
+                <p>{error}</p>
+              </div>
+            )}
+            <div className="messages">
+              {messages.map((msg, index) => (
+                <div
+                  key={msg.id || index}
+                  className={`message-wrapper ${msg.is_admin_reply ? 'received' : 'sent'}`}
+                >
+                  <div className="message">
+                    <div className="message-content">
+                      {isImageAttachment(msg.attachment_path) ? (
+                        <div className="image-attachment">
+                          <img
+                            src={`http://127.0.0.1:8000/storage/${msg.attachment_path.replace('public/', '')}`}
+                            alt="Attachment"
+                          />
+                          {msg.message && msg.message !== '' && (
+                            <span>{msg.message}</span>
+                          )}
+                        </div>
+                      ) : (
+                        <span>
+                          {msg.message}
+                          {msg.attachment_path && (
+                            <a
+                              href={`http://127.0.0.1:8000/storage/${msg.attachment_path.replace('public/', '')}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="attachment-link"
+                            >
+                              (View Attachment)
+                            </a>
+                          )}
+                        </span>
+                      )}
+                    </div>
+                    <small>{new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</small>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="chat-footer">
+            {filePreview && (
+              <div className="file-preview">
+                <div className="preview-image-container">
+                  <img src={filePreview} alt="Preview" />
+                  <button className="remove-file" onClick={handleRemoveFile}>
+                    <FaTimes size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
+            <div className="input-container">
+              <label className="file-upload">
+                <FaPaperclip size={20} />
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  style={{ display: 'none' }}
+                  accept="image/*"
+                />
+              </label>
+              <input
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder="Type something..."
+              />
+              <button onClick={handleSendMessage}>
+                <FaPaperPlane size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Chatbot;

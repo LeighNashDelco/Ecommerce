@@ -19138,46 +19138,51 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 function AdminChat() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _usersWithMessages$fi;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    messages = _useState2[0],
-    setMessages = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    selectedUserId = _useState4[0],
-    setSelectedUserId = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    showChat = _useState4[0],
+    setShowChat = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState6 = _slicedToArray(_useState5, 2),
-    reply = _useState6[0],
-    setReply = _useState6[1];
+    messages = _useState6[0],
+    setMessages = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState8 = _slicedToArray(_useState7, 2),
-    image = _useState8[0],
-    setImage = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    selectedUserId = _useState8[0],
+    setSelectedUserId = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState10 = _slicedToArray(_useState9, 2),
-    imagePreview = _useState10[0],
-    setImagePreview = _useState10[1];
+    reply = _useState10[0],
+    setReply = _useState10[1];
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    error = _useState12[0],
-    setError = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    image = _useState12[0],
+    setImage = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState14 = _slicedToArray(_useState13, 2),
-    isOpen = _useState14[0],
-    setIsOpen = _useState14[1];
+    imagePreview = _useState14[0],
+    setImagePreview = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState16 = _slicedToArray(_useState15, 2),
-    menuVisible = _useState16[0],
-    setMenuVisible = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState18 = _slicedToArray(_useState17, 2),
-    initialLoading = _useState18[0],
-    setInitialLoading = _useState18[1]; // New state for initial loading
+    menuVisible = _useState18[0],
+    setMenuVisible = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState20 = _slicedToArray(_useState19, 2),
+    initialLoading = _useState20[0],
+    setInitialLoading = _useState20[1];
   var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var getAuthHeaders = function getAuthHeaders() {
     return {
-      'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
+      Authorization: "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
     };
   };
   var fetchMessages = /*#__PURE__*/function () {
@@ -19192,7 +19197,7 @@ function AdminChat() {
           case 0:
             isInitialFetch = _args.length > 0 && _args[0] !== undefined ? _args[0] : false;
             if (isInitialFetch) {
-              setInitialLoading(true); // Show loading only on initial fetch
+              setInitialLoading(true);
             }
             setError(null);
             _context.prev = 3;
@@ -19210,7 +19215,7 @@ function AdminChat() {
             _context.prev = 11;
             _context.t0 = _context["catch"](3);
             console.error('Error fetching messages:', _context.t0.response ? _context.t0.response.data : _context.t0.message);
-            setError('Failed to load messages: ' + (((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.message) || _context.t0.message));
+            setError('Failed to load messages: ' + (((_error$response = _context.t0.response) === null || _error$response === void 0 || (_error$response = _error$response.data) === null || _error$response === void 0 ? void 0 : _error$response.error) || _context.t0.message));
           case 15:
             _context.prev = 15;
             if (isInitialFetch) {
@@ -19230,9 +19235,9 @@ function AdminChat() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var intervalId;
     if (isOpen) {
-      fetchMessages(true); // Initial fetch with loading
+      fetchMessages(true);
       intervalId = setInterval(function () {
-        fetchMessages(false); // Polling without loading
+        fetchMessages(false);
       }, 5000);
     }
     return function () {
@@ -19270,18 +19275,19 @@ function AdminChat() {
             setReply('');
             setImage(null);
             setImagePreview(null);
-            _context2.next = 20;
+            if (fileInputRef.current) fileInputRef.current.value = '';
+            _context2.next = 21;
             break;
-          case 16:
-            _context2.prev = 16;
+          case 17:
+            _context2.prev = 17;
             _context2.t0 = _context2["catch"](2);
             console.error('Error sending reply:', _context2.t0.response ? _context2.t0.response.data : _context2.t0.message);
-            alert('Failed to send reply: ' + (((_error$response2 = _context2.t0.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.error) || _context2.t0.message));
-          case 20:
+            setError('Failed to send reply: ' + (((_error$response2 = _context2.t0.response) === null || _error$response2 === void 0 || (_error$response2 = _error$response2.data) === null || _error$response2 === void 0 ? void 0 : _error$response2.error) || _context2.t0.message));
+          case 21:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[2, 16]]);
+      }, _callee2, null, [[2, 17]]);
     }));
     return function handleReply() {
       return _ref2.apply(this, arguments);
@@ -19311,7 +19317,7 @@ function AdminChat() {
             _context3.prev = 7;
             _context3.t0 = _context3["catch"](0);
             console.error('Error deleting message:', _context3.t0.response ? _context3.t0.response.data : _context3.t0.message);
-            alert('Failed to delete message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
+            setError('Failed to delete message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
           case 11:
           case "end":
             return _context3.stop();
@@ -19322,9 +19328,6 @@ function AdminChat() {
       return _ref3.apply(this, arguments);
     };
   }();
-  var handleImageClick = function handleImageClick() {
-    fileInputRef.current.click();
-  };
   var handleImageChange = function handleImageChange(e) {
     var file = e.target.files[0];
     if (file) {
@@ -19332,10 +19335,10 @@ function AdminChat() {
       setImagePreview(URL.createObjectURL(file));
     }
   };
-  var removeImage = function removeImage() {
+  var handleRemoveImage = function handleRemoveImage() {
     setImage(null);
     setImagePreview(null);
-    fileInputRef.current.value = '';
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
   var usersWithMessages = messages.reduce(function (acc, msg) {
     if (!acc.some(function (u) {
@@ -19344,14 +19347,23 @@ function AdminChat() {
       var _msg$user, _msg$user2;
       acc.push({
         id: msg.user_id,
-        name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.username) || "User #".concat(msg.user_id),
-        profile_img: ((_msg$user2 = msg.user) === null || _msg$user2 === void 0 || (_msg$user2 = _msg$user2.profile) === null || _msg$user2 === void 0 ? void 0 : _msg$user2.profile_img) || null
+        name: ((_msg$user = msg.user) === null || _msg$user === void 0 ? void 0 : _msg$user.full_name) || '',
+        profile_img: ((_msg$user2 = msg.user) === null || _msg$user2 === void 0 ? void 0 : _msg$user2.profile_img) || 'images/pfp/default.png',
+        lastMessage: msg.message || '[Image]',
+        timestamp: new Date(msg.created_at).toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit'
+        })
       });
     }
     return acc;
   }, []);
+  var handleImageError = function handleImageError(e, userId) {
+    console.warn("Failed to load profile image for user ".concat(userId, ": ").concat(e.target.src, ", falling back to default"));
+    e.target.src = '/images/pfp/default.png';
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "admin-chat-container",
+    className: "admin-chat",
     children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "chat-icon",
       onClick: function onClick() {
@@ -19360,70 +19372,122 @@ function AdminChat() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
         size: 30
       })
-    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "admin-chat",
+    }), isOpen && !showChat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "conversations-window",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "chat-header",
+        className: "conversations-header",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-          children: selectedUserId ? 'Chat' : 'Customers'
-        }), selectedUserId && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          onClick: function onClick() {
-            return setSelectedUserId(null);
-          },
-          children: "\u2190"
+          children: "Customers"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: function onClick() {
-            setIsOpen(false);
-            setSelectedUserId(null);
+            return setIsOpen(false);
           },
-          children: "X"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+            size: 20
+          })
         })]
-      }), initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        children: "Loading..."
-      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-        className: "error",
-        children: error
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "chat-body",
-        children: !selectedUserId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "user-list",
-          children: usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "user-item",
-              onClick: function onClick() {
-                return setSelectedUserId(user.id);
-              },
-              children: [user.profile_img && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: "/storage/".concat(user.profile_img),
-                alt: "Profile",
-                className: "profile-pic"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                children: user.name
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-list",
+        children: [initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "Loading..."
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), usersWithMessages.length > 0 ? usersWithMessages.map(function (user) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-item",
+            onClick: function onClick() {
+              setSelectedUserId(user.id);
+              setShowChat(true);
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: "http://127.0.0.1:8000/".concat(user.profile_img),
+              alt: "Profile",
+              className: "user-avatar",
+              onError: function onError(e) {
+                return handleImageError(e, user.id);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "conversation-info",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "conversation-name",
+                children: user.name || 'Anonymous'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "last-message",
+                children: user.lastMessage
               })]
-            }, user.id);
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "timestamp",
+              children: user.timestamp
+            })]
+          }, user.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
             children: "No customer messages yet."
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "chat-area",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "messages",
-            children: messages.filter(function (m) {
-              return m.user_id === selectedUserId;
-            }).map(function (msg, index) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                className: "message ".concat(msg.is_admin_reply ? 'sent' : 'received'),
-                onMouseLeave: function onMouseLeave() {
-                  return setMenuVisible(null);
-                },
-                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                  src: "/storage/".concat(msg.image),
-                  alt: "Chat Image",
-                  className: "chat-image"
-                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                  children: msg.message
+        })]
+      })]
+    }), isOpen && showChat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setShowChat(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaArrowLeft, {
+            size: 20
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "chat-header-info",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: ((_usersWithMessages$fi = usersWithMessages.find(function (u) {
+              return u.id === selectedUserId;
+            })) === null || _usersWithMessages$fi === void 0 ? void 0 : _usersWithMessages$fi.name) || 'Anonymous'
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-body",
+        children: [initialLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "Loading..."
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "messages",
+          children: messages.filter(function (m) {
+            return m.user_id === selectedUserId;
+          }).map(function (msg, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message-wrapper ".concat(msg.is_admin_reply ? 'sent' : 'received'),
+              onMouseLeave: function onMouseLeave() {
+                return setMenuVisible(null);
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "message-content",
+                  children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                    className: "image-attachment",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: "http://127.0.0.1:8000/storage/".concat(msg.image),
+                      alt: "Chat Image"
+                    }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                      children: msg.message
+                    })]
+                  }), msg.message && msg.message !== '[Image]' && !msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                    children: msg.message
+                  })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
-                  children: new Date(msg.created_at).toLocaleTimeString()
+                  children: new Date(msg.created_at).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })
                 }), msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                   className: "message-menu",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
@@ -19442,47 +19506,56 @@ function AdminChat() {
                     })
                   })]
                 })]
-              }, index);
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "chat-footer",
-            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "image-preview",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: imagePreview,
-                alt: "Preview"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
-                className: "remove-image",
-                onClick: removeImage
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "input-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
-                className: "add-image-icon",
-                onClick: handleImageClick,
-                title: "Add Image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "file",
-                accept: "image/*",
-                ref: fileInputRef,
-                onChange: handleImageChange,
-                style: {
-                  display: 'none'
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "text",
-                value: reply,
-                onChange: function onChange(e) {
-                  return setReply(e.target.value);
-                },
-                placeholder: "Type your reply..."
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                onClick: handleReply,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
-              })]
+              })
+            }, msg.id || index);
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-footer",
+        children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "file-preview",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "preview-image-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: imagePreview,
+              alt: "Preview"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "remove-file",
+              onClick: handleRemoveImage,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
+                size: 14
+              })
             })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+            className: "file-upload",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperclip, {
+              size: 20
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "file",
+              accept: "image/*",
+              ref: fileInputRef,
+              onChange: handleImageChange,
+              style: {
+                display: 'none'
+              }
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: reply,
+            onChange: function onChange(e) {
+              return setReply(e.target.value);
+            },
+            placeholder: "Type your reply..."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleReply,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {
+              size: 20
+            })
           })]
-        })
+        })]
       })]
     })]
   });
@@ -34202,8 +34275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _sass_components_chatbot_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/chatbot.scss */ "./resources/sass/components/chatbot.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -34211,256 +34283,364 @@ function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArra
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 
 
 
 
-
+var fetchFast = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(url) {
+    var options,
+      defaultHeaders,
+      response,
+      _args = arguments;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          options = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
+          defaultHeaders = {
+            'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken')),
+            'Content-Type': 'application/json'
+          };
+          _context.next = 4;
+          return fetch(url, _objectSpread(_objectSpread({}, options), {}, {
+            headers: _objectSpread(_objectSpread({}, defaultHeaders), options.headers)
+          }));
+        case 4:
+          response = _context.sent;
+          if (response.ok) {
+            _context.next = 7;
+            break;
+          }
+          throw new Error("HTTP error! status: ".concat(response.status));
+        case 7:
+          return _context.abrupt("return", response.json());
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function fetchFast(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
 function Chatbot() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
     setIsOpen = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    faqs = _useState4[0],
-    setFaqs = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    showChat = _useState4[0],
+    setShowChat = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    messages = _useState6[0],
-    setMessages = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    showFaqs = _useState6[0],
+    setShowFaqs = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState8 = _slicedToArray(_useState7, 2),
-    input = _useState8[0],
-    setInput = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    conversations = _useState8[0],
+    setConversations = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState10 = _slicedToArray(_useState9, 2),
-    image = _useState10[0],
-    setImage = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    filteredConversations = _useState10[0],
+    setFilteredConversations = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState12 = _slicedToArray(_useState11, 2),
-    imagePreview = _useState12[0],
-    setImagePreview = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    searchQuery = _useState12[0],
+    setSearchQuery = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState14 = _slicedToArray(_useState13, 2),
-    view = _useState14[0],
-    setView = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    faqs = _useState14[0],
+    setFaqs = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState16 = _slicedToArray(_useState15, 2),
-    selectedFaq = _useState16[0],
-    setSelectedFaq = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    messages = _useState16[0],
+    setMessages = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState18 = _slicedToArray(_useState17, 2),
-    menuVisible = _useState18[0],
-    setMenuVisible = _useState18[1];
+    input = _useState18[0],
+    setInput = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState20 = _slicedToArray(_useState19, 2),
+    file = _useState20[0],
+    setFile = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState22 = _slicedToArray(_useState21, 2),
+    filePreview = _useState22[0],
+    setFilePreview = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    error = _useState24[0],
+    setError = _useState24[1];
   var fileInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var getAuthHeaders = function getAuthHeaders() {
-    var token = localStorage.getItem('LaravelPassportToken');
-    if (!token) {
-      throw new Error('No authentication token found. Please log in.');
-    }
-    return {
-      'Authorization': "Bearer ".concat(token)
-    };
-  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isOpen) {
+      fetchConversations();
       fetchFaqs();
-      if (view === 'chat') {
+      if (showChat) {
         fetchMessages();
-        var intervalId = setInterval(function () {
-          fetchMessages();
-        }, 5000);
+        var intervalId = setInterval(fetchMessages, 5000);
         return function () {
           return clearInterval(intervalId);
         };
       }
     }
-  }, [isOpen, view]);
-  var fetchFaqs = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var response;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/helpandsupport', {
-              headers: getAuthHeaders()
-            });
-          case 3:
-            response = _context.sent;
-            setFaqs(response.data);
-            _context.next = 10;
-            break;
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            console.error('Error fetching FAQs:', _context.t0);
-          case 10:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee, null, [[0, 7]]);
-    }));
-    return function fetchFaqs() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  var fetchMessages = /*#__PURE__*/function () {
+  }, [isOpen, showChat]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var filtered = conversations.filter(function (conversation) {
+      return conversation.name.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setFilteredConversations(filtered);
+  }, [searchQuery, conversations]);
+  var fetchConversations = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var response;
+      var response, userMessages, supportConversation, faqConversation, conversationList;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://127.0.0.1:8000/api/chat/customer', {
-              headers: getAuthHeaders()
-            });
+            return fetchFast('http://127.0.0.1:8000/api/chat/customer');
           case 3:
             response = _context2.sent;
-            setMessages(response.data);
-            _context2.next = 10;
+            userMessages = response.filter(function (msg) {
+              return !msg.deleted_for;
+            });
+            supportConversation = {
+              id: 1,
+              name: 'Vero Help Support',
+              lastMessage: userMessages.length > 0 ? userMessages[userMessages.length - 1].message : 'Start a conversation',
+              timestamp: userMessages.length > 0 ? new Date(userMessages[userMessages.length - 1].created_at).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              }) : '',
+              unread: 0,
+              type: 'chat'
+            };
+            faqConversation = {
+              id: 2,
+              name: 'FAQs',
+              lastMessage: 'View frequently asked questions',
+              timestamp: '',
+              unread: 0,
+              type: 'faq'
+            };
+            conversationList = [supportConversation, faqConversation];
+            setConversations(conversationList);
+            setFilteredConversations(conversationList);
+            setError(null);
+            _context2.next = 17;
             break;
-          case 7:
-            _context2.prev = 7;
+          case 13:
+            _context2.prev = 13;
             _context2.t0 = _context2["catch"](0);
-            console.error('Error fetching messages:', _context2.t0);
-          case 10:
+            console.error('Error fetching conversations:', _context2.t0);
+            setError('Failed to load conversations. Please try again later.');
+          case 17:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 7]]);
+      }, _callee2, null, [[0, 13]]);
     }));
-    return function fetchMessages() {
+    return function fetchConversations() {
       return _ref2.apply(this, arguments);
     };
   }();
-  var handleFaqClick = function handleFaqClick(faq) {
-    setSelectedFaq(faq);
-  };
-  var handleImageClick = function handleImageClick() {
-    fileInputRef.current.click();
-  };
-  var handleImageChange = function handleImageChange(e) {
-    var file = e.target.files[0];
-    if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
-  var removeImage = function removeImage() {
-    setImage(null);
-    setImagePreview(null);
-    fileInputRef.current.value = '';
-  };
-  var handleSendMessage = /*#__PURE__*/function () {
+  var fetchFaqs = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var formData, response, _error$response, _error$response2, details, errorMessage, _error$response3;
+      var response;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            if (!(!input.trim() && !image)) {
-              _context3.next = 2;
-              break;
-            }
-            return _context3.abrupt("return");
-          case 2:
-            _context3.prev = 2;
-            formData = new FormData();
-            if (input.trim()) formData.append('message', input);
-            if (image) formData.append('image', image);
-            console.log('Sending FormData:', {
-              message: input,
-              image: image
-            });
-            _context3.next = 9;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('http://127.0.0.1:8000/api/chat/send', formData, {
-              headers: _objectSpread(_objectSpread({}, getAuthHeaders()), {}, {
-                'Content-Type': 'multipart/form-data'
-              })
-            });
-          case 9:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return fetchFast('http://127.0.0.1:8000/api/helpandsupport');
+          case 3:
             response = _context3.sent;
-            setMessages(function (prev) {
-              return [].concat(_toConsumableArray(prev), [response.data.data]);
-            });
-            setInput('');
-            setImage(null);
-            setImagePreview(null);
-            _context3.next = 20;
-            break;
-          case 16:
-            _context3.prev = 16;
-            _context3.t0 = _context3["catch"](2);
-            console.error('Error sending message:', ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
-            if (((_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status) === 422) {
-              details = _context3.t0.response.data.details;
-              errorMessage = Object.values(details).flat().join(' ');
-              alert('Validation failed: ' + errorMessage);
+            if (Array.isArray(response)) {
+              setFaqs(response);
             } else {
-              alert('Failed to send message: ' + (((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.error) || _context3.t0.message));
+              console.warn('FAQs response is not an array:', response);
+              setFaqs([]);
             }
-          case 20:
+            setError(null);
+            _context3.next = 12;
+            break;
+          case 8:
+            _context3.prev = 8;
+            _context3.t0 = _context3["catch"](0);
+            console.error('Error fetching FAQs:', _context3.t0);
+            setError('Failed to load FAQs. Please try again later.');
+          case 12:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[2, 16]]);
+      }, _callee3, null, [[0, 8]]);
     }));
-    return function handleSendMessage() {
+    return function fetchFaqs() {
       return _ref3.apply(this, arguments);
     };
   }();
-  var handleDelete = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(messageId) {
-      var _error$response4, _error$response5;
+  var fetchMessages = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var response;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
             _context4.prev = 0;
             _context4.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"]("http://127.0.0.1:8000/api/chat/message/".concat(messageId), {
-              headers: getAuthHeaders()
-            });
+            return fetchFast('http://127.0.0.1:8000/api/chat/customer');
           case 3:
-            setMessages(function (prev) {
-              return prev.filter(function (msg) {
-                return msg.id !== messageId;
-              });
-            });
-            setMenuVisible(null);
-            _context4.next = 11;
+            response = _context4.sent;
+            setMessages(response);
+            setError(null);
+            _context4.next = 12;
             break;
-          case 7:
-            _context4.prev = 7;
+          case 8:
+            _context4.prev = 8;
             _context4.t0 = _context4["catch"](0);
-            console.error('Error deleting message:', ((_error$response4 = _context4.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data) || _context4.t0.message);
-            alert('Failed to delete message: ' + (((_error$response5 = _context4.t0.response) === null || _error$response5 === void 0 || (_error$response5 = _error$response5.data) === null || _error$response5 === void 0 ? void 0 : _error$response5.error) || _context4.t0.message));
-          case 11:
+            console.error('Error fetching messages:', _context4.t0);
+            setError('Failed to load messages. Please try again later.');
+          case 12:
           case "end":
             return _context4.stop();
         }
-      }, _callee4, null, [[0, 7]]);
+      }, _callee4, null, [[0, 8]]);
     }));
-    return function handleDelete(_x) {
+    return function fetchMessages() {
       return _ref4.apply(this, arguments);
     };
   }();
+  var handleFaqClick = function handleFaqClick(faq) {
+    setShowFaqs(false);
+    setShowChat(true);
+    setMessages(function (prev) {
+      return [].concat(_toConsumableArray(prev), [{
+        message: faq.question,
+        is_admin_reply: false,
+        created_at: new Date()
+      }, {
+        message: faq.answer,
+        is_admin_reply: true,
+        created_at: new Date()
+      }]);
+    });
+  };
+  var handleFileChange = function handleFileChange(e) {
+    var selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      var previewUrl = URL.createObjectURL(selectedFile);
+      setFilePreview(previewUrl);
+    }
+  };
+  var handleRemoveFile = function handleRemoveFile() {
+    setFile(null);
+    setFilePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+  var handleSendMessage = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+      var formData, response, result, newMessage;
+      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+        while (1) switch (_context5.prev = _context5.next) {
+          case 0:
+            if (!(!input.trim() && !file)) {
+              _context5.next = 3;
+              break;
+            }
+            setError('Please enter a message or attach a file.');
+            return _context5.abrupt("return");
+          case 3:
+            _context5.prev = 3;
+            formData = new FormData();
+            formData.append('message', input || '');
+            if (file) {
+              formData.append('image', file);
+            }
+            _context5.next = 9;
+            return fetch('http://127.0.0.1:8000/api/chat/send', {
+              method: 'POST',
+              headers: {
+                'Authorization': "Bearer ".concat(localStorage.getItem('LaravelPassportToken'))
+              },
+              body: formData
+            });
+          case 9:
+            response = _context5.sent;
+            if (response.ok) {
+              _context5.next = 12;
+              break;
+            }
+            throw new Error("HTTP error! status: ".concat(response.status));
+          case 12:
+            _context5.next = 14;
+            return response.json();
+          case 14:
+            result = _context5.sent;
+            newMessage = _objectSpread(_objectSpread({}, result.data), {}, {
+              attachmentUrl: result.data.attachment_path ? "http://127.0.0.1:8000/storage/".concat(result.data.attachment_path.replace('public/', '')) : null
+            });
+            setMessages(function (prev) {
+              return [].concat(_toConsumableArray(prev), [newMessage]);
+            });
+            setInput('');
+            setFile(null);
+            setFilePreview(null);
+            if (fileInputRef.current) {
+              fileInputRef.current.value = '';
+            }
+            setError(null);
+            fetchConversations();
+            _context5.next = 29;
+            break;
+          case 25:
+            _context5.prev = 25;
+            _context5.t0 = _context5["catch"](3);
+            console.error('Error sending message:', _context5.t0);
+            setError('Failed to send message. Please try again later.');
+          case 29:
+          case "end":
+            return _context5.stop();
+        }
+      }, _callee5, null, [[3, 25]]);
+    }));
+    return function handleSendMessage() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+  var handleCloseChat = function handleCloseChat() {
+    setIsOpen(false);
+    setShowChat(false);
+    setShowFaqs(false);
+    setSearchQuery('');
+    setFile(null);
+    setFilePreview(null);
+    setInput('');
+  };
+  var isImageAttachment = function isImageAttachment(attachmentPath) {
+    if (!attachmentPath) return false;
+    var imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    var extension = attachmentPath.split('.').pop().toLowerCase();
+    return imageExtensions.includes(extension);
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "chatbot",
     children: [!isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -34468,148 +34648,218 @@ function Chatbot() {
       onClick: function onClick() {
         return setIsOpen(true);
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaCommentAlt, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaCommentAlt, {
         size: 30
       })
-    }), isOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    }), isOpen && !showChat && !showFaqs && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "conversations-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "Chats"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: handleCloseChat,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTimes, {
+            size: 20
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "search-bar",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaSearch, {
+          size: 16
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          placeholder: "Search...",
+          value: searchQuery,
+          onChange: function onChange(e) {
+            return setSearchQuery(e.target.value);
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "conversations-list",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), filteredConversations.length > 0 ? filteredConversations.map(function (conversation) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "conversation-item",
+            onClick: function onClick() {
+              if (conversation.type === 'chat') {
+                setShowChat(true);
+              } else {
+                setShowFaqs(true);
+              }
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "user-avatar ".concat(conversation.type === 'chat' ? 'support-team-avatar' : 'faq-avatar')
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "conversation-info",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "conversation-name",
+                children: conversation.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "last-message",
+                children: conversation.lastMessage
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "timestamp",
+              children: conversation.timestamp
+            })]
+          }, conversation.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "no-conversations",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No conversations found."
+          })
+        })]
+      })]
+    }), isOpen && showFaqs && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "chat-window",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "chat-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-          children: view ? view === 'faqs' ? 'FAQs' : 'Contact Support' : 'Support Options'
-        }), view && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
           onClick: function onClick() {
-            setView(null);
-            setSelectedFaq(null);
+            return setShowFaqs(false);
           },
-          children: "\u2190"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-          onClick: function onClick() {
-            setIsOpen(false);
-            setView(null);
-            setSelectedFaq(null);
-          },
-          children: "X"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "chat-body",
-        children: !view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "options-list",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "option-item",
-            onClick: function onClick() {
-              return setView('faqs');
-            },
-            children: "FAQs"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "option-item",
-            onClick: function onClick() {
-              return setView('chat');
-            },
-            children: "Contact Support"
-          })]
-        }) : view === 'faqs' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "faq-section",
-          children: selectedFaq ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "faq-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "faq-question",
-              children: selectedFaq.question
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "faq-answer",
-              children: selectedFaq.answer
-            })]
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "faq-list",
-            children: faqs.length > 0 ? faqs.map(function (faq) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "faq-item",
-                onClick: function onClick() {
-                  return handleFaqClick(faq);
-                },
-                children: faq.question
-              }, faq.id);
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-              children: "No FAQs available."
-            })
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaArrowLeft, {
+            size: 20
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "chat-section",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "messages",
-            children: messages.map(function (msg, index) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                className: "message ".concat(msg.is_admin_reply ? 'received' : 'sent'),
-                onMouseLeave: function onMouseLeave() {
-                  return setMenuVisible(null);
-                },
-                children: [msg.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                  src: "/storage/".concat(msg.image),
-                  alt: "Chat Image",
-                  className: "chat-image"
-                }), msg.message && msg.message !== '[Image]' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                  children: msg.message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "chat-header-info",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: "FAQs"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-body",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "faq-list",
+          children: faqs.length > 0 ? faqs.map(function (faq) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "faq-item",
+              onClick: function onClick() {
+                return handleFaqClick(faq);
+              },
+              children: faq.question
+            }, faq.id);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: "No FAQs available."
+          })
+        })]
+      })]
+    }), isOpen && showChat && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "chat-window",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setShowChat(false);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaArrowLeft, {
+            size: 20
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "chat-header-info",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+            children: "Vero Help Support"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-body",
+        children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "error-message",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: error
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "messages",
+          children: messages.map(function (msg, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "message-wrapper ".concat(msg.is_admin_reply ? 'received' : 'sent'),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                className: "message",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "message-content",
+                  children: isImageAttachment(msg.attachment_path) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                    className: "image-attachment",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: "http://127.0.0.1:8000/storage/".concat(msg.attachment_path.replace('public/', '')),
+                      alt: "Attachment"
+                    }), msg.message && msg.message !== '' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+                      children: msg.message
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+                    children: [msg.message, msg.attachment_path && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+                      href: "http://127.0.0.1:8000/storage/".concat(msg.attachment_path.replace('public/', '')),
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      className: "attachment-link",
+                      children: "(View Attachment)"
+                    })]
+                  })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
-                  children: new Date(msg.created_at).toLocaleTimeString()
-                }), !msg.is_admin_reply && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "message-menu",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEllipsisH, {
-                    className: "menu-icon",
-                    onClick: function onClick() {
-                      return setMenuVisible(msg.id === menuVisible ? null : msg.id);
-                    }
-                  }), menuVisible === msg.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "menu-dropdown",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                      className: "delete-option",
-                      onClick: function onClick() {
-                        return handleDelete(msg.id);
-                      },
-                      children: "Delete Message"
-                    })
-                  })]
+                  children: new Date(msg.created_at).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })
                 })]
-              }, index);
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "chat-footer",
-            children: [imagePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "image-preview",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                src: imagePreview,
-                alt: "Preview"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTimes, {
-                className: "remove-image",
-                onClick: removeImage
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "input-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPlus, {
-                className: "add-image-icon",
-                onClick: handleImageClick,
-                title: "Add Image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "file",
-                accept: "image/*",
-                ref: fileInputRef,
-                onChange: handleImageChange,
-                style: {
-                  display: 'none'
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                type: "text",
-                value: input,
-                onChange: function onChange(e) {
-                  return setInput(e.target.value);
-                },
-                placeholder: "Type your question..."
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                onClick: handleSendMessage,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaPaperPlane, {})
-              })]
+              })
+            }, msg.id || index);
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "chat-footer",
+        children: [filePreview && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "file-preview",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "preview-image-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+              src: filePreview,
+              alt: "Preview"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "remove-file",
+              onClick: handleRemoveFile,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTimes, {
+                size: 14
+              })
             })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "input-container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
+            className: "file-upload",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaPaperclip, {
+              size: 20
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "file",
+              ref: fileInputRef,
+              onChange: handleFileChange,
+              style: {
+                display: 'none'
+              },
+              accept: "image/*"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: input,
+            onChange: function onChange(e) {
+              return setInput(e.target.value);
+            },
+            placeholder: "Type something..."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: handleSendMessage,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaPaperPlane, {
+              size: 20
+            })
           })]
-        })
+        })]
       })]
     })]
   });
@@ -39090,13 +39340,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var _sass_components_shopgrid_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../sass/components/shopgrid.scss */ "./resources/sass/components/shopgrid.scss");
 /* harmony import */ var _CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../CartModals/orders_cart */ "./resources/js/components/customerside/CartModals/orders_cart.js");
-/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tabler/icons-react */ "./node_modules/@tabler/icons-react/dist/esm/icons/IconStar.mjs");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -39118,25 +39370,25 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 var renderStars = function renderStars(rating) {
   var totalStars = 5;
   var parsedRating = parseFloat(rating) || 0;
   var filledStars = Math.min(Math.max(Math.round(parsedRating), 0), 5);
-  var emptyStars = totalStars - filledStars;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "shop-grid-stars",
-    children: [Array(Math.max(filledStars, 0)).fill().map(function (_, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        size: 18,
+    children: [Array(filledStars).fill().map(function (_, i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        size: 16,
         fill: "#ff0000",
         color: "#ff0000"
-      }, "filled-".concat(index));
-    }), Array(Math.max(emptyStars, 0)).fill().map(function (_, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        size: 18,
+      }, "filled-".concat(i));
+    }), Array(totalStars - filledStars).fill().map(function (_, i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        size: 16,
         fill: "none",
         color: "#ccc"
-      }, "empty-".concat(index));
+      }, "empty-".concat(i));
     })]
   });
 };
@@ -39150,7 +39402,7 @@ var ShopGrid = function ShopGrid(_ref) {
     fetchReviews = _ref.fetchReviews,
     cartCount = _ref.cartCount,
     setCartCount = _ref.setCartCount;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(15),
     _useState2 = _slicedToArray(_useState, 2),
     visibleCount = _useState2[0],
@@ -39159,14 +39411,10 @@ var ShopGrid = function ShopGrid(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     sortBy = _useState4[0],
     setSortBy = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
-    sortedProducts = _useState6[0],
-    setSortedProducts = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState8 = _slicedToArray(_useState7, 2),
-    isCartOpen = _useState8[0],
-    setIsCartOpen = _useState8[1];
+    isCartOpen = _useState6[0],
+    setIsCartOpen = _useState6[1];
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
     return token ? {
@@ -39176,8 +39424,6 @@ var ShopGrid = function ShopGrid(_ref) {
       'Content-Type': 'application/json'
     };
   };
-
-  // Function to fetch cart count
   var fetchCartCount = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       var token, response, data;
@@ -39204,6 +39450,9 @@ var ShopGrid = function ShopGrid(_ref) {
             data = _context.sent;
             if (response.ok) {
               setCartCount(data.count || 0);
+            } else if (response.status === 401) {
+              antd__WEBPACK_IMPORTED_MODULE_7__["default"].error('Session expired. Please log in again.');
+              navigate('/login');
             }
             _context.next = 16;
             break;
@@ -39221,14 +39470,8 @@ var ShopGrid = function ShopGrid(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // Fetch initial cart count
-    fetchCartCount();
-    console.log('Ratings in ShopGrid:', ratings);
-    if (!Array.isArray(products)) {
-      setSortedProducts([]);
-      return;
-    }
+  var sortedProducts = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    if (!Array.isArray(products)) return [];
     var sorted = _toConsumableArray(products);
     switch (sortBy) {
       case 'price-low':
@@ -39238,7 +39481,7 @@ var ShopGrid = function ShopGrid(_ref) {
         break;
       case 'price-high':
         sorted.sort(function (a, b) {
-          return parseFloat(b.price) - parseFloat(b.price);
+          return parseFloat(b.price) - parseFloat(a.price);
         });
         break;
       case 'newest':
@@ -39246,51 +39489,35 @@ var ShopGrid = function ShopGrid(_ref) {
           return b.id - a.id;
         });
         break;
-      default:
-        break;
     }
-    setSortedProducts(sorted);
-  }, [sortBy, products, ratings]);
-  var handleShowMore = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var newVisibleCount, newProductIds;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
-          case 0:
-            newVisibleCount = visibleCount + 5;
-            newProductIds = sortedProducts.slice(visibleCount, newVisibleCount).map(function (p) {
-              return p.id;
-            });
-            if (!(newProductIds.length > 0)) {
-              _context2.next = 5;
-              break;
-            }
+    return sorted;
+  }, [products, sortBy]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCartCount();
+  }, []);
+  var handleShowMore = (0,lodash__WEBPACK_IMPORTED_MODULE_3__.debounce)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var newVisibleCount, newProductIds;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          newVisibleCount = visibleCount + 5;
+          newProductIds = sortedProducts.slice(visibleCount, newVisibleCount).map(function (p) {
+            return p.id;
+          });
+          if (!(newProductIds.length > 0)) {
             _context2.next = 5;
-            return fetchReviews(newProductIds);
-          case 5:
-            setVisibleCount(newVisibleCount);
-          case 6:
-          case "end":
-            return _context2.stop();
-        }
-      }, _callee2);
-    }));
-    return function handleShowMore() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-  var handleBackToTop = function handleBackToTop() {
-    return window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-  var handleSortChange = function handleSortChange(e) {
-    return setSortBy(e.target.value);
-  };
-  var toggleCart = function toggleCart() {
-    return setIsCartOpen(!isCartOpen);
-  };
+            break;
+          }
+          _context2.next = 5;
+          return fetchReviews(newProductIds);
+        case 5:
+          setVisibleCount(newVisibleCount);
+        case 6:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2);
+  })), 300);
   var handleAddToCart = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(productId) {
       var response, data;
@@ -39301,7 +39528,7 @@ var ShopGrid = function ShopGrid(_ref) {
               _context3.next = 4;
               break;
             }
-            antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
               content: 'Please log in to add items to your cart.',
               style: {
                 marginTop: '20px'
@@ -39336,25 +39563,24 @@ var ShopGrid = function ShopGrid(_ref) {
             _context3.next = 15;
             return fetchCartCount();
           case 15:
-            antd__WEBPACK_IMPORTED_MODULE_6__["default"].success({
-              content: 'Item added to cart successfully!',
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].success({
+              content: 'Item added to cart!',
               style: {
                 marginTop: '20px'
               }
             });
-            _context3.next = 22;
+            _context3.next = 21;
             break;
           case 18:
             _context3.prev = 18;
             _context3.t0 = _context3["catch"](4);
-            console.error('Error adding to cart:', _context3.t0);
-            antd__WEBPACK_IMPORTED_MODULE_6__["default"].error({
+            antd__WEBPACK_IMPORTED_MODULE_7__["default"].error({
               content: "Failed to add item to cart: ".concat(_context3.t0.message),
               style: {
                 marginTop: '20px'
               }
             });
-          case 22:
+          case 21:
           case "end":
             return _context3.stop();
         }
@@ -39364,145 +39590,136 @@ var ShopGrid = function ShopGrid(_ref) {
       return _ref4.apply(this, arguments);
     };
   }();
-  if (loading || !Array.isArray(products)) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "shop-grid-wrapper",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "shop-grid-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "shop-grid-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            className: "available-products",
-            children: "Available Products: Loading..."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "sort-view-container",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              children: "Sort by"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-              value: sortBy,
-              onChange: handleSortChange,
-              disabled: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "newest",
-                children: "Newest"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "price-high",
-                children: "High to Low"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "price-low",
-                children: "Low to High"
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "shop-grid-products",
           children: Array.from({
             length: 15
           }).map(function (_, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "shop-grid-card skeleton",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "skeleton-image"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "shop-grid-info",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "skeleton-stars"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "skeleton-name"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "skeleton-price"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "skeleton-button"
                 })]
               })]
             }, index);
           })
-        })]
+        })
       })
     });
   }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "shop-grid-wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "shop-grid-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "shop-grid-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
           className: "available-products",
-          children: ["Available Products: ", sortedProducts.length]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          children: ["Products: ", sortedProducts.length]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "sort-view-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            htmlFor: "sort-select",
             children: "Sort by"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+            id: "sort-select",
             value: sortBy,
-            onChange: handleSortChange,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            onChange: function onChange(e) {
+              return setSortBy(e.target.value);
+            },
+            "aria-label": "Sort products",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
               value: "newest",
               children: "Newest"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
               value: "price-high",
-              children: "High to Low"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              children: "Price: High to Low"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
               value: "price-low",
-              children: "Low to High"
+              children: "Price: Low to High"
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "shop-grid-products",
         children: sortedProducts.slice(0, visibleCount).map(function (product) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "shop-grid-card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
               to: "/shop/product/".concat(product.id),
               className: "product-link",
-              children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              children: product.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "product-image-container",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                   src: product.product_img,
                   alt: product.product_name,
-                  className: "product-image"
+                  className: "product-image",
+                  onError: function onError(e) {
+                    return e.target.src = '/fallback-image.png';
+                  }
                 })
-              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "no-image-placeholder",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                   children: "No Image"
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "shop-grid-info",
-              children: [renderStars(ratings[product.id] || 0), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+              children: [renderStars(ratings[product.id] || 0), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
                 className: "product-name",
                 children: product.product_name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
                 className: "product-price",
                 children: ["\u20B1", parseFloat(product.price).toLocaleString('en-US', {
                   minimumFractionDigits: 2
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                 className: "shop-grid-add-to-cart",
                 onClick: function onClick() {
                   return handleAddToCart(product.id);
                 },
+                "aria-label": "Add ".concat(product.product_name, " to cart"),
                 children: "Add to cart"
               })]
             })]
           }, product.id);
         })
-      }), visibleCount < sortedProducts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      }), visibleCount < sortedProducts.length && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "shop-grid-show-more",
         onClick: handleShowMore,
+        "aria-label": "Show more products",
         children: "Show more"
-      }), visibleCount > 15 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+      }), visibleCount > 15 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
         className: "shop-grid-back-to-top",
-        onClick: handleBackToTop,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+        onClick: function onClick() {
+          return window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        },
+        "aria-label": "Back to top",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
           className: "arrow",
           children: "\u2191"
         }), " Top"]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CartModals_orders_cart__WEBPACK_IMPORTED_MODULE_2__["default"], {
       isOpen: isCartOpen,
       onClose: function onClose() {
         return setIsCartOpen(false);
@@ -49846,7 +50063,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat-container {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n\n.chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.admin-chat {\n  width: 350px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n\n.chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n\n.error {\n  color: red;\n  text-align: center;\n  margin: 5px 0;\n  font-size: 12px;\n}\n\n.chat-body {\n  flex: 1;\n  display: flex;\n  overflow: hidden;\n}\n\n.user-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 5px;\n  background-color: #f9f9f9;\n}\n.user-list .user-item {\n  display: flex;\n  align-items: center;\n  padding: 8px;\n  margin: 3px 0;\n  background-color: #f1f1f1;\n  border-radius: 3px;\n  cursor: pointer;\n  font-size: 14px;\n}\n.user-list .user-item .profile-pic {\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  margin-right: 10px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.user-list .user-item span {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.user-list .user-item:hover {\n  background-color: #e0e0e0;\n}\n.user-list p {\n  text-align: center;\n  color: #666;\n  font-size: 12px;\n  margin: 10px 0;\n}\n\n.chat-area {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  padding: 5px;\n}\n.chat-area .messages {\n  flex: 1;\n  max-height: 340px;\n  overflow-y: auto;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n}\n.chat-area .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 8px 12px;\n  border-radius: 5px;\n  max-width: 80%;\n  font-size: 14px;\n}\n.chat-area .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n}\n.chat-area .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chat-area .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chat-area .messages .message span {\n  word-wrap: break-word;\n}\n.chat-area .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n  margin-top: 2px;\n}\n.chat-area .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chat-area .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chat-area .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chat-area .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chat-area .messages .message:hover .message-menu {\n  display: block;\n}\n.chat-area .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chat-area .chat-footer {\n  padding: 5px 0;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n}\n.chat-area .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chat-area .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chat-area .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chat-area .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chat-area .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chat-area .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chat-area .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chat-area .chat-footer input[type=text] {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chat-area .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chat-area .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-chat {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n  font-family: \"Arial\", sans-serif;\n}\n.admin-chat .chat-icon {\n  background-color: #ff4949;\n  color: white;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  transition: transform 0.2s ease-in-out;\n}\n.admin-chat .chat-icon:hover {\n  transform: scale(1.1);\n}\n.admin-chat .conversations-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .conversations-window .conversations-header {\n  padding: 15px 20px;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #e0e0e0;\n}\n.admin-chat .conversations-window .conversations-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 600;\n  color: #333;\n}\n.admin-chat .conversations-window .conversations-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.admin-chat .conversations-window .conversations-header button:hover {\n  color: #ff4949;\n}\n.admin-chat .conversations-window .conversations-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 0 20px;\n  background-color: white;\n}\n.admin-chat .conversations-window .conversations-list .error-message,\n.admin-chat .conversations-window .conversations-list .no-conversations {\n  padding: 20px;\n  text-align: center;\n}\n.admin-chat .conversations-window .conversations-list .error-message p,\n.admin-chat .conversations-window .conversations-list .no-conversations p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item {\n  display: flex;\n  align-items: center;\n  padding: 12px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #e0e0e0;\n  transition: background-color 0.2s ease;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item:hover {\n  background-color: #f9f9f9;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item .user-avatar {\n  width: 40px;\n  height: 40px;\n  background-color: #ccc;\n  border-radius: 50%;\n  margin-right: 12px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item .conversation-info {\n  flex: 1;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item .conversation-info .conversation-name {\n  font-size: 16px;\n  font-weight: 500;\n  color: #333;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item .conversation-info .last-message {\n  font-size: 14px;\n  color: #666;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.admin-chat .conversations-window .conversations-list .conversation-item .timestamp {\n  font-size: 12px;\n  color: #999;\n}\n.admin-chat .chat-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.admin-chat .chat-window .chat-header {\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid #e0e0e0;\n}\n.admin-chat .chat-window .chat-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  margin-right: 15px;\n  transition: color 0.2s ease;\n}\n.admin-chat .chat-window .chat-header button:hover {\n  color: #ff4949;\n}\n.admin-chat .chat-window .chat-header .chat-header-info {\n  flex: 1;\n  text-align: left;\n}\n.admin-chat .chat-window .chat-header .chat-header-info h3 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333;\n}\n.admin-chat .chat-window .chat-body {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.admin-chat .chat-window .chat-body .error-message {\n  padding: 20px;\n  text-align: center;\n}\n.admin-chat .chat-window .chat-body .error-message p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.admin-chat .chat-window .chat-body .messages {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper {\n  display: flex;\n  align-items: flex-end;\n  gap: 5px;\n  position: relative;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.sent {\n  justify-content: flex-end;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.sent .message {\n  background-color: #ff4949;\n  color: white;\n  align-self: flex-end;\n  border-bottom-right-radius: 5px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.sent small {\n  color: #999;\n  align-self: flex-end;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.received {\n  justify-content: flex-start;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.received .message {\n  background-color: #f0f0f0;\n  color: #333;\n  align-self: flex-start;\n  border-bottom-left-radius: 5px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper.received small {\n  color: #999;\n  align-self: flex-start;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message {\n  max-width: 70%;\n  padding: 10px 15px;\n  border-radius: 20px;\n  font-size: 14px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment img {\n  max-width: 200px;\n  max-height: 200px;\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span {\n  font-size: 14px;\n  word-break: break-word;\n  padding: 5px 10px;\n  border-radius: 15px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.sent {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.received {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message small {\n  font-size: 10px;\n  margin-top: 2px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message-menu {\n  position: relative;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message-menu .menu-icon {\n  cursor: pointer;\n  color: white;\n  margin-left: 5px;\n  font-size: 12px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message-menu .menu-dropdown {\n  position: absolute;\n  top: -40px;\n  right: 0;\n  background-color: white;\n  border: 1px solid #e0e0e0;\n  border-radius: 5px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message-menu .menu-dropdown .delete-option {\n  padding: 8px 12px;\n  background: none;\n  border: none;\n  color: #ff4949;\n  cursor: pointer;\n  font-size: 12px;\n}\n.admin-chat .chat-window .chat-body .messages .message-wrapper .message-menu .menu-dropdown .delete-option:hover {\n  background-color: #f0f0f0;\n}\n.admin-chat .chat-window .chat-footer {\n  padding: 10px 20px;\n  background-color: white;\n  border-radius: 0 0 20px 20px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.admin-chat .chat-window .chat-footer .file-preview {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  background-color: #f0f0f0;\n  padding: 5px 10px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.admin-chat .chat-window .chat-footer .file-preview .preview-image-container {\n  position: relative;\n}\n.admin-chat .chat-window .chat-footer .file-preview .preview-image-container img {\n  width: 40px;\n  height: 40px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.admin-chat .chat-window .chat-footer .file-preview .preview-image-container .remove-file {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #666;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.admin-chat .chat-window .chat-footer .file-preview .preview-image-container .remove-file:hover {\n  background-color: #555;\n}\n.admin-chat .chat-window .chat-footer .input-container {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.admin-chat .chat-window .chat-footer input {\n  flex: 1;\n  padding: 10px 15px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  transition: background-color 0.2s ease;\n}\n.admin-chat .chat-window .chat-footer input:focus {\n  background-color: #e0e0e0;\n}\n.admin-chat .chat-window .chat-footer .file-upload {\n  cursor: pointer;\n  color: #666;\n  transition: color 0.2s ease;\n}\n.admin-chat .chat-window .chat-footer .file-upload:hover {\n  color: #ff4949;\n}\n.admin-chat .chat-window .chat-footer button {\n  background-color: #ff4949;\n  color: white;\n  border: none;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: background-color 0.2s ease;\n}\n.admin-chat .chat-window .chat-footer button:hover {\n  background-color: #ff4949;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49942,7 +50159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n}\n.chatbot .chat-icon {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n}\n.chatbot .chat-window {\n  width: 300px;\n  height: 400px;\n  background-color: white;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-header {\n  background-color: #007bff;\n  color: white;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-shrink: 0;\n}\n.chatbot .chat-header h3 {\n  margin: 0;\n  font-size: 16px;\n}\n.chatbot .chat-header button {\n  background: none;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 16px;\n  margin-left: 10px;\n}\n.chatbot .chat-body {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .options-list {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .options-list .option-item {\n  padding: 10px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n  text-align: center;\n}\n.chatbot .options-list .option-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section {\n  flex: 1;\n  overflow-y: auto;\n}\n.chatbot .faq-section .faq-list .faq-item {\n  padding: 8px;\n  margin: 5px 0;\n  background-color: #f1f1f1;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.chatbot .faq-section .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .faq-section .faq-content {\n  padding: 10px;\n  background-color: #f9f9f9;\n  border-radius: 5px;\n}\n.chatbot .faq-section .faq-content .faq-question {\n  font-weight: bold;\n  margin-bottom: 5px;\n}\n.chatbot .faq-section .faq-content .faq-answer {\n  color: #333;\n}\n.chatbot .faq-section p {\n  text-align: center;\n  color: #666;\n  margin: 10px 0;\n}\n.chatbot .chat-section {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n.chatbot .chat-section .messages {\n  flex: 1;\n  overflow-y: auto;\n  padding: 10px;\n  padding-right: 15px;\n  box-sizing: border-box;\n  min-height: 0;\n}\n.chatbot .chat-section .messages .message {\n  position: relative;\n  margin: 5px 0;\n  padding: 10px;\n  border-radius: 5px;\n  max-width: 80%;\n}\n.chatbot .chat-section .messages .message.sent {\n  background-color: #007bff;\n  color: white;\n  align-self: flex-end;\n  margin-left: auto;\n}\n.chatbot .chat-section .messages .message.received {\n  background-color: #e0e0e0;\n  align-self: flex-start;\n}\n.chatbot .chat-section .messages .message .chat-image {\n  max-width: 100%;\n  max-height: 200px;\n  border-radius: 5px;\n  margin-bottom: 5px;\n}\n.chatbot .chat-section .messages .message small {\n  display: block;\n  font-size: 10px;\n  color: #666;\n}\n.chatbot .chat-section .messages .message .message-menu {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  display: none;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-icon {\n  color: #fff;\n  cursor: pointer;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown {\n  position: absolute;\n  top: 20px;\n  right: 0;\n  background: #fff;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n  z-index: 10;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option {\n  background: none;\n  border: none;\n  padding: 5px 10px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 12px;\n}\n.chatbot .chat-section .messages .message .message-menu .menu-dropdown .delete-option:hover {\n  background: #f0f0f0;\n}\n.chatbot .chat-section .messages .message:hover .message-menu {\n  display: block;\n}\n.chatbot .chat-section .messages .message.received .message-menu .menu-icon {\n  color: #666;\n}\n.chatbot .chat-section .chat-footer {\n  padding: 5px;\n  display: flex;\n  align-items: center;\n  border-top: 1px solid #ccc;\n  flex-shrink: 0;\n  background: white;\n  box-sizing: border-box;\n}\n.chatbot .chat-section .chat-footer .image-preview {\n  position: relative;\n  margin-right: 5px;\n  width: 30px;\n  height: 30px;\n}\n.chatbot .chat-section .chat-footer .image-preview img {\n  width: 100%;\n  height: 100%;\n  border-radius: 3px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image {\n  position: absolute;\n  top: -5px;\n  right: -5px;\n  color: #ff4444;\n  cursor: pointer;\n  font-size: 10px;\n  background: white;\n  border-radius: 50%;\n  padding: 1px;\n}\n.chatbot .chat-section .chat-footer .image-preview .remove-image:hover {\n  color: #cc0000;\n}\n.chatbot .chat-section .chat-footer .input-row {\n  display: flex;\n  align-items: center;\n  flex: 1;\n}\n.chatbot .chat-section .chat-footer .add-image-icon {\n  color: #007bff;\n  cursor: pointer;\n  margin-right: 5px;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer .add-image-icon:hover {\n  color: #0056b3;\n}\n.chatbot .chat-section .chat-footer input {\n  flex: 1;\n  padding: 5px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 14px;\n  margin-right: 5px;\n}\n.chatbot .chat-section .chat-footer button {\n  background: none;\n  border: none;\n  color: #007bff;\n  cursor: pointer;\n  font-size: 16px;\n}\n.chatbot .chat-section .chat-footer button:hover {\n  color: #0056b3;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chatbot {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  z-index: 1000;\n  font-family: \"Arial\", sans-serif;\n}\n.chatbot .chat-icon {\n  background-color: #ff4949;\n  color: white;\n  padding: 15px;\n  border-radius: 50%;\n  cursor: pointer;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n  transition: transform 0.2s ease-in-out;\n}\n.chatbot .chat-icon:hover {\n  transform: scale(1.1);\n}\n.chatbot .conversations-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .conversations-window .conversations-header {\n  padding: 15px 20px;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .conversations-window .conversations-header h3 {\n  margin: 0;\n  font-size: 18px;\n  font-weight: 600;\n  color: #333;\n}\n.chatbot .conversations-window .conversations-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  transition: color 0.2s ease;\n}\n.chatbot .conversations-window .conversations-header button:hover {\n  color: #ff4949;\n}\n.chatbot .conversations-window .search-bar {\n  padding: 10px 20px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  background-color: white;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .conversations-window .search-bar svg {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  color: #333;\n  transition: background-color 0.2s ease;\n}\n.chatbot .conversations-window .search-bar input::-moz-placeholder {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input::placeholder {\n  color: #999;\n}\n.chatbot .conversations-window .search-bar input:focus {\n  background-color: #e0e0e0;\n}\n.chatbot .conversations-window .conversations-list {\n  flex: 1;\n  overflow-y: auto;\n  padding: 0 20px;\n  background-color: white;\n}\n.chatbot .conversations-window .conversations-list .error-message,\n.chatbot .conversations-window .conversations-list .no-conversations {\n  padding: 20px;\n  text-align: center;\n}\n.chatbot .conversations-window .conversations-list .error-message p,\n.chatbot .conversations-window .conversations-list .no-conversations p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chatbot .conversations-window .conversations-list .conversation-item {\n  display: flex;\n  align-items: center;\n  padding: 12px 0;\n  cursor: pointer;\n  border-bottom: 1px solid #e0e0e0;\n  transition: background-color 0.2s ease;\n}\n.chatbot .conversations-window .conversations-list .conversation-item:hover {\n  background-color: #f9f9f9;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .user-avatar {\n  width: 40px;\n  height: 40px;\n  background-color: #ccc;\n  border-radius: 50%;\n  margin-right: 12px;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .support-team-avatar {\n  background-image: url(\"/images/Register_Logo copy.svg\");\n  background-size: cover;\n  background-position: center;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .faq-avatar {\n  background-image: url(\"https://www.shutterstock.com/image-vector/robot-head-speech-bubble-red-600nw-2483741073.jpg\");\n  background-size: cover;\n  background-position: center;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info {\n  flex: 1;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info .conversation-name {\n  font-size: 16px;\n  font-weight: 500;\n  color: #333;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .conversation-info .last-message {\n  font-size: 14px;\n  color: #666;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.chatbot .conversations-window .conversations-list .conversation-item .timestamp {\n  font-size: 12px;\n  color: #999;\n}\n.chatbot .chat-window {\n  width: 350px;\n  height: 500px;\n  background-color: white;\n  border-radius: 20px;\n  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);\n  display: flex;\n  flex-direction: column;\n}\n.chatbot .chat-window .chat-header {\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  background-color: white;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid #e0e0e0;\n}\n.chatbot .chat-window .chat-header button {\n  background: none;\n  border: none;\n  color: #666;\n  cursor: pointer;\n  margin-right: 15px;\n  transition: color 0.2s ease;\n}\n.chatbot .chat-window .chat-header button:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-header .chat-header-info {\n  flex: 1;\n  text-align: left;\n}\n.chatbot .chat-window .chat-header .chat-header-info h3 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333;\n}\n.chatbot .chat-window .chat-body {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.chatbot .chat-window .chat-body .error-message {\n  padding: 20px;\n  text-align: center;\n}\n.chatbot .chat-window .chat-body .error-message p {\n  font-size: 14px;\n  color: #666;\n  margin: 0;\n  line-height: 1.5;\n}\n.chatbot .chat-window .chat-body .faq-list {\n  margin-bottom: 0;\n}\n.chatbot .chat-window .chat-body .faq-list .faq-item {\n  background-color: #f0f0f0;\n  color: #333;\n  padding: 10px 15px;\n  margin: 10px 0;\n  border-radius: 15px;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n  font-size: 14px;\n  text-align: left;\n}\n.chatbot .chat-window .chat-body .faq-list .faq-item:hover {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-window .chat-body .messages {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper {\n  display: flex;\n  align-items: flex-end;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent {\n  justify-content: flex-end;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent .message {\n  background-color: #ff4949;\n  color: white;\n  align-self: flex-end;\n  border-bottom-right-radius: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.sent small {\n  color: #999;\n  align-self: flex-end;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received {\n  justify-content: flex-start;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received .message {\n  background-color: #f0f0f0;\n  color: #333;\n  align-self: flex-start;\n  border-bottom-left-radius: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper.received small {\n  color: #999;\n  align-self: flex-start;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message {\n  max-width: 70%;\n  padding: 10px 15px;\n  border-radius: 20px;\n  font-size: 14px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link {\n  text-decoration: underline;\n  margin-top: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.sent {\n  color: #ffffff;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.sent:hover {\n  color: #d0d0d0;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.received {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .attachment-link.received:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment img {\n  max-width: 200px;\n  max-height: 200px;\n  border-radius: 15px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span {\n  font-size: 14px;\n  word-break: break-word;\n  padding: 5px 10px;\n  border-radius: 15px;\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.sent {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message .message-content .image-attachment span.received {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.chatbot .chat-window .chat-body .messages .message-wrapper .message small {\n  font-size: 10px;\n  margin-top: 2px;\n}\n.chatbot .chat-window .chat-footer {\n  padding: 10px 20px;\n  background-color: white;\n  border-radius: 0 0 20px 20px;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.chatbot .chat-window .chat-footer .file-preview {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  background-color: #f0f0f0;\n  padding: 5px 10px;\n  border-radius: 10px;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container {\n  position: relative;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container img {\n  width: 40px;\n  height: 40px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container .remove-file {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  background-color: #666;\n  color: white;\n  border: none;\n  border-radius: 50%;\n  width: 20px;\n  height: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer .file-preview .preview-image-container .remove-file:hover {\n  background-color: #555;\n}\n.chatbot .chat-window .chat-footer .input-container {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.chatbot .chat-window .chat-footer input {\n  flex: 1;\n  padding: 10px 15px;\n  border: none;\n  background-color: #f0f0f0;\n  border-radius: 20px;\n  font-size: 14px;\n  outline: none;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer input:focus {\n  background-color: #e0e0e0;\n}\n.chatbot .chat-window .chat-footer .file-upload {\n  cursor: pointer;\n  color: #666;\n  transition: color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer .file-upload:hover {\n  color: #ff4949;\n}\n.chatbot .chat-window .chat-footer button {\n  background-color: #ff4949;\n  color: white;\n  border: none;\n  padding: 10px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: background-color 0.2s ease;\n}\n.chatbot .chat-window .chat-footer button:hover {\n  background-color: #ff4949;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50375,9 +50592,9 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-grid-wrapper {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #F5F5F5;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 30px 40px;\n  margin-top: 60px;\n  background-color: transparent;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 20px;\n  padding: 0;\n}\n\n.available-products {\n  font-size: 14px;\n  color: #666;\n  font-weight: 500;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 4px;\n}\n\n.sort-view-container label {\n  font-size: 12px;\n  color: #333;\n  text-transform: uppercase;\n  font-family: \"Jost\", sans-serif;\n}\n\n.sort-view-container select {\n  width: 130px;\n  padding: 4px 8px;\n  border-radius: 4px;\n  border: 1px solid #FF0000;\n  font-size: 12px;\n  color: #FF0000;\n  background-color: #fff;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23FF0000\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>');\n  background-repeat: no-repeat;\n  background-position: right 8px center;\n  background-size: 10px;\n  cursor: pointer;\n}\n\n.sort-view-container select:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.sort-view-container select:focus {\n  outline: none;\n  border-color: #FF0000;\n  box-shadow: 0 0 4px rgba(255, 0, 0, 0.3);\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 20px;\n  padding: 0;\n  justify-items: center;\n}\n\n.shop-grid-card {\n  background-color: #fff;\n  border-radius: 8px;\n  overflow: hidden;\n  width: 180px; /* Slightly reduced from 200px to fit smaller image */\n  height: 300px; /* Adjusted height for smaller image and clean layout */\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;\n  display: flex;\n  flex-direction: column;\n}\n\n.shop-grid-card.skeleton {\n  border: 1px solid #e5e7eb;\n  animation: pulse 1.5s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.skeleton-image {\n  width: 160px; /* Match the new product image size */\n  height: 160px;\n  background-color: #d1d5db;\n  border-radius: 4px 4px 0 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.skeleton-image::before {\n  content: \"\";\n  display: block;\n  width: 40px;\n  height: 40px;\n  background: url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 20\" fill=\"%23e5e7eb\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z\"/><path d=\"M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z\"/></svg>');\n  background-size: contain;\n}\n\n.skeleton-stars {\n  width: 80px;\n  height: 14px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-name {\n  width: 120px;\n  height: 18px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-price {\n  width: 80px;\n  height: 16px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n  margin: 0 auto 8px;\n}\n\n.skeleton-button {\n  width: 100%;\n  height: 32px;\n  background-color: #d1d5db;\n  border-radius: 4px;\n}\n\n.shop-grid-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);\n}\n\n.product-link {\n  width: 100%;\n  text-decoration: none;\n  display: block;\n}\n\n.product-image-container {\n  width: 160px; /* Reduced from 200px for a cleaner, simpler look */\n  height: 160px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #fff;\n  border-radius: 4px 4px 0 0;\n  overflow: hidden;\n}\n\n.product-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain; /* Keeps image proportions intact */\n  border-radius: 4px 4px 0 0;\n  transition: transform 0.3s ease;\n}\n\n.product-image:hover {\n  transform: scale(1.05);\n}\n\n.no-image-placeholder {\n  width: 160px; /* Match new image size */\n  height: 160px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #e0e0e0;\n  color: #666;\n  font-size: 14px;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  text-align: center;\n}\n\n.shop-grid-info {\n  padding: 12px;\n  color: #333;\n  text-align: center;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  gap: 6px;\n}\n\n.shop-grid-stars {\n  margin-bottom: 0;\n  flex-shrink: 0;\n}\n\n.product-name {\n  font-size: 14px;\n  margin: 0;\n  font-family: \"Jost\", sans-serif;\n  font-weight: 500;\n  line-height: 1.2;\n  max-height: 34px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n\n.product-price {\n  font-size: 16px;\n  color: #333;\n  margin: 0;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  flex-shrink: 0;\n}\n\n.shop-grid-add-to-cart {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 12px;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  transition: background-color 0.3s ease-in-out;\n  flex-shrink: 0;\n}\n\n.shop-grid-add-to-cart:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-add-to-cart:active {\n  background-color: #AA0000;\n}\n\n.shop-grid-show-more {\n  display: block;\n  width: 160px;\n  padding: 8px;\n  margin: 30px auto;\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  font-family: \"Jost\", sans-serif;\n  cursor: pointer;\n  transition: background-color 0.3s ease-in-out;\n}\n\n.shop-grid-show-more:hover {\n  background-color: #CC0000;\n}\n\n.shop-grid-back-to-top {\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  width: 70px;\n  height: 28px;\n  padding: 4px 8px;\n  background-color: #fff;\n  color: #333;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  font-size: 11px;\n  font-family: \"Jost\", sans-serif;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  transition: all 0.3s ease-in-out;\n}\n\n.shop-grid-back-to-top .arrow {\n  margin-right: 4px;\n  font-size: 11px;\n}\n\n.shop-grid-back-to-top:hover {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);\n}\n\n@media (max-width: 1024px) {\n  .shop-grid-container {\n    padding: 20px 30px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(4, 1fr);\n    gap: 15px;\n  }\n  .shop-grid-card {\n    width: 160px; /* Reduced from 180px */\n    height: 280px; /* Adjusted for smaller image */\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 160px;\n    height: 160px;\n  }\n}\n@media (max-width: 768px) {\n  .shop-grid-container {\n    padding: 15px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(3, 1fr);\n    gap: 10px;\n  }\n  .shop-grid-header {\n    flex-direction: column;\n    align-items: flex-end;\n    gap: 8px;\n  }\n  .available-products {\n    align-self: flex-start;\n  }\n  .sort-view-container {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .shop-grid-card {\n    width: 140px;\n    height: 260px;\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 140px; /* Slightly smaller for this breakpoint */\n    height: 140px;\n  }\n  .shop-grid-info {\n    padding: 10px;\n    gap: 4px;\n  }\n  .product-name {\n    font-size: 12px;\n    max-height: 28px;\n  }\n  .product-price {\n    font-size: 14px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 6px 12px;\n    font-size: 11px;\n  }\n}\n@media (max-width: 480px) {\n  .shop-grid-container {\n    padding: 10px;\n  }\n  .shop-grid-products {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 8px;\n  }\n  .shop-grid-card {\n    width: 120px;\n    height: 220px;\n  }\n  .product-image-container,\n  .no-image-placeholder,\n  .skeleton-image {\n    width: 120px; /* Adjusted for smaller screens */\n    height: 120px;\n  }\n  .shop-grid-info {\n    padding: 8px;\n    gap: 4px;\n  }\n  .product-name {\n    font-size: 11px;\n    max-height: 26px;\n  }\n  .product-price {\n    font-size: 13px;\n  }\n  .shop-grid-add-to-cart {\n    padding: 5px 10px;\n    font-size: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\n.shop-grid-wrapper {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 15px;\n  margin: 0 auto;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n}\n.shop-grid-header .available-products {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: #000000;\n}\n.shop-grid-header .sort-view-container {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.shop-grid-header .sort-view-container label {\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: #000000;\n}\n.shop-grid-header .sort-view-container select {\n  padding: 6px;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  border: 1px solid #000000;\n  border-radius: 4px;\n  cursor: pointer;\n  background: #FFFFFF;\n  color: #000000;\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, minmax(180px, 1fr));\n  gap: 20px;\n  justify-items: center;\n  width: 100%;\n  padding: 0;\n}\n.shop-grid-products .shop-grid-card {\n  background: #FFFFFF;\n  border-radius: 12px;\n  border: 1px solid #B22222;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  transition: transform 0.2s ease;\n}\n.shop-grid-products .shop-grid-card:hover {\n  transform: translateY(-3px);\n}\n.shop-grid-products .shop-grid-card .product-link {\n  text-decoration: none;\n}\n.shop-grid-products .shop-grid-card .product-image-container {\n  background: #FFFFFF;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  padding: 15px;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .shop-grid-card .product-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-height: 130px;\n}\n.shop-grid-products .shop-grid-card .no-image-placeholder {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  background: #F8F8F8;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .shop-grid-card .no-image-placeholder span {\n  font-family: \"Inter\", sans-serif;\n  font-size: 12px;\n  color: #000000;\n}\n.shop-grid-products .shop-grid-card .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.shop-grid-products .shop-grid-card .shop-grid-stars {\n  display: flex;\n  margin-bottom: 8px;\n}\n.shop-grid-products .shop-grid-card .product-name {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  color: #000000;\n  margin: 0 0 8px;\n  text-align: left;\n  line-height: 1.2;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.shop-grid-products .shop-grid-card .product-price {\n  font-family: \"Inter\", sans-serif;\n  font-size: 16px;\n  font-weight: 700;\n  color: #B22222;\n  margin-bottom: 10px;\n  text-align: left;\n}\n.shop-grid-products .shop-grid-card .shop-grid-add-to-cart {\n  background: #B22222;\n  color: #FFFFFF;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 10px 0 10px 0;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.2s ease;\n  margin-left: auto;\n}\n.shop-grid-products .shop-grid-card .shop-grid-add-to-cart:hover {\n  background: #8B1A1A; /* Slightly darker red */\n}\n.shop-grid-products .skeleton {\n  background: #F8F8F8;\n  border-radius: 12px;\n  border: 1px solid #E0E0E0;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.shop-grid-products .skeleton .skeleton-image {\n  height: 160px;\n  background: linear-gradient(90deg, #F0F0F0 25%, #E0E0E0 50%, #F0F0F0 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .skeleton .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.shop-grid-products .skeleton .skeleton-stars,\n.shop-grid-products .skeleton .skeleton-name,\n.shop-grid-products .skeleton .skeleton-price,\n.shop-grid-products .skeleton .skeleton-button {\n  background: linear-gradient(90deg, #F0F0F0 25%, #E0E0E0 50%, #F0F0F0 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 4px;\n  margin-bottom: 8px;\n}\n.shop-grid-products .skeleton .skeleton-stars {\n  height: 16px;\n  width: 80px;\n}\n.shop-grid-products .skeleton .skeleton-name {\n  height: 16px;\n  width: 70%;\n}\n.shop-grid-products .skeleton .skeleton-price {\n  height: 14px;\n  width: 50%;\n}\n.shop-grid-products .skeleton .skeleton-button {\n  height: 32px;\n  width: 80px;\n  margin-left: auto;\n  border-radius: 10px 0 10px 0;\n}\n\n.shop-grid-show-more,\n.shop-grid-back-to-top {\n  display: block;\n  margin: 15px auto;\n  padding: 8px 16px;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.2s ease;\n}\n\n.shop-grid-show-more {\n  background: #B22222;\n  color: #FFFFFF;\n  border: none;\n}\n.shop-grid-show-more:hover {\n  background: #8B1A1A;\n}\n\n.shop-grid-back-to-top {\n  background: #FFFFFF;\n  color: #B22222;\n  border: 1px solid #B22222;\n}\n.shop-grid-back-to-top .arrow {\n  font-size: 14px;\n  margin-right: 4px;\n}\n.shop-grid-back-to-top:hover {\n  background: #B22222;\n  color: #FFFFFF;\n}\n\n@keyframes skeleton-loading {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}\n@media (max-width: 1100px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(4, minmax(180px, 1fr));\n  }\n}\n@media (max-width: 800px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(3, minmax(180px, 1fr));\n  }\n}\n@media (max-width: 500px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(2, minmax(160px, 1fr));\n  }\n}\n@media (max-width: 400px) {\n  .shop-grid-products {\n    grid-template-columns: 1fr;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
