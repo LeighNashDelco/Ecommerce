@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './../../../../sass/components/track_order.scss';
 import { IconCheck, IconBox, IconTruck, IconTruckDelivery, IconHome } from '@tabler/icons-react';
 import Navbar from "../../customerside/Customer/topnav_login";
@@ -7,9 +7,11 @@ import Footer from "../footer/footer";
 
 const TrackOrder = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const orderId = location.state?.order?.id;
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -19,7 +21,6 @@ const TrackOrder = () => {
           throw new Error('Please login first - No token found');
         }
 
-        const orderId = location.state?.order?.id;
         if (!orderId) {
           throw new Error('No order ID provided');
         }
@@ -43,43 +44,45 @@ const TrackOrder = () => {
         }
 
         const data = await response.json();
-        if (data.payment_method === 'credit_card') {
-          data.payment_method = 'Credit Card';
-        }
         setOrder(data);
         setError(null);
       } catch (err) {
         console.error('Fetch error:', err);
         setError(err.message);
+        if (err.message.includes('login')) {
+          navigate('/login');
+        }
       } finally {
         setLoading(false);
       }
     };
 
     fetchOrderDetails();
-  }, [location]);
+  }, [location, navigate, orderId]);
 
   const getTimelineSteps = (status) => {
-    if (!order) return [];
-    
+    if (!order) return { steps: [], statusIndex: 0 };
+
     const steps = [
       { label: 'Order Placed', date: order.order_placed_date, icon: IconCheck },
       { label: 'In Transit', date: order.in_transit_date, icon: IconTruck },
-      { label: 'Out for Delivery', date: order.out_for_delivery_date, icon: IconTruckDelivery },
+      { label: 'Shipped', date: order.out_for_delivery_date, icon: IconTruckDelivery },
       { label: 'Delivered', date: order.delivered_date, icon: IconHome },
     ];
 
     const statusIndex = {
       'Pending': 0,
       'In Transit': 1,
-      'Out for Delivery': 2,
+      'Shipped': 2,
       'Delivered': 3,
+      'Completed': 3,
+      'Cancelled': 0,
     }[status] || 0;
 
     steps.forEach((step, index) => {
       step.active = index <= statusIndex;
       step.current = index === statusIndex;
-      if (index < statusIndex) {
+      if (index < statusIndex && index !== 0) {
         step.icon = IconCheck;
       }
     });
@@ -87,9 +90,41 @@ const TrackOrder = () => {
     return { steps, statusIndex };
   };
 
-  if (loading) return <div className="track-order-page"><p>Loading...</p></div>;
-  if (error) return <div className="track-order-page"><p>Error: {error}</p></div>;
-  if (!order) return <div className="track-order-page"><p>No order data available</p></div>;
+  if (loading) {
+    return (
+      <div className="track-order-page">
+        <Navbar />
+        <div className="track-order">
+          <p className="loading">Loading...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="track-order-page">
+        <Navbar />
+        <div className="track-order">
+          <p className="error-message">Error: {error}</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!order) {
+    return (
+      <div className="track-order-page">
+        <Navbar />
+        <div className="track-order">
+          <p>No order data available</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   const { steps: timelineSteps, statusIndex } = getTimelineSteps(order.status);
 
@@ -101,6 +136,7 @@ const TrackOrder = () => {
           <h2>
             Order Status: <span className="status-text">{order.status}</span>
           </h2>
+          <p className="notice">Track your order's progress below.</p>
         </div>
         <div className="order-info">
           <div className="info-item">
@@ -139,9 +175,17 @@ const TrackOrder = () => {
           <h3>Order Details</h3>
           <div className="details-content">
             <div className="details-text">
+              <p><strong>Order ID:</strong> #{order.id}</p>
               <p><strong>Product Name:</strong> {order.product_name}</p>
               <p><strong>Estimated Delivery Date:</strong> {order.estimated_delivery_date}</p>
               <p><strong>Shipping Address:</strong> {order.shipping_address}</p>
+            </div>
+            <div className="details-image">
+              {order.product_img ? (
+                <img src={order.product_img} alt={order.product_name} className="product-image" />
+              ) : (
+                <p>No image available</p>
+              )}
             </div>
           </div>
         </div>

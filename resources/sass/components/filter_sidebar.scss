@@ -1,35 +1,42 @@
 .shop-filter {
-  padding: 60px;
+  padding: 40px 30px; /* Reduced horizontal padding for a cleaner look */
   position: sticky;
-  top: 60px;
+  top: 120px; /* Increased to move the entire sidebar down further */
   z-index: 10;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  background-color: #1E1E1E;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  color: #E0E0E0;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
 }
 
 .shop-filter-content {
+  width: 100%;
 }
 
 .shop-filter-section {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Increased for better separation between sections */
 }
 
 .shop-filter-section-title {
   font-size: 16px;
-  color: #FF0000;
+  color: #FF5555;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased to move "PRODUCT CATEGORIES" down more */
   text-transform: uppercase;
 }
 
 .shop-filter-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Added consistent spacing between category items */
 }
 
 .shop-filter-category {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
   font-size: 16px;
-  color: #1E1E1E;
+  color: #E0E0E0;
   position: relative;
 }
 
@@ -49,13 +56,18 @@
 .shop-filter-checkbox {
   width: 18px;
   height: 18px;
-  border: 2px solid #1E1E1E;
+  border: 2px solid #666;
   border-radius: 4px;
-  margin-right: 10px;
+  margin-right: 12px; /* Adjusted for better spacing */
   display: inline-block;
   position: relative;
   background: transparent;
   cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.shop-filter-checkbox:hover {
+  border-color: #999;
 }
 
 .shop-filter-checkbox:after {
@@ -66,9 +78,13 @@
   top: 0;
   width: 6px;
   height: 12px;
-  border: solid #FF0000;
+  border: solid #FF5555;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked + .shop-filter-checkbox {
+  border-color: #FF5555;
 }
 
 input[type="checkbox"]:checked + .shop-filter-checkbox:after {
@@ -77,7 +93,7 @@ input[type="checkbox"]:checked + .shop-filter-checkbox:after {
 
 .category-text {
   font-size: 16px;
-  color: #1E1E1E;
+  color: #E0E0E0;
   cursor: default;
   margin-left: 10px;
 }
@@ -93,7 +109,7 @@ input[type="checkbox"]:checked + .shop-filter-checkbox:after {
 
 .price-range-text {
   font-size: 14px;
-  color: #1E1E1E;
+  color: #B0B0B0;
   margin-bottom: 10px;
   white-space: nowrap;
 }
@@ -102,10 +118,10 @@ input[type="range"] {
   width: 100%;
   appearance: none;
   height: 5px;
-  background: #FF0000;
+  background: #FF5555;
   border-radius: 5px;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
@@ -117,20 +133,30 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 15px;
   height: 15px;
-  background: #1E1E1E;
-  border: 2px solid #FF0000;
+  background: #E0E0E0;
+  border: 2px solid #FF5555;
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #FFFFFF;
 }
 
 input[type="range"]::-moz-range-thumb {
   appearance: none;
   width: 15px;
   height: 15px;
-  background: #1E1E1E;
-  border: 2px solid #FF0000;
+  background: #E0E0E0;
+  border: 2px solid #FF5555;
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #FFFFFF;
 }
 
 input[type="range"]:disabled {
@@ -143,7 +169,33 @@ input[type="range"]:disabled {
     position: static;
     width: 100%;
     height: auto;
-    padding: 10px;
+    padding: 20px;
     box-shadow: none;
+    background-color: #1E1E1E;
+  }
+
+  .shop-filter-section {
+    margin-bottom: 20px;
+  }
+
+  .shop-filter-section-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .shop-filter-categories {
+    gap: 10px;
+  }
+
+  .shop-filter-category {
+    font-size: 14px;
+  }
+
+  .category-text {
+    font-size: 14px;
+  }
+
+  .price-range-text {
+    font-size: 12px;
   }
 }

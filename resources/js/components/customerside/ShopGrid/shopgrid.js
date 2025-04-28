@@ -13,10 +13,10 @@ const renderStars = (rating) => {
   return (
     <div className="shop-grid-stars">
       {Array(filledStars).fill().map((_, i) => (
-        <IconStar key={`filled-${i}`} size={16} fill="#ff0000" color="#ff0000" />
+        <IconStar key={`filled-${i}`} size={16} fill="#FF0000" color="#FF0000" />
       ))}
       {Array(totalStars - filledStars).fill().map((_, i) => (
-        <IconStar key={`empty-${i}`} size={16} fill="none" color="#ccc" />
+        <IconStar key={`empty-${i}`} size={16} fill="none" color="#CCCCCC" />
       ))}
     </div>
   );
@@ -111,9 +111,9 @@ const ShopGrid = ({ products = [], ratings = {}, loading, profileId, fetchReview
                 <div className="skeleton-image"></div>
                 <div className="shop-grid-info">
                   <div className="skeleton-stars"></div>
-                  <div className="skeleton-name"></div>
-                  <div className="skeleton-price"></div>
-                  <div className="skeleton-button"></div>
+                  <div class="skeleton-name"></div>
+                  <div class="skeleton-price"></div>
+                  <div class="skeleton-button"></div>
                 </div>
               </div>
             ))}

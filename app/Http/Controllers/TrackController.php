@@ -21,7 +21,7 @@ class TrackController extends Controller
                 return response()->json(['message' => 'User profile not found'], 404);
             }
 
-            $order = Order::with(['payments', 'product'])
+            $order = Order::with(['payments', 'product', 'status'])
                 ->where('id', $orderId)
                 ->where('profile_id', $profile->id)
                 ->first();
@@ -32,13 +32,13 @@ class TrackController extends Controller
 
             $shippingAddress = "{$profile->street}, {$profile->city}, {$profile->province}, {$profile->postal_code}, {$profile->country}";
             $payment = $order->payments->first();
-            $paymentMethod = $payment ? ($payment->payment_method === 'credit_card' ? 'Credit Card' : $payment->payment_method) : 'N/A';
+            $paymentMethod = $payment ? ($payment->payment_method === 'credit_card' ? 'Credit Card' : ucfirst($payment->payment_method)) : 'N/A';
 
             $statusDates = [
                 'order_placed_date' => $order->order_date->toDateString(),
                 'in_transit_date' => $order->status_id >= 2 ? $order->order_date->copy()->addDays(2)->toDateString() : null,
                 'out_for_delivery_date' => $order->status_id >= 3 ? $order->order_date->copy()->addDays(3)->toDateString() : null,
-                'delivered_date' => $order->status_id == 4 ? $order->estimated_delivery_date->toDateString() : null,
+                'delivered_date' => $order->status_id >= 4 ? $order->estimated_delivery_date->toDateString() : null,
             ];
 
             $response = [
@@ -51,7 +51,8 @@ class TrackController extends Controller
                 'in_transit_date' => $statusDates['in_transit_date'],
                 'out_for_delivery_date' => $statusDates['out_for_delivery_date'],
                 'delivered_date' => $statusDates['delivered_date'],
-                'product_name' => $order->product ? $order->product->product_name : null,
+                'product_name' => $order->product ? $order->product->product_name : 'Unknown Product',
+                'product_img' => $order->product ? $order->product->product_img : null,
                 'payment_method' => $paymentMethod,
                 'shipping_address' => $shippingAddress,
             ];
@@ -67,10 +68,10 @@ class TrackController extends Controller
         $statusMap = [
             1 => 'Pending',
             2 => 'In Transit',
-            3 => 'Out for Delivery',
+            3 => 'Shipped',
             4 => 'Delivered',
-            5 => 'Cancelled',
-            6 => 'Refund',
+            5 => 'Completed',
+            6 => 'Cancelled',
         ];
         return $statusMap[$statusId] ?? 'Pending';
     }

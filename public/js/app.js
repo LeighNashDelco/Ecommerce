@@ -37719,10 +37719,10 @@ var FilterSidebar = function FilterSidebar(_ref) {
   var safeProducts = Array.isArray(products) ? products : [];
   var safeCategories = Array.isArray(categories) ? categories.filter(function (cat) {
     return cat.archived === false;
-  }) : []; // Only show archived: false for categories
+  }) : [];
   var safeBrands = Array.isArray(brands) ? brands.filter(function (br) {
     return br.archived === 0;
-  }) : []; // Only show archived: 0 for brands
+  }) : [];
   var safeFilters = filters || {
     categories: {},
     brands: {}
@@ -37764,8 +37764,11 @@ var FilterSidebar = function FilterSidebar(_ref) {
       setFilteredProducts(safeProducts);
     } else {
       var filtered = safeProducts.filter(function (product) {
-        var productCategoryId = product.category_id !== undefined ? Number(product.category_id) : null;
-        var productBrandId = product.brand_id !== undefined ? Number(product.brand_id) : null;
+        var productCategoryId = product.category_id != null ? Number(product.category_id) : null;
+        var productBrandId = product.brand_id != null ? Number(product.brand_id) : null;
+
+        // Skip products with invalid category_id or brand_id
+        if (productCategoryId == null || productBrandId == null) return false;
 
         // Category match: true if no categories selected or product matches at least one selected category
         var categoryMatch = noCategoriesSelected || Object.keys(validFilters.categories).some(function (catId) {
@@ -37784,13 +37787,13 @@ var FilterSidebar = function FilterSidebar(_ref) {
   var getCategoryProductCount = function getCategoryProductCount(categoryId) {
     var id = Number(categoryId);
     return safeProducts.filter(function (product) {
-      return Number(product.category_id) === id;
+      return product.category_id != null && Number(product.category_id) === id;
     }).length;
   };
   var getBrandProductCount = function getBrandProductCount(brandId) {
     var id = Number(brandId);
     return safeProducts.filter(function (product) {
-      return Number(product.brand_id) === id;
+      return product.brand_id != null && Number(product.brand_id) === id;
     }).length;
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -37822,7 +37825,7 @@ var FilterSidebar = function FilterSidebar(_ref) {
               })]
             }, category.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "shop-filter-category",
+            className: "shop-filter-category no-data",
             children: "No categories available"
           })
         })]
@@ -37851,7 +37854,7 @@ var FilterSidebar = function FilterSidebar(_ref) {
               })]
             }, brand.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "shop-filter-category",
+            className: "shop-filter-category no-data",
             children: "No brands available"
           })
         })]
@@ -39380,14 +39383,14 @@ var renderStars = function renderStars(rating) {
     children: [Array(filledStars).fill().map(function (_, i) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
         size: 16,
-        fill: "#ff0000",
-        color: "#ff0000"
+        fill: "#FF0000",
+        color: "#FF0000"
       }, "filled-".concat(i));
     }), Array(totalStars - filledStars).fill().map(function (_, i) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_tabler_icons_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
         size: 16,
         fill: "none",
-        color: "#ccc"
+        color: "#CCCCCC"
       }, "empty-".concat(i));
     })]
   });
@@ -39609,11 +39612,11 @@ var ShopGrid = function ShopGrid(_ref) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "skeleton-stars"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "skeleton-name"
+                  "class": "skeleton-name"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "skeleton-price"
+                  "class": "skeleton-price"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "skeleton-button"
+                  "class": "skeleton-button"
                 })]
               })]
             }, index);
@@ -39771,7 +39774,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var TrackOrder = function TrackOrder() {
+  var _location$state;
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     order = _useState2[0],
@@ -39784,10 +39789,11 @@ var TrackOrder = function TrackOrder() {
     _useState6 = _slicedToArray(_useState5, 2),
     error = _useState6[0],
     setError = _useState6[1];
+  var orderId = (_location$state = location.state) === null || _location$state === void 0 || (_location$state = _location$state.order) === null || _location$state === void 0 ? void 0 : _location$state.id;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchOrderDetails = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _location$state, token, orderId, response, errorData, data;
+        var token, response, errorData, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -39799,14 +39805,13 @@ var TrackOrder = function TrackOrder() {
               }
               throw new Error('Please login first - No token found');
             case 4:
-              orderId = (_location$state = location.state) === null || _location$state === void 0 || (_location$state = _location$state.order) === null || _location$state === void 0 ? void 0 : _location$state.id;
               if (orderId) {
-                _context.next = 7;
+                _context.next = 6;
                 break;
               }
               throw new Error('No order ID provided');
-            case 7:
-              _context.next = 9;
+            case 6:
+              _context.next = 8;
               return fetch("http://127.0.0.1:8000/api/orders/track/".concat(orderId), {
                 method: 'GET',
                 headers: {
@@ -39815,59 +39820,62 @@ var TrackOrder = function TrackOrder() {
                   'Content-Type': 'application/json'
                 }
               });
-            case 9:
+            case 8:
               response = _context.sent;
               if (response.ok) {
-                _context.next = 18;
+                _context.next = 17;
                 break;
               }
-              _context.next = 13;
+              _context.next = 12;
               return response.json();
-            case 13:
+            case 12:
               errorData = _context.sent;
               if (!(response.status === 401)) {
-                _context.next = 17;
+                _context.next = 16;
                 break;
               }
               localStorage.removeItem('LaravelPassportToken');
               throw new Error('Session expired. Please login again.');
-            case 17:
+            case 16:
               throw new Error(errorData.message || 'Failed to fetch order details');
-            case 18:
-              _context.next = 20;
+            case 17:
+              _context.next = 19;
               return response.json();
-            case 20:
+            case 19:
               data = _context.sent;
-              if (data.payment_method === 'credit_card') {
-                data.payment_method = 'Credit Card';
-              }
               setOrder(data);
               setError(null);
-              _context.next = 30;
+              _context.next = 29;
               break;
-            case 26:
-              _context.prev = 26;
+            case 24:
+              _context.prev = 24;
               _context.t0 = _context["catch"](0);
               console.error('Fetch error:', _context.t0);
               setError(_context.t0.message);
-            case 30:
-              _context.prev = 30;
+              if (_context.t0.message.includes('login')) {
+                navigate('/login');
+              }
+            case 29:
+              _context.prev = 29;
               setLoading(false);
-              return _context.finish(30);
-            case 33:
+              return _context.finish(29);
+            case 32:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 26, 30, 33]]);
+        }, _callee, null, [[0, 24, 29, 32]]);
       }));
       return function fetchOrderDetails() {
         return _ref.apply(this, arguments);
       };
     }();
     fetchOrderDetails();
-  }, [location]);
+  }, [location, navigate, orderId]);
   var getTimelineSteps = function getTimelineSteps(status) {
-    if (!order) return [];
+    if (!order) return {
+      steps: [],
+      statusIndex: 0
+    };
     var steps = [{
       label: 'Order Placed',
       date: order.order_placed_date,
@@ -39877,7 +39885,7 @@ var TrackOrder = function TrackOrder() {
       date: order.in_transit_date,
       icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"]
     }, {
-      label: 'Out for Delivery',
+      label: 'Shipped',
       date: order.out_for_delivery_date,
       icon: _tabler_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"]
     }, {
@@ -39888,13 +39896,15 @@ var TrackOrder = function TrackOrder() {
     var statusIndex = {
       'Pending': 0,
       'In Transit': 1,
-      'Out for Delivery': 2,
-      'Delivered': 3
+      'Shipped': 2,
+      'Delivered': 3,
+      'Completed': 3,
+      'Cancelled': 0
     }[status] || 0;
     steps.forEach(function (step, index) {
       step.active = index <= statusIndex;
       step.current = index === statusIndex;
-      if (index < statusIndex) {
+      if (index < statusIndex && index !== 0) {
         step.icon = _tabler_icons_react__WEBPACK_IMPORTED_MODULE_6__["default"];
       }
     });
@@ -39903,24 +39913,41 @@ var TrackOrder = function TrackOrder() {
       statusIndex: statusIndex
     };
   };
-  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "track-order-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-      children: "Loading..."
-    })
-  });
-  if (error) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "track-order-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-      children: ["Error: ", error]
-    })
-  });
-  if (!order) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "track-order-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-      children: "No order data available"
-    })
-  });
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "track-order-page",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "track-order",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          className: "loading",
+          children: "Loading..."
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+    });
+  }
+  if (error) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "track-order-page",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "track-order",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          className: "error-message",
+          children: ["Error: ", error]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+    });
+  }
+  if (!order) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "track-order-page",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "track-order",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: "No order data available"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+    });
+  }
   var _getTimelineSteps = getTimelineSteps(order.status),
     timelineSteps = _getTimelineSteps.steps,
     statusIndex = _getTimelineSteps.statusIndex;
@@ -39928,14 +39955,17 @@ var TrackOrder = function TrackOrder() {
     className: "track-order-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_customerside_Customer_topnav_login__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "track-order",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "order-status",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
           children: ["Order Status: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "status-text",
             children: order.status
           })]
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          className: "notice",
+          children: "Track your order's progress below."
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "order-info",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -39991,11 +40021,15 @@ var TrackOrder = function TrackOrder() {
         className: "order-details",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
           children: "Order Details"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "details-content",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "details-text",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                children: "Order ID:"
+              }), " #", order.id]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
                 children: "Product Name:"
               }), " ", order.product_name]
@@ -40008,7 +40042,16 @@ var TrackOrder = function TrackOrder() {
                 children: "Shipping Address:"
               }), " ", order.shipping_address]
             })]
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "details-image",
+            children: order.product_img ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              src: order.product_img,
+              alt: order.product_name,
+              className: "product-image"
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              children: "No image available"
+            })
+          })]
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
@@ -40318,7 +40361,7 @@ var AllOrder = function AllOrder() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchOrders = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var token, response, errorData, data, ordersWithTabs;
+        var token, response, errorData, data, ordersWithTabs, sortedOrders;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -40367,10 +40410,10 @@ var AllOrder = function AllOrder() {
                 var statusMap = {
                   1: 'Pending',
                   2: 'In Transit',
-                  3: 'Received',
-                  4: 'Completed',
-                  5: 'Cancelled',
-                  6: 'Refund'
+                  3: 'Shipped',
+                  4: 'Delivered',
+                  5: 'Completed',
+                  6: 'Cancelled'
                 };
                 var statusName = statusMap[order.status_id] || order.status_name || 'Pending';
                 return _objectSpread(_objectSpread({}, order), {}, {
@@ -40380,29 +40423,34 @@ var AllOrder = function AllOrder() {
                   quantity: order.quantity,
                   status: statusName,
                   price: order.total_amount.replace(' USD', ''),
-                  actions: getActionsFromStatus(statusName)
+                  actions: getActionsFromStatus(statusName, order.status_id)
                 });
               });
-              setOrders(ordersWithTabs);
+              sortedOrders = ordersWithTabs.sort(function (a, b) {
+                if (a.status_id === 1 && b.status_id !== 1) return -1;
+                if (a.status_id !== 1 && b.status_id === 1) return 1;
+                return b.id - a.id;
+              });
+              setOrders(sortedOrders);
               setError(null);
-              _context.next = 28;
+              _context.next = 29;
               break;
-            case 24:
-              _context.prev = 24;
+            case 25:
+              _context.prev = 25;
               _context.t0 = _context["catch"](0);
               setError(_context.t0.message);
               if (_context.t0.message.includes('login')) {
                 navigate('/login');
               }
-            case 28:
-              _context.prev = 28;
+            case 29:
+              _context.prev = 29;
               setLoading(false);
-              return _context.finish(28);
-            case 31:
+              return _context.finish(29);
+            case 32:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 24, 28, 31]]);
+        }, _callee, null, [[0, 25, 29, 32]]);
       }));
       return function fetchOrders() {
         return _ref.apply(this, arguments);
@@ -40412,33 +40460,34 @@ var AllOrder = function AllOrder() {
   }, [navigate]);
   var getTabFromStatus = function getTabFromStatus(status) {
     switch (status.toLowerCase()) {
+      case 'pending':
+        return 'pending';
       case 'in transit':
-        return 'to_ship';
-      case 'received':
-        return 'to_receive';
+        return 'in_transit';
+      case 'shipped':
+        return 'shipped';
+      case 'delivered':
+        return 'delivered';
       case 'completed':
         return 'completed';
       case 'cancelled':
         return 'cancelled';
-      case 'refund':
-        return 'refunded';
-      case 'pending':
-        return 'to_pay';
       default:
         return 'all';
     }
   };
-  var getActionsFromStatus = function getActionsFromStatus(status) {
+  var getActionsFromStatus = function getActionsFromStatus(status, statusId) {
     switch (status.toLowerCase()) {
       case 'pending':
         return ['Cancel Order', 'Track Order'];
       case 'in transit':
         return ['Track Order'];
-      case 'received':
+      case 'shipped':
         return ['Track Order'];
+      case 'delivered':
+        return statusId === 4 ? ['Order Complete', 'Rate'] : ['Rate'];
       case 'completed':
         return ['Rate', 'Refund'];
-      // Always allow "Rate" for Completed
       default:
         return [];
     }
@@ -40457,22 +40506,66 @@ var AllOrder = function AllOrder() {
     setSelectedOrderForCancel(order);
     setIsCancelModalOpen(true);
   };
-  var handleConfirmCancel = function handleConfirmCancel(reason) {
-    if (selectedOrderForCancel) {
-      console.log('Order cancelled:', selectedOrderForCancel.order_number, 'Reason:', reason);
-      setOrders(function (prevOrders) {
-        return prevOrders.map(function (order) {
-          return order.id === selectedOrderForCancel.id ? _objectSpread(_objectSpread({}, order), {}, {
-            status: 'Cancelled',
-            status_id: 5,
-            actions: []
-          }) : order;
-        });
-      });
-      setIsCancelModalOpen(false);
-      setSelectedOrderForCancel(null);
-    }
-  };
+  var handleConfirmCancel = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(reason) {
+      var token, response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (!selectedOrderForCancel) {
+              _context2.next = 16;
+              break;
+            }
+            _context2.prev = 1;
+            token = localStorage.getItem('LaravelPassportToken');
+            _context2.next = 5;
+            return fetch("/api/orders/".concat(selectedOrderForCancel.id, "/cancel"), {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Authorization': "Bearer ".concat(token),
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                reason: reason
+              })
+            });
+          case 5:
+            response = _context2.sent;
+            if (response.ok) {
+              _context2.next = 8;
+              break;
+            }
+            throw new Error('Failed to cancel order');
+          case 8:
+            setOrders(function (prevOrders) {
+              return prevOrders.map(function (order) {
+                return order.id === selectedOrderForCancel.id ? _objectSpread(_objectSpread({}, order), {}, {
+                  status: 'Cancelled',
+                  status_id: 6,
+                  actions: [],
+                  tab: 'cancelled'
+                }) : order;
+              });
+            });
+            setIsCancelModalOpen(false);
+            setSelectedOrderForCancel(null);
+            _context2.next = 16;
+            break;
+          case 13:
+            _context2.prev = 13;
+            _context2.t0 = _context2["catch"](1);
+            setError(_context2.t0.message);
+          case 16:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[1, 13]]);
+    }));
+    return function handleConfirmCancel(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   var handleCloseCancelModal = function handleCloseCancelModal() {
     setIsCancelModalOpen(false);
     setSelectedOrderForCancel(null);
@@ -40481,10 +40574,10 @@ var AllOrder = function AllOrder() {
     setSelectedOrderForRate(order);
     setIsRateModalOpen(true);
   };
-  var handleSubmitRating = function handleSubmitRating(_ref2) {
-    var rating = _ref2.rating,
-      review = _ref2.review,
-      image = _ref2.image;
+  var handleSubmitRating = function handleSubmitRating(_ref3) {
+    var rating = _ref3.rating,
+      review = _ref3.review,
+      image = _ref3.image;
     if (selectedOrderForRate) {
       console.log('Rating submitted for order:', selectedOrderForRate.order_number, {
         rating: rating,
@@ -40499,6 +40592,57 @@ var AllOrder = function AllOrder() {
     setIsRateModalOpen(false);
     setSelectedOrderForRate(null);
   };
+  var handleOrderComplete = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(order) {
+      var token, response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            token = localStorage.getItem('LaravelPassportToken');
+            _context3.next = 4;
+            return fetch("/api/orders/".concat(order.id, "/complete"), {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Authorization': "Bearer ".concat(token),
+                'Content-Type': 'application/json'
+              }
+            });
+          case 4:
+            response = _context3.sent;
+            if (response.ok) {
+              _context3.next = 7;
+              break;
+            }
+            throw new Error('Failed to mark order as complete');
+          case 7:
+            setOrders(function (prevOrders) {
+              return prevOrders.map(function (o) {
+                return o.id === order.id ? _objectSpread(_objectSpread({}, o), {}, {
+                  status: 'Completed',
+                  status_id: 5,
+                  actions: ['Rate', 'Refund'],
+                  tab: 'completed'
+                }) : o;
+              });
+            });
+            _context3.next = 13;
+            break;
+          case 10:
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](0);
+            setError(_context3.t0.message);
+          case 13:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3, null, [[0, 10]]);
+    }));
+    return function handleOrderComplete(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "all-order",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -40510,23 +40654,29 @@ var AllOrder = function AllOrder() {
         },
         children: "All Orders"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_pay' ? 'active' : ''),
+        className: "tab ".concat(activeTab === 'pending' ? 'active' : ''),
         onClick: function onClick() {
-          return setActiveTab('to_pay');
+          return setActiveTab('pending');
         },
         children: "Pending"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_ship' ? 'active' : ''),
+        className: "tab ".concat(activeTab === 'in_transit' ? 'active' : ''),
         onClick: function onClick() {
-          return setActiveTab('to_ship');
+          return setActiveTab('in_transit');
         },
-        children: "To Ship"
+        children: "In Transit"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'to_receive' ? 'active' : ''),
+        className: "tab ".concat(activeTab === 'shipped' ? 'active' : ''),
         onClick: function onClick() {
-          return setActiveTab('to_receive');
+          return setActiveTab('shipped');
         },
-        children: "To Receive"
+        children: "Shipped"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        className: "tab ".concat(activeTab === 'delivered' ? 'active' : ''),
+        onClick: function onClick() {
+          return setActiveTab('delivered');
+        },
+        children: "Delivered"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "tab ".concat(activeTab === 'completed' ? 'active' : ''),
         onClick: function onClick() {
@@ -40539,12 +40689,6 @@ var AllOrder = function AllOrder() {
           return setActiveTab('cancelled');
         },
         children: "Cancelled"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        className: "tab ".concat(activeTab === 'refunded' ? 'active' : ''),
-        onClick: function onClick() {
-          return setActiveTab('refunded');
-        },
-        children: "Refunded"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "orders-list",
@@ -40595,6 +40739,8 @@ var AllOrder = function AllOrder() {
                       return handleRateOrder(order);
                     } : action === 'Refund' ? function () {
                       return console.log('Refund requested for order:', order.order_number);
+                    } : action === 'Order Complete' ? function () {
+                      return handleOrderComplete(order);
                     } : undefined,
                     children: action
                   }, index);
@@ -42615,7 +42761,7 @@ function Shop() {
     _useState20 = _slicedToArray(_useState19, 2),
     cartCount = _useState20[0],
     setCartCount = _useState20[1];
-  var isMounted = true;
+  var isMounted = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(true);
   var getAuthHeaders = function getAuthHeaders() {
     var token = localStorage.getItem('LaravelPassportToken');
     return token ? {
@@ -42646,27 +42792,33 @@ function Shop() {
             });
           case 7:
             response = _context.sent;
-            _context.next = 10;
-            return response.json();
+            if (response.ok) {
+              _context.next = 10;
+              break;
+            }
+            throw new Error('Failed to fetch cart count');
           case 10:
+            _context.next = 12;
+            return response.json();
+          case 12:
             data = _context.sent;
-            if (response.ok && data.success) {
+            if (data.success) {
               setCartCount(data.count || 0);
             } else {
               setCartCount(0);
             }
-            _context.next = 18;
+            _context.next = 20;
             break;
-          case 14:
-            _context.prev = 14;
+          case 16:
+            _context.prev = 16;
             _context.t0 = _context["catch"](0);
             console.error('Error fetching cart count:', _context.t0);
             setCartCount(0);
-          case 18:
+          case 20:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 14]]);
+      }, _callee, null, [[0, 16]]);
     }));
     return function fetchCartCount() {
       return _ref.apply(this, arguments);
@@ -42684,31 +42836,29 @@ function Shop() {
           case 3:
             response = _context2.sent;
             if (response.ok) {
-              _context2.next = 7;
+              _context2.next = 6;
               break;
             }
-            console.warn("Failed to fetch ".concat(url, ": ").concat(response.status));
-            return _context2.abrupt("return", null);
-          case 7:
+            throw new Error("Failed to fetch ".concat(url, ": ").concat(response.status));
+          case 6:
             contentType = response.headers.get('Content-Type');
             if (!(!contentType || !contentType.includes('application/json'))) {
-              _context2.next = 11;
+              _context2.next = 9;
               break;
             }
-            console.warn("Non-JSON response from ".concat(url));
-            return _context2.abrupt("return", null);
-          case 11:
+            throw new Error("Non-JSON response from ".concat(url));
+          case 9:
             return _context2.abrupt("return", response);
-          case 14:
-            _context2.prev = 14;
+          case 12:
+            _context2.prev = 12;
             _context2.t0 = _context2["catch"](0);
-            console.warn("Error fetching ".concat(url, ": ").concat(_context2.t0.message));
+            console.error("Error fetching ".concat(url, ": ").concat(_context2.t0.message));
             return _context2.abrupt("return", null);
-          case 18:
+          case 16:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 14]]);
+      }, _callee2, null, [[0, 12]]);
     }));
     return function fetchFast(_x, _x2) {
       return _ref2.apply(this, arguments);
@@ -42720,7 +42870,7 @@ function Shop() {
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) switch (_context4.prev = _context4.next) {
           case 0:
-            ratingsMap = {}; // Fetch reviews for all products in parallel
+            ratingsMap = {};
             promises = productIds.map(/*#__PURE__*/function () {
               var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
                 var response, data;
@@ -42734,22 +42884,21 @@ function Shop() {
                     case 2:
                       response = _context3.sent;
                       if (!response) {
-                        _context3.next = 11;
+                        _context3.next = 10;
                         break;
                       }
                       _context3.next = 6;
                       return response.json();
                     case 6:
                       data = _context3.sent;
-                      console.log("Reviews for product ".concat(id, ":"), data);
                       ratingsMap[id] = data.success && Array.isArray(data.data) && data.data.length > 0 ? data.data.reduce(function (sum, review) {
                         return sum + (review.rating || 0);
                       }, 0) / data.data.length : 0;
-                      _context3.next = 12;
+                      _context3.next = 11;
                       break;
-                    case 11:
+                    case 10:
                       ratingsMap[id] = 0;
-                    case 12:
+                    case 11:
                     case "end":
                       return _context3.stop();
                   }
@@ -42762,14 +42911,13 @@ function Shop() {
             _context4.next = 4;
             return Promise.all(promises);
           case 4:
-            console.log('Updated Ratings:', ratingsMap);
-            if (isMounted) {
+            if (isMounted.current) {
               setRatings(function (prev) {
                 return _objectSpread(_objectSpread({}, prev), ratingsMap);
               });
             }
             return _context4.abrupt("return", ratingsMap);
-          case 7:
+          case 6:
           case "end":
             return _context4.stop();
         }
@@ -42782,7 +42930,7 @@ function Shop() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchData = /*#__PURE__*/function () {
       var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-        var profileIdTemp, token, userResponse, _userData$user, userData, profileResponse, cachedProducts, productsData, productsResponse, validProducts, activeProductIds, cachedCategories, cachedBrands, fetchSecondaryData;
+        var profileIdTemp, token, userResponse, _userData$user, userData, profileResponse, cachedProducts, productsData, productsResponse, validProducts, activeProductIds, initialFilters, cachedCategories, cachedBrands, fetchSecondaryData;
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -42790,7 +42938,7 @@ function Shop() {
               profileIdTemp = null;
               token = localStorage.getItem('LaravelPassportToken');
               if (!token) {
-                _context6.next = 23;
+                _context6.next = 19;
                 break;
               }
               _context6.next = 6;
@@ -42800,91 +42948,96 @@ function Shop() {
             case 6:
               userResponse = _context6.sent;
               if (!userResponse) {
-                _context6.next = 21;
+                _context6.next = 19;
                 break;
               }
               _context6.next = 10;
               return userResponse.json();
             case 10:
               userData = _context6.sent;
-              console.log('User Data:', userData);
               if (!((_userData$user = userData.user) !== null && _userData$user !== void 0 && _userData$user.id)) {
-                _context6.next = 21;
+                _context6.next = 19;
                 break;
               }
-              _context6.next = 15;
+              _context6.next = 14;
               return fetchFast("http://127.0.0.1:8000/api/profiles/user/".concat(userData.user.id), {
                 headers: getAuthHeaders()
               });
-            case 15:
+            case 14:
               profileResponse = _context6.sent;
               if (!profileResponse) {
-                _context6.next = 21;
+                _context6.next = 19;
                 break;
               }
-              _context6.next = 19;
+              _context6.next = 18;
               return profileResponse.json();
-            case 19:
+            case 18:
               profileIdTemp = _context6.sent.id;
-              console.log('Profile ID:', profileIdTemp);
-            case 21:
-              _context6.next = 24;
-              break;
-            case 23:
-              console.log('No token found, proceeding as guest');
-            case 24:
-              // Load cached data or fetch products first (critical path)
+            case 19:
               cachedProducts = localStorage.getItem('shopProducts');
               productsData = cachedProducts ? JSON.parse(cachedProducts) : null;
               if (productsData) {
-                _context6.next = 39;
+                _context6.next = 34;
                 break;
               }
-              _context6.next = 29;
+              _context6.next = 24;
               return fetchFast('http://127.0.0.1:8000/api/shop-products', {
                 headers: getAuthHeaders()
               });
-            case 29:
+            case 24:
               productsResponse = _context6.sent;
               if (!productsResponse) {
-                _context6.next = 36;
+                _context6.next = 31;
                 break;
               }
-              _context6.next = 33;
+              _context6.next = 28;
               return productsResponse.json();
-            case 33:
+            case 28:
               _context6.t0 = _context6.sent;
-              _context6.next = 37;
+              _context6.next = 32;
               break;
-            case 36:
+            case 31:
               _context6.t0 = {
                 success: false,
                 data: []
               };
-            case 37:
+            case 32:
               productsData = _context6.t0;
-              if (isMounted) localStorage.setItem('shopProducts', JSON.stringify(productsData));
-            case 39:
+              if (isMounted.current) localStorage.setItem('shopProducts', JSON.stringify(productsData));
+            case 34:
               validProducts = productsData.success && Array.isArray(productsData.data) ? productsData.data : [];
-              console.log('Active Products:', validProducts);
               activeProductIds = validProducts.map(function (p) {
                 return p.id;
               });
-              if (isMounted) {
+              if (isMounted.current) {
                 setProfileId(profileIdTemp);
                 setProducts(validProducts);
                 setFilteredProducts(validProducts);
-              }
 
-              // Fetch cart count after setting profileId
+                // Initialize filters based on categories and brands
+                initialFilters = {
+                  categories: validProducts.reduce(function (acc, product) {
+                    if (product.category_id != null) {
+                      acc[product.category_id] = false;
+                    }
+                    return acc;
+                  }, {}),
+                  brands: validProducts.reduce(function (acc, product) {
+                    if (product.brand_id != null) {
+                      acc[product.brand_id] = false;
+                    }
+                    return acc;
+                  }, {})
+                };
+                setFilters(initialFilters);
+              }
               if (!profileIdTemp) {
-                _context6.next = 46;
+                _context6.next = 40;
                 break;
               }
-              _context6.next = 46;
+              _context6.next = 40;
               return fetchCartCount();
-            case 46:
-              // Fetch categories, brands, and reviews in parallel after products
+            case 40:
               cachedCategories = localStorage.getItem('shopCategories');
               cachedBrands = localStorage.getItem('shopBrands');
               fetchSecondaryData = /*#__PURE__*/function () {
@@ -42954,7 +43107,7 @@ function Shop() {
                         _context5.t2 = _context5.t3;
                       case 31:
                         brandsData = _context5.t2;
-                        if (isMounted) {
+                        if (isMounted.current) {
                           setCategories(categoriesData.active && Array.isArray(categoriesData.active) ? categoriesData.active : []);
                           setBrands(Array.isArray(brandsData) ? brandsData : []);
                           if (!cachedCategories) localStorage.setItem('shopCategories', JSON.stringify(categoriesData));
@@ -42983,14 +43136,14 @@ function Shop() {
                   return _ref6.apply(this, arguments);
                 };
               }();
-              fetchSecondaryData(); // Run in background, doesn’t block loading
-              _context6.next = 56;
+              fetchSecondaryData();
+              _context6.next = 50;
               break;
-            case 52:
-              _context6.prev = 52;
+            case 46:
+              _context6.prev = 46;
               _context6.t1 = _context6["catch"](0);
               console.error('Error fetching shop data:', _context6.t1.message);
-              if (isMounted) {
+              if (isMounted.current) {
                 setProducts([]);
                 setFilteredProducts([]);
                 setRatings({});
@@ -43003,15 +43156,15 @@ function Shop() {
                   }
                 });
               }
-            case 56:
-              _context6.prev = 56;
-              if (isMounted) setLoading(false);
-              return _context6.finish(56);
-            case 59:
+            case 50:
+              _context6.prev = 50;
+              if (isMounted.current) setLoading(false);
+              return _context6.finish(50);
+            case 53:
             case "end":
               return _context6.stop();
           }
-        }, _callee6, null, [[0, 52, 56, 59]]);
+        }, _callee6, null, [[0, 46, 50, 53]]);
       }));
       return function fetchData() {
         return _ref5.apply(this, arguments);
@@ -43019,11 +43172,9 @@ function Shop() {
     }();
     fetchData();
     return function () {
-      isMounted = false;
+      isMounted.current = false;
     };
   }, [navigate]);
-
-  // Re-fetch cart count whenever profileId changes or cart is opened/closed
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (profileId) {
       fetchCartCount();
@@ -50087,7 +50238,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  text-align: center;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #e0e0e0;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  padding: 15px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f5f7fa;\n  border: none;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  flex: 1;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  flex-shrink: 0;\n}\n.all-order .orders-list .order-item .order-details .order-info {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0;\n  line-height: 1.2;\n  font-weight: 500;\n  color: #333;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .quantity {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n  line-height: 1.2;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin: 0;\n  line-height: 1.2;\n  text-align: left;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-weight: 500;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-pending {\n  background-color: #ffe7ba;\n  color: #d97706;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-in-transit {\n  background-color: #bfdbfe;\n  color: #1d4ed8;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-received {\n  background-color: #bbf7d0;\n  color: #15803d;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-completed {\n  background-color: #d1fae5;\n  color: #047857;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-cancelled {\n  background-color: #fecaca;\n  color: #b91c1c;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-refund {\n  background-color: #e9d5ff;\n  color: #6b21a8;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .order-price {\n  font-size: 1rem;\n  font-weight: bold;\n  color: #ff0000;\n  margin: 0;\n  text-align: right;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n  margin: 20px 0;\n}\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 10px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details {\n    width: 100%;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .quantity {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .order-price {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".all-order {\n  font-family: Arial, sans-serif;\n  color: #333;\n}\n.all-order .order-tabs {\n  display: flex;\n  justify-content: flex-start;\n  margin-bottom: 20px;\n  border: 1px solid #ccc;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.all-order .order-tabs .tab {\n  flex: 1;\n  background: #f0f4f8;\n  border: none;\n  border-right: 1px solid #ccc;\n  color: #333;\n  font-size: 0.9rem;\n  padding: 10px 15px;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n  text-align: center;\n}\n.all-order .order-tabs .tab:last-child {\n  border-right: none;\n}\n.all-order .order-tabs .tab.active {\n  background-color: #ff0000;\n  color: #fff;\n  font-weight: bold;\n}\n.all-order .order-tabs .tab:hover {\n  background-color: #ff3333;\n  color: #fff;\n}\n.all-order .orders-list {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n.all-order .orders-list .order-item-container {\n  background-color: #fff;\n  border: 1px solid #e0e0e0;\n  border-radius: 10px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  padding: 15px;\n}\n.all-order .orders-list .order-item {\n  background-color: #f5f7fa;\n  border: none;\n  border-radius: 5px;\n  padding: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n  flex: 1;\n}\n.all-order .orders-list .order-item .order-details .order-image {\n  width: 60px;\n  height: 60px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 5px;\n  flex-shrink: 0;\n}\n.all-order .orders-list .order-item .order-details .order-info {\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n  align-items: flex-start;\n}\n.all-order .orders-list .order-item .order-details .order-info h4 {\n  font-size: 1rem;\n  margin: 0;\n  line-height: 1.2;\n  font-weight: 500;\n  color: #333;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .quantity {\n  font-size: 0.8rem;\n  margin: 0;\n  color: #666;\n  line-height: 1.2;\n  text-align: left;\n}\n.all-order .orders-list .order-item .order-details .order-info .status {\n  font-size: 0.8rem;\n  margin: 0;\n  line-height: 1.2;\n  text-align: left;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-weight: 500;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-pending {\n  background-color: #ffe7ba;\n  color: #d97706;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-in-transit {\n  background-color: #bfdbfe;\n  color: #1d4ed8;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-shipped {\n  background-color: #bbf7d0;\n  color: #15803d;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-delivered {\n  background-color: #a5f3fc;\n  color: #0e7490;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-completed {\n  background-color: #d1fae5;\n  color: #047857;\n}\n.all-order .orders-list .order-item .order-details .order-info .status-cancelled {\n  background-color: #fecaca;\n  color: #b91c1c;\n}\n.all-order .orders-list .order-item .order-actions {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  gap: 10px;\n}\n.all-order .orders-list .order-item .order-actions .order-price {\n  font-size: 1rem;\n  font-weight: bold;\n  color: #ff0000;\n  margin: 0;\n  text-align: right;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons {\n  display: flex;\n  gap: 10px;\n  justify-content: flex-end;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n  padding: 5px 15px;\n  font-size: 0.8rem;\n  border: 1px solid #333;\n  border-radius: 5px;\n  background: none;\n  cursor: pointer;\n  transition: background-color 0.3s ease, color 0.3s ease;\n}\n.all-order .orders-list .order-item .order-actions .action-buttons .action-btn:hover {\n  background-color: #ff0000;\n  color: #fff;\n  border-color: #ff0000;\n}\n.all-order .orders-list p {\n  text-align: center;\n  color: #666;\n  font-size: 0.9rem;\n  margin: 20px 0;\n}\n@media (max-width: 768px) {\n  .all-order .order-tabs .tab {\n    font-size: 0.8rem;\n    padding: 8px 10px;\n  }\n  .all-order .orders-list {\n    gap: 15px;\n  }\n  .all-order .orders-list .order-item-container {\n    padding: 10px;\n  }\n  .all-order .orders-list .order-item {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details {\n    width: 100%;\n    gap: 10px;\n  }\n  .all-order .orders-list .order-item .order-details .order-image {\n    width: 50px;\n    height: 50px;\n  }\n  .all-order .orders-list .order-item .order-details .order-info h4 {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .quantity {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-details .order-info .status {\n    font-size: 0.7rem;\n  }\n  .all-order .orders-list .order-item .order-actions {\n    width: 100%;\n    align-items: flex-end;\n  }\n  .all-order .orders-list .order-item .order-actions .order-price {\n    font-size: 0.9rem;\n  }\n  .all-order .orders-list .order-item .order-actions .action-buttons .action-btn {\n    font-size: 0.7rem;\n    padding: 5px 10px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50255,7 +50406,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-filter {\n  padding: 60px;\n  position: sticky;\n  top: 60px;\n  z-index: 10;\n  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);\n}\n\n.shop-filter-section {\n  margin-bottom: 30px;\n}\n\n.shop-filter-section-title {\n  font-size: 16px;\n  color: #FF0000;\n  font-weight: bold;\n  margin-bottom: 15px;\n  text-transform: uppercase;\n}\n\n.shop-filter-category {\n  display: flex;\n  align-items: center;\n  margin-bottom: 15px;\n  font-size: 16px;\n  color: #1E1E1E;\n  position: relative;\n}\n\n.shop-filter-category input[type=checkbox] {\n  width: 30px;\n  height: 30px;\n  margin: 0;\n  padding: 0;\n  opacity: 0;\n  cursor: pointer;\n  position: absolute;\n  z-index: 1;\n  left: -6px;\n  top: -6px;\n}\n\n.shop-filter-checkbox {\n  width: 18px;\n  height: 18px;\n  border: 2px solid #1E1E1E;\n  border-radius: 4px;\n  margin-right: 10px;\n  display: inline-block;\n  position: relative;\n  background: transparent;\n  cursor: pointer;\n}\n\n.shop-filter-checkbox:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n  left: 4px;\n  top: 0;\n  width: 6px;\n  height: 12px;\n  border: solid #FF0000;\n  border-width: 0 2px 2px 0;\n  transform: rotate(45deg);\n}\n\ninput[type=checkbox]:checked + .shop-filter-checkbox:after {\n  display: block;\n}\n\n.category-text {\n  font-size: 16px;\n  color: #1E1E1E;\n  cursor: default;\n  margin-left: 10px;\n}\n\n.multi-line-text {\n  display: inline-block;\n  white-space: pre-line;\n  line-height: 1.2;\n}\n\n.price-range-text {\n  font-size: 14px;\n  color: #1E1E1E;\n  margin-bottom: 10px;\n  white-space: nowrap;\n}\n\ninput[type=range] {\n  width: 100%;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  height: 5px;\n  background: #FF0000;\n  border-radius: 5px;\n  outline: none;\n  opacity: 0.7;\n  transition: opacity 0.2s;\n}\n\ninput[type=range]:hover {\n  opacity: 1;\n}\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n          appearance: none;\n  width: 15px;\n  height: 15px;\n  background: #1E1E1E;\n  border: 2px solid #FF0000;\n  border-radius: 50%;\n  cursor: pointer;\n}\n\ninput[type=range]::-moz-range-thumb {\n  -moz-appearance: none;\n       appearance: none;\n  width: 15px;\n  height: 15px;\n  background: #1E1E1E;\n  border: 2px solid #FF0000;\n  border-radius: 50%;\n  cursor: pointer;\n}\n\ninput[type=range]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n@media (max-width: 768px) {\n  .shop-filter {\n    position: static;\n    width: 100%;\n    height: auto;\n    padding: 10px;\n    box-shadow: none;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".shop-filter {\n  padding: 40px 30px; /* Reduced horizontal padding for a cleaner look */\n  position: sticky;\n  top: 120px; /* Increased to move the entire sidebar down further */\n  z-index: 10;\n  background-color: #1E1E1E;\n  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);\n  color: #E0E0E0;\n  height: calc(100vh - 120px);\n  overflow-y: auto;\n}\n\n.shop-filter-content {\n  width: 100%;\n}\n\n.shop-filter-section {\n  margin-bottom: 30px; /* Increased for better separation between sections */\n}\n\n.shop-filter-section-title {\n  font-size: 16px;\n  color: #FF5555;\n  font-weight: bold;\n  margin-bottom: 20px; /* Increased to move \"PRODUCT CATEGORIES\" down more */\n  text-transform: uppercase;\n}\n\n.shop-filter-categories {\n  display: flex;\n  flex-direction: column;\n  gap: 15px; /* Added consistent spacing between category items */\n}\n\n.shop-filter-category {\n  display: flex;\n  align-items: center;\n  font-size: 16px;\n  color: #E0E0E0;\n  position: relative;\n}\n\n.shop-filter-category input[type=checkbox] {\n  width: 30px;\n  height: 30px;\n  margin: 0;\n  padding: 0;\n  opacity: 0;\n  cursor: pointer;\n  position: absolute;\n  z-index: 1;\n  left: -6px;\n  top: -6px;\n}\n\n.shop-filter-checkbox {\n  width: 18px;\n  height: 18px;\n  border: 2px solid #666;\n  border-radius: 4px;\n  margin-right: 12px; /* Adjusted for better spacing */\n  display: inline-block;\n  position: relative;\n  background: transparent;\n  cursor: pointer;\n  transition: border-color 0.2s ease;\n}\n\n.shop-filter-checkbox:hover {\n  border-color: #999;\n}\n\n.shop-filter-checkbox:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n  left: 4px;\n  top: 0;\n  width: 6px;\n  height: 12px;\n  border: solid #FF5555;\n  border-width: 0 2px 2px 0;\n  transform: rotate(45deg);\n}\n\ninput[type=checkbox]:checked + .shop-filter-checkbox {\n  border-color: #FF5555;\n}\n\ninput[type=checkbox]:checked + .shop-filter-checkbox:after {\n  display: block;\n}\n\n.category-text {\n  font-size: 16px;\n  color: #E0E0E0;\n  cursor: default;\n  margin-left: 10px;\n}\n\n.multi-line-text {\n  display: inline-block;\n  white-space: pre-line;\n  line-height: 1.2;\n}\n\n.price-range-text {\n  font-size: 14px;\n  color: #B0B0B0;\n  margin-bottom: 10px;\n  white-space: nowrap;\n}\n\ninput[type=range] {\n  width: 100%;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  height: 5px;\n  background: #FF5555;\n  border-radius: 5px;\n  outline: none;\n  opacity: 0.8;\n  transition: opacity 0.2s;\n}\n\ninput[type=range]:hover {\n  opacity: 1;\n}\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n          appearance: none;\n  width: 15px;\n  height: 15px;\n  background: #E0E0E0;\n  border: 2px solid #FF5555;\n  border-radius: 50%;\n  cursor: pointer;\n  -webkit-transition: background 0.2s ease;\n  transition: background 0.2s ease;\n}\n\ninput[type=range]::-webkit-slider-thumb:hover {\n  background: #FFFFFF;\n}\n\ninput[type=range]::-moz-range-thumb {\n  -moz-appearance: none;\n       appearance: none;\n  width: 15px;\n  height: 15px;\n  background: #E0E0E0;\n  border: 2px solid #FF5555;\n  border-radius: 50%;\n  cursor: pointer;\n  -moz-transition: background 0.2s ease;\n  transition: background 0.2s ease;\n}\n\ninput[type=range]::-moz-range-thumb:hover {\n  background: #FFFFFF;\n}\n\ninput[type=range]:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n@media (max-width: 768px) {\n  .shop-filter {\n    position: static;\n    width: 100%;\n    height: auto;\n    padding: 20px;\n    box-shadow: none;\n    background-color: #1E1E1E;\n  }\n  .shop-filter-section {\n    margin-bottom: 20px;\n  }\n  .shop-filter-section-title {\n    font-size: 14px;\n    margin-bottom: 15px;\n  }\n  .shop-filter-categories {\n    gap: 10px;\n  }\n  .shop-filter-category {\n    font-size: 14px;\n  }\n  .category-text {\n    font-size: 14px;\n  }\n  .price-range-text {\n    font-size: 12px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50569,7 +50720,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-page-container {\n  background-color: #F0F8FF;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n.shop-content {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  align-items: flex-start;\n  flex: 1 0 auto;\n  position: relative;\n}\n\n.shop-content > :first-child {\n  width: 300px;\n  flex-shrink: 0;\n}\n\n.shop-content > :last-child {\n  flex: 1;\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #000;\n  color: #fff;\n  padding: 10px 20px;\n  z-index: 1000;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.nav-links {\n  display: flex;\n  gap: 20px;\n}\n\n.nav-links a {\n  color: #fff;\n  text-decoration: none;\n  font-size: 1.1em;\n}\n\n.login-btn {\n  background-color: #ff0000;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n}\n\nfooter {\n  width: 100%;\n  background-color: #1E1E1E;\n  padding: 20px 0;\n  flex-shrink: 0;\n}\n\n.footer-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n  text-align: left;\n  color: #fff;\n}\n\n.product-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n  gap: 20px;\n  padding: 20px;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n.product-card {\n  background-color: #fff;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  transition: transform 0.2s ease-in-out;\n}\n\n.product-card:hover {\n  transform: translateY(-5px);\n}\n\n.product-image {\n  width: 100%;\n  height: 200px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n\n.product-details {\n  padding: 15px;\n  text-align: center;\n}\n\n.product-details .product-name {\n  font-size: 1.1em;\n  margin: 0 0 10px;\n  color: #333;\n  height: 40px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.product-details .product-price {\n  font-size: 1.2em;\n  color: #000;\n  margin: 0 0 15px;\n  font-weight: 600;\n}\n\n.add-to-cart-btn {\n  background-color: #000;\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n  transition: background-color 0.2s ease-in-out;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 500;\n}\n\n.add-to-cart-btn:hover {\n  background-color: #333;\n}\n\n@media (max-width: 768px) {\n  .shop-content {\n    flex-direction: column;\n  }\n  .shop-content > :first-child {\n    width: 100%;\n  }\n  .shop-content > :last-child {\n    width: 100%;\n  }\n  footer {\n    padding: 10px 0;\n  }\n  .footer-content {\n    padding: 0 10px;\n    max-width: 100%;\n  }\n  .product-grid {\n    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n    padding: 10px;\n  }\n  .product-card .product-image {\n    height: 150px;\n  }\n  .product-details {\n    padding: 10px;\n  }\n  .product-details .product-name {\n    font-size: 1em;\n    height: 35px;\n  }\n  .product-details .product-price {\n    font-size: 1.1em;\n  }\n  .add-to-cart-btn {\n    padding: 8px 16px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".shop-page-container {\n  background-color: #1E1E1E;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  width: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n.shop-content {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  margin: 0;\n  padding: 20px 0;\n  align-items: flex-start;\n  flex: 1 0 auto;\n  position: relative;\n  background-color: #1E1E1E;\n}\n\n.shop-content > :first-child {\n  width: 300px;\n  flex-shrink: 0;\n  background-color: #1E1E1E;\n}\n\n.shop-content > :last-child {\n  flex: 1;\n}\n\n.navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #000;\n  color: #fff;\n  padding: 10px 20px;\n  z-index: 1000;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.nav-links {\n  display: flex;\n  gap: 20px;\n}\n\n.nav-links a {\n  color: #fff;\n  text-decoration: none;\n  font-size: 1.1em;\n}\n\n.login-btn {\n  background-color: #FF5555;\n  color: #fff;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n}\n\nfooter {\n  width: 100%;\n  background-color: #1E1E1E;\n  padding: 20px 0;\n  flex-shrink: 0;\n}\n\n.footer-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n  text-align: left;\n  color: #fff;\n}\n\n.product-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n  gap: 20px;\n  padding: 20px;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\n.product-card {\n  background-color: #2A2A2A;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n  transition: transform 0.2s ease-in-out;\n}\n\n.product-card:hover {\n  transform: translateY(-5px);\n}\n\n.product-image {\n  width: 100%;\n  height: 200px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  background-color: #fff;\n}\n\n.product-details {\n  padding: 15px;\n  text-align: center;\n}\n\n.product-details .product-name {\n  font-size: 1.1em;\n  margin: 0 0 10px;\n  color: #E0E0E0;\n  height: 40px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.product-details .product-price {\n  font-size: 1.2em;\n  color: #E0E0E0;\n  margin: 0 0 10px;\n  font-weight: 600;\n}\n\n.product-details .product-rating {\n  margin-bottom: 10px;\n  color: #FFD700;\n  font-size: 1em;\n}\n\n.add-to-cart-btn {\n  background-color: #FF0000;\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 1em;\n  transition: background-color 0.2s ease-in-out;\n  width: 100%;\n  text-transform: uppercase;\n  font-weight: 500;\n}\n\n.add-to-cart-btn:hover {\n  background-color: #FF3333;\n}\n\n@media (max-width: 768px) {\n  .shop-content {\n    flex-direction: column;\n    padding: 10px 0;\n  }\n  .shop-content > :first-child {\n    width: 100%;\n  }\n  .shop-content > :last-child {\n    width: 100%;\n  }\n  footer {\n    padding: 10px 0;\n  }\n  .footer-content {\n    padding: 0 10px;\n    max-width: 100%;\n  }\n  .product-grid {\n    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n    padding: 10px;\n  }\n  .product-card .product-image {\n    height: 150px;\n  }\n  .product-details {\n    padding: 10px;\n  }\n  .product-details .product-name {\n    font-size: 1em;\n    height: 35px;\n  }\n  .product-details .product-price {\n    font-size: 1.1em;\n  }\n  .product-details .product-rating {\n    font-size: 0.9em;\n  }\n  .add-to-cart-btn {\n    padding: 8px 16px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50594,7 +50745,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\n.shop-grid-wrapper {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 15px;\n  margin: 0 auto;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 15px;\n}\n.shop-grid-header .available-products {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: #000000;\n}\n.shop-grid-header .sort-view-container {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.shop-grid-header .sort-view-container label {\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: #000000;\n}\n.shop-grid-header .sort-view-container select {\n  padding: 6px;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  border: 1px solid #000000;\n  border-radius: 4px;\n  cursor: pointer;\n  background: #FFFFFF;\n  color: #000000;\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, minmax(180px, 1fr));\n  gap: 20px;\n  justify-items: center;\n  width: 100%;\n  padding: 0;\n}\n.shop-grid-products .shop-grid-card {\n  background: #FFFFFF;\n  border-radius: 12px;\n  border: 1px solid #B22222;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  transition: transform 0.2s ease;\n}\n.shop-grid-products .shop-grid-card:hover {\n  transform: translateY(-3px);\n}\n.shop-grid-products .shop-grid-card .product-link {\n  text-decoration: none;\n}\n.shop-grid-products .shop-grid-card .product-image-container {\n  background: #FFFFFF;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  padding: 15px;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .shop-grid-card .product-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-height: 130px;\n}\n.shop-grid-products .shop-grid-card .no-image-placeholder {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  background: #F8F8F8;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .shop-grid-card .no-image-placeholder span {\n  font-family: \"Inter\", sans-serif;\n  font-size: 12px;\n  color: #000000;\n}\n.shop-grid-products .shop-grid-card .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.shop-grid-products .shop-grid-card .shop-grid-stars {\n  display: flex;\n  margin-bottom: 8px;\n}\n.shop-grid-products .shop-grid-card .product-name {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  color: #000000;\n  margin: 0 0 8px;\n  text-align: left;\n  line-height: 1.2;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.shop-grid-products .shop-grid-card .product-price {\n  font-family: \"Inter\", sans-serif;\n  font-size: 16px;\n  font-weight: 700;\n  color: #B22222;\n  margin-bottom: 10px;\n  text-align: left;\n}\n.shop-grid-products .shop-grid-card .shop-grid-add-to-cart {\n  background: #B22222;\n  color: #FFFFFF;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 10px 0 10px 0;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.2s ease;\n  margin-left: auto;\n}\n.shop-grid-products .shop-grid-card .shop-grid-add-to-cart:hover {\n  background: #8B1A1A; /* Slightly darker red */\n}\n.shop-grid-products .skeleton {\n  background: #F8F8F8;\n  border-radius: 12px;\n  border: 1px solid #E0E0E0;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.shop-grid-products .skeleton .skeleton-image {\n  height: 160px;\n  background: linear-gradient(90deg, #F0F0F0 25%, #E0E0E0 50%, #F0F0F0 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-products .skeleton .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.shop-grid-products .skeleton .skeleton-stars,\n.shop-grid-products .skeleton .skeleton-name,\n.shop-grid-products .skeleton .skeleton-price,\n.shop-grid-products .skeleton .skeleton-button {\n  background: linear-gradient(90deg, #F0F0F0 25%, #E0E0E0 50%, #F0F0F0 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 4px;\n  margin-bottom: 8px;\n}\n.shop-grid-products .skeleton .skeleton-stars {\n  height: 16px;\n  width: 80px;\n}\n.shop-grid-products .skeleton .skeleton-name {\n  height: 16px;\n  width: 70%;\n}\n.shop-grid-products .skeleton .skeleton-price {\n  height: 14px;\n  width: 50%;\n}\n.shop-grid-products .skeleton .skeleton-button {\n  height: 32px;\n  width: 80px;\n  margin-left: auto;\n  border-radius: 10px 0 10px 0;\n}\n\n.shop-grid-show-more,\n.shop-grid-back-to-top {\n  display: block;\n  margin: 15px auto;\n  padding: 8px 16px;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.2s ease;\n}\n\n.shop-grid-show-more {\n  background: #B22222;\n  color: #FFFFFF;\n  border: none;\n}\n.shop-grid-show-more:hover {\n  background: #8B1A1A;\n}\n\n.shop-grid-back-to-top {\n  background: #FFFFFF;\n  color: #B22222;\n  border: 1px solid #B22222;\n}\n.shop-grid-back-to-top .arrow {\n  font-size: 14px;\n  margin-right: 4px;\n}\n.shop-grid-back-to-top:hover {\n  background: #B22222;\n  color: #FFFFFF;\n}\n\n@keyframes skeleton-loading {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}\n@media (max-width: 1100px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(4, minmax(180px, 1fr));\n  }\n}\n@media (max-width: 800px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(3, minmax(180px, 1fr));\n  }\n}\n@media (max-width: 500px) {\n  .shop-grid-products {\n    grid-template-columns: repeat(2, minmax(160px, 1fr));\n  }\n}\n@media (max-width: 400px) {\n  .shop-grid-products {\n    grid-template-columns: 1fr;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n.shop-grid-wrapper {\n  display: flex;\n  justify-content: center;\n  width: 100%;\n  background: #1C1C1E;\n  padding-top: 40px;\n}\n\n.shop-grid-container {\n  width: 100%;\n  max-width: 1200px;\n  padding: 20px;\n  margin: 0 auto;\n}\n\n.shop-grid-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 30px; /* Increased for more spacing */\n}\n.shop-grid-header .available-products {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  color: #D1D1D6;\n}\n.shop-grid-header .sort-view-container {\n  display: flex;\n  align-items: center;\n  gap: 12px; /* Increased for better spacing */\n}\n.shop-grid-header .sort-view-container label {\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  color: #D1D1D6;\n  white-space: nowrap;\n}\n.shop-grid-header .sort-view-container select {\n  padding: 8px 12px; /* Added horizontal padding for better spacing */\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  border: 1px solid #3A3A3C;\n  border-radius: 6px;\n  cursor: pointer;\n  background: #2C2C2E;\n  color: #D1D1D6;\n  transition: border-color 0.2s ease;\n}\n.shop-grid-header .sort-view-container select:focus {\n  outline: none;\n  border-color: #FF3B30;\n}\n\n.shop-grid-products {\n  display: grid;\n  grid-template-columns: repeat(5, minmax(180px, 1fr));\n  gap: 25px; /* Increased for more spacing between cards */\n  justify-items: center;\n  width: 100%;\n  padding: 0;\n}\n\n.shop-grid-card {\n  background: #2C2C2E;\n  border-radius: 12px;\n  border: 1px solid #3A3A3C;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.shop-grid-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\n}\n.shop-grid-card .product-link {\n  text-decoration: none;\n  display: block;\n}\n.shop-grid-card .product-image-container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  padding: 15px;\n  border-radius: 12px 12px 0 0;\n  background: transparent;\n}\n.shop-grid-card .product-image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  max-height: 130px;\n  background: transparent;\n}\n.shop-grid-card .no-image-placeholder {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 160px;\n  background: #3A3A3C;\n  border-radius: 12px 12px 0 0;\n}\n.shop-grid-card .no-image-placeholder span {\n  font-family: \"Inter\", sans-serif;\n  font-size: 12px;\n  color: #D1D1D6;\n}\n.shop-grid-card .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  gap: 8px; /* Added spacing between elements inside the card */\n}\n.shop-grid-card .shop-grid-stars {\n  display: flex;\n  margin-bottom: 0;\n}\n.shop-grid-card .product-name {\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  color: #D1D1D6;\n  margin: 0;\n  text-align: left;\n  line-height: 1.3;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.shop-grid-card .product-price {\n  font-family: \"Inter\", sans-serif;\n  font-size: 16px;\n  font-weight: 700;\n  color: #FF3B30;\n  margin: 0;\n  text-align: left;\n}\n.shop-grid-card .shop-grid-add-to-cart {\n  background: #FF3B30;\n  color: #FFFFFF;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 10px 0 10px 0;\n  font-family: \"Inter\", sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.3s ease, transform 0.2s ease;\n  margin-left: auto;\n}\n.shop-grid-card .shop-grid-add-to-cart:hover {\n  background: #D32F2F;\n  transform: scale(1.05);\n}\n\n.skeleton {\n  background: #2C2C2E;\n  border-radius: 12px;\n  border: 1px solid #3A3A3C;\n  width: 100%;\n  max-width: 220px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n.skeleton .skeleton-image {\n  height: 160px;\n  background: linear-gradient(90deg, #3A3A3C 25%, #4A4A4C 50%, #3A3A3C 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 12px 12px 0 0;\n}\n.skeleton .shop-grid-info {\n  padding: 12px;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n  gap: 8px;\n}\n.skeleton .skeleton-stars,\n.skeleton .skeleton-name,\n.skeleton .skeleton-price,\n.skeleton .skeleton-button {\n  background: linear-gradient(90deg, #3A3A3C 25%, #4A4A4C 50%, #3A3A3C 75%);\n  background-size: 200% 100%;\n  animation: skeleton-loading 1.5s infinite;\n  border-radius: 4px;\n}\n.skeleton .skeleton-stars {\n  height: 16px;\n  width: 80px;\n}\n.skeleton .skeleton-name {\n  height: 16px;\n  width: 70%;\n}\n.skeleton .skeleton-price {\n  height: 14px;\n  width: 50%;\n}\n.skeleton .skeleton-button {\n  height: 32px;\n  width: 80px;\n  margin-left: auto;\n  border-radius: 10px 0 10px 0;\n}\n\n.shop-grid-show-more,\n.shop-grid-back-to-top {\n  display: block;\n  margin: 30px auto; /* Increased for more spacing */\n  padding: 10px 20px;\n  font-family: \"Inter\", sans-serif;\n  font-size: 14px;\n  font-weight: 600;\n  border-radius: 6px;\n  cursor: pointer;\n  transition: background 0.3s ease, transform 0.2s ease;\n}\n\n.shop-grid-show-more {\n  background: #FF3B30;\n  color: #FFFFFF;\n  border: none;\n}\n.shop-grid-show-more:hover {\n  background: #D32F2F;\n  transform: scale(1.05);\n}\n\n.shop-grid-back-to-top {\n  background: #2C2C2E;\n  color: #FF3B30;\n  border: 1px solid #FF3B30;\n}\n.shop-grid-back-to-top .arrow {\n  font-size: 14px;\n  margin-right: 4px;\n}\n.shop-grid-back-to-top:hover {\n  background: #FF3B30;\n  color: #FFFFFF;\n  transform: scale(1.05);\n}\n\n@keyframes skeleton-loading {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50642,7 +50793,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  max-width: 100%;\n  min-height: 100vh;\n  margin: 0;\n  padding: 20px;\n  color: #333;\n  background-color: #F0F8FF;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 20px;\n}\n.track-order .order-status h2 {\n  font-size: 1.5rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: transparent;\n  border: 2px solid #1E1E1E;\n  padding: 15px;\n  margin-bottom: 20px;\n  border-radius: 5px;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 20px;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 10%;\n  right: 10%;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 10%;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  transition: width 0.5s ease-in-out;\n  box-shadow: 0 0 5px rgba(255, 28, 28, 0.5);\n}\n.track-order .timeline.active-0::after {\n  width: 0;\n}\n.track-order .timeline.active-1::after {\n  width: 27%;\n}\n.track-order .timeline.active-2::after {\n  width: 53%;\n}\n.track-order .timeline.active-3::after {\n  width: 80%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 20%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #F0F8FF;\n  border: 2px solid #C5C5C5;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #C5C5C5;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .timeline .timeline-step.current .timeline-icon {\n  box-shadow: 0 0 10px rgba(255, 28, 28, 0.7);\n  transform: scale(1.1);\n}\n.track-order .timeline .timeline-step.active:not(.current) .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-label {\n  color: #FF1C1C;\n  font-weight: bold;\n}\n.track-order .timeline .timeline-step.active .timeline-date {\n  color: #FF1C1C;\n}\n.track-order .order-details {\n  background-color: transparent;\n  border: 2px dashed #1E1E1E;\n  padding: 15px;\n  border-radius: 0;\n}\n.track-order .order-details h3 {\n  font-size: 1.2rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-details .details-content {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n.track-order .order-details .details-content .details-text {\n  flex: 1;\n}\n.track-order .order-details .details-content .details-text p {\n  font-size: 0.9rem;\n  margin: 5px 0;\n  color: #333;\n}\n.track-order .order-details .details-content .details-text p strong {\n  color: #333;\n  font-weight: bold;\n}\n.track-order .order-details .details-content .details-image {\n  margin-left: 20px;\n}\n.track-order .order-details .details-content .details-image .product-image {\n  max-width: 100px;\n  height: auto;\n  border-radius: 5px;\n}\n\n@media (max-width: 600px) {\n  .track-order {\n    padding: 10px;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 10px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before, .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 10px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 10px;\n  }\n  .track-order .order-details .details-content {\n    flex-direction: column;\n    align-items: center;\n  }\n  .track-order .order-details .details-content .details-image {\n    margin-left: 0;\n    margin-top: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".track-order-page {\n  padding-top: 80px;\n  background-color: #ffffff;\n  width: 100%;\n  min-height: 100vh;\n}\n\n.track-order {\n  font-family: Arial, sans-serif;\n  width: 100%;\n  min-height: 100vh;\n  margin: 0 auto;\n  padding: 40px 20px;\n  color: #333;\n}\n.track-order .loading,\n.track-order .error-message {\n  text-align: center;\n  font-size: 1rem;\n  color: #b91c1c;\n  margin: 20px 0;\n}\n.track-order .notice {\n  font-size: 0.9rem;\n  color: #666;\n  margin-bottom: 20px;\n  text-align: center;\n}\n.track-order .order-status {\n  text-align: left;\n  margin-bottom: 30px;\n}\n.track-order .order-status h2 {\n  font-size: 1.8rem;\n  color: #1E1E1E;\n  margin: 0 0 10px 0;\n}\n.track-order .order-status .status-text {\n  color: #008000;\n  font-weight: bold;\n}\n.track-order .order-info {\n  display: flex;\n  justify-content: space-between;\n  background-color: #fff;\n  border: 2px solid #1E1E1E;\n  padding: 20px;\n  margin-bottom: 30px;\n  border-radius: 8px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.track-order .order-info .info-item {\n  text-align: center;\n  flex: 1;\n}\n.track-order .order-info .info-item span:first-child {\n  font-weight: bold;\n  color: #ff0000;\n  display: block;\n  margin-bottom: 5px;\n}\n.track-order .order-info .info-item span:last-child {\n  font-size: 0.9rem;\n  color: #333;\n}\n.track-order .timeline {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  margin-bottom: 30px;\n  width: 100%;\n}\n.track-order .timeline::before {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 0;\n  right: 0;\n  height: 5px;\n  background-color: #C5C5C5;\n  z-index: 0;\n}\n.track-order .timeline::after {\n  content: \"\";\n  position: absolute;\n  top: 20px;\n  left: 0;\n  height: 5px;\n  background-color: #FF1C1C;\n  z-index: 1;\n  transition: width 0.5s ease-in-out;\n  box-shadow: 0 0 5px rgba(255, 28, 28, 0.5);\n}\n.track-order .timeline.active-0::after {\n  width: 0;\n}\n.track-order .timeline.active-1::after {\n  width: 38%;\n}\n.track-order .timeline.active-2::after {\n  width: 63%;\n}\n.track-order .timeline.active-3::after {\n  width: 100%;\n}\n.track-order .timeline .timeline-step {\n  position: relative;\n  text-align: center;\n  z-index: 2;\n  width: 25%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon {\n  background-color: #fff;\n  border: 2px solid #C5C5C5;\n  border-radius: 50%;\n  width: 40px;\n  height: 40px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative;\n  top: -50%;\n  margin-bottom: 10px;\n  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-icon svg {\n  color: #C5C5C5;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-label {\n  font-size: 0.9rem;\n  color: #666;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step .timeline-date {\n  font-size: 0.8rem;\n  color: #333;\n  display: block;\n  transition: color 0.3s ease;\n}\n.track-order .timeline .timeline-step.active .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-icon svg {\n  color: #fff;\n}\n.track-order .timeline .timeline-step.current .timeline-icon {\n  box-shadow: 0 0 10px rgba(255, 28, 28, 0.7);\n  transform: scale(1.1);\n}\n.track-order .timeline .timeline-step.active:not(.current) .timeline-icon {\n  background-color: #FF1C1C;\n  border-color: #FF1C1C;\n}\n.track-order .timeline .timeline-step.active .timeline-label {\n  color: #FF1C1C;\n  font-weight: bold;\n}\n.track-order .timeline .timeline-step.active .timeline-date {\n  color: #FF1C1C;\n}\n.track-order .order-details {\n  background-color: #fff;\n  border: 2px dashed #1E1E1E;\n  padding: 20px;\n  border-radius: 8px;\n  width: 100%;\n  box-sizing: border-box;\n}\n.track-order .order-details h3 {\n  font-size: 1.4rem;\n  color: #1E1E1E;\n  margin: 0 0 15px 0;\n}\n.track-order .order-details .details-content {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 20px;\n}\n.track-order .order-details .details-content .details-text {\n  flex: 1;\n}\n.track-order .order-details .details-content .details-text p {\n  font-size: 0.9rem;\n  margin: 8px 0;\n  color: #333;\n}\n.track-order .order-details .details-content .details-text p strong {\n  color: #333;\n  font-weight: bold;\n}\n.track-order .order-details .details-content .details-image {\n  flex-shrink: 0;\n}\n.track-order .order-details .details-content .details-image .product-image {\n  width: 100px;\n  height: auto;\n  border-radius: 8px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.track-order .order-details .details-content .details-image p {\n  font-size: 0.9rem;\n  color: #666;\n  text-align: center;\n}\n\n@media (max-width: 768px) {\n  .track-order {\n    padding: 20px;\n  }\n  .track-order .order-status {\n    margin-bottom: 20px;\n  }\n  .track-order .order-status h2 {\n    font-size: 1.5rem;\n  }\n  .track-order .order-info {\n    flex-direction: column;\n    gap: 15px;\n    padding: 15px;\n  }\n  .track-order .order-info .info-item {\n    text-align: left;\n  }\n  .track-order .timeline {\n    flex-direction: column;\n    gap: 20px;\n  }\n  .track-order .timeline::before, .track-order .timeline::after {\n    display: none;\n  }\n  .track-order .timeline .timeline-step {\n    width: 100%;\n    display: flex;\n    align-items: center;\n    gap: 15px;\n  }\n  .track-order .timeline .timeline-step .timeline-icon {\n    margin: 0;\n    top: 0;\n  }\n  .track-order .timeline .timeline-step .timeline-label,\n  .track-order .timeline .timeline-step .timeline-date {\n    text-align: left;\n  }\n  .track-order .order-details {\n    padding: 15px;\n  }\n  .track-order .order-details .details-content {\n    flex-direction: column;\n    align-items: flex-start;\n    gap: 15px;\n  }\n  .track-order .order-details .details-content .details-image {\n    align-self: flex-end;\n  }\n}\n@media (max-width: 480px) {\n  .track-order {\n    padding: 15px;\n  }\n  .track-order .order-status h2 {\n    font-size: 1.3rem;\n  }\n  .track-order .order-details .details-content .details-text p {\n    font-size: 0.85rem;\n  }\n  .track-order .order-details .details-content .details-image .product-image {\n    width: 80px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

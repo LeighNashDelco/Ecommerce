@@ -1,15 +1,25 @@
 .track-order-page {
   padding-top: 80px;
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .track-order {
   font-family: Arial, sans-serif;
-  max-width: 100%;
+  width: 100%;
   min-height: 100vh;
-  margin: 0;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 40px 20px;
   color: #333;
-  background-color: #F0F8FF;
+
+  .loading,
+  .error-message {
+    text-align: center;
+    font-size: 1rem;
+    color: #b91c1c;
+    margin: 20px 0;
+  }
 
   .notice {
     font-size: 0.9rem;
@@ -20,27 +30,30 @@
 
   .order-status {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #1E1E1E;
       margin: 0 0 10px 0;
     }
 
     .status-text {
       color: #008000;
+      font-weight: bold;
     }
   }
 
   .order-info {
     display: flex;
     justify-content: space-between;
-    background-color: transparent;
+    background-color: #fff;
     border: 2px solid #1E1E1E;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 
     .info-item {
       text-align: center;
@@ -50,6 +63,7 @@
         font-weight: bold;
         color: #ff0000;
         display: block;
+        margin-bottom: 5px;
       }
 
       span:last-child {
@@ -64,60 +78,58 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin-bottom: 20px;
-
+    margin-bottom: 30px;
+    width: 100%;
 
     &::before {
       content: '';
       position: absolute;
-      top: 20px; 
-      left: 10%; 
-      right: 10%; 
+      top: 20px;
+      left: 0;
+      right: 0;
       height: 5px;
       background-color: #C5C5C5;
       z-index: 0;
     }
 
-    // Red active line
     &::after {
       content: '';
       position: absolute;
-      top: 20px; 
-      left: 10%;
+      top: 20px;
+      left: 0;
       height: 5px;
       background-color: #FF1C1C;
       z-index: 1;
       transition: width 0.5s ease-in-out;
-      box-shadow: 0 0 5px rgba(255, 28, 28, 0.5); // Add a subtle glow to make it "cool"
+      box-shadow: 0 0 5px rgba(255, 28, 28, 0.5);
     }
 
     &.active-0::after {
-      width: 0; 
+      width: 0;
     }
     &.active-1::after {
-      width: 27%; 
+      width: 38%;
     }
     &.active-2::after {
-      width: 53%; 
+      width: 63%;
     }
     &.active-3::after {
-      width: 80%;
+      width: 100%;
     }
-
 
     .timeline-step {
       position: relative;
       text-align: center;
       z-index: 2;
-      width: 20%;
+      width: 25%;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: transform 0.3s ease;
 
       .timeline-icon {
-        background-color: #F0F8FF;
-        border: 2px solid #C5C5C5; // Gray border for inactive
+        background-color: #fff;
+        border: 2px solid #C5C5C5;
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -130,7 +142,7 @@
         transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
         svg {
-          color: #C5C5C5; // Gray icon for inactive
+          color: #C5C5C5;
           transition: color 0.3s ease;
         }
       }
@@ -179,28 +191,31 @@
   }
 
   .order-details {
-    background-color: transparent;
+    background-color: #fff;
     border: 2px dashed #1E1E1E;
-    padding: 15px;
-    border-radius: 0;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: #1E1E1E;
-      margin: 0 0 10px 0;
+      margin: 0 0 15px 0;
     }
 
     .details-content {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 20px;
 
       .details-text {
         flex: 1;
 
         p {
           font-size: 0.9rem;
-          margin: 5px 0;
+          margin: 8px 0;
           color: #333;
 
           strong {
@@ -211,25 +226,41 @@
       }
 
       .details-image {
-        margin-left: 20px;
+        flex-shrink: 0;
 
         .product-image {
-          max-width: 100px;
+          width: 100px;
           height: auto;
-          border-radius: 5px;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: #666;
+          text-align: center;
         }
       }
     }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .track-order {
-    padding: 10px;
+    padding: 20px;
+
+    .order-status {
+      margin-bottom: 20px;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
 
     .order-info {
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
+      padding: 15px;
 
       .info-item {
         text-align: left;
@@ -249,7 +280,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
 
         .timeline-icon {
           margin: 0;
@@ -264,15 +295,37 @@
     }
 
     .order-details {
-      padding: 10px;
+      padding: 15px;
 
       .details-content {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        gap: 15px;
 
         .details-image {
-          margin-left: 0;
-          margin-top: 10px;
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .track-order {
+    padding: 15px;
+
+    .order-status h2 {
+      font-size: 1.3rem;
+    }
+
+    .order-details {
+      .details-content {
+        .details-text p {
+          font-size: 0.85rem;
+        }
+
+        .details-image .product-image {
+          width: 80px;
         }
       }
     }

@@ -118,9 +118,14 @@
             color: #1d4ed8;
           }
 
-          .status-received {
+          .status-shipped {
             background-color: #bbf7d0;
             color: #15803d;
+          }
+
+          .status-delivered {
+            background-color: #a5f3fc;
+            color: #0e7490;
           }
 
           .status-completed {
@@ -131,11 +136,6 @@
           .status-cancelled {
             background-color: #fecaca;
             color: #b91c1c;
-          }
-
-          .status-refund {
-            background-color: #e9d5ff;
-            color: #6b21a8;
           }
         }
       }

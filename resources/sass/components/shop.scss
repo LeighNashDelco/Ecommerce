@@ -1,5 +1,5 @@
 .shop-page-container {
-  background-color: #F0F8FF;
+  background-color: #1E1E1E;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,15 +14,17 @@
   flex-direction: row;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
   align-items: flex-start;
   flex: 1 0 auto;
   position: relative;
+  background-color: #1E1E1E;
 }
 
 .shop-content > :first-child {
   width: 300px;
   flex-shrink: 0;
+  background-color: #1E1E1E; // Ensure sidebar background matches
 }
 
 .shop-content > :last-child {
@@ -55,7 +57,7 @@
 }
 
 .login-btn {
-  background-color: #ff0000;
+  background-color: #FF5555;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -89,10 +91,10 @@ footer {
 }
 
 .product-card {
-  background-color: #fff;
+  background-color: #2A2A2A;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease-in-out;
 }
 
@@ -104,6 +106,7 @@ footer {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  background-color: #fff; // Ensure image background is white for consistency
 }
 
 .product-details {
@@ -114,7 +117,7 @@ footer {
 .product-details .product-name {
   font-size: 1.1em;
   margin: 0 0 10px;
-  color: #333;
+  color: #E0E0E0;
   height: 40px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,13 +125,19 @@ footer {
 
 .product-details .product-price {
   font-size: 1.2em;
-  color: #000;
-  margin: 0 0 15px;
+  color: #E0E0E0;
+  margin: 0 0 10px;
   font-weight: 600;
 }
 
+.product-details .product-rating {
+  margin-bottom: 10px;
+  color: #FFD700; // Gold color for stars
+  font-size: 1em;
+}
+
 .add-to-cart-btn {
-  background-color: #000;
+  background-color: #FF0000;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -142,12 +151,13 @@ footer {
 }
 
 .add-to-cart-btn:hover {
-  background-color: #333;
+  background-color: #FF3333;
 }
 
 @media (max-width: 768px) {
   .shop-content {
     flex-direction: column;
+    padding: 10px 0;
   }
 
   .shop-content > :first-child {
@@ -187,6 +197,10 @@ footer {
 
   .product-details .product-price {
     font-size: 1.1em;
+  }
+
+  .product-details .product-rating {
+    font-size: 0.9em;
   }
 
   .add-to-cart-btn {

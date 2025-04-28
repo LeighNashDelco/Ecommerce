@@ -88,6 +88,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/orders/user', [OrderController::class, 'getUserOrders']);
     Route::post('/orders/{orderId}/cancel', [OrderController::class, 'cancelOrder']);
     Route::patch('/orders/{orderId}/update-status', [OrderController::class, 'updateStatus'])->middleware('auth:api');
+    Route::post('/orders/{orderId}/complete', [OrderController::class, 'completeOrder']);
     Route::post('/orders/{orderId}/archive', [OrderController::class, 'archiveOrder'])->middleware('auth:api');
     Route::post('/orders/{orderId}/restore', [OrderController::class, 'restoreOrder'])->middleware('auth:api');
     
@@ -237,6 +238,7 @@ Route::middleware('auth:api')->group(function () {
 
     # Track Orders
     Route::get('/orders/track/{orderId}', [TrackController::class, 'trackOrder']);
+
 
     # Cart Management
     Route::get('/cart/{profileId}', [CartController::class, 'getCart']);

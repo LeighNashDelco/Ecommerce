@@ -39,6 +39,13 @@ class StatusSeeder extends Seeder
             ],
             [
                 'id' => 5,
+                'status_name' => 'Completed',
+                'archived' => 0,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 6,
                 'status_name' => 'Cancelled',
                 'archived' => 0,
                 'created_at' => now(),

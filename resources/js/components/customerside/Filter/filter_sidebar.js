@@ -4,8 +4,8 @@ import './../../../../sass/components/filter_sidebar.scss';
 const FilterSidebar = ({ filters, setFilters, products, setFilteredProducts, categories, brands }) => {
   // Ensure props are defined with fallback values to prevent undefined errors
   const safeProducts = Array.isArray(products) ? products : [];
-  const safeCategories = Array.isArray(categories) ? categories.filter(cat => cat.archived === false) : []; // Only show archived: false for categories
-  const safeBrands = Array.isArray(brands) ? brands.filter(br => br.archived === 0) : []; // Only show archived: 0 for brands
+  const safeCategories = Array.isArray(categories) ? categories.filter(cat => cat.archived === false) : [];
+  const safeBrands = Array.isArray(brands) ? brands.filter(br => br.archived === 0) : [];
   const safeFilters = filters || { categories: {}, brands: {} };
 
   const handleCheckboxChange = (categoryId) => {
@@ -52,8 +52,11 @@ const FilterSidebar = ({ filters, setFilters, products, setFilteredProducts, cat
       setFilteredProducts(safeProducts);
     } else {
       const filtered = safeProducts.filter((product) => {
-        const productCategoryId = product.category_id !== undefined ? Number(product.category_id) : null;
-        const productBrandId = product.brand_id !== undefined ? Number(product.brand_id) : null;
+        const productCategoryId = product.category_id != null ? Number(product.category_id) : null;
+        const productBrandId = product.brand_id != null ? Number(product.brand_id) : null;
+
+        // Skip products with invalid category_id or brand_id
+        if (productCategoryId == null || productBrandId == null) return false;
 
         // Category match: true if no categories selected or product matches at least one selected category
         const categoryMatch =
@@ -77,12 +80,12 @@ const FilterSidebar = ({ filters, setFilters, products, setFilteredProducts, cat
 
   const getCategoryProductCount = (categoryId) => {
     const id = Number(categoryId);
-    return safeProducts.filter((product) => Number(product.category_id) === id).length;
+    return safeProducts.filter((product) => product.category_id != null && Number(product.category_id) === id).length;
   };
 
   const getBrandProductCount = (brandId) => {
     const id = Number(brandId);
-    return safeProducts.filter((product) => Number(product.brand_id) === id).length;
+    return safeProducts.filter((product) => product.brand_id != null && Number(product.brand_id) === id).length;
   };
 
   return (
@@ -107,7 +110,7 @@ const FilterSidebar = ({ filters, setFilters, products, setFilteredProducts, cat
                 </div>
               ))
             ) : (
-              <div className="shop-filter-category">No categories available</div>
+              <div className="shop-filter-category no-data">No categories available</div>
             )}
           </div>
         </div>
@@ -130,7 +133,7 @@ const FilterSidebar = ({ filters, setFilters, products, setFilteredProducts, cat
                 </div>
               ))
             ) : (
-              <div className="shop-filter-category">No brands available</div>
+              <div className="shop-filter-category no-data">No brands available</div>
             )}
           </div>
         </div>

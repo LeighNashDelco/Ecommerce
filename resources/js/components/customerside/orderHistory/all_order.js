@@ -20,7 +20,7 @@ const AllOrder = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('LaravelPassportToken');
-        
+
         if (!token) {
           throw new Error('Please login first - No token found');
         }
@@ -44,19 +44,19 @@ const AllOrder = () => {
         }
 
         const data = await response.json();
-        
+
         const ordersWithTabs = data.map(order => {
           const statusMap = {
             1: 'Pending',
             2: 'In Transit',
-            3: 'Received',
-            4: 'Completed',
-            5: 'Cancelled',
-            6: 'Refund'
+            3: 'Shipped',
+            4: 'Delivered',
+            5: 'Completed',
+            6: 'Cancelled'
           };
 
           const statusName = statusMap[order.status_id] || order.status_name || 'Pending';
-          
+
           return {
             ...order,
             tab: getTabFromStatus(statusName),
@@ -65,11 +65,17 @@ const AllOrder = () => {
             quantity: order.quantity,
             status: statusName,
             price: order.total_amount.replace(' USD', ''),
-            actions: getActionsFromStatus(statusName),
+            actions: getActionsFromStatus(statusName, order.status_id),
           };
         });
 
-        setOrders(ordersWithTabs);
+        const sortedOrders = ordersWithTabs.sort((a, b) => {
+          if (a.status_id === 1 && b.status_id !== 1) return -1;
+          if (a.status_id !== 1 && b.status_id === 1) return 1;
+          return b.id - a.id;
+        });
+
+        setOrders(sortedOrders);
         setError(null);
       } catch (error) {
         setError(error.message);
@@ -86,26 +92,28 @@ const AllOrder = () => {
 
   const getTabFromStatus = (status) => {
     switch (status.toLowerCase()) {
-      case 'in transit': return 'to_ship';
-      case 'received': return 'to_receive';
+      case 'pending': return 'pending';
+      case 'in transit': return 'in_transit';
+      case 'shipped': return 'shipped';
+      case 'delivered': return 'delivered';
       case 'completed': return 'completed';
       case 'cancelled': return 'cancelled';
-      case 'refund': return 'refunded';
-      case 'pending': return 'to_pay';
       default: return 'all';
     }
   };
 
-  const getActionsFromStatus = (status) => {
+  const getActionsFromStatus = (status, statusId) => {
     switch (status.toLowerCase()) {
       case 'pending':
         return ['Cancel Order', 'Track Order'];
       case 'in transit':
         return ['Track Order'];
-      case 'received':
+      case 'shipped':
         return ['Track Order'];
+      case 'delivered':
+        return statusId === 4 ? ['Order Complete', 'Rate'] : ['Rate'];
       case 'completed':
-        return ['Rate', 'Refund']; // Always allow "Rate" for Completed
+        return ['Rate', 'Refund'];
       default:
         return [];
     }
@@ -124,18 +132,36 @@ const AllOrder = () => {
     setIsCancelModalOpen(true);
   };
 
-  const handleConfirmCancel = (reason) => {
+  const handleConfirmCancel = async (reason) => {
     if (selectedOrderForCancel) {
-      console.log('Order cancelled:', selectedOrderForCancel.order_number, 'Reason:', reason);
-      setOrders(prevOrders => 
-        prevOrders.map(order => 
-          order.id === selectedOrderForCancel.id 
-            ? { ...order, status: 'Cancelled', status_id: 5, actions: [] }
-            : order
-        )
-      );
-      setIsCancelModalOpen(false);
-      setSelectedOrderForCancel(null);
+      try {
+        const token = localStorage.getItem('LaravelPassportToken');
+        const response = await fetch(`/api/orders/${selectedOrderForCancel.id}/cancel`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ reason }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to cancel order');
+        }
+
+        setOrders(prevOrders =>
+          prevOrders.map(order =>
+            order.id === selectedOrderForCancel.id
+              ? { ...order, status: 'Cancelled', status_id: 6, actions: [], tab: 'cancelled' }
+              : order
+          )
+        );
+        setIsCancelModalOpen(false);
+        setSelectedOrderForCancel(null);
+      } catch (error) {
+        setError(error.message);
+      }
     }
   };
 
@@ -162,29 +188,57 @@ const AllOrder = () => {
     setSelectedOrderForRate(null);
   };
 
+  const handleOrderComplete = async (order) => {
+    try {
+      const token = localStorage.getItem('LaravelPassportToken');
+      const response = await fetch(`/api/orders/${order.id}/complete`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to mark order as complete');
+      }
+
+      setOrders(prevOrders =>
+        prevOrders.map(o =>
+          o.id === order.id
+            ? { ...o, status: 'Completed', status_id: 5, actions: ['Rate', 'Refund'], tab: 'completed' }
+            : o
+        )
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="all-order">
       <div className="order-tabs">
         <button className={`tab ${activeTab === 'all' ? 'active' : ''}`} onClick={() => setActiveTab('all')}>
           All Orders
         </button>
-        <button className={`tab ${activeTab === 'to_pay' ? 'active' : ''}`} onClick={() => setActiveTab('to_pay')}>
+        <button className={`tab ${activeTab === 'pending' ? 'active' : ''}`} onClick={() => setActiveTab('pending')}>
           Pending
         </button>
-        <button className={`tab ${activeTab === 'to_ship' ? 'active' : ''}`} onClick={() => setActiveTab('to_ship')}>
-          To Ship
+        <button className={`tab ${activeTab === 'in_transit' ? 'active' : ''}`} onClick={() => setActiveTab('in_transit')}>
+          In Transit
         </button>
-        <button className={`tab ${activeTab === 'to_receive' ? 'active' : ''}`} onClick={() => setActiveTab('to_receive')}>
-          To Receive
+        <button className={`tab ${activeTab === 'shipped' ? 'active' : ''}`} onClick={() => setActiveTab('shipped')}>
+          Shipped
+        </button>
+        <button className={`tab ${activeTab === 'delivered' ? 'active' : ''}`} onClick={() => setActiveTab('delivered')}>
+          Delivered
         </button>
         <button className={`tab ${activeTab === 'completed' ? 'active' : ''}`} onClick={() => setActiveTab('completed')}>
           Completed
         </button>
         <button className={`tab ${activeTab === 'cancelled' ? 'active' : ''}`} onClick={() => setActiveTab('cancelled')}>
           Cancelled
-        </button>
-        <button className={`tab ${activeTab === 'refunded' ? 'active' : ''}`} onClick={() => setActiveTab('refunded')}>
-          Refunded
         </button>
       </div>
 
@@ -219,6 +273,7 @@ const AllOrder = () => {
                           action === 'Cancel Order' ? () => handleCancelOrder(order) :
                           action === 'Rate' ? () => handleRateOrder(order) :
                           action === 'Refund' ? () => console.log('Refund requested for order:', order.order_number) :
+                          action === 'Order Complete' ? () => handleOrderComplete(order) :
                           undefined
                         }
                       >
@@ -239,14 +294,14 @@ const AllOrder = () => {
         isOpen={isCancelModalOpen}
         onClose={handleCloseCancelModal}
         onConfirm={handleConfirmCancel}
-        orderId={selectedOrderForCancel?.id} 
+        orderId={selectedOrderForCancel?.id}
       />
       <RateProduct
         isOpen={isRateModalOpen}
         onClose={handleCloseRateModal}
         onSubmit={handleSubmitRating}
         orderId={selectedOrderForRate?.id}
-        productId={selectedOrderForRate?.product_id} 
+        productId={selectedOrderForRate?.product_id}
       />
     </div>
   );

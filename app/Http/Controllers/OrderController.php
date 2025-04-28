@@ -16,68 +16,68 @@ class OrderController extends Controller
     }
 
     public function index(Request $request)
-{
-    try {
-        Log::info('Fetching all orders for admin', [
-            'user' => Auth::user() ? Auth::user()->toArray() : null,
-            'token' => $request->bearerToken(),
-        ]);
-
-        $orders = Order::with(['profile.user', 'product', 'status'])->get();
-
-        Log::info('Raw orders fetched', ['orders' => $orders->toArray()]);
-
-        $formattedOrders = $orders->map(function ($order) {
-            $userName = $order->profile && $order->profile->user 
-                ? ($order->profile->user->username ?? 'N/A') 
-                : 'N/A';
-
-            Log::debug('Processing order', [
-                'order_id' => $order->id,
-                'profile' => $order->profile ? $order->profile->toArray() : null,
-                'user' => $order->profile && $order->profile->user ? $order->profile->user->toArray() : null,
-                'user_name' => $userName, // Debug username specifically
-                'product' => $order->product ? $order->product->toArray() : null,
-                'status' => $order->status ? $order->status->toArray() : null,
+    {
+        try {
+            Log::info('Fetching all orders for admin', [
+                'user' => Auth::user() ? Auth::user()->toArray() : null,
+                'token' => $request->bearerToken(),
             ]);
 
-            return [
-                'id' => $order->id,
-                'user' => [
-                    'name' => $userName, // Use username from User model
-                ],
-                'product' => [
-                    'name' => $order->product ? ($order->product->product_name ?? 'N/A') : 'N/A',
-                ],
-                'quantity' => $order->quantity,
-                'total_amount' => $order->total_amount,
-                'status_id' => $order->status_id,
-                'order_date' => $order->order_date ? $order->order_date->toDateString() : 'N/A',
-                'estimated_delivery_date' => $order->estimated_delivery_date ? $order->estimated_delivery_date->toDateString() : null,
-                'payment_method' => $order->payment_method ?? 'N/A',
-                'shipping_method' => $order->shipping_method ?? 'N/A',
-                'archived' => $order->archived,
-            ];
-        });
+            $orders = Order::with(['profile.user', 'product', 'status'])->get();
 
-        Log::info('All orders fetched and formatted', ['count' => $formattedOrders->count()]);
-        return response()->json($formattedOrders, 200);
-    } catch (\Exception $e) {
-        Log::error('Failed to fetch all orders', [
-            'message' => $e->getMessage(),
-            'trace' => $e->getTraceAsString(),
-            'file' => $e->getFile(),
-            'line' => $e->getLine(),
-        ]);
-        return response()->json(['error' => 'Failed to fetch orders: ' . $e->getMessage()], 500);
+            Log::info('Raw orders fetched', ['orders' => $orders->toArray()]);
+
+            $formattedOrders = $orders->map(function ($order) {
+                $userName = $order->profile && $order->profile->user 
+                    ? ($order->profile->user->username ?? 'N/A') 
+                    : 'N/A';
+
+                Log::debug('Processing order', [
+                    'order_id' => $order->id,
+                    'profile' => $order->profile ? $order->profile->toArray() : null,
+                    'user' => $order->profile && $order->profile->user ? $order->profile->user->toArray() : null,
+                    'user_name' => $userName,
+                    'product' => $order->product ? $order->product->toArray() : null,
+                    'status' => $order->status ? $order->status->toArray() : null,
+                ]);
+
+                return [
+                    'id' => $order->id,
+                    'user' => [
+                        'name' => $userName,
+                    ],
+                    'product' => [
+                        'name' => $order->product ? ($order->product->product_name ?? 'N/A') : 'N/A',
+                    ],
+                    'quantity' => $order->quantity,
+                    'total_amount' => $order->total_amount,
+                    'status_id' => $order->status_id,
+                    'order_date' => $order->order_date ? $order->order_date->toDateString() : 'N/A',
+                    'estimated_delivery_date' => $order->estimated_delivery_date ? $order->estimated_delivery_date->toDateString() : null,
+                    'payment_method' => $order->payment_method ?? 'N/A',
+                    'shipping_method' => $order->shipping_method ?? 'N/A',
+                    'archived' => $order->archived,
+                ];
+            });
+
+            Log::info('All orders fetched and formatted', ['count' => $formattedOrders->count()]);
+            return response()->json($formattedOrders, 200);
+        } catch (\Exception $e) {
+            Log::error('Failed to fetch all orders', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+            return response()->json(['error' => 'Failed to fetch orders: ' . $e->getMessage()], 500);
+        }
     }
-}
 
     public function updateStatus(Request $request, $orderId)
     {
         try {
             $validatedData = $request->validate([
-                'status_id' => 'required|integer|in:1,2,3,4,5',
+                'status_id' => 'required|integer|in:1,2,3,4,5,6',
             ]);
 
             $order = Order::findOrFail($orderId);
@@ -197,7 +197,7 @@ class OrderController extends Controller
                         'product_name' => $order->product ? $order->product->product_name : 'Unknown Product',
                         'product_img' => $order->product ? $order->product->product_img : '/default-image.jpg',
                         'quantity' => $order->quantity,
-                        'archived' => $order->archived, // Include archived field
+                        'archived' => $order->archived,
                     ];
                 });
 
@@ -248,12 +248,12 @@ class OrderController extends Controller
                 ], 404);
             }
 
-            $order->status_id = 5; // Set to Cancelled, archived remains unchanged
+            $order->status_id = 6;
             $order->save();
 
             DB::table('order_histories')->insert([
                 'order_id' => $order->id,
-                'status_id' => 5,
+                'status_id' => 6,
                 'updated_at' => now(),
             ]);
 
@@ -280,6 +280,70 @@ class OrderController extends Controller
             ]);
             return response()->json([
                 'error' => 'Failed to cancel order: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function completeOrder(Request $request, $orderId)
+    {
+        try {
+            $user = Auth::user();
+            $profileId = $user->profile->id;
+
+            Log::info('Complete order attempt', [
+                'order_id' => $orderId,
+                'profile_id' => $profileId,
+                'user_id' => $user->id
+            ]);
+
+            $order = Order::where('id', $orderId)
+                ->where('profile_id', $profileId)
+                ->where('status_id', 4)
+                ->first();
+
+            if (!$order) {
+                Log::warning('Order cannot be completed', [
+                    'order_id' => $orderId,
+                    'profile_id' => $profileId,
+                    'reason' => 'Order not found or not in Delivered status'
+                ]);
+                return response()->json([
+                    'error' => 'Order not found or not eligible for completion'
+                ], 404);
+            }
+
+            $order->status_id = 5;
+            $order->save();
+
+            DB::table('order_histories')->insert([
+                'order_id' => $order->id,
+                'status_id' => 5,
+                'updated_at' => now(),
+            ]);
+
+            Log::info('Order successfully completed', [
+                'order_id' => $order->id,
+                'user_id' => $user->id,
+                'new_status_id' => $order->status_id
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order marked as completed successfully',
+                'order' => [
+                    'id' => $order->id,
+                    'status_id' => $order->status_id,
+                    'archived' => $order->archived,
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error('Failed to complete order', [
+                'order_id' => $orderId,
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return response()->json([
+                'error' => 'Failed to mark order as complete: ' . $e->getMessage()
             ], 500);
         }
     }
